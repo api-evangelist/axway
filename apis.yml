@@ -1,0 +1,49 @@
+aid: axway
+name: Axway
+description: >-
+  Axway provides API management, integration, and security solutions enabling
+  organizations to connect, secure, and manage APIs across hybrid IT environments.
+  Axway offers the Amplify platform for API management and a range of integration
+  and security products for enterprises.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API Management
+  - Integration
+  - Security
+  - Enterprise
+url: https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: axway:axway-amplify-api
+    name: Axway Amplify Platform API
+    description: >-
+      The Axway Amplify Platform provides APIs for managing API products,
+      environments, and consumer subscriptions across the enterprise API
+      management platform.
+    humanURL: https://docs.axway.com/
+    tags:
+      - API Management
+      - Amplify
+      - Enterprise
+    properties:
+      - type: Documentation
+        url: https://docs.axway.com/
+common:
+  - type: Portal
+    url: https://developer.axway.com/
+  - type: Website
+    url: https://www.axway.com/
+  - type: Documentation
+    url: https://docs.axway.com/
+  - type: Support
+    url: https://support.axway.com/
+  - type: Blog
+    url: https://blog.axway.com/
+  - type: Community
+    url: https://community.axway.com/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
