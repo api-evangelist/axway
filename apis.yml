@@ -9,9 +9,9 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - API Management
+  - Enterprise
   - Integration
   - Security
-  - Enterprise
 url: https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-03-18'
@@ -25,8 +25,8 @@ apis:
       management platform.
     humanURL: https://docs.axway.com/
     tags:
-      - API Management
       - Amplify
+      - API Management
       - Enterprise
     properties:
       - type: Documentation
@@ -42,9 +42,9 @@ apis:
     humanURL: https://docs.axway.com/bundle/amplify-central/
     baseURL: https://apicentral.axway.com
     tags:
-      - API Management
-      - API Catalog
       - Amplify
+      - API Catalog
+      - API Management
       - Governance
     properties:
       - type: Documentation
@@ -66,9 +66,9 @@ apis:
     baseURL: https://docs.axway.com
     tags:
       - API Gateway
-      - Security
       - Enterprise
       - On-Premises
+      - Security
     properties:
       - type: Documentation
         url: https://docs.axway.com/bundle/axway-open-docs/
@@ -87,10 +87,10 @@ apis:
     humanURL: https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_administration/apimgr_admin/index.html
     baseURL: https://docs.axway.com
     tags:
-      - API Management
-      - API Lifecycle
-      - Enterprise
       - Administration
+      - API Lifecycle
+      - API Management
+      - Enterprise
     properties:
       - type: Documentation
         url: https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_administration/apimgr_admin/index.html
@@ -108,8 +108,8 @@ apis:
     baseURL: https://docs.axway.com
     tags:
       - API Builder
-      - Microservices
       - Low-Code
+      - Microservices
       - Node.js
     properties:
       - type: Documentation
@@ -131,10 +131,10 @@ apis:
     humanURL: https://docs.axway.com/bundle/amplify-streams/
     baseURL: https://streams-open-docs.netlify.app
     tags:
-      - Streaming
       - Event-Driven
-      - WebSocket
       - Real-Time
+      - Streaming
+      - WebSocket
     properties:
       - type: Documentation
         url: https://docs.axway.com/bundle/amplify-streams/
@@ -151,10 +151,10 @@ apis:
     humanURL: https://docs.axway.com/bundle/FlowManager_20_allOS_en_HTML5/
     baseURL: https://docs.axway.com
     tags:
-      - MFT
       - B2B Integration
-      - File Transfer
       - Enterprise
+      - File Transfer
+      - MFT
     properties:
       - type: Documentation
         url: https://docs.axway.com/bundle/FlowManager_20_allOS_en_HTML5/
