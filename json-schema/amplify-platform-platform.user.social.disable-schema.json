@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.user.social.disable-schema.json",
+  "title": "platform.user.social.disable",
+  "description": "Published when an OAuth service provider is removed for a user.",
+  "type": "object"
+}

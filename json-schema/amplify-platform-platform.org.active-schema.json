@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.active-schema.json",
+  "title": "platform.org.active",
+  "description": "Published when `orgs.active` flag changes.",
+  "type": "object"
+}

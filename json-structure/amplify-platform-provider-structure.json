@@ -1,0 +1,2557 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Provider",
+  "description": "Provider schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Document ID of the provider.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "admin_teams": {
+      "description": "Administration access.",
+      "default": false,
+      "oneOf": [
+        {
+          "type": "boolean",
+          "description": "Flag indicating if `marketplace_admin` role members in all teams can administer the provider marketplace."
+        },
+        {
+          "type": "array",
+          "description": "`guid` of a selected team whose `marketplace_admin` role members can administer the provider marketplace.",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "example": "example_value"
+    },
+    "consume_teams": {
+      "type": "object",
+      "description": "Preference for which org members can consume the provider marketplace.",
+      "default": {
+        "type": "teams",
+        "value": true
+      },
+      "unevaluatedProperties": false,
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "teams": "#/components/schemas/Provider/properties/consume_teams/oneOf/0",
+          "included": "#/components/schemas/Provider/properties/consume_teams/oneOf/1",
+          "excluded": "#/components/schemas/Provider/properties/consume_teams/oneOf/1",
+          "tags": "#/components/schemas/Provider/properties/consume_teams/oneOf/2"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "title": "All Teams",
+          "properties": {
+            "type": {
+              "enum": [
+                "teams"
+              ]
+            },
+            "value": {
+              "type": "boolean",
+              "description": "Indicates if `consumer` role members in all teams can consume the provider marketplace."
+            }
+          }
+        },
+        {
+          "type": "object",
+          "title": "Specific Teams",
+          "properties": {
+            "type": {
+              "enum": [
+                "included",
+                "excluded"
+              ]
+            },
+            "value": {
+              "type": "array",
+              "description": "`guid` of a selected teams whose `consumer` role members can consume the provider marketplace.",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "title": "Tagged Teams",
+          "properties": {
+            "type": {
+              "enum": [
+                "tags"
+              ]
+            },
+            "value": {
+              "type": "array",
+              "description": "`consumer` role members in teams with any value in its `tags` can consume the provider marketplace.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Setting for how to apply consumption preference value."
+        }
+      },
+      "example": {
+        "type": "example_value"
+      }
+    },
+    "publish_teams": {
+      "type": "object",
+      "description": "Preference for which org members can publish products to the provider marketplace.",
+      "default": {
+        "type": "teams",
+        "value": true
+      },
+      "unevaluatedProperties": false,
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "teams": "#/components/schemas/Provider/properties/publish_teams/oneOf/0",
+          "included": "#/components/schemas/Provider/properties/publish_teams/oneOf/1",
+          "excluded": "#/components/schemas/Provider/properties/publish_teams/oneOf/1",
+          "tags": "#/components/schemas/Provider/properties/publish_teams/oneOf/2"
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "title": "All Teams",
+          "properties": {
+            "type": {
+              "enum": [
+                "teams"
+              ]
+            },
+            "value": {
+              "type": "boolean",
+              "description": "Indicates if `catalog_manager` role members in all teams can publish to the provider marketplace."
+            }
+          }
+        },
+        {
+          "type": "object",
+          "title": "Specific Teams",
+          "properties": {
+            "type": {
+              "enum": [
+                "included",
+                "excluded"
+              ]
+            },
+            "value": {
+              "type": "array",
+              "description": "`guid` of a selected teams whose `catalog_manager` role members can publish to the provider marketplace.",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "title": "Tagged Teams",
+          "properties": {
+            "type": {
+              "enum": [
+                "tags"
+              ]
+            },
+            "value": {
+              "type": "array",
+              "description": "`catalog_manager` role members in teams with any value in its `tags` can publish to the provider marketplace.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Setting for how to apply publication preference value."
+        }
+      },
+      "example": {
+        "type": "example_value"
+      }
+    },
+    "ai": {
+      "type": "object",
+      "default": {
+        "enabled": false
+      },
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether AI integration is enabled for the provider marketplace.",
+          "default": false
+        },
+        "embedded": {
+          "type": "boolean",
+          "description": "Whether AI integration uses built-in LLM (or customer hosted).",
+          "default": false
+        },
+        "key": {
+          "type": "string",
+          "description": "API key of customer hosted LLM.",
+          "writeOnly": true
+        },
+        "key_set": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time when API key was last set.",
+          "readOnly": true
+        },
+        "stream": {
+          "type": "boolean",
+          "description": "Whether LLM supports SSE events stream.",
+          "default": true
+        },
+        "url": {
+          "type": "string",
+          "format": "secure-url",
+          "description": "URL of customer hosted LLM."
+        }
+      },
+      "example": {
+        "enabled": true,
+        "embedded": true,
+        "key": "example_value",
+        "key_set": "2026-04-21T00:00:00Z",
+        "stream": true,
+        "url": "https://example.com"
+      }
+    },
+    "appearance": {
+      "type": "object",
+      "description": "Appearance settings for the provider marketplace.",
+      "additionalProperties": false,
+      "properties": {
+        "favicon": {
+          "type": "string",
+          "description": "URL of the provider marketplace favicon."
+        },
+        "logo": {
+          "type": "string",
+          "description": "URL of the provider marketplace logo."
+        },
+        "theme_bg": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for page background."
+        },
+        "theme_black": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for default elements."
+        },
+        "theme_link": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for text links."
+        },
+        "theme_primary": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for action controls."
+        },
+        "theme_primary_alt": {
+          "type": "string",
+          "format": "color",
+          "description": "Supplementary content color for primary action controls."
+        },
+        "theme_secondary": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for secondary elements."
+        },
+        "theme_secondary_alt": {
+          "type": "string",
+          "format": "color",
+          "description": "Supplementary content color for secondary action controls."
+        },
+        "theme_tertiary": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for tertiary elements."
+        },
+        "theme_tertiary_alt": {
+          "type": "string",
+          "format": "color",
+          "description": "Supplementary content color for tertiary action controls."
+        },
+        "theme_danger": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for danger elements."
+        },
+        "theme_danger_alt": {
+          "type": "string",
+          "format": "color",
+          "description": "Supplementary content color for danger state elements."
+        },
+        "theme_info": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for info elements."
+        },
+        "theme_info_alt": {
+          "type": "string",
+          "format": "color",
+          "description": "Supplementary content color for info state elements."
+        },
+        "theme_success": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for success elements."
+        },
+        "theme_success_alt": {
+          "type": "string",
+          "format": "color",
+          "description": "Supplementary content color for success state elements."
+        },
+        "theme_warning": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for warning elements."
+        },
+        "theme_warning_alt": {
+          "type": "string",
+          "format": "color",
+          "description": "Supplementary content color for warning state elements."
+        },
+        "theme_button": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for heading buttons."
+        },
+        "theme_button_text": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for heading button text."
+        },
+        "theme_container": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for container titles."
+        },
+        "theme_container_bg": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for container backgrounds."
+        },
+        "theme_container_brd": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for container borders and separators."
+        },
+        "theme_container_text": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for container text."
+        },
+        "theme_heading": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for heading titles."
+        },
+        "theme_heading_bg": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for heading back."
+        },
+        "theme_icon": {
+          "type": "string",
+          "format": "color",
+          "description": "Element color for icons."
+        },
+        "theme_top_nav": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for top navigation menu text."
+        },
+        "theme_top_nav_bg_direction": {
+          "type": "string",
+          "description": "Direction for the top navigation menu background gradient.",
+          "enum": [
+            "to right",
+            "to bottom",
+            "to right top",
+            "to right bottom"
+          ]
+        },
+        "theme_top_nav_bg_end": {
+          "type": "string",
+          "format": "color",
+          "description": "Ending color for top navigation menu background."
+        },
+        "theme_top_nav_bg_fill": {
+          "type": "string",
+          "description": "Fill format for the top navigation menu background.",
+          "enum": [
+            "solid",
+            "gradient"
+          ]
+        },
+        "theme_top_nav_bg_start": {
+          "type": "string",
+          "format": "color",
+          "description": "Starting color for top navigation menu background."
+        },
+        "theme_top_nav_icon": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for top navigation menu icons."
+        },
+        "theme_top_nav_menu_bg": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for top navigation menu background."
+        },
+        "theme_left_nav": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for left navigation menu text."
+        },
+        "theme_left_nav_active": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for left navigation menu active item text."
+        },
+        "theme_left_nav_active_bg": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for left navigation menu active item background."
+        },
+        "theme_left_nav_bg": {
+          "type": "string",
+          "format": "color",
+          "description": "Color for left navigation menu background."
+        },
+        "font_family": {
+          "type": "string",
+          "description": "Font family."
+        },
+        "letter_spacing": {
+          "type": "string",
+          "description": "Letter spacing.",
+          "enum": [
+            "-1px",
+            "normal",
+            "1px"
+          ]
+        },
+        "button_format": {
+          "type": "string",
+          "description": "Button background fill or outline.",
+          "enum": [
+            "solid",
+            "outline"
+          ]
+        },
+        "button_radius": {
+          "type": "string",
+          "description": "Button radius.",
+          "enum": [
+            "square",
+            "rounded",
+            "pill"
+          ]
+        }
+      },
+      "example": {
+        "favicon": "example_value",
+        "logo": "example_value",
+        "theme_bg": "example_value",
+        "theme_black": "example_value",
+        "theme_link": "example_value",
+        "theme_primary": "example_value",
+        "theme_primary_alt": "example_value",
+        "theme_secondary": "example_value",
+        "theme_secondary_alt": "example_value",
+        "theme_tertiary": "example_value"
+      }
+    },
+    "billing": {
+      "type": "object",
+      "description": "Billing integration settings for the provider marketplace.",
+      "default": {
+        "enabled": false
+      },
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether billing integration is enabled for the provider marketplace.",
+          "default": false
+        },
+        "key": {
+          "type": "string",
+          "description": "Billing integration vendor API key; required for vendor other than `custom`.",
+          "writeOnly": true
+        },
+        "key_set": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date billing integration vendor key was set.",
+          "readOnly": true
+        },
+        "portal_url": {
+          "type": "string",
+          "format": "secure-url",
+          "description": "URL of vendor hosted customer portal; optional for vendor `stripe`."
+        },
+        "signature": {
+          "type": "string",
+          "description": "Billing integration vendor webhook signature or secret key; required for vendor other than `custom`.",
+          "writeOnly": true
+        },
+        "signature_set": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date billing integration vendor webhook signature was set.",
+          "readOnly": true
+        },
+        "url": {
+          "type": "string",
+          "format": "url",
+          "description": "Billing integration vendor region or environment URL; required for vendor `myFatoorah`.",
+          "enum": [
+            "https://api.myfatoorah.com",
+            "https://api-sa.myfatoorah.com",
+            "https://api-qa.myfatoorah.com",
+            "https://apitest.myfatoorah.com"
+          ]
+        },
+        "vendor": {
+          "type": "string",
+          "description": "Billing integration vendor for the provider marketplace.",
+          "enum": [
+            "stripe",
+            "myFatoorah",
+            "custom"
+          ]
+        }
+      },
+      "example": {
+        "enabled": true,
+        "key": "example_value",
+        "key_set": "2026-04-21T00:00:00Z",
+        "portal_url": "https://example.com",
+        "signature": "example_value",
+        "signature_set": "2026-04-21T00:00:00Z",
+        "url": "https://api.myfatoorah.com",
+        "vendor": "stripe"
+      }
+    },
+    "certificate": {
+      "type": "string",
+      "description": "Encrypted certificate",
+      "writeOnly": true,
+      "example": "example_value"
+    },
+    "certificate_expires": {
+      "type": "datetime",
+      "description": "Expiry date of certificate provided for marketplace domain.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "console": {
+      "type": "object",
+      "description": "Console page settings for the provider marketplace.",
+      "default": {
+        "getting_started": {
+          "enabled": false
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "getting_started": {
+          "type": "object",
+          "description": "Getting Started section settings for the provider marketplace console page.",
+          "default": {
+            "enabled": false
+          },
+          "required": [
+            "enabled"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether Getting Started section is enabled for the provider marketplace console page.",
+              "default": false
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of document to display on Getting Started section on the provider marketplace console page.",
+              "enum": [
+                "document"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "Document resource guid",
+              "x-no-tags": true
+            }
+          }
+        }
+      },
+      "example": {
+        "getting_started": {
+          "enabled": true,
+          "type": "document",
+          "url": "https://example.com"
+        }
+      }
+    },
+    "consumer": {
+      "type": "boolean",
+      "description": "Whether to allow authenticated consumer org user access to the marketplace.",
+      "default": false,
+      "example": true
+    },
+    "consumer_approve": {
+      "type": "boolean",
+      "description": "Whether to Require newly registered consumer organizations in the marketplace to require approval from an organization administrator.",
+      "default": false,
+      "example": true
+    },
+    "description": {
+      "type": "object",
+      "description": "Description of the provider marketplace instance.",
+      "default": {},
+      "properties": {
+        "en-US": {
+          "type": "string",
+          "description": "English language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/description"
+            }
+          ]
+        },
+        "fr-FR": {
+          "type": "string",
+          "description": "French language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/description"
+            }
+          ]
+        },
+        "de-DE": {
+          "type": "string",
+          "description": "German language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/description"
+            }
+          ]
+        },
+        "pt-BR": {
+          "type": "string",
+          "description": "Portuguese language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/description"
+            }
+          ]
+        }
+      },
+      "example": {
+        "en-US": "example_value",
+        "fr-FR": "example_value",
+        "de-DE": "example_value",
+        "pt-BR": "example_value"
+      }
+    },
+    "footer": {
+      "type": "object",
+      "description": "Appearance and content settings for the provider marketplace common footer element.",
+      "default": {
+        "items": {
+          "en-US": null,
+          "fr-FR": null,
+          "de-DE": null,
+          "pt-BR": null
+        }
+      },
+      "properties": {
+        "background": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Fill format for the footer background.",
+          "enum": [
+            "solid",
+            "gradient",
+            null
+          ]
+        },
+        "background_direction": {
+          "type": "string",
+          "description": "Direction for the footer background gradient.",
+          "enum": [
+            "to right",
+            "to bottom",
+            "to right top",
+            "to right bottom"
+          ]
+        },
+        "background_end": {
+          "type": "string",
+          "description": "Ending color for footer background."
+        },
+        "background_start": {
+          "type": "string",
+          "description": "Starting color for footer background."
+        },
+        "brd": {
+          "type": "string",
+          "description": "Color for footer borders and dividers."
+        },
+        "color": {
+          "type": "string",
+          "description": "Color for footer text."
+        },
+        "link": {
+          "type": "string",
+          "description": "Color for footer links."
+        },
+        "items": {
+          "type": "object",
+          "description": "Elements shown in the footer block.",
+          "default": {},
+          "properties": {
+            "en-US": {
+              "type": "array",
+              "description": "English language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/footer.items"
+                }
+              ]
+            },
+            "fr-FR": {
+              "type": "array",
+              "description": "French language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/footer.items"
+                }
+              ]
+            },
+            "de-DE": {
+              "type": "array",
+              "description": "German language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/footer.items"
+                }
+              ]
+            },
+            "pt-BR": {
+              "type": "array",
+              "description": "Portuguese language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/footer.items"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "example": {
+        "background": "solid",
+        "background_direction": "to right",
+        "background_end": "example_value",
+        "background_start": "example_value",
+        "brd": "example_value",
+        "color": "example_value",
+        "link": "example_value",
+        "items": {
+          "en-US": [
+            "example_value"
+          ],
+          "fr-FR": [
+            "example_value"
+          ],
+          "de-DE": [
+            "example_value"
+          ],
+          "pt-BR": [
+            "example_value"
+          ]
+        }
+      }
+    },
+    "guid": {
+      "type": "string",
+      "description": "Identifier of the provider marketplace instance.",
+      "example": "example_value"
+    },
+    "help_menu": {
+      "type": "object",
+      "description": "Content shown in the navigation bar help menu.",
+      "default": {},
+      "properties": {
+        "en-US": {
+          "type": "array",
+          "description": "English language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/help_menu"
+            }
+          ]
+        },
+        "fr-FR": {
+          "type": "array",
+          "description": "French language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/help_menu"
+            }
+          ]
+        },
+        "de-DE": {
+          "type": "array",
+          "description": "German language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/help_menu"
+            }
+          ]
+        },
+        "pt-BR": {
+          "type": "array",
+          "description": "Portuguese language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/help_menu"
+            }
+          ]
+        }
+      },
+      "example": {
+        "en-US": [
+          "example_value"
+        ],
+        "fr-FR": [
+          "example_value"
+        ],
+        "de-DE": [
+          "example_value"
+        ],
+        "pt-BR": [
+          "example_value"
+        ]
+      }
+    },
+    "help_menu_icon": {
+      "type": "string",
+      "description": "Icon displayed in the navigation bar to show the help menu.",
+      "example": "example_value"
+    },
+    "homepage": {
+      "type": "object",
+      "description": "Homepage settings for the provider marketplace.",
+      "default": {
+        "enabled": false,
+        "items": []
+      },
+      "required": [
+        "enabled"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether homepage is enabled for the provider marketplace.",
+          "default": false
+        },
+        "default_page": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Which path to display when homepage is not shown; `null` displays \"Browse Products\".",
+          "default": null,
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "document": "#/components/schemas/Provider/properties/homepage/properties/default_page/oneOf/0",
+              "url": "#/components/schemas/Provider/properties/homepage/properties/default_page/oneOf/1"
+            }
+          },
+          "oneOf": [
+            {
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "description": "Document resource guid"
+                }
+              }
+            },
+            {
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "enum": [
+                    "/categories",
+                    "/activity"
+                  ]
+                }
+              }
+            }
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "document",
+                "url"
+              ]
+            }
+          }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "unevaluatedProperties": false,
+            "discriminator": {
+              "propertyName": "type",
+              "mapping": {
+                "categories": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/0",
+                "content": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1",
+                "nav": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/2",
+                "products": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/3",
+                "separator": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/4"
+              }
+            },
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "sort": {
+                    "type": "string",
+                    "description": "Sorting setting for the provider marketplace featured content section.",
+                    "enum": [
+                      "alpha",
+                      "recent"
+                    ]
+                  },
+                  "title": {
+                    "type": "object",
+                    "description": "Title for the categories.",
+                    "default": {},
+                    "properties": {
+                      "en-US": {
+                        "type": "string",
+                        "description": "English language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_categories_title"
+                          }
+                        ]
+                      },
+                      "fr-FR": {
+                        "type": "string",
+                        "description": "French language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_categories_title"
+                          }
+                        ]
+                      },
+                      "de-DE": {
+                        "type": "string",
+                        "description": "German language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_categories_title"
+                          }
+                        ]
+                      },
+                      "pt-BR": {
+                        "type": "string",
+                        "description": "Portuguese language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_categories_title"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "categories"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "background": {
+                    "type": "object",
+                    "unevaluatedProperties": false,
+                    "properties": {
+                      "color_end": {
+                        "type": "string",
+                        "format": "color",
+                        "description": "Starting color for the background."
+                      },
+                      "color_start": {
+                        "type": "string",
+                        "format": "color",
+                        "description": "Ending color for the background."
+                      },
+                      "direction": {
+                        "type": "string",
+                        "description": "Direction for the background color gradient.",
+                        "enum": [
+                          "to right",
+                          "to bottom",
+                          "to right top",
+                          "to right bottom"
+                        ]
+                      },
+                      "image_position": {
+                        "type": "string",
+                        "description": "Background image position for the content.",
+                        "enum": [
+                          "left top",
+                          "left center",
+                          "left bottom",
+                          "right top",
+                          "right center",
+                          "right bottom",
+                          "center top",
+                          "center center",
+                          "center bottom"
+                        ]
+                      },
+                      "image_size": {
+                        "type": "string",
+                        "description": "Background image size for the content.",
+                        "enum": [
+                          "auto",
+                          "cover",
+                          "contain",
+                          "100% 100%"
+                        ]
+                      },
+                      "url": {
+                        "type": "string",
+                        "description": "Background image URL for the content."
+                      }
+                    }
+                  },
+                  "border": {
+                    "$ref": "#/components/schemas/Provider/x-defs/homepage_border"
+                  },
+                  "content": {
+                    "type": "array",
+                    "description": "Content items.",
+                    "items": {
+                      "type": "object",
+                      "unevaluatedProperties": false,
+                      "discriminator": {
+                        "propertyName": "type",
+                        "mapping": {
+                          "button": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1/properties/content/items/oneOf/0",
+                          "document": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1/properties/content/items/oneOf/1",
+                          "image": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1/properties/content/items/oneOf/2",
+                          "search": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1/properties/content/items/oneOf/3",
+                          "text": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1/properties/content/items/oneOf/4"
+                        }
+                      },
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "title": "Button",
+                          "required": [
+                            "url"
+                          ],
+                          "unevaluatedProperties": false,
+                          "discriminator": {
+                            "propertyName": "url_type",
+                            "mapping": {
+                              "url": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1/properties/content/items/oneOf/0/oneOf/0",
+                              "document": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/1/properties/content/items/oneOf/0/oneOf/1"
+                            }
+                          },
+                          "oneOf": [
+                            {
+                              "title": "URL",
+                              "properties": {
+                                "url": {
+                                  "type": "string",
+                                  "description": "URL or relative path for the link.",
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "title": "URL",
+                                      "pattern": "(^((https?:\\/\\/[A-Za-z0-9.-]+|(?:www\\.|[-;:&=+$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[+~%/.\\w\\-_]*)?\\??(?:[-+=&;%@.\\w_]*)#?(?:[\\w?/:@\\-._~!$&'()*+,;=]*))?)$|^(?:\\/[+~%/.\\w\\-_]*)(?:\\?[-+=&;%@.\\w_]*)?(?:#[.!/\\\\\\w]*)?$)"
+                                    },
+                                    {
+                                      "type": "string",
+                                      "title": "Signin",
+                                      "enum": [
+                                        "signin"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                "url_type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "url"
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "title": "Document",
+                              "properties": {
+                                "url": {
+                                  "type": "string",
+                                  "description": "Document resource guid"
+                                },
+                                "url_type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "document"
+                                  ]
+                                }
+                              }
+                            }
+                          ],
+                          "properties": {
+                            "background": {
+                              "type": "string",
+                              "format": "color",
+                              "description": "Button background color."
+                            },
+                            "border": {
+                              "$ref": "#/components/schemas/Provider/x-defs/homepage_border"
+                            },
+                            "color": {
+                              "type": "string",
+                              "format": "color",
+                              "description": "Button text color."
+                            },
+                            "format": {
+                              "type": "string",
+                              "description": "Button background fill or outline.",
+                              "enum": [
+                                "solid",
+                                "outline"
+                              ]
+                            },
+                            "target": {
+                              "type": [
+                                "null",
+                                "string"
+                              ],
+                              "default": null,
+                              "enum": [
+                                null,
+                                "_blank"
+                              ]
+                            },
+                            "text": {
+                              "type": "object",
+                              "description": "Button text",
+                              "default": {},
+                              "properties": {
+                                "en-US": {
+                                  "type": "string",
+                                  "description": "English language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_button_text"
+                                    }
+                                  ]
+                                },
+                                "fr-FR": {
+                                  "type": "string",
+                                  "description": "French language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_button_text"
+                                    }
+                                  ]
+                                },
+                                "de-DE": {
+                                  "type": "string",
+                                  "description": "German language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_button_text"
+                                    }
+                                  ]
+                                },
+                                "pt-BR": {
+                                  "type": "string",
+                                  "description": "Portuguese language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_button_text"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "button"
+                              ]
+                            },
+                            "url_type": {
+                              "type": "string",
+                              "description": "Link type for the button URL.",
+                              "enum": [
+                                "url",
+                                "document"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "title": "Document",
+                          "required": [
+                            "id"
+                          ],
+                          "unevaluatedProperties": false,
+                          "properties": {
+                            "border": {
+                              "$ref": "#/components/schemas/Provider/x-defs/homepage_border"
+                            },
+                            "id": {
+                              "type": "string",
+                              "description": "Published document resource identifier."
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "document"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "title": "Image",
+                          "required": [
+                            "url"
+                          ],
+                          "unevaluatedProperties": false,
+                          "properties": {
+                            "border": {
+                              "$ref": "#/components/schemas/Provider/x-defs/homepage_border"
+                            },
+                            "text": {
+                              "type": "object",
+                              "description": "Image alt text.",
+                              "default": {},
+                              "properties": {
+                                "en-US": {
+                                  "type": "string",
+                                  "description": "English language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_image_alt"
+                                    }
+                                  ]
+                                },
+                                "fr-FR": {
+                                  "type": "string",
+                                  "description": "French language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_image_alt"
+                                    }
+                                  ]
+                                },
+                                "de-DE": {
+                                  "type": "string",
+                                  "description": "German language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_image_alt"
+                                    }
+                                  ]
+                                },
+                                "pt-BR": {
+                                  "type": "string",
+                                  "description": "Portuguese language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_image_alt"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "image"
+                              ]
+                            },
+                            "url": {
+                              "type": "string",
+                              "description": "Image source URL."
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "title": "Search",
+                          "unevaluatedProperties": false,
+                          "properties": {
+                            "scope": {
+                              "type": "string",
+                              "enum": [
+                                "products",
+                                "documents",
+                                "resources",
+                                "all"
+                              ]
+                            },
+                            "text": {
+                              "type": "object",
+                              "description": "Placeholder text",
+                              "default": {},
+                              "properties": {
+                                "en-US": {
+                                  "type": "string",
+                                  "description": "English language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_search_text"
+                                    }
+                                  ]
+                                },
+                                "fr-FR": {
+                                  "type": "string",
+                                  "description": "French language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_search_text"
+                                    }
+                                  ]
+                                },
+                                "de-DE": {
+                                  "type": "string",
+                                  "description": "German language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_search_text"
+                                    }
+                                  ]
+                                },
+                                "pt-BR": {
+                                  "type": "string",
+                                  "description": "Portuguese language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_search_text"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "title": "Text",
+                          "unevaluatedProperties": false,
+                          "properties": {
+                            "border": {
+                              "$ref": "#/components/schemas/Provider/x-defs/homepage_border"
+                            },
+                            "color": {
+                              "type": "string",
+                              "format": "color",
+                              "description": "Text color."
+                            },
+                            "padding": {
+                              "$ref": "#/components/schemas/Provider/x-defs/homepage_spacing"
+                            },
+                            "text": {
+                              "type": "object",
+                              "description": "Text content, using markdown formatting.",
+                              "default": {},
+                              "properties": {
+                                "en-US": {
+                                  "type": "string",
+                                  "description": "English language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_text"
+                                    }
+                                  ]
+                                },
+                                "fr-FR": {
+                                  "type": "string",
+                                  "description": "French language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_text"
+                                    }
+                                  ]
+                                },
+                                "de-DE": {
+                                  "type": "string",
+                                  "description": "German language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_text"
+                                    }
+                                  ]
+                                },
+                                "pt-BR": {
+                                  "type": "string",
+                                  "description": "Portuguese language value.",
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/components/schemas/Provider/x-defs/homepage_content_text"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "text"
+                              ]
+                            }
+                          }
+                        }
+                      ],
+                      "properties": {
+                        "align": {
+                          "type": "string",
+                          "description": "Content alignment.",
+                          "default": "left",
+                          "enum": [
+                            "left",
+                            "center",
+                            "right"
+                          ]
+                        },
+                        "margin": {
+                          "$ref": "#/components/schemas/Provider/x-defs/homepage_spacing"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "button",
+                            "document",
+                            "image",
+                            "search",
+                            "text"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "content"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "border": {
+                    "$ref": "#/components/schemas/Provider/x-defs/homepage_border"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "nav"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "discriminator": {
+                  "propertyName": "filter",
+                  "mapping": {
+                    "top": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/3/oneOf/0",
+                    "published": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/3/oneOf/0",
+                    "tags": "#/components/schemas/Provider/properties/homepage/properties/items/items/oneOf/3/oneOf/1"
+                  }
+                },
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "filter": {
+                        "type": "string",
+                        "enum": [
+                          "top",
+                          "published"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "filter": {
+                        "type": "string",
+                        "enum": [
+                          "tags"
+                        ]
+                      },
+                      "tags": {
+                        "type": "array",
+                        "description": "The tags determining which products to show when `filter` is set to `\"tags\".`",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "properties": {
+                  "count": {
+                    "type": "number",
+                    "maximum": 12
+                  },
+                  "filter": {
+                    "type": "string",
+                    "description": "Displayed products setting for the provider marketplace featured products section.",
+                    "enum": [
+                      "tags",
+                      "top",
+                      "published"
+                    ]
+                  },
+                  "sort": {
+                    "type": "string",
+                    "description": "Sorting setting for the provider marketplace featured products section.",
+                    "enum": [
+                      "alpha",
+                      "recent",
+                      "highest_rating",
+                      "most_reviews"
+                    ]
+                  },
+                  "title": {
+                    "type": "object",
+                    "description": "Title for the products.",
+                    "default": {},
+                    "properties": {
+                      "en-US": {
+                        "type": "string",
+                        "description": "English language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_products_title"
+                          }
+                        ]
+                      },
+                      "fr-FR": {
+                        "type": "string",
+                        "description": "French language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_products_title"
+                          }
+                        ]
+                      },
+                      "de-DE": {
+                        "type": "string",
+                        "description": "German language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_products_title"
+                          }
+                        ]
+                      },
+                      "pt-BR": {
+                        "type": "string",
+                        "description": "Portuguese language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/homepage_products_title"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "products"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "border"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "border": {
+                    "$ref": "#/components/schemas/Provider/x-defs/homepage_border"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "separator"
+                    ]
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "margin": {
+                "$ref": "#/components/schemas/Provider/x-defs/homepage_spacing"
+              },
+              "padding": {
+                "$ref": "#/components/schemas/Provider/x-defs/homepage_spacing"
+              },
+              "type": {
+                "type": "string"
+              },
+              "visibility": {
+                "type": "number",
+                "description": "Item visibility. Always shown: 0, Signed in: 1, Signed out: 2",
+                "enum": [
+                  0,
+                  1,
+                  2
+                ]
+              },
+              "width": {
+                "type": "number",
+                "description": "Item width. Full width: 0, Full width aligned to grid: 5, Column width: 1 - 4.",
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "enabled": true,
+        "default_page": "example_value",
+        "items": [
+          {
+            "margin": {},
+            "padding": {},
+            "type": "example_value",
+            "visibility": 0,
+            "width": 0
+          }
+        ]
+      }
+    },
+    "idp": {
+      "type": "boolean",
+      "description": "Whether to allow consumer organizations in the marketplace to establish custom Identity Providers.",
+      "default": false,
+      "example": true
+    },
+    "idp_hint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Identity Provider `guid` to use for sign in attempts originating from the marketplace. Cannot be set at the same time as `consumer`.",
+      "example": "example_value"
+    },
+    "lang": {
+      "type": "object",
+      "description": "Internationalization settings for the provider marketplace.",
+      "default": {
+        "default": "en-US",
+        "supported": [
+          "en-US"
+        ],
+        "products": "all"
+      },
+      "properties": {
+        "default": {
+          "type": "string",
+          "description": "Default language to use for users of the marketplace.",
+          "default": "en-US",
+          "enum": [
+            "en-US",
+            "fr-FR",
+            "de-DE",
+            "pt-BR"
+          ]
+        },
+        "products": {
+          "type": "string",
+          "description": "Behavior for display of products in the marketplace based on translation state.",
+          "default": "all",
+          "enum": [
+            "all",
+            "translated"
+          ]
+        },
+        "supported": {
+          "type": "array",
+          "description": "Languages supported by the marketplace.",
+          "default": [
+            "en-US"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "en-US",
+              "fr-FR",
+              "de-DE",
+              "pt-BR"
+            ]
+          }
+        }
+      },
+      "example": {
+        "default": "en-US",
+        "products": "all",
+        "supported": [
+          "en-US"
+        ]
+      }
+    },
+    "name": {
+      "type": "object",
+      "description": "Name of the provider marketplace instance.",
+      "default": {},
+      "properties": {
+        "en-US": {
+          "type": "string",
+          "description": "English language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/name"
+            }
+          ]
+        },
+        "fr-FR": {
+          "type": "string",
+          "description": "French language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/name"
+            }
+          ]
+        },
+        "de-DE": {
+          "type": "string",
+          "description": "German language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/name"
+            }
+          ]
+        },
+        "pt-BR": {
+          "type": "string",
+          "description": "Portuguese language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/name"
+            }
+          ]
+        }
+      },
+      "example": {
+        "en-US": "example_value",
+        "fr-FR": "example_value",
+        "de-DE": "example_value",
+        "pt-BR": "example_value"
+      }
+    },
+    "name_gender": {
+      "description": "Gender of the `name` of the provider marketplace instance.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Provider/x-defs/genderedLangSchema"
+        }
+      ],
+      "example": "Example Name"
+    },
+    "nav_items": {
+      "type": "object",
+      "description": "Links added in the common navigation menu.",
+      "default": {},
+      "properties": {
+        "en-US": {
+          "type": "array",
+          "description": "English language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/nav_items"
+            }
+          ]
+        },
+        "fr-FR": {
+          "type": "array",
+          "description": "French language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/nav_items"
+            }
+          ]
+        },
+        "de-DE": {
+          "type": "array",
+          "description": "German language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/nav_items"
+            }
+          ]
+        },
+        "pt-BR": {
+          "type": "array",
+          "description": "Portuguese language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/nav_items"
+            }
+          ]
+        }
+      },
+      "example": {
+        "en-US": [
+          "example_value"
+        ],
+        "fr-FR": [
+          "example_value"
+        ],
+        "de-DE": [
+          "example_value"
+        ],
+        "pt-BR": [
+          "example_value"
+        ]
+      }
+    },
+    "oauth": {
+      "type": "object",
+      "description": "OAuth 2.0 client settings for the provider marketplace's consumer users.",
+      "default": {
+        "enabled": false
+      },
+      "properties": {
+        "github": {
+          "type": "object",
+          "description": "Settings for the provider marketplace's GitHub OAuth 2.0 client.",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether \"Sign in with GitHub\" is enabled for the provider marketplace's consumer users.",
+              "default": false
+            },
+            "client_id": {
+              "type": "string",
+              "description": "Client ID of the registered application within GitHub."
+            },
+            "client_secret": {
+              "type": "string",
+              "description": "Client secret for the registered application within GitHub.",
+              "writeOnly": true
+            },
+            "secret_updated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date client_secret last updated."
+            }
+          }
+        },
+        "gitlab": {
+          "type": "object",
+          "description": "Settings for the provider marketplace's GitLab OAuth 2.0 client.",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether \"Sign in with GitLab\" is enabled for the provider marketplace's consumer users.",
+              "default": false
+            },
+            "client_id": {
+              "type": "string",
+              "description": "Application ID of the registered application within GitLab."
+            },
+            "client_secret": {
+              "type": "string",
+              "description": "Application Secret for the registered application within GitLab.",
+              "writeOnly": true
+            },
+            "secret_updated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date client_secret last updated."
+            }
+          }
+        },
+        "google": {
+          "type": "object",
+          "description": "Settings for the provider marketplace's Google OAuth 2.0 client.",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether \"Sign in with Google\" is enabled for the provider marketplace's consumer users.",
+              "default": false
+            },
+            "client_id": {
+              "type": "string",
+              "description": "Client ID of the registered OAuth 2.0 Credentials within Google."
+            },
+            "client_secret": {
+              "type": "string",
+              "description": "Client secret for the registered OAuth 2.0 Credentials within Google.",
+              "writeOnly": true
+            },
+            "secret_updated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Date client_secret last updated."
+            }
+          }
+        }
+      },
+      "example": {
+        "github": {
+          "enabled": true,
+          "client_id": "507f1f77bcf86cd799439011",
+          "client_secret": "********",
+          "secret_updated": "********"
+        },
+        "gitlab": {
+          "enabled": true,
+          "client_id": "507f1f77bcf86cd799439011",
+          "client_secret": "********",
+          "secret_updated": "********"
+        },
+        "google": {
+          "enabled": true,
+          "client_id": "507f1f77bcf86cd799439011",
+          "client_secret": "********",
+          "secret_updated": "********"
+        }
+      }
+    },
+    "onboarding": {
+      "type": "object",
+      "description": "Onboarding data capture settings for the provider marketplace.",
+      "default": {
+        "enabled": false,
+        "items": []
+      },
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether onboarding data capture feature is enabled for the provider marketplace."
+        },
+        "items": {
+          "type": "array",
+          "description": "Onboarding fields to capture for consumer orgs of the provider marketplace.",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "type": "object",
+            "discriminator": {
+              "propertyName": "type",
+              "mapping": {
+                "header": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/0",
+                "text": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/1",
+                "number": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2",
+                "date": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2",
+                "checkbox": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2",
+                "toggle": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/3",
+                "select": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/4",
+                "multiselect": "#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/4"
+              }
+            },
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "id",
+                  "type",
+                  "text"
+                ],
+                "properties": {
+                  "id": {
+                    "$ref": "#/components/schemas/Provider/x-defs/onboarding_props/properties/id"
+                  },
+                  "text": {
+                    "$ref": "#/components/schemas/Provider/x-defs/onboarding_props/properties/text"
+                  },
+                  "type": {
+                    "$ref": "#/components/schemas/Provider/x-defs/onboarding_props/properties/type"
+                  }
+                }
+              },
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Provider/x-defs/onboarding_props"
+                  }
+                ],
+                "properties": {
+                  "maxlen": {
+                    "type": "number",
+                    "description": "Maximum value length for the element."
+                  },
+                  "placeholder": {
+                    "$ref": "#/components/schemas/Provider/x-defs/placeholder"
+                  }
+                }
+              },
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Provider/x-defs/onboarding_props"
+                  }
+                ],
+                "properties": {
+                  "placeholder": {
+                    "$ref": "#/components/schemas/Provider/x-defs/placeholder"
+                  }
+                }
+              },
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Provider/x-defs/onboarding_props"
+                  }
+                ],
+                "properties": {
+                  "off": {
+                    "type": "object",
+                    "description": "Label for disabled toggle state.",
+                    "default": {},
+                    "properties": {
+                      "en-US": {
+                        "type": "string",
+                        "description": "English language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.off"
+                          }
+                        ]
+                      },
+                      "fr-FR": {
+                        "type": "string",
+                        "description": "French language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.off"
+                          }
+                        ]
+                      },
+                      "de-DE": {
+                        "type": "string",
+                        "description": "German language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.off"
+                          }
+                        ]
+                      },
+                      "pt-BR": {
+                        "type": "string",
+                        "description": "Portuguese language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.off"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "on": {
+                    "type": "object",
+                    "description": "Label for enabled toggle state.",
+                    "default": {},
+                    "properties": {
+                      "en-US": {
+                        "type": "string",
+                        "description": "English language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.on"
+                          }
+                        ]
+                      },
+                      "fr-FR": {
+                        "type": "string",
+                        "description": "French language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.on"
+                          }
+                        ]
+                      },
+                      "de-DE": {
+                        "type": "string",
+                        "description": "German language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.on"
+                          }
+                        ]
+                      },
+                      "pt-BR": {
+                        "type": "string",
+                        "description": "Portuguese language value.",
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.on"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Provider/x-defs/onboarding_props"
+                  }
+                ],
+                "properties": {
+                  "options": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 1000,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "text",
+                        "value"
+                      ],
+                      "properties": {
+                        "text": {
+                          "type": "object",
+                          "description": "Label for value.",
+                          "default": {},
+                          "properties": {
+                            "en-US": {
+                              "type": "string",
+                              "description": "English language value.",
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.options.text"
+                                }
+                              ]
+                            },
+                            "fr-FR": {
+                              "type": "string",
+                              "description": "French language value.",
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.options.text"
+                                }
+                              ]
+                            },
+                            "de-DE": {
+                              "type": "string",
+                              "description": "German language value.",
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.options.text"
+                                }
+                              ]
+                            },
+                            "pt-BR": {
+                              "type": "string",
+                              "description": "Portuguese language value.",
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/Provider/x-defs/onboarding.items.options.text"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "placeholder": {
+                    "$ref": "#/components/schemas/Provider/x-defs/placeholder"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "example": {
+        "enabled": true,
+        "items": [
+          {}
+        ]
+      }
+    },
+    "org_guid": {
+      "type": "uuid",
+      "description": "`guid` of the organization the provider marketplace belongs to.",
+      "example": "example_value"
+    },
+    "provider_idp": {
+      "type": "object",
+      "default": {
+        "enabled": false
+      },
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false
+        },
+        "allow_external": {
+          "type": "boolean",
+          "default": false
+        },
+        "enforce_association": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "example": {
+        "enabled": true,
+        "allow_external": true,
+        "enforce_association": true
+      }
+    },
+    "public": {
+      "type": "boolean",
+      "description": "Whether the provider marketplace allows access to unauthenticated users or users authenticated to orgs other than the provider org.",
+      "default": false,
+      "example": true
+    },
+    "reviews": {
+      "type": "object",
+      "description": "Ratings & Reviews settings for the provider marketplace.",
+      "default": {
+        "enabled": false
+      },
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether Ratings & Reviews are enabled for the provider marketplace."
+        },
+        "char_limit": {
+          "type": "number",
+          "description": "Character limit for written feedback for products or services in the provider marketplace.",
+          "enum": [
+            280,
+            1000,
+            4000
+          ]
+        },
+        "flagged_handling": {
+          "type": "string",
+          "description": "How reported review content is handled within the provider marketplace",
+          "enum": [
+            "hide",
+            "show"
+          ]
+        },
+        "instructions": {
+          "type": "object",
+          "description": "Review guidelines and policies within the provider marketplace.",
+          "default": {},
+          "properties": {
+            "en-US": {
+              "type": "string",
+              "description": "English language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/reviews.instructions"
+                }
+              ]
+            },
+            "fr-FR": {
+              "type": "string",
+              "description": "French language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/reviews.instructions"
+                }
+              ]
+            },
+            "de-DE": {
+              "type": "string",
+              "description": "German language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/reviews.instructions"
+                }
+              ]
+            },
+            "pt-BR": {
+              "type": "string",
+              "description": "Portuguese language value.",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Provider/x-defs/reviews.instructions"
+                }
+              ]
+            }
+          }
+        },
+        "moderation_process": {
+          "type": "string",
+          "description": "Which type of moderation process is to be used for reviews in the provider marketplace",
+          "enum": [
+            "manual",
+            "automatic"
+          ]
+        },
+        "permissions": {
+          "type": "string",
+          "description": "Who is allowed to provide feedback for products or services in the provider marketplace.",
+          "enum": [
+            "subscribers",
+            "all"
+          ]
+        },
+        "public_responses": {
+          "type": "boolean",
+          "description": "Whether to enable public responses to reviews in the provider marketplace."
+        },
+        "response_time": {
+          "type": "number",
+          "description": "Expected response time for feedback in the provider marketplace, in `response_time_unit`.",
+          "minimum": 1
+        },
+        "response_time_unit": {
+          "type": "string",
+          "description": "Unit of time that `response_time` correlates to."
+        }
+      },
+      "example": {
+        "enabled": true,
+        "char_limit": 280,
+        "flagged_handling": "hide",
+        "instructions": {
+          "en-US": "example_value",
+          "fr-FR": "example_value",
+          "de-DE": "example_value",
+          "pt-BR": "example_value"
+        },
+        "moderation_process": "manual",
+        "permissions": "subscribers",
+        "public_responses": true,
+        "response_time": 1.0,
+        "response_time_unit": "example_value"
+      }
+    },
+    "search_engines": {
+      "type": "object",
+      "default": {
+        "indexing_enabled": true
+      },
+      "additionalProperties": false,
+      "properties": {
+        "google_site_verification_id": {
+          "type": "string",
+          "description": "Site Verification ID for Google Search Console integration.",
+          "minLength": 1
+        },
+        "indexing_enabled": {
+          "type": "boolean",
+          "description": "Whether indexing by search engines is enabled for the marketplace.",
+          "default": true
+        }
+      },
+      "example": {
+        "google_site_verification_id": "507f1f77bcf86cd799439011",
+        "indexing_enabled": true
+      }
+    },
+    "signup": {
+      "type": "boolean",
+      "description": "Whether to allow self-service sign up for consumer organizations in the marketplace.",
+      "default": false,
+      "example": true
+    },
+    "sitename": {
+      "type": "object",
+      "description": "Page title of the provider marketplace instance.",
+      "default": {},
+      "properties": {
+        "en-US": {
+          "type": "string",
+          "description": "English language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/sitename"
+            }
+          ]
+        },
+        "fr-FR": {
+          "type": "string",
+          "description": "French language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/sitename"
+            }
+          ]
+        },
+        "de-DE": {
+          "type": "string",
+          "description": "German language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/sitename"
+            }
+          ]
+        },
+        "pt-BR": {
+          "type": "string",
+          "description": "Portuguese language value.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Provider/x-defs/sitename"
+            }
+          ]
+        }
+      },
+      "example": {
+        "en-US": "example_value",
+        "fr-FR": "example_value",
+        "de-DE": "example_value",
+        "pt-BR": "example_value"
+      }
+    },
+    "sitename_gender": {
+      "description": "Gender of the `sitename` of the provider marketplace instance.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Provider/x-defs/genderedLangSchema"
+        }
+      ],
+      "example": "Example Name"
+    },
+    "subdomain": {
+      "type": "string",
+      "description": "Subdomain on which the provider marketplace can be accessed.",
+      "pattern": "^[a-z0-9\\-]{4,63}$",
+      "example": "example.com"
+    },
+    "terms": {
+      "type": "boolean",
+      "description": "Whether the provider marketplace access should be gated on acceptance of Terms & Conditions.",
+      "default": false,
+      "example": true
+    },
+    "terms_updated": {
+      "type": "datetime",
+      "description": "Date Terms & Conditions last updated.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "terms_url": {
+      "type": "string",
+      "format": "url",
+      "description": "URL of the provider marketplace Terms & Conditions.",
+      "example": "https://example.com"
+    },
+    "url": {
+      "type": "string",
+      "description": "Fully qualified domain name on which the provider marketplace can be accessed.",
+      "pattern": "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$",
+      "example": "https://example.com"
+    },
+    "versions": {
+      "type": "object",
+      "description": "Product version settings for the provider marketplace.",
+      "default": {
+        "custom": false,
+        "display": "all"
+      },
+      "properties": {
+        "custom": {
+          "type": "boolean",
+          "description": "Whether custom product versions are displayed in the provider marketplace.",
+          "default": false
+        },
+        "display": {
+          "type": "string",
+          "description": "What product version types will be displayed in the provider marketplace.",
+          "default": "all",
+          "enum": [
+            "all",
+            "latest"
+          ]
+        }
+      },
+      "example": {
+        "custom": true,
+        "display": "all"
+      }
+    }
+  },
+  "required": [
+    "consumer",
+    "consumer_approve",
+    "guid",
+    "name",
+    "org_guid",
+    "public",
+    "signup",
+    "terms"
+  ]
+}

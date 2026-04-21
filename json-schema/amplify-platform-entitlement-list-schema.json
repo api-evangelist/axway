@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-entitlement-list-schema.json",
+  "title": "EntitlementList",
+  "description": "A list of Entitlement objects.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Entitlement"
+  }
+}

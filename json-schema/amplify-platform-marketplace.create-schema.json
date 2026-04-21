@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.create-schema.json",
+  "title": "marketplace.create",
+  "description": "Published when a marketplace is created.\n\n`subdomain` prop will always be included. Once `url` is established, `subdomain` prop value will be passed as the `guid`.",
+  "type": "object",
+  "properties": {
+    "admin_teams": {
+      "$ref": "#/components/schemas/Provider/properties/admin_teams"
+    },
+    "certificate_expires": {
+      "$ref": "#/components/schemas/Provider/properties/certificate_expires"
+    },
+    "consume_teams": {
+      "$ref": "#/components/schemas/Provider/properties/consume_teams"
+    },
+    "consumer": {
+      "$ref": "#/components/schemas/Provider/properties/consumer"
+    },
+    "consumer_approve": {
+      "$ref": "#/components/schemas/Provider/properties/consumer_approve"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "help_menu": {
+      "$ref": "#/components/schemas/Provider/properties/help_menu"
+    },
+    "idp": {
+      "$ref": "#/components/schemas/Provider/properties/idp"
+    },
+    "idp_hint": {
+      "$ref": "#/components/schemas/Provider/properties/idp_hint"
+    },
+    "lang_default": {
+      "$ref": "#/components/schemas/Provider/properties/lang/properties/default"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "github": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "$ref": "#/components/schemas/Provider/properties/oauth/properties/github/properties/enabled"
+            },
+            "secret_updated": {
+              "$ref": "#/components/schemas/Provider/properties/oauth/properties/github/properties/secret_updated"
+            }
+          }
+        },
+        "gitlab": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "$ref": "#/components/schemas/Provider/properties/oauth/properties/gitlab/properties/enabled"
+            },
+            "secret_updated": {
+              "$ref": "#/components/schemas/Provider/properties/oauth/properties/gitlab/properties/secret_updated"
+            }
+          }
+        },
+        "google": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "$ref": "#/components/schemas/Provider/properties/oauth/properties/google/properties/enabled"
+            },
+            "secret_updated": {
+              "$ref": "#/components/schemas/Provider/properties/oauth/properties/google/properties/secret_updated"
+            }
+          }
+        }
+      },
+      "example": {
+        "github": {
+          "enabled": {},
+          "secret_updated": {}
+        },
+        "gitlab": {
+          "enabled": {},
+          "secret_updated": {}
+        },
+        "google": {
+          "enabled": {},
+          "secret_updated": {}
+        }
+      }
+    },
+    "public": {
+      "$ref": "#/components/schemas/Provider/properties/public"
+    },
+    "publish_teams": {
+      "$ref": "#/components/schemas/Provider/properties/publish_teams"
+    },
+    "reviews": {
+      "$ref": "#/components/schemas/Provider/properties/reviews"
+    },
+    "signup": {
+      "$ref": "#/components/schemas/Provider/properties/signup"
+    },
+    "sitename": {
+      "$ref": "#/components/schemas/Provider/properties/sitename"
+    },
+    "subdomain": {
+      "$ref": "#/components/schemas/Provider/properties/subdomain"
+    },
+    "terms": {
+      "$ref": "#/components/schemas/Provider/properties/terms"
+    },
+    "terms_updated": {
+      "$ref": "#/components/schemas/Provider/properties/terms_updated"
+    },
+    "terms_url": {
+      "$ref": "#/components/schemas/Provider/properties/terms_url"
+    },
+    "url": {
+      "$ref": "#/components/schemas/Provider/properties/url"
+    },
+    "versions": {
+      "$ref": "#/components/schemas/Provider/properties/versions"
+    }
+  }
+}

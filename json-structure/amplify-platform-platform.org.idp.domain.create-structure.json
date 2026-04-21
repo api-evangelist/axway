@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.org.idp.domain.create",
+  "description": "Published when an domain is added to an organization.",
+  "type": "object",
+  "properties": {
+    "modified_by": {
+      "type": "string",
+      "description": "\"platform\" or received value from event's `data.lastModifiedVia`."
+    },
+    "tld": {
+      "$ref": "#/components/schemas/Domain/properties/tld"
+    }
+  }
+}

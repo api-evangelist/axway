@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.onboarding.update-schema.json",
+  "title": "marketplace.onboarding.update",
+  "description": "Published when marketplace onboarding data capture is changed.",
+  "type": "object"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.team.user.remove-schema.json",
+  "title": "platform.team.user.remove",
+  "description": "Published when a user or client is removed from a team.",
+  "type": "object",
+  "properties": {
+    "team_guid": {
+      "$ref": "#/components/schemas/Team/properties/guid"
+    },
+    "team_name": {
+      "$ref": "#/components/schemas/Team/properties/name"
+    }
+  }
+}

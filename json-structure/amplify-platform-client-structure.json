@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Client",
+  "description": "Client schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Document ID of the client.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "client_id": {
+      "type": "string",
+      "description": "Identifier of the client to use for authentication.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "guid": {
+      "type": "uuid",
+      "description": "`guid` of the client.",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the client.",
+      "x-no-tags": true,
+      "example": "Example Name"
+    },
+    "org_guid": {
+      "type": "uuid",
+      "description": "`guid` of the organization the client belongs to.",
+      "example": "example_value"
+    },
+    "roles": {
+      "type": "array",
+      "description": "Array of org-level role identifiers that are assigned to the client.",
+      "default": [],
+      "items": {
+        "type": "string",
+        "enum": [
+          "administrator",
+          "developer",
+          "auditor",
+          "consumer",
+          "usage_reporter",
+          "api_central_admin"
+        ]
+      },
+      "example": [
+        "administrator"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags assigned to the client.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "maxItems": 30,
+      "items": {
+        "type": "string",
+        "maxLength": 40
+      },
+      "example": [
+        "example_value"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Authentication method for the client.",
+      "default": "secret",
+      "enum": [
+        "secret",
+        "certificate"
+      ],
+      "example": "secret"
+    }
+  },
+  "required": [
+    "guid",
+    "name",
+    "org_guid",
+    "roles",
+    "tags"
+  ]
+}

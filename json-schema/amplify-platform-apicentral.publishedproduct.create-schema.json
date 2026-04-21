@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.publishedproduct.create-schema.json",
+  "title": "apicentral.publishedproduct.create",
+  "description": "Published when a product is published to a given marketplace.",
+  "type": "object",
+  "properties": {
+    "group": {
+      "type": "string",
+      "enum": [
+        "catalog"
+      ],
+      "example": "catalog"
+    },
+    "product_id": {
+      "type": "string",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    }
+  }
+}

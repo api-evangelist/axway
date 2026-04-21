@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.user.resent-schema.json",
+  "title": "platform.org.user.resent",
+  "description": "Published when a user activation is resent.",
+  "type": "object",
+  "properties": {
+    "activation_type": {
+      "$ref": "#/components/schemas/Activation/properties/type"
+    }
+  }
+}

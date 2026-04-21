@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.consumer.remove",
+  "description": "Published when a consumer organization is deleted.",
+  "type": "object"
+}

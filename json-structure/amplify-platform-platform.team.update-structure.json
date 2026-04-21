@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.team.update",
+  "description": "Published when an existing team is modified.",
+  "type": "object",
+  "properties": {
+    "changes": {
+      "type": "array",
+      "description": "Changes that were made.",
+      "items": {
+        "type": "object",
+        "required": [
+          "k"
+        ],
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": "Action indication for changes to sensitive data. Values represent added, changed, and removed respectively.",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "k": {
+            "type": "string",
+            "description": "The full path to the modified value."
+          },
+          "o": {
+            "description": "The original value."
+          },
+          "v": {
+            "description": "The new value."
+          }
+        }
+      }
+    },
+    "team": {
+      "type": "object",
+      "description": "The updated team",
+      "properties": {
+        "default": {
+          "$ref": "#/components/schemas/Team/properties/default"
+        },
+        "guid": {
+          "$ref": "#/components/schemas/Team/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/Team/properties/name"
+        }
+      },
+      "example": {
+        "default": {},
+        "guid": {},
+        "name": {}
+      }
+    }
+  }
+}

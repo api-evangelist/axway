@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.user.mfa.app.remove",
+  "description": "Published when an MFA application is removed for a user.",
+  "type": "object"
+}

@@ -1,0 +1,22 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "created": "2026-04-21T00:00:00Z",
+  "default": true,
+  "desc": "example_value",
+  "guid": "example_value",
+  "name": "Example Name",
+  "org_guid": "example_value",
+  "tags": [
+    "example_value"
+  ],
+  "updated": "2026-04-21T00:00:00Z",
+  "users": [
+    {
+      "guid": "example_value",
+      "roles": [
+        "consumer"
+      ],
+      "type": "user"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-event-data-central-schema.json",
+  "title": "EventDataCentral",
+  "description": "EventDataCentral schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "consumer_org_id": {
+      "type": "string",
+      "description": "The `org_id` of the consumer organization if applicable.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "id": {
+      "type": "string",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "name": {
+      "type": "string",
+      "example": "Example Name"
+    },
+    "org_guid": {
+      "$ref": "#/components/schemas/Org/properties/guid"
+    },
+    "org_id": {
+      "$ref": "#/components/schemas/Org/properties/org_id"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "end_date": "2026-04-21T00:00:00Z",
+  "entitlements": [
+    {
+      "key": "example_value",
+      "value": "example_value"
+    }
+  ],
+  "governance": "SaaS",
+  "id": "507f1f77bcf86cd799439011",
+  "opportunity_id": 1.0,
+  "plan": "example_value",
+  "product": "example_value",
+  "product_name": "Example Name",
+  "source": "API",
+  "start_date": "2026-04-21T00:00:00Z",
+  "tier": "paid"
+}

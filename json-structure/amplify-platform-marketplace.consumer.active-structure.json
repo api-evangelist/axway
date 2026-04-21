@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.consumer.active",
+  "description": "Published when a consumer organization is set active.",
+  "type": "object"
+}

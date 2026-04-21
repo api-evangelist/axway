@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventDataActionUser",
+  "description": "EventDataActionUser schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "action_user_guid": {
+      "description": "The `guid` of the user that performed the action",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/User/properties/guid"
+        }
+      ],
+      "example": "example_value"
+    }
+  }
+}

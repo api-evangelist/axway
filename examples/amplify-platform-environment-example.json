@@ -1,0 +1,11 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "governance": "Customer Managed",
+  "guid": "example_value",
+  "isProduction": true,
+  "name": "Example Name",
+  "org_guid": "example_value",
+  "source": "example_value",
+  "type": "usage",
+  "url": "https://example.com"
+}

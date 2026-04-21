@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.org.user.resent",
+  "description": "Published when a user activation is resent.",
+  "type": "object",
+  "properties": {
+    "activation_type": {
+      "$ref": "#/components/schemas/Activation/properties/type"
+    }
+  }
+}

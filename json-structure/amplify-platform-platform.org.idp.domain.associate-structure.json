@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.org.idp.domain.associate",
+  "description": "Published when an Identity Provider is enabled for users on a domain in an organization.",
+  "type": "object",
+  "properties": {
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider associated to the organization.",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/name"
+        }
+      },
+      "example": {
+        "id": {},
+        "name": {}
+      }
+    },
+    "modified_by": {
+      "type": "string",
+      "description": "\"platform\" or received value from event's `data.lastModifiedVia`."
+    },
+    "tld": {
+      "$ref": "#/components/schemas/Domain/properties/tld"
+    }
+  }
+}

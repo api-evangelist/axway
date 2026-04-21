@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.user.unimpersonate-schema.json",
+  "title": "platform.user.unimpersonate",
+  "description": "Published when a user is unimpersonated.",
+  "type": "object"
+}

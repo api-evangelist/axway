@@ -1,0 +1,960 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-entitlements-schema.json",
+  "title": "Entitlements",
+  "description": "Subscription entitlements",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "ID",
+      "description": "An identifier for the plan",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "A name for the plan",
+      "example": "Example Name"
+    },
+    "ACT.Instances": {
+      "type": "integer",
+      "title": "Instances",
+      "description": "Total allowed Instances.",
+      "example": 1
+    },
+    "AgentSDK.Transactions": {
+      "type": "integer",
+      "title": "Third-party Gateway Traceability Agent Transactions",
+      "description": "Third-party Gateway Traceability Agent Transactions per month. These are transactions instrumented using Agent SDK for vendors other than AWS, Azure, and Istio.",
+      "example": 1
+    },
+    "provision_envs": {
+      "type": "array",
+      "title": "Provisioned Environments",
+      "x-immutable": true,
+      "x-deprecated": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "sandbox",
+          "production"
+        ]
+      },
+      "description": "Environments to provision in Integration Builder.",
+      "example": [
+        "sandbox"
+      ]
+    },
+    "transactions": {
+      "type": "integer",
+      "title": "Integration Builder Transactions",
+      "x-deprecated": true,
+      "description": "Integration Builder Transactions per month.",
+      "example": 1
+    },
+    "AI.Transactions": {
+      "type": "integer",
+      "title": "AI Transactions",
+      "description": "AI Transactions per month.",
+      "example": 1
+    },
+    "AISuite.Cores": {
+      "type": "integer",
+      "title": "AI Suite Cores",
+      "description": "Total allowed AI Suite Cores.",
+      "example": 1
+    },
+    "AISuite.InputEvents": {
+      "type": "integer",
+      "title": "AI Suite Incoming Records",
+      "description": "AI Suite Incoming Records per month.",
+      "example": 1
+    },
+    "AISuite.Instances": {
+      "type": "integer",
+      "title": "AI Suite Rule Engine Instances",
+      "description": "Total allowed AI Suite Rule Engine Instances.",
+      "example": 1
+    },
+    "AISuite.Users": {
+      "type": "integer",
+      "title": "AI Suite Named Users",
+      "description": "Total allowed AI Suite Named Users.",
+      "example": 1
+    },
+    "AMPG.Transactions": {
+      "type": "integer",
+      "title": "Amplify Gateway Transactions",
+      "description": "Amplify Gateway Transactions per month.",
+      "example": 1
+    },
+    "AMPG.Volume": {
+      "type": "number",
+      "title": "Amplify Gateway Volume",
+      "description": "Amplify Gateway transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "AMPI.Transactions": {
+      "type": "integer",
+      "title": "Integration Transactions",
+      "description": "Integration Transactions per month.",
+      "example": 1
+    },
+    "AMPI.Volume": {
+      "type": "number",
+      "title": "Data Volume",
+      "description": " transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "AOB.Transactions": {
+      "type": "integer",
+      "title": "Open Banking API Transactions",
+      "description": "Open Banking API Transactions per month.",
+      "example": 1
+    },
+    "API.Transactions": {
+      "type": "integer",
+      "title": "API Transactions",
+      "description": "API Transactions per month.",
+      "example": 1
+    },
+    "APIB.Transactions": {
+      "type": "integer",
+      "title": "API Builder Transactions",
+      "x-deprecated": true,
+      "description": "API Builder Transactions per month.",
+      "example": 1
+    },
+    "APIM.DRCores": {
+      "type": "integer",
+      "title": "DR Cores",
+      "description": "Total allowed DR Cores.",
+      "example": 1
+    },
+    "APIM.NonProdCores": {
+      "type": "integer",
+      "title": "Non-production Cores",
+      "description": "Total allowed Non-production Cores.",
+      "example": 1
+    },
+    "APIM.ProdCores": {
+      "type": "integer",
+      "title": "Production Cores",
+      "description": "Total allowed Production Cores.",
+      "example": 1
+    },
+    "APIM.Transactions": {
+      "type": "integer",
+      "title": "API Gateway Transactions",
+      "description": "API Gateway Transactions per month.",
+      "example": 1
+    },
+    "APIM.Volume": {
+      "type": "number",
+      "title": "API Gateway Outbound Volume",
+      "description": "API Gateway transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "APIMG.Transactions": {
+      "type": "integer",
+      "title": "Amplify Istio Traceability Agent Transactions",
+      "description": "Amplify Istio Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "APIP.DRCores": {
+      "type": "integer",
+      "title": "DR Cores",
+      "description": "Total allowed DR Cores.",
+      "example": 1
+    },
+    "APIP.NonProdCores": {
+      "type": "integer",
+      "title": "Non-production Cores",
+      "description": "Total allowed Non-production Cores.",
+      "example": 1
+    },
+    "APIP.ProdCores": {
+      "type": "integer",
+      "title": "Production Cores",
+      "description": "Total allowed Production Cores.",
+      "example": 1
+    },
+    "Automator.CockpitEssential": {
+      "type": "integer",
+      "title": "Automator Cockpit Essential",
+      "description": "Automator Cockpit Essential.",
+      "example": 1
+    },
+    "Automator.CockpitPlus": {
+      "type": "integer",
+      "title": "Automator Cockpit Plus",
+      "description": "Automator Cockpit Plus.",
+      "example": 1
+    },
+    "Automator.Points": {
+      "type": "integer",
+      "title": "Automator Points",
+      "description": "Automator Points.",
+      "example": 1
+    },
+    "AWS.Transactions": {
+      "type": "integer",
+      "title": "AWS API Gateway Traceability Agent Transactions",
+      "description": "AWS API Gateway Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "Azure.Transactions": {
+      "type": "integer",
+      "title": "Azure API Gateway Traceability Agent Transactions",
+      "description": "Azure API Gateway Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "B2Bi.Cores": {
+      "type": "integer",
+      "title": "Cores",
+      "description": "Total allowed DR cores.",
+      "example": 1
+    },
+    "B2Bi.Messages": {
+      "type": "integer",
+      "title": "B2Bi Messages",
+      "description": "B2Bi Messages per month.",
+      "example": 1
+    },
+    "B2Bi.Partners": {
+      "type": "integer",
+      "title": "B2Bi Partners",
+      "description": "B2Bi Partners per month.",
+      "example": 1
+    },
+    "B2Bi.Volume": {
+      "type": "number",
+      "title": "B2Bi Volume",
+      "description": "B2Bi transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "B2Bi.WTPartners": {
+      "type": "integer",
+      "title": "Webtrader Partners",
+      "description": "Total allowed Webtrader Partners.",
+      "example": 1
+    },
+    "BN.Volume": {
+      "type": "integer",
+      "title": "Axway Business Network Volume",
+      "description": "Axway Business Network Volume per month in KiloCharacters.",
+      "example": 1
+    },
+    "CFT.Cores": {
+      "type": "integer",
+      "title": "Cores",
+      "description": "Total allowed Cores.",
+      "example": 1
+    },
+    "CFT.MSUs": {
+      "type": "integer",
+      "title": "MSUs",
+      "description": "Total allowed MSUs.",
+      "example": 1
+    },
+    "CFT.Sessions": {
+      "type": "integer",
+      "title": "Sessions",
+      "description": "Total allowed Sessions.",
+      "example": 1
+    },
+    "CFT.Transfers": {
+      "type": "integer",
+      "title": "CFT File Transfers",
+      "description": "CFT File Transfers per month.",
+      "example": 1
+    },
+    "CSOS.CentralSigning": {
+      "type": "boolean",
+      "title": "CSOS Signing Instance",
+      "description": "Allow access to CSOS Signing Instance feature.",
+      "example": true
+    },
+    "CSOS.Monitoring": {
+      "type": "boolean",
+      "title": "CSOS Monitoring",
+      "description": "Allow access to CSOS Monitoring feature.",
+      "example": true
+    },
+    "CSOS.Orders": {
+      "type": "integer",
+      "title": "CSOS Orders",
+      "description": "CSOS Orders per month.",
+      "example": 1
+    },
+    "CSOS.Partners": {
+      "type": "integer",
+      "title": "CSOS Partners",
+      "description": "Total allowed CSOS Partners.",
+      "example": 1
+    },
+    "CSOS.Transformation": {
+      "type": "boolean",
+      "title": "CSOS Transformation",
+      "description": "Allow access to CSOS Transformation feature.",
+      "example": true
+    },
+    "CSOS.Validation": {
+      "type": "boolean",
+      "title": "CSOS Validation Instance",
+      "description": "Allow access to CSOS Validation Instance feature.",
+      "example": true
+    },
+    "DI.Dashboards": {
+      "type": "integer",
+      "title": "Axway Decision Insights Dashboards",
+      "description": "Total allowed Axway Decision Insights Dashboards.",
+      "example": 1
+    },
+    "DI.Users": {
+      "type": "integer",
+      "title": "Axway Decision Insights Named Users",
+      "description": "Total allowed Axway Decision Insights Named Users.",
+      "example": 1
+    },
+    "DS.Cores": {
+      "type": "integer",
+      "title": "Datastore Cores",
+      "description": "Total allowed Datastore Cores.",
+      "example": 1
+    },
+    "DS.Users": {
+      "type": "integer",
+      "title": "Datastore Client Users",
+      "description": "Total allowed Datastore Client Users.",
+      "example": 1
+    },
+    "DV.EnterpriseInstances": {
+      "type": "integer",
+      "title": "Desktop Validator Enterprise Instances",
+      "description": "Total allowed Desktop Validator Enterprise Instances.",
+      "example": 1
+    },
+    "DV.StandardInstances": {
+      "type": "integer",
+      "title": "Desktop Validator Standard Instances",
+      "description": "Total allowed Desktop Validator Standard Instances.",
+      "example": 1
+    },
+    "EBICSC.Channels": {
+      "type": "integer",
+      "title": "EBICS Client Channels",
+      "description": "Total allowed EBICS Client Channels.",
+      "example": 1
+    },
+    "EBICSCORP.Banks": {
+      "type": "integer",
+      "title": "Bank Connections Allowed",
+      "description": "Total allowed EBICS Corporate bank connections.",
+      "example": 1
+    },
+    "EBICSCORP.Treasurers": {
+      "type": "integer",
+      "title": "Treasurer Connections Allowed",
+      "description": "Total allowed EBICS Corporate treasurer connections.",
+      "example": 1
+    },
+    "EBICSG.Customers": {
+      "type": "integer",
+      "title": "EBICS Client Customers",
+      "description": "Total allowed EBICS Client Customers.",
+      "example": 1
+    },
+    "EBICSG.FileTransfers": {
+      "type": "integer",
+      "title": "EBICS Gateway File Transfers",
+      "description": "EBICS Gateway File Transfers per month.",
+      "example": 1
+    },
+    "EBICSG.Messages": {
+      "type": "integer",
+      "title": "EBICS Gateway Instant Payment Messages",
+      "description": "EBICS Gateway Instant Payment Messages per month.",
+      "example": 1
+    },
+    "EBICSG.Subscriptions": {
+      "type": "integer",
+      "title": "EBICS Gateway Subscriptions",
+      "description": "Total allowed EBICS Gateway Subscriptions.",
+      "example": 1
+    },
+    "EI.Archives": {
+      "type": "integer",
+      "title": "eInvoicing Archiving Transactions",
+      "description": "eInvoicing Archiving Transactions per month.",
+      "example": 1
+    },
+    "EI.Invoices": {
+      "type": "integer",
+      "title": "eInvoicing Transactions",
+      "description": "eInvoicing Transactions per month.",
+      "example": 1
+    },
+    "EI.OCRTransactions": {
+      "type": "integer",
+      "title": "OCR eInvoicing Transactions",
+      "description": "OCR eInvoicing Transactions per month.",
+      "example": 1
+    },
+    "EI.PeppolTransactions": {
+      "type": "integer",
+      "title": "PEPPOL Invoicing Transactions",
+      "description": "PEPPOL Invoicing Transactions per month.",
+      "example": 1
+    },
+    "EI.Transformations": {
+      "type": "integer",
+      "title": "eInvoicing Transformation Transactions",
+      "description": "eInvoicing Transformation Transactions per month.",
+      "example": 1
+    },
+    "EN.Environments": {
+      "type": "integer",
+      "title": "Connected Environments",
+      "description": "Total allowed Connected Environments.",
+      "example": 1
+    },
+    "EN.EnvironmentsNonProd": {
+      "type": "integer",
+      "title": "Connected Environments (Non-production)",
+      "description": "Total allowed Connected Environments (Non-production).",
+      "example": 1
+    },
+    "EN.Services": {
+      "type": "integer",
+      "title": "API Services",
+      "description": "Total allowed API Services.",
+      "example": 1
+    },
+    "ESUB.ClientLicense": {
+      "type": "integer",
+      "title": "eSubmissions Client Licenses",
+      "description": "Total allowed eSubmissions Client Licenses.",
+      "example": 1
+    },
+    "ESUB.CommunityLicense": {
+      "type": "integer",
+      "title": "eSubmissions Community Licenses",
+      "description": "Total allowed eSubmissions Community Licenses.",
+      "example": 1
+    },
+    "ESUB.Messages": {
+      "type": "integer",
+      "title": "eSubmissions Messages",
+      "description": "eSubmissions Messages per month.",
+      "example": 1
+    },
+    "ESUB.Partners": {
+      "type": "integer",
+      "title": "eSubmissions (Non-Regulatory) Trading Partners",
+      "description": "eSubmissions (Non-Regulatory) Trading Partners per month.",
+      "example": 1
+    },
+    "ESUB.Regulatory": {
+      "type": "integer",
+      "title": "eSubmissions Regulatory Trading Partners",
+      "description": "eSubmissions Regulatory Trading Partners per month.",
+      "example": 1
+    },
+    "ESUB.T1": {
+      "type": "integer",
+      "title": "eSubmissions Client Tier 1",
+      "description": "Total allowed eSubmissions Client Tier 1.",
+      "example": 1
+    },
+    "ESUB.T2": {
+      "type": "integer",
+      "title": "eSubmissions Client Tier 2",
+      "description": "Total allowed eSubmissions Client Tier 2.",
+      "example": 1
+    },
+    "ESUB.T3": {
+      "type": "integer",
+      "title": "eSubmissions Client Tier 3",
+      "description": "Total allowed eSubmissions Client Tier 3.",
+      "example": 1
+    },
+    "ESUB.Volume": {
+      "type": "number",
+      "title": "eSubmissions Volume",
+      "description": "eSubmissions transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "FAH.ApplicationConnectors": {
+      "type": "integer",
+      "title": "Financial Accounting Hub ApplicationConnectors",
+      "description": "Total allowed Financial Accounting Hub ApplicationConnectors.",
+      "example": 1
+    },
+    "FAH.Records": {
+      "type": "integer",
+      "title": "Financial Accounting Hub Records",
+      "description": "Financial Accounting Hub Records per month.",
+      "example": 1
+    },
+    "FAH.Users": {
+      "type": "integer",
+      "title": "Financial Accounting Hub Named Users",
+      "description": "Total allowed Financial Accounting Hub Named Users.",
+      "example": 1
+    },
+    "flows": {
+      "type": "integer",
+      "title": "Flow Manager Unit Flows",
+      "description": "Flow Manager Unit Flows per month.",
+      "example": 1
+    },
+    "FU.MultiPatternTransactions": {
+      "type": "integer",
+      "title": "Multi-Pattern Transactions",
+      "description": "Multi-Pattern Transactions per month.",
+      "example": 1
+    },
+    "HBS.Messages": {
+      "type": "integer",
+      "title": "Shared Usage Metric",
+      "description": "Hybrid B2B Solution messages per month.",
+      "example": 1
+    },
+    "Hub.Assets": {
+      "type": "integer",
+      "title": "Asset Catalog Assets",
+      "description": "Total allowed Asset Catalog Assets.",
+      "example": 1
+    },
+    "Hub.Marketplaces": {
+      "type": "integer",
+      "title": "Marketplaces",
+      "description": "Total allowed Marketplaces.",
+      "example": 1
+    },
+    "Hub.Subscriptions": {
+      "type": "integer",
+      "title": "Marketplace Subscriptions",
+      "description": "Total allowed Marketplace Subscriptions.",
+      "example": 1
+    },
+    "Hub.Transactions": {
+      "type": "integer",
+      "title": "Analytics Transactions",
+      "description": "Analytics Transactions per month.",
+      "example": 1
+    },
+    "INTP.Designers": {
+      "type": "integer",
+      "title": "Interplay Designers",
+      "description": "Total allowed Interplay Designers.",
+      "example": 1
+    },
+    "INTP.Instances": {
+      "type": "integer",
+      "title": "Interplay Instances",
+      "description": "Total allowed Interplay Instances.",
+      "example": 1
+    },
+    "PEPPOL.Transactions": {
+      "type": "integer",
+      "title": "PEPPOL Service Transactions",
+      "description": "PEPPOL Service Transactions per month.",
+      "example": 1
+    },
+    "SC.Instances": {
+      "type": "integer",
+      "title": "Secure Client Instances",
+      "description": "Secure Client Instances.",
+      "example": 1
+    },
+    "SC.Licenses": {
+      "type": "array",
+      "title": "Secure Client License Activation ID",
+      "items": {
+        "type": "string"
+      },
+      "description": "License Activation ID for Secure Client instances.",
+      "example": [
+        "example_value"
+      ]
+    },
+    "SFC.Banks": {
+      "type": "integer",
+      "title": "Secure Financial Client Banks",
+      "description": "Total allowed Secure Financial Client Banks.",
+      "example": 1
+    },
+    "SFC.Partners": {
+      "type": "integer",
+      "title": "Secure Financial Client Connection Partners",
+      "description": "Total allowed Secure Financial Client Connection Partners.",
+      "example": 1
+    },
+    "SFC.Treasurers": {
+      "type": "integer",
+      "title": "Secure Financial Client Treasurers",
+      "description": "Total allowed Secure Financial Client Treasurers.",
+      "example": 1
+    },
+    "ST.ActiveUsers": {
+      "type": "integer",
+      "title": "Connections",
+      "description": "Total allowed Connections.",
+      "example": 1
+    },
+    "ST.Connections": {
+      "type": "integer",
+      "title": "Connections",
+      "description": "Total allowed Connections.",
+      "example": 1
+    },
+    "ST.Cores": {
+      "type": "integer",
+      "title": "Cores",
+      "description": "Total allowed Cores.",
+      "example": 1
+    },
+    "ST.Instances": {
+      "type": "integer",
+      "title": "Production Instances",
+      "description": "Total allowed Production Instances.",
+      "example": 1
+    },
+    "ST.Sessions": {
+      "type": "integer",
+      "title": "Sessions",
+      "description": "Total allowed Sessions.",
+      "example": 1
+    },
+    "ST.Transfers": {
+      "type": "integer",
+      "title": "File Transfers",
+      "description": "File Transfers per month.",
+      "example": 1
+    },
+    "ST.TransfersIn": {
+      "type": "integer",
+      "title": "Transfers In",
+      "description": "Transfers In per month.",
+      "example": 1
+    },
+    "ST.TransfersOut": {
+      "type": "integer",
+      "title": "Transfers Out",
+      "description": "Transfers Out per month.",
+      "example": 1
+    },
+    "ST.Volume": {
+      "type": "number",
+      "title": "Incoming Data Volume",
+      "description": "Transferred data volume per month in GB.",
+      "example": 1.0
+    },
+    "STL.Applications": {
+      "type": "integer",
+      "title": "Monitored Applications",
+      "description": "Total allowed Monitored Applications.",
+      "example": 1
+    },
+    "STL.CPUs": {
+      "type": "integer",
+      "title": "CPUs",
+      "description": "Total allowed CPUs.",
+      "example": 1
+    },
+    "STL.Users": {
+      "type": "integer",
+      "title": "Users",
+      "description": "Total allowed Users.",
+      "example": 1
+    },
+    "Streams.Events": {
+      "type": "integer",
+      "title": "Streams Events",
+      "description": "Streams Events per month.",
+      "example": 1
+    },
+    "Streams.Volume": {
+      "type": "number",
+      "title": "Streams Volume",
+      "description": "Streams transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "SV.Users": {
+      "type": "integer",
+      "title": "Server Validator Users",
+      "description": "Total allowed Server Validator Users.",
+      "example": 1
+    },
+    "TNT.Compliance": {
+      "type": "array",
+      "title": "Compliance Module",
+      "items": {
+        "type": "string",
+        "enum": [
+          "EU",
+          "SA",
+          "UAE"
+        ]
+      },
+      "example": [
+        "EU"
+      ]
+    },
+    "TNT.Lines": {
+      "type": "integer",
+      "title": "Manufactoring/Distributor Lines",
+      "description": "Total allowed Manufactoring&#x2F;Distributor Lines.",
+      "example": 1
+    },
+    "TNT.Packs": {
+      "type": "integer",
+      "title": "Unit Packs",
+      "description": "Total allowed Unit Packs.",
+      "example": 1
+    },
+    "TNT.Routing": {
+      "type": "boolean",
+      "title": "DSCSA Routing Service",
+      "example": true
+    },
+    "TNT.SerialNumbers": {
+      "type": "integer",
+      "title": "Track & Trace Serial Numbers",
+      "description": "Track &amp; Trace Serial Numbers.",
+      "example": 1
+    },
+    "Traceable.Discovery": {
+      "type": "integer",
+      "title": "Traceable API Discovery",
+      "description": "Total allowed Traceable API Discovery.",
+      "example": 1
+    },
+    "Traceable.SecurityTesting": {
+      "type": "boolean",
+      "title": "Traceable API Security Testing",
+      "description": "Allow access to Traceable API Security Testing feature.",
+      "example": true
+    },
+    "TSIM.Cores": {
+      "type": "integer",
+      "title": "Cores",
+      "description": "Total allowed DR cores.",
+      "example": 1
+    },
+    "TSIM.Messages": {
+      "type": "integer",
+      "title": "TSIM Messages",
+      "description": "TSIM Messages per month.",
+      "example": 1
+    },
+    "TSIM.Partners": {
+      "type": "integer",
+      "title": "TSIM Partner Relations",
+      "description": "TSIM allowed partners per month.",
+      "example": 1
+    },
+    "TSIM.Users": {
+      "type": "integer",
+      "title": "ENGDAT Users",
+      "description": "Total allowed ENGDAT Users.",
+      "example": 1
+    },
+    "TSIM.Volume": {
+      "type": "number",
+      "title": "TSIM Volume",
+      "description": "TSIM transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "VA.Policies": {
+      "type": "integer",
+      "title": "Policies",
+      "description": "Total allowed Policies.",
+      "example": 1
+    },
+    "VA.Repeaters": {
+      "type": "integer",
+      "title": "Repeater Instances",
+      "description": "Total allowed Repeater Instances.",
+      "example": 1
+    },
+    "VA.Responsers": {
+      "type": "integer",
+      "title": "Responser Instances",
+      "description": "Total allowed Responser Instances.",
+      "example": 1
+    },
+    "VRS.Transactions": {
+      "type": "integer",
+      "title": "Axway VRS Solution Transactions",
+      "description": "Axway VRS Solution Transactions per month.",
+      "example": 1
+    },
+    "WebEDI.Users": {
+      "type": "integer",
+      "title": "WebEDI Portal Users",
+      "description": "Total allowed WebEDI Portal Users.",
+      "example": 1
+    },
+    "WebEDI.Volume": {
+      "type": "number",
+      "title": "WebEDI Portal Volume",
+      "description": "WebEDI Portal transferred volume per month in GB.",
+      "example": 1.0
+    },
+    "APIConnect.Transactions": {
+      "type": "integer",
+      "title": "IBM APIConnect Traceability Agent Transactions",
+      "description": "IBM APIConnect Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "Apigee.Transactions": {
+      "type": "integer",
+      "title": "Apigee Traceability Agent Transactions",
+      "description": "Apigee Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "APIMAgent.Transactions": {
+      "type": "integer",
+      "title": "Axway Gateway Traceability Agent Transactions",
+      "description": "Axway Gateway Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "Kafka.Transactions": {
+      "type": "integer",
+      "title": "Kafka Traceability Agent Transactions",
+      "description": "Kafka Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "SAPAPIPortal.Transactions": {
+      "type": "integer",
+      "title": "SAP API Portal Traceability Agent Transactions",
+      "description": "SAP API Portal Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "Sensedia.Transactions": {
+      "type": "integer",
+      "title": "Sensedia Agent Transactions",
+      "description": "Sensedia Agent Transactions per month.",
+      "example": 1
+    },
+    "Tokens": {
+      "type": "integer",
+      "title": "Tokens",
+      "description": "Amplify API Management Platform offering tokens per month.",
+      "example": 1
+    },
+    "Volume": {
+      "type": "integer",
+      "title": "Volume",
+      "description": "Amplify API Management Platform offering transaction volume per month.",
+      "example": 1
+    },
+    "WebMethods.Transactions": {
+      "type": "integer",
+      "title": "Software AG webMethods Agent Transactions",
+      "description": "Software AG webMethods Agent Transactions per month.",
+      "example": 1
+    },
+    "WSO2.Transactions": {
+      "type": "integer",
+      "title": "WSO2 Traceability Agent Transactions",
+      "description": "WSO2 Traceability Agent Transactions per month.",
+      "example": 1
+    },
+    "AIIntegration": {
+      "type": "boolean",
+      "title": "AI Integration",
+      "description": "Allow access to AI Integration feature.",
+      "example": true
+    },
+    "APICompliance": {
+      "type": "boolean",
+      "title": "API Compliance",
+      "description": "Allow access to API Compliance feature.",
+      "example": true
+    },
+    "APIMocking": {
+      "type": "boolean",
+      "title": "API Mocking",
+      "description": "Allow access to API Mocking feature.",
+      "example": true
+    },
+    "catalog": {
+      "type": "boolean",
+      "title": "Unified Catalog Access",
+      "description": "Allow access to Unified Catalog.",
+      "example": true
+    },
+    "daysDataRetained": {
+      "type": "integer",
+      "title": "Data Retention",
+      "description": "How long analytics events are kept in days.",
+      "example": 1
+    },
+    "FIPS": {
+      "type": "boolean",
+      "title": "FIPS",
+      "example": true
+    },
+    "idp": {
+      "type": "boolean",
+      "title": "External Identity Provider",
+      "description": "Allow configuration of an external identity provider for authentication.",
+      "example": true
+    },
+    "partners": {
+      "type": "array",
+      "title": "Partners",
+      "x-immutable": [
+        "AEM",
+        "AMP",
+        "APIM",
+        "APIMG",
+        "AWS",
+        "Azure",
+        "Bundle",
+        "EN",
+        "Hub",
+        "Streams",
+        "ai",
+        "ars",
+        "fc",
+        "ib"
+      ],
+      "items": {
+        "type": "string",
+        "enum": [
+          "aca",
+          "analytics",
+          "api_central"
+        ]
+      },
+      "description": "Partners the organization has access to.",
+      "example": [
+        "aca"
+      ]
+    },
+    "public_provider": {
+      "type": "boolean",
+      "title": "Public Marketplace",
+      "description": "Allow public Marketplace features including vanity URL, unauthorized access, consumer org support, homepage content, and paid plans.",
+      "example": true
+    },
+    "retention": {
+      "type": "integer",
+      "title": "Analytics Event Retention",
+      "description": "Length of time analytics events are kept in days.",
+      "example": 1
+    },
+    "retentionTransactions": {
+      "type": "integer",
+      "title": "Transaction Event Retention",
+      "description": "Length of time transaction events are kept in days.",
+      "example": 1
+    }
+  }
+}

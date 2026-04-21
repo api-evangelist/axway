@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.publisheddocumentresource.remove",
+  "description": "Published when a published document resource is removed from use in Marketplace settings.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Published id, same as apicentral.publisheddocumentresource.* event `id`.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    }
+  }
+}

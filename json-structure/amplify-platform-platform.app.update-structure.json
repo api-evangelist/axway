@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.app.update",
+  "description": "Published when an application is updated.",
+  "type": "object",
+  "properties": {
+    "app": {
+      "type": "object",
+      "description": "The updated application",
+      "properties": {
+        "guid": {
+          "$ref": "#/components/schemas/Application/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/Application/then/properties/name"
+        },
+        "platform": {
+          "$ref": "#/components/schemas/Application/properties/platform"
+        },
+        "provider_guid": {
+          "$ref": "#/components/schemas/Application/properties/provider_guid"
+        },
+        "source": {
+          "$ref": "#/components/schemas/Application/properties/source"
+        },
+        "type": {
+          "$ref": "#/components/schemas/Application/properties/type"
+        }
+      },
+      "example": {
+        "guid": {},
+        "name": {},
+        "platform": {},
+        "provider_guid": {},
+        "source": {},
+        "type": {}
+      }
+    },
+    "changes": {
+      "type": "array",
+      "description": "Changes that were made.",
+      "items": {
+        "type": "object",
+        "required": [
+          "k"
+        ],
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": "Action indication for changes to sensitive data. Values represent added, changed, and removed respectively.",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "k": {
+            "type": "string",
+            "description": "The full path to the modified value."
+          },
+          "o": {
+            "description": "The original value."
+          },
+          "v": {
+            "description": "The new value."
+          }
+        }
+      }
+    }
+  }
+}

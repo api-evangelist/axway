@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "com.appcelerator.platform.org.user.create",
+  "description": "Published when a user is added or invited to an org.",
+  "type": "object",
+  "properties": {
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider the user is required to authenticate with to access the organization",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/name"
+        }
+      },
+      "example": {
+        "id": {},
+        "name": {}
+      }
+    },
+    "role": {
+      "type": "string",
+      "description": "Identifier of the invited users default role in the organization.",
+      "enum": [
+        "administrator",
+        "developer",
+        "auditor",
+        "consumer"
+      ],
+      "example": "administrator"
+    },
+    "roles": {
+      "type": "array",
+      "description": "User's roles within the organization.",
+      "items": {
+        "$ref": "#/components/schemas/Org/properties/users/items/properties/roles/items"
+      },
+      "example": [
+        {}
+      ]
+    },
+    "user_activated": {
+      "$ref": "#/components/schemas/User/properties/activated"
+    },
+    "user_active": {
+      "$ref": "#/components/schemas/User/properties/active"
+    }
+  }
+}

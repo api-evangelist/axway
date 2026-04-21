@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-entitlement-schema.json",
+  "title": "Entitlement",
+  "description": "Entitlement schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Description of entitlement.",
+      "example": "An example description"
+    },
+    "title": {
+      "type": "string",
+      "description": "Entitlement or metric name",
+      "example": "example_value"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of entitlement",
+      "enum": [
+        "array",
+        "boolean",
+        "integer",
+        "number",
+        "string"
+      ],
+      "example": "array"
+    }
+  },
+  "required": [
+    "type",
+    "title",
+    "description"
+  ]
+}

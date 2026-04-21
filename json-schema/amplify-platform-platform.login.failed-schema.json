@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.login.failed-schema.json",
+  "title": "platform.login.failed",
+  "description": "Published when a user sign in fails.",
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "string",
+      "description": "Client type."
+    },
+    "ip": {
+      "type": "string",
+      "description": "Anonymized IP address.",
+      "example": "10.0.0.1"
+    }
+  }
+}

@@ -1,0 +1,282 @@
+rules:
+
+  # ── Info ──────────────────────────────────────────────────────────────
+  info-title-required:
+    description: API spec must have a non-empty info.title
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+
+  info-description-required:
+    description: API spec must have an info.description
+    severity: error
+    given: $.info
+    then:
+      field: description
+      function: truthy
+
+  info-version-semver:
+    description: Info version should follow semantic versioning
+    severity: warn
+    given: $.info.version
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[0-9]+\\.[0-9]+\\.[0-9]+"
+
+  info-contact-required:
+    description: API spec should include contact information
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  # ── Paths ─────────────────────────────────────────────────────────────
+  paths-lowercase:
+    description: Path segments must be lowercase
+    severity: error
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[/a-z0-9_{}.-]+$"
+
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash
+    severity: error
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  paths-kebab-or-lower:
+    description: Path segments should use lowercase or snake_case (Axway convention)
+    severity: warn
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[/a-z0-9_{}-]+$"
+
+  paths-no-file-extensions:
+    description: Paths should not include file extensions
+    severity: warn
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\.(json|xml|yaml|html)$"
+
+  # ── Operations ────────────────────────────────────────────────────────
+  operations-operation-id-required:
+    description: Every operation must have an operationId
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  operations-operation-id-underscore:
+    description: operationId should use underscore convention (resource_action)
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z]+_[a-zA-Z]+$"
+
+  operations-summary-required:
+    description: Every operation must have a summary
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  operations-description-required:
+    description: Every operation must have a description
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: description
+      function: truthy
+
+  operations-tags-required:
+    description: Every operation must have at least one tag
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  operations-tags-lowercase:
+    description: Tags should be lowercase (Axway convention)
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].tags[*]"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9_-]*$"
+
+  # ── Parameters ────────────────────────────────────────────────────────
+  parameters-description-required:
+    description: Every parameter must have a description
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  parameters-schema-required:
+    description: Every parameter must have a schema with type
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    then:
+      field: schema
+      function: truthy
+
+  parameters-camel-case:
+    description: Parameter names should use camelCase or snake_case
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9_]*$"
+
+  # ── Responses ─────────────────────────────────────────────────────────
+  responses-success-required:
+    description: Every operation must define a success response (2xx)
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["202"]
+            - required: ["204"]
+
+  responses-error-401:
+    description: Operations with security should define a 401 response
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "401"
+      function: truthy
+
+  responses-error-400:
+    description: POST/PUT operations should define a 400 response
+    severity: info
+    given: "$.paths[*][post,put].responses"
+    then:
+      field: "400"
+      function: truthy
+
+  # ── Schemas ───────────────────────────────────────────────────────────
+  schemas-type-required:
+    description: Every schema must declare a type
+    severity: error
+    given: "$.components.schemas[*]"
+    then:
+      field: type
+      function: truthy
+
+  schemas-description-recommended:
+    description: Schemas should have a description
+    severity: info
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  schemas-properties-description:
+    description: Schema properties should have descriptions
+    severity: info
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: truthy
+
+  schemas-no-additional-properties-unset:
+    description: Object schemas should explicitly set additionalProperties
+    severity: info
+    given: "$.components.schemas[?(@.type=='object')]"
+    then:
+      field: additionalProperties
+      function: defined
+
+  # ── Security ──────────────────────────────────────────────────────────
+  security-schemes-defined:
+    description: API must define at least one security scheme
+    severity: error
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+
+  security-bearer-format:
+    description: Bearer security schemes should specify bearerFormat
+    severity: info
+    given: "$.components.securitySchemes[?(@.scheme=='bearer')]"
+    then:
+      field: bearerFormat
+      function: truthy
+
+  security-oauth2-scopes:
+    description: OAuth2 schemes should define scopes
+    severity: warn
+    given: "$.components.securitySchemes[?(@.type=='oauth2')].flows[*]"
+    then:
+      field: scopes
+      function: truthy
+
+  # ── Request Bodies ────────────────────────────────────────────────────
+  request-body-json:
+    description: Request bodies should use application/json content type
+    severity: warn
+    given: "$.paths[*][post,put,patch].requestBody.content"
+    then:
+      field: application/json
+      function: truthy
+
+  request-body-schema:
+    description: Request body JSON content must have a schema
+    severity: error
+    given: "$.paths[*][post,put,patch].requestBody.content.application/json"
+    then:
+      field: schema
+      function: truthy
+
+  # ── Naming Conventions ────────────────────────────────────────────────
+  naming-schema-pascal-case:
+    description: Schema names should use PascalCase
+    severity: warn
+    given: $.components.schemas
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]*$"
+
+  # ── Microcks ──────────────────────────────────────────────────────────
+  microcks-operation-extension:
+    description: Operations should include x-microcks-operation for mock compatibility
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  microcks-response-examples:
+    description: Success responses should include named examples for Microcks
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete].responses.200.content.application/json"
+    then:
+      field: examples
+      function: truthy

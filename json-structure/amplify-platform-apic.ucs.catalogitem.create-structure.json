@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apic.ucs.catalogitem.create",
+  "description": "Published when a catalog asset is created.\n\nAssets synced with type of \"catalogitem\".",
+  "type": "object",
+  "properties": {
+    "catalogSubType": {
+      "type": "string",
+      "description": "Synced as `platform`.",
+      "example": "example_value"
+    },
+    "catalogType": {
+      "type": "string",
+      "description": "Synced as `subtype`.",
+      "example": "example_value"
+    },
+    "envId": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    }
+  }
+}

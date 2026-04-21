@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "UserDevice",
+  "description": "UserDevice schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "authorized": {
+      "type": "boolean",
+      "description": "Whether the device has been authorized.",
+      "example": true
+    },
+    "authorized_date": {
+      "type": "datetime",
+      "description": "Timestamp of when the device was authorized.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "browserVersion": {
+      "type": "string",
+      "description": "Device browser version identified from the devices user agent.",
+      "example": "example_value"
+    },
+    "created": {
+      "type": "datetime",
+      "description": "Timestamp of when the record was created.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "ipaddress": {
+      "type": "string",
+      "description": "Anonymized device IP address.",
+      "example": "10.0.0.1"
+    },
+    "origin": {
+      "type": "string",
+      "description": "Origin of the MFA code used to authenticate the device.",
+      "enum": [
+        "email",
+        "app"
+      ],
+      "example": "email"
+    },
+    "osVersion": {
+      "type": "string",
+      "description": "Device operating system version identified from the devices user agent.",
+      "example": "example_value"
+    },
+    "updated": {
+      "type": "datetime",
+      "description": "Timestamp of the most recent sign in on the device.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "user_device": {
+      "type": "object",
+      "description": "user-device relation.",
+      "properties": {
+        "browserFamily": {
+          "type": "string",
+          "description": "Device browser family identified from the devices user agent."
+        },
+        "device_id": {
+          "type": "string",
+          "description": "GUID of the device record."
+        },
+        "osFamily": {
+          "type": "string",
+          "description": "Device operating system family identified from the devices user agent."
+        },
+        "user": {
+          "type": "string",
+          "description": "_id of the user the record is associated to."
+        }
+      },
+      "example": {
+        "browserFamily": "example_value",
+        "device_id": "507f1f77bcf86cd799439011",
+        "osFamily": "example_value",
+        "user": "example_value"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "idp": {
+    "id": {},
+    "name": {}
+  },
+  "role": "administrator",
+  "roles": [
+    {}
+  ],
+  "user_activated": "example_value",
+  "user_active": "example_value"
+}

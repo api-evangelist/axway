@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-identity-provider-schema.json",
+  "title": "IdentityProvider",
+  "description": "IdentityProvider schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Document ID of the Identity Provider.",
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the Identity Provider.",
+      "example": "An example description"
+    },
+    "guid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "`guid` of the Identity Provider.",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of Identity Provider",
+      "example": "Example Name"
+    },
+    "orgs": {
+      "type": "array",
+      "description": "Organizations associated to this Identity Provider and their user associations.",
+      "default": [],
+      "items": {
+        "type": "object",
+        "required": [
+          "guid",
+          "default_roles",
+          "default_teams",
+          "mapped_roles",
+          "mapped_teams"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "case_insensitive_mapped_roles": {
+            "type": "boolean",
+            "description": "Whether to match returned mapped attribute values to expected attribute values without letter case sensitivity."
+          },
+          "default_roles": {
+            "type": "array",
+            "description": "Array of role identifiers that are assigned to newly provisioned users in the Organization.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "administrator",
+                "developer",
+                "auditor",
+                "consumer",
+                "usage_reporter",
+                "api_central_admin"
+              ]
+            }
+          },
+          "default_teams": {
+            "type": "array",
+            "description": "Array of teams to assign newly provisioned users in the Organization.",
+            "default": [],
+            "items": {
+              "type": "object",
+              "required": [
+                "guid",
+                "roles"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "guid": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "`guid` of the team within the Organization the assign newly provisioned users."
+                },
+                "roles": {
+                  "type": "array",
+                  "description": "Array of role identifiers that are assigned to newly provisioned users in the team.",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "consumer",
+                      "subscription_admin",
+                      "developer",
+                      "catalog_manager",
+                      "subscription_approver",
+                      "api_access",
+                      "insights",
+                      "administrator",
+                      "marketplace_admin"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "enforce_mapped_roles": {
+            "type": "boolean",
+            "description": "Whether to restrict organization role management solely to mapped IdP attributes. Any organization role(s) that a user has that does not match to an associated mapper (or the Default Organization Roles) will be removed on subsequent sign in."
+          },
+          "enforce_mapped_teams": {
+            "type": "boolean",
+            "description": "Whether to restrict team membership and role management solely to mapped IdP attributes. Any team memberships or roles that a user has that does not match to an associated mapper will be removed on subsequent sign in."
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "`guid` of the Organization the Identity Provider is associated to."
+          },
+          "mapped_roles": {
+            "type": "array",
+            "description": "Array of role identifiers to assign users in the Organization based on attributes defined by the Identity Provider.",
+            "default": [],
+            "items": {
+              "type": "object",
+              "required": [
+                "value",
+                "roles"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "friendly": {
+                  "type": "string",
+                  "description": "Friendly name of the attribute provided by the SAML Identity Provider."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the attribute provided by the Identity Provider."
+                },
+                "roles": {
+                  "type": "array",
+                  "description": "Array of role identifiers to be assigned to matching users in the Organization.",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "administrator",
+                      "developer",
+                      "auditor",
+                      "consumer",
+                      "usage_reporter",
+                      "api_central_admin"
+                    ]
+                  }
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value of the named attribute to determine whether to apply the role."
+                }
+              }
+            }
+          },
+          "mapped_teams": {
+            "type": "array",
+            "description": "Array of teams to assign users in the Organization based on attributes defined by the Identity Provider.",
+            "default": [],
+            "items": {
+              "type": "object",
+              "required": [
+                "team_guid",
+                "value",
+                "roles"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "friendly": {
+                  "type": "string",
+                  "description": "Friendly name of the attribute provided by the SAML Identity Provider."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the attribute provided by the Identity Provider."
+                },
+                "roles": {
+                  "type": "array",
+                  "description": "Array of role identifiers to be assigned to matching users in the team.",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "consumer",
+                      "subscription_admin",
+                      "developer",
+                      "catalog_manager",
+                      "subscription_approver",
+                      "api_access",
+                      "insights",
+                      "administrator",
+                      "marketplace_admin"
+                    ]
+                  }
+                },
+                "team_guid": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "`guid` of the team within the Organization the assign matching users."
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value of the named attribute to determine whether to apply the team association."
+                }
+              }
+            }
+          },
+          "provision_adhoc": {
+            "type": "boolean",
+            "description": "Whether to automatically register users who authenticate using the Identity Provider that are not on an associated claimed email domain as members of the organization.",
+            "default": false
+          },
+          "restrict_domain_users": {
+            "type": "boolean",
+            "description": "Whether to automatically restrict users provisioned via domain association to authenticate using the Identity Provider.",
+            "default": false
+          }
+        }
+      },
+      "example": [
+        {
+          "case_insensitive_mapped_roles": true,
+          "default_roles": [
+            "administrator"
+          ],
+          "default_teams": [
+            {
+              "guid": "example_value",
+              "roles": [
+                "consumer"
+              ]
+            }
+          ],
+          "enforce_mapped_roles": true,
+          "enforce_mapped_teams": true,
+          "guid": "example_value",
+          "mapped_roles": [
+            {
+              "friendly": "example_value",
+              "name": "Example Name",
+              "roles": [
+                "administrator"
+              ],
+              "value": "example_value"
+            }
+          ],
+          "mapped_teams": [
+            {
+              "friendly": "example_value",
+              "name": "Example Name",
+              "roles": [
+                "consumer"
+              ],
+              "team_guid": "example_value",
+              "value": "example_value"
+            }
+          ],
+          "provision_adhoc": true,
+          "restrict_domain_users": true
+        }
+      ]
+    },
+    "protocol": {
+      "type": "string",
+      "description": "Protocol the Identity Provider uses.",
+      "enum": [
+        "oidc",
+        "saml"
+      ],
+      "example": "oidc"
+    },
+    "provider_guid": {
+      "type": "string",
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "guid",
+    "name",
+    "protocol"
+  ]
+}

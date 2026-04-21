@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.onboarding.disable",
+  "description": "Published when marketplace onboarding data capture is disabled.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

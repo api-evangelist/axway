@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.idp.remove",
+  "description": "Published when an Identity Provider is removed from a marketplace.",
+  "type": "object"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.create-schema.json",
+  "title": "platform.org.create",
+  "description": "platform.org.create schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "string",
+      "description": "Client type."
+    },
+    "modified_by": {
+      "type": "string",
+      "description": "\"platform\" or received value from event's `data.lastModifiedVia`."
+    }
+  }
+}

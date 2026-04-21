@@ -1,0 +1,99 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "account_id": 1,
+  "active": true,
+  "analytics": {
+    "token": "eyJhbGciOiJIUzI1NiJ9.example"
+  },
+  "api_central": {},
+  "branding": {
+    "logo": "example_value"
+  },
+  "consumer_id": "507f1f77bcf86cd799439011",
+  "created_by": {
+    "client_id": "507f1f77bcf86cd799439011",
+    "email": "user@example.com",
+    "name": "Example Name"
+  },
+  "entitlements": {},
+  "guid": "example_value",
+  "help_menu": {
+    "enabled": true,
+    "defaults": true,
+    "icon": "example_value",
+    "items": [
+      {
+        "icon": "example_value",
+        "new_tab": true,
+        "provider_guid": "example_value",
+        "text": "example_value",
+        "type": "document",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  "last_login": "2026-04-21T00:00:00Z",
+  "logged_in_count": 1.0,
+  "name": "Example Name",
+  "onboarding": {},
+  "onboarding_required": [
+    "example_value"
+  ],
+  "org_id": 1,
+  "origin": "360",
+  "pending": true,
+  "provider_guid": "example_value",
+  "region": "US",
+  "security": {
+    "access_controls": {
+      "enviroments": 0,
+      "service_accounts": 0,
+      "usage": 0,
+      "users": 0
+    },
+    "allow_tooling": true,
+    "disable_analytics": true,
+    "password_policy": {
+      "length": 1,
+      "max_length": 1,
+      "lower": 1,
+      "upper": 1,
+      "special": 1,
+      "digit": 1,
+      "lockout": 1,
+      "renewal": 1,
+      "history": 1
+    },
+    "redact_personal": true
+  },
+  "subscriptions": [
+    {
+      "end_date": "2026-04-21T00:00:00Z",
+      "entitlements": [
+        {
+          "key": "example_value",
+          "value": "example_value"
+        }
+      ],
+      "governance": "SaaS",
+      "id": "507f1f77bcf86cd799439011",
+      "opportunity_id": 1.0,
+      "plan": "example_value",
+      "product": "example_value",
+      "product_name": "Example Name",
+      "source": "API",
+      "start_date": "2026-04-21T00:00:00Z"
+    }
+  ],
+  "support_access_code": 1,
+  "users": [
+    {
+      "guid": "example_value",
+      "idp": "example_value",
+      "primary": true,
+      "roles": [
+        "administrator"
+      ]
+    }
+  ]
+}

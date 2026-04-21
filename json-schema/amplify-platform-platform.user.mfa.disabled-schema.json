@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.user.mfa.disabled-schema.json",
+  "title": "platform.user.mfa.disabled",
+  "description": "Published when multi-factor authentication is disabled for a user.",
+  "type": "object"
+}

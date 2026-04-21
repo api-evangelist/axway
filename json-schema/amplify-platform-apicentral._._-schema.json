@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral._._-schema.json",
+  "title": "apicentral._._",
+  "description": "Published when a Central resource is created/updated/removed.",
+  "type": "object",
+  "properties": {
+    "group": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

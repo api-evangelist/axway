@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.team.user.role.update",
+  "description": "Published when user's role is changed within team.",
+  "type": "object",
+  "properties": {
+    "roles": {
+      "$ref": "#/components/schemas/Team/properties/users/items/properties/roles"
+    },
+    "team_guid": {
+      "$ref": "#/components/schemas/Team/properties/guid"
+    },
+    "team_name": {
+      "$ref": "#/components/schemas/Team/properties/name"
+    }
+  }
+}

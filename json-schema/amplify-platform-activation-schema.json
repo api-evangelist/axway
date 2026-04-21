@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-activation-schema.json",
+  "title": "Activation",
+  "description": "Activation schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "created": {
+      "$ref": "#/components/schemas/DefaultFields/properties/created"
+    },
+    "expire": {
+      "type": "string",
+      "description": "Timestamp of when the record expired.",
+      "example": "example_value"
+    },
+    "guid": {
+      "type": "string",
+      "description": "Identifier for the activation record.",
+      "example": "example_value"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of record.",
+      "example": "example_value"
+    },
+    "updated": {
+      "$ref": "#/components/schemas/DefaultFields/properties/created"
+    },
+    "user_guid": {
+      "type": "string",
+      "description": "GUID of the user the activation record is for.",
+      "example": "example_value"
+    }
+  }
+}

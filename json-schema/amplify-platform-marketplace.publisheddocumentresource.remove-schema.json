@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.publisheddocumentresource.remove-schema.json",
+  "title": "marketplace.publisheddocumentresource.remove",
+  "description": "Published when a published document resource is removed from use in Marketplace settings.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Published id, same as apicentral.publisheddocumentresource.* event `id`.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    }
+  }
+}

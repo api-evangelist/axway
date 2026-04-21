@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-usage-entry-schema.json",
+  "title": "UsageEntry",
+  "description": "UsageEntry schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when report was created.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "created_by": {
+      "type": "object",
+      "description": "Details of the user that created the organization.",
+      "required": [
+        "guid",
+        "type"
+      ],
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "description": "The client_id of the client that created the organization."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the user that created the organization."
+        },
+        "guid": {
+          "type": "string",
+          "description": "`guid` of the creator."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the user or client that created the organization."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the creator.",
+          "enum": [
+            "user",
+            "client"
+          ]
+        }
+      },
+      "example": {
+        "client_id": "507f1f77bcf86cd799439011",
+        "email": "user@example.com",
+        "guid": "example_value",
+        "name": "Example Name",
+        "type": "user"
+      }
+    },
+    "downloadable": {
+      "type": "boolean",
+      "description": "Indicates if the report file is available for download.",
+      "example": true
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End of the reporting range.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "envId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "`guid` of the environment the report is for.",
+      "example": "example_value"
+    },
+    "fileId": {
+      "type": "string",
+      "description": "Identifier of report entry file.",
+      "example": "example_value"
+    },
+    "governance": {
+      "type": "string",
+      "description": "Governance of the environment this report is for.",
+      "enum": [
+        "Customer Managed",
+        "Axway Managed"
+      ],
+      "example": "Customer Managed"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the report entry file.",
+      "example": "Example Name"
+    },
+    "organizationId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "`guid` of the organization the report is for.",
+      "example": "example_value"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start of the reporting range.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the report.",
+      "enum": [
+        "PROCESSED"
+      ],
+      "example": "PROCESSED"
+    },
+    "unrecognized": {
+      "type": "array",
+      "description": "List of unrecognized metrics for reports with status `INVALID_METRIC`.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "example_value"
+      ]
+    },
+    "uploadMethod": {
+      "type": "string",
+      "description": "Upload method.",
+      "enum": [
+        "automatic",
+        "manual"
+      ],
+      "example": "automatic"
+    }
+  }
+}

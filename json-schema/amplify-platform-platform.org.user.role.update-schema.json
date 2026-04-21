@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.user.role.update-schema.json",
+  "title": "platform.org.user.role.update",
+  "description": "Published when a user's role in an organization is changed.\n\nChanges array as a single entry for roles  containing new and previous values.\n\n`added_roles`  and `removed_role`s  sets added to the event to more clearly identify changes to assigned roles. These can also be inferred from the difference between new and previous and vice versa.\n\n`role`  and `previous_role`  are only included if the user's Platform role is changed.",
+  "type": "object",
+  "properties": {
+    "added_roles": {
+      "type": "array",
+      "description": "Set of roles newly assigned to the user.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "administrator",
+          "developer",
+          "auditor",
+          "consumer",
+          "usage_reporter",
+          "api_central_admin"
+        ]
+      },
+      "example": [
+        "administrator"
+      ]
+    },
+    "changes": {
+      "type": "array",
+      "description": "Changes that were made.",
+      "items": {
+        "type": "object",
+        "required": [
+          "k"
+        ],
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": "Action indication for changes to sensitive data. Values represent added, changed, and removed respectively.",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "k": {
+            "type": "string",
+            "description": "The full path to the modified value."
+          },
+          "o": {
+            "description": "The original value."
+          },
+          "v": {
+            "description": "The new value."
+          }
+        }
+      }
+    },
+    "previous_role": {
+      "type": "string",
+      "description": "Identifier of the users previous default role in the organization. Only set if the default role is changed.",
+      "enum": [
+        "administrator",
+        "developer",
+        "auditor",
+        "consumer"
+      ],
+      "example": "administrator"
+    },
+    "removed_roles": {
+      "type": "array",
+      "description": "Set of roles no longer assigned to the user.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "administrator",
+          "developer",
+          "auditor",
+          "consumer",
+          "usage_reporter",
+          "api_central_admin"
+        ]
+      },
+      "example": [
+        "administrator"
+      ]
+    },
+    "role": {
+      "type": "string",
+      "description": "Identifier of the users default role in the organization. Only set if the default role is changed.",
+      "enum": [
+        "administrator",
+        "developer",
+        "auditor",
+        "consumer"
+      ],
+      "example": "administrator"
+    }
+  }
+}

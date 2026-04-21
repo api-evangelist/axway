@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apic.ucs.subscription.update",
+  "description": "Published when a subscription of a catalog asset is updated.",
+  "type": "object"
+}

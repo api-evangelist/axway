@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.idp.domain.create-schema.json",
+  "title": "platform.org.idp.domain.create",
+  "description": "Published when an domain is added to an organization.",
+  "type": "object",
+  "properties": {
+    "modified_by": {
+      "type": "string",
+      "description": "\"platform\" or received value from event's `data.lastModifiedVia`."
+    },
+    "tld": {
+      "$ref": "#/components/schemas/Domain/properties/tld"
+    }
+  }
+}

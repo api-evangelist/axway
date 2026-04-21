@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.agent.failed-schema.json",
+  "title": "apicentral.agent.failed",
+  "description": "apicentral.agent.failed schema from Axway Amplify Platform API",
+  "type": "object"
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.ai.enable",
+  "description": "Published when AI integration is enabled for a marketplace.",
+  "type": "object",
+  "properties": {
+    "changes": {
+      "type": "array",
+      "description": "Changes that were made.",
+      "items": {
+        "type": "object",
+        "required": [
+          "k"
+        ],
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": "Action indication for changes to sensitive data. Values represent added, changed, and removed respectively.",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "k": {
+            "type": "string",
+            "description": "The full path to the modified value."
+          },
+          "o": {
+            "description": "The original value."
+          },
+          "v": {
+            "description": "The new value."
+          }
+        }
+      }
+    },
+    "embedded": {
+      "$ref": "#/components/schemas/Provider/properties/ai/properties/embedded"
+    },
+    "stream": {
+      "$ref": "#/components/schemas/Provider/properties/ai/properties/stream"
+    },
+    "url": {
+      "$ref": "#/components/schemas/Provider/properties/ai/properties/url"
+    }
+  }
+}

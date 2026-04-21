@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apic.ucs.catalogitem.share",
+  "description": "Published when a catalog asset visibility or access controller list is updated.",
+  "type": "object"
+}

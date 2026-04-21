@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-consumer-schema.json",
+  "title": "Consumer",
+  "description": "Consumer schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "active": {
+      "$ref": "#/components/schemas/Org/properties/active"
+    },
+    "consumer_id": {
+      "$ref": "#/components/schemas/Org/properties/consumer_id"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Org/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Org/properties/name"
+    },
+    "onboarding": {
+      "$ref": "#/components/schemas/Org/properties/onboarding"
+    },
+    "org_id": {
+      "$ref": "#/components/schemas/Org/properties/org_id"
+    },
+    "pending": {
+      "$ref": "#/components/schemas/Org/properties/pending"
+    },
+    "teams": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "description": "Count of teams in the consumer org."
+        },
+        {
+          "type": "object",
+          "description": "Metadata of the teams in the consumer org.",
+          "properties": {
+            "guid": {
+              "$ref": "#/components/schemas/Team/properties/guid"
+            },
+            "name": {
+              "$ref": "#/components/schemas/Team/properties/name"
+            }
+          }
+        }
+      ],
+      "example": "example_value"
+    },
+    "users": {
+      "type": "integer",
+      "description": "Count of users in the consumer org.",
+      "example": 1
+    }
+  }
+}

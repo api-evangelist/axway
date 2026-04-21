@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "api_central.provision",
+  "description": "Published when a Engage provisioning is requested.",
+  "type": "object",
+  "properties": {
+    "teams": {
+      "type": "array",
+      "description": "A list of the organization's teams.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "default": {
+            "$ref": "#/components/schemas/Team/properties/default"
+          },
+          "guid": {
+            "$ref": "#/components/schemas/Team/properties/guid"
+          },
+          "name": {
+            "$ref": "#/components/schemas/Team/properties/name"
+          }
+        }
+      },
+      "example": [
+        {
+          "default": {},
+          "guid": {},
+          "name": {}
+        }
+      ]
+    },
+    "trial": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

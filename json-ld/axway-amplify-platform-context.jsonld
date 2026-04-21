@@ -1,0 +1,2791 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "axway": "https://api-evangelist.com/schemas/axway/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "Activation": {
+      "@id": "axway:activation",
+      "@type": "@id"
+    },
+    "activation_created": {
+      "@id": "axway:activation/created",
+      "@type": "xsd:string"
+    },
+    "activation_expire": {
+      "@id": "axway:activation/expire",
+      "@type": "xsd:string"
+    },
+    "activation_guid": {
+      "@id": "axway:activation/guid",
+      "@type": "xsd:string"
+    },
+    "activation_type": {
+      "@id": "axway:activation/type",
+      "@type": "xsd:string"
+    },
+    "activation_updated": {
+      "@id": "axway:activation/updated",
+      "@type": "xsd:string"
+    },
+    "activation_user_guid": {
+      "@id": "axway:activation/user_guid",
+      "@type": "xsd:string"
+    },
+    "Application": {
+      "@id": "axway:application",
+      "@type": "@id"
+    },
+    "application__id": {
+      "@id": "axway:application/_id",
+      "@type": "xsd:string"
+    },
+    "application_apis": {
+      "@id": "axway:application/apis",
+      "@type": "xsd:string"
+    },
+    "application_automatic": {
+      "@id": "axway:application/automatic",
+      "@type": "xsd:boolean"
+    },
+    "application_env": {
+      "@id": "axway:application/env",
+      "@type": "xsd:string"
+    },
+    "application_guid": {
+      "@id": "axway:application/guid",
+      "@type": "xsd:string"
+    },
+    "application_org_guid": {
+      "@id": "axway:application/org_guid",
+      "@type": "xsd:string"
+    },
+    "application_platform": {
+      "@id": "axway:application/platform",
+      "@type": "xsd:string"
+    },
+    "application_provider_guid": {
+      "@id": "axway:application/provider_guid",
+      "@type": "xsd:string"
+    },
+    "application_providers": {
+      "@id": "axway:application/providers",
+      "@type": "xsd:string"
+    },
+    "application_source": {
+      "@id": "axway:application/source",
+      "@type": "xsd:string"
+    },
+    "application_subtype": {
+      "@id": "axway:application/subtype",
+      "@type": "xsd:string"
+    },
+    "application_type": {
+      "@id": "axway:application/type",
+      "@type": "xsd:string"
+    },
+    "ApplicationList": {
+      "@id": "axway:application-list",
+      "@type": "@id"
+    },
+    "Client": {
+      "@id": "axway:client",
+      "@type": "@id"
+    },
+    "client__id": {
+      "@id": "axway:client/_id",
+      "@type": "xsd:string"
+    },
+    "client_client_id": {
+      "@id": "axway:client/client_id",
+      "@type": "xsd:string"
+    },
+    "client_guid": {
+      "@id": "axway:client/guid",
+      "@type": "xsd:string"
+    },
+    "client_name": "schema:name",
+    "client_org_guid": {
+      "@id": "axway:client/org_guid",
+      "@type": "xsd:string"
+    },
+    "client_roles": {
+      "@id": "axway:client/roles",
+      "@type": "xsd:string"
+    },
+    "client_tags": {
+      "@id": "axway:client/tags",
+      "@type": "xsd:string"
+    },
+    "client_type": {
+      "@id": "axway:client/type",
+      "@type": "xsd:string"
+    },
+    "ClientList": {
+      "@id": "axway:client-list",
+      "@type": "@id"
+    },
+    "Consumer": {
+      "@id": "axway:consumer",
+      "@type": "@id"
+    },
+    "consumer_active": {
+      "@id": "axway:consumer/active",
+      "@type": "xsd:string"
+    },
+    "consumer_consumer_id": {
+      "@id": "axway:consumer/consumer_id",
+      "@type": "xsd:string"
+    },
+    "consumer_guid": {
+      "@id": "axway:consumer/guid",
+      "@type": "xsd:string"
+    },
+    "consumer_name": "schema:name",
+    "consumer_onboarding": {
+      "@id": "axway:consumer/onboarding",
+      "@type": "xsd:string"
+    },
+    "consumer_org_id": {
+      "@id": "axway:consumer/org_id",
+      "@type": "xsd:string"
+    },
+    "consumer_pending": {
+      "@id": "axway:consumer/pending",
+      "@type": "xsd:string"
+    },
+    "consumer_teams": {
+      "@id": "axway:consumer/teams",
+      "@type": "xsd:string"
+    },
+    "consumer_users": {
+      "@id": "axway:consumer/users",
+      "@type": "xsd:integer"
+    },
+    "CustomQuery": {
+      "@id": "axway:custom-query",
+      "@type": "@id"
+    },
+    "customQuery__id": {
+      "@id": "axway:custom-query/_id",
+      "@type": "xsd:string"
+    },
+    "customQuery_cross_org": {
+      "@id": "axway:custom-query/cross_org",
+      "@type": "xsd:boolean"
+    },
+    "customQuery_endpoint": {
+      "@id": "axway:custom-query/endpoint",
+      "@type": "xsd:string"
+    },
+    "customQuery_field": {
+      "@id": "axway:custom-query/field",
+      "@type": "xsd:string"
+    },
+    "customQuery_filters": {
+      "@id": "axway:custom-query/filters",
+      "@type": "xsd:string"
+    },
+    "customQuery_granularity": {
+      "@id": "axway:custom-query/granularity",
+      "@type": "xsd:string"
+    },
+    "customQuery_groupings": {
+      "@id": "axway:custom-query/groupings",
+      "@type": "xsd:string"
+    },
+    "customQuery_grquantity": {
+      "@id": "axway:custom-query/grquantity",
+      "@type": "xsd:integer"
+    },
+    "customQuery_guid": {
+      "@id": "axway:custom-query/guid",
+      "@type": "xsd:string"
+    },
+    "customQuery_include": {
+      "@id": "axway:custom-query/include",
+      "@type": "xsd:string"
+    },
+    "customQuery_limit": {
+      "@id": "axway:custom-query/limit",
+      "@type": "xsd:integer"
+    },
+    "customQuery_method": {
+      "@id": "axway:custom-query/method",
+      "@type": "xsd:string"
+    },
+    "customQuery_name": "schema:name",
+    "customQuery_offset": {
+      "@id": "axway:custom-query/offset",
+      "@type": "xsd:integer"
+    },
+    "customQuery_org_guid": {
+      "@id": "axway:custom-query/org_guid",
+      "@type": "xsd:integer"
+    },
+    "customQuery_rateGranularity": {
+      "@id": "axway:custom-query/rateGranularity",
+      "@type": "xsd:string"
+    },
+    "customQuery_sortField": {
+      "@id": "axway:custom-query/sortField",
+      "@type": "xsd:string"
+    },
+    "customQuery_sortOrder": {
+      "@id": "axway:custom-query/sortOrder",
+      "@type": "xsd:integer"
+    },
+    "customQuery_span": {
+      "@id": "axway:custom-query/span",
+      "@type": "xsd:integer"
+    },
+    "customQuery_type": {
+      "@id": "axway:custom-query/type",
+      "@type": "xsd:string"
+    },
+    "CustomQueryList": {
+      "@id": "axway:custom-query-list",
+      "@type": "@id"
+    },
+    "DataExport": {
+      "@id": "axway:data-export",
+      "@type": "@id"
+    },
+    "dataExport__id": {
+      "@id": "axway:data-export/_id",
+      "@type": "xsd:string"
+    },
+    "dataExport_completed": {
+      "@id": "axway:data-export/completed",
+      "@type": "xsd:string"
+    },
+    "dataExport_created": {
+      "@id": "axway:data-export/created",
+      "@type": "xsd:string"
+    },
+    "dataExport_filename": {
+      "@id": "axway:data-export/filename",
+      "@type": "xsd:string"
+    },
+    "dataExport_guid": {
+      "@id": "axway:data-export/guid",
+      "@type": "xsd:string"
+    },
+    "dataExport_items": {
+      "@id": "axway:data-export/items",
+      "@type": "xsd:string"
+    },
+    "dataExport_org_guid": {
+      "@id": "axway:data-export/org_guid",
+      "@type": "xsd:string"
+    },
+    "dataExport_status": {
+      "@id": "axway:data-export/status",
+      "@type": "xsd:string"
+    },
+    "dataExport_updated": {
+      "@id": "axway:data-export/updated",
+      "@type": "xsd:string"
+    },
+    "dataExport_user_guid": {
+      "@id": "axway:data-export/user_guid",
+      "@type": "xsd:string"
+    },
+    "DataExportList": {
+      "@id": "axway:data-export-list",
+      "@type": "@id"
+    },
+    "DefaultFields": {
+      "@id": "axway:default-fields",
+      "@type": "@id"
+    },
+    "defaultFields_created": {
+      "@id": "axway:default-fields/created",
+      "@type": "xsd:string"
+    },
+    "defaultFields_created_by": {
+      "@id": "axway:default-fields/created_by",
+      "@type": "xsd:string"
+    },
+    "defaultFields_updated": {
+      "@id": "axway:default-fields/updated",
+      "@type": "xsd:string"
+    },
+    "Domain": {
+      "@id": "axway:domain",
+      "@type": "@id"
+    },
+    "domain__id": {
+      "@id": "axway:domain/_id",
+      "@type": "xsd:string"
+    },
+    "domain_orgs": {
+      "@id": "axway:domain/orgs",
+      "@type": "xsd:string"
+    },
+    "domain_provider_guid": {
+      "@id": "axway:domain/provider_guid",
+      "@type": "xsd:string"
+    },
+    "domain_tld": {
+      "@id": "axway:domain/tld",
+      "@type": "xsd:string"
+    },
+    "DomainList": {
+      "@id": "axway:domain-list",
+      "@type": "@id"
+    },
+    "Entitlement": {
+      "@id": "axway:entitlement",
+      "@type": "@id"
+    },
+    "entitlement_description": "schema:description",
+    "entitlement_title": {
+      "@id": "axway:entitlement/title",
+      "@type": "xsd:string"
+    },
+    "entitlement_type": {
+      "@id": "axway:entitlement/type",
+      "@type": "xsd:string"
+    },
+    "EntitlementList": {
+      "@id": "axway:entitlement-list",
+      "@type": "@id"
+    },
+    "Entitlements": {
+      "@id": "axway:entitlements",
+      "@type": "@id"
+    },
+    "entitlements_id": {
+      "@id": "axway:entitlements/id",
+      "@type": "xsd:string"
+    },
+    "entitlements_name": "schema:name",
+    "entitlements_ACT.Instances": {
+      "@id": "axway:entitlements/ACT.Instances",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AgentSDK.Transactions": {
+      "@id": "axway:entitlements/AgentSDK.Transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_provision_envs": {
+      "@id": "axway:entitlements/provision_envs",
+      "@type": "xsd:string"
+    },
+    "entitlements_transactions": {
+      "@id": "axway:entitlements/transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AI.Transactions": {
+      "@id": "axway:entitlements/AI.Transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AISuite.Cores": {
+      "@id": "axway:entitlements/AISuite.Cores",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AISuite.InputEvents": {
+      "@id": "axway:entitlements/AISuite.InputEvents",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AISuite.Instances": {
+      "@id": "axway:entitlements/AISuite.Instances",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AISuite.Users": {
+      "@id": "axway:entitlements/AISuite.Users",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AMPG.Transactions": {
+      "@id": "axway:entitlements/AMPG.Transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AMPG.Volume": {
+      "@id": "axway:entitlements/AMPG.Volume",
+      "@type": "xsd:decimal"
+    },
+    "entitlements_AMPI.Transactions": {
+      "@id": "axway:entitlements/AMPI.Transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_AMPI.Volume": {
+      "@id": "axway:entitlements/AMPI.Volume",
+      "@type": "xsd:decimal"
+    },
+    "entitlements_AOB.Transactions": {
+      "@id": "axway:entitlements/AOB.Transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_API.Transactions": {
+      "@id": "axway:entitlements/API.Transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_APIB.Transactions": {
+      "@id": "axway:entitlements/APIB.Transactions",
+      "@type": "xsd:integer"
+    },
+    "entitlements_APIM.DRCores": {
+      "@id": "axway:entitlements/APIM.DRCores",
+      "@type": "xsd:integer"
+    },
+    "entitlements_APIM.NonProdCores": {
+      "@id": "axway:entitlements/APIM.NonProdCores",
+      "@type": "xsd:integer"
+    },
+    "Environment": {
+      "@id": "axway:environment",
+      "@type": "@id"
+    },
+    "environment__id": {
+      "@id": "axway:environment/_id",
+      "@type": "xsd:string"
+    },
+    "environment_governance": {
+      "@id": "axway:environment/governance",
+      "@type": "xsd:string"
+    },
+    "environment_guid": {
+      "@id": "axway:environment/guid",
+      "@type": "xsd:string"
+    },
+    "environment_isProduction": {
+      "@id": "axway:environment/isProduction",
+      "@type": "xsd:boolean"
+    },
+    "environment_name": "schema:name",
+    "environment_org_guid": {
+      "@id": "axway:environment/org_guid",
+      "@type": "xsd:string"
+    },
+    "environment_source": {
+      "@id": "axway:environment/source",
+      "@type": "xsd:string"
+    },
+    "environment_type": {
+      "@id": "axway:environment/type",
+      "@type": "xsd:string"
+    },
+    "environment_url": "schema:url",
+    "EnvironmentList": {
+      "@id": "axway:environment-list",
+      "@type": "@id"
+    },
+    "Event": {
+      "@id": "axway:event",
+      "@type": "@id"
+    },
+    "event_data": {
+      "@id": "axway:event/data",
+      "@type": "xsd:string"
+    },
+    "event_event": {
+      "@id": "axway:event/event",
+      "@type": "xsd:string"
+    },
+    "event_id": {
+      "@id": "axway:event/id",
+      "@type": "xsd:string"
+    },
+    "event_timestamp": {
+      "@id": "axway:event/timestamp",
+      "@type": "xsd:decimal"
+    },
+    "event_version": {
+      "@id": "axway:event/version",
+      "@type": "xsd:string"
+    },
+    "EventDataActionClient": {
+      "@id": "axway:event-data-action-client",
+      "@type": "@id"
+    },
+    "eventDataActionClient_action_client_guid": {
+      "@id": "axway:event-data-action-client/action_client_guid",
+      "@type": "xsd:string"
+    },
+    "eventDataActionClient_action_client_id": {
+      "@id": "axway:event-data-action-client/action_client_id",
+      "@type": "xsd:string"
+    },
+    "eventDataActionClient_action_client_name": {
+      "@id": "axway:event-data-action-client/action_client_name",
+      "@type": "xsd:string"
+    },
+    "EventDataActionUser": {
+      "@id": "axway:event-data-action-user",
+      "@type": "@id"
+    },
+    "eventDataActionUser_action_user_guid": {
+      "@id": "axway:event-data-action-user/action_user_guid",
+      "@type": "xsd:string"
+    },
+    "EventDataActor": {
+      "@id": "axway:event-data-actor",
+      "@type": "@id"
+    },
+    "EventDataCentral": {
+      "@id": "axway:event-data-central",
+      "@type": "@id"
+    },
+    "eventDataCentral_consumer_org_id": {
+      "@id": "axway:event-data-central/consumer_org_id",
+      "@type": "xsd:string"
+    },
+    "eventDataCentral_id": {
+      "@id": "axway:event-data-central/id",
+      "@type": "xsd:string"
+    },
+    "eventDataCentral_name": "schema:name",
+    "eventDataCentral_org_guid": {
+      "@id": "axway:event-data-central/org_guid",
+      "@type": "xsd:string"
+    },
+    "eventDataCentral_org_id": {
+      "@id": "axway:event-data-central/org_id",
+      "@type": "xsd:string"
+    },
+    "EventDataChanges": {
+      "@id": "axway:event-data-changes",
+      "@type": "@id"
+    },
+    "EventDataClient": {
+      "@id": "axway:event-data-client",
+      "@type": "@id"
+    },
+    "eventDataClient_client_guid": {
+      "@id": "axway:event-data-client/client_guid",
+      "@type": "xsd:string"
+    },
+    "eventDataClient_client_id": {
+      "@id": "axway:event-data-client/client_id",
+      "@type": "xsd:string"
+    },
+    "eventDataClient_client_name": {
+      "@id": "axway:event-data-client/client_name",
+      "@type": "xsd:string"
+    },
+    "EventDataFrom": {
+      "@id": "axway:event-data-from",
+      "@type": "@id"
+    },
+    "EventDataModifiedBy": {
+      "@id": "axway:event-data-modified-by",
+      "@type": "@id"
+    },
+    "EventDataOrg": {
+      "@id": "axway:event-data-org",
+      "@type": "@id"
+    },
+    "eventDataOrg_org_guid": {
+      "@id": "axway:event-data-org/org_guid",
+      "@type": "xsd:string"
+    },
+    "eventDataOrg_org_id": {
+      "@id": "axway:event-data-org/org_id",
+      "@type": "xsd:string"
+    },
+    "eventDataOrg_org_name": {
+      "@id": "axway:event-data-org/org_name",
+      "@type": "xsd:string"
+    },
+    "eventDataOrg_provider_guid": {
+      "@id": "axway:event-data-org/provider_guid",
+      "@type": "xsd:string"
+    },
+    "eventDataOrg_region": {
+      "@id": "axway:event-data-org/region",
+      "@type": "xsd:string"
+    },
+    "EventDataUser": {
+      "@id": "axway:event-data-user",
+      "@type": "@id"
+    },
+    "eventDataUser_provider_guid": {
+      "@id": "axway:event-data-user/provider_guid",
+      "@type": "xsd:string"
+    },
+    "eventDataUser_user_guid": {
+      "@id": "axway:event-data-user/user_guid",
+      "@type": "xsd:string"
+    },
+    "IdentityProvider": {
+      "@id": "axway:identity-provider",
+      "@type": "@id"
+    },
+    "identityProvider__id": {
+      "@id": "axway:identity-provider/_id",
+      "@type": "xsd:string"
+    },
+    "identityProvider_description": "schema:description",
+    "identityProvider_guid": {
+      "@id": "axway:identity-provider/guid",
+      "@type": "xsd:string"
+    },
+    "identityProvider_name": "schema:name",
+    "identityProvider_orgs": {
+      "@id": "axway:identity-provider/orgs",
+      "@type": "xsd:string"
+    },
+    "identityProvider_protocol": {
+      "@id": "axway:identity-provider/protocol",
+      "@type": "xsd:string"
+    },
+    "identityProvider_provider_guid": {
+      "@id": "axway:identity-provider/provider_guid",
+      "@type": "xsd:string"
+    },
+    "IdentityProviderList": {
+      "@id": "axway:identity-provider-list",
+      "@type": "@id"
+    },
+    "Org": {
+      "@id": "axway:org",
+      "@type": "@id"
+    },
+    "org__id": {
+      "@id": "axway:org/_id",
+      "@type": "xsd:string"
+    },
+    "org_account_id": {
+      "@id": "axway:org/account_id",
+      "@type": "xsd:integer"
+    },
+    "org_active": {
+      "@id": "axway:org/active",
+      "@type": "xsd:boolean"
+    },
+    "org_analytics": {
+      "@id": "axway:org/analytics",
+      "@type": "xsd:string"
+    },
+    "org_api_central": {
+      "@id": "axway:org/api_central",
+      "@type": "xsd:string"
+    },
+    "org_branding": {
+      "@id": "axway:org/branding",
+      "@type": "xsd:string"
+    },
+    "org_consumer_id": {
+      "@id": "axway:org/consumer_id",
+      "@type": "xsd:string"
+    },
+    "org_created_by": {
+      "@id": "axway:org/created_by",
+      "@type": "xsd:string"
+    },
+    "org_entitlements": {
+      "@id": "axway:org/entitlements",
+      "@type": "xsd:string"
+    },
+    "org_guid": {
+      "@id": "axway:org/guid",
+      "@type": "xsd:string"
+    },
+    "org_help_menu": {
+      "@id": "axway:org/help_menu",
+      "@type": "xsd:string"
+    },
+    "org_last_login": {
+      "@id": "axway:org/last_login",
+      "@type": "xsd:string"
+    },
+    "org_logged_in_count": {
+      "@id": "axway:org/logged_in_count",
+      "@type": "xsd:decimal"
+    },
+    "org_name": "schema:name",
+    "org_onboarding": {
+      "@id": "axway:org/onboarding",
+      "@type": "xsd:string"
+    },
+    "org_onboarding_required": {
+      "@id": "axway:org/onboarding_required",
+      "@type": "xsd:string"
+    },
+    "org_org_id": {
+      "@id": "axway:org/org_id",
+      "@type": "xsd:integer"
+    },
+    "org_origin": {
+      "@id": "axway:org/origin",
+      "@type": "xsd:string"
+    },
+    "org_pending": {
+      "@id": "axway:org/pending",
+      "@type": "xsd:boolean"
+    },
+    "org_provider_guid": {
+      "@id": "axway:org/provider_guid",
+      "@type": "xsd:string"
+    },
+    "PasswordPolicy": {
+      "@id": "axway:password-policy",
+      "@type": "@id"
+    },
+    "passwordPolicy_length": {
+      "@id": "axway:password-policy/length",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_max_length": {
+      "@id": "axway:password-policy/max_length",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_lower": {
+      "@id": "axway:password-policy/lower",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_upper": {
+      "@id": "axway:password-policy/upper",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_special": {
+      "@id": "axway:password-policy/special",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_digit": {
+      "@id": "axway:password-policy/digit",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_lockout": {
+      "@id": "axway:password-policy/lockout",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_renewal": {
+      "@id": "axway:password-policy/renewal",
+      "@type": "xsd:integer"
+    },
+    "passwordPolicy_history": {
+      "@id": "axway:password-policy/history",
+      "@type": "xsd:integer"
+    },
+    "Provider": {
+      "@id": "axway:provider",
+      "@type": "@id"
+    },
+    "provider__id": {
+      "@id": "axway:provider/_id",
+      "@type": "xsd:string"
+    },
+    "provider_admin_teams": {
+      "@id": "axway:provider/admin_teams",
+      "@type": "xsd:string"
+    },
+    "provider_consume_teams": {
+      "@id": "axway:provider/consume_teams",
+      "@type": "xsd:string"
+    },
+    "provider_publish_teams": {
+      "@id": "axway:provider/publish_teams",
+      "@type": "xsd:string"
+    },
+    "provider_ai": {
+      "@id": "axway:provider/ai",
+      "@type": "xsd:string"
+    },
+    "provider_appearance": {
+      "@id": "axway:provider/appearance",
+      "@type": "xsd:string"
+    },
+    "provider_billing": {
+      "@id": "axway:provider/billing",
+      "@type": "xsd:string"
+    },
+    "provider_certificate": {
+      "@id": "axway:provider/certificate",
+      "@type": "xsd:string"
+    },
+    "provider_certificate_expires": {
+      "@id": "axway:provider/certificate_expires",
+      "@type": "xsd:string"
+    },
+    "provider_console": {
+      "@id": "axway:provider/console",
+      "@type": "xsd:string"
+    },
+    "provider_consumer": {
+      "@id": "axway:provider/consumer",
+      "@type": "xsd:boolean"
+    },
+    "provider_consumer_approve": {
+      "@id": "axway:provider/consumer_approve",
+      "@type": "xsd:boolean"
+    },
+    "provider_description": "schema:description",
+    "provider_footer": {
+      "@id": "axway:provider/footer",
+      "@type": "xsd:string"
+    },
+    "provider_guid": {
+      "@id": "axway:provider/guid",
+      "@type": "xsd:string"
+    },
+    "provider_help_menu": {
+      "@id": "axway:provider/help_menu",
+      "@type": "xsd:string"
+    },
+    "provider_help_menu_icon": {
+      "@id": "axway:provider/help_menu_icon",
+      "@type": "xsd:string"
+    },
+    "provider_homepage": {
+      "@id": "axway:provider/homepage",
+      "@type": "xsd:string"
+    },
+    "provider_idp": {
+      "@id": "axway:provider/idp",
+      "@type": "xsd:boolean"
+    },
+    "provider_idp_hint": {
+      "@id": "axway:provider/idp_hint",
+      "@type": "xsd:string"
+    },
+    "ResponseMetadata": {
+      "@id": "axway:response-metadata",
+      "@type": "@id"
+    },
+    "responseMetadata_count": {
+      "@id": "axway:response-metadata/count",
+      "@type": "xsd:decimal"
+    },
+    "responseMetadata_limit": {
+      "@id": "axway:response-metadata/limit",
+      "@type": "xsd:decimal"
+    },
+    "responseMetadata_matched": {
+      "@id": "axway:response-metadata/matched",
+      "@type": "xsd:decimal"
+    },
+    "responseMetadata_page": {
+      "@id": "axway:response-metadata/page",
+      "@type": "xsd:decimal"
+    },
+    "responseMetadata_pages": {
+      "@id": "axway:response-metadata/pages",
+      "@type": "xsd:decimal"
+    },
+    "responseMetadata_skip": {
+      "@id": "axway:response-metadata/skip",
+      "@type": "xsd:decimal"
+    },
+    "Role": {
+      "@id": "axway:role",
+      "@type": "@id"
+    },
+    "role_client": {
+      "@id": "axway:role/client",
+      "@type": "xsd:boolean"
+    },
+    "role_consumer": {
+      "@id": "axway:role/consumer",
+      "@type": "xsd:boolean"
+    },
+    "role_default": {
+      "@id": "axway:role/default",
+      "@type": "xsd:boolean"
+    },
+    "role_disabled": {
+      "@id": "axway:role/disabled",
+      "@type": "xsd:boolean"
+    },
+    "role_entitlement": {
+      "@id": "axway:role/entitlement",
+      "@type": "xsd:string"
+    },
+    "role_id": {
+      "@id": "axway:role/id",
+      "@type": "xsd:string"
+    },
+    "role_name": "schema:name",
+    "role_order": {
+      "@id": "axway:role/order",
+      "@type": "xsd:decimal"
+    },
+    "role_org": {
+      "@id": "axway:role/org",
+      "@type": "xsd:boolean"
+    },
+    "role_partner": {
+      "@id": "axway:role/partner",
+      "@type": "xsd:string"
+    },
+    "role_platform_restricted": {
+      "@id": "axway:role/platform_restricted",
+      "@type": "xsd:boolean"
+    },
+    "role_product": {
+      "@id": "axway:role/product",
+      "@type": "xsd:string"
+    },
+    "role_required_default_roles": {
+      "@id": "axway:role/required_default_roles",
+      "@type": "xsd:string"
+    },
+    "role_subscription": {
+      "@id": "axway:role/subscription",
+      "@type": "xsd:string"
+    },
+    "role_team": {
+      "@id": "axway:role/team",
+      "@type": "xsd:boolean"
+    },
+    "role_web_only": {
+      "@id": "axway:role/web_only",
+      "@type": "xsd:boolean"
+    },
+    "RoleList": {
+      "@id": "axway:role-list",
+      "@type": "@id"
+    },
+    "SessionInfo": {
+      "@id": "axway:session-info",
+      "@type": "@id"
+    },
+    "sessionInfo_connect.sid": {
+      "@id": "axway:session-info/connect.sid",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_deviceAuthRequired": {
+      "@id": "axway:session-info/deviceAuthRequired",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_email": "schema:email",
+    "sessionInfo_entitlements": {
+      "@id": "axway:session-info/entitlements",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_expiry": {
+      "@id": "axway:session-info/expiry",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_firstname": {
+      "@id": "axway:session-info/firstname",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_from": {
+      "@id": "axway:session-info/from",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_guid": {
+      "@id": "axway:session-info/guid",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_idp": {
+      "@id": "axway:session-info/idp",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_lastname": {
+      "@id": "axway:session-info/lastname",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_org": {
+      "@id": "axway:session-info/org",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_org_id": {
+      "@id": "axway:session-info/org_id",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_org_name": {
+      "@id": "axway:session-info/org_name",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_orgs": {
+      "@id": "axway:session-info/orgs",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_provider_org": {
+      "@id": "axway:session-info/provider_org",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_redirect": {
+      "@id": "axway:session-info/redirect",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_role": {
+      "@id": "axway:session-info/role",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_roles": {
+      "@id": "axway:session-info/roles",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_session": {
+      "@id": "axway:session-info/session",
+      "@type": "xsd:string"
+    },
+    "sessionInfo_sessionID": {
+      "@id": "axway:session-info/sessionID",
+      "@type": "xsd:string"
+    },
+    "Subscription": {
+      "@id": "axway:subscription",
+      "@type": "@id"
+    },
+    "subscription_end_date": {
+      "@id": "axway:subscription/end_date",
+      "@type": "xsd:string"
+    },
+    "subscription_entitlements": {
+      "@id": "axway:subscription/entitlements",
+      "@type": "xsd:string"
+    },
+    "subscription_governance": {
+      "@id": "axway:subscription/governance",
+      "@type": "xsd:string"
+    },
+    "subscription_id": {
+      "@id": "axway:subscription/id",
+      "@type": "xsd:string"
+    },
+    "subscription_opportunity_id": {
+      "@id": "axway:subscription/opportunity_id",
+      "@type": "xsd:decimal"
+    },
+    "subscription_plan": {
+      "@id": "axway:subscription/plan",
+      "@type": "xsd:string"
+    },
+    "subscription_product": {
+      "@id": "axway:subscription/product",
+      "@type": "xsd:string"
+    },
+    "subscription_product_name": {
+      "@id": "axway:subscription/product_name",
+      "@type": "xsd:string"
+    },
+    "subscription_source": {
+      "@id": "axway:subscription/source",
+      "@type": "xsd:string"
+    },
+    "subscription_start_date": {
+      "@id": "axway:subscription/start_date",
+      "@type": "xsd:string"
+    },
+    "subscription_tier": {
+      "@id": "axway:subscription/tier",
+      "@type": "xsd:string"
+    },
+    "SubscriptionList": {
+      "@id": "axway:subscription-list",
+      "@type": "@id"
+    },
+    "Team": {
+      "@id": "axway:team",
+      "@type": "@id"
+    },
+    "team__id": {
+      "@id": "axway:team/_id",
+      "@type": "xsd:string"
+    },
+    "team_created": {
+      "@id": "axway:team/created",
+      "@type": "xsd:string"
+    },
+    "team_default": {
+      "@id": "axway:team/default",
+      "@type": "xsd:boolean"
+    },
+    "team_desc": {
+      "@id": "axway:team/desc",
+      "@type": "xsd:string"
+    },
+    "team_guid": {
+      "@id": "axway:team/guid",
+      "@type": "xsd:string"
+    },
+    "team_name": "schema:name",
+    "team_org_guid": {
+      "@id": "axway:team/org_guid",
+      "@type": "xsd:string"
+    },
+    "team_tags": {
+      "@id": "axway:team/tags",
+      "@type": "xsd:string"
+    },
+    "team_updated": {
+      "@id": "axway:team/updated",
+      "@type": "xsd:string"
+    },
+    "team_users": {
+      "@id": "axway:team/users",
+      "@type": "xsd:string"
+    },
+    "TeamList": {
+      "@id": "axway:team-list",
+      "@type": "@id"
+    },
+    "UsageEntry": {
+      "@id": "axway:usage-entry",
+      "@type": "@id"
+    },
+    "usageEntry_created": {
+      "@id": "axway:usage-entry/created",
+      "@type": "xsd:string"
+    },
+    "usageEntry_created_by": {
+      "@id": "axway:usage-entry/created_by",
+      "@type": "xsd:string"
+    },
+    "usageEntry_downloadable": {
+      "@id": "axway:usage-entry/downloadable",
+      "@type": "xsd:boolean"
+    },
+    "usageEntry_endDate": {
+      "@id": "axway:usage-entry/endDate",
+      "@type": "xsd:string"
+    },
+    "usageEntry_envId": {
+      "@id": "axway:usage-entry/envId",
+      "@type": "xsd:string"
+    },
+    "usageEntry_fileId": {
+      "@id": "axway:usage-entry/fileId",
+      "@type": "xsd:string"
+    },
+    "usageEntry_governance": {
+      "@id": "axway:usage-entry/governance",
+      "@type": "xsd:string"
+    },
+    "usageEntry_name": "schema:name",
+    "usageEntry_organizationId": {
+      "@id": "axway:usage-entry/organizationId",
+      "@type": "xsd:string"
+    },
+    "usageEntry_startDate": {
+      "@id": "axway:usage-entry/startDate",
+      "@type": "xsd:string"
+    },
+    "usageEntry_status": {
+      "@id": "axway:usage-entry/status",
+      "@type": "xsd:string"
+    },
+    "usageEntry_unrecognized": {
+      "@id": "axway:usage-entry/unrecognized",
+      "@type": "xsd:string"
+    },
+    "usageEntry_uploadMethod": {
+      "@id": "axway:usage-entry/uploadMethod",
+      "@type": "xsd:string"
+    },
+    "UsageEntryList": {
+      "@id": "axway:usage-entry-list",
+      "@type": "@id"
+    },
+    "User": {
+      "@id": "axway:user",
+      "@type": "@id"
+    },
+    "user__id": {
+      "@id": "axway:user/_id",
+      "@type": "xsd:string"
+    },
+    "user_activated": {
+      "@id": "axway:user/activated",
+      "@type": "xsd:boolean"
+    },
+    "user_active": {
+      "@id": "axway:user/active",
+      "@type": "xsd:boolean"
+    },
+    "user_authenticator_enabled": {
+      "@id": "axway:user/authenticator_enabled",
+      "@type": "xsd:boolean"
+    },
+    "user_created": {
+      "@id": "axway:user/created",
+      "@type": "xsd:string"
+    },
+    "user_date_activated": {
+      "@id": "axway:user/date_activated",
+      "@type": "xsd:string"
+    },
+    "user_default_org": {
+      "@id": "axway:user/default_org",
+      "@type": "xsd:decimal"
+    },
+    "user_email": "schema:email",
+    "user_external": {
+      "@id": "axway:user/external",
+      "@type": "xsd:boolean"
+    },
+    "user_firstname": {
+      "@id": "axway:user/firstname",
+      "@type": "xsd:string"
+    },
+    "user_guid": {
+      "@id": "axway:user/guid",
+      "@type": "xsd:string"
+    },
+    "user_invited": {
+      "@id": "axway:user/invited",
+      "@type": "xsd:string"
+    },
+    "user_last_logged_in_org": {
+      "@id": "axway:user/last_logged_in_org",
+      "@type": "xsd:decimal"
+    },
+    "user_last_login": {
+      "@id": "axway:user/last_login",
+      "@type": "xsd:string"
+    },
+    "user_lastname": {
+      "@id": "axway:user/lastname",
+      "@type": "xsd:string"
+    },
+    "user_locale": {
+      "@id": "axway:user/locale",
+      "@type": "xsd:string"
+    },
+    "user_logged_in_count": {
+      "@id": "axway:user/logged_in_count",
+      "@type": "xsd:decimal"
+    },
+    "user_logged_in_from_cli": {
+      "@id": "axway:user/logged_in_from_cli",
+      "@type": "xsd:boolean"
+    },
+    "user_logged_in_from_other": {
+      "@id": "axway:user/logged_in_from_other",
+      "@type": "xsd:boolean"
+    },
+    "user_logged_in_from_studio": {
+      "@id": "axway:user/logged_in_from_studio",
+      "@type": "xsd:boolean"
+    },
+    "UserDevice": {
+      "@id": "axway:user-device",
+      "@type": "@id"
+    },
+    "userDevice_authorized": {
+      "@id": "axway:user-device/authorized",
+      "@type": "xsd:boolean"
+    },
+    "userDevice_authorized_date": {
+      "@id": "axway:user-device/authorized_date",
+      "@type": "xsd:string"
+    },
+    "userDevice_browserVersion": {
+      "@id": "axway:user-device/browserVersion",
+      "@type": "xsd:string"
+    },
+    "userDevice_created": {
+      "@id": "axway:user-device/created",
+      "@type": "xsd:string"
+    },
+    "userDevice_ipaddress": {
+      "@id": "axway:user-device/ipaddress",
+      "@type": "xsd:string"
+    },
+    "userDevice_origin": {
+      "@id": "axway:user-device/origin",
+      "@type": "xsd:string"
+    },
+    "userDevice_osVersion": {
+      "@id": "axway:user-device/osVersion",
+      "@type": "xsd:string"
+    },
+    "userDevice_updated": {
+      "@id": "axway:user-device/updated",
+      "@type": "xsd:string"
+    },
+    "userDevice_user_device": {
+      "@id": "axway:user-device/user_device",
+      "@type": "xsd:string"
+    },
+    "UserDeviceList": {
+      "@id": "axway:user-device-list",
+      "@type": "@id"
+    },
+    "UserTeams": {
+      "@id": "axway:user-teams",
+      "@type": "@id"
+    },
+    "api_central.provision": {
+      "@id": "axway:api_central.provision",
+      "@type": "@id"
+    },
+    "api_central.provision_teams": {
+      "@id": "axway:api_central.provision/teams",
+      "@type": "xsd:string"
+    },
+    "api_central.provision_trial": {
+      "@id": "axway:api_central.provision/trial",
+      "@type": "xsd:boolean"
+    },
+    "api_central.provisioned": {
+      "@id": "axway:api_central.provisioned",
+      "@type": "@id"
+    },
+    "api_central.provisioned_org_guid": {
+      "@id": "axway:api_central.provisioned/org_guid",
+      "@type": "xsd:string"
+    },
+    "api_central.provisioned_org_id": {
+      "@id": "axway:api_central.provisioned/org_id",
+      "@type": "xsd:string"
+    },
+    "api_central.provisioned_success": {
+      "@id": "axway:api_central.provisioned/success",
+      "@type": "xsd:boolean"
+    },
+    "api_central.provisioned_url": "schema:url",
+    "api_central.provisioned_user_guid": {
+      "@id": "axway:api_central.provisioned/user_guid",
+      "@type": "xsd:string"
+    },
+    "apic.ucs.catalogitem.create": {
+      "@id": "axway:apic.ucs.catalogitem.create",
+      "@type": "@id"
+    },
+    "apic.ucs.catalogitem.create_catalogSubType": {
+      "@id": "axway:apic.ucs.catalogitem.create/catalogSubType",
+      "@type": "xsd:string"
+    },
+    "apic.ucs.catalogitem.create_catalogType": {
+      "@id": "axway:apic.ucs.catalogitem.create/catalogType",
+      "@type": "xsd:string"
+    },
+    "apic.ucs.catalogitem.create_envId": {
+      "@id": "axway:apic.ucs.catalogitem.create/envId",
+      "@type": "xsd:string"
+    },
+    "apic.ucs.catalogitem.remove": {
+      "@id": "axway:apic.ucs.catalogitem.remove",
+      "@type": "@id"
+    },
+    "apic.ucs.catalogitem.share": {
+      "@id": "axway:apic.ucs.catalogitem.share",
+      "@type": "@id"
+    },
+    "apic.ucs.catalogitem.update": {
+      "@id": "axway:apic.ucs.catalogitem.update",
+      "@type": "@id"
+    },
+    "apic.ucs.subscription.create": {
+      "@id": "axway:apic.ucs.subscription.create",
+      "@type": "@id"
+    },
+    "apic.ucs.subscription.create_catalogItemId": {
+      "@id": "axway:apic.ucs.subscription.create/catalogItemId",
+      "@type": "xsd:string"
+    },
+    "apic.ucs.subscription.create_envId": {
+      "@id": "axway:apic.ucs.subscription.create/envId",
+      "@type": "xsd:string"
+    },
+    "apic.ucs.subscription.remove": {
+      "@id": "axway:apic.ucs.subscription.remove",
+      "@type": "@id"
+    },
+    "apic.ucs.subscription.update": {
+      "@id": "axway:apic.ucs.subscription.update",
+      "@type": "@id"
+    },
+    "apicentral._._": {
+      "@id": "axway:apicentral._._",
+      "@type": "@id"
+    },
+    "apicentral._.__group": {
+      "@id": "axway:apicentral._._/group",
+      "@type": "xsd:string"
+    },
+    "apicentral._._.update": {
+      "@id": "axway:apicentral._._.update",
+      "@type": "@id"
+    },
+    "apicentral._._.update_group": {
+      "@id": "axway:apicentral._._.update/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.create": {
+      "@id": "axway:apicentral.agent.create",
+      "@type": "@id"
+    },
+    "apicentral.agent.create_agent_type": {
+      "@id": "axway:apicentral.agent.create/agent_type",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.create_dataplane_type": {
+      "@id": "axway:apicentral.agent.create/dataplane_type",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.create_envId": {
+      "@id": "axway:apicentral.agent.create/envId",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.create_group": {
+      "@id": "axway:apicentral.agent.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.failed": {
+      "@id": "axway:apicentral.agent.failed",
+      "@type": "@id"
+    },
+    "apicentral.agent.remove": {
+      "@id": "axway:apicentral.agent.remove",
+      "@type": "@id"
+    },
+    "apicentral.agent.start": {
+      "@id": "axway:apicentral.agent.start",
+      "@type": "@id"
+    },
+    "apicentral.agent.start_agent_type": {
+      "@id": "axway:apicentral.agent.start/agent_type",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.start_agent_version": {
+      "@id": "axway:apicentral.agent.start/agent_version",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.start_dataplane_type": {
+      "@id": "axway:apicentral.agent.start/dataplane_type",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.start_envId": {
+      "@id": "axway:apicentral.agent.start/envId",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.start_group": {
+      "@id": "axway:apicentral.agent.start/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.agent.stop": {
+      "@id": "axway:apicentral.agent.stop",
+      "@type": "@id"
+    },
+    "apicentral.agent.unhealthy": {
+      "@id": "axway:apicentral.agent.unhealthy",
+      "@type": "@id"
+    },
+    "apicentral.apiservice.create": {
+      "@id": "axway:apicentral.apiservice.create",
+      "@type": "@id"
+    },
+    "apicentral.apiservice.create_automatic": {
+      "@id": "axway:apicentral.apiservice.create/automatic",
+      "@type": "xsd:boolean"
+    },
+    "apicentral.apiservice.create_envId": {
+      "@id": "axway:apicentral.apiservice.create/envId",
+      "@type": "xsd:string"
+    },
+    "apicentral.apiservice.create_group": {
+      "@id": "axway:apicentral.apiservice.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.apiservice.remove": {
+      "@id": "axway:apicentral.apiservice.remove",
+      "@type": "@id"
+    },
+    "apicentral.apiservice.update": {
+      "@id": "axway:apicentral.apiservice.update",
+      "@type": "@id"
+    },
+    "apicentral.asset.create": {
+      "@id": "axway:apicentral.asset.create",
+      "@type": "@id"
+    },
+    "apicentral.asset.create_envIds": {
+      "@id": "axway:apicentral.asset.create/envIds",
+      "@type": "xsd:string"
+    },
+    "apicentral.asset.create_group": {
+      "@id": "axway:apicentral.asset.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.asset.remove": {
+      "@id": "axway:apicentral.asset.remove",
+      "@type": "@id"
+    },
+    "apicentral.asset.update": {
+      "@id": "axway:apicentral.asset.update",
+      "@type": "@id"
+    },
+    "apicentral.credential.expire": {
+      "@id": "axway:apicentral.credential.expire",
+      "@type": "@id"
+    },
+    "apicentral.credential.expire_application_id": {
+      "@id": "axway:apicentral.credential.expire/application_id",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_application_name": {
+      "@id": "axway:apicentral.credential.expire/application_name",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_group": {
+      "@id": "axway:apicentral.credential.expire/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_id": {
+      "@id": "axway:apicentral.credential.expire/id",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_name": "schema:name",
+    "apicentral.credential.expire_org_guid": {
+      "@id": "axway:apicentral.credential.expire/org_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_org_id": {
+      "@id": "axway:apicentral.credential.expire/org_id",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_product_id": {
+      "@id": "axway:apicentral.credential.expire/product_id",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_provider_guid": {
+      "@id": "axway:apicentral.credential.expire/provider_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire_timestamp": {
+      "@id": "axway:apicentral.credential.expire/timestamp",
+      "@type": "xsd:decimal"
+    },
+    "apicentral.credential.expire_user_guid": {
+      "@id": "axway:apicentral.credential.expire/user_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.documentresource.create": {
+      "@id": "axway:apicentral.documentresource.create",
+      "@type": "@id"
+    },
+    "apicentral.documentresource.create_description": "schema:description",
+    "apicentral.documentresource.create_fileType": {
+      "@id": "axway:apicentral.documentresource.create/fileType",
+      "@type": "xsd:string"
+    },
+    "apicentral.documentresource.create_group": {
+      "@id": "axway:apicentral.documentresource.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.documentresource.create_provider_guid": {
+      "@id": "axway:apicentral.documentresource.create/provider_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.documentresource.create_type": {
+      "@id": "axway:apicentral.documentresource.create/type",
+      "@type": "xsd:string"
+    },
+    "apicentral.documentresource.create_version": {
+      "@id": "axway:apicentral.documentresource.create/version",
+      "@type": "xsd:string"
+    },
+    "apicentral.documentresource.remove": {
+      "@id": "axway:apicentral.documentresource.remove",
+      "@type": "@id"
+    },
+    "apicentral.documentresource.update": {
+      "@id": "axway:apicentral.documentresource.update",
+      "@type": "@id"
+    },
+    "apicentral.env.create": {
+      "@id": "axway:apicentral.env.create",
+      "@type": "@id"
+    },
+    "apicentral.env.create_governance": {
+      "@id": "axway:apicentral.env.create/governance",
+      "@type": "xsd:string"
+    },
+    "apicentral.env.create_group": {
+      "@id": "axway:apicentral.env.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.env.create_production": {
+      "@id": "axway:apicentral.env.create/production",
+      "@type": "xsd:boolean"
+    },
+    "apicentral.env.create_user_guid": {
+      "@id": "axway:apicentral.env.create/user_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.env.remove": {
+      "@id": "axway:apicentral.env.remove",
+      "@type": "@id"
+    },
+    "apicentral.env.update": {
+      "@id": "axway:apicentral.env.update",
+      "@type": "@id"
+    },
+    "apicentral.publisheddocumentresource.create": {
+      "@id": "axway:apicentral.publisheddocumentresource.create",
+      "@type": "@id"
+    },
+    "apicentral.publisheddocumentresource.create_document_resource_id": {
+      "@id": "axway:apicentral.publisheddocumentresource.create/document_resource_id",
+      "@type": "xsd:string"
+    },
+    "apicentral.publisheddocumentresource.create_group": {
+      "@id": "axway:apicentral.publisheddocumentresource.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.publisheddocumentresource.create_provider_guid": {
+      "@id": "axway:apicentral.publisheddocumentresource.create/provider_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.publisheddocumentresource.remove": {
+      "@id": "axway:apicentral.publisheddocumentresource.remove",
+      "@type": "@id"
+    },
+    "apicentral.publishedproduct.create": {
+      "@id": "axway:apicentral.publishedproduct.create",
+      "@type": "@id"
+    },
+    "apicentral.publishedproduct.create_group": {
+      "@id": "axway:apicentral.publishedproduct.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.publishedproduct.create_product_id": {
+      "@id": "axway:apicentral.publishedproduct.create/product_id",
+      "@type": "xsd:string"
+    },
+    "apicentral.publishedproduct.create_provider_guid": {
+      "@id": "axway:apicentral.publishedproduct.create/provider_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.publishedproduct.remove": {
+      "@id": "axway:apicentral.publishedproduct.remove",
+      "@type": "@id"
+    },
+    "apicentral.subscription.create": {
+      "@id": "axway:apicentral.subscription.create",
+      "@type": "@id"
+    },
+    "apicentral.subscription.create_group": {
+      "@id": "axway:apicentral.subscription.create/group",
+      "@type": "xsd:string"
+    },
+    "apicentral.subscription.create_provider_guid": {
+      "@id": "axway:apicentral.subscription.create/provider_guid",
+      "@type": "xsd:string"
+    },
+    "apicentral.subscription.remove": {
+      "@id": "axway:apicentral.subscription.remove",
+      "@type": "@id"
+    },
+    "com.appcelerator.platform.org.user.create": {
+      "@id": "axway:com.appcelerator.platform.org.user.create",
+      "@type": "@id"
+    },
+    "com.appcelerator.platform.org.user.create_idp": {
+      "@id": "axway:com.appcelerator.platform.org.user.create/idp",
+      "@type": "xsd:string"
+    },
+    "com.appcelerator.platform.org.user.create_role": {
+      "@id": "axway:com.appcelerator.platform.org.user.create/role",
+      "@type": "xsd:string"
+    },
+    "com.appcelerator.platform.org.user.create_roles": {
+      "@id": "axway:com.appcelerator.platform.org.user.create/roles",
+      "@type": "xsd:string"
+    },
+    "com.appcelerator.platform.org.user.create_user_activated": {
+      "@id": "axway:com.appcelerator.platform.org.user.create/user_activated",
+      "@type": "xsd:string"
+    },
+    "com.appcelerator.platform.org.user.create_user_active": {
+      "@id": "axway:com.appcelerator.platform.org.user.create/user_active",
+      "@type": "xsd:string"
+    },
+    "com.appcelerator.platform.org.user.remove": {
+      "@id": "axway:com.appcelerator.platform.org.user.remove",
+      "@type": "@id"
+    },
+    "marketplace.ai.disable": {
+      "@id": "axway:marketplace.ai.disable",
+      "@type": "@id"
+    },
+    "marketplace.ai.disable_guid": {
+      "@id": "axway:marketplace.ai.disable/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.ai.disable_name": "schema:name",
+    "marketplace.ai.enable": {
+      "@id": "axway:marketplace.ai.enable",
+      "@type": "@id"
+    },
+    "marketplace.ai.enable_changes": {
+      "@id": "axway:marketplace.ai.enable/changes",
+      "@type": "xsd:string"
+    },
+    "marketplace.ai.enable_embedded": {
+      "@id": "axway:marketplace.ai.enable/embedded",
+      "@type": "xsd:string"
+    },
+    "marketplace.ai.enable_stream": {
+      "@id": "axway:marketplace.ai.enable/stream",
+      "@type": "xsd:string"
+    },
+    "marketplace.ai.enable_url": "schema:url",
+    "marketplace.ai.update": {
+      "@id": "axway:marketplace.ai.update",
+      "@type": "@id"
+    },
+    "marketplace.appearance.update": {
+      "@id": "axway:marketplace.appearance.update",
+      "@type": "@id"
+    },
+    "marketplace.appearance.update_changes": {
+      "@id": "axway:marketplace.appearance.update/changes",
+      "@type": "xsd:string"
+    },
+    "marketplace.appearance.update_guid": {
+      "@id": "axway:marketplace.appearance.update/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.appearance.update_name": "schema:name",
+    "marketplace.billing.disable": {
+      "@id": "axway:marketplace.billing.disable",
+      "@type": "@id"
+    },
+    "marketplace.billing.disable_guid": {
+      "@id": "axway:marketplace.billing.disable/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.billing.disable_name": "schema:name",
+    "marketplace.billing.enable": {
+      "@id": "axway:marketplace.billing.enable",
+      "@type": "@id"
+    },
+    "marketplace.billing.enable_changes": {
+      "@id": "axway:marketplace.billing.enable/changes",
+      "@type": "xsd:string"
+    },
+    "marketplace.billing.enable_guid": {
+      "@id": "axway:marketplace.billing.enable/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.billing.enable_name": "schema:name",
+    "marketplace.billing.enable_vendor": {
+      "@id": "axway:marketplace.billing.enable/vendor",
+      "@type": "xsd:string"
+    },
+    "marketplace.billing.update": {
+      "@id": "axway:marketplace.billing.update",
+      "@type": "@id"
+    },
+    "marketplace.consumer.active": {
+      "@id": "axway:marketplace.consumer.active",
+      "@type": "@id"
+    },
+    "marketplace.consumer.approve": {
+      "@id": "axway:marketplace.consumer.approve",
+      "@type": "@id"
+    },
+    "marketplace.consumer.approve_consumer_org_guid": {
+      "@id": "axway:marketplace.consumer.approve/consumer_org_guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.approve_consumer_org_id": {
+      "@id": "axway:marketplace.consumer.approve/consumer_org_id",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.approve_consumer_org_name": {
+      "@id": "axway:marketplace.consumer.approve/consumer_org_name",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.approve_guid": {
+      "@id": "axway:marketplace.consumer.approve/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.approve_name": "schema:name",
+    "marketplace.consumer.deny": {
+      "@id": "axway:marketplace.consumer.deny",
+      "@type": "@id"
+    },
+    "marketplace.consumer.inactive": {
+      "@id": "axway:marketplace.consumer.inactive",
+      "@type": "@id"
+    },
+    "marketplace.consumer.remove": {
+      "@id": "axway:marketplace.consumer.remove",
+      "@type": "@id"
+    },
+    "marketplace.consumer.signup": {
+      "@id": "axway:marketplace.consumer.signup",
+      "@type": "@id"
+    },
+    "marketplace.consumer.signup_consumer_org_guid": {
+      "@id": "axway:marketplace.consumer.signup/consumer_org_guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.signup_consumer_org_id": {
+      "@id": "axway:marketplace.consumer.signup/consumer_org_id",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.signup_consumer_org_name": {
+      "@id": "axway:marketplace.consumer.signup/consumer_org_name",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.signup_guid": {
+      "@id": "axway:marketplace.consumer.signup/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.consumer.signup_name": "schema:name",
+    "marketplace.consumer.signup_pending": {
+      "@id": "axway:marketplace.consumer.signup/pending",
+      "@type": "xsd:boolean"
+    },
+    "marketplace.create": {
+      "@id": "axway:marketplace.create",
+      "@type": "@id"
+    },
+    "marketplace.create_admin_teams": {
+      "@id": "axway:marketplace.create/admin_teams",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_certificate_expires": {
+      "@id": "axway:marketplace.create/certificate_expires",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_consume_teams": {
+      "@id": "axway:marketplace.create/consume_teams",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_consumer": {
+      "@id": "axway:marketplace.create/consumer",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_consumer_approve": {
+      "@id": "axway:marketplace.create/consumer_approve",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_guid": {
+      "@id": "axway:marketplace.create/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_help_menu": {
+      "@id": "axway:marketplace.create/help_menu",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_idp": {
+      "@id": "axway:marketplace.create/idp",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_idp_hint": {
+      "@id": "axway:marketplace.create/idp_hint",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_lang_default": {
+      "@id": "axway:marketplace.create/lang_default",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_name": "schema:name",
+    "marketplace.create_oauth": {
+      "@id": "axway:marketplace.create/oauth",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_public": {
+      "@id": "axway:marketplace.create/public",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_publish_teams": {
+      "@id": "axway:marketplace.create/publish_teams",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_reviews": {
+      "@id": "axway:marketplace.create/reviews",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_signup": {
+      "@id": "axway:marketplace.create/signup",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_sitename": {
+      "@id": "axway:marketplace.create/sitename",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_subdomain": {
+      "@id": "axway:marketplace.create/subdomain",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_terms": {
+      "@id": "axway:marketplace.create/terms",
+      "@type": "xsd:string"
+    },
+    "marketplace.create_terms_updated": {
+      "@id": "axway:marketplace.create/terms_updated",
+      "@type": "xsd:string"
+    },
+    "marketplace.idp.create": {
+      "@id": "axway:marketplace.idp.create",
+      "@type": "@id"
+    },
+    "marketplace.idp.create_guid": {
+      "@id": "axway:marketplace.idp.create/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.idp.create_idp": {
+      "@id": "axway:marketplace.idp.create/idp",
+      "@type": "xsd:string"
+    },
+    "marketplace.idp.create_name": "schema:name",
+    "marketplace.idp.remove": {
+      "@id": "axway:marketplace.idp.remove",
+      "@type": "@id"
+    },
+    "marketplace.idp.update": {
+      "@id": "axway:marketplace.idp.update",
+      "@type": "@id"
+    },
+    "marketplace.idp.update_changes": {
+      "@id": "axway:marketplace.idp.update/changes",
+      "@type": "xsd:string"
+    },
+    "marketplace.lang.update": {
+      "@id": "axway:marketplace.lang.update",
+      "@type": "@id"
+    },
+    "marketplace.lang.update_changes": {
+      "@id": "axway:marketplace.lang.update/changes",
+      "@type": "xsd:string"
+    },
+    "marketplace.lang.update_guid": {
+      "@id": "axway:marketplace.lang.update/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.lang.update_lang_default": {
+      "@id": "axway:marketplace.lang.update/lang_default",
+      "@type": "xsd:string"
+    },
+    "marketplace.lang.update_lang_products": {
+      "@id": "axway:marketplace.lang.update/lang_products",
+      "@type": "xsd:string"
+    },
+    "marketplace.lang.update_lang_supported": {
+      "@id": "axway:marketplace.lang.update/lang_supported",
+      "@type": "xsd:string"
+    },
+    "marketplace.lang.update_name": "schema:name",
+    "marketplace.onboarding.disable": {
+      "@id": "axway:marketplace.onboarding.disable",
+      "@type": "@id"
+    },
+    "marketplace.onboarding.disable_guid": {
+      "@id": "axway:marketplace.onboarding.disable/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.onboarding.disable_name": "schema:name",
+    "marketplace.onboarding.enable": {
+      "@id": "axway:marketplace.onboarding.enable",
+      "@type": "@id"
+    },
+    "marketplace.onboarding.enable_changes": {
+      "@id": "axway:marketplace.onboarding.enable/changes",
+      "@type": "xsd:string"
+    },
+    "marketplace.onboarding.enable_guid": {
+      "@id": "axway:marketplace.onboarding.enable/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.onboarding.enable_name": "schema:name",
+    "marketplace.onboarding.update": {
+      "@id": "axway:marketplace.onboarding.update",
+      "@type": "@id"
+    },
+    "marketplace.publisheddocumentresource.add": {
+      "@id": "axway:marketplace.publisheddocumentresource.add",
+      "@type": "@id"
+    },
+    "marketplace.publisheddocumentresource.add_id": {
+      "@id": "axway:marketplace.publisheddocumentresource.add/id",
+      "@type": "xsd:string"
+    },
+    "marketplace.publisheddocumentresource.add_provider_guid": {
+      "@id": "axway:marketplace.publisheddocumentresource.add/provider_guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.publisheddocumentresource.remove": {
+      "@id": "axway:marketplace.publisheddocumentresource.remove",
+      "@type": "@id"
+    },
+    "marketplace.publisheddocumentresource.remove_id": {
+      "@id": "axway:marketplace.publisheddocumentresource.remove/id",
+      "@type": "xsd:string"
+    },
+    "marketplace.publisheddocumentresource.remove_provider_guid": {
+      "@id": "axway:marketplace.publisheddocumentresource.remove/provider_guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.remove": {
+      "@id": "axway:marketplace.remove",
+      "@type": "@id"
+    },
+    "marketplace.remove_guid": {
+      "@id": "axway:marketplace.remove/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.remove_name": "schema:name",
+    "marketplace.remove_subdomain": {
+      "@id": "axway:marketplace.remove/subdomain",
+      "@type": "xsd:string"
+    },
+    "marketplace.remove_url": "schema:url",
+    "marketplace.settings.update": {
+      "@id": "axway:marketplace.settings.update",
+      "@type": "@id"
+    },
+    "marketplace.settings.update_admin_teams": {
+      "@id": "axway:marketplace.settings.update/admin_teams",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_certificate_expires": {
+      "@id": "axway:marketplace.settings.update/certificate_expires",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_changes": {
+      "@id": "axway:marketplace.settings.update/changes",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_consume_teams": {
+      "@id": "axway:marketplace.settings.update/consume_teams",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_consumer": {
+      "@id": "axway:marketplace.settings.update/consumer",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_consumer_approve": {
+      "@id": "axway:marketplace.settings.update/consumer_approve",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_guid": {
+      "@id": "axway:marketplace.settings.update/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_help_menu": {
+      "@id": "axway:marketplace.settings.update/help_menu",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_idp": {
+      "@id": "axway:marketplace.settings.update/idp",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_idp_hint": {
+      "@id": "axway:marketplace.settings.update/idp_hint",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_lang_default": {
+      "@id": "axway:marketplace.settings.update/lang_default",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_name": "schema:name",
+    "marketplace.settings.update_oauth": {
+      "@id": "axway:marketplace.settings.update/oauth",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_public": {
+      "@id": "axway:marketplace.settings.update/public",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_publish_teams": {
+      "@id": "axway:marketplace.settings.update/publish_teams",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_reviews": {
+      "@id": "axway:marketplace.settings.update/reviews",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_signup": {
+      "@id": "axway:marketplace.settings.update/signup",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_sitename": {
+      "@id": "axway:marketplace.settings.update/sitename",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_subdomain": {
+      "@id": "axway:marketplace.settings.update/subdomain",
+      "@type": "xsd:string"
+    },
+    "marketplace.settings.update_terms": {
+      "@id": "axway:marketplace.settings.update/terms",
+      "@type": "xsd:string"
+    },
+    "marketplace.user.remove": {
+      "@id": "axway:marketplace.user.remove",
+      "@type": "@id"
+    },
+    "marketplace.user.remove_guid": {
+      "@id": "axway:marketplace.user.remove/guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.user.remove_name": "schema:name",
+    "marketplace.user.remove_orgs": {
+      "@id": "axway:marketplace.user.remove/orgs",
+      "@type": "xsd:string"
+    },
+    "platform.activation.access": {
+      "@id": "axway:platform.activation.access",
+      "@type": "@id"
+    },
+    "platform.activation.access_activation_guid": {
+      "@id": "axway:platform.activation.access/activation_guid",
+      "@type": "xsd:string"
+    },
+    "platform.activation.access_activation_type": {
+      "@id": "axway:platform.activation.access/activation_type",
+      "@type": "xsd:string"
+    },
+    "platform.activation.complete": {
+      "@id": "axway:platform.activation.complete",
+      "@type": "@id"
+    },
+    "platform.activation.complete_orgs": {
+      "@id": "axway:platform.activation.complete/orgs",
+      "@type": "xsd:string"
+    },
+    "platform.activation.send": {
+      "@id": "axway:platform.activation.send",
+      "@type": "@id"
+    },
+    "platform.activation.send_activation_type": {
+      "@id": "axway:platform.activation.send/activation_type",
+      "@type": "xsd:string"
+    },
+    "platform.app.create": {
+      "@id": "axway:platform.app.create",
+      "@type": "@id"
+    },
+    "platform.app.create_app": {
+      "@id": "axway:platform.app.create/app",
+      "@type": "xsd:string"
+    },
+    "platform.app.remove": {
+      "@id": "axway:platform.app.remove",
+      "@type": "@id"
+    },
+    "platform.app.remove_app_guid": {
+      "@id": "axway:platform.app.remove/app_guid",
+      "@type": "xsd:string"
+    },
+    "platform.app.remove_app_name": {
+      "@id": "axway:platform.app.remove/app_name",
+      "@type": "xsd:string"
+    },
+    "platform.app.update": {
+      "@id": "axway:platform.app.update",
+      "@type": "@id"
+    },
+    "platform.app.update_app": {
+      "@id": "axway:platform.app.update/app",
+      "@type": "xsd:string"
+    },
+    "platform.app.update_changes": {
+      "@id": "axway:platform.app.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.client.create": {
+      "@id": "axway:platform.client.create",
+      "@type": "@id"
+    },
+    "platform.client.create_roles": {
+      "@id": "axway:platform.client.create/roles",
+      "@type": "xsd:string"
+    },
+    "platform.client.remove": {
+      "@id": "axway:platform.client.remove",
+      "@type": "@id"
+    },
+    "platform.client.update": {
+      "@id": "axway:platform.client.update",
+      "@type": "@id"
+    },
+    "platform.client.update_changes": {
+      "@id": "axway:platform.client.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.documentresource.add": {
+      "@id": "axway:platform.documentresource.add",
+      "@type": "@id"
+    },
+    "platform.documentresource.add_id": {
+      "@id": "axway:platform.documentresource.add/id",
+      "@type": "xsd:string"
+    },
+    "platform.documentresource.add_provider_guid": {
+      "@id": "axway:platform.documentresource.add/provider_guid",
+      "@type": "xsd:string"
+    },
+    "platform.documentresource.remove": {
+      "@id": "axway:platform.documentresource.remove",
+      "@type": "@id"
+    },
+    "platform.documentresource.remove_id": {
+      "@id": "axway:platform.documentresource.remove/id",
+      "@type": "xsd:string"
+    },
+    "platform.documentresource.remove_provider_guid": {
+      "@id": "axway:platform.documentresource.remove/provider_guid",
+      "@type": "xsd:string"
+    },
+    "platform.env.create": {
+      "@id": "axway:platform.env.create",
+      "@type": "@id"
+    },
+    "platform.env.create_governance": {
+      "@id": "axway:platform.env.create/governance",
+      "@type": "xsd:string"
+    },
+    "platform.env.create_guid": {
+      "@id": "axway:platform.env.create/guid",
+      "@type": "xsd:string"
+    },
+    "platform.env.create_name": "schema:name",
+    "platform.env.create_type": {
+      "@id": "axway:platform.env.create/type",
+      "@type": "xsd:string"
+    },
+    "platform.env.remove": {
+      "@id": "axway:platform.env.remove",
+      "@type": "@id"
+    },
+    "platform.env.update": {
+      "@id": "axway:platform.env.update",
+      "@type": "@id"
+    },
+    "platform.env.update_changes": {
+      "@id": "axway:platform.env.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.login": {
+      "@id": "axway:platform.login",
+      "@type": "@id"
+    },
+    "platform.login_from": {
+      "@id": "axway:platform.login/from",
+      "@type": "xsd:string"
+    },
+    "platform.login_ip": {
+      "@id": "axway:platform.login/ip",
+      "@type": "xsd:string"
+    },
+    "platform.login.failed": {
+      "@id": "axway:platform.login.failed",
+      "@type": "@id"
+    },
+    "platform.login.failed_from": {
+      "@id": "axway:platform.login.failed/from",
+      "@type": "xsd:string"
+    },
+    "platform.login.failed_ip": {
+      "@id": "axway:platform.login.failed/ip",
+      "@type": "xsd:string"
+    },
+    "platform.logout": {
+      "@id": "axway:platform.logout",
+      "@type": "@id"
+    },
+    "platform.logout_from": {
+      "@id": "axway:platform.logout/from",
+      "@type": "xsd:string"
+    },
+    "platform.logout_ip": {
+      "@id": "axway:platform.logout/ip",
+      "@type": "xsd:string"
+    },
+    "platform.org.active": {
+      "@id": "axway:platform.org.active",
+      "@type": "@id"
+    },
+    "platform.org.branding.update": {
+      "@id": "axway:platform.org.branding.update",
+      "@type": "@id"
+    },
+    "platform.org.branding.update_changes": {
+      "@id": "axway:platform.org.branding.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.org.create": {
+      "@id": "axway:platform.org.create",
+      "@type": "@id"
+    },
+    "platform.org.create_from": {
+      "@id": "axway:platform.org.create/from",
+      "@type": "xsd:string"
+    },
+    "platform.org.create_modified_by": {
+      "@id": "axway:platform.org.create/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.delete": {
+      "@id": "axway:platform.org.delete",
+      "@type": "@id"
+    },
+    "platform.org.delete_from": {
+      "@id": "axway:platform.org.delete/from",
+      "@type": "xsd:string"
+    },
+    "platform.org.delete_modified_by": {
+      "@id": "axway:platform.org.delete/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.create": {
+      "@id": "axway:platform.org.idp.create",
+      "@type": "@id"
+    },
+    "platform.org.idp.create_idp": {
+      "@id": "axway:platform.org.idp.create/idp",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.create_modified_by": {
+      "@id": "axway:platform.org.idp.create/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.domain.associate": {
+      "@id": "axway:platform.org.idp.domain.associate",
+      "@type": "@id"
+    },
+    "platform.org.idp.domain.associate_idp": {
+      "@id": "axway:platform.org.idp.domain.associate/idp",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.domain.associate_modified_by": {
+      "@id": "axway:platform.org.idp.domain.associate/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.domain.associate_tld": {
+      "@id": "axway:platform.org.idp.domain.associate/tld",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.domain.confirm": {
+      "@id": "axway:platform.org.idp.domain.confirm",
+      "@type": "@id"
+    },
+    "platform.org.idp.domain.create": {
+      "@id": "axway:platform.org.idp.domain.create",
+      "@type": "@id"
+    },
+    "platform.org.idp.domain.create_modified_by": {
+      "@id": "axway:platform.org.idp.domain.create/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.domain.create_tld": {
+      "@id": "axway:platform.org.idp.domain.create/tld",
+      "@type": "xsd:string"
+    },
+    "platform.org.idp.domain.dissociate": {
+      "@id": "axway:platform.org.idp.domain.dissociate",
+      "@type": "@id"
+    },
+    "platform.org.idp.domain.remove": {
+      "@id": "axway:platform.org.idp.domain.remove",
+      "@type": "@id"
+    },
+    "platform.org.idp.remove": {
+      "@id": "axway:platform.org.idp.remove",
+      "@type": "@id"
+    },
+    "platform.org.idp.update": {
+      "@id": "axway:platform.org.idp.update",
+      "@type": "@id"
+    },
+    "platform.org.idp.update_changes": {
+      "@id": "axway:platform.org.idp.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.org.inactive": {
+      "@id": "axway:platform.org.inactive",
+      "@type": "@id"
+    },
+    "platform.org.security.update": {
+      "@id": "axway:platform.org.security.update",
+      "@type": "@id"
+    },
+    "platform.org.security.update_changes": {
+      "@id": "axway:platform.org.security.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.org.security.update_from": {
+      "@id": "axway:platform.org.security.update/from",
+      "@type": "xsd:string"
+    },
+    "platform.org.security.update_modified_by": {
+      "@id": "axway:platform.org.security.update/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.update": {
+      "@id": "axway:platform.org.update",
+      "@type": "@id"
+    },
+    "platform.org.update_changes": {
+      "@id": "axway:platform.org.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.org.update_from": {
+      "@id": "axway:platform.org.update/from",
+      "@type": "xsd:string"
+    },
+    "platform.org.update_modified_by": {
+      "@id": "axway:platform.org.update/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.idp.update": {
+      "@id": "axway:platform.org.user.idp.update",
+      "@type": "@id"
+    },
+    "platform.org.user.idp.update_idp": {
+      "@id": "axway:platform.org.user.idp.update/idp",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.idp.update_modified_by": {
+      "@id": "axway:platform.org.user.idp.update/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.primary": {
+      "@id": "axway:platform.org.user.primary",
+      "@type": "@id"
+    },
+    "platform.org.user.primary_changes": {
+      "@id": "axway:platform.org.user.primary/changes",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.resent": {
+      "@id": "axway:platform.org.user.resent",
+      "@type": "@id"
+    },
+    "platform.org.user.resent_activation_type": {
+      "@id": "axway:platform.org.user.resent/activation_type",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.role.update": {
+      "@id": "axway:platform.org.user.role.update",
+      "@type": "@id"
+    },
+    "platform.org.user.role.update_added_roles": {
+      "@id": "axway:platform.org.user.role.update/added_roles",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.role.update_changes": {
+      "@id": "axway:platform.org.user.role.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.role.update_previous_role": {
+      "@id": "axway:platform.org.user.role.update/previous_role",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.role.update_removed_roles": {
+      "@id": "axway:platform.org.user.role.update/removed_roles",
+      "@type": "xsd:string"
+    },
+    "platform.org.user.role.update_role": {
+      "@id": "axway:platform.org.user.role.update/role",
+      "@type": "xsd:string"
+    },
+    "platform.session.create": {
+      "@id": "axway:platform.session.create",
+      "@type": "@id"
+    },
+    "platform.session.create_from": {
+      "@id": "axway:platform.session.create/from",
+      "@type": "xsd:string"
+    },
+    "platform.session.create_idp": {
+      "@id": "axway:platform.session.create/idp",
+      "@type": "xsd:string"
+    },
+    "platform.session.create_ip": {
+      "@id": "axway:platform.session.create/ip",
+      "@type": "xsd:string"
+    },
+    "platform.session.create_role": {
+      "@id": "axway:platform.session.create/role",
+      "@type": "xsd:string"
+    },
+    "platform.session.create_roles": {
+      "@id": "axway:platform.session.create/roles",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.create": {
+      "@id": "axway:platform.subscription.create",
+      "@type": "@id"
+    },
+    "platform.subscription.create_modified_by": {
+      "@id": "axway:platform.subscription.create/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.create_subscription": {
+      "@id": "axway:platform.subscription.create/subscription",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.delete": {
+      "@id": "axway:platform.subscription.delete",
+      "@type": "@id"
+    },
+    "platform.subscription.delete_modified_by": {
+      "@id": "axway:platform.subscription.delete/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.delete_subscription": {
+      "@id": "axway:platform.subscription.delete/subscription",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.expired": {
+      "@id": "axway:platform.subscription.expired",
+      "@type": "@id"
+    },
+    "platform.subscription.expired_modified_by": {
+      "@id": "axway:platform.subscription.expired/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.expired_subscription": {
+      "@id": "axway:platform.subscription.expired/subscription",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.update": {
+      "@id": "axway:platform.subscription.update",
+      "@type": "@id"
+    },
+    "platform.subscription.update_changes": {
+      "@id": "axway:platform.subscription.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.update_modified_by": {
+      "@id": "axway:platform.subscription.update/modified_by",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.update_subscription": {
+      "@id": "axway:platform.subscription.update/subscription",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.add": {
+      "@id": "axway:platform.team.app.add",
+      "@type": "@id"
+    },
+    "platform.team.app.add_app_id": {
+      "@id": "axway:platform.team.app.add/app_id",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.add_app_name": {
+      "@id": "axway:platform.team.app.add/app_name",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.add_team_guid": {
+      "@id": "axway:platform.team.app.add/team_guid",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.add_team_name": {
+      "@id": "axway:platform.team.app.add/team_name",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.remove": {
+      "@id": "axway:platform.team.app.remove",
+      "@type": "@id"
+    },
+    "platform.team.app.remove_app_id": {
+      "@id": "axway:platform.team.app.remove/app_id",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.remove_app_name": {
+      "@id": "axway:platform.team.app.remove/app_name",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.remove_team_guid": {
+      "@id": "axway:platform.team.app.remove/team_guid",
+      "@type": "xsd:string"
+    },
+    "platform.team.app.remove_team_name": {
+      "@id": "axway:platform.team.app.remove/team_name",
+      "@type": "xsd:string"
+    },
+    "platform.team.create": {
+      "@id": "axway:platform.team.create",
+      "@type": "@id"
+    },
+    "platform.team.create_team": {
+      "@id": "axway:platform.team.create/team",
+      "@type": "xsd:string"
+    },
+    "platform.team.default": {
+      "@id": "axway:platform.team.default",
+      "@type": "@id"
+    },
+    "platform.team.default_team": {
+      "@id": "axway:platform.team.default/team",
+      "@type": "xsd:string"
+    },
+    "platform.team.remove": {
+      "@id": "axway:platform.team.remove",
+      "@type": "@id"
+    },
+    "platform.team.remove_reassign_team": {
+      "@id": "axway:platform.team.remove/reassign_team",
+      "@type": "xsd:string"
+    },
+    "platform.team.remove_team": {
+      "@id": "axway:platform.team.remove/team",
+      "@type": "xsd:string"
+    },
+    "platform.team.update": {
+      "@id": "axway:platform.team.update",
+      "@type": "@id"
+    },
+    "platform.team.update_changes": {
+      "@id": "axway:platform.team.update/changes",
+      "@type": "xsd:string"
+    },
+    "platform.team.update_team": {
+      "@id": "axway:platform.team.update/team",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.add": {
+      "@id": "axway:platform.team.user.add",
+      "@type": "@id"
+    },
+    "platform.team.user.add_roles": {
+      "@id": "axway:platform.team.user.add/roles",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.add_team_guid": {
+      "@id": "axway:platform.team.user.add/team_guid",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.add_team_name": {
+      "@id": "axway:platform.team.user.add/team_name",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.remove": {
+      "@id": "axway:platform.team.user.remove",
+      "@type": "@id"
+    },
+    "platform.team.user.remove_team_guid": {
+      "@id": "axway:platform.team.user.remove/team_guid",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.remove_team_name": {
+      "@id": "axway:platform.team.user.remove/team_name",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.role.update": {
+      "@id": "axway:platform.team.user.role.update",
+      "@type": "@id"
+    },
+    "platform.team.user.role.update_roles": {
+      "@id": "axway:platform.team.user.role.update/roles",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.role.update_team_guid": {
+      "@id": "axway:platform.team.user.role.update/team_guid",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.role.update_team_name": {
+      "@id": "axway:platform.team.user.role.update/team_name",
+      "@type": "xsd:string"
+    },
+    "platform.terms.accept": {
+      "@id": "axway:platform.terms.accept",
+      "@type": "@id"
+    },
+    "platform.usage.report": {
+      "@id": "axway:platform.usage.report",
+      "@type": "@id"
+    },
+    "platform.usage.report_end_date": {
+      "@id": "axway:platform.usage.report/end_date",
+      "@type": "xsd:integer"
+    },
+    "platform.usage.report_env_guid": {
+      "@id": "axway:platform.usage.report/env_guid",
+      "@type": "xsd:string"
+    },
+    "platform.usage.report_guid": {
+      "@id": "axway:platform.usage.report/guid",
+      "@type": "xsd:string"
+    },
+    "platform.usage.report_name": "schema:name",
+    "platform.usage.report_org_guid": {
+      "@id": "axway:platform.usage.report/org_guid",
+      "@type": "xsd:string"
+    },
+    "platform.usage.report_product_name": {
+      "@id": "axway:platform.usage.report/product_name",
+      "@type": "xsd:string"
+    },
+    "platform.usage.report_product_version": {
+      "@id": "axway:platform.usage.report/product_version",
+      "@type": "xsd:string"
+    },
+    "platform.usage.report_start_date": {
+      "@id": "axway:platform.usage.report/start_date",
+      "@type": "xsd:integer"
+    },
+    "platform.usage.report_status": {
+      "@id": "axway:platform.usage.report/status",
+      "@type": "xsd:string"
+    },
+    "platform.usage.report_upload_method": {
+      "@id": "axway:platform.usage.report/upload_method",
+      "@type": "xsd:string"
+    },
+    "platform.user.impersonate": {
+      "@id": "axway:platform.user.impersonate",
+      "@type": "@id"
+    },
+    "platform.user.mfa.app.add": {
+      "@id": "axway:platform.user.mfa.app.add",
+      "@type": "@id"
+    },
+    "platform.user.mfa.app.remove": {
+      "@id": "axway:platform.user.mfa.app.remove",
+      "@type": "@id"
+    },
+    "platform.user.mfa.disabled": {
+      "@id": "axway:platform.user.mfa.disabled",
+      "@type": "@id"
+    },
+    "platform.user.mfa.enabled": {
+      "@id": "axway:platform.user.mfa.enabled",
+      "@type": "@id"
+    },
+    "platform.user.password.change": {
+      "@id": "axway:platform.user.password.change",
+      "@type": "@id"
+    },
+    "platform.user.password.change_ip": {
+      "@id": "axway:platform.user.password.change/ip",
+      "@type": "xsd:string"
+    },
+    "platform.user.password.reset": {
+      "@id": "axway:platform.user.password.reset",
+      "@type": "@id"
+    },
+    "platform.user.remove": {
+      "@id": "axway:platform.user.remove",
+      "@type": "@id"
+    },
+    "platform.user.remove_orgs": {
+      "@id": "axway:platform.user.remove/orgs",
+      "@type": "xsd:string"
+    },
+    "platform.user.social.disable": {
+      "@id": "axway:platform.user.social.disable",
+      "@type": "@id"
+    },
+    "platform.user.social.enable": {
+      "@id": "axway:platform.user.social.enable",
+      "@type": "@id"
+    },
+    "platform.user.social.enable_service": {
+      "@id": "axway:platform.user.social.enable/service",
+      "@type": "xsd:string"
+    },
+    "platform.user.social.enable_service_name": {
+      "@id": "axway:platform.user.social.enable/service_name",
+      "@type": "xsd:string"
+    },
+    "platform.user.unimpersonate": {
+      "@id": "axway:platform.user.unimpersonate",
+      "@type": "@id"
+    },
+    "platform.user.update": {
+      "@id": "axway:platform.user.update",
+      "@type": "@id"
+    },
+    "platform.user.update_changes": {
+      "@id": "axway:platform.user.update/changes",
+      "@type": "xsd:string"
+    }
+  }
+}

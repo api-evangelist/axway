@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.subscription.create-schema.json",
+  "title": "apicentral.subscription.create",
+  "description": "Published when a marketplace subscription is created.",
+  "type": "object",
+  "properties": {
+    "group": {
+      "type": "string",
+      "enum": [
+        "catalog"
+      ],
+      "example": "catalog"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    }
+  }
+}

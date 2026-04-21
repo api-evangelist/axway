@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.session.create",
+  "description": "Published when a session is created from an access token or external IdP, or a user switches platform org.",
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "string",
+      "description": "Client type."
+    },
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider used to authenticate the session",
+      "properties": {
+        "id": {
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "360",
+                "github",
+                "gitlab",
+                "google"
+              ]
+            },
+            {
+              "$ref": "#/components/schemas/IdentityProvider/properties/guid"
+            }
+          ]
+        },
+        "name": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/name"
+        }
+      },
+      "example": {
+        "id": "507f1f77bcf86cd799439011",
+        "name": {}
+      }
+    },
+    "ip": {
+      "type": "string",
+      "description": "Anonymized IP address.",
+      "example": "10.0.0.1"
+    },
+    "role": {
+      "type": "string",
+      "description": "Identifier of the invited users default role in the organization.",
+      "enum": [
+        "administrator",
+        "developer",
+        "auditor",
+        "consumer"
+      ],
+      "example": "administrator"
+    },
+    "roles": {
+      "type": "array",
+      "description": "User's roles within the organization.",
+      "items": {
+        "$ref": "#/components/schemas/Org/properties/users/items/properties/roles/items"
+      },
+      "example": [
+        {}
+      ]
+    }
+  }
+}

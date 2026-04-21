@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventDataActor",
+  "description": "EventDataActor schema from Axway Amplify Platform API",
+  "type": "object"
+}

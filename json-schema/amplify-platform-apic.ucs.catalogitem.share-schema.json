@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apic.ucs.catalogitem.share-schema.json",
+  "title": "apic.ucs.catalogitem.share",
+  "description": "Published when a catalog asset visibility or access controller list is updated.",
+  "type": "object"
+}

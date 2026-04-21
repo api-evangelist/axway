@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventDataUser",
+  "description": "EventDataUser schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "provider_guid": {
+      "$ref": "#/components/schemas/User/properties/provider_guid"
+    },
+    "user_guid": {
+      "$ref": "#/components/schemas/User/properties/guid"
+    }
+  }
+}

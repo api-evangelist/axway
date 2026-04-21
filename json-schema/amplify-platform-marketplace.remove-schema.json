@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.remove-schema.json",
+  "title": "marketplace.remove",
+  "description": "Published when a marketplace is removed.\n\n`subdomain` prop will always be included. Once url is established, `subdomain` prop value will be passed as the `guid`.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    },
+    "subdomain": {
+      "$ref": "#/components/schemas/Provider/properties/subdomain"
+    },
+    "url": {
+      "$ref": "#/components/schemas/Provider/properties/url"
+    }
+  }
+}

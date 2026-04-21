@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.activation.access-schema.json",
+  "title": "platform.activation.access",
+  "description": "Published when an activation link is accessed.",
+  "type": "object",
+  "properties": {
+    "activation_guid": {
+      "$ref": "#/components/schemas/Activation/properties/guid"
+    },
+    "activation_type": {
+      "$ref": "#/components/schemas/Activation/properties/type"
+    }
+  }
+}

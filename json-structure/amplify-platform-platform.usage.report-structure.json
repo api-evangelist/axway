@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.usage.report",
+  "description": "Published when usage is reported.",
+  "type": "object",
+  "properties": {
+    "end_date": {
+      "type": "integer",
+      "description": "End date of the report.",
+      "example": 1714000000000
+    },
+    "env_guid": {
+      "type": "string",
+      "description": "Environment guid for which the report was uploaded.",
+      "example": "example_value"
+    },
+    "guid": {
+      "type": "string",
+      "description": "Unique identifier of the report.",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the uploaded usage report file.",
+      "example": "Example Name"
+    },
+    "org_guid": {
+      "type": "string",
+      "description": "Organization guid for which the report was uploaded.",
+      "example": "example_value"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "(Optional) Product name for which the usage was reported.",
+      "example": "Example Name"
+    },
+    "product_version": {
+      "type": "string",
+      "description": "(Optional) Product version for which the usage was reported.",
+      "example": "example_value"
+    },
+    "start_date": {
+      "type": "integer",
+      "description": "Start date of the report.",
+      "example": 1714000000000
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the report.",
+      "enum": [
+        "VALIDATING",
+        "VALIDATED",
+        "PROCESSED",
+        "INVALIDATED",
+        "PARTIALLY_ACCEPTED",
+        "MISSING_EVENTS",
+        "INVALID_METRICS",
+        "ENRICHMENT_ERROR",
+        "ANALYTICS_UPLOAD_FAILED",
+        "ANALYTICS_MISSMATCH",
+        "ANALYTICS_ERROR",
+        "INVALID_ENVIRONMENT",
+        "MISSING_FILE"
+      ],
+      "example": "VALIDATING"
+    },
+    "upload_method": {
+      "type": "string",
+      "description": "Method used to upload the usage report file.",
+      "enum": [
+        "automatic",
+        "manual",
+        "entry"
+      ],
+      "example": "automatic"
+    }
+  }
+}

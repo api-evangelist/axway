@@ -1,0 +1,21 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "apis": [
+    "example_value"
+  ],
+  "automatic": true,
+  "env": "example_value",
+  "guid": "example_value",
+  "org_guid": "example_value",
+  "platform": "example_value",
+  "provider_guid": "example_value",
+  "providers": [
+    {
+      "guid": "example_value",
+      "published_id": "507f1f77bcf86cd799439011"
+    }
+  ],
+  "source": "example_value",
+  "subtype": "example_value",
+  "type": "example_value"
+}

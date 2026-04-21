@@ -1,0 +1,6811 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Axway Amplify Platform API
+  description: Manages accounts, organizations, teams, applications, sessions, analytics, and identity providers on the Axway Amplify Platform.
+  tags:
+  - Axway
+  - API Management
+  - Enterprise
+  - Amplify
+  created: '2026-04-21'
+  modified: '2026-04-21'
+binds:
+- namespace: env
+  keys:
+    AXWAY_BEARER_TOKEN: AXWAY_BEARER_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: amplify-platform
+    baseUri: https://platform.axway.com/api/v1
+    description: Axway Amplify Platform API v1
+    authentication:
+      type: bearer
+      token: '{{env.AXWAY_BEARER_TOKEN}}'
+    resources:
+    - name: aca
+      path: /aca
+      description: Aca management operations
+      operations:
+      - name: aca-setMetadata
+        method: PUT
+        description: Axway Set Metadata by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: aca_id
+          in: path
+          type: string
+          required: true
+          description: aca_id parameter
+        - name: app_id
+          in: path
+          type: string
+          required: true
+          description: app_id parameter
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: name parameter
+        body:
+          type: json
+          data: {}
+      - name: aca-findOne
+        method: GET
+        description: Axway Find Crash Record by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: aca_id
+          in: path
+          type: string
+          required: true
+          description: aca_id parameter
+        - name: app_id
+          in: path
+          type: string
+          required: true
+          description: app_id parameter
+    - name: activity
+      path: /activity
+      description: Activity management operations
+      operations:
+      - name: activity-findEvents
+        method: GET
+        description: Axway Get Activity Event Names
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+      - name: activity-find
+        method: GET
+        description: Axway Get Activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: app_guid
+          in: query
+          type: string
+          required: false
+          description: app_guid parameter
+        - name: contexts
+          in: query
+          type: array
+          required: false
+          description: contexts parameter
+        - name: data
+          in: query
+          type: boolean
+          required: false
+          description: data parameter
+        - name: enrich
+          in: query
+          type: boolean
+          required: false
+          description: enrich parameter
+        - name: exclude_contexts
+          in: query
+          type: array
+          required: false
+          description: exclude_contexts parameter
+        - name: from
+          in: query
+          type: number
+          required: false
+          description: from parameter
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+        - name: redact
+          in: query
+          type: boolean
+          required: false
+          description: redact parameter
+        - name: sort
+          in: query
+          type: number
+          required: false
+          description: sort parameter
+        - name: term
+          in: query
+          type: string
+          required: false
+          description: term parameter
+        - name: to
+          in: query
+          type: number
+          required: false
+          description: to parameter
+        - name: user_guid
+          in: query
+          type: string
+          required: false
+          description: user_guid parameter
+        - name: user_messages
+          in: query
+          type: boolean
+          required: false
+          description: user_messages parameter
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+    - name: analytics
+      path: /analytics
+      description: Analytics management operations
+      operations:
+      - name: analytics-query
+        method: GET
+        description: Axway Analytics Query Using Lexus
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apim_tier
+          in: query
+          type: string
+          required: false
+          description: apim_tier parameter
+        - name: app_guid
+          in: query
+          type: string
+          required: false
+          description: app_guid parameter
+        - name: clients
+          in: query
+          type: array
+          required: false
+          description: clients parameter
+        - name: cross_org
+          in: query
+          type: boolean
+          required: false
+          description: cross_org parameter
+        - name: custom_query
+          in: query
+          type: string
+          required: false
+          description: custom_query parameter
+        - name: debug
+          in: query
+          type: boolean
+          required: false
+          description: debug parameter
+        - name: endpoint
+          in: query
+          type: string
+          required: false
+          description: endpoint parameter
+        - name: events
+          in: query
+          type: string
+          required: false
+          description: events parameter
+        - name: field
+          in: query
+          type: string
+          required: false
+          description: field parameter
+        - name: from
+          in: query
+          type: number
+          required: false
+          description: from parameter
+        - name: granularity
+          in: query
+          type: string
+          required: false
+          description: granularity parameter
+        - name: group_by
+          in: query
+          type: string
+          required: false
+          description: group_by parameter
+        - name: grquantity
+          in: query
+          type: number
+          required: false
+          description: grquantity parameter
+        - name: include_query
+          in: query
+          type: string
+          required: false
+          description: include_query parameter
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+        - name: platform
+          in: query
+          type: string
+          required: false
+          description: platform parameter
+        - name: post_process
+          in: query
+          type: boolean
+          required: false
+          description: post_process parameter
+        - name: prefix
+          in: query
+          type: string
+          required: false
+          description: prefix parameter
+        - name: preprocessor
+          in: query
+          type: string
+          required: false
+          description: preprocessor parameter
+        - name: processor
+          in: query
+          type: string
+          required: false
+          description: processor parameter
+        - name: query
+          in: query
+          type: string
+          required: true
+          description: query parameter
+        - name: region
+          in: query
+          type: string
+          required: false
+          description: region parameter
+        - name: status
+          in: query
+          type: string
+          required: false
+          description: status parameter
+        - name: to
+          in: query
+          type: number
+          required: false
+          description: to parameter
+        - name: type
+          in: query
+          type: string
+          required: false
+          description: type parameter
+        - name: username
+          in: query
+          type: string
+          required: false
+          description: username parameter
+      - name: analytics-error
+        method: POST
+        description: Axway Report an Error
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: analytics-customCreate
+        method: POST
+        description: Axway Create a Custom Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: query
+          type: integer
+          required: false
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: analytics-customFind
+        method: GET
+        description: Axway Find Custom Queries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: query
+          type: integer
+          required: false
+          description: org_id parameter
+      - name: analytics-customRemove
+        method: DELETE
+        description: Axway Delete a Custom Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: query_id
+          in: path
+          type: string
+          required: true
+          description: query_id parameter
+        - name: org_id
+          in: query
+          type: integer
+          required: false
+          description: org_id parameter
+      - name: analytics-customUpdate
+        method: PUT
+        description: Axway Update a Custom Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: query_id
+          in: path
+          type: string
+          required: true
+          description: query_id parameter
+        - name: org_id
+          in: query
+          type: integer
+          required: false
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: analytics-customFindOne
+        method: GET
+        description: Axway Get Custom Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: query_id
+          in: path
+          type: string
+          required: true
+          description: query_id parameter
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+    - name: app
+      path: /app
+      description: App management operations
+      operations:
+      - name: app-create
+        method: POST
+        description: Axway Create App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: app-find
+        method: GET
+        description: Axway Find Apps
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: array
+          required: false
+          description: A list of fields to include in the response.
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: query
+          type: integer
+          required: false
+          description: org_id parameter
+        - name: provider_guid
+          in: query
+          type: string
+          required: false
+          description: provider_guid parameter
+        - name: subtype
+          in: query
+          type: string
+          required: false
+          description: subtype parameter
+        - name: type
+          in: query
+          type: string
+          required: false
+          description: type parameter
+      - name: app-findOne
+        method: GET
+        description: Axway Find App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: app_id
+          in: path
+          type: string
+          required: true
+          description: app_id parameter
+        - name: org_id
+          in: query
+          type: integer
+          required: false
+          description: org_id parameter
+      - name: app-remove
+        method: DELETE
+        description: Axway Remove App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: app_id
+          in: path
+          type: string
+          required: true
+          description: app_id parameter
+      - name: app-update
+        method: PUT
+        description: Axway Update App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: app_id
+          in: path
+          type: string
+          required: true
+          description: app_id parameter
+        - name: org_id
+          in: query
+          type: integer
+          required: false
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+    - name: auth
+      path: /auth
+      description: Auth management operations
+      operations:
+      - name: auth-validatePassword
+        method: POST
+        description: Axway Validates a User Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: x-auth-password
+          in: header
+          type: string
+          required: true
+          description: x-auth-password parameter
+      - name: auth-acceptTerms
+        method: PUT
+        description: Axway Accept Terms & Conditions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: grant
+          in: query
+          type: string
+          required: false
+          description: grant parameter
+      - name: auth-sessionSwitchOrg
+        method: POST
+        description: Axway Switch Signed-in Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: auth-signup
+        method: POST
+        description: Axway Sign Up
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: auth-findPasswordPolicy
+        method: GET
+        description: Axway Get Effective Password Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_guid
+          in: query
+          type: string
+          required: false
+          description: provider_guid parameter
+        - name: user_guid
+          in: query
+          type: string
+          required: false
+          description: user_guid parameter
+      - name: auth-onboarding
+        method: PUT
+        description: Axway Onboarding Capture
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: grant
+          in: query
+          type: string
+          required: false
+          description: grant parameter
+        body:
+          type: json
+          data: {}
+      - name: auth-mfaVerify
+        method: POST
+        description: Axway Verify an Authorization Code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: auth-mfaSend
+        method: POST
+        description: Axway Send an Authorization Code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: auth-logout
+        method: GET
+        description: Axway Sign-out
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: msg
+          in: query
+          type: string
+          required: false
+          description: msg parameter
+        - name: redirect
+          in: query
+          type: string
+          required: false
+          description: redirect parameter
+      - name: auth-login
+        method: POST
+        description: Axway Sign-in
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: grant
+          in: query
+          type: string
+          required: false
+          description: grant parameter
+        body:
+          type: json
+          data: {}
+      - name: auth-unimpersonate
+        method: DELETE
+        description: Axway Unimpersonate User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+      - name: auth-forgot
+        method: POST
+        description: Axway Send Forgot Password Link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: auth-sessionFind
+        method: GET
+        description: Axway Retrieves the Current Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: from
+          in: query
+          type: string
+          required: false
+          description: from parameter
+      - name: auth-deviceauthResend
+        method: POST
+        description: Axway Resends Device Authorization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+      - name: auth-deviceauthValidate
+        method: POST
+        description: Axway Validates a New Sessions Device Authorization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: grant
+          in: query
+          type: string
+          required: false
+          description: grant parameter
+        body:
+          type: json
+          data: {}
+      - name: auth-sessionCheck
+        method: GET
+        description: Axway Checks if the User is Signed in
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+      - name: auth-deviceauthConfirm
+        method: POST
+        description: Axway Confirm Authenticator App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: auth-deviceauthCreate
+        method: GET
+        description: Axway Initiate Authenticator App Setup
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+      - name: auth-deviceauthRemoveApp
+        method: DELETE
+        description: Axway Remove Authenticator App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: x-auth-password
+          in: header
+          type: string
+          required: true
+          description: x-auth-password parameter
+      - name: auth-activationSignup
+        method: POST
+        description: Axway Activate a Signup User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: auth-activationResend
+        method: POST
+        description: Axway Resend Activation Link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: auth-activationForgot
+        method: POST
+        description: Axway Reset User Password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: auth-activationConfirm
+        method: POST
+        description: Axway Activate a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: auth-activationUnlock
+        method: PUT
+        description: Axway Unlock Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: activation_id
+          in: path
+          type: string
+          required: true
+          description: activation_id parameter
+      - name: auth-revokeOauth
+        method: DELETE
+        description: Axway Revoke OAuth Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: service
+          in: path
+          type: string
+          required: true
+          description: service parameter
+      - name: auth-deviceauthFind
+        method: GET
+        description: Axway Retrieve Authorized Devices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+      - name: auth-deviceauthRemove
+        method: DELETE
+        description: Axway Remove Authorized Device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: device_id
+          in: path
+          type: string
+          required: true
+          description: device_id parameter
+      - name: auth-activationFind
+        method: GET
+        description: Axway Find Activation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: activation_id
+          in: path
+          type: string
+          required: true
+          description: activation_id parameter
+    - name: client
+      path: /client
+      description: Client management operations
+      operations:
+      - name: client-create
+        method: POST
+        description: Axway Add Service Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: client-find
+        method: GET
+        description: Axway Get Service Accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: query
+          type: string
+          required: true
+          description: org_id parameter
+        - name: roles
+          in: query
+          type: array
+          required: false
+          description: roles parameter
+        - name: term
+          in: query
+          type: string
+          required: false
+          description: term parameter
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+        - name: sort
+          in: query
+          type: array
+          required: false
+          description: sort parameter
+      - name: client-download
+        method: GET
+        description: Axway Get Service Account JSON Representation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: client_id
+          in: path
+          type: string
+          required: true
+          description: client_id parameter
+      - name: client-findOne
+        method: GET
+        description: Axway Get a Service Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: client_id
+          in: path
+          type: string
+          required: true
+          description: client_id parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+      - name: client-remove
+        method: DELETE
+        description: Axway Delete Service Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: client_id
+          in: path
+          type: string
+          required: true
+          description: client_id parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+      - name: client-update
+        method: PUT
+        description: Axway Update Service Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: client_id
+          in: path
+          type: string
+          required: true
+          description: client_id parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+        body:
+          type: json
+          data: {}
+    - name: domain
+      path: /domain
+      description: Domain management operations
+      operations:
+      - name: org-domainAssociate
+        method: POST
+        description: Axway Trigger Domain Association Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainAssociateSubdomain
+        method: POST
+        description: Axway Associate Subdomain to Parent Domain IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainEnable
+        method: POST
+        description: Axway Enable IdP for a Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainDissociate
+        method: POST
+        description: Axway Remove Domain Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainConsolidate
+        method: POST
+        description: Axway Consolidate Domain Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainConfirm
+        method: POST
+        description: Axway Confirm Domain Ownership
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainRemove
+        method: DELETE
+        description: Axway Remove Domain Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+          description: domain parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+      - name: org-domainAssociateConfirm
+        method: PUT
+        description: Axway Confirm Domain IdP Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainCreate
+        method: POST
+        description: Axway Start Domain Ownership Process
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-domainFind
+        method: GET
+        description: Axway Get All Domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+    - name: entitlement
+      path: /entitlement
+      description: Entitlement management operations
+      operations:
+      - name: entitlement-find
+        method: GET
+        description: Axway Get Entitlement Meta
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+    - name: env
+      path: /env
+      description: Env management operations
+      operations:
+      - name: env-create
+        method: POST
+        description: Axway Create Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: env-find
+        method: GET
+        description: Axway Find Environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_guid
+          in: query
+          type: string
+          required: false
+          description: org_guid parameter
+        - name: type
+          in: query
+          type: string
+          required: false
+          description: type parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: env-findOne
+        method: GET
+        description: Axway Find Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: env_id
+          in: path
+          type: string
+          required: true
+          description: env_id parameter
+        - name: org_guid
+          in: query
+          type: string
+          required: false
+          description: org_guid parameter
+        - name: type
+          in: query
+          type: string
+          required: false
+          description: type parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+      - name: env-remove
+        method: DELETE
+        description: Axway Delete Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: env_id
+          in: path
+          type: string
+          required: true
+          description: env_id parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+      - name: env-update
+        method: PUT
+        description: Axway Update Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: env_id
+          in: path
+          type: string
+          required: true
+          description: env_id parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+        body:
+          type: json
+          data: {}
+    - name: export
+      path: /export
+      description: Export management operations
+      operations:
+      - name: export-create
+        method: POST
+        description: Axway Export Data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: export-findAll
+        method: GET
+        description: Axway Find Exports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+      - name: export-download
+        method: GET
+        description: Axway Retrieve a Download Url
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: export_id
+          in: path
+          type: string
+          required: true
+          description: export_id parameter
+      - name: export-remove
+        method: DELETE
+        description: Axway Remove Export
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: export_id
+          in: path
+          type: string
+          required: true
+          description: export_id parameter
+    - name: idp
+      path: /idp
+      description: Idp management operations
+      operations:
+      - name: provider-idpCreateSAML
+        method: POST
+        description: Axway Create Consumer SAML V2.0 IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-idpCreateOIDC
+        method: POST
+        description: Axway Create Consumer OIDC IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-idpFind
+        method: GET
+        description: Axway Get Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: basic
+          in: query
+          type: boolean
+          required: false
+          description: basic parameter
+      - name: provider-idpRemove
+        method: DELETE
+        description: Axway Remove Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: cleanup
+          in: query
+          type: boolean
+          required: false
+          description: cleanup parameter
+      - name: provider-idpUpdate
+        method: PUT
+        description: Axway Update Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-idpCreateSAML
+        method: POST
+        description: Axway Create SAML V2.0 IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-idpCreateOIDC
+        method: POST
+        description: Axway Create OIDC IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-idpReloadKeys
+        method: GET
+        description: Axway Reload SAML Validating Certificates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+          description: idp_id parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+      - name: org-idpDownloadDescriptor
+        method: GET
+        description: Axway Get IdP Descriptor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+          description: idp_id parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+      - name: org-idpDownloadCert
+        method: GET
+        description: Axway Get Public IdP Signing or Encryption Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+          description: idp_id parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: use
+          in: query
+          type: string
+          required: false
+          description: use parameter
+      - name: org-idpAssociate
+        method: POST
+        description: Axway Associate with Another Organizations IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+          description: idp_id parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-idpFindOne
+        method: GET
+        description: Axway Get IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+          description: idp_id parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+      - name: org-idpRemove
+        method: DELETE
+        description: Axway Remove Organization IdP Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+          description: idp_id parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+      - name: org-idpUpdate
+        method: PUT
+        description: Axway Update Organizations Custom IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+          description: idp_id parameter
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-idpFind
+        method: GET
+        description: Axway Get All Organization IdPs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+    - name: org
+      path: /org
+      description: Org management operations
+      operations:
+      - name: org-findEnvs
+        method: GET
+        description: Axway Find Organization Environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+        - name: target
+          in: query
+          type: string
+          required: false
+          description: target parameter
+      - name: org-userPrimary
+        method: PUT
+        description: Axway Sets the Primary Contract for the Org
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+          description: user_guid parameter
+      - name: org-userFindOne
+        method: GET
+        description: Axway Get Org User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+          description: user_guid parameter
+        - name: teams
+          in: query
+          type: boolean
+          required: false
+          description: teams parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: org-userRemove
+        method: DELETE
+        description: Axway Remove User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+          description: user_guid parameter
+      - name: org-userUpdate
+        method: PUT
+        description: Axway Update Org Member Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+          description: user_guid parameter
+        body:
+          type: json
+          data: {}
+      - name: org-userCreate
+        method: POST
+        description: Axway Add User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        body:
+          type: json
+          data: {}
+      - name: org-userFind
+        method: GET
+        description: Axway Get Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: array
+          required: false
+          description: A list of fields to include in the response.
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: email
+          in: query
+          type: array
+          required: false
+          description: email parameter
+        - name: primary
+          in: query
+          type: string
+          required: false
+          description: primary parameter
+        - name: roles
+          in: query
+          type: array
+          required: false
+          description: roles parameter
+        - name: term
+          in: query
+          type: string
+          required: false
+          description: term parameter
+        - name: user_guid
+          in: query
+          type: array
+          required: false
+          description: user_guid parameter
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+        - name: sort
+          in: query
+          type: array
+          required: false
+          description: sort parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: org-stats
+        method: GET
+        description: Axway Get Organization Stats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: env
+          in: query
+          type: string
+          required: false
+          description: env parameter
+        - name: from
+          in: query
+          type: integer
+          required: false
+          description: from parameter
+        - name: product
+          in: query
+          type: string
+          required: false
+          description: product parameter
+        - name: to
+          in: query
+          type: integer
+          required: false
+          description: to parameter
+      - name: org-findOne
+        method: GET
+        description: Axway Get Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: exclude_fields
+          in: query
+          type: array
+          required: false
+          description: A list of fields to exclude from the response.
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: onboarding
+          in: query
+          type: boolean
+          required: false
+          description: onboarding parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: org-remove
+        method: DELETE
+        description: Axway Delete Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: suppressEmail
+          in: query
+          type: boolean
+          required: false
+          description: suppressEmail parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+        - name: x-auth-code
+          in: header
+          type: string
+          required: false
+          description: x-auth-code parameter
+      - name: org-update
+        method: PUT
+        description: Axway Update Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+        body:
+          type: json
+          data: {}
+    - name: provider
+      path: /provider
+      description: Provider management operations
+      operations:
+      - name: provider-create
+        method: POST
+        description: Axway Create Provider Marketplace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: provider-find
+        method: GET
+        description: Axway Get Provider Marketplaces
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_guid
+          in: query
+          type: string
+          required: false
+          description: org_guid parameter
+      - name: provider-findOnboarding
+        method: GET
+        description: Axway Get Provider Marketplace Onboarding Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+      - name: provider-oauthConfirm
+        method: POST
+        description: Axway OAuth 2.0 Auth Signup Confirmation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: service
+          in: path
+          type: string
+          required: true
+          description: service parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-oauthCallback
+        method: GET
+        description: Axway Concludes OAuth 2.0 Auth
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: service
+          in: path
+          type: string
+          required: true
+          description: service parameter
+        - name: code
+          in: query
+          type: string
+          required: false
+          description: code parameter
+        - name: state
+          in: query
+          type: string
+          required: true
+          description: state parameter
+      - name: provider-oauthAuthorize
+        method: GET
+        description: Axway Initiates OAuth 2.0 Auth
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: service
+          in: path
+          type: string
+          required: true
+          description: service parameter
+        - name: grant
+          in: query
+          type: string
+          required: false
+          description: grant parameter
+      - name: provider-idpCreateSAML
+        method: POST
+        description: Axway Create Consumer SAML V2.0 IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-idpCreateOIDC
+        method: POST
+        description: Axway Create Consumer OIDC IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-idpRemove
+        method: DELETE
+        description: Axway Remove Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: cleanup
+          in: query
+          type: boolean
+          required: false
+          description: cleanup parameter
+      - name: provider-idpUpdate
+        method: PUT
+        description: Axway Update Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-consumerUpdate
+        method: PUT
+        description: Axway Update Consumer Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-consumerFindOne
+        method: GET
+        description: Axway Find Consumer Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: consumer_id
+          in: path
+          type: string
+          required: true
+          description: consumer_id parameter
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: admin
+          in: query
+          type: boolean
+          required: false
+          description: admin parameter
+        - name: onboarding
+          in: query
+          type: boolean
+          required: false
+          description: onboarding parameter
+        - name: teams
+          in: query
+          type: boolean
+          required: false
+          description: teams parameter
+      - name: provider-consumerRemove
+        method: DELETE
+        description: Axway Delete a Consumer Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: consumer_id
+          in: path
+          type: string
+          required: true
+          description: consumer_id parameter
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+      - name: provider-consumerCreate
+        method: POST
+        description: Axway Create Consumer Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+      - name: provider-consumerFind
+        method: GET
+        description: Axway Find Consumer Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: created_from
+          in: query
+          type: number
+          required: false
+          description: created_from parameter
+        - name: created_to
+          in: query
+          type: number
+          required: false
+          description: created_to parameter
+        - name: last_login_from
+          in: query
+          type: number
+          required: false
+          description: last_login_from parameter
+        - name: last_login_to
+          in: query
+          type: number
+          required: false
+          description: last_login_to parameter
+        - name: name
+          in: query
+          type: string
+          required: false
+          description: name parameter
+        - name: teams
+          in: query
+          type: boolean
+          required: false
+          description: teams parameter
+      - name: provider-activity
+        method: GET
+        description: Axway Get Marketplace Activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: consumer_id
+          in: query
+          type: number
+          required: false
+          description: consumer_id parameter
+        - name: contexts
+          in: query
+          type: array
+          required: false
+          description: contexts parameter
+        - name: data
+          in: query
+          type: boolean
+          required: false
+          description: data parameter
+        - name: enrich
+          in: query
+          type: boolean
+          required: false
+          description: enrich parameter
+        - name: exclude_contexts
+          in: query
+          type: array
+          required: false
+          description: exclude_contexts parameter
+        - name: from
+          in: query
+          type: number
+          required: false
+          description: from parameter
+        - name: redact
+          in: query
+          type: boolean
+          required: false
+          description: redact parameter
+        - name: sort
+          in: query
+          type: number
+          required: false
+          description: sort parameter
+        - name: term
+          in: query
+          type: string
+          required: false
+          description: term parameter
+        - name: to
+          in: query
+          type: number
+          required: false
+          description: to parameter
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+      - name: provider-findOne
+        method: GET
+        description: Axway Get Provider Marketplace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: exclude_fields
+          in: query
+          type: array
+          required: false
+          description: A list of fields to exclude from the response.
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: provider-remove
+        method: DELETE
+        description: Axway Delete Provider Marketplace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+      - name: provider-update
+        method: PUT
+        description: Axway Update Provider Marketplace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+          description: provider_id parameter
+        body:
+          type: json
+          data: {}
+    - name: role
+      path: /role
+      description: Role management operations
+      operations:
+      - name: role-find
+        method: GET
+        description: Axway Get Roles Matching Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: default
+          in: query
+          type: boolean
+          required: false
+          description: default parameter
+        - name: name
+          in: query
+          type: string
+          required: false
+          description: name parameter
+        - name: org
+          in: query
+          type: boolean
+          required: false
+          description: org parameter
+        - name: team
+          in: query
+          type: boolean
+          required: false
+          description: team parameter
+      - name: role-findOne
+        method: GET
+        description: Axway Get Role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: role_id
+          in: path
+          type: string
+          required: true
+          description: role_id parameter
+        - name: context
+          in: query
+          type: string
+          required: false
+          description: context parameter
+    - name: session
+      path: /session
+      description: Session management operations
+      operations:
+      - name: session-query
+        method: POST
+        description: Axway Find Sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+        - name: sort
+          in: query
+          type: array
+          required: false
+          description: sort parameter
+        body:
+          type: json
+          data: {}
+      - name: session-find
+        method: GET
+        description: Axway Get Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+      - name: session-remove
+        method: DELETE
+        description: Axway Delete Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: session_id
+          in: path
+          type: string
+          required: true
+          description: session_id parameter
+    - name: subscription
+      path: /subscription
+      description: Subscription management operations
+      operations:
+      - name: org-findOneSubscription
+        method: GET
+        description: Axway Find Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: subscription_id
+          in: path
+          type: string
+          required: true
+          description: subscription_id parameter
+      - name: org-findSubscriptions
+        method: GET
+        description: Axway Find Subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+    - name: team
+      path: /team
+      description: Team management operations
+      operations:
+      - name: team-create
+        method: POST
+        description: Axway Create a Team
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        body:
+          type: json
+          data: {}
+      - name: team-find
+        method: GET
+        description: Axway Get Accessible Teams for the Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: default
+          in: query
+          type: string
+          required: false
+          description: default parameter
+        - name: name
+          in: query
+          type: string
+          required: false
+          description: name parameter
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+        - name: tag
+          in: query
+          type: string
+          required: false
+          description: tag parameter
+        - name: user_guid
+          in: query
+          type: string
+          required: false
+          description: user_guid parameter
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: team-userAdd
+        method: POST
+        description: Axway Add Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: team_id
+          in: path
+          type: string
+          required: true
+          description: team_id parameter
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+        body:
+          type: json
+          data: {}
+      - name: team-userRemove
+        method: DELETE
+        description: Axway Remove Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: team_id
+          in: path
+          type: string
+          required: true
+          description: team_id parameter
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+      - name: team-userUpdateRole
+        method: PUT
+        description: Axway Sets the Team Member Role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: team_id
+          in: path
+          type: string
+          required: true
+          description: team_id parameter
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+        body:
+          type: json
+          data: {}
+      - name: team-userFind
+        method: GET
+        description: Axway Get Team Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: array
+          required: false
+          description: A list of fields to include in the response.
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: team_id
+          in: path
+          type: string
+          required: true
+          description: team_id parameter
+        - name: roles
+          in: query
+          type: array
+          required: false
+          description: roles parameter
+        - name: term
+          in: query
+          type: string
+          required: false
+          description: term parameter
+        - name: type
+          in: query
+          type: string
+          required: false
+          description: type parameter
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+        - name: sort
+          in: query
+          type: array
+          required: false
+          description: sort parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: team-findOne
+        method: GET
+        description: Axway Find Team
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: team_id
+          in: path
+          type: string
+          required: true
+          description: team_id parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: team-remove
+        method: DELETE
+        description: Axway Remove Team
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: team_id
+          in: path
+          type: string
+          required: true
+          description: team_id parameter
+        - name: reassign_team
+          in: query
+          type: string
+          required: false
+          description: reassign_team parameter
+      - name: team-update
+        method: PUT
+        description: Axway Update Team
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: team_id
+          in: path
+          type: string
+          required: true
+          description: team_id parameter
+        body:
+          type: json
+          data: {}
+    - name: telemetry
+      path: /telemetry
+      description: Telemetry management operations
+      operations:
+      - name: analytics-create
+        method: POST
+        description: Axway Send Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+        body:
+          type: json
+          data: {}
+    - name: usage
+      path: /usage
+      description: Usage management operations
+      operations:
+      - name: usage-uploadAutomatic
+        method: POST
+        description: Axway Uploads an Automatic Usage Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: usage-find
+        method: GET
+        description: Axway Fetches Usage Reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: endDate
+          in: query
+          type: number
+          required: false
+          description: endDate parameter
+        - name: env_guid
+          in: query
+          type: string
+          required: false
+          description: env_guid parameter
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+        - name: received
+          in: query
+          type: boolean
+          required: false
+          description: received parameter
+        - name: startDate
+          in: query
+          type: number
+          required: false
+          description: startDate parameter
+        - name: status
+          in: query
+          type: string
+          required: false
+          description: status parameter
+        - name: uploadMethod
+          in: query
+          type: string
+          required: false
+          description: uploadMethod parameter
+        - name: limit
+          in: query
+          type: number
+          required: false
+          description: limit parameter
+        - name: page
+          in: query
+          type: number
+          required: false
+          description: page parameter
+        - name: skip
+          in: query
+          type: number
+          required: false
+          description: skip parameter
+      - name: usage-upload
+        method: POST
+        description: Axway Uploads a Usage Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: usage-download
+        method: GET
+        description: Axway Downloads a Usage Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: file_id
+          in: path
+          type: string
+          required: true
+          description: file_id parameter
+        - name: org_guid
+          in: query
+          type: string
+          required: true
+          description: org_guid parameter
+        - name: timestamp
+          in: query
+          type: integer
+          required: true
+          description: timestamp parameter
+      - name: org-findUsage
+        method: GET
+        description: Axway Organization Usage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: org_id
+          in: path
+          type: string
+          required: true
+          description: org_id parameter
+        - name: entitlement
+          in: query
+          type: string
+          required: false
+          description: entitlement parameter
+        - name: from
+          in: query
+          type: string
+          required: false
+          description: from parameter
+        - name: month
+          in: query
+          type: number
+          required: false
+          description: month parameter
+        - name: skipcache
+          in: query
+          type: boolean
+          required: false
+          description: skipcache parameter
+        - name: to
+          in: query
+          type: string
+          required: false
+          description: to parameter
+        - name: year
+          in: query
+          type: number
+          required: false
+          description: year parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+    - name: user
+      path: /user
+      description: User management operations
+      operations:
+      - name: user-updatePref
+        method: PUT
+        description: Axway Update a Single User Preference
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: user-findOrgs
+        method: GET
+        description: Axway Get Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: email
+          in: query
+          type: string
+          required: false
+          description: email parameter
+        - name: guid
+          in: query
+          type: string
+          required: false
+          description: guid parameter
+        - name: include_inactive
+          in: query
+          type: boolean
+          required: false
+          description: include_inactive parameter
+        - name: provider_guid
+          in: query
+          type: string
+          required: false
+          description: provider_guid parameter
+        - name: roles
+          in: query
+          type: string
+          required: false
+          description: roles parameter
+      - name: user-updateCredentials
+        method: PUT
+        description: Axway Set Credentials for Tooling
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: user-update
+        method: PUT
+        description: Axway Update User Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+        body:
+          type: json
+          data: {}
+      - name: user-findDomain
+        method: GET
+        description: Axway Find Missing Domain Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: domain
+          in: path
+          type: string
+          required: true
+          description: domain parameter
+        - name: org_id
+          in: query
+          type: number
+          required: false
+          description: org_id parameter
+      - name: user-findAttribute
+        method: GET
+        description: Axway Find a Mapped Attribute for a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+        - name: attr
+          in: query
+          type: string
+          required: true
+          description: attr parameter
+        - name: idp_id
+          in: query
+          type: string
+          required: false
+          description: idp_id parameter
+        - name: org_id
+          in: query
+          type: string
+          required: false
+          description: org_id parameter
+      - name: user-findOne
+        method: GET
+        description: Axway Get a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+        - name: provider_guid
+          in: query
+          type: string
+          required: false
+          description: provider_guid parameter
+        - name: authorization
+          in: header
+          type: string
+          required: false
+          description: authorization parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+      - name: user-remove
+        method: DELETE
+        description: Axway Remove User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: ''
+          in: query
+          type: string
+          required: false
+          description: ' parameter'
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user_id parameter
+        - name: suppressEmail
+          in: query
+          type: boolean
+          required: false
+          description: suppressEmail parameter
+        - name: x-auth-token
+          in: header
+          type: string
+          required: false
+          description: x-auth-token parameter
+        - name: x-auth-password
+          in: header
+          type: string
+          required: false
+          description: x-auth-password parameter
+        - name: x-auth-code
+          in: header
+          type: string
+          required: false
+          description: x-auth-code parameter
+  exposes:
+  - type: rest
+    port: 8100
+    namespace: amplify-platform-rest
+    resources:
+    - path: /v1/aca
+      name: aca
+      description: Aca operations
+      operations:
+      - method: PUT
+        name: aca-setMetadata
+        description: Axway Set Metadata by ID
+        call: amplify-platform.aca-setMetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: aca-findOne
+        description: Axway Find Crash Record by ID
+        call: amplify-platform.aca-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/activity
+      name: activity
+      description: Activity operations
+      operations:
+      - method: GET
+        name: activity-findEvents
+        description: Axway Get Activity Event Names
+        call: amplify-platform.activity-findEvents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: activity-find
+        description: Axway Get Activity
+        call: amplify-platform.activity-find
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analytics
+      name: analytics
+      description: Analytics operations
+      operations:
+      - method: GET
+        name: analytics-query
+        description: Axway Analytics Query Using Lexus
+        call: amplify-platform.analytics-query
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analytics-error
+        description: Axway Report an Error
+        call: amplify-platform.analytics-error
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analytics-customCreate
+        description: Axway Create a Custom Query
+        call: amplify-platform.analytics-customCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analytics-customFind
+        description: Axway Find Custom Queries
+        call: amplify-platform.analytics-customFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: analytics-customRemove
+        description: Axway Delete a Custom Query
+        call: amplify-platform.analytics-customRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analytics-customUpdate
+        description: Axway Update a Custom Query
+        call: amplify-platform.analytics-customUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analytics-customFindOne
+        description: Axway Get Custom Query
+        call: amplify-platform.analytics-customFindOne
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/app
+      name: app
+      description: App operations
+      operations:
+      - method: POST
+        name: app-create
+        description: Axway Create App
+        call: amplify-platform.app-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: app-find
+        description: Axway Find Apps
+        call: amplify-platform.app-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: app-findOne
+        description: Axway Find App
+        call: amplify-platform.app-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: app-remove
+        description: Axway Remove App
+        call: amplify-platform.app-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: app-update
+        description: Axway Update App
+        call: amplify-platform.app-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/auth
+      name: auth
+      description: Auth operations
+      operations:
+      - method: POST
+        name: auth-validatePassword
+        description: Axway Validates a User Password
+        call: amplify-platform.auth-validatePassword
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: auth-acceptTerms
+        description: Axway Accept Terms & Conditions
+        call: amplify-platform.auth-acceptTerms
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-sessionSwitchOrg
+        description: Axway Switch Signed-in Organization
+        call: amplify-platform.auth-sessionSwitchOrg
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-signup
+        description: Axway Sign Up
+        call: amplify-platform.auth-signup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-findPasswordPolicy
+        description: Axway Get Effective Password Policy
+        call: amplify-platform.auth-findPasswordPolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: auth-onboarding
+        description: Axway Onboarding Capture
+        call: amplify-platform.auth-onboarding
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-mfaVerify
+        description: Axway Verify an Authorization Code
+        call: amplify-platform.auth-mfaVerify
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-mfaSend
+        description: Axway Send an Authorization Code
+        call: amplify-platform.auth-mfaSend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-logout
+        description: Axway Sign-out
+        call: amplify-platform.auth-logout
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-login
+        description: Axway Sign-in
+        call: amplify-platform.auth-login
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-unimpersonate
+        description: Axway Unimpersonate User
+        call: amplify-platform.auth-unimpersonate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-forgot
+        description: Axway Send Forgot Password Link
+        call: amplify-platform.auth-forgot
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-sessionFind
+        description: Axway Retrieves the Current Session
+        call: amplify-platform.auth-sessionFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-deviceauthResend
+        description: Axway Resends Device Authorization
+        call: amplify-platform.auth-deviceauthResend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-deviceauthValidate
+        description: Axway Validates a New Sessions Device Authorization
+        call: amplify-platform.auth-deviceauthValidate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-sessionCheck
+        description: Axway Checks if the User is Signed in
+        call: amplify-platform.auth-sessionCheck
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-deviceauthConfirm
+        description: Axway Confirm Authenticator App
+        call: amplify-platform.auth-deviceauthConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-deviceauthCreate
+        description: Axway Initiate Authenticator App Setup
+        call: amplify-platform.auth-deviceauthCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-deviceauthRemoveApp
+        description: Axway Remove Authenticator App
+        call: amplify-platform.auth-deviceauthRemoveApp
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationSignup
+        description: Axway Activate a Signup User
+        call: amplify-platform.auth-activationSignup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationResend
+        description: Axway Resend Activation Link
+        call: amplify-platform.auth-activationResend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationForgot
+        description: Axway Reset User Password
+        call: amplify-platform.auth-activationForgot
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationConfirm
+        description: Axway Activate a User
+        call: amplify-platform.auth-activationConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: auth-activationUnlock
+        description: Axway Unlock Account
+        call: amplify-platform.auth-activationUnlock
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-revokeOauth
+        description: Axway Revoke OAuth Service
+        call: amplify-platform.auth-revokeOauth
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-deviceauthFind
+        description: Axway Retrieve Authorized Devices
+        call: amplify-platform.auth-deviceauthFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-deviceauthRemove
+        description: Axway Remove Authorized Device
+        call: amplify-platform.auth-deviceauthRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-activationFind
+        description: Axway Find Activation
+        call: amplify-platform.auth-activationFind
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/client
+      name: client
+      description: Client operations
+      operations:
+      - method: POST
+        name: client-create
+        description: Axway Add Service Account
+        call: amplify-platform.client-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: client-find
+        description: Axway Get Service Accounts
+        call: amplify-platform.client-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: client-download
+        description: Axway Get Service Account JSON Representation
+        call: amplify-platform.client-download
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: client-findOne
+        description: Axway Get a Service Account
+        call: amplify-platform.client-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: client-remove
+        description: Axway Delete Service Account
+        call: amplify-platform.client-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: client-update
+        description: Axway Update Service Account
+        call: amplify-platform.client-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/domain
+      name: domain
+      description: Domain operations
+      operations:
+      - method: POST
+        name: org-domainAssociate
+        description: Axway Trigger Domain Association Flow
+        call: amplify-platform.org-domainAssociate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainAssociateSubdomain
+        description: Axway Associate Subdomain to Parent Domain IdP
+        call: amplify-platform.org-domainAssociateSubdomain
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainEnable
+        description: Axway Enable IdP for a Domain
+        call: amplify-platform.org-domainEnable
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainDissociate
+        description: Axway Remove Domain Association
+        call: amplify-platform.org-domainDissociate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainConsolidate
+        description: Axway Consolidate Domain Users
+        call: amplify-platform.org-domainConsolidate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainConfirm
+        description: Axway Confirm Domain Ownership
+        call: amplify-platform.org-domainConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: org-domainRemove
+        description: Axway Remove Domain Association
+        call: amplify-platform.org-domainRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-domainAssociateConfirm
+        description: Axway Confirm Domain IdP Association
+        call: amplify-platform.org-domainAssociateConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainCreate
+        description: Axway Start Domain Ownership Process
+        call: amplify-platform.org-domainCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-domainFind
+        description: Axway Get All Domains
+        call: amplify-platform.org-domainFind
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlement
+      name: entitlement
+      description: Entitlement operations
+      operations:
+      - method: GET
+        name: entitlement-find
+        description: Axway Get Entitlement Meta
+        call: amplify-platform.entitlement-find
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/env
+      name: env
+      description: Env operations
+      operations:
+      - method: POST
+        name: env-create
+        description: Axway Create Environment
+        call: amplify-platform.env-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: env-find
+        description: Axway Find Environments
+        call: amplify-platform.env-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: env-findOne
+        description: Axway Find Environment
+        call: amplify-platform.env-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: env-remove
+        description: Axway Delete Environment
+        call: amplify-platform.env-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: env-update
+        description: Axway Update Environment
+        call: amplify-platform.env-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/export
+      name: export
+      description: Export operations
+      operations:
+      - method: POST
+        name: export-create
+        description: Axway Export Data
+        call: amplify-platform.export-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: export-findAll
+        description: Axway Find Exports
+        call: amplify-platform.export-findAll
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: export-download
+        description: Axway Retrieve a Download Url
+        call: amplify-platform.export-download
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: export-remove
+        description: Axway Remove Export
+        call: amplify-platform.export-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/idp
+      name: idp
+      description: Idp operations
+      operations:
+      - method: POST
+        name: provider-idpCreateSAML
+        description: Axway Create Consumer SAML V2.0 IdP
+        call: amplify-platform.provider-idpCreateSAML
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-idpCreateOIDC
+        description: Axway Create Consumer OIDC IdP
+        call: amplify-platform.provider-idpCreateOIDC
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-idpFind
+        description: Axway Get Consumer IdP
+        call: amplify-platform.provider-idpFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provider-idpRemove
+        description: Axway Remove Consumer IdP
+        call: amplify-platform.provider-idpRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provider-idpUpdate
+        description: Axway Update Consumer IdP
+        call: amplify-platform.provider-idpUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-idpCreateSAML
+        description: Axway Create SAML V2.0 IdP
+        call: amplify-platform.org-idpCreateSAML
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-idpCreateOIDC
+        description: Axway Create OIDC IdP
+        call: amplify-platform.org-idpCreateOIDC
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-idpReloadKeys
+        description: Axway Reload SAML Validating Certificates
+        call: amplify-platform.org-idpReloadKeys
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-idpDownloadDescriptor
+        description: Axway Get IdP Descriptor
+        call: amplify-platform.org-idpDownloadDescriptor
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-idpDownloadCert
+        description: Axway Get Public IdP Signing or Encryption Certificate
+        call: amplify-platform.org-idpDownloadCert
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-idpAssociate
+        description: Axway Associate with Another Organizations IdP
+        call: amplify-platform.org-idpAssociate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-idpFindOne
+        description: Axway Get IdP
+        call: amplify-platform.org-idpFindOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: org-idpRemove
+        description: Axway Remove Organization IdP Config
+        call: amplify-platform.org-idpRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-idpUpdate
+        description: Axway Update Organizations Custom IdP
+        call: amplify-platform.org-idpUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-idpFind
+        description: Axway Get All Organization IdPs
+        call: amplify-platform.org-idpFind
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org
+      name: org
+      description: Org operations
+      operations:
+      - method: GET
+        name: org-findEnvs
+        description: Axway Find Organization Environments
+        call: amplify-platform.org-findEnvs
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-userPrimary
+        description: Axway Sets the Primary Contract for the Org
+        call: amplify-platform.org-userPrimary
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-userFindOne
+        description: Axway Get Org User
+        call: amplify-platform.org-userFindOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: org-userRemove
+        description: Axway Remove User
+        call: amplify-platform.org-userRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-userUpdate
+        description: Axway Update Org Member Association
+        call: amplify-platform.org-userUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-userCreate
+        description: Axway Add User
+        call: amplify-platform.org-userCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-userFind
+        description: Axway Get Members
+        call: amplify-platform.org-userFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-stats
+        description: Axway Get Organization Stats
+        call: amplify-platform.org-stats
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-findOne
+        description: Axway Get Organization
+        call: amplify-platform.org-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: org-remove
+        description: Axway Delete Organization
+        call: amplify-platform.org-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-update
+        description: Axway Update Organization
+        call: amplify-platform.org-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/provider
+      name: provider
+      description: Provider operations
+      operations:
+      - method: POST
+        name: provider-create
+        description: Axway Create Provider Marketplace
+        call: amplify-platform.provider-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-find
+        description: Axway Get Provider Marketplaces
+        call: amplify-platform.provider-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-findOnboarding
+        description: Axway Get Provider Marketplace Onboarding Settings
+        call: amplify-platform.provider-findOnboarding
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-oauthConfirm
+        description: Axway OAuth 2.0 Auth Signup Confirmation
+        call: amplify-platform.provider-oauthConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-oauthCallback
+        description: Axway Concludes OAuth 2.0 Auth
+        call: amplify-platform.provider-oauthCallback
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-oauthAuthorize
+        description: Axway Initiates OAuth 2.0 Auth
+        call: amplify-platform.provider-oauthAuthorize
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-idpCreateSAML
+        description: Axway Create Consumer SAML V2.0 IdP
+        call: amplify-platform.provider-idpCreateSAML
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-idpCreateOIDC
+        description: Axway Create Consumer OIDC IdP
+        call: amplify-platform.provider-idpCreateOIDC
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provider-idpRemove
+        description: Axway Remove Consumer IdP
+        call: amplify-platform.provider-idpRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provider-idpUpdate
+        description: Axway Update Consumer IdP
+        call: amplify-platform.provider-idpUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provider-consumerUpdate
+        description: Axway Update Consumer Organization
+        call: amplify-platform.provider-consumerUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-consumerFindOne
+        description: Axway Find Consumer Organization
+        call: amplify-platform.provider-consumerFindOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provider-consumerRemove
+        description: Axway Delete a Consumer Organization
+        call: amplify-platform.provider-consumerRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-consumerCreate
+        description: Axway Create Consumer Organization
+        call: amplify-platform.provider-consumerCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-consumerFind
+        description: Axway Find Consumer Organizations
+        call: amplify-platform.provider-consumerFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-activity
+        description: Axway Get Marketplace Activity
+        call: amplify-platform.provider-activity
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-findOne
+        description: Axway Get Provider Marketplace
+        call: amplify-platform.provider-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provider-remove
+        description: Axway Delete Provider Marketplace
+        call: amplify-platform.provider-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provider-update
+        description: Axway Update Provider Marketplace
+        call: amplify-platform.provider-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/role
+      name: role
+      description: Role operations
+      operations:
+      - method: GET
+        name: role-find
+        description: Axway Get Roles Matching Query
+        call: amplify-platform.role-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: role-findOne
+        description: Axway Get Role
+        call: amplify-platform.role-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session
+      name: session
+      description: Session operations
+      operations:
+      - method: POST
+        name: session-query
+        description: Axway Find Sessions
+        call: amplify-platform.session-query
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: session-find
+        description: Axway Get Session
+        call: amplify-platform.session-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: session-remove
+        description: Axway Delete Session
+        call: amplify-platform.session-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscription
+      name: subscription
+      description: Subscription operations
+      operations:
+      - method: GET
+        name: org-findOneSubscription
+        description: Axway Find Subscription
+        call: amplify-platform.org-findOneSubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-findSubscriptions
+        description: Axway Find Subscriptions
+        call: amplify-platform.org-findSubscriptions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/team
+      name: team
+      description: Team operations
+      operations:
+      - method: POST
+        name: team-create
+        description: Axway Create a Team
+        call: amplify-platform.team-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: team-find
+        description: Axway Get Accessible Teams for the Query
+        call: amplify-platform.team-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: team-userAdd
+        description: Axway Add Member
+        call: amplify-platform.team-userAdd
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: team-userRemove
+        description: Axway Remove Member
+        call: amplify-platform.team-userRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: team-userUpdateRole
+        description: Axway Sets the Team Member Role
+        call: amplify-platform.team-userUpdateRole
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: team-userFind
+        description: Axway Get Team Members
+        call: amplify-platform.team-userFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: team-findOne
+        description: Axway Find Team
+        call: amplify-platform.team-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: team-remove
+        description: Axway Remove Team
+        call: amplify-platform.team-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: team-update
+        description: Axway Update Team
+        call: amplify-platform.team-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/telemetry
+      name: telemetry
+      description: Telemetry operations
+      operations:
+      - method: POST
+        name: analytics-create
+        description: Axway Send Events
+        call: amplify-platform.analytics-create
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/usage
+      name: usage
+      description: Usage operations
+      operations:
+      - method: POST
+        name: usage-uploadAutomatic
+        description: Axway Uploads an Automatic Usage Report
+        call: amplify-platform.usage-uploadAutomatic
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: usage-find
+        description: Axway Fetches Usage Reports
+        call: amplify-platform.usage-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: usage-upload
+        description: Axway Uploads a Usage Report
+        call: amplify-platform.usage-upload
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: usage-download
+        description: Axway Downloads a Usage Report
+        call: amplify-platform.usage-download
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-findUsage
+        description: Axway Organization Usage
+        call: amplify-platform.org-findUsage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user
+      name: user
+      description: User operations
+      operations:
+      - method: PUT
+        name: user-updatePref
+        description: Axway Update a Single User Preference
+        call: amplify-platform.user-updatePref
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findOrgs
+        description: Axway Get Organizations
+        call: amplify-platform.user-findOrgs
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: user-updateCredentials
+        description: Axway Set Credentials for Tooling
+        call: amplify-platform.user-updateCredentials
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: user-update
+        description: Axway Update User Profile
+        call: amplify-platform.user-update
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findDomain
+        description: Axway Find Missing Domain Users
+        call: amplify-platform.user-findDomain
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findAttribute
+        description: Axway Find a Mapped Attribute for a User
+        call: amplify-platform.user-findAttribute
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findOne
+        description: Axway Get a User
+        call: amplify-platform.user-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: user-remove
+        description: Axway Remove User
+        call: amplify-platform.user-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9100
+    namespace: amplify-platform-mcp
+    transport: http
+    tools:
+    - name: aca-setMetadata
+      description: Axway Set Metadata by ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.aca-setMetadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aca-findOne
+      description: Axway Find Crash Record by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.aca-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activity-findEvents
+      description: Axway Get Activity Event Names
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.activity-findEvents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activity-find
+      description: Axway Get Activity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.activity-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-query
+      description: Axway Analytics Query Using Lexus
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-error
+      description: Axway Report an Error
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.analytics-error
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customCreate
+      description: Axway Create a Custom Query
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.analytics-customCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customFind
+      description: Axway Find Custom Queries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-customFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customRemove
+      description: Axway Delete a Custom Query
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.analytics-customRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customUpdate
+      description: Axway Update a Custom Query
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-customUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customFindOne
+      description: Axway Get Custom Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-customFindOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-create
+      description: Axway Create App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.app-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-find
+      description: Axway Find Apps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.app-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-findOne
+      description: Axway Find App
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.app-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-remove
+      description: Axway Remove App
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.app-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-update
+      description: Axway Update App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.app-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-validatePassword
+      description: Axway Validates a User Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-validatePassword
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-acceptTerms
+      description: Axway Accept Terms & Conditions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-acceptTerms
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-sessionSwitchOrg
+      description: Axway Switch Signed-in Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-sessionSwitchOrg
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-signup
+      description: Axway Sign Up
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-signup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-findPasswordPolicy
+      description: Axway Get Effective Password Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-findPasswordPolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-onboarding
+      description: Axway Onboarding Capture
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-onboarding
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-mfaVerify
+      description: Axway Verify an Authorization Code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-mfaVerify
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-mfaSend
+      description: Axway Send an Authorization Code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-mfaSend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-logout
+      description: Axway Sign-out
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-logout
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-login
+      description: Axway Sign-in
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-login
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-unimpersonate
+      description: Axway Unimpersonate User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-unimpersonate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-forgot
+      description: Axway Send Forgot Password Link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-forgot
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-sessionFind
+      description: Axway Retrieves the Current Session
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-sessionFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthResend
+      description: Axway Resends Device Authorization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-deviceauthResend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthValidate
+      description: Axway Validates a New Sessions Device Authorization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-deviceauthValidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-sessionCheck
+      description: Axway Checks if the User is Signed in
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-sessionCheck
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthConfirm
+      description: Axway Confirm Authenticator App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-deviceauthConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthCreate
+      description: Axway Initiate Authenticator App Setup
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-deviceauthCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthRemoveApp
+      description: Axway Remove Authenticator App
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-deviceauthRemoveApp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationSignup
+      description: Axway Activate a Signup User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationSignup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationResend
+      description: Axway Resend Activation Link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationResend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationForgot
+      description: Axway Reset User Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationForgot
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationConfirm
+      description: Axway Activate a User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationUnlock
+      description: Axway Unlock Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-activationUnlock
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-revokeOauth
+      description: Axway Revoke OAuth Service
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-revokeOauth
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthFind
+      description: Axway Retrieve Authorized Devices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-deviceauthFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthRemove
+      description: Axway Remove Authorized Device
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-deviceauthRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationFind
+      description: Axway Find Activation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-activationFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-create
+      description: Axway Add Service Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.client-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-find
+      description: Axway Get Service Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-download
+      description: Axway Get Service Account JSON Representation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-download
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-findOne
+      description: Axway Get a Service Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-remove
+      description: Axway Delete Service Account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.client-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-update
+      description: Axway Update Service Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainAssociate
+      description: Axway Trigger Domain Association Flow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainAssociate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainAssociateSubdomain
+      description: Axway Associate Subdomain to Parent Domain IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainAssociateSubdomain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainEnable
+      description: Axway Enable IdP for a Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainEnable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainDissociate
+      description: Axway Remove Domain Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainDissociate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainConsolidate
+      description: Axway Consolidate Domain Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainConsolidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainConfirm
+      description: Axway Confirm Domain Ownership
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainRemove
+      description: Axway Remove Domain Association
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.org-domainRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainAssociateConfirm
+      description: Axway Confirm Domain IdP Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-domainAssociateConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainCreate
+      description: Axway Start Domain Ownership Process
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainFind
+      description: Axway Get All Domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-domainFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: entitlement-find
+      description: Axway Get Entitlement Meta
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.entitlement-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-create
+      description: Axway Create Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.env-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-find
+      description: Axway Find Environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.env-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-findOne
+      description: Axway Find Environment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.env-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-remove
+      description: Axway Delete Environment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.env-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-update
+      description: Axway Update Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.env-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-create
+      description: Axway Export Data
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.export-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-findAll
+      description: Axway Find Exports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.export-findAll
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-download
+      description: Axway Retrieve a Download Url
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.export-download
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-remove
+      description: Axway Remove Export
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.export-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpCreateSAML
+      description: Axway Create Consumer SAML V2.0 IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-idpCreateSAML
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpCreateOIDC
+      description: Axway Create Consumer OIDC IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-idpCreateOIDC
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpFind
+      description: Axway Get Consumer IdP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-idpFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpRemove
+      description: Axway Remove Consumer IdP
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.provider-idpRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpUpdate
+      description: Axway Update Consumer IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-idpUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpCreateSAML
+      description: Axway Create SAML V2.0 IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-idpCreateSAML
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpCreateOIDC
+      description: Axway Create OIDC IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-idpCreateOIDC
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpReloadKeys
+      description: Axway Reload SAML Validating Certificates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-idpReloadKeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpDownloadDescriptor
+      description: Axway Get IdP Descriptor
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-idpDownloadDescriptor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpDownloadCert
+      description: Axway Get Public IdP Signing or Encryption Certificate
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-idpDownloadCert
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpAssociate
+      description: Axway Associate with Another Organizations IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-idpAssociate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpFindOne
+      description: Axway Get IdP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-idpFindOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpRemove
+      description: Axway Remove Organization IdP Config
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.org-idpRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpUpdate
+      description: Axway Update Organizations Custom IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-idpUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-idpFind
+      description: Axway Get All Organization IdPs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-idpFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findEnvs
+      description: Axway Find Organization Environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findEnvs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userPrimary
+      description: Axway Sets the Primary Contract for the Org
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userPrimary
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userFindOne
+      description: Axway Get Org User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userFindOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userRemove
+      description: Axway Remove User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.org-userRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userUpdate
+      description: Axway Update Org Member Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userCreate
+      description: Axway Add User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-userCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userFind
+      description: Axway Get Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-stats
+      description: Axway Get Organization Stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-stats
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findOne
+      description: Axway Get Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-remove
+      description: Axway Delete Organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.org-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-update
+      description: Axway Update Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-create
+      description: Axway Create Provider Marketplace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-find
+      description: Axway Get Provider Marketplaces
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-findOnboarding
+      description: Axway Get Provider Marketplace Onboarding Settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-findOnboarding
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-oauthConfirm
+      description: Axway OAuth 2.0 Auth Signup Confirmation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-oauthConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-oauthCallback
+      description: Axway Concludes OAuth 2.0 Auth
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-oauthCallback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-oauthAuthorize
+      description: Axway Initiates OAuth 2.0 Auth
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-oauthAuthorize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpCreateSAML
+      description: Axway Create Consumer SAML V2.0 IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-idpCreateSAML
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpCreateOIDC
+      description: Axway Create Consumer OIDC IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-idpCreateOIDC
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpRemove
+      description: Axway Remove Consumer IdP
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.provider-idpRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpUpdate
+      description: Axway Update Consumer IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-idpUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerUpdate
+      description: Axway Update Consumer Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-consumerUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerFindOne
+      description: Axway Find Consumer Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-consumerFindOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerRemove
+      description: Axway Delete a Consumer Organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.provider-consumerRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerCreate
+      description: Axway Create Consumer Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-consumerCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerFind
+      description: Axway Find Consumer Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-consumerFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-activity
+      description: Axway Get Marketplace Activity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-activity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-findOne
+      description: Axway Get Provider Marketplace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-remove
+      description: Axway Delete Provider Marketplace
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.provider-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-update
+      description: Axway Update Provider Marketplace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: role-find
+      description: Axway Get Roles Matching Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.role-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: role-findOne
+      description: Axway Get Role
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.role-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: session-query
+      description: Axway Find Sessions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.session-query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: session-find
+      description: Axway Get Session
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.session-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: session-remove
+      description: Axway Delete Session
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.session-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findOneSubscription
+      description: Axway Find Subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findOneSubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findSubscriptions
+      description: Axway Find Subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findSubscriptions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-create
+      description: Axway Create a Team
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.team-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-find
+      description: Axway Get Accessible Teams for the Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userAdd
+      description: Axway Add Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.team-userAdd
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userRemove
+      description: Axway Remove Member
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.team-userRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userUpdateRole
+      description: Axway Sets the Team Member Role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-userUpdateRole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userFind
+      description: Axway Get Team Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-userFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-findOne
+      description: Axway Find Team
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-remove
+      description: Axway Remove Team
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.team-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-update
+      description: Axway Update Team
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-create
+      description: Axway Send Events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.analytics-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-uploadAutomatic
+      description: Axway Uploads an Automatic Usage Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.usage-uploadAutomatic
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-find
+      description: Axway Fetches Usage Reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.usage-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-upload
+      description: Axway Uploads a Usage Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.usage-upload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-download
+      description: Axway Downloads a Usage Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.usage-download
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findUsage
+      description: Axway Organization Usage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findUsage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-updatePref
+      description: Axway Update a Single User Preference
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-updatePref
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findOrgs
+      description: Axway Get Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findOrgs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-updateCredentials
+      description: Axway Set Credentials for Tooling
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-updateCredentials
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-update
+      description: Axway Update User Profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findDomain
+      description: Axway Find Missing Domain Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findDomain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findAttribute
+      description: Axway Find a Mapped Attribute for a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findAttribute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findOne
+      description: Axway Get a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-remove
+      description: Axway Remove User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.user-remove
+      outputParameters:
+      - type: object
+        mapping: $.

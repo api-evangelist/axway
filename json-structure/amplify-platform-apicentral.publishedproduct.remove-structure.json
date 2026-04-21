@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral.publishedproduct.remove",
+  "description": "Published when a product is unpublished from a given marketplace.",
+  "type": "object"
+}

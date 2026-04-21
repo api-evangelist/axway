@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.org.user.primary",
+  "description": "Published when org primary contact is changed.\n\nUser guid of prior and new primary user is reflected in changes array entry in \"o\" and \"v\" fields respectively.",
+  "type": "object",
+  "properties": {
+    "changes": {
+      "type": "array",
+      "description": "Changes that were made.",
+      "items": {
+        "type": "object",
+        "required": [
+          "k"
+        ],
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": "Action indication for changes to sensitive data. Values represent added, changed, and removed respectively.",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "k": {
+            "type": "string",
+            "description": "The full path to the modified value."
+          },
+          "o": {
+            "description": "The original value."
+          },
+          "v": {
+            "description": "The new value."
+          }
+        }
+      }
+    }
+  }
+}

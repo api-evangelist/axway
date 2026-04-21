@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DataExport",
+  "description": "DataExport schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Document ID of the export.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "completed": {
+      "type": "datetime",
+      "description": "Date the export was completed",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "created": {
+      "$ref": "#/components/schemas/DefaultFields/properties/created"
+    },
+    "filename": {
+      "type": "string",
+      "format": "url",
+      "description": "Location the export is saved to.",
+      "example": "Example Name"
+    },
+    "guid": {
+      "type": "uuid",
+      "description": "`guid` of the export.",
+      "example": "example_value"
+    },
+    "items": {
+      "type": "array",
+      "description": "Items included in the export.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "user_metadata",
+          "user_activity",
+          "user_devices",
+          "orgs",
+          "org_metadata",
+          "org_activity",
+          "subscriptions",
+          "envs",
+          "teams",
+          "apps",
+          "providers",
+          "idps",
+          "domains"
+        ]
+      },
+      "example": [
+        "user_metadata"
+      ]
+    },
+    "org_guid": {
+      "type": "string",
+      "description": "`guid` of the org for org specific exports.",
+      "example": "example_value"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the export.",
+      "default": "pending",
+      "enum": [
+        "pending",
+        "complete",
+        "failed"
+      ],
+      "example": "pending"
+    },
+    "updated": {
+      "$ref": "#/components/schemas/DefaultFields/properties/updated"
+    },
+    "user_guid": {
+      "type": "string",
+      "description": "`guid` of the user that initiated the export.",
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "guid",
+    "items",
+    "status",
+    "user_guid"
+  ]
+}

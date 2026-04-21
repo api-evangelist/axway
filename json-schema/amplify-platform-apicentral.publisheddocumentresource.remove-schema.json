@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.publisheddocumentresource.remove-schema.json",
+  "title": "apicentral.publisheddocumentresource.remove",
+  "description": "Published when a document defined in the document library is made unavailable for use in the marketplace content.",
+  "type": "object"
+}

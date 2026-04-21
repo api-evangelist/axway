@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "a": 0,
+      "k": "example_value",
+      "o": "example_value",
+      "v": "example_value"
+    }
+  ],
+  "guid": "507f1f77bcf86cd799439011",
+  "lang_default": "example_value",
+  "lang_products": "example_value",
+  "lang_supported": "example_value",
+  "name": "Example Name"
+}

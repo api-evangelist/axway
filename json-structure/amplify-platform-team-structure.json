@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Team",
+  "description": "Team schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Document ID of the team.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "created": {
+      "type": "datetime",
+      "description": "Date created.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "default": {
+      "type": "boolean",
+      "description": "Whether the team is the default for the organization. May only be set by org administrator users.",
+      "default": false,
+      "example": true
+    },
+    "desc": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Description of the team.",
+      "maxLength": 200,
+      "x-no-tags": true,
+      "example": "example_value"
+    },
+    "guid": {
+      "type": "uuid",
+      "description": "`guid` of the team.",
+      "example": "example_value"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the team.",
+      "minLength": 2,
+      "maxLength": 100,
+      "x-no-tags": true,
+      "example": "Example Name"
+    },
+    "org_guid": {
+      "type": "uuid",
+      "description": "`guid` of the organization the team belongs to.",
+      "example": "example_value"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags assigned to the team.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "maxItems": 30,
+      "items": {
+        "type": "string",
+        "maxLength": 40
+      },
+      "example": [
+        "example_value"
+      ]
+    },
+    "updated": {
+      "type": "datetime",
+      "description": "Date updated.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "users": {
+      "type": "array",
+      "description": "Members that belong to this team and their roles.",
+      "default": [],
+      "items": {
+        "type": "object",
+        "required": [
+          "guid",
+          "roles"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "`guid` of the member."
+          },
+          "roles": {
+            "type": "array",
+            "description": "Array of role identifiers that are assigned to the member.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "consumer",
+                "subscription_admin",
+                "developer",
+                "catalog_manager",
+                "subscription_approver",
+                "api_access",
+                "insights",
+                "administrator",
+                "marketplace_admin"
+              ]
+            }
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the member.",
+            "default": "user",
+            "enum": [
+              "user",
+              "client"
+            ]
+          }
+        }
+      },
+      "example": [
+        {
+          "guid": "example_value",
+          "roles": [
+            "consumer"
+          ],
+          "type": "user"
+        }
+      ]
+    }
+  },
+  "required": [
+    "default",
+    "guid",
+    "name",
+    "org_guid",
+    "tags",
+    "users"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.idp.remove-schema.json",
+  "title": "marketplace.idp.remove",
+  "description": "Published when an Identity Provider is removed from a marketplace.",
+  "type": "object"
+}

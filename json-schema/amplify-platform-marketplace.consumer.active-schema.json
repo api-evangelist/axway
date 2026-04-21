@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.consumer.active-schema.json",
+  "title": "marketplace.consumer.active",
+  "description": "Published when a consumer organization is set active.",
+  "type": "object"
+}

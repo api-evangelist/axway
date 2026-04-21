@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventDataClient",
+  "description": "EventDataClient schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "client_guid": {
+      "$ref": "#/components/schemas/Client/properties/guid"
+    },
+    "client_id": {
+      "$ref": "#/components/schemas/Client/properties/client_id"
+    },
+    "client_name": {
+      "$ref": "#/components/schemas/Client/properties/name"
+    }
+  }
+}

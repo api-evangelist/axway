@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.idp.domain.confirm-schema.json",
+  "title": "platform.org.idp.domain.confirm",
+  "description": "Published when ownership of a domain is verified for an organization.",
+  "type": "object"
+}

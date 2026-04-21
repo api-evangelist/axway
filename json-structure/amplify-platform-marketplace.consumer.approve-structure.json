@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.consumer.approve",
+  "description": "marketplace.consumer.approve schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "consumer_org_guid": {
+      "$ref": "#/components/schemas/Org/properties/guid"
+    },
+    "consumer_org_id": {
+      "$ref": "#/components/schemas/Org/properties/org_id"
+    },
+    "consumer_org_name": {
+      "$ref": "#/components/schemas/Org/properties/name"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

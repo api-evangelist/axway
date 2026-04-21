@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral.apiservice.update",
+  "description": "Published when a top-level Central asset is updated.",
+  "type": "object"
+}

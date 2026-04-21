@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-application-schema.json",
+  "title": "Application",
+  "description": "Application schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "ID of the application.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "apis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "example_value"
+      ]
+    },
+    "automatic": {
+      "type": "boolean",
+      "example": true
+    },
+    "env": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "guid": {
+      "type": "string",
+      "description": "Application guid.",
+      "example": "example_value"
+    },
+    "org_guid": {
+      "type": "string",
+      "description": "The `guid` of the org the application belongs to.",
+      "example": "example_value"
+    },
+    "platform": {
+      "type": "string",
+      "description": "Name of the platform the application being developed for.",
+      "example": "example_value"
+    },
+    "provider_guid": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "providers": {
+      "type": "array",
+      "description": "The provider marketplaces the application is published to. Set for \"product\" and \"documentresource\" applications.",
+      "items": {
+        "type": "object",
+        "required": [
+          "guid"
+        ],
+        "properties": {
+          "guid": {
+            "type": "string",
+            "description": "The `guid` of the provider marketplace."
+          },
+          "published_id": {
+            "type": "string",
+            "description": "The published id of the application in the provider marketplace."
+          }
+        }
+      },
+      "example": [
+        {
+          "guid": "example_value",
+          "published_id": "507f1f77bcf86cd799439011"
+        }
+      ]
+    },
+    "source": {
+      "type": "string",
+      "x-no-tags": true,
+      "example": "example_value"
+    },
+    "subtype": {
+      "type": "string",
+      "x-no-tags": true,
+      "example": "example_value"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the application",
+      "x-no-tags": true,
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "guid",
+    "name",
+    "org_guid",
+    "platform",
+    "type"
+  ]
+}

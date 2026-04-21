@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-environment-schema.json",
+  "title": "Environment",
+  "description": "Environment schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Document ID of the environment.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "governance": {
+      "type": "string",
+      "description": "Governance of the environment.",
+      "enum": [
+        "Customer Managed",
+        "Axway Managed"
+      ],
+      "example": "Customer Managed"
+    },
+    "guid": {
+      "type": "string",
+      "description": "GUID of the environment.",
+      "example": "example_value"
+    },
+    "isProduction": {
+      "type": "boolean",
+      "description": "Whether the environment is a production environment.",
+      "default": false,
+      "example": true
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the environment",
+      "x-no-tags": true,
+      "example": "Example Name"
+    },
+    "org_guid": {
+      "type": "string",
+      "description": "`guid` of the organization the environment is associated to.",
+      "example": "example_value"
+    },
+    "source": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of environment",
+      "default": "usage",
+      "enum": [
+        "usage",
+        "integration"
+      ],
+      "example": "usage"
+    },
+    "url": {
+      "type": "string",
+      "format": "secure-url",
+      "description": "URL of the integration environment.",
+      "example": "https://example.com"
+    }
+  },
+  "required": [
+    "guid",
+    "isProduction",
+    "name",
+    "org_guid",
+    "type"
+  ]
+}

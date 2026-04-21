@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-event-data-modified-by-schema.json",
+  "title": "EventDataModifiedBy",
+  "description": "\"platform\" or received value from event's `data.lastModifiedVia`.",
+  "type": "string"
+}

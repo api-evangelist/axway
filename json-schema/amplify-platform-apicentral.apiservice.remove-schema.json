@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.apiservice.remove-schema.json",
+  "title": "apicentral.apiservice.remove",
+  "description": "Published when a top-level Central asset is updated.",
+  "type": "object"
+}

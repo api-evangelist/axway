@@ -1,0 +1,12 @@
+{
+  "end_date": 1714000000000,
+  "env_guid": "example_value",
+  "guid": "example_value",
+  "name": "Example Name",
+  "org_guid": "example_value",
+  "product_name": "Example Name",
+  "product_version": "example_value",
+  "start_date": 1714000000000,
+  "status": "VALIDATING",
+  "upload_method": "automatic"
+}

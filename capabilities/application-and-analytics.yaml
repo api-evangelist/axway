@@ -1,0 +1,607 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Axway Application and Analytics
+  description: Manage applications, clients, monitor analytics, usage, activity, and data exports on the Axway Amplify platform.
+  tags:
+  - Axway
+  - Applications
+  - Analytics
+  - Monitoring
+  created: '2026-04-21'
+  modified: '2026-04-21'
+binds:
+- namespace: env
+  keys:
+    AXWAY_BEARER_TOKEN: AXWAY_BEARER_TOKEN
+capability:
+  consumes:
+  - import: amplify-platform
+    location: ./shared/amplify-platform.yaml
+  exposes:
+  - type: rest
+    port: 8082
+    namespace: application-and-analytics-api
+    description: Unified REST API for manage applications, clients, monitor analytics, usage, activity, and data exports on the axway amplify platform.
+    resources:
+    - path: /v1/app
+      name: app
+      description: App operations
+      operations:
+      - method: POST
+        name: app-create
+        description: Axway Create App
+        call: amplify-platform.app-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: app-find
+        description: Axway Find Apps
+        call: amplify-platform.app-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: app-findOne
+        description: Axway Find App
+        call: amplify-platform.app-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: app-remove
+        description: Axway Remove App
+        call: amplify-platform.app-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: app-update
+        description: Axway Update App
+        call: amplify-platform.app-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/client
+      name: client
+      description: Client operations
+      operations:
+      - method: POST
+        name: client-create
+        description: Axway Add Service Account
+        call: amplify-platform.client-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: client-find
+        description: Axway Get Service Accounts
+        call: amplify-platform.client-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: client-download
+        description: Axway Get Service Account JSON Representation
+        call: amplify-platform.client-download
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: client-findOne
+        description: Axway Get a Service Account
+        call: amplify-platform.client-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: client-remove
+        description: Axway Delete Service Account
+        call: amplify-platform.client-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: client-update
+        description: Axway Update Service Account
+        call: amplify-platform.client-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analytics
+      name: analytics
+      description: Analytics operations
+      operations:
+      - method: GET
+        name: analytics-query
+        description: Axway Analytics Query Using Lexus
+        call: amplify-platform.analytics-query
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analytics-error
+        description: Axway Report an Error
+        call: amplify-platform.analytics-error
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: analytics-customCreate
+        description: Axway Create a Custom Query
+        call: amplify-platform.analytics-customCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analytics-customFind
+        description: Axway Find Custom Queries
+        call: amplify-platform.analytics-customFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: analytics-customRemove
+        description: Axway Delete a Custom Query
+        call: amplify-platform.analytics-customRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: analytics-customUpdate
+        description: Axway Update a Custom Query
+        call: amplify-platform.analytics-customUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: analytics-customFindOne
+        description: Axway Get Custom Query
+        call: amplify-platform.analytics-customFindOne
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/usage
+      name: usage
+      description: Usage operations
+      operations:
+      - method: POST
+        name: usage-uploadAutomatic
+        description: Axway Uploads an Automatic Usage Report
+        call: amplify-platform.usage-uploadAutomatic
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: usage-find
+        description: Axway Fetches Usage Reports
+        call: amplify-platform.usage-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: usage-upload
+        description: Axway Uploads a Usage Report
+        call: amplify-platform.usage-upload
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: usage-download
+        description: Axway Downloads a Usage Report
+        call: amplify-platform.usage-download
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-findUsage
+        description: Axway Organization Usage
+        call: amplify-platform.org-findUsage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/activity
+      name: activity
+      description: Activity operations
+      operations:
+      - method: GET
+        name: activity-findEvents
+        description: Axway Get Activity Event Names
+        call: amplify-platform.activity-findEvents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: activity-find
+        description: Axway Get Activity
+        call: amplify-platform.activity-find
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/export
+      name: export
+      description: Export operations
+      operations:
+      - method: POST
+        name: export-create
+        description: Axway Export Data
+        call: amplify-platform.export-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: export-findAll
+        description: Axway Find Exports
+        call: amplify-platform.export-findAll
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: export-download
+        description: Axway Retrieve a Download Url
+        call: amplify-platform.export-download
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: export-remove
+        description: Axway Remove Export
+        call: amplify-platform.export-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/telemetry
+      name: telemetry
+      description: Telemetry operations
+      operations:
+      - method: POST
+        name: analytics-create
+        description: Axway Send Events
+        call: amplify-platform.analytics-create
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/aca
+      name: aca
+      description: Aca operations
+      operations:
+      - method: PUT
+        name: aca-setMetadata
+        description: Axway Set Metadata by ID
+        call: amplify-platform.aca-setMetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: aca-findOne
+        description: Axway Find Crash Record by ID
+        call: amplify-platform.aca-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9092
+    namespace: application-and-analytics-mcp
+    transport: http
+    description: MCP server for AI-assisted manage applications, clients, monitor analytics, usage, activity, and data exports on the axway amplify platform.
+    tools:
+    - name: app-create
+      description: Axway Create App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.app-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-find
+      description: Axway Find Apps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.app-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-findOne
+      description: Axway Find App
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.app-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-remove
+      description: Axway Remove App
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.app-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: app-update
+      description: Axway Update App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.app-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-create
+      description: Axway Add Service Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.client-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-find
+      description: Axway Get Service Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-download
+      description: Axway Get Service Account JSON Representation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-download
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-findOne
+      description: Axway Get a Service Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-remove
+      description: Axway Delete Service Account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.client-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: client-update
+      description: Axway Update Service Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.client-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-query
+      description: Axway Analytics Query Using Lexus
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-error
+      description: Axway Report an Error
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.analytics-error
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customCreate
+      description: Axway Create a Custom Query
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.analytics-customCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customFind
+      description: Axway Find Custom Queries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-customFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customRemove
+      description: Axway Delete a Custom Query
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.analytics-customRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customUpdate
+      description: Axway Update a Custom Query
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-customUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-customFindOne
+      description: Axway Get Custom Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.analytics-customFindOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-uploadAutomatic
+      description: Axway Uploads an Automatic Usage Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.usage-uploadAutomatic
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-find
+      description: Axway Fetches Usage Reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.usage-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-upload
+      description: Axway Uploads a Usage Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.usage-upload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: usage-download
+      description: Axway Downloads a Usage Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.usage-download
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findUsage
+      description: Axway Organization Usage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findUsage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activity-findEvents
+      description: Axway Get Activity Event Names
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.activity-findEvents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activity-find
+      description: Axway Get Activity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.activity-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-create
+      description: Axway Export Data
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.export-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-findAll
+      description: Axway Find Exports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.export-findAll
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-download
+      description: Axway Retrieve a Download Url
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.export-download
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-remove
+      description: Axway Remove Export
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.export-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: analytics-create
+      description: Axway Send Events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.analytics-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aca-setMetadata
+      description: Axway Set Metadata by ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.aca-setMetadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aca-findOne
+      description: Axway Find Crash Record by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.aca-findOne
+      outputParameters:
+      - type: object
+        mapping: $.

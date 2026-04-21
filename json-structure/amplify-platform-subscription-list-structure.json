@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SubscriptionList",
+  "description": "A list of Subscription objects.",
+  "type": "array"
+}

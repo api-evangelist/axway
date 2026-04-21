@@ -1,0 +1,12 @@
+{
+  "from": "example_value",
+  "idp": {
+    "id": "507f1f77bcf86cd799439011",
+    "name": {}
+  },
+  "ip": "10.0.0.1",
+  "role": "administrator",
+  "roles": [
+    {}
+  ]
+}

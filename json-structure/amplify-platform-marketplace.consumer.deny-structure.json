@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.consumer.deny",
+  "description": "Published when a consumer organization sign-up denied.",
+  "type": "object"
+}

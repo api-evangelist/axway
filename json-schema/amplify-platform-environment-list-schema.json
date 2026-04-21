@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-environment-list-schema.json",
+  "title": "EnvironmentList",
+  "description": "A list of Environment objects.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Environment"
+  }
+}

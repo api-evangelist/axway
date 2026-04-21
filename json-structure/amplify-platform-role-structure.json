@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Role",
+  "description": "Role schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "client": {
+      "type": "boolean",
+      "description": "Whether the role can be assigned to a client.",
+      "x-deprecated": true,
+      "example": true
+    },
+    "consumer": {
+      "type": "boolean",
+      "description": "Whether the role is assignable on consumer org members (bypassing all other requirements for role).",
+      "example": true
+    },
+    "default": {
+      "type": "boolean",
+      "description": "Whether the role is default.",
+      "example": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Indicates the role is deprecated and no longer assignable",
+      "example": true
+    },
+    "entitlement": {
+      "type": "string",
+      "description": "Entitlement which must be active to allow the role.",
+      "example": "example_value"
+    },
+    "id": {
+      "type": "string",
+      "description": "Identifier of the role.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "name": {
+      "type": "string",
+      "description": "The role's name.",
+      "minLength": 1,
+      "maxLength": 40,
+      "example": "Example Name"
+    },
+    "order": {
+      "type": "number",
+      "description": "Indicates the relative access rights for the role. The lower the value, the more access the role has.",
+      "example": 1.0
+    },
+    "org": {
+      "type": "boolean",
+      "description": "Whether the role can be assigned as a org-level role.",
+      "example": true
+    },
+    "partner": {
+      "type": "string",
+      "description": "Product name key for service to which a \"service role\" applies.",
+      "example": "example_value"
+    },
+    "platform_restricted": {
+      "type": "boolean",
+      "description": "Whether the user has limited platform visibility and capabilities",
+      "example": true
+    },
+    "product": {
+      "type": "string",
+      "description": "Partner that must be provisioned and have an active entitlement for to allow the role.",
+      "example": "example_value"
+    },
+    "required_default_roles": {
+      "type": "array",
+      "description": "Org-level default roles a user must be assigned in order to allow the service role.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "example_value"
+      ]
+    },
+    "subscription": {
+      "type": "array",
+      "description": "Subscriptions for which one or more of is required to allow the role.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "10.0.0.1"
+      ]
+    },
+    "team": {
+      "type": "boolean",
+      "description": "Whether the role can be assigned as a team-level role.",
+      "example": true
+    },
+    "web_only": {
+      "type": "boolean",
+      "description": "Indicates that users with the role are only able to access the platform in web contexts.",
+      "example": true
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

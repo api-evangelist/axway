@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.user.social.enable-schema.json",
+  "title": "platform.user.social.enable",
+  "description": "Published when an OAuth service provider is added for a user.",
+  "type": "object",
+  "properties": {
+    "service": {
+      "type": "string",
+      "description": "An identifier for the service.",
+      "enum": [
+        "github",
+        "gitlab",
+        "google"
+      ],
+      "example": "github"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Name of the service.",
+      "enum": [
+        "GitHub",
+        "GitLab",
+        "Google"
+      ],
+      "example": "GitHub"
+    }
+  }
+}

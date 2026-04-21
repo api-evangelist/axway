@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.app.remove-schema.json",
+  "title": "platform.app.remove",
+  "description": "Published when an application is removed.",
+  "type": "object",
+  "properties": {
+    "app_guid": {
+      "$ref": "#/components/schemas/Application/properties/guid"
+    },
+    "app_name": {
+      "$ref": "#/components/schemas/Application/then/properties/name"
+    }
+  }
+}

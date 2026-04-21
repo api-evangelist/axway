@@ -1,0 +1,18 @@
+{
+  "added_roles": [
+    "administrator"
+  ],
+  "changes": [
+    {
+      "a": 0,
+      "k": "example_value",
+      "o": "example_value",
+      "v": "example_value"
+    }
+  ],
+  "previous_role": "administrator",
+  "removed_roles": [
+    "administrator"
+  ],
+  "role": "administrator"
+}

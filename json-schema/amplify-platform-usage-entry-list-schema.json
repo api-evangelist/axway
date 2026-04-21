@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-usage-entry-list-schema.json",
+  "title": "UsageEntryList",
+  "description": "A list of UsageEntry objects.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/UsageEntry"
+  }
+}

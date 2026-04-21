@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.user.idp.update-schema.json",
+  "title": "platform.org.user.idp.update",
+  "description": "Published when an Identity Provider requirement is made for a user in an organization.",
+  "type": "object",
+  "properties": {
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider associated to the organization.",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/name"
+        }
+      },
+      "example": {
+        "id": {},
+        "name": {}
+      }
+    },
+    "modified_by": {
+      "type": "string",
+      "description": "\"platform\" or received value from event's `data.lastModifiedVia`."
+    }
+  }
+}

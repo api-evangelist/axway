@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "com.appcelerator.platform.org.user.remove",
+  "description": "Published when a user is removed/uninvited from an organization.",
+  "type": "object"
+}

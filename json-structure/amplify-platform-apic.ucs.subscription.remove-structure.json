@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apic.ucs.subscription.remove",
+  "description": "Published when a subscription of a catalog asset is removed.",
+  "type": "object"
+}

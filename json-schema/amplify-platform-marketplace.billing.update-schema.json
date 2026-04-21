@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.billing.update-schema.json",
+  "title": "marketplace.billing.update",
+  "description": "Published when a marketplace billing settings are changed.",
+  "type": "object"
+}

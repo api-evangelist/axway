@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-role-list-schema.json",
+  "title": "RoleList",
+  "description": "A list of Role objects.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Role"
+  }
+}

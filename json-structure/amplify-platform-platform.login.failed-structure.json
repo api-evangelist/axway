@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.login.failed",
+  "description": "Published when a user sign in fails.",
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "string",
+      "description": "Client type."
+    },
+    "ip": {
+      "type": "string",
+      "description": "Anonymized IP address.",
+      "example": "10.0.0.1"
+    }
+  }
+}

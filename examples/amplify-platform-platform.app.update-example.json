@@ -1,0 +1,18 @@
+{
+  "app": {
+    "guid": {},
+    "name": {},
+    "platform": {},
+    "provider_guid": {},
+    "source": {},
+    "type": {}
+  },
+  "changes": [
+    {
+      "a": 0,
+      "k": "example_value",
+      "o": "example_value",
+      "v": "example_value"
+    }
+  ]
+}

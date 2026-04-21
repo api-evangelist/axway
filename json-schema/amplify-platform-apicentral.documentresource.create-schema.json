@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.documentresource.create-schema.json",
+  "title": "apicentral.documentresource.create",
+  "description": "Published when a document defined in the document library is created.",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "maxLength": 350,
+      "example": "An example description"
+    },
+    "fileType": {
+      "type": "string",
+      "description": "For markdown documents the fileType will be \"markdown\". For document that respresent external URLs, we don't know the type and the fileType will be missing.",
+      "example": "example_value"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "catalog"
+      ],
+      "example": "catalog"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "binary",
+        "url"
+      ],
+      "example": "text"
+    },
+    "version": {
+      "type": "string",
+      "description": "Document version",
+      "maxLength": 30,
+      "example": "example_value"
+    }
+  }
+}

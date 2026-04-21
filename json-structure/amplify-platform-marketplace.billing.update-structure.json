@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.billing.update",
+  "description": "Published when a marketplace billing settings are changed.",
+  "type": "object"
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.terms.accept-schema.json",
+  "title": "platform.terms.accept",
+  "description": "Published when Terms of Use are accepted by a user.",
+  "type": "object"
+}

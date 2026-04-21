@@ -1,0 +1,6 @@
+{
+  "agent_type": "DiscoveryAgent",
+  "dataplane_type": "example_value",
+  "envId": "507f1f77bcf86cd799439011",
+  "group": "management"
+}

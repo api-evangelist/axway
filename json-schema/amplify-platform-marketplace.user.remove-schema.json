@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.user.remove-schema.json",
+  "title": "marketplace.user.remove",
+  "description": "Published when a consumer organization user is deleted.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    },
+    "orgs": {
+      "type": "array",
+      "description": "Array of orgs the user was a member of",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "$ref": "#/components/schemas/Org/properties/guid"
+          },
+          "name": {
+            "$ref": "#/components/schemas/Org/properties/name"
+          },
+          "org_id": {
+            "$ref": "#/components/schemas/Org/properties/org_id"
+          }
+        }
+      },
+      "example": [
+        {
+          "guid": {},
+          "name": {},
+          "org_id": {}
+        }
+      ]
+    }
+  }
+}

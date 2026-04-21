@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.client.create",
+  "description": "Published when an organization admin creates a Service Account client.",
+  "type": "object",
+  "properties": {
+    "roles": {
+      "$ref": "#/components/schemas/Client/properties/roles"
+    }
+  }
+}

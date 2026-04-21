@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-user-teams-schema.json",
+  "title": "UserTeams",
+  "description": "List of teams the user belongs to.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "description": "Teams a user belongs to.",
+    "properties": {
+      "default": {
+        "$ref": "#/components/schemas/Team/properties/default"
+      },
+      "guid": {
+        "$ref": "#/components/schemas/Team/properties/guid"
+      },
+      "name": {
+        "$ref": "#/components/schemas/Team/properties/name"
+      },
+      "roles": {
+        "type": "array",
+        "description": "A list of roles the user has in the team",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/components/schemas/Role/properties/id"
+            },
+            "name": {
+              "$ref": "#/components/schemas/Role/properties/name"
+            }
+          }
+        }
+      },
+      "tags": {
+        "$ref": "#/components/schemas/Team/properties/tags"
+      }
+    }
+  }
+}

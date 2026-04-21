@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-api_central.provisioned-schema.json",
+  "title": "api_central.provisioned",
+  "description": "Published when a Engage is successfully provisioned.",
+  "type": "object",
+  "properties": {
+    "org_guid": {
+      "$ref": "#/components/schemas/Org/properties/guid"
+    },
+    "org_id": {
+      "$ref": "#/components/schemas/Org/properties/org_id"
+    },
+    "success": {
+      "type": "boolean",
+      "example": true
+    },
+    "url": {
+      "type": "string",
+      "example": "https://example.com"
+    },
+    "user_guid": {
+      "$ref": "#/components/schemas/User/properties/guid"
+    }
+  }
+}

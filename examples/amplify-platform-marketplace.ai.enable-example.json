@@ -1,0 +1,13 @@
+{
+  "changes": [
+    {
+      "a": 0,
+      "k": "example_value",
+      "o": "example_value",
+      "v": "example_value"
+    }
+  ],
+  "embedded": "example_value",
+  "stream": "example_value",
+  "url": "https://example.com"
+}

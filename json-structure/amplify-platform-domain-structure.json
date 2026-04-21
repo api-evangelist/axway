@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Domain",
+  "description": "Domain schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Document ID of the Domain.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "orgs": {
+      "type": "array",
+      "description": "Organizations associated to this Domain, their association state, and any associated Identity Providers.",
+      "default": [],
+      "items": {
+        "type": "object",
+        "required": [
+          "guid",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date the Identity Provider was enabled for users on the Domain."
+          },
+          "associated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date the Domain was confirmed as associated to the Identity Provider."
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "`guid` of the Organization the Domain is associated to."
+          },
+          "idp": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Identifier of the Identity Provider associated to the Domain for the Organization."
+          },
+          "status": {
+            "type": "number",
+            "description": "Indicator of the Organizations confirmed association to the Domain.",
+            "enum": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "verified": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date the Domain was verified as owned by the Organization."
+          }
+        }
+      },
+      "example": [
+        {
+          "enabled": "2026-04-21T00:00:00Z",
+          "associated": "2026-04-21T00:00:00Z",
+          "guid": "example_value",
+          "idp": "example_value",
+          "status": 0,
+          "verified": "2026-04-21T00:00:00Z"
+        }
+      ]
+    },
+    "provider_guid": {
+      "type": "uuid",
+      "description": "GUID identifier of the owning Provider if the Domain is configured in context of consumers of a marketplace.",
+      "example": "example_value"
+    },
+    "tld": {
+      "type": "string",
+      "format": "domain",
+      "description": "Domain name.",
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "orgs",
+    "tld"
+  ]
+}

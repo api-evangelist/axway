@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.login-schema.json",
+  "title": "platform.login",
+  "description": "Published when a user signs in from any client type (tooling vs. browser).",
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "string",
+      "description": "Client type."
+    },
+    "ip": {
+      "type": "string",
+      "description": "Anonymized IP address.",
+      "example": "10.0.0.1"
+    }
+  }
+}

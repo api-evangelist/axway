@@ -1,0 +1,46 @@
+{
+  "admin_teams": "example_value",
+  "certificate_expires": "example_value",
+  "changes": [
+    {
+      "a": 0,
+      "k": "example_value",
+      "o": "example_value",
+      "v": "example_value"
+    }
+  ],
+  "consume_teams": "example_value",
+  "consumer": "example_value",
+  "consumer_approve": "example_value",
+  "guid": "507f1f77bcf86cd799439011",
+  "help_menu": "example_value",
+  "idp": "example_value",
+  "idp_hint": "example_value",
+  "lang_default": "example_value",
+  "name": "Example Name",
+  "oauth": {
+    "github": {
+      "enabled": {},
+      "secret_updated": {}
+    },
+    "gitlab": {
+      "enabled": {},
+      "secret_updated": {}
+    },
+    "google": {
+      "enabled": {},
+      "secret_updated": {}
+    }
+  },
+  "public": "example_value",
+  "publish_teams": "example_value",
+  "reviews": "example_value",
+  "signup": "example_value",
+  "sitename": "Example Name",
+  "subdomain": "example_value",
+  "terms": "example_value",
+  "terms_updated": "example_value",
+  "terms_url": "https://example.com",
+  "url": "https://example.com",
+  "versions": "example_value"
+}

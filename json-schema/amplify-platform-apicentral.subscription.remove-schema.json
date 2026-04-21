@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.subscription.remove-schema.json",
+  "title": "apicentral.subscription.remove",
+  "description": "Published when a marketplace subscription is removed.",
+  "type": "object"
+}

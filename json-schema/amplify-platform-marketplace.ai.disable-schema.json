@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.ai.disable-schema.json",
+  "title": "marketplace.ai.disable",
+  "description": "Published when AI integration is disabled for a marketplace.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

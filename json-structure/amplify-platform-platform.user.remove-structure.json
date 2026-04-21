@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.user.remove",
+  "description": "Published when a user is deleted from Platform.",
+  "type": "object",
+  "properties": {
+    "orgs": {
+      "type": "array",
+      "description": "Array of orgs the user was a member of",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "$ref": "#/components/schemas/Org/properties/guid"
+          },
+          "name": {
+            "$ref": "#/components/schemas/Org/properties/name"
+          },
+          "org_id": {
+            "$ref": "#/components/schemas/Org/properties/org_id"
+          }
+        }
+      },
+      "example": [
+        {
+          "guid": {},
+          "name": {},
+          "org_id": {}
+        }
+      ]
+    }
+  }
+}

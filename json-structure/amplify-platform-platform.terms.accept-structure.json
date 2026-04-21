@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.terms.accept",
+  "description": "Published when Terms of Use are accepted by a user.",
+  "type": "object"
+}

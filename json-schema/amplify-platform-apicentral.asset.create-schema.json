@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.asset.create-schema.json",
+  "title": "apicentral.asset.create",
+  "description": "Published when a Central asset is created.",
+  "type": "object",
+  "properties": {
+    "envIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Environment/properties/guid"
+      },
+      "example": [
+        {}
+      ]
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "catalog"
+      ],
+      "example": "catalog"
+    }
+  }
+}

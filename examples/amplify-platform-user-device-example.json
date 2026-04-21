@@ -1,0 +1,16 @@
+{
+  "authorized": true,
+  "authorized_date": "2026-04-21T00:00:00Z",
+  "browserVersion": "example_value",
+  "created": "2026-04-21T00:00:00Z",
+  "ipaddress": "10.0.0.1",
+  "origin": "email",
+  "osVersion": "example_value",
+  "updated": "2026-04-21T00:00:00Z",
+  "user_device": {
+    "browserFamily": "example_value",
+    "device_id": "507f1f77bcf86cd799439011",
+    "osFamily": "example_value",
+    "user": "example_value"
+  }
+}

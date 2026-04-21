@@ -1,0 +1,22 @@
+{
+  "client": true,
+  "consumer": true,
+  "default": true,
+  "disabled": true,
+  "entitlement": "example_value",
+  "id": "507f1f77bcf86cd799439011",
+  "name": "Example Name",
+  "order": 1.0,
+  "org": true,
+  "partner": "example_value",
+  "platform_restricted": true,
+  "product": "example_value",
+  "required_default_roles": [
+    "example_value"
+  ],
+  "subscription": [
+    "10.0.0.1"
+  ],
+  "team": true,
+  "web_only": true
+}

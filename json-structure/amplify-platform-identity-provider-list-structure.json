@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "IdentityProviderList",
+  "description": "A list of IdentityProvider objects.",
+  "type": "array"
+}

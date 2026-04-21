@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.subscription.expired-schema.json",
+  "title": "platform.subscription.expired",
+  "description": "Published when a subscription expires past its end date and any dunning period.",
+  "type": "object",
+  "properties": {
+    "modified_by": {
+      "type": "string",
+      "description": "\"platform\" or received value from event's `data.lastModifiedVia`."
+    },
+    "subscription": {
+      "type": "object",
+      "description": "Organization entitlements",
+      "required": [
+        "id",
+        "product",
+        "plan",
+        "entitlements"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "end_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the subscription is active to.",
+          "example": "2026-04-21T00:00:00Z"
+        },
+        "entitlements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "value"
+            ],
+            "properties": {
+              "key": {
+                "type": "string",
+                "description": "Entitlement key."
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "boolean",
+                    "description": "Boolean entitlement, granting access to a feature of capability."
+                  },
+                  {
+                    "type": "integer",
+                    "description": "Integer entitlement value, granting quota of allow transactions or requests per month.",
+                    "maximum": 9999999999999
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numeric entitlement value, granting allow volumes of network throughput or storage.",
+                    "maximum": 9999999999999
+                  },
+                  {
+                    "type": "array",
+                    "description": "Set entitlement, listing provisioned service or environment availability.",
+                    "items": {
+                      "type": "string",
+                      "description": "Service or environment key."
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "example": [
+            {
+              "key": "example_value",
+              "value": "example_value"
+            }
+          ]
+        },
+        "governance": {
+          "type": "string",
+          "description": "Governance model for the subscription.",
+          "enum": [
+            "SaaS",
+            "Customer Managed",
+            "Axway Managed"
+          ],
+          "example": "SaaS"
+        },
+        "id": {
+          "type": "string",
+          "description": "Identifier for the subscription.",
+          "example": "507f1f77bcf86cd799439011"
+        },
+        "opportunity_id": {
+          "type": "number",
+          "description": "Opportunity ID associated with the subscription.",
+          "minimum": 10000,
+          "maximum": 999999,
+          "example": 1.0
+        },
+        "plan": {
+          "type": "string",
+          "description": "Which plan the subscription is for.",
+          "example": "example_value"
+        },
+        "product": {
+          "type": "string",
+          "description": "Name to identify the product, e.g. APIM, B2Bi.",
+          "example": "example_value"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "Official product name.",
+          "readOnly": true,
+          "example": "Example Name"
+        },
+        "source": {
+          "type": "string",
+          "description": "Source of this subscription.",
+          "enum": [
+            "API",
+            "UI",
+            "Platform",
+            "Billing"
+          ],
+          "example": "API"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the subscription is active from.",
+          "example": "2026-04-21T00:00:00Z"
+        },
+        "tier": {
+          "type": "string",
+          "description": "Whether the subscription is a trial or paid for.",
+          "enum": [
+            "paid",
+            "trial",
+            "free"
+          ],
+          "example": "paid"
+        }
+      }
+    }
+  }
+}

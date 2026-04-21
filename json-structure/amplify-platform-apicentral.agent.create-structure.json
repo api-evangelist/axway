@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral.agent.create",
+  "description": "Published when a Central agent is created.",
+  "type": "object",
+  "properties": {
+    "agent_type": {
+      "type": "string",
+      "enum": [
+        "DiscoveryAgent",
+        "TraceabilityAgent"
+      ],
+      "example": "DiscoveryAgent"
+    },
+    "dataplane_type": {
+      "type": "string",
+      "description": "Gateway the agent links to.",
+      "example": "example_value"
+    },
+    "envId": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "management"
+      ],
+      "example": "management"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.asset.update-schema.json",
+  "title": "apicentral.asset.update",
+  "description": "Published when a Central asset is updated.",
+  "type": "object"
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Event",
+  "description": "Event schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "All custom data must go here.",
+      "example": {}
+    },
+    "event": {
+      "type": "string",
+      "description": "The name of the event.",
+      "example": "example_value"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique event identifier.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "timestamp": {
+      "type": "number",
+      "description": "A UTC timestamp in miliseconds.",
+      "example": 1.0
+    },
+    "version": {
+      "type": "string",
+      "description": "Specification version in use.",
+      "enum": [
+        "4"
+      ],
+      "example": "4"
+    }
+  },
+  "required": [
+    "event"
+  ]
+}

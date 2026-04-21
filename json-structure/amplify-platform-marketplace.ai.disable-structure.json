@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.ai.disable",
+  "description": "Published when AI integration is disabled for a marketplace.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

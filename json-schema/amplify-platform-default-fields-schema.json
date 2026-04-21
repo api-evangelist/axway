@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-default-fields-schema.json",
+  "title": "DefaultFields",
+  "description": "DefaultFields schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date created.",
+      "readOnly": true,
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "created_by": {
+      "type": "object",
+      "description": "Creator user or client.",
+      "readOnly": true,
+      "properties": {
+        "guid": {
+          "type": "string",
+          "description": "`guid` of the creator."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the creator.",
+          "enum": [
+            "user",
+            "client"
+          ]
+        }
+      },
+      "example": {
+        "guid": "example_value",
+        "type": "user"
+      }
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date last updated.",
+      "readOnly": true,
+      "example": "2026-04-21T00:00:00Z"
+    }
+  }
+}

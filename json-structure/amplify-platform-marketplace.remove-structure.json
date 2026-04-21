@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.remove",
+  "description": "Published when a marketplace is removed.\n\n`subdomain` prop will always be included. Once url is established, `subdomain` prop value will be passed as the `guid`.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    },
+    "subdomain": {
+      "$ref": "#/components/schemas/Provider/properties/subdomain"
+    },
+    "url": {
+      "$ref": "#/components/schemas/Provider/properties/url"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.team.default-schema.json",
+  "title": "platform.team.default",
+  "description": "Published when a team is changed to the default within an org.",
+  "type": "object",
+  "properties": {
+    "team": {
+      "type": "object",
+      "description": "The created team",
+      "properties": {
+        "default": {
+          "$ref": "#/components/schemas/Team/properties/default"
+        },
+        "guid": {
+          "$ref": "#/components/schemas/Team/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/Team/properties/name"
+        }
+      },
+      "example": {
+        "default": {},
+        "guid": {},
+        "name": {}
+      }
+    }
+  }
+}

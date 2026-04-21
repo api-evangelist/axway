@@ -1,0 +1,871 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Axway Organization Management
+  description: Manage organizations, subscriptions, domains, entitlements, and environments on the Axway Amplify platform.
+  tags:
+  - Axway
+  - Organization
+  - Enterprise
+  - Administration
+  created: '2026-04-21'
+  modified: '2026-04-21'
+binds:
+- namespace: env
+  keys:
+    AXWAY_BEARER_TOKEN: AXWAY_BEARER_TOKEN
+capability:
+  consumes:
+  - import: amplify-platform
+    location: ./shared/amplify-platform.yaml
+  exposes:
+  - type: rest
+    port: 8081
+    namespace: organization-management-api
+    description: Unified REST API for manage organizations, subscriptions, domains, entitlements, and environments on the axway amplify platform.
+    resources:
+    - path: /v1/org
+      name: org
+      description: Org operations
+      operations:
+      - method: GET
+        name: org-findEnvs
+        description: Axway Find Organization Environments
+        call: amplify-platform.org-findEnvs
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-userPrimary
+        description: Axway Sets the Primary Contract for the Org
+        call: amplify-platform.org-userPrimary
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-userFindOne
+        description: Axway Get Org User
+        call: amplify-platform.org-userFindOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: org-userRemove
+        description: Axway Remove User
+        call: amplify-platform.org-userRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-userUpdate
+        description: Axway Update Org Member Association
+        call: amplify-platform.org-userUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-userCreate
+        description: Axway Add User
+        call: amplify-platform.org-userCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-userFind
+        description: Axway Get Members
+        call: amplify-platform.org-userFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-stats
+        description: Axway Get Organization Stats
+        call: amplify-platform.org-stats
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-findOne
+        description: Axway Get Organization
+        call: amplify-platform.org-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: org-remove
+        description: Axway Delete Organization
+        call: amplify-platform.org-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-update
+        description: Axway Update Organization
+        call: amplify-platform.org-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/domain
+      name: domain
+      description: Domain operations
+      operations:
+      - method: POST
+        name: org-domainAssociate
+        description: Axway Trigger Domain Association Flow
+        call: amplify-platform.org-domainAssociate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainAssociateSubdomain
+        description: Axway Associate Subdomain to Parent Domain IdP
+        call: amplify-platform.org-domainAssociateSubdomain
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainEnable
+        description: Axway Enable IdP for a Domain
+        call: amplify-platform.org-domainEnable
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainDissociate
+        description: Axway Remove Domain Association
+        call: amplify-platform.org-domainDissociate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainConsolidate
+        description: Axway Consolidate Domain Users
+        call: amplify-platform.org-domainConsolidate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainConfirm
+        description: Axway Confirm Domain Ownership
+        call: amplify-platform.org-domainConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: org-domainRemove
+        description: Axway Remove Domain Association
+        call: amplify-platform.org-domainRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: org-domainAssociateConfirm
+        description: Axway Confirm Domain IdP Association
+        call: amplify-platform.org-domainAssociateConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: org-domainCreate
+        description: Axway Start Domain Ownership Process
+        call: amplify-platform.org-domainCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-domainFind
+        description: Axway Get All Domains
+        call: amplify-platform.org-domainFind
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscription
+      name: subscription
+      description: Subscription operations
+      operations:
+      - method: GET
+        name: org-findOneSubscription
+        description: Axway Find Subscription
+        call: amplify-platform.org-findOneSubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: org-findSubscriptions
+        description: Axway Find Subscriptions
+        call: amplify-platform.org-findSubscriptions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entitlement
+      name: entitlement
+      description: Entitlement operations
+      operations:
+      - method: GET
+        name: entitlement-find
+        description: Axway Get Entitlement Meta
+        call: amplify-platform.entitlement-find
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/env
+      name: env
+      description: Env operations
+      operations:
+      - method: POST
+        name: env-create
+        description: Axway Create Environment
+        call: amplify-platform.env-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: env-find
+        description: Axway Find Environments
+        call: amplify-platform.env-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: env-findOne
+        description: Axway Find Environment
+        call: amplify-platform.env-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: env-remove
+        description: Axway Delete Environment
+        call: amplify-platform.env-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: env-update
+        description: Axway Update Environment
+        call: amplify-platform.env-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/provider
+      name: provider
+      description: Provider operations
+      operations:
+      - method: POST
+        name: provider-create
+        description: Axway Create Provider Marketplace
+        call: amplify-platform.provider-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-find
+        description: Axway Get Provider Marketplaces
+        call: amplify-platform.provider-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-findOnboarding
+        description: Axway Get Provider Marketplace Onboarding Settings
+        call: amplify-platform.provider-findOnboarding
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-oauthConfirm
+        description: Axway OAuth 2.0 Auth Signup Confirmation
+        call: amplify-platform.provider-oauthConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-oauthCallback
+        description: Axway Concludes OAuth 2.0 Auth
+        call: amplify-platform.provider-oauthCallback
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-oauthAuthorize
+        description: Axway Initiates OAuth 2.0 Auth
+        call: amplify-platform.provider-oauthAuthorize
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-idpCreateSAML
+        description: Axway Create Consumer SAML V2.0 IdP
+        call: amplify-platform.provider-idpCreateSAML
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-idpCreateOIDC
+        description: Axway Create Consumer OIDC IdP
+        call: amplify-platform.provider-idpCreateOIDC
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provider-idpRemove
+        description: Axway Remove Consumer IdP
+        call: amplify-platform.provider-idpRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provider-idpUpdate
+        description: Axway Update Consumer IdP
+        call: amplify-platform.provider-idpUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provider-consumerUpdate
+        description: Axway Update Consumer Organization
+        call: amplify-platform.provider-consumerUpdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-consumerFindOne
+        description: Axway Find Consumer Organization
+        call: amplify-platform.provider-consumerFindOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provider-consumerRemove
+        description: Axway Delete a Consumer Organization
+        call: amplify-platform.provider-consumerRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: provider-consumerCreate
+        description: Axway Create Consumer Organization
+        call: amplify-platform.provider-consumerCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-consumerFind
+        description: Axway Find Consumer Organizations
+        call: amplify-platform.provider-consumerFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-activity
+        description: Axway Get Marketplace Activity
+        call: amplify-platform.provider-activity
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: provider-findOne
+        description: Axway Get Provider Marketplace
+        call: amplify-platform.provider-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provider-remove
+        description: Axway Delete Provider Marketplace
+        call: amplify-platform.provider-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provider-update
+        description: Axway Update Provider Marketplace
+        call: amplify-platform.provider-update
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9091
+    namespace: organization-management-mcp
+    transport: http
+    description: MCP server for AI-assisted manage organizations, subscriptions, domains, entitlements, and environments on the axway amplify platform.
+    tools:
+    - name: org-findEnvs
+      description: Axway Find Organization Environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findEnvs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userPrimary
+      description: Axway Sets the Primary Contract for the Org
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userPrimary
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userFindOne
+      description: Axway Get Org User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userFindOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userRemove
+      description: Axway Remove User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.org-userRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userUpdate
+      description: Axway Update Org Member Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userCreate
+      description: Axway Add User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-userCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-userFind
+      description: Axway Get Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-userFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-stats
+      description: Axway Get Organization Stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-stats
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findOne
+      description: Axway Get Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-remove
+      description: Axway Delete Organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.org-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-update
+      description: Axway Update Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainAssociate
+      description: Axway Trigger Domain Association Flow
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainAssociate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainAssociateSubdomain
+      description: Axway Associate Subdomain to Parent Domain IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainAssociateSubdomain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainEnable
+      description: Axway Enable IdP for a Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainEnable
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainDissociate
+      description: Axway Remove Domain Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainDissociate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainConsolidate
+      description: Axway Consolidate Domain Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainConsolidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainConfirm
+      description: Axway Confirm Domain Ownership
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainRemove
+      description: Axway Remove Domain Association
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.org-domainRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainAssociateConfirm
+      description: Axway Confirm Domain IdP Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-domainAssociateConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainCreate
+      description: Axway Start Domain Ownership Process
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.org-domainCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-domainFind
+      description: Axway Get All Domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-domainFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findOneSubscription
+      description: Axway Find Subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findOneSubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: org-findSubscriptions
+      description: Axway Find Subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.org-findSubscriptions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: entitlement-find
+      description: Axway Get Entitlement Meta
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.entitlement-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-create
+      description: Axway Create Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.env-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-find
+      description: Axway Find Environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.env-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-findOne
+      description: Axway Find Environment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.env-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-remove
+      description: Axway Delete Environment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.env-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: env-update
+      description: Axway Update Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.env-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-create
+      description: Axway Create Provider Marketplace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-find
+      description: Axway Get Provider Marketplaces
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-findOnboarding
+      description: Axway Get Provider Marketplace Onboarding Settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-findOnboarding
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-oauthConfirm
+      description: Axway OAuth 2.0 Auth Signup Confirmation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-oauthConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-oauthCallback
+      description: Axway Concludes OAuth 2.0 Auth
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-oauthCallback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-oauthAuthorize
+      description: Axway Initiates OAuth 2.0 Auth
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-oauthAuthorize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpCreateSAML
+      description: Axway Create Consumer SAML V2.0 IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-idpCreateSAML
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpCreateOIDC
+      description: Axway Create Consumer OIDC IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-idpCreateOIDC
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpRemove
+      description: Axway Remove Consumer IdP
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.provider-idpRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-idpUpdate
+      description: Axway Update Consumer IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-idpUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerUpdate
+      description: Axway Update Consumer Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-consumerUpdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerFindOne
+      description: Axway Find Consumer Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-consumerFindOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerRemove
+      description: Axway Delete a Consumer Organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.provider-consumerRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerCreate
+      description: Axway Create Consumer Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.provider-consumerCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-consumerFind
+      description: Axway Find Consumer Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-consumerFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-activity
+      description: Axway Get Marketplace Activity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-activity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-findOne
+      description: Axway Get Provider Marketplace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-remove
+      description: Axway Delete Provider Marketplace
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.provider-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: provider-update
+      description: Axway Update Provider Marketplace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.provider-update
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apic.ucs.catalogitem.update-schema.json",
+  "title": "apic.ucs.catalogitem.update",
+  "description": "Published when a catalog asset is updated.",
+  "type": "object"
+}

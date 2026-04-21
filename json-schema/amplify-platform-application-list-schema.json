@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-application-list-schema.json",
+  "title": "ApplicationList",
+  "description": "A list of Application objects.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Application"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral._._.update",
+  "description": "Published when a Central resource's subresource is updated.",
+  "type": "object",
+  "properties": {
+    "group": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,901 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Axway Identity and Access Management
+  description: Manage users, teams, roles, sessions, and authentication across the Axway Amplify platform.
+  tags:
+  - Axway
+  - Identity
+  - Access Management
+  - Authentication
+  created: '2026-04-21'
+  modified: '2026-04-21'
+binds:
+- namespace: env
+  keys:
+    AXWAY_BEARER_TOKEN: AXWAY_BEARER_TOKEN
+capability:
+  consumes:
+  - import: amplify-platform
+    location: ./shared/amplify-platform.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: identity-and-access-api
+    description: Unified REST API for manage users, teams, roles, sessions, and authentication across the axway amplify platform.
+    resources:
+    - path: /v1/auth
+      name: auth
+      description: Auth operations
+      operations:
+      - method: POST
+        name: auth-validatePassword
+        description: Axway Validates a User Password
+        call: amplify-platform.auth-validatePassword
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: auth-acceptTerms
+        description: Axway Accept Terms & Conditions
+        call: amplify-platform.auth-acceptTerms
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-sessionSwitchOrg
+        description: Axway Switch Signed-in Organization
+        call: amplify-platform.auth-sessionSwitchOrg
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-signup
+        description: Axway Sign Up
+        call: amplify-platform.auth-signup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-findPasswordPolicy
+        description: Axway Get Effective Password Policy
+        call: amplify-platform.auth-findPasswordPolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: auth-onboarding
+        description: Axway Onboarding Capture
+        call: amplify-platform.auth-onboarding
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-mfaVerify
+        description: Axway Verify an Authorization Code
+        call: amplify-platform.auth-mfaVerify
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-mfaSend
+        description: Axway Send an Authorization Code
+        call: amplify-platform.auth-mfaSend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-logout
+        description: Axway Sign-out
+        call: amplify-platform.auth-logout
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-login
+        description: Axway Sign-in
+        call: amplify-platform.auth-login
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-unimpersonate
+        description: Axway Unimpersonate User
+        call: amplify-platform.auth-unimpersonate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-forgot
+        description: Axway Send Forgot Password Link
+        call: amplify-platform.auth-forgot
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-sessionFind
+        description: Axway Retrieves the Current Session
+        call: amplify-platform.auth-sessionFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-deviceauthResend
+        description: Axway Resends Device Authorization
+        call: amplify-platform.auth-deviceauthResend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-deviceauthValidate
+        description: Axway Validates a New Sessions Device Authorization
+        call: amplify-platform.auth-deviceauthValidate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-sessionCheck
+        description: Axway Checks if the User is Signed in
+        call: amplify-platform.auth-sessionCheck
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-deviceauthConfirm
+        description: Axway Confirm Authenticator App
+        call: amplify-platform.auth-deviceauthConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-deviceauthCreate
+        description: Axway Initiate Authenticator App Setup
+        call: amplify-platform.auth-deviceauthCreate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-deviceauthRemoveApp
+        description: Axway Remove Authenticator App
+        call: amplify-platform.auth-deviceauthRemoveApp
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationSignup
+        description: Axway Activate a Signup User
+        call: amplify-platform.auth-activationSignup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationResend
+        description: Axway Resend Activation Link
+        call: amplify-platform.auth-activationResend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationForgot
+        description: Axway Reset User Password
+        call: amplify-platform.auth-activationForgot
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: auth-activationConfirm
+        description: Axway Activate a User
+        call: amplify-platform.auth-activationConfirm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: auth-activationUnlock
+        description: Axway Unlock Account
+        call: amplify-platform.auth-activationUnlock
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-revokeOauth
+        description: Axway Revoke OAuth Service
+        call: amplify-platform.auth-revokeOauth
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-deviceauthFind
+        description: Axway Retrieve Authorized Devices
+        call: amplify-platform.auth-deviceauthFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: auth-deviceauthRemove
+        description: Axway Remove Authorized Device
+        call: amplify-platform.auth-deviceauthRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: auth-activationFind
+        description: Axway Find Activation
+        call: amplify-platform.auth-activationFind
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user
+      name: user
+      description: User operations
+      operations:
+      - method: PUT
+        name: user-updatePref
+        description: Axway Update a Single User Preference
+        call: amplify-platform.user-updatePref
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findOrgs
+        description: Axway Get Organizations
+        call: amplify-platform.user-findOrgs
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: user-updateCredentials
+        description: Axway Set Credentials for Tooling
+        call: amplify-platform.user-updateCredentials
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: user-update
+        description: Axway Update User Profile
+        call: amplify-platform.user-update
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findDomain
+        description: Axway Find Missing Domain Users
+        call: amplify-platform.user-findDomain
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findAttribute
+        description: Axway Find a Mapped Attribute for a User
+        call: amplify-platform.user-findAttribute
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: user-findOne
+        description: Axway Get a User
+        call: amplify-platform.user-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: user-remove
+        description: Axway Remove User
+        call: amplify-platform.user-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/team
+      name: team
+      description: Team operations
+      operations:
+      - method: POST
+        name: team-create
+        description: Axway Create a Team
+        call: amplify-platform.team-create
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: team-find
+        description: Axway Get Accessible Teams for the Query
+        call: amplify-platform.team-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: team-userAdd
+        description: Axway Add Member
+        call: amplify-platform.team-userAdd
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: team-userRemove
+        description: Axway Remove Member
+        call: amplify-platform.team-userRemove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: team-userUpdateRole
+        description: Axway Sets the Team Member Role
+        call: amplify-platform.team-userUpdateRole
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: team-userFind
+        description: Axway Get Team Members
+        call: amplify-platform.team-userFind
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: team-findOne
+        description: Axway Find Team
+        call: amplify-platform.team-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: team-remove
+        description: Axway Remove Team
+        call: amplify-platform.team-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: team-update
+        description: Axway Update Team
+        call: amplify-platform.team-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/role
+      name: role
+      description: Role operations
+      operations:
+      - method: GET
+        name: role-find
+        description: Axway Get Roles Matching Query
+        call: amplify-platform.role-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: role-findOne
+        description: Axway Get Role
+        call: amplify-platform.role-findOne
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/session
+      name: session
+      description: Session operations
+      operations:
+      - method: POST
+        name: session-query
+        description: Axway Find Sessions
+        call: amplify-platform.session-query
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: session-find
+        description: Axway Get Session
+        call: amplify-platform.session-find
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: session-remove
+        description: Axway Delete Session
+        call: amplify-platform.session-remove
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: identity-and-access-mcp
+    transport: http
+    description: MCP server for AI-assisted manage users, teams, roles, sessions, and authentication across the axway amplify platform.
+    tools:
+    - name: auth-validatePassword
+      description: Axway Validates a User Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-validatePassword
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-acceptTerms
+      description: Axway Accept Terms & Conditions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-acceptTerms
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-sessionSwitchOrg
+      description: Axway Switch Signed-in Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-sessionSwitchOrg
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-signup
+      description: Axway Sign Up
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-signup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-findPasswordPolicy
+      description: Axway Get Effective Password Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-findPasswordPolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-onboarding
+      description: Axway Onboarding Capture
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-onboarding
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-mfaVerify
+      description: Axway Verify an Authorization Code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-mfaVerify
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-mfaSend
+      description: Axway Send an Authorization Code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-mfaSend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-logout
+      description: Axway Sign-out
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-logout
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-login
+      description: Axway Sign-in
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-login
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-unimpersonate
+      description: Axway Unimpersonate User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-unimpersonate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-forgot
+      description: Axway Send Forgot Password Link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-forgot
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-sessionFind
+      description: Axway Retrieves the Current Session
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-sessionFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthResend
+      description: Axway Resends Device Authorization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-deviceauthResend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthValidate
+      description: Axway Validates a New Sessions Device Authorization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-deviceauthValidate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-sessionCheck
+      description: Axway Checks if the User is Signed in
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-sessionCheck
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthConfirm
+      description: Axway Confirm Authenticator App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-deviceauthConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthCreate
+      description: Axway Initiate Authenticator App Setup
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-deviceauthCreate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthRemoveApp
+      description: Axway Remove Authenticator App
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-deviceauthRemoveApp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationSignup
+      description: Axway Activate a Signup User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationSignup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationResend
+      description: Axway Resend Activation Link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationResend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationForgot
+      description: Axway Reset User Password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationForgot
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationConfirm
+      description: Axway Activate a User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.auth-activationConfirm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationUnlock
+      description: Axway Unlock Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-activationUnlock
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-revokeOauth
+      description: Axway Revoke OAuth Service
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-revokeOauth
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthFind
+      description: Axway Retrieve Authorized Devices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-deviceauthFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-deviceauthRemove
+      description: Axway Remove Authorized Device
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.auth-deviceauthRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: auth-activationFind
+      description: Axway Find Activation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.auth-activationFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-updatePref
+      description: Axway Update a Single User Preference
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-updatePref
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findOrgs
+      description: Axway Get Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findOrgs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-updateCredentials
+      description: Axway Set Credentials for Tooling
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-updateCredentials
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-update
+      description: Axway Update User Profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findDomain
+      description: Axway Find Missing Domain Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findDomain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findAttribute
+      description: Axway Find a Mapped Attribute for a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findAttribute
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-findOne
+      description: Axway Get a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.user-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: user-remove
+      description: Axway Remove User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.user-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-create
+      description: Axway Create a Team
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.team-create
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-find
+      description: Axway Get Accessible Teams for the Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userAdd
+      description: Axway Add Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.team-userAdd
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userRemove
+      description: Axway Remove Member
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.team-userRemove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userUpdateRole
+      description: Axway Sets the Team Member Role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-userUpdateRole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-userFind
+      description: Axway Get Team Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-userFind
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-findOne
+      description: Axway Find Team
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-remove
+      description: Axway Remove Team
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.team-remove
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: team-update
+      description: Axway Update Team
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform.team-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: role-find
+      description: Axway Get Roles Matching Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.role-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: role-findOne
+      description: Axway Get Role
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.role-findOne
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: session-query
+      description: Axway Find Sessions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform.session-query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: session-find
+      description: Axway Get Session
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform.session-find
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: session-remove
+      description: Axway Delete Session
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform.session-remove
+      outputParameters:
+      - type: object
+        mapping: $.

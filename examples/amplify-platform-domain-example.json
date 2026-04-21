@@ -1,0 +1,15 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "orgs": [
+    {
+      "enabled": "2026-04-21T00:00:00Z",
+      "associated": "2026-04-21T00:00:00Z",
+      "guid": "example_value",
+      "idp": "example_value",
+      "status": 0,
+      "verified": "2026-04-21T00:00:00Z"
+    }
+  ],
+  "provider_guid": "example_value",
+  "tld": "example_value"
+}

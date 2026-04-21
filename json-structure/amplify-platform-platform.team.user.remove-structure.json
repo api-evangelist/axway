@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.team.user.remove",
+  "description": "Published when a user or client is removed from a team.",
+  "type": "object",
+  "properties": {
+    "team_guid": {
+      "$ref": "#/components/schemas/Team/properties/guid"
+    },
+    "team_name": {
+      "$ref": "#/components/schemas/Team/properties/name"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-response-metadata-schema.json",
+  "title": "ResponseMetadata",
+  "description": "ResponseMetadata schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "number",
+      "description": "Number of results included in the response.",
+      "example": 1.0
+    },
+    "limit": {
+      "type": "number",
+      "description": "Number of results per page.",
+      "example": 1.0
+    },
+    "matched": {
+      "type": "number",
+      "description": "Total number of matched results.",
+      "example": 1.0
+    },
+    "page": {
+      "type": "number",
+      "description": "Page of results.",
+      "example": 1.0
+    },
+    "pages": {
+      "type": "number",
+      "description": "Total number of pages of results.",
+      "example": 1.0
+    },
+    "skip": {
+      "type": "number",
+      "description": "Number of results skipped in pagination.",
+      "example": 1.0
+    }
+  }
+}

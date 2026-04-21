@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.team.app.add-schema.json",
+  "title": "platform.team.app.add",
+  "description": "Published when an asset is added to a team.",
+  "type": "object",
+  "properties": {
+    "app_id": {
+      "$ref": "#/components/schemas/Application/properties/guid"
+    },
+    "app_name": {
+      "$ref": "#/components/schemas/Application/then/properties/name"
+    },
+    "team_guid": {
+      "$ref": "#/components/schemas/Team/properties/guid"
+    },
+    "team_name": {
+      "$ref": "#/components/schemas/Team/properties/name"
+    }
+  }
+}

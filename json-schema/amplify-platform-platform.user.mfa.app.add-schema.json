@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.user.mfa.app.add-schema.json",
+  "title": "platform.user.mfa.app.add",
+  "description": "Published when an MFA application is added for a user.",
+  "type": "object"
+}

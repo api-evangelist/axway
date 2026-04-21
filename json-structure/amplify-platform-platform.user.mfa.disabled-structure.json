@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.user.mfa.disabled",
+  "description": "Published when multi-factor authentication is disabled for a user.",
+  "type": "object"
+}

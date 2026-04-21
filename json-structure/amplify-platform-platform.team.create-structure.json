@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.team.create",
+  "description": "Published when a new team is created in an org.",
+  "type": "object",
+  "properties": {
+    "team": {
+      "type": "object",
+      "description": "The created team",
+      "properties": {
+        "default": {
+          "$ref": "#/components/schemas/Team/properties/default"
+        },
+        "guid": {
+          "$ref": "#/components/schemas/Team/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/Team/properties/name"
+        }
+      },
+      "example": {
+        "default": {},
+        "guid": {},
+        "name": {}
+      }
+    }
+  }
+}

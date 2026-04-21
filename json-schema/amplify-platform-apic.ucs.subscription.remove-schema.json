@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apic.ucs.subscription.remove-schema.json",
+  "title": "apic.ucs.subscription.remove",
+  "description": "Published when a subscription of a catalog asset is removed.",
+  "type": "object"
+}

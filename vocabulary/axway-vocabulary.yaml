@@ -1,0 +1,300 @@
+name: Axway Amplify Platform Vocabulary
+description: Unified vocabulary and taxonomy for the Axway Amplify Platform API, mapping operational and capability dimensions.
+provider: Axway
+created: '2026-04-21'
+modified: '2026-04-21'
+operational:
+  apis:
+  - name: Amplify Platform API
+    status: Active
+    tags:
+    - API Management
+    - Enterprise
+    - Amplify
+    operationCount: 141
+  resources:
+  - name: Aca
+    path: /aca
+  - name: Activity
+    path: /activity
+  - name: Admin
+    path: /admin
+  - name: Analytics
+    path: /analytics
+  - name: App
+    path: /app
+  - name: Auth
+    path: /auth
+  - name: Client
+    path: /client
+  - name: Entitlement
+    path: /entitlement
+  - name: Env
+    path: /env
+  - name: Export
+    path: /export
+  - name: Org
+    path: /org
+  - name: Provider
+    path: /provider
+  - name: Role
+    path: /role
+  - name: Session
+    path: /session
+  - name: Team
+    path: /team
+  - name: Usage
+    path: /usage
+  - name: User
+    path: /user
+  actions:
+  - DELETE
+  - GET
+  - POST
+  - PUT
+  schemas:
+  - name: Activation
+    type: object
+  - name: Application
+    type: object
+  - name: ApplicationList
+    type: array
+  - name: Client
+    type: object
+  - name: ClientList
+    type: array
+  - name: Consumer
+    type: object
+  - name: CustomQuery
+    type: object
+  - name: CustomQueryList
+    type: array
+  - name: DataExport
+    type: object
+  - name: DataExportList
+    type: array
+  - name: DefaultFields
+    type: object
+  - name: Domain
+    type: object
+  - name: DomainList
+    type: array
+  - name: Entitlement
+    type: object
+  - name: EntitlementList
+    type: array
+  - name: Entitlements
+    type: object
+  - name: Environment
+    type: object
+  - name: EnvironmentList
+    type: array
+  - name: Error
+    type: object
+  - name: Event
+    type: object
+  - name: EventDataActionClient
+    type: object
+  - name: EventDataActionUser
+    type: object
+  - name: EventDataActor
+    type: object
+  - name: EventDataCentral
+    type: object
+  - name: EventDataChanges
+    type: array
+  - name: EventDataClient
+    type: object
+  - name: EventDataFrom
+    type: string
+  - name: EventDataModifiedBy
+    type: string
+  - name: EventDataOrg
+    type: object
+  - name: EventDataUser
+    type: object
+  authentication:
+  - AuthToken
+  - BearerClient
+  - BearerService
+  - BearerUser
+  - MFA
+  - OAuth2
+  - Password
+  - SessionCookie
+  tags:
+  - name: Aca
+  - name: Activity
+  - name: Analytics
+  - name: App
+  - name: Auth
+  - name: Client
+  - name: Domain
+  - name: Entitlement
+  - name: Env
+  - name: Export
+  - name: Idp
+  - name: Org
+  - name: Provider
+  - name: Role
+  - name: Session
+  - name: Subscription
+  - name: Team
+  - name: Telemetry
+  - name: Usage
+  - name: User
+  enums:
+    Client.type:
+    - secret
+    - certificate
+    CustomQuery.granularity:
+    - month
+    - day
+    - hour
+    - minute
+    CustomQuery.rateGranularity:
+    - second
+    - minute
+    - hour
+    - day
+    CustomQuery.sortOrder:
+    - 1
+    - -1
+    CustomQuery.type:
+    - list
+    - stream
+    - line
+    - bar
+    CustomQuery.unit:
+    - quarter
+    - month
+    - week
+    - day
+    - hour
+    - minute
+    CustomQuery.valueFormat:
+    - duration
+    - percent
+    CustomQuery.yAxis:
+    - overlap
+    - stacked
+    - ratio
+    DataExport.status:
+    - pending
+    - complete
+    - failed
+    Entitlement.type:
+    - array
+    - boolean
+    - integer
+    - number
+    - string
+    Environment.governance:
+    - Customer Managed
+    - Axway Managed
+    Environment.type:
+    - usage
+    - integration
+    Event.version:
+    - '4'
+    IdentityProvider.protocol:
+    - oidc
+    - saml
+    Org.origin:
+    - '360'
+    - sfdc
+    - signup
+    Org.region:
+    - US
+    - EU
+    - AP
+    SessionInfo.role:
+    - administrator
+    - developer
+    - auditor
+    - consumer
+    Subscription.governance:
+    - SaaS
+    - Customer Managed
+    - Axway Managed
+    Subscription.source:
+    - API
+    - UI
+    - Platform
+    - Billing
+    Subscription.tier:
+    - paid
+    - trial
+    - free
+capability:
+  workflows:
+  - name: Identity And Access
+    type: Workflow Capability
+  - name: Organization Management
+    type: Workflow Capability
+  - name: Application And Analytics
+    type: Workflow Capability
+  - name: Identity Provider Management
+    type: Workflow Capability
+  personas:
+  - name: Platform Administrator
+    workflows:
+    - Organization Management
+    - Identity And Access
+  - name: Security Engineer
+    workflows:
+    - Identity Provider Management
+    - Identity And Access
+  - name: Developer
+    workflows:
+    - Application And Analytics
+  - name: Operations Team
+    workflows:
+    - Application And Analytics
+    - Organization Management
+  domains:
+  - name: Identity
+    tags:
+    - Authentication
+    - Users
+    - Teams
+    - Roles
+    - Sessions
+  - name: Organization
+    tags:
+    - Organizations
+    - Subscriptions
+    - Domains
+    - Environments
+  - name: Applications
+    tags:
+    - Applications
+    - Clients
+    - Analytics
+    - Usage
+  - name: Federation
+    tags:
+    - SAML
+    - OIDC
+    - Identity Providers
+    - SSO
+crossReference:
+  resourceToWorkflow:
+    auth: Identity And Access
+    user: Identity And Access
+    team: Identity And Access
+    role: Identity And Access
+    session: Identity And Access
+    org: Organization Management
+    domain: Organization Management
+    subscription: Organization Management
+    entitlement: Organization Management
+    env: Organization Management
+    provider: Organization Management
+    app: Application And Analytics
+    client: Application And Analytics
+    analytics: Application And Analytics
+    usage: Application And Analytics
+    activity: Application And Analytics
+    export: Application And Analytics
+    idp: Identity Provider Management

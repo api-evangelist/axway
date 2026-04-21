@@ -1,0 +1,23 @@
+{
+  "created": "2026-04-21T00:00:00Z",
+  "created_by": {
+    "client_id": "507f1f77bcf86cd799439011",
+    "email": "user@example.com",
+    "guid": "example_value",
+    "name": "Example Name",
+    "type": "user"
+  },
+  "downloadable": true,
+  "endDate": "2026-04-21T00:00:00Z",
+  "envId": "example_value",
+  "fileId": "example_value",
+  "governance": "Customer Managed",
+  "name": "Example Name",
+  "organizationId": "example_value",
+  "startDate": "2026-04-21T00:00:00Z",
+  "status": "PROCESSED",
+  "unrecognized": [
+    "example_value"
+  ],
+  "uploadMethod": "automatic"
+}

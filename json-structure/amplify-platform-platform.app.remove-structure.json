@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.app.remove",
+  "description": "Published when an application is removed.",
+  "type": "object",
+  "properties": {
+    "app_guid": {
+      "$ref": "#/components/schemas/Application/properties/guid"
+    },
+    "app_name": {
+      "$ref": "#/components/schemas/Application/then/properties/name"
+    }
+  }
+}

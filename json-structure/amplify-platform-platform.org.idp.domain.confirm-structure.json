@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.org.idp.domain.confirm",
+  "description": "Published when ownership of a domain is verified for an organization.",
+  "type": "object"
+}

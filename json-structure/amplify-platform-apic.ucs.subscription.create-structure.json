@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apic.ucs.subscription.create",
+  "description": "Published when a subscription of a catalog asset is created.",
+  "type": "object",
+  "properties": {
+    "catalogItemId": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "envId": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    }
+  }
+}

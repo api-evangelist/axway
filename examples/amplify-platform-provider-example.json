@@ -1,0 +1,209 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "admin_teams": "example_value",
+  "consume_teams": {
+    "type": "example_value"
+  },
+  "publish_teams": {
+    "type": "example_value"
+  },
+  "ai": {
+    "enabled": true,
+    "embedded": true,
+    "key": "example_value",
+    "key_set": "2026-04-21T00:00:00Z",
+    "stream": true,
+    "url": "https://example.com"
+  },
+  "appearance": {
+    "favicon": "example_value",
+    "logo": "example_value",
+    "theme_bg": "example_value",
+    "theme_black": "example_value",
+    "theme_link": "example_value",
+    "theme_primary": "example_value",
+    "theme_primary_alt": "example_value",
+    "theme_secondary": "example_value",
+    "theme_secondary_alt": "example_value",
+    "theme_tertiary": "example_value"
+  },
+  "billing": {
+    "enabled": true,
+    "key": "example_value",
+    "key_set": "2026-04-21T00:00:00Z",
+    "portal_url": "https://example.com",
+    "signature": "example_value",
+    "signature_set": "2026-04-21T00:00:00Z",
+    "url": "https://api.myfatoorah.com",
+    "vendor": "stripe"
+  },
+  "certificate": "example_value",
+  "certificate_expires": "2026-04-21T00:00:00Z",
+  "console": {
+    "getting_started": {
+      "enabled": true,
+      "type": "document",
+      "url": "https://example.com"
+    }
+  },
+  "consumer": true,
+  "consumer_approve": true,
+  "description": {
+    "en-US": "example_value",
+    "fr-FR": "example_value",
+    "de-DE": "example_value",
+    "pt-BR": "example_value"
+  },
+  "footer": {
+    "background": "solid",
+    "background_direction": "to right",
+    "background_end": "example_value",
+    "background_start": "example_value",
+    "brd": "example_value",
+    "color": "example_value",
+    "link": "example_value",
+    "items": {
+      "en-US": [
+        "example_value"
+      ],
+      "fr-FR": [
+        "example_value"
+      ],
+      "de-DE": [
+        "example_value"
+      ],
+      "pt-BR": [
+        "example_value"
+      ]
+    }
+  },
+  "guid": "example_value",
+  "help_menu": {
+    "en-US": [
+      "example_value"
+    ],
+    "fr-FR": [
+      "example_value"
+    ],
+    "de-DE": [
+      "example_value"
+    ],
+    "pt-BR": [
+      "example_value"
+    ]
+  },
+  "help_menu_icon": "example_value",
+  "homepage": {
+    "enabled": true,
+    "default_page": "example_value",
+    "items": [
+      {
+        "margin": {},
+        "padding": {},
+        "type": "example_value",
+        "visibility": 0,
+        "width": 0
+      }
+    ]
+  },
+  "idp": true,
+  "idp_hint": "example_value",
+  "lang": {
+    "default": "en-US",
+    "products": "all",
+    "supported": [
+      "en-US"
+    ]
+  },
+  "name": {
+    "en-US": "example_value",
+    "fr-FR": "example_value",
+    "de-DE": "example_value",
+    "pt-BR": "example_value"
+  },
+  "name_gender": "Example Name",
+  "nav_items": {
+    "en-US": [
+      "example_value"
+    ],
+    "fr-FR": [
+      "example_value"
+    ],
+    "de-DE": [
+      "example_value"
+    ],
+    "pt-BR": [
+      "example_value"
+    ]
+  },
+  "oauth": {
+    "github": {
+      "enabled": true,
+      "client_id": "507f1f77bcf86cd799439011",
+      "client_secret": "********",
+      "secret_updated": "********"
+    },
+    "gitlab": {
+      "enabled": true,
+      "client_id": "507f1f77bcf86cd799439011",
+      "client_secret": "********",
+      "secret_updated": "********"
+    },
+    "google": {
+      "enabled": true,
+      "client_id": "507f1f77bcf86cd799439011",
+      "client_secret": "********",
+      "secret_updated": "********"
+    }
+  },
+  "onboarding": {
+    "enabled": true,
+    "items": [
+      {}
+    ]
+  },
+  "org_guid": "example_value",
+  "provider_idp": {
+    "enabled": true,
+    "allow_external": true,
+    "enforce_association": true
+  },
+  "public": true,
+  "reviews": {
+    "enabled": true,
+    "char_limit": 280,
+    "flagged_handling": "hide",
+    "instructions": {
+      "en-US": "example_value",
+      "fr-FR": "example_value",
+      "de-DE": "example_value",
+      "pt-BR": "example_value"
+    },
+    "moderation_process": "manual",
+    "permissions": "subscribers",
+    "public_responses": true,
+    "response_time": 1.0,
+    "response_time_unit": "example_value"
+  },
+  "search_engines": {
+    "google_site_verification_id": "507f1f77bcf86cd799439011",
+    "indexing_enabled": true
+  },
+  "signup": true,
+  "sitename": {
+    "en-US": "example_value",
+    "fr-FR": "example_value",
+    "de-DE": "example_value",
+    "pt-BR": "example_value"
+  },
+  "sitename_gender": "Example Name",
+  "subdomain": "example.com",
+  "terms": true,
+  "terms_updated": "2026-04-21T00:00:00Z",
+  "terms_url": "https://example.com",
+  "url": "https://example.com",
+  "versions": {
+    "custom": true,
+    "display": "all"
+  }
+}

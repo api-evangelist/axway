@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "User",
+  "description": "User schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "ID of the user.",
+      "readOnly": true,
+      "deprecated": true,
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "activated": {
+      "type": "boolean",
+      "description": "Whether the user has activated.",
+      "default": false,
+      "example": true
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the user is active.",
+      "default": false,
+      "example": true
+    },
+    "authenticator_enabled": {
+      "type": "boolean",
+      "description": "Whether an authenticator app is enavled for the user.",
+      "example": true
+    },
+    "created": {
+      "$ref": "#/components/schemas/DefaultFields/properties/created"
+    },
+    "date_activated": {
+      "type": "datetime",
+      "description": "When the user activated.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "default_org": {
+      "type": "number",
+      "description": "The org_id for the organization to use when last_login is set to default.",
+      "example": 1.0
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address of the user.",
+      "maxLength": 217,
+      "example": "user@example.com"
+    },
+    "external": {
+      "type": "boolean",
+      "description": "Whether the user is external.",
+      "example": true
+    },
+    "firstname": {
+      "type": "string",
+      "description": "First name of the user.",
+      "default": "",
+      "maxLength": 50,
+      "x-allow-empty": true,
+      "x-no-tags": true,
+      "example": "Example Name"
+    },
+    "guid": {
+      "type": "string",
+      "description": "GUID of the user.",
+      "example": "example_value"
+    },
+    "invited": {
+      "type": "datetime",
+      "description": "When the user was most recently invited. Only set for not-yet-activated users.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "last_logged_in_org": {
+      "type": "number",
+      "description": "The org_id of the organization the user last signed into.",
+      "example": 1.0
+    },
+    "last_login": {
+      "type": "datetime",
+      "description": "When the user last signed in.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "lastname": {
+      "type": "string",
+      "description": "Last name of the user.",
+      "default": "",
+      "maxLength": 50,
+      "x-allow-empty": true,
+      "x-no-tags": true,
+      "example": "Example Name"
+    },
+    "locale": {
+      "type": "string",
+      "description": "Preferred display language for the user.",
+      "enum": [
+        "en-US",
+        "fr-FR",
+        "de-DE",
+        "pt-BR"
+      ],
+      "example": "en-US"
+    },
+    "logged_in_count": {
+      "type": "number",
+      "description": "The number of times the user has signed in.",
+      "example": 1.0
+    },
+    "logged_in_from_cli": {
+      "type": "boolean",
+      "description": "Whether the user has previously signed in from cli.",
+      "example": true
+    },
+    "logged_in_from_other": {
+      "type": "boolean",
+      "description": "Whether the user has previously signed in from an unknown source.",
+      "example": true
+    },
+    "logged_in_from_studio": {
+      "type": "boolean",
+      "description": "Whether the user has previously signed in from studio.",
+      "example": true
+    },
+    "logged_in_from_web": {
+      "type": "boolean",
+      "description": "Whether the user has previously signed in from web.",
+      "example": true
+    },
+    "login_org": {
+      "type": "string",
+      "description": "Which organization is used when the user signs in.",
+      "enum": [
+        "last_logged",
+        "default",
+        "ask"
+      ],
+      "example": "last_logged"
+    },
+    "mfa": {
+      "type": "boolean",
+      "description": "Whether multi-factor authentication is enabled for the user.",
+      "example": true
+    },
+    "oauth": {
+      "type": "array",
+      "description": "Which social login services are associated with the user.",
+      "items": {
+        "type": "string",
+        "description": "The name of the social login service"
+      },
+      "example": [
+        "example_value"
+      ]
+    },
+    "password_updated": {
+      "type": "datetime",
+      "description": "Date the password was last updated",
+      "example": "********"
+    },
+    "prefs": {
+      "type": "object",
+      "description": "User preferences.",
+      "example": {}
+    },
+    "provider_guid": {
+      "type": "uuid",
+      "description": "GUID identifier of the owning provider if a consumer of a marketplace.",
+      "example": "example_value"
+    },
+    "terms_updated": {
+      "type": "datetime",
+      "description": "Date the user accepted terms & conditions.",
+      "example": "2026-04-21T00:00:00Z"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "The timezone used to display dates for the user.",
+      "example": "example_value"
+    },
+    "updated": {
+      "$ref": "#/components/schemas/DefaultFields/properties/updated"
+    },
+    "user_id": {
+      "type": "number",
+      "example": 1.0
+    },
+    "username": {
+      "type": "string",
+      "example": "Example Name"
+    }
+  },
+  "required": [
+    "activated",
+    "active",
+    "email",
+    "firstname",
+    "guid",
+    "lastname",
+    "user_id"
+  ]
+}

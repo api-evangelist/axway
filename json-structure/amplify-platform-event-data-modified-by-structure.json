@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventDataModifiedBy",
+  "description": "\"platform\" or received value from event's `data.lastModifiedVia`.",
+  "type": "string"
+}

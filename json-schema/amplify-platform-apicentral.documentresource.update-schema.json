@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.documentresource.update-schema.json",
+  "title": "apicentral.documentresource.update",
+  "description": "Published when a document defined in the document library is updated.",
+  "type": "object"
+}

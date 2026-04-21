@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.ai.update",
+  "description": "Published when marketplace AI integration settings are changed.",
+  "type": "object"
+}

@@ -1,0 +1,67 @@
+{
+  "connect.sid": "example_value",
+  "deviceAuthRequired": "example_value",
+  "email": "user@example.com",
+  "entitlements": {},
+  "expiry": "example_value",
+  "firstname": "Example Name",
+  "from": "example_value",
+  "guid": "example_value",
+  "idp": "example_value",
+  "lastname": "Example Name",
+  "org": {
+    "_id": "507f1f77bcf86cd799439011",
+    "account_id": 1,
+    "active": true,
+    "analytics": {
+      "token": "eyJhbGciOiJIUzI1NiJ9.example"
+    },
+    "api_central": {},
+    "branding": {
+      "logo": "example_value"
+    },
+    "consumer_id": "507f1f77bcf86cd799439011",
+    "created_by": {
+      "client_id": "507f1f77bcf86cd799439011",
+      "email": "user@example.com",
+      "name": "Example Name"
+    }
+  },
+  "org_id": "507f1f77bcf86cd799439011",
+  "org_name": "Example Name",
+  "orgs": "example_value",
+  "provider_org": {
+    "guid": "example_value",
+    "name": "Example Name",
+    "org_id": 1
+  },
+  "redirect": "example_value",
+  "role": "administrator",
+  "roles": [
+    "administrator"
+  ],
+  "session": "example_value",
+  "sessionID": "example_value",
+  "sid": "example_value",
+  "teams": [
+    {
+      "default": "example_value",
+      "guid": "507f1f77bcf86cd799439011",
+      "name": "Example Name",
+      "roles": [],
+      "tags": "example_value"
+    }
+  ],
+  "user": {
+    "_id": "507f1f77bcf86cd799439011",
+    "activated": true,
+    "active": true,
+    "authenticator_enabled": true,
+    "created": "example_value",
+    "date_activated": "2026-04-21T00:00:00Z",
+    "default_org": 1.0,
+    "email": "user@example.com"
+  },
+  "user_guid": "example_value",
+  "username": "Example Name"
+}

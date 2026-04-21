@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-event-data-client-schema.json",
+  "title": "EventDataClient",
+  "description": "EventDataClient schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "client_guid": {
+      "$ref": "#/components/schemas/Client/properties/guid"
+    },
+    "client_id": {
+      "$ref": "#/components/schemas/Client/properties/client_id"
+    },
+    "client_name": {
+      "$ref": "#/components/schemas/Client/properties/name"
+    }
+  }
+}

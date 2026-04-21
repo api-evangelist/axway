@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "marketplace.onboarding.update",
+  "description": "Published when marketplace onboarding data capture is changed.",
+  "type": "object"
+}

@@ -1,0 +1,14 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "client_id": "507f1f77bcf86cd799439011",
+  "guid": "example_value",
+  "name": "Example Name",
+  "org_guid": "example_value",
+  "roles": [
+    "administrator"
+  ],
+  "tags": [
+    "example_value"
+  ],
+  "type": "secret"
+}

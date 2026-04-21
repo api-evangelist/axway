@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral.documentresource.remove",
+  "description": "Published when a document defined in the document library is removed.",
+  "type": "object"
+}

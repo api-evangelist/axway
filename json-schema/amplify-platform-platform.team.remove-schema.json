@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.team.remove-schema.json",
+  "title": "platform.team.remove",
+  "description": "Published when an existing team is modified.",
+  "type": "object",
+  "properties": {
+    "reassign_team": {
+      "type": "object",
+      "description": "If provided the team where the resources are reassigned.",
+      "properties": {
+        "default": {
+          "$ref": "#/components/schemas/Team/properties/default"
+        },
+        "guid": {
+          "$ref": "#/components/schemas/Team/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/Team/properties/name"
+        }
+      },
+      "example": {
+        "default": {},
+        "guid": {},
+        "name": {}
+      }
+    },
+    "team": {
+      "type": "object",
+      "description": "The updated team",
+      "properties": {
+        "default": {
+          "$ref": "#/components/schemas/Team/properties/default"
+        },
+        "guid": {
+          "$ref": "#/components/schemas/Team/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/Team/properties/name"
+        }
+      },
+      "example": {
+        "default": {},
+        "guid": {},
+        "name": {}
+      }
+    }
+  }
+}

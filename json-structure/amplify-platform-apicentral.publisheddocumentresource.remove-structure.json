@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral.publisheddocumentresource.remove",
+  "description": "Published when a document defined in the document library is made unavailable for use in the marketplace content.",
+  "type": "object"
+}

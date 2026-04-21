@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral.agent.stop",
+  "description": "apicentral.agent.stop schema from Axway Amplify Platform API",
+  "type": "object"
+}

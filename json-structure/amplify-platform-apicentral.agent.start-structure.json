@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "apicentral.agent.start",
+  "description": "Published when a Central agent changes its state in the status resource.",
+  "type": "object",
+  "properties": {
+    "agent_type": {
+      "type": "string",
+      "enum": [
+        "DiscoveryAgent",
+        "TraceabilityAgent"
+      ],
+      "example": "DiscoveryAgent"
+    },
+    "agent_version": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "dataplane_type": {
+      "type": "string",
+      "description": "Gateway the agent links to.",
+      "example": "example_value"
+    },
+    "envId": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "management"
+      ],
+      "example": "management"
+    }
+  }
+}

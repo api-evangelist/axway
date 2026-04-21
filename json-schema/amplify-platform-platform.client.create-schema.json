@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.client.create-schema.json",
+  "title": "platform.client.create",
+  "description": "Published when an organization admin creates a Service Account client.",
+  "type": "object",
+  "properties": {
+    "roles": {
+      "$ref": "#/components/schemas/Client/properties/roles"
+    }
+  }
+}

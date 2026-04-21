@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.documentresource.remove",
+  "description": "Published when a document resource is removed from use in the organization.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Published id, same as apicentral.documentresource.* event `id`.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    }
+  }
+}

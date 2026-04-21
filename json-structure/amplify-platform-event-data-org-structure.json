@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventDataOrg",
+  "description": "EventDataOrg schema from Axway Amplify Platform API",
+  "type": "object",
+  "properties": {
+    "org_guid": {
+      "$ref": "#/components/schemas/Org/properties/guid"
+    },
+    "org_id": {
+      "$ref": "#/components/schemas/Org/properties/org_id"
+    },
+    "org_name": {
+      "$ref": "#/components/schemas/Org/properties/name"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Org/properties/provider_guid"
+    },
+    "region": {
+      "$ref": "#/components/schemas/Org/properties/region"
+    }
+  }
+}

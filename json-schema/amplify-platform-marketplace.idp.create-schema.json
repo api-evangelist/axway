@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-marketplace.idp.create-schema.json",
+  "title": "marketplace.idp.create",
+  "description": "Published when an Identity Provider is created for a marketplace.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider associated to the marketplace.",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/name"
+        }
+      },
+      "example": {
+        "id": {},
+        "name": {}
+      }
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

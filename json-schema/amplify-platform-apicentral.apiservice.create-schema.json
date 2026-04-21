@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-apicentral.apiservice.create-schema.json",
+  "title": "apicentral.apiservice.create",
+  "description": "Published when a top-level Central asset is created.",
+  "type": "object",
+  "properties": {
+    "automatic": {
+      "type": "boolean",
+      "description": "Whether the asset is agent created.",
+      "example": true
+    },
+    "envId": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "management"
+      ],
+      "example": "management"
+    }
+  }
+}

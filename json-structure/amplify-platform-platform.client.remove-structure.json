@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "platform.client.remove",
+  "description": "Published when an organization admin removes a Service Account client.",
+  "type": "object"
+}

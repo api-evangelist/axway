@@ -1,0 +1,50 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "description": "An example description",
+  "guid": "example_value",
+  "name": "Example Name",
+  "orgs": [
+    {
+      "case_insensitive_mapped_roles": true,
+      "default_roles": [
+        "administrator"
+      ],
+      "default_teams": [
+        {
+          "guid": "example_value",
+          "roles": [
+            "consumer"
+          ]
+        }
+      ],
+      "enforce_mapped_roles": true,
+      "enforce_mapped_teams": true,
+      "guid": "example_value",
+      "mapped_roles": [
+        {
+          "friendly": "example_value",
+          "name": "Example Name",
+          "roles": [
+            "administrator"
+          ],
+          "value": "example_value"
+        }
+      ],
+      "mapped_teams": [
+        {
+          "friendly": "example_value",
+          "name": "Example Name",
+          "roles": [
+            "consumer"
+          ],
+          "team_guid": "example_value",
+          "value": "example_value"
+        }
+      ],
+      "provision_adhoc": true,
+      "restrict_domain_users": true
+    }
+  ],
+  "protocol": "oidc",
+  "provider_guid": "example_value"
+}

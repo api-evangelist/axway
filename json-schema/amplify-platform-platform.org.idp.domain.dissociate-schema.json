@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/axway/amplify-platform-platform.org.idp.domain.dissociate-schema.json",
+  "title": "platform.org.idp.domain.dissociate",
+  "description": "Published when an Identity Provider is disabled for users on a domain in an organization.",
+  "type": "object"
+}
