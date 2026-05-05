@@ -1,0 +1,13 @@
+{
+  "repo": "axway",
+  "feeds": [
+    {
+      "source": "https://blog.axway.com/",
+      "feed_url": "https://blog.axway.com/feed",
+      "saved": 10,
+      "title": "Axway Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:23:22Z"
+}
