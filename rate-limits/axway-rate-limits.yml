@@ -4,150 +4,44 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Axway
 providerId: axway
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - API Management
   - Enterprise
   - Integration
   - Security
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Axway API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Axway does not publish global rate limits for its products. Rate limits in Axway-managed
+  APIs are configured by the customer through API Manager / Amplify policies and depend on the deployment.
+  No public Axway-hosted SaaS rate-limit table exists; consumers should consult their tenant administrator
+  or Axway support for tenant-specific quotas.
+notes: Limits are deployment-defined rather than provider-published. Captured here as configurable rather
+  than fixed.
+sources:
+  - https://docs.axway.com
+  - https://www.axway.com/en/products/api-management
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
+  - name: Tenant-configured throttling
     scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Axway Amplify Platform API
-      - Axway Amplify Central API
-      - Axway API Gateway
-      - Axway API Manager
-      - Axway API Builder
-      - Axway Amplify Streams
-      - Axway Amplify Engage
-      - Axway Amplify AI Gateway
-      - Axway Amplify Fusion
-      - Axway Flow Manager
-      - Axway SecureTransport
-      - Axway Transfer CFT
-      - Axway B2Bi
-      - Axway Open Banking
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Axway Amplify Platform API
-      - Axway Amplify Central API
-      - Axway API Gateway
-      - Axway API Manager
-      - Axway API Builder
-      - Axway Amplify Streams
-      - Axway Amplify Engage
-      - Axway Amplify AI Gateway
-      - Axway Amplify Fusion
-      - Axway Flow Manager
-      - Axway SecureTransport
-      - Axway Transfer CFT
-      - Axway B2Bi
-      - Axway Open Banking
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Axway Amplify Platform API
-      - Axway Amplify Central API
-      - Axway API Gateway
-      - Axway API Manager
-      - Axway API Builder
-      - Axway Amplify Streams
-      - Axway Amplify Engage
-      - Axway Amplify AI Gateway
-      - Axway Amplify Fusion
-      - Axway Flow Manager
-      - Axway SecureTransport
-      - Axway Transfer CFT
-      - Axway B2Bi
-      - Axway Open Banking
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Axway Amplify Platform API
-      - Axway Amplify Central API
-      - Axway API Gateway
-      - Axway API Manager
-      - Axway API Builder
-      - Axway Amplify Streams
-      - Axway Amplify Engage
-      - Axway Amplify AI Gateway
-      - Axway Amplify Fusion
-      - Axway Flow Manager
-      - Axway SecureTransport
-      - Axway Transfer CFT
-      - Axway B2Bi
-      - Axway Open Banking
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Axway Amplify Platform API
-      - Axway Amplify Central API
-      - Axway API Gateway
-      - Axway API Manager
-      - Axway API Builder
-      - Axway Amplify Streams
-      - Axway Amplify Engage
-      - Axway Amplify AI Gateway
-      - Axway Amplify Fusion
-      - Axway Flow Manager
-      - Axway SecureTransport
-      - Axway Transfer CFT
-      - Axway B2Bi
-      - Axway Open Banking
+    metric: varies
+    limit: see API Manager / Amplify policy configuration
+  - name: Per-deployment infrastructure capacity
+    scope: deployment
+    metric: varies
+    limit: see Axway support for negotiated tenant limits
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
+  - name: Customer-defined throttling
+    description: Throttling, quota, and burst policies are defined by the customer in Axway API Manager
+      / Amplify Engage, not centrally published by Axway.
+  - name: Backoff
+    description: Clients should implement exponential backoff with jitter when receiving 429 or 503 responses.
   - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Sustained usage that materially impacts shared SaaS infrastructure may be subject to
+      fair-use throttling on Amplify-hosted services.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
