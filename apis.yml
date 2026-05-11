@@ -465,6 +465,16 @@ common:
   - name: Government
     description: Secure file transfer and API management for government agencies
       and compliance.
+- type: Integrations
+  url: https://www.axway.com/en/partners
+integrations:
+  - name: Axway
+  - name: Visit our Instagram page
+  - name: Visit our Facebook page
+  - name: Visit our LinkedIn page
+  - name: Visit our YouTube channel
+  - name: AWS Partner Network
+  - name: 2021 Microsoft Gold partner
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
