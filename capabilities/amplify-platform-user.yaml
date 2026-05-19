@@ -1,0 +1,443 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amplify Platform API v1.0.0 — user
+  description: 'Amplify Platform API v1.0.0 — user. 8 operations. Lead operation: Axway Set Credentials for Tooling. Self-contained
+    Naftiko capability covering one Axway business surface.'
+  tags:
+  - Axway
+  - user
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AXWAY_API_KEY: AXWAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amplify-platform-user
+    baseUri: https://platform.axway.com/api/v1
+    description: Amplify Platform API v1.0.0 — user business capability. Self-contained, no shared references.
+    resources:
+    - name: user-credentials
+      path: /user/credentials
+      operations:
+      - name: userupdatecredentials
+        method: PUT
+        description: Axway Set Credentials for Tooling
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: user-domain-domain
+      path: /user/domain/{domain}
+      operations:
+      - name: userfinddomain
+        method: GET
+        description: Axway Find Missing Domain Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: query
+          type: number
+    - name: user-organizations
+      path: /user/organizations
+      operations:
+      - name: userfindorgs
+        method: GET
+        description: Axway Get Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: email
+          in: query
+          type: string
+        - name: guid
+          in: query
+          type: string
+        - name: include_inactive
+          in: query
+          type: boolean
+        - name: provider_guid
+          in: query
+          type: string
+        - name: roles
+          in: query
+          type: string
+    - name: user-pref
+      path: /user/pref
+      operations:
+      - name: userupdatepref
+        method: PUT
+        description: Axway Update a Single User Preference
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: user-profile-user_id
+      path: /user/profile/{user_id}
+      operations:
+      - name: userupdate
+        method: PUT
+        description: Axway Update User Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: user-user_id
+      path: /user/{user_id}
+      operations:
+      - name: userfindone
+        method: GET
+        description: Axway Get a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: provider_guid
+          in: query
+          type: string
+        - name: authorization
+          in: header
+          type: string
+        - name: x-auth-token
+          in: header
+          type: string
+      - name: userremove
+        method: DELETE
+        description: Axway Remove User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: suppressEmail
+          in: query
+          type: boolean
+        - name: x-auth-token
+          in: header
+          type: string
+        - name: x-auth-password
+          in: header
+          type: string
+        - name: x-auth-code
+          in: header
+          type: string
+    - name: user-user_id-attribute
+      path: /user/{user_id}/attribute
+      operations:
+      - name: userfindattribute
+        method: GET
+        description: Axway Find a Mapped Attribute for a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: attr
+          in: query
+          type: string
+          required: true
+        - name: idp_id
+          in: query
+          type: string
+        - name: org_id
+          in: query
+          type: string
+    authentication:
+      type: bearer
+      token: '{{env.AXWAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: amplify-platform-user-rest
+    port: 8080
+    description: REST adapter for Amplify Platform API v1.0.0 — user. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/user/credentials
+      name: user-credentials
+      description: REST surface for user-credentials.
+      operations:
+      - method: PUT
+        name: userupdatecredentials
+        description: Axway Set Credentials for Tooling
+        call: amplify-platform-user.userupdatecredentials
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/domain/{domain}
+      name: user-domain-domain
+      description: REST surface for user-domain-domain.
+      operations:
+      - method: GET
+        name: userfinddomain
+        description: Axway Find Missing Domain Users
+        call: amplify-platform-user.userfinddomain
+        with:
+          domain: rest.domain
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/organizations
+      name: user-organizations
+      description: REST surface for user-organizations.
+      operations:
+      - method: GET
+        name: userfindorgs
+        description: Axway Get Organizations
+        call: amplify-platform-user.userfindorgs
+        with:
+          email: rest.email
+          guid: rest.guid
+          include_inactive: rest.include_inactive
+          provider_guid: rest.provider_guid
+          roles: rest.roles
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/pref
+      name: user-pref
+      description: REST surface for user-pref.
+      operations:
+      - method: PUT
+        name: userupdatepref
+        description: Axway Update a Single User Preference
+        call: amplify-platform-user.userupdatepref
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/profile/{user-id}
+      name: user-profile-user-id
+      description: REST surface for user-profile-user_id.
+      operations:
+      - method: PUT
+        name: userupdate
+        description: Axway Update User Profile
+        call: amplify-platform-user.userupdate
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/{user-id}
+      name: user-user-id
+      description: REST surface for user-user_id.
+      operations:
+      - method: GET
+        name: userfindone
+        description: Axway Get a User
+        call: amplify-platform-user.userfindone
+        with:
+          user_id: rest.user_id
+          provider_guid: rest.provider_guid
+          authorization: rest.authorization
+          x-auth-token: rest.x-auth-token
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: userremove
+        description: Axway Remove User
+        call: amplify-platform-user.userremove
+        with:
+          user_id: rest.user_id
+          suppressEmail: rest.suppressEmail
+          x-auth-token: rest.x-auth-token
+          x-auth-password: rest.x-auth-password
+          x-auth-code: rest.x-auth-code
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/{user-id}/attribute
+      name: user-user-id-attribute
+      description: REST surface for user-user_id-attribute.
+      operations:
+      - method: GET
+        name: userfindattribute
+        description: Axway Find a Mapped Attribute for a User
+        call: amplify-platform-user.userfindattribute
+        with:
+          user_id: rest.user_id
+          attr: rest.attr
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amplify-platform-user-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amplify Platform API v1.0.0 — user. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: axway-set-credentials-tooling
+      description: Axway Set Credentials for Tooling
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-user.userupdatecredentials
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-find-missing-domain-users
+      description: Axway Find Missing Domain Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-user.userfinddomain
+      with:
+        domain: tools.domain
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-organizations
+      description: Axway Get Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-user.userfindorgs
+      with:
+        email: tools.email
+        guid: tools.guid
+        include_inactive: tools.include_inactive
+        provider_guid: tools.provider_guid
+        roles: tools.roles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-update-single-user-preference
+      description: Axway Update a Single User Preference
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-user.userupdatepref
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-update-user-profile
+      description: Axway Update User Profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-user.userupdate
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-user
+      description: Axway Get a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-user.userfindone
+      with:
+        user_id: tools.user_id
+        provider_guid: tools.provider_guid
+        authorization: tools.authorization
+        x-auth-token: tools.x-auth-token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-remove-user
+      description: Axway Remove User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform-user.userremove
+      with:
+        user_id: tools.user_id
+        suppressEmail: tools.suppressEmail
+        x-auth-token: tools.x-auth-token
+        x-auth-password: tools.x-auth-password
+        x-auth-code: tools.x-auth-code
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-find-mapped-attribute-user
+      description: Axway Find a Mapped Attribute for a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-user.userfindattribute
+      with:
+        user_id: tools.user_id
+        attr: tools.attr
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.

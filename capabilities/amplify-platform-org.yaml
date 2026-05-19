@@ -1,0 +1,630 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amplify Platform API v1.0.0 — org
+  description: 'Amplify Platform API v1.0.0 — org. 11 operations. Lead operation: Axway Find Organization Environments. Self-contained
+    Naftiko capability covering one Axway business surface.'
+  tags:
+  - Axway
+  - org
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AXWAY_API_KEY: AXWAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amplify-platform-org
+    baseUri: https://platform.axway.com/api/v1
+    description: Amplify Platform API v1.0.0 — org business capability. Self-contained, no shared references.
+    resources:
+    - name: org-env
+      path: /org/env
+      operations:
+      - name: orgfindenvs
+        method: GET
+        description: Axway Find Organization Environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: query
+          type: string
+        - name: target
+          in: query
+          type: string
+    - name: org-org_id
+      path: /org/{org_id}
+      operations:
+      - name: orgfindone
+        method: GET
+        description: Axway Get Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: exclude_fields
+          in: query
+          type: array
+          description: A list of fields to exclude from the response.
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: onboarding
+          in: query
+          type: boolean
+        - name: authorization
+          in: header
+          type: string
+        - name: x-auth-token
+          in: header
+          type: string
+      - name: orgremove
+        method: DELETE
+        description: Axway Delete Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: suppressEmail
+          in: query
+          type: boolean
+        - name: x-auth-token
+          in: header
+          type: string
+        - name: x-auth-code
+          in: header
+          type: string
+      - name: orgupdate
+        method: PUT
+        description: Axway Update Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: authorization
+          in: header
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: org-org_id-stats
+      path: /org/{org_id}/stats
+      operations:
+      - name: orgstats
+        method: GET
+        description: Axway Get Organization Stats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: env
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: integer
+        - name: product
+          in: query
+          type: string
+        - name: to
+          in: query
+          type: integer
+    - name: org-org_id-user
+      path: /org/{org_id}/user
+      operations:
+      - name: orgusercreate
+        method: POST
+        description: Axway Add User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: orguserfind
+        method: GET
+        description: Axway Get Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: array
+          description: A list of fields to include in the response.
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: email
+          in: query
+          type: array
+        - name: primary
+          in: query
+          type: string
+        - name: roles
+          in: query
+          type: array
+        - name: term
+          in: query
+          type: string
+        - name: user_guid
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: number
+        - name: page
+          in: query
+          type: number
+        - name: skip
+          in: query
+          type: number
+        - name: sort
+          in: query
+          type: array
+        - name: x-auth-token
+          in: header
+          type: string
+    - name: org-org_id-user-user_guid
+      path: /org/{org_id}/user/{user_guid}
+      operations:
+      - name: orguserfindone
+        method: GET
+        description: Axway Get Org User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+        - name: teams
+          in: query
+          type: boolean
+        - name: x-auth-token
+          in: header
+          type: string
+      - name: orguserremove
+        method: DELETE
+        description: Axway Remove User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+      - name: orguserupdate
+        method: PUT
+        description: Axway Update Org Member Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: org-org_id-user-user_guid-primary
+      path: /org/{org_id}/user/{user_guid}/primary
+      operations:
+      - name: orguserprimary
+        method: PUT
+        description: Axway Sets the Primary Contract for the Org
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: user_guid
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.AXWAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: amplify-platform-org-rest
+    port: 8080
+    description: REST adapter for Amplify Platform API v1.0.0 — org. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/org/env
+      name: org-env
+      description: REST surface for org-env.
+      operations:
+      - method: GET
+        name: orgfindenvs
+        description: Axway Find Organization Environments
+        call: amplify-platform-org.orgfindenvs
+        with:
+          org_id: rest.org_id
+          target: rest.target
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}
+      name: org-org-id
+      description: REST surface for org-org_id.
+      operations:
+      - method: GET
+        name: orgfindone
+        description: Axway Get Organization
+        call: amplify-platform-org.orgfindone
+        with:
+          exclude_fields: rest.exclude_fields
+          org_id: rest.org_id
+          onboarding: rest.onboarding
+          authorization: rest.authorization
+          x-auth-token: rest.x-auth-token
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: orgremove
+        description: Axway Delete Organization
+        call: amplify-platform-org.orgremove
+        with:
+          org_id: rest.org_id
+          suppressEmail: rest.suppressEmail
+          x-auth-token: rest.x-auth-token
+          x-auth-code: rest.x-auth-code
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: orgupdate
+        description: Axway Update Organization
+        call: amplify-platform-org.orgupdate
+        with:
+          org_id: rest.org_id
+          authorization: rest.authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/stats
+      name: org-org-id-stats
+      description: REST surface for org-org_id-stats.
+      operations:
+      - method: GET
+        name: orgstats
+        description: Axway Get Organization Stats
+        call: amplify-platform-org.orgstats
+        with:
+          org_id: rest.org_id
+          env: rest.env
+          from: rest.from
+          product: rest.product
+          to: rest.to
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/user
+      name: org-org-id-user
+      description: REST surface for org-org_id-user.
+      operations:
+      - method: POST
+        name: orgusercreate
+        description: Axway Add User
+        call: amplify-platform-org.orgusercreate
+        with:
+          org_id: rest.org_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: orguserfind
+        description: Axway Get Members
+        call: amplify-platform-org.orguserfind
+        with:
+          fields: rest.fields
+          org_id: rest.org_id
+          email: rest.email
+          primary: rest.primary
+          roles: rest.roles
+          term: rest.term
+          user_guid: rest.user_guid
+          limit: rest.limit
+          page: rest.page
+          skip: rest.skip
+          sort: rest.sort
+          x-auth-token: rest.x-auth-token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/user/{user-guid}
+      name: org-org-id-user-user-guid
+      description: REST surface for org-org_id-user-user_guid.
+      operations:
+      - method: GET
+        name: orguserfindone
+        description: Axway Get Org User
+        call: amplify-platform-org.orguserfindone
+        with:
+          org_id: rest.org_id
+          user_guid: rest.user_guid
+          teams: rest.teams
+          x-auth-token: rest.x-auth-token
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: orguserremove
+        description: Axway Remove User
+        call: amplify-platform-org.orguserremove
+        with:
+          org_id: rest.org_id
+          user_guid: rest.user_guid
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: orguserupdate
+        description: Axway Update Org Member Association
+        call: amplify-platform-org.orguserupdate
+        with:
+          org_id: rest.org_id
+          user_guid: rest.user_guid
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/user/{user-guid}/primary
+      name: org-org-id-user-user-guid-primary
+      description: REST surface for org-org_id-user-user_guid-primary.
+      operations:
+      - method: PUT
+        name: orguserprimary
+        description: Axway Sets the Primary Contract for the Org
+        call: amplify-platform-org.orguserprimary
+        with:
+          org_id: rest.org_id
+          user_guid: rest.user_guid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amplify-platform-org-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amplify Platform API v1.0.0 — org. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: axway-find-organization-environments
+      description: Axway Find Organization Environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orgfindenvs
+      with:
+        org_id: tools.org_id
+        target: tools.target
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-organization
+      description: Axway Get Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orgfindone
+      with:
+        exclude_fields: tools.exclude_fields
+        org_id: tools.org_id
+        onboarding: tools.onboarding
+        authorization: tools.authorization
+        x-auth-token: tools.x-auth-token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-delete-organization
+      description: Axway Delete Organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform-org.orgremove
+      with:
+        org_id: tools.org_id
+        suppressEmail: tools.suppressEmail
+        x-auth-token: tools.x-auth-token
+        x-auth-code: tools.x-auth-code
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-update-organization
+      description: Axway Update Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orgupdate
+      with:
+        org_id: tools.org_id
+        authorization: tools.authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-organization-stats
+      description: Axway Get Organization Stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orgstats
+      with:
+        org_id: tools.org_id
+        env: tools.env
+        from: tools.from
+        product: tools.product
+        to: tools.to
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-add-user
+      description: Axway Add User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-org.orgusercreate
+      with:
+        org_id: tools.org_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-members
+      description: Axway Get Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orguserfind
+      with:
+        fields: tools.fields
+        org_id: tools.org_id
+        email: tools.email
+        primary: tools.primary
+        roles: tools.roles
+        term: tools.term
+        user_guid: tools.user_guid
+        limit: tools.limit
+        page: tools.page
+        skip: tools.skip
+        sort: tools.sort
+        x-auth-token: tools.x-auth-token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-org-user
+      description: Axway Get Org User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orguserfindone
+      with:
+        org_id: tools.org_id
+        user_guid: tools.user_guid
+        teams: tools.teams
+        x-auth-token: tools.x-auth-token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-remove-user
+      description: Axway Remove User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform-org.orguserremove
+      with:
+        org_id: tools.org_id
+        user_guid: tools.user_guid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-update-org-member-association
+      description: Axway Update Org Member Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orguserupdate
+      with:
+        org_id: tools.org_id
+        user_guid: tools.user_guid
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-sets-primary-contract-org
+      description: Axway Sets the Primary Contract for the Org
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-org.orguserprimary
+      with:
+        org_id: tools.org_id
+        user_guid: tools.user_guid
+      outputParameters:
+      - type: object
+        mapping: $.

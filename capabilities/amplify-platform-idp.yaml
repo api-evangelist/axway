@@ -1,0 +1,724 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amplify Platform API v1.0.0 — idp
+  description: 'Amplify Platform API v1.0.0 — idp. 15 operations. Lead operation: Axway Get All Organization IdPs. Self-contained
+    Naftiko capability covering one Axway business surface.'
+  tags:
+  - Axway
+  - idp
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AXWAY_API_KEY: AXWAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amplify-platform-idp
+    baseUri: https://platform.axway.com/api/v1
+    description: Amplify Platform API v1.0.0 — idp business capability. Self-contained, no shared references.
+    resources:
+    - name: org-org_id-idp
+      path: /org/{org_id}/idp
+      operations:
+      - name: orgidpfind
+        method: GET
+        description: Axway Get All Organization IdPs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+    - name: org-org_id-idp-oidc
+      path: /org/{org_id}/idp/oidc
+      operations:
+      - name: orgidpcreateoidc
+        method: POST
+        description: Axway Create OIDC IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: org-org_id-idp-saml
+      path: /org/{org_id}/idp/saml
+      operations:
+      - name: orgidpcreatesaml
+        method: POST
+        description: Axway Create SAML V2.0 IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: org-org_id-idp-idp_id
+      path: /org/{org_id}/idp/{idp_id}
+      operations:
+      - name: orgidpassociate
+        method: POST
+        description: Axway Associate with Another Organizations IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: orgidpfindone
+        method: GET
+        description: Axway Get IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: path
+          type: string
+          required: true
+      - name: orgidpremove
+        method: DELETE
+        description: Axway Remove Organization IdP Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: path
+          type: string
+          required: true
+      - name: orgidpupdate
+        method: PUT
+        description: Axway Update Organizations Custom IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: org-org_id-idp-idp_id-certificate
+      path: /org/{org_id}/idp/{idp_id}/certificate
+      operations:
+      - name: orgidpdownloadcert
+        method: GET
+        description: Axway Get Public IdP Signing or Encryption Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: use
+          in: query
+          type: string
+    - name: org-org_id-idp-idp_id-descriptor
+      path: /org/{org_id}/idp/{idp_id}/descriptor
+      operations:
+      - name: orgidpdownloaddescriptor
+        method: GET
+        description: Axway Get IdP Descriptor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: path
+          type: string
+          required: true
+    - name: org-org_id-idp-idp_id-reload-keys
+      path: /org/{org_id}/idp/{idp_id}/reload-keys
+      operations:
+      - name: orgidpreloadkeys
+        method: GET
+        description: Axway Reload SAML Validating Certificates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idp_id
+          in: path
+          type: string
+          required: true
+        - name: org_id
+          in: path
+          type: string
+          required: true
+    - name: provider-provider_id-idp
+      path: /provider/{provider_id}/idp
+      operations:
+      - name: provideridpfind
+        method: GET
+        description: Axway Get Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+        - name: basic
+          in: query
+          type: boolean
+      - name: provideridpremove
+        method: DELETE
+        description: Axway Remove Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+        - name: cleanup
+          in: query
+          type: boolean
+      - name: provideridpupdate
+        method: PUT
+        description: Axway Update Consumer IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: provider-provider_id-idp-oidc
+      path: /provider/{provider_id}/idp/oidc
+      operations:
+      - name: provideridpcreateoidc
+        method: POST
+        description: Axway Create Consumer OIDC IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: provider-provider_id-idp-saml
+      path: /provider/{provider_id}/idp/saml
+      operations:
+      - name: provideridpcreatesaml
+        method: POST
+        description: Axway Create Consumer SAML V2.0 IdP
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: provider_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.AXWAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: amplify-platform-idp-rest
+    port: 8080
+    description: REST adapter for Amplify Platform API v1.0.0 — idp. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/org/{org-id}/idp
+      name: org-org-id-idp
+      description: REST surface for org-org_id-idp.
+      operations:
+      - method: GET
+        name: orgidpfind
+        description: Axway Get All Organization IdPs
+        call: amplify-platform-idp.orgidpfind
+        with:
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/idp/oidc
+      name: org-org-id-idp-oidc
+      description: REST surface for org-org_id-idp-oidc.
+      operations:
+      - method: POST
+        name: orgidpcreateoidc
+        description: Axway Create OIDC IdP
+        call: amplify-platform-idp.orgidpcreateoidc
+        with:
+          org_id: rest.org_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/idp/saml
+      name: org-org-id-idp-saml
+      description: REST surface for org-org_id-idp-saml.
+      operations:
+      - method: POST
+        name: orgidpcreatesaml
+        description: Axway Create SAML V2.0 IdP
+        call: amplify-platform-idp.orgidpcreatesaml
+        with:
+          org_id: rest.org_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/idp/{idp-id}
+      name: org-org-id-idp-idp-id
+      description: REST surface for org-org_id-idp-idp_id.
+      operations:
+      - method: POST
+        name: orgidpassociate
+        description: Axway Associate with Another Organizations IdP
+        call: amplify-platform-idp.orgidpassociate
+        with:
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: orgidpfindone
+        description: Axway Get IdP
+        call: amplify-platform-idp.orgidpfindone
+        with:
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: orgidpremove
+        description: Axway Remove Organization IdP Config
+        call: amplify-platform-idp.orgidpremove
+        with:
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: orgidpupdate
+        description: Axway Update Organizations Custom IdP
+        call: amplify-platform-idp.orgidpupdate
+        with:
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/idp/{idp-id}/certificate
+      name: org-org-id-idp-idp-id-certificate
+      description: REST surface for org-org_id-idp-idp_id-certificate.
+      operations:
+      - method: GET
+        name: orgidpdownloadcert
+        description: Axway Get Public IdP Signing or Encryption Certificate
+        call: amplify-platform-idp.orgidpdownloadcert
+        with:
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+          use: rest.use
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/idp/{idp-id}/descriptor
+      name: org-org-id-idp-idp-id-descriptor
+      description: REST surface for org-org_id-idp-idp_id-descriptor.
+      operations:
+      - method: GET
+        name: orgidpdownloaddescriptor
+        description: Axway Get IdP Descriptor
+        call: amplify-platform-idp.orgidpdownloaddescriptor
+        with:
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{org-id}/idp/{idp-id}/reload-keys
+      name: org-org-id-idp-idp-id-reload-keys
+      description: REST surface for org-org_id-idp-idp_id-reload-keys.
+      operations:
+      - method: GET
+        name: orgidpreloadkeys
+        description: Axway Reload SAML Validating Certificates
+        call: amplify-platform-idp.orgidpreloadkeys
+        with:
+          idp_id: rest.idp_id
+          org_id: rest.org_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/provider/{provider-id}/idp
+      name: provider-provider-id-idp
+      description: REST surface for provider-provider_id-idp.
+      operations:
+      - method: GET
+        name: provideridpfind
+        description: Axway Get Consumer IdP
+        call: amplify-platform-idp.provideridpfind
+        with:
+          provider_id: rest.provider_id
+          basic: rest.basic
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: provideridpremove
+        description: Axway Remove Consumer IdP
+        call: amplify-platform-idp.provideridpremove
+        with:
+          provider_id: rest.provider_id
+          cleanup: rest.cleanup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: provideridpupdate
+        description: Axway Update Consumer IdP
+        call: amplify-platform-idp.provideridpupdate
+        with:
+          provider_id: rest.provider_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/provider/{provider-id}/idp/oidc
+      name: provider-provider-id-idp-oidc
+      description: REST surface for provider-provider_id-idp-oidc.
+      operations:
+      - method: POST
+        name: provideridpcreateoidc
+        description: Axway Create Consumer OIDC IdP
+        call: amplify-platform-idp.provideridpcreateoidc
+        with:
+          provider_id: rest.provider_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/provider/{provider-id}/idp/saml
+      name: provider-provider-id-idp-saml
+      description: REST surface for provider-provider_id-idp-saml.
+      operations:
+      - method: POST
+        name: provideridpcreatesaml
+        description: Axway Create Consumer SAML V2.0 IdP
+        call: amplify-platform-idp.provideridpcreatesaml
+        with:
+          provider_id: rest.provider_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amplify-platform-idp-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amplify Platform API v1.0.0 — idp. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: axway-get-all-organization-idps
+      description: Axway Get All Organization IdPs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.orgidpfind
+      with:
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-create-oidc-idp
+      description: Axway Create OIDC IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-idp.orgidpcreateoidc
+      with:
+        org_id: tools.org_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-create-saml-v2-0-idp
+      description: Axway Create SAML V2.0 IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-idp.orgidpcreatesaml
+      with:
+        org_id: tools.org_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-associate-another-organizations-idp
+      description: Axway Associate with Another Organizations IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-idp.orgidpassociate
+      with:
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-idp
+      description: Axway Get IdP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.orgidpfindone
+      with:
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-remove-organization-idp-config
+      description: Axway Remove Organization IdP Config
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform-idp.orgidpremove
+      with:
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-update-organizations-custom-idp
+      description: Axway Update Organizations Custom IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.orgidpupdate
+      with:
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-public-idp-signing
+      description: Axway Get Public IdP Signing or Encryption Certificate
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.orgidpdownloadcert
+      with:
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+        use: tools.use
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-idp-descriptor
+      description: Axway Get IdP Descriptor
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.orgidpdownloaddescriptor
+      with:
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-reload-saml-validating-certificates
+      description: Axway Reload SAML Validating Certificates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.orgidpreloadkeys
+      with:
+        idp_id: tools.idp_id
+        org_id: tools.org_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-get-consumer-idp
+      description: Axway Get Consumer IdP
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.provideridpfind
+      with:
+        provider_id: tools.provider_id
+        basic: tools.basic
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-remove-consumer-idp
+      description: Axway Remove Consumer IdP
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform-idp.provideridpremove
+      with:
+        provider_id: tools.provider_id
+        cleanup: tools.cleanup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-update-consumer-idp
+      description: Axway Update Consumer IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-idp.provideridpupdate
+      with:
+        provider_id: tools.provider_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-create-consumer-oidc-idp
+      description: Axway Create Consumer OIDC IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-idp.provideridpcreateoidc
+      with:
+        provider_id: tools.provider_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-create-consumer-saml-v2-0
+      description: Axway Create Consumer SAML V2.0 IdP
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-idp.provideridpcreatesaml
+      with:
+        provider_id: tools.provider_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

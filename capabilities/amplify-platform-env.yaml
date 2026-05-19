@@ -1,0 +1,264 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amplify Platform API v1.0.0 — env
+  description: 'Amplify Platform API v1.0.0 — env. 5 operations. Lead operation: Axway Create Environment. Self-contained
+    Naftiko capability covering one Axway business surface.'
+  tags:
+  - Axway
+  - env
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AXWAY_API_KEY: AXWAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amplify-platform-env
+    baseUri: https://platform.axway.com/api/v1
+    description: Amplify Platform API v1.0.0 — env business capability. Self-contained, no shared references.
+    resources:
+    - name: env
+      path: /env
+      operations:
+      - name: envcreate
+        method: POST
+        description: Axway Create Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: envfind
+        method: GET
+        description: Axway Find Environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_guid
+          in: query
+          type: string
+        - name: type
+          in: query
+          type: string
+        - name: x-auth-token
+          in: header
+          type: string
+    - name: env-env_id
+      path: /env/{env_id}
+      operations:
+      - name: envfindone
+        method: GET
+        description: Axway Find Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: env_id
+          in: path
+          type: string
+          required: true
+        - name: org_guid
+          in: query
+          type: string
+        - name: type
+          in: query
+          type: string
+        - name: authorization
+          in: header
+          type: string
+      - name: envremove
+        method: DELETE
+        description: Axway Delete Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: env_id
+          in: path
+          type: string
+          required: true
+        - name: authorization
+          in: header
+          type: string
+      - name: envupdate
+        method: PUT
+        description: Axway Update Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: env_id
+          in: path
+          type: string
+          required: true
+        - name: authorization
+          in: header
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.AXWAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: amplify-platform-env-rest
+    port: 8080
+    description: REST adapter for Amplify Platform API v1.0.0 — env. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/env
+      name: env
+      description: REST surface for env.
+      operations:
+      - method: POST
+        name: envcreate
+        description: Axway Create Environment
+        call: amplify-platform-env.envcreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: envfind
+        description: Axway Find Environments
+        call: amplify-platform-env.envfind
+        with:
+          org_guid: rest.org_guid
+          type: rest.type
+          x-auth-token: rest.x-auth-token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/env/{env-id}
+      name: env-env-id
+      description: REST surface for env-env_id.
+      operations:
+      - method: GET
+        name: envfindone
+        description: Axway Find Environment
+        call: amplify-platform-env.envfindone
+        with:
+          env_id: rest.env_id
+          org_guid: rest.org_guid
+          type: rest.type
+          authorization: rest.authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: envremove
+        description: Axway Delete Environment
+        call: amplify-platform-env.envremove
+        with:
+          env_id: rest.env_id
+          authorization: rest.authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: envupdate
+        description: Axway Update Environment
+        call: amplify-platform-env.envupdate
+        with:
+          env_id: rest.env_id
+          authorization: rest.authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amplify-platform-env-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amplify Platform API v1.0.0 — env. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: axway-create-environment
+      description: Axway Create Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-env.envcreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-find-environments
+      description: Axway Find Environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-env.envfind
+      with:
+        org_guid: tools.org_guid
+        type: tools.type
+        x-auth-token: tools.x-auth-token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-find-environment
+      description: Axway Find Environment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amplify-platform-env.envfindone
+      with:
+        env_id: tools.env_id
+        org_guid: tools.org_guid
+        type: tools.type
+        authorization: tools.authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-delete-environment
+      description: Axway Delete Environment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amplify-platform-env.envremove
+      with:
+        env_id: tools.env_id
+        authorization: tools.authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: axway-update-environment
+      description: Axway Update Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amplify-platform-env.envupdate
+      with:
+        env_id: tools.env_id
+        authorization: tools.authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amplify Platform API v1.0.0 — telemetry
+  description: 'Amplify Platform API v1.0.0 — telemetry. 1 operations. Lead operation: Axway Send Events. Self-contained Naftiko
+    capability covering one Axway business surface.'
+  tags:
+  - Axway
+  - telemetry
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AXWAY_API_KEY: AXWAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amplify-platform-telemetry
+    baseUri: https://platform.axway.com/api/v1
+    description: Amplify Platform API v1.0.0 — telemetry business capability. Self-contained, no shared references.
+    resources:
+    - name: analytics
+      path: /analytics
+      operations:
+      - name: analyticscreate
+        method: POST
+        description: Axway Send Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: authorization
+          in: header
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.AXWAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: amplify-platform-telemetry-rest
+    port: 8080
+    description: REST adapter for Amplify Platform API v1.0.0 — telemetry. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/analytics
+      name: analytics
+      description: REST surface for analytics.
+      operations:
+      - method: POST
+        name: analyticscreate
+        description: Axway Send Events
+        call: amplify-platform-telemetry.analyticscreate
+        with:
+          authorization: rest.authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amplify-platform-telemetry-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amplify Platform API v1.0.0 — telemetry. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: axway-send-events
+      description: Axway Send Events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amplify-platform-telemetry.analyticscreate
+      with:
+        authorization: tools.authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
