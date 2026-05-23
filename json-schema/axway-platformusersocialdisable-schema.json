@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.user.social.disable",
+  "title": "platform.user.social.disable",
+  "type": "object",
+  "description": "Published when an OAuth service provider is removed for a user.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/platform.user.social.enable"
+    }
+  ]
+}

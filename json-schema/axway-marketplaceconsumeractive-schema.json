@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.consumer.active",
+  "title": "marketplace.consumer.active",
+  "type": "object",
+  "description": "Published when a consumer organization is set active.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.consumer.approve"
+    }
+  ]
+}

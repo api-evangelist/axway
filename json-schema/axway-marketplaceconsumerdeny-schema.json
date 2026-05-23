@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.consumer.deny",
+  "title": "marketplace.consumer.deny",
+  "type": "object",
+  "description": "Published when a consumer organization sign-up denied.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.consumer.approve"
+    }
+  ]
+}

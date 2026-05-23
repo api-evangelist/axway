@@ -1,0 +1,33 @@
+{
+  "operationId": "auth_onboarding",
+  "method": "PUT",
+  "path": "/auth/onboarding",
+  "summary": "Axway Onboarding Capture",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

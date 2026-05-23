@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apic.ucs.catalogitem.remove",
+  "title": "apic.ucs.catalogitem.remove",
+  "type": "object",
+  "description": "Published when a catalog asset is removed.",
+  "x-context": "catalog",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/apic.ucs.catalogitem.create"
+    }
+  ]
+}

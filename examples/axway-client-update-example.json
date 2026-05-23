@@ -1,0 +1,89 @@
+{
+  "operationId": "client_update",
+  "method": "PUT",
+  "path": "/client/{client_id}",
+  "summary": "Axway Update Service Account",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "ClientUpdate200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CLIENT_DUPLICATE_ID",
+      "example": {
+        "success": false,
+        "description": "A client with this Client ID already exists.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CLIENT_MIGRATED",
+      "example": {
+        "success": false,
+        "description": "Legacy clients cannot be modified.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CONFLICTING_TEAM_ROLE",
+      "example": {
+        "success": false,
+        "description": "\"roles\" contained an invalid value: The \"%s\" role assigned in the team \"%s\" requires one of the following organization roles: %s.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "REQUIRED_ORG_ROLE",
+      "example": {
+        "success": false,
+        "description": "\"roles\" contained an invalid value: The \"%s\" role requires one of the following organization roles: %s.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

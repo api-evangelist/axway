@@ -1,0 +1,31 @@
+{
+  "operationId": "provider_findOnboarding",
+  "method": "GET",
+  "path": "/provider/{provider_id}/onboarding",
+  "summary": "Axway Get Provider Marketplace Onboarding Settings",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "ProviderFindonboarding200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

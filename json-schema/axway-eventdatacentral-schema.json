@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventDataCentral",
+  "title": "EventDataCentral",
+  "type": "object",
+  "oneOf": [
+    {
+      "title": "Action User",
+      "properties": {
+        "action_user_guid": {
+          "$ref": "#/components/schemas/EventDataActionUser/properties/action_user_guid"
+        }
+      }
+    },
+    {
+      "title": "Action Service Account",
+      "properties": {
+        "action_client_guid": {
+          "$ref": "#/components/schemas/EventDataActionClient/properties/action_client_guid"
+        }
+      }
+    }
+  ],
+  "properties": {
+    "consumer_org_id": {
+      "type": "string",
+      "description": "The `org_id` of the consumer organization if applicable.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "id": {
+      "type": "string",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "name": {
+      "type": "string",
+      "example": "Example Name"
+    },
+    "org_guid": {
+      "$ref": "#/components/schemas/Org/properties/guid"
+    },
+    "org_id": {
+      "$ref": "#/components/schemas/Org/properties/org_id"
+    }
+  }
+}

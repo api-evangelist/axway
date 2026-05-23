@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RoleList",
+  "title": "RoleList",
+  "type": "array",
+  "description": "A list of Role objects.",
+  "items": {
+    "$ref": "#/components/schemas/Role"
+  }
+}

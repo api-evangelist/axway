@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.user.update",
+  "title": "platform.user.update",
+  "type": "object",
+  "description": "Published when user account/meta data is updated.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    }
+  }
+}

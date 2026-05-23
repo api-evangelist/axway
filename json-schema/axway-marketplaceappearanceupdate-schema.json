@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.appearance.update",
+  "title": "marketplace.appearance.update",
+  "type": "object",
+  "description": "Published when a marketplace appearance is set or changed.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

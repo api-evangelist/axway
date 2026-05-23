@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.subscription.expired",
+  "title": "platform.subscription.expired",
+  "type": "object",
+  "description": "Published when a subscription expires past its end date and any dunning period.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    }
+  ],
+  "properties": {
+    "modified_by": {
+      "$ref": "#/components/schemas/EventDataModifiedBy"
+    },
+    "subscription": {
+      "$ref": "#/components/schemas/Subscription"
+    }
+  }
+}

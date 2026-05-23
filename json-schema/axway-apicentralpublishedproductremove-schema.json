@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.publishedproduct.remove",
+  "title": "apicentral.publishedproduct.remove",
+  "type": "object",
+  "description": "Published when a product is unpublished from a given marketplace.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/apicentral.publishedproduct.create"
+    }
+  ]
+}

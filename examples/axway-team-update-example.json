@@ -1,0 +1,96 @@
+{
+  "operationId": "team_update",
+  "method": "PUT",
+  "path": "/team/{team_id}",
+  "summary": "Axway Update Team",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "TeamUpdate200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "DEFAULT_ADMIN_ONLY",
+      "example": {
+        "success": false,
+        "description": "Only organization administrators can set the default team.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "EXISTING_TEAM_NAME",
+      "example": {
+        "success": false,
+        "description": "That team name already exists.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "ROLE_NOT_ENABLED",
+      "example": {
+        "success": false,
+        "description": "\"%s\" is not an allowed role for this organization.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "REQUIRED_ORG_ROLE",
+      "example": {
+        "success": false,
+        "description": "\"roles\" contained an invalid value: The \"%s\" role requires one of the following organization roles: %s.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

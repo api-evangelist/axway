@@ -1,0 +1,47 @@
+{
+  "operationId": "auth_deviceauthFind",
+  "method": "GET",
+  "path": "/auth/deviceauth/{user_id}",
+  "summary": "Axway Retrieve Authorized Devices",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "AuthDeviceauthfind200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

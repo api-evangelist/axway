@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.inactive",
+  "title": "platform.org.inactive",
+  "type": "object",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/platform.org.active"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "operationId": "app_remove",
+  "method": "DELETE",
+  "path": "/app/{app_id}",
+  "summary": "Axway Remove App",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "APP_SOURCE",
+      "example": {
+        "success": false,
+        "description": "App is not managed by the Amplify Platform.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

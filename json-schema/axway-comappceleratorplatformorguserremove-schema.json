@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/com.appcelerator.platform.org.user.remove",
+  "title": "com.appcelerator.platform.org.user.remove",
+  "type": "object",
+  "description": "Published when a user is removed/uninvited from an organization.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ]
+}

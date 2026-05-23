@@ -1,0 +1,92 @@
+{
+  "operationId": "analytics_create",
+  "method": "POST",
+  "path": "/analytics",
+  "summary": "Axway Send Events",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "EVENT_COUNT",
+      "example": {
+        "success": false,
+        "description": "\"event\" contained an invalid value: Maximum number of %d exceeded.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "EVENT_TYPE",
+      "example": {
+        "success": false,
+        "description": "\"%s\" contained an invalid value: Only telemetry events are accepted.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "EVENT_INVALID_PRODUCT",
+      "example": {
+        "success": false,
+        "description": "\"%s\" contained an invalid value: Event %s is not allowed, product \"%s\" is not purchased.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    },
+    {
+      "status": "413",
+      "contentType": "application/json",
+      "name": "CONTENT_TOO_LARGE",
+      "example": {
+        "success": false,
+        "description": "Request content length exceeds %d byte limit.",
+        "code": 413
+      }
+    }
+  ]
+}

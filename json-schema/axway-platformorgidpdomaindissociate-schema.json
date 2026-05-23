@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.idp.domain.dissociate",
+  "title": "platform.org.idp.domain.dissociate",
+  "type": "object",
+  "description": "Published when an Identity Provider is disabled for users on a domain in an organization.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/platform.org.idp.domain.associate"
+    }
+  ]
+}

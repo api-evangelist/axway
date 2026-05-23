@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Success",
+  "title": "Success",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Response"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "result": {
+          "description": "The response data"
+        }
+      }
+    }
+  ]
+}

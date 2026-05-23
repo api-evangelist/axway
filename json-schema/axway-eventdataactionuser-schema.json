@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventDataActionUser",
+  "title": "Action User",
+  "type": "object",
+  "properties": {
+    "action_user_guid": {
+      "description": "The `guid` of the user that performed the action",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/User/properties/guid"
+        }
+      ],
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "operationId": "auth_deviceauthCreate",
+  "method": "GET",
+  "path": "/auth/authenticator",
+  "summary": "Axway Initiate Authenticator App Setup",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+name: Axway Domain Vocabulary
+provider: Axway
+providerId: axway
+description: Tag-derived vocabulary for the Axway API surface; sourced from openapi/ tags.
+terms:
+- term: aca
+- term: activity
+- term: admin
+- term: analytics
+- term: app
+- term: auth
+- term: client
+- term: domain
+- term: entitlement
+- term: env
+- term: export
+- term: idp
+- term: org
+- term: provider
+- term: role
+- term: session
+- term: subscription
+- term: team
+- term: telemetry
+- term: usage
+- term: user

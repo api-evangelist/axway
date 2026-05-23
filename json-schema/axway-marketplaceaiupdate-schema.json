@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.ai.update",
+  "title": "marketplace.ai.update",
+  "type": "object",
+  "description": "Published when marketplace AI integration settings are changed.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.ai.enable"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.onboarding.enable",
+  "title": "marketplace.onboarding.enable",
+  "type": "object",
+  "description": "Published when marketplace onboarding data capture is enabled.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.onboarding.disable"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

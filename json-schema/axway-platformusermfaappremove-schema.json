@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.user.mfa.app.remove",
+  "title": "platform.user.mfa.app.remove",
+  "type": "object",
+  "description": "Published when an MFA application is removed for a user.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ]
+}

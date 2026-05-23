@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.publishedproduct.create",
+  "title": "apicentral.publishedproduct.create",
+  "type": "object",
+  "description": "Published when a product is published to a given marketplace.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataCentral"
+    }
+  ],
+  "properties": {
+    "group": {
+      "type": "string",
+      "enum": [
+        "catalog"
+      ],
+      "example": "catalog"
+    },
+    "product_id": {
+      "type": "string",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.activation.send",
+  "title": "platform.activation.send",
+  "type": "object",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ],
+  "properties": {
+    "activation_type": {
+      "$ref": "#/components/schemas/Activation/properties/type"
+    }
+  }
+}

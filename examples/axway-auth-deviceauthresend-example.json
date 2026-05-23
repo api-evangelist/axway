@@ -1,0 +1,37 @@
+{
+  "operationId": "auth_deviceauthResend",
+  "method": "POST",
+  "path": "/auth/deviceauth/resend",
+  "summary": "Axway Resends Device Authorization",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "DEVICE_AUTH_DISABLED",
+      "example": {
+        "success": false,
+        "description": "Multi-factor authentication is disabled",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "AUTH_CODE_DISABLED",
+      "example": {
+        "success": false,
+        "description": "Auth code generation temporarily disabled.",
+        "code": 403
+      }
+    }
+  ]
+}

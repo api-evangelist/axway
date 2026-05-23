@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.delete",
+  "title": "platform.org.delete",
+  "type": "object",
+  "x-context": "staff",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    }
+  ],
+  "properties": {
+    "from": {
+      "$ref": "#/components/schemas/EventDataFrom"
+    },
+    "modified_by": {
+      "$ref": "#/components/schemas/EventDataModifiedBy"
+    }
+  }
+}

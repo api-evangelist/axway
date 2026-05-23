@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.env.remove",
+  "title": "platform.env.remove",
+  "type": "object",
+  "description": "Published when an environment is removed.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/platform.env.create"
+    }
+  ]
+}

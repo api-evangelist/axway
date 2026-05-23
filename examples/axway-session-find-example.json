@@ -1,0 +1,23 @@
+{
+  "operationId": "session_find",
+  "method": "GET",
+  "path": "/session",
+  "summary": "Axway Get Session",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "SessionFind200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    }
+  ]
+}

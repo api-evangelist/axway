@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.onboarding.update",
+  "title": "marketplace.onboarding.update",
+  "type": "object",
+  "description": "Published when marketplace onboarding data capture is changed.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.onboarding.enable"
+    }
+  ]
+}

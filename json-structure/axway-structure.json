@@ -1,0 +1,2439 @@
+{
+  "provider": "Axway",
+  "providerId": "axway",
+  "kind": "json-structure",
+  "description": "Structural overview of the Axway API surface; extracted from openapi/.",
+  "schemaCount": 179,
+  "operationCount": 141,
+  "schemas": [
+    {
+      "name": "Activation",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Application",
+      "type": "object",
+      "propertyCount": 12,
+      "required": [
+        "guid",
+        "name",
+        "org_guid",
+        "platform",
+        "type"
+      ]
+    },
+    {
+      "name": "Client",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "guid",
+        "name",
+        "org_guid",
+        "roles",
+        "tags"
+      ]
+    },
+    {
+      "name": "Consumer",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "CustomQuery",
+      "type": "object",
+      "propertyCount": 23,
+      "required": [
+        "name",
+        "span",
+        "unit"
+      ]
+    },
+    {
+      "name": "DataExport",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "guid",
+        "items",
+        "status",
+        "user_guid"
+      ]
+    },
+    {
+      "name": "DefaultFields",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Domain",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "orgs",
+        "tld"
+      ]
+    },
+    {
+      "name": "Entitlement",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "type",
+        "title",
+        "description"
+      ]
+    },
+    {
+      "name": "Entitlements",
+      "type": "object",
+      "propertyCount": 150,
+      "required": []
+    },
+    {
+      "name": "Environment",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "guid",
+        "isProduction",
+        "name",
+        "org_guid",
+        "type"
+      ]
+    },
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Event",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "event"
+      ]
+    },
+    {
+      "name": "IdentityProvider",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "guid",
+        "name",
+        "protocol"
+      ]
+    },
+    {
+      "name": "Org",
+      "type": "object",
+      "propertyCount": 25,
+      "required": [
+        "active",
+        "guid",
+        "name",
+        "org_id",
+        "region",
+        "subscriptions",
+        "users"
+      ]
+    },
+    {
+      "name": "PasswordPolicy",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Provider",
+      "type": "object",
+      "propertyCount": 40,
+      "required": [
+        "consumer",
+        "consumer_approve",
+        "guid",
+        "name",
+        "org_guid",
+        "public",
+        "signup",
+        "terms"
+      ]
+    },
+    {
+      "name": "Response",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ResponseMetadata",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Role",
+      "type": "object",
+      "propertyCount": 16,
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    {
+      "name": "SessionInfo",
+      "type": "object",
+      "propertyCount": 25,
+      "required": []
+    },
+    {
+      "name": "Subscription",
+      "type": "object",
+      "propertyCount": 11,
+      "required": [
+        "id",
+        "product",
+        "plan",
+        "entitlements"
+      ]
+    },
+    {
+      "name": "Success",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Team",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "default",
+        "guid",
+        "name",
+        "org_guid",
+        "tags",
+        "users"
+      ]
+    },
+    {
+      "name": "UsageEntry",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 32,
+      "required": [
+        "activated",
+        "active",
+        "email",
+        "firstname",
+        "guid",
+        "lastname",
+        "user_id"
+      ]
+    },
+    {
+      "name": "UserDevice",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "UserTeams",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EventDataActionClient",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "EventDataActionUser",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EventDataActor",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EventDataCentral",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "EventDataChanges",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EventDataClient",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "EventDataFrom",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EventDataModifiedBy",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EventDataOrg",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "EventDataUser",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "api_central.provision",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "api_central.provisioned",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "apic.ucs.catalogitem.create",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "apic.ucs.catalogitem.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apic.ucs.catalogitem.share",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apic.ucs.catalogitem.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apic.ucs.subscription.create",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "apic.ucs.subscription.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apic.ucs.subscription.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral._._",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "apicentral._._.update",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "apicentral.agent.create",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "apicentral.agent.failed",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.agent.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.agent.start",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "apicentral.agent.stop",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.agent.unhealthy",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.apiservice.create",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "apicentral.apiservice.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.apiservice.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.asset.create",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "apicentral.asset.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.asset.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.credential.expire",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "apicentral.documentresource.create",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "apicentral.documentresource.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.documentresource.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.env.create",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "apicentral.env.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.env.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.publisheddocumentresource.create",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "apicentral.publisheddocumentresource.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.publishedproduct.create",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "apicentral.publishedproduct.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "apicentral.subscription.create",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "apicentral.subscription.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "com.appcelerator.platform.org.user.create",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "com.appcelerator.platform.org.user.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.ai.disable",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "marketplace.ai.enable",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "marketplace.ai.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.appearance.update",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "marketplace.billing.disable",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "marketplace.billing.enable",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "marketplace.billing.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.consumer.active",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.consumer.approve",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "marketplace.consumer.deny",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.consumer.inactive",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.consumer.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.consumer.signup",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "marketplace.create",
+      "type": "object",
+      "propertyCount": 23,
+      "required": []
+    },
+    {
+      "name": "marketplace.idp.create",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "marketplace.idp.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.idp.update",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "marketplace.lang.update",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "marketplace.onboarding.disable",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "marketplace.onboarding.enable",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "marketplace.onboarding.update",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "marketplace.publisheddocumentresource.add",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "marketplace.publisheddocumentresource.remove",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "marketplace.remove",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "marketplace.settings.update",
+      "type": "object",
+      "propertyCount": 24,
+      "required": []
+    },
+    {
+      "name": "marketplace.user.remove",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "platform.activation.access",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.activation.complete",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.activation.send",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.app.create",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.app.remove",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.app.update",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.client.create",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.client.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.client.update",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.documentresource.add",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.documentresource.remove",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.env.create",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "platform.env.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.env.update",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.login.failed",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.login",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.logout",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.org.active",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.org.branding.update",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.org.create",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.org.delete",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.create",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.domain.associate",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.domain.confirm",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.domain.create",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.domain.dissociate",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.domain.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.org.idp.update",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.org.inactive",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.org.security.update",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "platform.org.update",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "platform.org.user.idp.update",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.org.user.primary",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.org.user.resent",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.org.user.role.update",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "platform.session.create",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "platform.subscription.create",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.subscription.delete",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.subscription.expired",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.subscription.update",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "platform.team.app.add",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "platform.team.app.remove",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "platform.team.create",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.team.default",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.team.remove",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.team.update",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.team.user.add",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "platform.team.user.remove",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.team.user.role.update",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "platform.terms.accept",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.usage.report",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "platform.user.impersonate",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.mfa.app.add",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.mfa.app.remove",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.mfa.disabled",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.mfa.enabled",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.password.change",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.user.password.reset",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.remove",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "platform.user.social.disable",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.social.enable",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "platform.user.unimpersonate",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "platform.user.update",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CustomQueryList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ApplicationList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UserDeviceList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ClientList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EntitlementList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "DataExportList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "DomainList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "IdentityProviderList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "SubscriptionList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "EnvironmentList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "RoleList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "TeamList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UsageEntryList",
+      "type": "array",
+      "propertyCount": 0,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "PUT",
+      "path": "/user/pref",
+      "operationId": "user_updatePref",
+      "summary": "Axway Update a Single User Preference",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/user/organizations",
+      "operationId": "user_findOrgs",
+      "summary": "Axway Get Organizations",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/user/credentials",
+      "operationId": "user_updateCredentials",
+      "summary": "Axway Set Credentials for Tooling",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/usage/automatic",
+      "operationId": "usage_uploadAutomatic",
+      "summary": "Axway Uploads an Automatic Usage Report",
+      "tags": [
+        "usage"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/usage",
+      "operationId": "usage_find",
+      "summary": "Axway Fetches Usage Reports",
+      "tags": [
+        "usage"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/usage",
+      "operationId": "usage_upload",
+      "summary": "Axway Uploads a Usage Report",
+      "tags": [
+        "usage"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/team",
+      "operationId": "team_find",
+      "summary": "Axway Get Accessible Teams for the Query",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/team",
+      "operationId": "team_create",
+      "summary": "Axway Create a Team",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/session/query",
+      "operationId": "session_query",
+      "summary": "Axway Find Sessions",
+      "tags": [
+        "session"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/session",
+      "operationId": "session_find",
+      "summary": "Axway Get Session",
+      "tags": [
+        "session"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/role",
+      "operationId": "role_find",
+      "summary": "Axway Get Roles Matching Query",
+      "tags": [
+        "role"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider",
+      "operationId": "provider_find",
+      "summary": "Axway Get Provider Marketplaces",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/provider",
+      "operationId": "provider_create",
+      "summary": "Axway Create Provider Marketplace",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/env",
+      "operationId": "org_findEnvs",
+      "summary": "Axway Find Organization Environments",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/export",
+      "operationId": "export_findAll",
+      "summary": "Axway Find Exports",
+      "tags": [
+        "export"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/export",
+      "operationId": "export_create",
+      "summary": "Axway Export Data",
+      "tags": [
+        "export"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/env",
+      "operationId": "env_find",
+      "summary": "Axway Find Environments",
+      "tags": [
+        "env"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/env",
+      "operationId": "env_create",
+      "summary": "Axway Create Environment",
+      "tags": [
+        "env"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/entitlement",
+      "operationId": "entitlement_find",
+      "summary": "Axway Get Entitlement Meta",
+      "tags": [
+        "entitlement"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/client",
+      "operationId": "client_find",
+      "summary": "Axway Get Service Accounts",
+      "tags": [
+        "client"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/client",
+      "operationId": "client_create",
+      "summary": "Axway Add Service Account",
+      "tags": [
+        "client"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/validatePassword",
+      "operationId": "auth_validatePassword",
+      "summary": "Axway Validates a User Password",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/terms",
+      "operationId": "auth_acceptTerms",
+      "summary": "Axway Accept Terms & Conditions",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/switchLoggedInOrg",
+      "operationId": "auth_sessionSwitchOrg",
+      "summary": "Axway Switch Signed-in Organization",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/signup",
+      "operationId": "auth_signup",
+      "summary": "Axway Sign Up",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/password_policy",
+      "operationId": "auth_findPasswordPolicy",
+      "summary": "Axway Get Effective Password Policy",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/onboarding",
+      "operationId": "auth_onboarding",
+      "summary": "Axway Onboarding Capture",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/mfa/verify",
+      "operationId": "auth_mfaVerify",
+      "summary": "Axway Verify an Authorization Code",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/mfa/send",
+      "operationId": "auth_mfaSend",
+      "summary": "Axway Send an Authorization Code",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/logout",
+      "operationId": "auth_logout",
+      "summary": "Axway Sign-out",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "operationId": "auth_login",
+      "summary": "Axway Sign-in",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/impersonate",
+      "operationId": "auth_unimpersonate",
+      "summary": "Axway Unimpersonate User",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/forgot",
+      "operationId": "auth_forgot",
+      "summary": "Axway Send Forgot Password Link",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/findSession",
+      "operationId": "auth_sessionFind",
+      "summary": "Axway Retrieves the Current Session",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/deviceauth/resend",
+      "operationId": "auth_deviceauthResend",
+      "summary": "Axway Resends Device Authorization",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/deviceauth",
+      "operationId": "auth_deviceauthValidate",
+      "summary": "Axway Validates a New Sessions Device Authorization",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/checkSession",
+      "operationId": "auth_sessionCheck",
+      "summary": "Axway Checks if the User is Signed in",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/authenticator",
+      "operationId": "auth_deviceauthCreate",
+      "summary": "Axway Initiate Authenticator App Setup",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/authenticator",
+      "operationId": "auth_deviceauthConfirm",
+      "summary": "Axway Confirm Authenticator App",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/authenticator",
+      "operationId": "auth_deviceauthRemoveApp",
+      "summary": "Axway Remove Authenticator App",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/activate/signup",
+      "operationId": "auth_activationSignup",
+      "summary": "Axway Activate a Signup User",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/activate/resend",
+      "operationId": "auth_activationResend",
+      "summary": "Axway Resend Activation Link",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/activate/forgot",
+      "operationId": "auth_activationForgot",
+      "summary": "Axway Reset User Password",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/activate",
+      "operationId": "auth_activationConfirm",
+      "summary": "Axway Activate a User",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/app",
+      "operationId": "app_find",
+      "summary": "Axway Find Apps",
+      "tags": [
+        "app"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/app",
+      "operationId": "app_create",
+      "summary": "Axway Create App",
+      "tags": [
+        "app"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/query",
+      "operationId": "analytics_query",
+      "summary": "Axway Analytics Query Using Lexus",
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/analytics/error",
+      "operationId": "analytics_error",
+      "summary": "Axway Report an Error",
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/analytics/custom_query",
+      "operationId": "analytics_customCreate",
+      "summary": "Axway Create a Custom Query",
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/custom_queries",
+      "operationId": "analytics_customFind",
+      "summary": "Axway Find Custom Queries",
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/analytics",
+      "operationId": "analytics_create",
+      "summary": "Axway Send Events",
+      "tags": [
+        "telemetry"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/activity/event",
+      "operationId": "activity_findEvents",
+      "summary": "Axway Get Activity Event Names",
+      "tags": [
+        "activity"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/activity",
+      "operationId": "activity_find",
+      "summary": "Axway Get Activity",
+      "tags": [
+        "activity"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/user/profile/{user_id}",
+      "operationId": "user_update",
+      "summary": "Axway Update User Profile",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/user/domain/{domain}",
+      "operationId": "user_findDomain",
+      "summary": "Axway Find Missing Domain Users",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/user/{user_id}/attribute",
+      "operationId": "user_findAttribute",
+      "summary": "Axway Find a Mapped Attribute for a User",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/user/{user_id}",
+      "operationId": "user_findOne",
+      "summary": "Axway Get a User",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/user/{user_id}",
+      "operationId": "user_remove",
+      "summary": "Axway Remove User",
+      "tags": [
+        "user"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/usage/{file_id}",
+      "operationId": "usage_download",
+      "summary": "Axway Downloads a Usage Report",
+      "tags": [
+        "usage"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/team/{team_id}/user/{user_id}",
+      "operationId": "team_userAdd",
+      "summary": "Axway Add Member",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/team/{team_id}/user/{user_id}",
+      "operationId": "team_userUpdateRole",
+      "summary": "Axway Sets the Team Member Role",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/team/{team_id}/user/{user_id}",
+      "operationId": "team_userRemove",
+      "summary": "Axway Remove Member",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/team/{team_id}/user",
+      "operationId": "team_userFind",
+      "summary": "Axway Get Team Members",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/team/{team_id}",
+      "operationId": "team_findOne",
+      "summary": "Axway Find Team",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/team/{team_id}",
+      "operationId": "team_update",
+      "summary": "Axway Update Team",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/team/{team_id}",
+      "operationId": "team_remove",
+      "summary": "Axway Remove Team",
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/session/{session_id}",
+      "operationId": "session_remove",
+      "summary": "Axway Delete Session",
+      "tags": [
+        "session"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/role/{role_id}",
+      "operationId": "role_findOne",
+      "summary": "Axway Get Role",
+      "tags": [
+        "role"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}/onboarding",
+      "operationId": "provider_findOnboarding",
+      "summary": "Axway Get Provider Marketplace Onboarding Settings",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/provider/{provider_id}/oauth/{service}/confirm",
+      "operationId": "provider_oauthConfirm",
+      "summary": "Axway OAuth 2.0 Auth Signup Confirmation",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}/oauth/{service}/callback",
+      "operationId": "provider_oauthCallback",
+      "summary": "Axway Concludes OAuth 2.0 Auth",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}/oauth/{service}/authorize",
+      "operationId": "provider_oauthAuthorize",
+      "summary": "Axway Initiates OAuth 2.0 Auth",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/provider/{provider_id}/idp/saml",
+      "operationId": "provider_idpCreateSAML",
+      "summary": "Axway Create Consumer SAML V2.0 IdP",
+      "tags": [
+        "idp",
+        "provider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/provider/{provider_id}/idp/oidc",
+      "operationId": "provider_idpCreateOIDC",
+      "summary": "Axway Create Consumer OIDC IdP",
+      "tags": [
+        "idp",
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}/idp",
+      "operationId": "provider_idpFind",
+      "summary": "Axway Get Consumer IdP",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/provider/{provider_id}/idp",
+      "operationId": "provider_idpUpdate",
+      "summary": "Axway Update Consumer IdP",
+      "tags": [
+        "idp",
+        "provider"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/provider/{provider_id}/idp",
+      "operationId": "provider_idpRemove",
+      "summary": "Axway Remove Consumer IdP",
+      "tags": [
+        "idp",
+        "provider"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/provider/{provider_id}/consumer/{org_id}",
+      "operationId": "provider_consumerUpdate",
+      "summary": "Axway Update Consumer Organization",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}/consumer/{consumer_id}",
+      "operationId": "provider_consumerFindOne",
+      "summary": "Axway Find Consumer Organization",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/provider/{provider_id}/consumer/{consumer_id}",
+      "operationId": "provider_consumerRemove",
+      "summary": "Axway Delete a Consumer Organization",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}/consumer",
+      "operationId": "provider_consumerFind",
+      "summary": "Axway Find Consumer Organizations",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/provider/{provider_id}/consumer",
+      "operationId": "provider_consumerCreate",
+      "summary": "Axway Create Consumer Organization",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}/activity",
+      "operationId": "provider_activity",
+      "summary": "Axway Get Marketplace Activity",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/provider/{provider_id}",
+      "operationId": "provider_findOne",
+      "summary": "Axway Get Provider Marketplace",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/provider/{provider_id}",
+      "operationId": "provider_update",
+      "summary": "Axway Update Provider Marketplace",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/provider/{provider_id}",
+      "operationId": "provider_remove",
+      "summary": "Axway Delete Provider Marketplace",
+      "tags": [
+        "provider"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/org/{org_id}/user/{user_guid}/primary",
+      "operationId": "org_userPrimary",
+      "summary": "Axway Sets the Primary Contract for the Org",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/user/{user_guid}",
+      "operationId": "org_userFindOne",
+      "summary": "Axway Get Org User",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/org/{org_id}/user/{user_guid}",
+      "operationId": "org_userUpdate",
+      "summary": "Axway Update Org Member Association",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/org/{org_id}/user/{user_guid}",
+      "operationId": "org_userRemove",
+      "summary": "Axway Remove User",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/user",
+      "operationId": "org_userFind",
+      "summary": "Axway Get Members",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/user",
+      "operationId": "org_userCreate",
+      "summary": "Axway Add User",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/usage",
+      "operationId": "org_findUsage",
+      "summary": "Axway Organization Usage",
+      "tags": [
+        "usage"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/subscription/{subscription_id}",
+      "operationId": "org_findOneSubscription",
+      "summary": "Axway Find Subscription",
+      "tags": [
+        "subscription"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/subscription",
+      "operationId": "org_findSubscriptions",
+      "summary": "Axway Find Subscriptions",
+      "tags": [
+        "subscription"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/stats",
+      "operationId": "org_stats",
+      "summary": "Axway Get Organization Stats",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/idp/saml",
+      "operationId": "org_idpCreateSAML",
+      "summary": "Axway Create SAML V2.0 IdP",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/idp/oidc",
+      "operationId": "org_idpCreateOIDC",
+      "summary": "Axway Create OIDC IdP",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/idp/{idp_id}/reload-keys",
+      "operationId": "org_idpReloadKeys",
+      "summary": "Axway Reload SAML Validating Certificates",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/idp/{idp_id}/descriptor",
+      "operationId": "org_idpDownloadDescriptor",
+      "summary": "Axway Get IdP Descriptor",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/idp/{idp_id}/certificate",
+      "operationId": "org_idpDownloadCert",
+      "summary": "Axway Get Public IdP Signing or Encryption Certificate",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/idp/{idp_id}",
+      "operationId": "org_idpFindOne",
+      "summary": "Axway Get IdP",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/idp/{idp_id}",
+      "operationId": "org_idpAssociate",
+      "summary": "Axway Associate with Another Organizations IdP",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/org/{org_id}/idp/{idp_id}",
+      "operationId": "org_idpUpdate",
+      "summary": "Axway Update Organizations Custom IdP",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/org/{org_id}/idp/{idp_id}",
+      "operationId": "org_idpRemove",
+      "summary": "Axway Remove Organization IdP Config",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/idp",
+      "operationId": "org_idpFind",
+      "summary": "Axway Get All Organization IdPs",
+      "tags": [
+        "idp"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/domain/verify",
+      "operationId": "org_domainAssociate",
+      "summary": "Axway Trigger Domain Association Flow",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/domain/subdomain",
+      "operationId": "org_domainAssociateSubdomain",
+      "summary": "Axway Associate Subdomain to Parent Domain IdP",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/domain/enable",
+      "operationId": "org_domainEnable",
+      "summary": "Axway Enable IdP for a Domain",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/domain/dissociate",
+      "operationId": "org_domainDissociate",
+      "summary": "Axway Remove Domain Association",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/domain/consolidate",
+      "operationId": "org_domainConsolidate",
+      "summary": "Axway Consolidate Domain Users",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/domain/confirm",
+      "operationId": "org_domainConfirm",
+      "summary": "Axway Confirm Domain Ownership",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/org/{org_id}/domain/{domain}",
+      "operationId": "org_domainRemove",
+      "summary": "Axway Remove Domain Association",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}/domain",
+      "operationId": "org_domainFind",
+      "summary": "Axway Get All Domains",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/org/{org_id}/domain",
+      "operationId": "org_domainCreate",
+      "summary": "Axway Start Domain Ownership Process",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/org/{org_id}/domain",
+      "operationId": "org_domainAssociateConfirm",
+      "summary": "Axway Confirm Domain IdP Association",
+      "tags": [
+        "domain"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/org/{org_id}",
+      "operationId": "org_findOne",
+      "summary": "Axway Get Organization",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/org/{org_id}",
+      "operationId": "org_update",
+      "summary": "Axway Update Organization",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/org/{org_id}",
+      "operationId": "org_remove",
+      "summary": "Axway Delete Organization",
+      "tags": [
+        "org"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/export/download/{export_id}",
+      "operationId": "export_download",
+      "summary": "Axway Retrieve a Download Url",
+      "tags": [
+        "export"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/export/{export_id}",
+      "operationId": "export_remove",
+      "summary": "Axway Remove Export",
+      "tags": [
+        "export"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/env/{env_id}",
+      "operationId": "env_findOne",
+      "summary": "Axway Find Environment",
+      "tags": [
+        "env"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/env/{env_id}",
+      "operationId": "env_update",
+      "summary": "Axway Update Environment",
+      "tags": [
+        "env"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/env/{env_id}",
+      "operationId": "env_remove",
+      "summary": "Axway Delete Environment",
+      "tags": [
+        "env"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/client/{client_id}/json",
+      "operationId": "client_download",
+      "summary": "Axway Get Service Account JSON Representation",
+      "tags": [
+        "client"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/client/{client_id}",
+      "operationId": "client_findOne",
+      "summary": "Axway Get a Service Account",
+      "tags": [
+        "client"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/client/{client_id}",
+      "operationId": "client_update",
+      "summary": "Axway Update Service Account",
+      "tags": [
+        "client"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/client/{client_id}",
+      "operationId": "client_remove",
+      "summary": "Axway Delete Service Account",
+      "tags": [
+        "client"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/auth/unlock/{activation_id}",
+      "operationId": "auth_activationUnlock",
+      "summary": "Axway Unlock Account",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/service/{service}",
+      "operationId": "auth_revokeOauth",
+      "summary": "Axway Revoke OAuth Service",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/deviceauth/{user_id}",
+      "operationId": "auth_deviceauthFind",
+      "summary": "Axway Retrieve Authorized Devices",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/deviceauth/{device_id}",
+      "operationId": "auth_deviceauthRemove",
+      "summary": "Axway Remove Authorized Device",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/activation/{activation_id}",
+      "operationId": "auth_activationFind",
+      "summary": "Axway Find Activation",
+      "tags": [
+        "auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/app/{app_id}",
+      "operationId": "app_findOne",
+      "summary": "Axway Find App",
+      "tags": [
+        "app"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/app/{app_id}",
+      "operationId": "app_update",
+      "summary": "Axway Update App",
+      "tags": [
+        "app"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/app/{app_id}",
+      "operationId": "app_remove",
+      "summary": "Axway Remove App",
+      "tags": [
+        "app"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/analytics/custom_query/{query_id}",
+      "operationId": "analytics_customUpdate",
+      "summary": "Axway Update a Custom Query",
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/analytics/custom_query/{query_id}",
+      "operationId": "analytics_customRemove",
+      "summary": "Axway Delete a Custom Query",
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/custom_queries/{query_id}",
+      "operationId": "analytics_customFindOne",
+      "summary": "Axway Get Custom Query",
+      "tags": [
+        "analytics"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/aca/{app_id}/crash/{aca_id}/metadata/{name}",
+      "operationId": "aca_setMetadata",
+      "summary": "Axway Set Metadata by ID",
+      "tags": [
+        "aca"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/aca/{app_id}/crash/{aca_id}",
+      "operationId": "aca_findOne",
+      "summary": "Axway Find Crash Record by ID",
+      "tags": [
+        "aca"
+      ]
+    }
+  ]
+}

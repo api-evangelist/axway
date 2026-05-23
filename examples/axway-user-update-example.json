@@ -1,0 +1,101 @@
+{
+  "operationId": "user_update",
+  "method": "PUT",
+  "path": "/user/profile/{user_id}",
+  "summary": "Axway Update User Profile",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FIRSTNAME_LENGTH",
+      "example": {
+        "success": false,
+        "description": "First name must be at most 50 characters.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "INCORRECT_PASSWORD",
+      "example": {
+        "success": false,
+        "description": "Password is incorrect; please try again.",
+        "code": 400,
+        "internalCode": 412
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LASTNAME_LENGTH",
+      "example": {
+        "success": false,
+        "description": "Last name must be at most 50 characters.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PASSWORD_USER_INFO",
+      "example": {
+        "success": false,
+        "description": "Passwords should not contain your name, email address, or other personally identifiable information.",
+        "code": 400,
+        "internalCode": 411
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PASSWORD_IN_HISTORY",
+      "example": {
+        "success": false,
+        "description": "Passwords should not be used recently.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

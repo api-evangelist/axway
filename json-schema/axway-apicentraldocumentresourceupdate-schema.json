@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.documentresource.update",
+  "title": "apicentral.documentresource.update",
+  "type": "object",
+  "description": "Published when a document defined in the document library is updated.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/apicentral.documentresource.create"
+    }
+  ]
+}

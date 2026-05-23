@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IdentityProviderList",
+  "title": "IdentityProviderList",
+  "type": "array",
+  "description": "A list of IdentityProvider objects.",
+  "items": {
+    "$ref": "#/components/schemas/IdentityProvider"
+  }
+}

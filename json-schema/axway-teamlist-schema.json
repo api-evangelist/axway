@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TeamList",
+  "title": "TeamList",
+  "type": "array",
+  "description": "A list of Team objects.",
+  "items": {
+    "$ref": "#/components/schemas/Team"
+  }
+}

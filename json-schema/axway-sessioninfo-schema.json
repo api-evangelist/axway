@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SessionInfo",
+  "title": "SessionInfo",
+  "type": "object",
+  "properties": {
+    "connect.sid": {
+      "type": "string",
+      "description": "Signed session ID.",
+      "example": "example_value"
+    },
+    "deviceAuthRequired": {
+      "type": "string",
+      "description": "Whether the user is still pending device authorization.",
+      "example": "example_value"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address of the signed-in user.",
+      "example": "user@example.com"
+    },
+    "entitlements": {
+      "type": "object",
+      "description": "Entitlements of the signed-in org.",
+      "example": {}
+    },
+    "expiry": {
+      "type": "string",
+      "description": "Session expiry (if not accessed).",
+      "example": "example_value"
+    },
+    "firstname": {
+      "type": "string",
+      "description": "First name of the signed-in user.",
+      "example": "Example Name"
+    },
+    "from": {
+      "type": "string",
+      "description": "Type of client the session was initiated by, e.g. web/cli",
+      "example": "example_value"
+    },
+    "guid": {
+      "type": "string",
+      "description": "GUID of the signed-in user.",
+      "example": "example_value"
+    },
+    "idp": {
+      "type": "string",
+      "description": "GUID of the Identity Provider used to authenticate the session.",
+      "example": "example_value"
+    },
+    "lastname": {
+      "type": "string",
+      "description": "Last name of the signed-in user.",
+      "example": "Example Name"
+    },
+    "org": {
+      "$ref": "#/components/schemas/Org"
+    },
+    "org_id": {
+      "type": "string",
+      "description": "org_id of the signed-in org.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "org_name": {
+      "type": "string",
+      "description": "Name of the signed-in org.",
+      "example": "Example Name"
+    },
+    "orgs": {
+      "type": "string",
+      "description": "List of orgs that the user belongs to",
+      "example": "example_value"
+    },
+    "provider_org": {
+      "type": "object",
+      "description": "Owning provider organization of the marketplace; included in consumer org sessions only",
+      "properties": {
+        "guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "GUID identifier for the provider organization"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the provider organization."
+        },
+        "org_id": {
+          "type": "integer",
+          "description": "Identifier for the provider organization"
+        }
+      },
+      "example": {
+        "guid": "example_value",
+        "name": "Example Name",
+        "org_id": 1
+      }
+    },
+    "redirect": {
+      "type": "string",
+      "description": "URL to redirect to after signing in.",
+      "example": "example_value"
+    },
+    "role": {
+      "type": "string",
+      "description": "Current role of the user signed-in with this session.",
+      "enum": [
+        "administrator",
+        "developer",
+        "auditor",
+        "consumer"
+      ],
+      "example": "administrator"
+    },
+    "roles": {
+      "type": "array",
+      "description": "List of roles the user is assigned on the signed-in org.",
+      "items": {
+        "type": "string",
+        "description": "The id of the role.",
+        "enum": [
+          "administrator",
+          "developer",
+          "auditor",
+          "consumer",
+          "usage_reporter",
+          "api_central_admin"
+        ]
+      },
+      "example": [
+        "administrator"
+      ]
+    },
+    "session": {
+      "type": "string",
+      "description": "Encoded session.",
+      "example": "example_value"
+    },
+    "sessionID": {
+      "type": "string",
+      "description": "The session ID.",
+      "example": "example_value"
+    },
+    "sid": {
+      "type": "string",
+      "description": "Signed session ID.",
+      "example": "example_value"
+    },
+    "teams": {
+      "$ref": "#/components/schemas/UserTeams"
+    },
+    "user": {
+      "$ref": "#/components/schemas/User"
+    },
+    "user_guid": {
+      "type": "string",
+      "description": "GUID of the signed-in user.",
+      "example": "example_value"
+    },
+    "username": {
+      "type": "string",
+      "description": "Username of the user this session belongs to.",
+      "example": "Example Name"
+    }
+  }
+}

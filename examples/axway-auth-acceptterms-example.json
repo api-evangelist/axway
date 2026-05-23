@@ -1,0 +1,25 @@
+{
+  "operationId": "auth_acceptTerms",
+  "method": "PUT",
+  "path": "/auth/terms",
+  "summary": "Axway Accept Terms & Conditions",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    }
+  ]
+}

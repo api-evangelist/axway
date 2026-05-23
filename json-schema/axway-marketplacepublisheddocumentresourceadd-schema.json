@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.publisheddocumentresource.add",
+  "title": "marketplace.publisheddocumentresource.add",
+  "type": "object",
+  "description": "Published when a published document resource is selected for use in Marketplace settings.",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Published id, same as apicentral.publisheddocumentresource.* event `id`.",
+      "example": "507f1f77bcf86cd799439011"
+    },
+    "provider_guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    }
+  }
+}

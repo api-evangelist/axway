@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.team.app.remove",
+  "title": "platform.team.app.remove",
+  "type": "object",
+  "description": "Published when an asset is removed from a team.",
+  "x-context": "team",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "app_id": {
+      "$ref": "#/components/schemas/Application/properties/guid"
+    },
+    "app_name": {
+      "$ref": "#/components/schemas/Application/then/properties/name"
+    },
+    "team_guid": {
+      "$ref": "#/components/schemas/Team/properties/guid"
+    },
+    "team_name": {
+      "$ref": "#/components/schemas/Team/properties/name"
+    }
+  }
+}

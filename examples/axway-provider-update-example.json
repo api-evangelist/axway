@@ -1,0 +1,154 @@
+{
+  "operationId": "provider_update",
+  "method": "PUT",
+  "path": "/provider/{provider_id}",
+  "summary": "Axway Update Provider Marketplace",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "ProviderUpdate200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "MAX_FILE_SIZE",
+      "example": {
+        "success": false,
+        "description": "The file exceeds the maximum upload size of %d bytes.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_NAME_UNIQUE",
+      "example": {
+        "success": false,
+        "description": "The provided Marketplace name is already in use in the organization.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_SUBDOMAIN_UNIQUE",
+      "example": {
+        "success": false,
+        "description": "The provided Marketplace subdomain is already in use.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_SUBDOMAIN_URL",
+      "example": {
+        "success": false,
+        "description": "Marketplace Settings requires a valid subdomain or URL.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_URL_CNAME",
+      "example": {
+        "success": false,
+        "description": "Marketplace URL does not have expected CNAME registered.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_CERT_DOMAIN",
+      "example": {
+        "success": false,
+        "description": "The provided certificate does not match the Marketplace URL's domain.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_CERT_PRIVATE_KEY",
+      "example": {
+        "success": false,
+        "description": "The provided certificate contains an invalid private key.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_CERT_EXPIRED",
+      "example": {
+        "success": false,
+        "description": "The provided certificate is expired.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LINK_NOT_FOUND",
+      "example": {
+        "success": false,
+        "description": "\"%s\" contained an invalid value: Resource not found.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USER_NOT_ADMIN",
+      "example": {
+        "$ref": "#/components/examples/USER_NOT_ADMIN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

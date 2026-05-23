@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.user.impersonate",
+  "title": "platform.user.impersonate",
+  "type": "object",
+  "description": "Published when a user is impersonated.",
+  "x-context": "staff",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ]
+}

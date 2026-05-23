@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.subscription.remove",
+  "title": "apicentral.subscription.remove",
+  "type": "object",
+  "description": "Published when a marketplace subscription is removed.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/apicentral.subscription.create"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserDeviceList",
+  "title": "UserDeviceList",
+  "type": "array",
+  "description": "A list of UserDevice objects.",
+  "items": {
+    "$ref": "#/components/schemas/UserDevice"
+  }
+}

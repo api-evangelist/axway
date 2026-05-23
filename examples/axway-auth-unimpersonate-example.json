@@ -1,0 +1,81 @@
+{
+  "operationId": "auth_unimpersonate",
+  "method": "DELETE",
+  "path": "/auth/impersonate",
+  "summary": "Axway Unimpersonate User",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "AuthUnimpersonate200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "INVALID_SWITCH_ORG",
+      "example": {
+        "success": false,
+        "description": "You are not a member of this organization or it is no longer active. Please contact your administrator or the Amplify Platform support team.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USER_NOT_ACTIVATED",
+      "example": {
+        "success": false,
+        "description": "Your account has not been activated yet. Please check your email.",
+        "code": 400,
+        "internalCode": 3
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "SOCKET_NOT_ALLOWED",
+      "example": {
+        "success": false,
+        "description": "This API cannot be accessed via sockets; please use HTTPS.",
+        "code": 403
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "NO_ACTIVE_ORGS",
+      "example": {
+        "success": false,
+        "description": "You are not a member of any active organizations. Please contact your administrator or the Amplify Platform support team.",
+        "code": 403,
+        "internalCode": 626
+      }
+    }
+  ]
+}

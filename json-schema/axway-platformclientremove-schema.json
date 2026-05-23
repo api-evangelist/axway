@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.client.remove",
+  "title": "platform.client.remove",
+  "type": "object",
+  "description": "Published when an organization admin removes a Service Account client.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataClient"
+    }
+  ]
+}

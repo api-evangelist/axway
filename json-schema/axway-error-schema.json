@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Error",
+  "title": "Error",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Response"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "number",
+          "description": "HTTP status code."
+        },
+        "description": {
+          "type": "string",
+          "description": "A message describing the error."
+        },
+        "internalCode": {
+          "type": "number",
+          "description": "Internal code."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.subscription.update",
+  "title": "platform.subscription.update",
+  "type": "object",
+  "description": "Published when a subscription for an org is updated.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "modified_by": {
+      "$ref": "#/components/schemas/EventDataModifiedBy"
+    },
+    "subscription": {
+      "$ref": "#/components/schemas/Subscription"
+    }
+  }
+}

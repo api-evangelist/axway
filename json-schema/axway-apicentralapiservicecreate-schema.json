@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.apiservice.create",
+  "title": "apicentral.apiservice.create",
+  "type": "object",
+  "description": "Published when a top-level Central asset is created.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataCentral"
+    }
+  ],
+  "properties": {
+    "automatic": {
+      "type": "boolean",
+      "description": "Whether the asset is agent created.",
+      "example": true
+    },
+    "envId": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "management"
+      ],
+      "example": "management"
+    }
+  }
+}

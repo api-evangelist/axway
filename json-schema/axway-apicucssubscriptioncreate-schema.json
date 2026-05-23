@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apic.ucs.subscription.create",
+  "title": "apic.ucs.subscription.create",
+  "type": "object",
+  "description": "Published when a subscription of a catalog asset is created.",
+  "x-context": "catalog",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataCentral"
+    }
+  ],
+  "properties": {
+    "catalogItemId": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "envId": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    }
+  }
+}

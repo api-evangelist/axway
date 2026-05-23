@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventDataClient",
+  "title": "Service Account",
+  "type": "object",
+  "properties": {
+    "client_guid": {
+      "$ref": "#/components/schemas/Client/properties/guid"
+    },
+    "client_id": {
+      "$ref": "#/components/schemas/Client/properties/client_id"
+    },
+    "client_name": {
+      "$ref": "#/components/schemas/Client/properties/name"
+    }
+  }
+}

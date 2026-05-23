@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.team.update",
+  "title": "platform.team.update",
+  "type": "object",
+  "description": "Published when an existing team is modified.",
+  "x-context": "team",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "team": {
+      "type": "object",
+      "description": "The updated team",
+      "properties": {
+        "default": {
+          "$ref": "#/components/schemas/Team/properties/default"
+        },
+        "guid": {
+          "$ref": "#/components/schemas/Team/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/Team/properties/name"
+        }
+      },
+      "example": {
+        "default": {},
+        "guid": {},
+        "name": {}
+      }
+    }
+  }
+}

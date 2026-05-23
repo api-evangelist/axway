@@ -1,0 +1,36 @@
+{
+  "operationId": "auth_forgot",
+  "method": "POST",
+  "path": "/auth/forgot",
+  "summary": "Axway Send Forgot Password Link",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PASSWORD_RESET_DISABLED",
+      "example": {
+        "success": false,
+        "description": "Password reset attempts temporarily disabled.",
+        "code": 400,
+        "internalCode": 429
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

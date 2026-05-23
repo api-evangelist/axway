@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventDataActor",
+  "title": "EventDataActor",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionClient"
+    }
+  ]
+}

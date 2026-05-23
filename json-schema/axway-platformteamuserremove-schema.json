@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.team.user.remove",
+  "title": "platform.team.user.remove",
+  "type": "object",
+  "description": "Published when a user or client is removed from a team.",
+  "x-context": "team",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    },
+    {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/EventDataUser"
+        },
+        {
+          "$ref": "#/components/schemas/EventDataClient"
+        }
+      ]
+    }
+  ],
+  "properties": {
+    "team_guid": {
+      "$ref": "#/components/schemas/Team/properties/guid"
+    },
+    "team_name": {
+      "$ref": "#/components/schemas/Team/properties/name"
+    }
+  }
+}

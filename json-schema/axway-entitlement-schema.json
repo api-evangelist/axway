@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Entitlement",
+  "title": "Entitlement",
+  "type": "object",
+  "required": [
+    "type",
+    "title",
+    "description"
+  ],
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Description of entitlement.",
+      "example": "An example description"
+    },
+    "title": {
+      "type": "string",
+      "description": "Entitlement or metric name",
+      "example": "example_value"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of entitlement",
+      "enum": [
+        "array",
+        "boolean",
+        "integer",
+        "number",
+        "string"
+      ],
+      "example": "array"
+    }
+  }
+}

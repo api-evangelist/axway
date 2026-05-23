@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.user.resent",
+  "title": "platform.org.user.resent",
+  "type": "object",
+  "description": "Published when a user activation is resent.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ],
+  "properties": {
+    "activation_type": {
+      "$ref": "#/components/schemas/Activation/properties/type"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.idp.domain.associate",
+  "title": "platform.org.idp.domain.associate",
+  "type": "object",
+  "description": "Published when an Identity Provider is enabled for users on a domain in an organization.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider associated to the organization.",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/guid"
+        },
+        "name": {
+          "$ref": "#/components/schemas/IdentityProvider/properties/name"
+        }
+      },
+      "example": {
+        "id": {},
+        "name": {}
+      }
+    },
+    "modified_by": {
+      "$ref": "#/components/schemas/EventDataModifiedBy"
+    },
+    "tld": {
+      "$ref": "#/components/schemas/Domain/properties/tld"
+    }
+  }
+}

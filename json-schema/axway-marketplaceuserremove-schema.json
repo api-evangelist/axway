@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.user.remove",
+  "title": "marketplace.user.remove",
+  "type": "object",
+  "description": "Published when a consumer organization user is deleted.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ],
+  "properties": {
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    },
+    "orgs": {
+      "type": "array",
+      "description": "Array of orgs the user was a member of",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "$ref": "#/components/schemas/Org/properties/guid"
+          },
+          "name": {
+            "$ref": "#/components/schemas/Org/properties/name"
+          },
+          "org_id": {
+            "$ref": "#/components/schemas/Org/properties/org_id"
+          }
+        }
+      },
+      "example": [
+        {
+          "guid": {},
+          "name": {},
+          "org_id": {}
+        }
+      ]
+    }
+  }
+}

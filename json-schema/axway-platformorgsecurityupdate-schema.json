@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.security.update",
+  "title": "platform.org.security.update",
+  "type": "object",
+  "description": "Published when organization security settings are updated.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "from": {
+      "$ref": "#/components/schemas/EventDataFrom"
+    },
+    "modified_by": {
+      "$ref": "#/components/schemas/EventDataModifiedBy"
+    }
+  }
+}

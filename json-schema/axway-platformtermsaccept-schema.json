@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.terms.accept",
+  "title": "platform.terms.accept",
+  "type": "object",
+  "description": "Published when Terms of Use are accepted by a user.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ]
+}

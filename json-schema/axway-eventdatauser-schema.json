@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventDataUser",
+  "title": "User",
+  "type": "object",
+  "properties": {
+    "provider_guid": {
+      "$ref": "#/components/schemas/User/properties/provider_guid"
+    },
+    "user_guid": {
+      "$ref": "#/components/schemas/User/properties/guid"
+    }
+  }
+}

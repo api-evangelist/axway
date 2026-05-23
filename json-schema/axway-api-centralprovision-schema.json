@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/api_central.provision",
+  "title": "api_central.provision",
+  "type": "object",
+  "description": "Published when a Engage provisioning is requested.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActionUser"
+    }
+  ],
+  "properties": {
+    "teams": {
+      "type": "array",
+      "description": "A list of the organization's teams.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "default": {
+            "$ref": "#/components/schemas/Team/properties/default"
+          },
+          "guid": {
+            "$ref": "#/components/schemas/Team/properties/guid"
+          },
+          "name": {
+            "$ref": "#/components/schemas/Team/properties/name"
+          }
+        }
+      },
+      "example": [
+        {
+          "default": {},
+          "guid": {},
+          "name": {}
+        }
+      ]
+    },
+    "trial": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

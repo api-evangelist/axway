@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.idp.domain.create",
+  "title": "platform.org.idp.domain.create",
+  "type": "object",
+  "description": "Published when an domain is added to an organization.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "modified_by": {
+      "$ref": "#/components/schemas/EventDataModifiedBy"
+    },
+    "tld": {
+      "$ref": "#/components/schemas/Domain/properties/tld"
+    }
+  }
+}

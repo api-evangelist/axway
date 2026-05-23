@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.idp.domain.confirm",
+  "title": "platform.org.idp.domain.confirm",
+  "type": "object",
+  "description": "Published when ownership of a domain is verified for an organization.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/platform.org.idp.domain.associate"
+    }
+  ]
+}

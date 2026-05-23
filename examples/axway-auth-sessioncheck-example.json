@@ -1,0 +1,23 @@
+{
+  "operationId": "auth_sessionCheck",
+  "method": "GET",
+  "path": "/auth/checkSession",
+  "summary": "Axway Checks if the User is Signed in",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "AuthSessioncheck200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    }
+  ]
+}

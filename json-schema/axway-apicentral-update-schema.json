@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral._._.update",
+  "title": "apicentral.{resource}.{subresource}.update",
+  "type": "object",
+  "description": "Published when a Central resource's subresource is updated.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataCentral"
+    }
+  ],
+  "properties": {
+    "group": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

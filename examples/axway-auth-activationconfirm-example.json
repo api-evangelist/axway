@@ -1,0 +1,74 @@
+{
+  "operationId": "auth_activationConfirm",
+  "method": "POST",
+  "path": "/auth/activate",
+  "summary": "Axway Activate a User",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "ITEM_NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/ITEM_NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USER_REQUIRED",
+      "example": {
+        "success": false,
+        "description": "User is required.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FIRSTNAME_LENGTH",
+      "example": {
+        "success": false,
+        "description": "First name must be at most 50 characters.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LASTNAME_LENGTH",
+      "example": {
+        "success": false,
+        "description": "Last name must be at most 50 characters.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "EXPIRED_LINK",
+      "example": {
+        "success": false,
+        "description": "Link has expired.",
+        "code": 400,
+        "internalCode": 9
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.logout",
+  "title": "platform.logout",
+  "type": "object",
+  "description": "Published when a user signs out from any client.",
+  "x-context": "auth",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ],
+  "properties": {
+    "from": {
+      "$ref": "#/components/schemas/EventDataFrom"
+    },
+    "ip": {
+      "type": "string",
+      "description": "Anonymized IP address.",
+      "example": "10.0.0.1"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "operationId": "auth_signup",
+  "method": "POST",
+  "path": "/auth/signup",
+  "summary": "Axway Sign Up",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "INVALID_EMAIL_DOMAIN",
+      "example": {
+        "success": false,
+        "description": "Sign-up is not allowed for this email domain.",
+        "code": 400,
+        "internalCode": 14
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NEW_USER_SIGNUP",
+      "example": {
+        "success": false,
+        "description": "You must be a new user to sign up.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NEW_USER_SIGNUP_INACTIVE",
+      "example": {
+        "success": false,
+        "description": "You must be a new user to sign up.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PASSWORD_USER_INFO",
+      "example": {
+        "success": false,
+        "description": "Passwords should not contain your name, email address, or other personally identifiable information.",
+        "code": 400,
+        "internalCode": 411
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "SIGNUP_DISABLED",
+      "example": {
+        "success": false,
+        "description": "User signup attempts are temporarily disabled.",
+        "code": 400,
+        "internalCode": 430
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PROVIDER_SIGNUP_DISABLED",
+      "example": {
+        "success": false,
+        "description": "User signups are disabled.",
+        "code": 400,
+        "internalCode": 430
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

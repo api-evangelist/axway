@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.env.create",
+  "title": "platform.env.create",
+  "type": "object",
+  "description": "Published when an environment is created.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "governance": {
+      "$ref": "#/components/schemas/Environment/properties/governance"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Environment/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Environment/properties/name"
+    },
+    "type": {
+      "$ref": "#/components/schemas/Environment/properties/type"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.user.primary",
+  "title": "platform.org.user.primary",
+  "type": "object",
+  "description": "Published when org primary contact is changed.\n\nUser guid of prior and new primary user is reflected in changes array entry in \"o\" and \"v\" fields respectively.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.activation.complete",
+  "title": "platform.activation.complete",
+  "type": "object",
+  "description": "Published when a user activates their account.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ],
+  "properties": {
+    "orgs": {
+      "type": "array",
+      "description": "Array of orgs the user is a member of",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "$ref": "#/components/schemas/Org/properties/guid"
+          },
+          "name": {
+            "$ref": "#/components/schemas/Org/properties/name"
+          },
+          "org_id": {
+            "$ref": "#/components/schemas/Org/properties/org_id"
+          }
+        }
+      },
+      "example": [
+        {
+          "guid": {},
+          "name": {},
+          "org_id": {}
+        }
+      ]
+    }
+  }
+}

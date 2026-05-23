@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.user.social.enable",
+  "title": "platform.user.social.enable",
+  "type": "object",
+  "description": "Published when an OAuth service provider is added for a user.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataUser"
+    }
+  ],
+  "properties": {
+    "service": {
+      "type": "string",
+      "description": "An identifier for the service.",
+      "enum": [
+        "github",
+        "gitlab",
+        "google"
+      ],
+      "example": "github"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Name of the service.",
+      "enum": [
+        "GitHub",
+        "GitLab",
+        "Google"
+      ],
+      "example": "GitHub"
+    }
+  }
+}

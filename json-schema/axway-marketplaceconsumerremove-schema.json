@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.consumer.remove",
+  "title": "marketplace.consumer.remove",
+  "type": "object",
+  "description": "Published when a consumer organization is deleted.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.consumer.approve"
+    }
+  ]
+}

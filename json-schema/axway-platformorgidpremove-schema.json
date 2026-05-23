@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.org.idp.remove",
+  "title": "platform.org.idp.remove",
+  "type": "object",
+  "description": "Published when an Identity Provider is removed from an organization.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/platform.org.idp.create"
+    }
+  ]
+}

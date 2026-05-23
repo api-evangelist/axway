@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.apiservice.update",
+  "title": "apicentral.apiservice.update",
+  "type": "object",
+  "description": "Published when a top-level Central asset is updated.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/apicentral.apiservice.create"
+    }
+  ]
+}

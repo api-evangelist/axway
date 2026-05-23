@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.asset.create",
+  "title": "apicentral.asset.create",
+  "type": "object",
+  "description": "Published when a Central asset is created.",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataCentral"
+    }
+  ],
+  "properties": {
+    "envIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Environment/properties/guid"
+      },
+      "example": [
+        {}
+      ]
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "catalog"
+      ],
+      "example": "catalog"
+    }
+  }
+}

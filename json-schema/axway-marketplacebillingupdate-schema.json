@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.billing.update",
+  "title": "marketplace.billing.update",
+  "type": "object",
+  "description": "Published when a marketplace billing settings are changed.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.billing.enable"
+    }
+  ]
+}

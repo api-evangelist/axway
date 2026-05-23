@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.lang.update",
+  "title": "marketplace.lang.update",
+  "type": "object",
+  "description": "Published when marketplace language settings updated.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "lang_default": {
+      "$ref": "#/components/schemas/Provider/properties/lang/properties/default"
+    },
+    "lang_products": {
+      "$ref": "#/components/schemas/Provider/properties/lang/properties/products"
+    },
+    "lang_supported": {
+      "$ref": "#/components/schemas/Provider/properties/lang/properties/supported"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    }
+  }
+}

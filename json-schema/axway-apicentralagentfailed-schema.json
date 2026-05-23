@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apicentral.agent.failed",
+  "title": "apicentral.agent.failed",
+  "type": "object",
+  "x-context": "api_central",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/apicentral.agent.start"
+    }
+  ]
+}

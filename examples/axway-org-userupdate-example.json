@@ -1,0 +1,86 @@
+{
+  "operationId": "org_userUpdate",
+  "method": "PUT",
+  "path": "/org/{org_id}/user/{user_guid}",
+  "summary": "Axway Update Org Member Association",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NO_ADMIN_LEFT",
+      "example": {
+        "success": false,
+        "description": "Unable to demote user; one org admin is required.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CONFLICTING_TEAM_ROLE",
+      "example": {
+        "success": false,
+        "description": "\"roles\" contained an invalid value: The \"%s\" role assigned in the team \"%s\" requires one of the following organization roles: %s.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "IDP_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/IDP_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USER_NOT_ADMIN",
+      "example": {
+        "$ref": "#/components/examples/USER_NOT_ADMIN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

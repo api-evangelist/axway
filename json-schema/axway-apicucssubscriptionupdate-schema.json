@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apic.ucs.subscription.update",
+  "title": "apic.ucs.subscription.update",
+  "type": "object",
+  "description": "Published when a subscription of a catalog asset is updated.",
+  "x-context": "catalog",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/apic.ucs.subscription.create"
+    }
+  ]
+}

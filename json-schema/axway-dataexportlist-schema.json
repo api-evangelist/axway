@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataExportList",
+  "title": "DataExportList",
+  "type": "array",
+  "description": "A list of DataExport objects.",
+  "items": {
+    "$ref": "#/components/schemas/DataExport"
+  }
+}

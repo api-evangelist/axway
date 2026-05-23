@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.client.create",
+  "title": "platform.client.create",
+  "type": "object",
+  "description": "Published when an organization admin creates a Service Account client.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataOrg"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataActor"
+    },
+    {
+      "$ref": "#/components/schemas/EventDataClient"
+    }
+  ],
+  "properties": {
+    "roles": {
+      "$ref": "#/components/schemas/Client/properties/roles"
+    }
+  }
+}

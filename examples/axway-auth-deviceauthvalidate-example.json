@@ -1,0 +1,67 @@
+{
+  "operationId": "auth_deviceauthValidate",
+  "method": "POST",
+  "path": "/auth/deviceauth",
+  "summary": "Axway Validates a New Sessions Device Authorization",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "AuthDeviceauthvalidate200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "AUTH_CODE_DISABLED",
+      "example": {
+        "success": false,
+        "description": "Auth code generation temporarily disabled.",
+        "code": 403
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "AUTH_CODE_INVALIDATED",
+      "example": {
+        "success": false,
+        "description": "Auth code validation temporarily disabled.",
+        "code": 403
+      }
+    }
+  ]
+}

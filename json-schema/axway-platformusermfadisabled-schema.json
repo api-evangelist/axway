@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/platform.user.mfa.disabled",
+  "title": "platform.user.mfa.disabled",
+  "type": "object",
+  "description": "Published when multi-factor authentication is disabled for a user.",
+  "x-context": "user",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/platform.user.mfa.enabled"
+    }
+  ]
+}

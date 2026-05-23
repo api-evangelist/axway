@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/api_central.provisioned",
+  "title": "api_central.provisioned",
+  "type": "object",
+  "description": "Published when a Engage is successfully provisioned.",
+  "x-context": "org",
+  "properties": {
+    "org_guid": {
+      "$ref": "#/components/schemas/Org/properties/guid"
+    },
+    "org_id": {
+      "$ref": "#/components/schemas/Org/properties/org_id"
+    },
+    "success": {
+      "type": "boolean",
+      "example": true
+    },
+    "url": {
+      "type": "string",
+      "example": "https://example.com"
+    },
+    "user_guid": {
+      "$ref": "#/components/schemas/User/properties/guid"
+    }
+  }
+}

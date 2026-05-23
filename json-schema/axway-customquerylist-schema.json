@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomQueryList",
+  "title": "CustomQueryList",
+  "type": "array",
+  "description": "A list of CustomQuery objects.",
+  "items": {
+    "$ref": "#/components/schemas/CustomQuery"
+  }
+}

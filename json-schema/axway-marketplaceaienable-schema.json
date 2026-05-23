@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.ai.enable",
+  "title": "marketplace.ai.enable",
+  "type": "object",
+  "description": "Published when AI integration is enabled for a marketplace.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.ai.disable"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "embedded": {
+      "$ref": "#/components/schemas/Provider/properties/ai/properties/embedded"
+    },
+    "stream": {
+      "$ref": "#/components/schemas/Provider/properties/ai/properties/stream"
+    },
+    "url": {
+      "$ref": "#/components/schemas/Provider/properties/ai/properties/url"
+    }
+  }
+}

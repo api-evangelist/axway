@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.billing.enable",
+  "title": "marketplace.billing.enable",
+  "type": "object",
+  "description": "Published when a marketplace billing integration is enabled.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.billing.disable"
+    }
+  ],
+  "properties": {
+    "changes": {
+      "$ref": "#/components/schemas/EventDataChanges"
+    },
+    "guid": {
+      "$ref": "#/components/schemas/Provider/properties/guid"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Provider/properties/name"
+    },
+    "vendor": {
+      "$ref": "#/components/schemas/Provider/properties/billing/properties/vendor"
+    }
+  }
+}

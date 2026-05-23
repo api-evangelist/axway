@@ -1,0 +1,250 @@
+{
+  "operationId": "usage_upload",
+  "method": "POST",
+  "path": "/usage",
+  "summary": "Axway Uploads a Usage Report",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "MAX_FILE_SIZE",
+      "example": {
+        "success": false,
+        "description": "The file exceeds the maximum upload size of %d bytes.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID_REASON",
+      "example": {
+        "success": false,
+        "description": "\"%s\" contained an invalid value: errors.reasons.undefined.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USAGE_EVENT_COUNT",
+      "example": {
+        "success": false,
+        "description": "Usage report file must contain no greater than %d entries.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_INVALID_TYPE",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: Not a valid json file.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_POSSIBLE_XSS",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: Possible XSS data in the file content.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USAGE_INVALID_DATE",
+      "example": {
+        "success": false,
+        "description": "\"file.report\" contained an invalid value: Invalid date in `report` keys.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USAGE_META_TYPE",
+      "example": {
+        "success": false,
+        "description": "\"%s\" contained an invalid value: Type \"%s\" is not supported for the field \"%s\".",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USAGE_NO_METRICS",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: `report` did not include any valid metrics.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_MISSING",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: No file attached.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_MULTIPLE",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: Multiple files attached.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_INVALID_MIMETYPE",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: File type should be application/json.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_EMPTY",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: Empty files not allowed.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_INVALID_EXTENSION",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: The file extension %s is not allowed.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_NAME_TOO_LONG",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: The provided file name too long. Maximum allowed file name length is %d symbols.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_INVALID_FILENAME",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: Invalid symbols in the file name.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_MISSING_FIELDS",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: Content is missing the required fields: [ %s ].",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FILE_INVALID_DATA_TYPE",
+      "example": {
+        "success": false,
+        "description": "\"file\" contained an invalid value: Metrics data type invalid for %s: entitlement type %s.",
+        "code": 400,
+        "internalCode": 747
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "FORBIDDEN",
+      "example": {
+        "$ref": "#/components/examples/FORBIDDEN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "IDP_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/IDP_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USER_NOT_ADMIN",
+      "example": {
+        "$ref": "#/components/examples/USER_NOT_ADMIN/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    }
+  ]
+}

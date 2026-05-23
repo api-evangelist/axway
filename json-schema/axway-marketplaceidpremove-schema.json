@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/marketplace.idp.remove",
+  "title": "marketplace.idp.remove",
+  "type": "object",
+  "description": "Published when an Identity Provider is removed from a marketplace.",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/marketplace.idp.create"
+    }
+  ]
+}

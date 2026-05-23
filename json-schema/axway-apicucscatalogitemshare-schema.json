@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/apic.ucs.catalogitem.share",
+  "title": "apic.ucs.catalogitem.share",
+  "type": "object",
+  "description": "Published when a catalog asset visibility or access controller list is updated.",
+  "x-context": "catalog",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/EventDataCentral"
+    }
+  ]
+}

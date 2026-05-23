@@ -1,0 +1,34 @@
+{
+  "operationId": "auth_sessionFind",
+  "method": "GET",
+  "path": "/auth/findSession",
+  "summary": "Axway Retrieves the Current Session",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "AuthSessionfind200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "DEVICE_AUTH_REQUIRED",
+      "example": {
+        "success": false,
+        "description": "Device authorization required.",
+        "code": 400,
+        "internalCode": 232
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    }
+  ]
+}

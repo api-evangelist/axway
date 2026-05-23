@@ -1,0 +1,87 @@
+{
+  "operationId": "auth_sessionSwitchOrg",
+  "method": "POST",
+  "path": "/auth/switchLoggedInOrg",
+  "summary": "Axway Switch Signed-in Organization",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "AuthSessionswitchorg200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "NOT_FOUND",
+      "example": {
+        "$ref": "#/components/examples/NOT_FOUND/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "INVALID_SWITCH_ORG",
+      "example": {
+        "success": false,
+        "description": "You are not a member of this organization or it is no longer active. Please contact your administrator or the Amplify Platform support team.",
+        "code": 400
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "USER_NOT_ACTIVATED",
+      "example": {
+        "success": false,
+        "description": "Your account has not been activated yet. Please check your email.",
+        "code": 400,
+        "internalCode": 3
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "IDP_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/IDP_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "LOGIN_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/LOGIN_REQUIRED/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_INVALID",
+      "example": {
+        "$ref": "#/components/examples/PARAM_INVALID/value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "PARAM_REQUIRED",
+      "example": {
+        "$ref": "#/components/examples/PARAM_REQUIRED/value"
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "NO_ACTIVE_ORGS",
+      "example": {
+        "success": false,
+        "description": "You are not a member of any active organizations. Please contact your administrator or the Amplify Platform support team.",
+        "code": 403,
+        "internalCode": 626
+      }
+    }
+  ]
+}
