@@ -2,12 +2,20 @@
   "repo": "axway",
   "feeds": [
     {
-      "source": "https://blog.axway.com/",
+      "source": "https://blog.axway.com/feed/",
       "feed_url": "https://blog.axway.com/feed/",
-      "title": "Axway Blog",
-      "saved": 45
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://support.axway.com/",
+      "feed_url": "https://support.axway.com/blog/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 57,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 61,
+  "fetched": "2026-06-01T23:35:02Z"
 }

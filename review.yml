@@ -1,0 +1,77 @@
+executed: '2026-05-30T00:00:00.000Z'
+results: []
+notes: |
+  Webhook / streaming surface audit (Axway, AMPLIFY platform).
+
+  Scope reviewed:
+    - Axway Amplify Platform OpenAPI
+      (openapi/axway-amplify-platform-openapi-original.json, 128 paths)
+    - Existing capabilities/*.yaml (21 capability files derived from the
+      Amplify Platform OpenAPI)
+    - apis.yml entries for Amplify Platform, Amplify Central, API
+      Gateway, API Manager, API Builder, Amplify Streams, Amplify
+      Engage, Amplify AI Gateway, Amplify Fusion, Flow Manager,
+      SecureTransport, Transfer CFT, B2Bi, Open Banking
+    - Public docs surface (docs.axway.com, developer.axway.com,
+      platform.axway.com/api-docs.html)
+
+  Findings:
+
+    1. The Axway Amplify Platform OpenAPI (platform.axway.com/api/v1)
+       does NOT expose any consumer-facing webhook subscription or
+       push-event endpoint. The string "webhook" appears only inside
+       request/response schemas for billing-integration vendor inbound
+       webhook signatures (myFatoorah, Stripe, etc.) used when
+       configuring the platform's billing integration — i.e. inbound
+       webhooks the platform consumes from a payment vendor, not
+       outbound webhooks Axway sends to subscribers.
+
+    2. Paths containing "event" in the Amplify Platform OpenAPI are
+       synchronous audit / activity log reads, not push channels:
+         - GET /activity/event   (activity_findEvents — list activity
+           event names; auth: signed-in user or service account)
+         - GET /usage/{file_id}/events
+       Neither uses SSE, WebSocket, callback URLs, OpenAPI 3.1
+       `webhooks`, or AsyncAPI semantics.
+
+    3. Axway Amplify Streams (already listed in apis.yml as
+       axway:axway-amplify-streams) is documented as a real-time
+       event streaming product supporting Server-Sent Events and
+       WebSocket. However, it is a self-deployed product, not an
+       Axway-hosted public endpoint. There is no canonical Axway
+       base URL, no published OpenAPI 3.1 webhooks block, and no
+       published AsyncAPI spec for Streams on docs.axway.com /
+       streams-open-docs.netlify.app at the time of review. Modeling
+       a concrete machine-readable surface (OpenAPI webhooks /
+       AsyncAPI) would require fabricating channel definitions,
+       message schemas, server URLs, and security schemes that the
+       vendor has not published — declined per hard rule.
+
+    4. No outbound webhook configuration endpoint (e.g.
+       /webhooks, /subscriptions, /event-subscriptions, /notifications,
+       /callbacks) exists in the Amplify Platform OpenAPI catalog of
+       128 paths.
+
+    5. Amplify Central, Amplify Engage, Amplify AI Gateway, Amplify
+       Fusion, Flow Manager, SecureTransport, Transfer CFT, B2Bi, and
+       Open Banking products listed in apis.yml have documentation
+       portals but no public OpenAPI / AsyncAPI artifacts referenced
+       from apis.yml that expose webhook or streaming surfaces. Their
+       webhook posture was not verifiable from the materials in this
+       repository.
+
+  Decision: no new OpenAPI / AsyncAPI spec authored. No new
+  capability files added. apis.yml `modified` bumped to 2026-05-30
+  to record the audit pass. Amplify Streams entry retained as-is
+  (product-level reference) with no fabricated machine-readable
+  surface attached.
+
+  Recommended follow-up (not executed):
+    - If Axway publishes an AsyncAPI for Amplify Streams or an
+      OpenAPI 3.1 `webhooks` block for the Amplify Platform, link
+      it from the corresponding apis.yml entry under properties
+      with type: AsyncAPI or type: OpenAPI.
+    - Confirm with Axway product whether Amplify Engage or AI
+      Gateway emit outbound events (e.g. usage, threat detection,
+      governance) and whether subscription is HTTP callback,
+      SSE, or message-bus-based.
