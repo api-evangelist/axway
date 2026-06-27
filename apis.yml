@@ -33,7 +33,7 @@ apis:
       - type: OpenAPI
         url: >-
           https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/openapi/axway-amplify-platform-openapi-original.json
-      - type: SDK
+      - type: SDKs
         url: https://github.com/Axway/agent-sdk
         title: Go Agent SDK
       - type: JSONLD
@@ -299,7 +299,7 @@ common:
     url: https://trust.axway.com/
   - type: Resources
     url: https://resources.axway.com/
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/package/@axway/swagger-tools
     title: Swagger Tools (Node.js)
   - type: CodeExamples

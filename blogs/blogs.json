@@ -9,6 +9,13 @@
       "method": "feed"
     },
     {
+      "source": "https://support.axway.com/blog/rss/",
+      "feed_url": "https://support.axway.com/blog/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://support.axway.com/",
       "feed_url": "https://support.axway.com/blog/rss/",
       "title": "",
@@ -16,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 64,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 67,
+  "fetched": "2026-06-27T12:03:07Z"
 }
