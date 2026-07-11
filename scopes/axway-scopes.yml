@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/axway-amplify-platform-openapi-original.json
+docs: https://blog.axway.com/product-insights/amplify-platform/axway-amplify-platform-api-calls
+note: >-
+  Axway does not publish OAuth scopes for the Amplify Platform API; authorization is
+  handled through org roles assigned to client-secret service accounts, and tokens carry
+  only generic OIDC scopes (see
+  https://blog.axway.com/product-insights/amplify-platform/axway-amplify-platform-api-calls).
+schemes:
+- name: OAuth2
+  source: openapi/axway-amplify-platform-openapi-original.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+  - flow: authorizationCode
+    authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+    tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+  - flow: implicit
+    authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+scopes: []
