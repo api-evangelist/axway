@@ -1,0 +1,66 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/axway-amplify-platform-openapi-original.json
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - cookie
+  - header
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+  - implicit
+schemes:
+- name: AuthToken
+  type: apiKey
+  in: header
+  parameter: x-auth-token
+  description: Auth token for internal services
+  sources:
+  - openapi/axway-amplify-platform-openapi-original.json
+- name: BearerClient
+  type: http
+  scheme: bearer
+  bearerFormat: jwt
+  description: Service account access token
+  sources:
+  - openapi/axway-amplify-platform-openapi-original.json
+- name: MFA
+  type: apiKey
+  in: header
+  parameter: x-auth-code
+  description: Multi-factor authentication code
+  sources:
+  - openapi/axway-amplify-platform-openapi-original.json
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+    scopes: 0
+  - flow: authorizationCode
+    authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+    tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+    scopes: 0
+  - flow: implicit
+    authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+    scopes: 0
+  sources:
+  - openapi/axway-amplify-platform-openapi-original.json
+- name: Password
+  type: apiKey
+  in: header
+  parameter: x-auth-password
+  description: User password
+  sources:
+  - openapi/axway-amplify-platform-openapi-original.json
+- name: SessionCookie
+  type: apiKey
+  in: cookie
+  parameter: connect.sid
+  description: Platform session cookie
+  sources:
+  - openapi/axway-amplify-platform-openapi-original.json

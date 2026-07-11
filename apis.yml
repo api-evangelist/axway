@@ -267,6 +267,12 @@ apis:
       - type: Documentation
         url: https://docs.axway.com/
 common:
+  - type: TrustCenter
+    url: security/axway-trust-center.yml
+  - type: DomainSecurity
+    url: security/axway-domain-security.yml
+  - type: Authentication
+    url: authentication/axway-authentication.yml
   - type: OAuthScopes
     url: scopes/axway-scopes.yml
   - type: Portal
