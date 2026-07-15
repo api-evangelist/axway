@@ -267,6 +267,8 @@ apis:
       - type: Documentation
         url: https://docs.axway.com/
 common:
+  - type: AgenticAccess
+    url: agentic-access/axway-agentic-access.yml
   - type: TrustCenter
     url: security/axway-trust-center.yml
   - type: DomainSecurity
