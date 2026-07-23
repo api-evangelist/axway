@@ -1,0 +1,831 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca app API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: app
+paths:
+  /app:
+    parameters: []
+    post:
+      summary: Axway Create App
+      description: "Adds an app to the platform.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization `partners` entitlement includes `analytics`.\n"
+      tags:
+      - app
+      operationId: app_create
+      x-publishes:
+      - platform.app.create
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Application'
+              examples:
+                AppCreate200Example:
+                  summary: Default app_create 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                description:
+                  $ref: '#/components/schemas/Application/else/properties/description'
+                guid:
+                  $ref: '#/components/schemas/Application/properties/guid'
+                name:
+                  $ref: '#/components/schemas/Application/else/properties/name'
+                org_guid:
+                  $ref: '#/components/schemas/Application/properties/org_guid'
+                platform:
+                  $ref: '#/components/schemas/Application/properties/platform'
+                type:
+                  $ref: '#/components/schemas/Application/properties/type'
+              required:
+              - name
+              - org_guid
+              - platform
+              - type
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      summary: Axway Find Apps
+      description: "Returns a list of applications for the signed-in user\n\n___Auth Requirement___\n - Access to the organization.\n"
+      tags:
+      - app
+      operationId: app_find
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/ApplicationList'
+              examples:
+                AppFind200Example:
+                  summary: Default app_find 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - name: fields
+        in: query
+        description: A list of fields to include in the response.
+        schema:
+          type: array
+          items:
+            type: string
+          default: guid,name,created,created_by,type
+        example:
+        - example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - $ref: '#/components/parameters/add_fields'
+        example: example_value
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: integer
+          description: Optional org_id to override the signed-in organization.
+        example: 1
+      - in: query
+        name: provider_guid
+        required: false
+        schema:
+          type: string
+          description: Find apps associated to a given marketplace
+        example: example_value
+      - in: query
+        name: subtype
+        required: false
+        schema:
+          type: string
+          description: Find apps of a given subtype
+        example: example_value
+      - in: query
+        name: type
+        required: false
+        schema:
+          type: string
+          description: Find apps of a given type
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /app/{app_id}:
+    parameters: []
+    get:
+      summary: Axway Find App
+      description: "Returns an application for the signed-in user\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+      tags:
+      - app
+      operationId: app_findOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      allOf:
+                      - $ref: '#/components/schemas/Application'
+                      - type: object
+                        properties:
+                          app_guid:
+                            type: string
+                            description: Copy of `guid`
+                            deprecated: true
+                          app_name:
+                            type: string
+                            description: Copy of `name`
+                            deprecated: true
+                          org_id:
+                            type: number
+                            description: The `org_id` of the org the application belongs to.
+                            deprecated: true
+              examples:
+                AppFindone200Example:
+                  summary: Default app_findOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the application.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: integer
+          description: Optional org_id to override the signed-in organization.
+        example: 1
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Remove App
+      description: "Removes an app from the platform and all third parties\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+      tags:
+      - app
+      operationId: app_remove
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                APP_SOURCE:
+                  value:
+                    success: false
+                    description: App is not managed by the Amplify Platform.
+                    code: 400
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the application.'
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      summary: Axway Update App
+      description: "Updates an app\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+      tags:
+      - app
+      operationId: app_update
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Application'
+              examples:
+                AppUpdate200Example:
+                  summary: Default app_update 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the application.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: integer
+          description: Optional org_id to override the signed-in organization.
+        example: 1
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                description:
+                  type: string
+                  description: Description of the application
+                name:
+                  type: string
+                  description: Name of the application
+              required:
+              - name
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    add_fields:
+      name: add_fields
+      in: query
+      description: A list of fields to add to the default field set in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  schemas:
+    Application:
+      type: object
+      required:
+      - guid
+      - name
+      - org_guid
+      - platform
+      - type
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      if:
+        type: object
+        title: Document Resource
+        properties:
+          type:
+            type: string
+            enum:
+            - documentresource
+      then:
+        type: object
+        title: Document Resource
+        properties:
+          default_lang:
+            type:
+            - string
+            - 'null'
+            enum:
+            - en-US
+            - fr-FR
+            - de-DE
+            - pt-BR
+          description:
+            type: object
+            description: Description of the application.
+            properties:
+              en-US:
+                type:
+                - string
+                - 'null'
+                description: English language value.
+                x-no-tags: true
+              fr-FR:
+                type:
+                - string
+                - 'null'
+                description: French language value.
+                x-no-tags: true
+              de-DE:
+                type:
+                - string
+                - 'null'
+                description: German language value.
+                x-no-tags: true
+              pt-BR:
+                type:
+                - string
+                - 'null'
+                description: Portuguese language value.
+                x-no-tags: true
+          name:
+            type: object
+            description: Name of the application.
+            properties:
+              en-US:
+                type:
+                - string
+                - 'null'
+                description: English language value.
+                x-no-tags: true
+              fr-FR:
+                type:
+                - string
+                - 'null'
+                description: French language value.
+                x-no-tags: true
+              de-DE:
+                type:
+                - string
+                - 'null'
+                description: German language value.
+                x-no-tags: true
+              pt-BR:
+                type:
+                - string
+                - 'null'
+                description: Portuguese language value.
+                x-no-tags: true
+          url:
+            type: object
+            description: URL for the application.
+            properties:
+              en-US:
+                type:
+                - string
+                - 'null'
+                description: English language value.
+                x-no-tags: true
+              fr-FR:
+                type:
+                - string
+                - 'null'
+                description: French language value.
+                x-no-tags: true
+              de-DE:
+                type:
+                - string
+                - 'null'
+                description: German language value.
+                x-no-tags: true
+              pt-BR:
+                type:
+                - string
+                - 'null'
+                description: Portuguese language value.
+                x-no-tags: true
+      else:
+        type: object
+        title: Other Type
+        properties:
+          description:
+            type: string
+            description: Description of the application.
+            x-no-tags: true
+          name:
+            type: string
+            description: Name of the application.
+            x-no-tags: true
+          url:
+            type: string
+            description: URL for the application.
+            x-no-tags: true
+      properties:
+        _id:
+          type: string
+          description: ID of the application.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        apis:
+          type: array
+          items:
+            type: string
+          example:
+          - example_value
+        automatic:
+          type: boolean
+          example: true
+        env:
+          type: string
+          example: example_value
+        guid:
+          type: string
+          description: Application guid.
+          example: example_value
+        org_guid:
+          type: string
+          description: The `guid` of the org the application belongs to.
+          example: example_value
+        platform:
+          type: string
+          description: Name of the platform the application being developed for.
+          example: example_value
+        provider_guid:
+          type: string
+          example: example_value
+        providers:
+          type: array
+          description: The provider marketplaces the application is published to. Set for "product" and "documentresource" applications.
+          items:
+            type: object
+            required:
+            - guid
+            properties:
+              guid:
+                type: string
+                description: The `guid` of the provider marketplace.
+              published_id:
+                type: string
+                description: The published id of the application in the provider marketplace.
+          example:
+          - guid: example_value
+            published_id: 507f1f77bcf86cd799439011
+        source:
+          type: string
+          x-no-tags: true
+          example: example_value
+        subtype:
+          type: string
+          x-no-tags: true
+          example: example_value
+        type:
+          type: string
+          description: Type of the application
+          x-no-tags: true
+          example: example_value
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+    ApplicationList:
+      title: ApplicationList
+      type: array
+      description: A list of Application objects.
+      items:
+        $ref: '#/components/schemas/Application'
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

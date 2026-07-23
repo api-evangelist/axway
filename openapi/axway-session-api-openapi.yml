@@ -1,0 +1,526 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca session API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: session
+paths:
+  /session/query:
+    parameters: []
+    post:
+      summary: Axway Find Sessions
+      description: "Return sessions matching search criteria.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Viewing Sessions
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/viewing_and_editing_accounts/index.html
+      tags:
+      - session
+      operationId: session_query
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      title: SessionList
+                      type: array
+                      description: A list of Session objects.
+                      items:
+                        type: object
+                        properties:
+                          dvid:
+                            type: string
+                            description: Identifier for the device authorized for the session.
+                          from:
+                            type: string
+                            description: Type of client the session was initiated by, e.g. web/cli
+                          ipaddress:
+                            type: object
+                            description: IP Address the session was created from, anonymized to the Class C block.
+                          os:
+                            type: object
+                            description: Name and version of the device the session is for.
+                            properties:
+                              name:
+                                type: string
+                              version:
+                                type: string
+                          software:
+                            type: object
+                            description: Name and version of the software session was created using.
+                            properties:
+                              name:
+                                type: string
+                              version:
+                                type: string
+                          org:
+                            type: object
+                            required:
+                            - guid
+                            - name
+                            - org_id
+                            unevaluatedProperties: false
+                            allOf:
+                            - $ref: '#/components/schemas/DefaultFields'
+                            properties:
+                              name:
+                                type: string
+                                description: Name of the organization.
+                                minLength: 2
+                                maxLength: 64
+                                x-no-tags: true
+                              org_id:
+                                type: integer
+                                description: Identifier for the organization
+                              guid:
+                                type: string
+                                format: uuid
+                                description: GUID identifier for the organization
+                          org_id:
+                            type: string
+                            description: org_id of the signed-in org.
+                          org_name:
+                            type: string
+                            description: Name of the signed-in org.
+                          user:
+                            type: object
+                            required:
+                            - email
+                            - guid
+                            unevaluatedProperties: false
+                            properties:
+                              email:
+                                type: string
+                                format: email
+                                description: Email address of the user.
+                                maxLength: 217
+                              guid:
+                                type: string
+                                description: GUID of the user.
+                          current:
+                            type: boolean
+                            description: Whether this is the current session making the request.
+                - properties:
+                    metadata:
+                      $ref: '#/components/schemas/ResponseMetadata'
+              examples:
+                SessionQuery200Example:
+                  summary: Default session_query 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: limit
+        required: false
+        schema:
+          type: number
+          minimum: 0
+          maximum: 250
+          description: Number of results per page. Zero will return an empty result, but the matched count in meta will be returned.
+          default: 10
+        example: 1.0
+      - in: query
+        name: page
+        required: false
+        schema:
+          type: number
+          description: Page of results.
+          default: 1
+        example: 1.0
+      - in: query
+        name: skip
+        required: false
+        schema:
+          type: number
+          description: Number of items to skip in results, used for pagination.
+          default: 0
+        example: 1.0
+      - in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          description: Field on which to sort results, may pass multiple comma-separated. Prefix the field name with `-` for descending order.
+          items:
+            type: string
+            enum:
+            - access_token
+            - created
+            - dvid
+            - from
+            - impersonator_guid
+            - ipaddress
+            - is_staff
+            - org_guid
+            - os.name
+            - os.version
+            - software.name
+            - software.version
+            - expires
+            - lastModified
+            - session.email
+            - session.user_guid
+          default:
+          - created
+        example:
+        - access_token
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                access_token:
+                  type: string
+                  description: Search by session.access_token
+                created:
+                  type: string
+                  description: Search by session.created
+                from:
+                  type: string
+                  description: Search by session.from
+                last_modified:
+                  type: string
+                  description: Search by lastModified
+                org_guid:
+                  type: string
+                  description: Search by session.org_guid
+                user_email:
+                  type: string
+                  description: Search by session.email
+                user_id:
+                  type: string
+                  description: Search by session.user_guid
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session:
+    parameters: []
+    get:
+      summary: Axway Get Session
+      description: "Retrieves the active session for the user.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - session
+      operationId: session_find
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: object
+                      properties:
+                        sessionID:
+                          type: string
+                          description: The session ID.
+                        user_guid:
+                          type: string
+                          description: GUID of the signed-in user.
+                        idp:
+                          type: string
+                          description: GUID of the Identity Provider used to authenticate the session.
+                        created:
+                          type: string
+                          format: date-time
+                          description: Date/time the session was created.
+                        org_guid:
+                          $ref: '#/components/schemas/Org/properties/guid'
+              examples:
+                SessionFind200Example:
+                  summary: Default session_find 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /session/{session_id}:
+    parameters: []
+    delete:
+      summary: Axway Delete Session
+      description: "Deletes a session. This is a destructive and irreversible action.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Viewing Sessions
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/viewing_and_editing_accounts/index.html
+      tags:
+      - session
+      operationId: session_remove
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: session_id
+        required: true
+        schema:
+          type: string
+          description: _id of the session.
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Org:
+      properties:
+        guid:
+          type: string
+          format: uuid
+          description: GUID identifier for the organization
+          example: example_value
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+  examples:
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

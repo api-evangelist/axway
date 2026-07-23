@@ -1,0 +1,1196 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca analytics API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: analytics
+paths:
+  /analytics/query:
+    parameters: []
+    get:
+      summary: Axway Analytics Query Using Lexus
+      description: "Requests analytics data using lexus queries\n\n___Auth Requirement___\n - _If:_ The parameter `query.app_guid` is given.\n     - _Then:_ `write` access to the organization to which the application belongs.\n     - _Else:_ Access to the organization.\n"
+      tags:
+      - analytics
+      operationId: analytics_query
+      responses:
+        '200':
+          $ref: '#/components/responses/AnalyticsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                METHOD_UNSUPPORTED_AGGREGATE:
+                  value:
+                    success: false
+                    description: '"%s" contained an invalid value: "{method}" is not supported for the field "{field}".'
+                    code: 400
+                    internalCode: 747
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: query
+        name: apim_tier
+        required: false
+        schema:
+          type: string
+          description: Filter tier for APIM subscriptions; for use with apim-orgs preprocessor.
+          enum:
+          - paid
+          - trial
+        example: paid
+      - in: query
+        name: app_guid
+        required: false
+        schema:
+          type: string
+          description: Applications guid to get data for.
+        example: example_value
+      - in: query
+        name: clients
+        required: false
+        schema:
+          type: array
+          description: Set of publishing clients to query events for; accessible by staff only.
+          items:
+            type: string
+        example:
+        - example_value
+      - in: query
+        name: cross_org
+        required: false
+        schema:
+          type: boolean
+          description: Flag to enable cross org queries; accessible by staff only.
+          default: false
+        example: true
+      - in: query
+        name: custom_query
+        required: false
+        schema:
+          type: string
+          description: Custom query, used for "custom" template.
+        example: example_value
+      - in: query
+        name: debug
+        required: false
+        schema:
+          type: boolean
+          description: Send debug flag with query; accessible by staff only.
+          default: false
+        example: true
+      - in: query
+        name: endpoint
+        required: false
+        schema:
+          type: string
+          description: Which analytics endpoint to query; accessible by staff only.
+        example: example_value
+      - in: query
+        name: events
+        required: false
+        schema:
+          type: string
+          description: Comma-separated list of events to match.
+        example: example_value
+      - in: query
+        name: field
+        required: false
+        schema:
+          type: string
+          description: Field to use for disctinct queries.
+        example: example_value
+      - in: query
+        name: from
+        required: false
+        schema:
+          type: number
+          description: Starting timestamp to get data for.
+        example: 1.0
+      - in: query
+        name: granularity
+        required: false
+        schema:
+          type: string
+          description: Type of time granularity
+          enum:
+          - month
+          - day
+          - hour
+          - minute
+        example: month
+      - in: query
+        name: group_by
+        required: false
+        schema:
+          type: string
+          description: How the results are grouped, can be an array. A given granularity will be the top level grouping unless its order is specified in `group_by` as "granularity".
+        example: example_value
+      - in: query
+        name: grquantity
+        required: false
+        schema:
+          type: number
+          description: Interval to use for the granularity
+        example: 1.0
+      - in: query
+        name: include_query
+        required: false
+        schema:
+          type: string
+          description: Flag to enable inclusion of the lexus query.
+        example: example_value
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the org to query.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: platform
+        required: false
+        schema:
+          type: string
+          description: Platform to get data for.
+        example: example_value
+      - in: query
+        name: post_process
+        required: false
+        schema:
+          type: boolean
+          description: Flag to enable opting out of post processing.
+        example: true
+      - in: query
+        name: prefix
+        required: false
+        schema:
+          type: string
+          description: Prefix for events to query.
+        example: example_value
+      - in: query
+        name: preprocessor
+        required: false
+        schema:
+          type: string
+          description: Name of preprocessor to run.
+        example: example_value
+      - in: query
+        name: processor
+        required: false
+        schema:
+          type: string
+          description: Name of processor to run.
+        example: example_value
+      - in: query
+        name: query
+        required: true
+        schema:
+          type: string
+          description: Named lexus query to make, e.g. installs. Accepts an array of names.
+        example: example_value
+      - in: query
+        name: region
+        required: false
+        schema:
+          type: string
+          description: Filter cross-org queries by region; for use with apim-orgs preprocessor.
+          enum:
+          - US
+          - EU
+          - AP
+        example: US
+      - in: query
+        name: status
+        required: false
+        schema:
+          type: string
+          description: Status filtering for Crash Analytics.
+        example: example_value
+      - in: query
+        name: to
+        required: false
+        schema:
+          type: number
+          description: Ending timestamp to get data for.
+        example: 1.0
+      - in: query
+        name: type
+        required: false
+        schema:
+          type: string
+          description: Crash type filtering for Crash Analytics.
+        example: example_value
+      - in: query
+        name: username
+        required: false
+        schema:
+          type: string
+          description: Filter crash events by username.
+        example: Example Name
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /analytics/error:
+    parameters: []
+    post:
+      summary: Axway Report an Error
+      description: 'Report an error to platform analytics
+
+
+        _Allows consumer organization access_
+
+        '
+      tags:
+      - analytics
+      operationId: analytics_error
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                message:
+                  type: string
+                  description: Error message
+                meta:
+                  type: object
+                  description: Extra data to include in the report meta
+                stack:
+                  type: string
+                  description: Stack trace of the error to report
+              required:
+              - message
+              - meta
+              - stack
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /analytics/custom_query:
+    parameters: []
+    post:
+      summary: Axway Create a Custom Query
+      description: "Creates a custom query for an app/org.\n\n___Auth Requirement___\n - `write` access to the organization.\n"
+      externalDocs:
+        description: Managing Custom Queries
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_applications/creating_custom_queries/index.html
+      tags:
+      - analytics
+      operationId: analytics_customCreate
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/CustomQuery'
+              examples:
+                AnalyticsCustomcreate200Example:
+                  summary: Default analytics_customCreate 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: integer
+          description: Optional org_id to override the signed-in organization.
+        example: 1
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                cross_org:
+                  $ref: '#/components/schemas/CustomQuery/properties/cross_org'
+                field:
+                  $ref: '#/components/schemas/CustomQuery/properties/field'
+                filters:
+                  $ref: '#/components/schemas/CustomQuery/properties/filters'
+                granularity:
+                  $ref: '#/components/schemas/CustomQuery/properties/granularity'
+                groupings:
+                  $ref: '#/components/schemas/CustomQuery/properties/groupings'
+                grquantity:
+                  $ref: '#/components/schemas/CustomQuery/properties/grquantity'
+                include:
+                  $ref: '#/components/schemas/CustomQuery/properties/include'
+                limit:
+                  $ref: '#/components/schemas/CustomQuery/properties/limit'
+                method:
+                  $ref: '#/components/schemas/CustomQuery/properties/method'
+                name:
+                  $ref: '#/components/schemas/CustomQuery/properties/name'
+                offset:
+                  $ref: '#/components/schemas/CustomQuery/properties/offset'
+                sortField:
+                  $ref: '#/components/schemas/CustomQuery/properties/sortField'
+                sortOrder:
+                  $ref: '#/components/schemas/CustomQuery/properties/sortOrder'
+                span:
+                  $ref: '#/components/schemas/CustomQuery/properties/span'
+                type:
+                  $ref: '#/components/schemas/CustomQuery/properties/type'
+                unit:
+                  $ref: '#/components/schemas/CustomQuery/properties/unit'
+                valueFormat:
+                  $ref: '#/components/schemas/CustomQuery/properties/valueFormat'
+                yAxis:
+                  $ref: '#/components/schemas/CustomQuery/properties/yAxis'
+              required:
+              - field
+              - filters
+              - granularity
+              - grquantity
+              - method
+              - name
+              - span
+              - unit
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /analytics/custom_queries:
+    parameters: []
+    get:
+      summary: Axway Find Custom Queries
+      description: "Finds all the custom queries a user has access to for a given org.\n\n___Auth Requirement___\n - Access to the organization.\n"
+      externalDocs:
+        description: Managing Custom Queries
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_applications/creating_custom_queries/index.html
+      tags:
+      - analytics
+      operationId: analytics_customFind
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/CustomQueryList'
+              examples:
+                AnalyticsCustomfind200Example:
+                  summary: Default analytics_customFind 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: integer
+          description: Optional org_id to override the signed-in organization.
+        example: 1
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /analytics/custom_query/{query_id}:
+    parameters: []
+    delete:
+      summary: Axway Delete a Custom Query
+      description: "Delete a custom query for an org.\n\n___Auth Requirement___\n - `write` access to the organization.\n"
+      externalDocs:
+        description: Managing Custom Queries
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_applications/creating_custom_queries/index.html
+      tags:
+      - analytics
+      operationId: analytics_customRemove
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/CustomQuery'
+              examples:
+                AnalyticsCustomremove200Example:
+                  summary: Default analytics_customRemove 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: query_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the query to delete.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: integer
+          description: Optional org_id to override the signed-in organization.
+        example: 1
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      summary: Axway Update a Custom Query
+      description: "Updates a custom query for an app/org.\n\n___Auth Requirement___\n - `write` access to the organization.\n"
+      externalDocs:
+        description: Managing Custom Queries
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_applications/creating_custom_queries/index.html
+      tags:
+      - analytics
+      operationId: analytics_customUpdate
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/CustomQuery'
+              examples:
+                AnalyticsCustomupdate200Example:
+                  summary: Default analytics_customUpdate 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: query_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the query to update.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: integer
+          description: Optional org_id to override the signed-in organization.
+        example: 1
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                cross_org:
+                  $ref: '#/components/schemas/CustomQuery/properties/cross_org'
+                field:
+                  $ref: '#/components/schemas/CustomQuery/properties/field'
+                filters:
+                  $ref: '#/components/schemas/CustomQuery/properties/filters'
+                granularity:
+                  $ref: '#/components/schemas/CustomQuery/properties/granularity'
+                groupings:
+                  $ref: '#/components/schemas/CustomQuery/properties/groupings'
+                grquantity:
+                  $ref: '#/components/schemas/CustomQuery/properties/grquantity'
+                include:
+                  $ref: '#/components/schemas/CustomQuery/properties/include'
+                method:
+                  $ref: '#/components/schemas/CustomQuery/properties/method'
+                name:
+                  $ref: '#/components/schemas/CustomQuery/properties/name'
+                offset:
+                  $ref: '#/components/schemas/CustomQuery/properties/offset'
+                sortField:
+                  $ref: '#/components/schemas/CustomQuery/properties/sortField'
+                sortOrder:
+                  $ref: '#/components/schemas/CustomQuery/properties/sortOrder'
+                span:
+                  $ref: '#/components/schemas/CustomQuery/properties/span'
+                unit:
+                  $ref: '#/components/schemas/CustomQuery/properties/unit'
+                valueFormat:
+                  $ref: '#/components/schemas/CustomQuery/properties/valueFormat'
+                yAxis:
+                  $ref: '#/components/schemas/CustomQuery/properties/yAxis'
+              required:
+              - field
+              - filters
+              - granularity
+              - grquantity
+              - method
+              - name
+              - span
+              - unit
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /analytics/custom_queries/{query_id}:
+    parameters: []
+    get:
+      summary: Axway Get Custom Query
+      description: "Returns a single custom query.\n\n___Auth Requirement___\n - Access to the organization.\n"
+      externalDocs:
+        description: Managing Custom Queries
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_applications/creating_custom_queries/index.html
+      tags:
+      - analytics
+      operationId: analytics_customFindOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/CustomQuery'
+              examples:
+                AnalyticsCustomfindone200Example:
+                  summary: Default analytics_customFindOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: query_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the query.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization.'
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    CustomQuery:
+      type: object
+      required:
+      - name
+      - span
+      - unit
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Identifier of the query.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        cross_org:
+          type: boolean
+          description: Whether the query is run against all organizations instead of just the organization it belongs to.
+          example: true
+        endpoint:
+          type: string
+          format: url
+          description: The analytics endpoint called for the query.
+          example: example_value
+        field:
+          type: string
+          description: Lexus query invoke field.
+          example: example_value
+        filters:
+          type: string
+          format: json
+          description: Lexus filters JSON.
+          example: example_value
+        granularity:
+          type: string
+          description: Unit of time for grouping results; with "grquantity", determines interval of results.
+          enum:
+          - month
+          - day
+          - hour
+          - minute
+          example: month
+        groupings:
+          type: array
+          description: Field to group results by.
+          items:
+            type: object
+            required:
+            - field
+            - type
+            additionalProperties: false
+            properties:
+              field:
+                type: string
+              interval:
+                type: integer
+                description: Interval used when grouping by a numeric field.
+                minimum: 1
+              limit:
+                type: integer
+                description: Maximum number of items to return for a grouping
+                minimum: 1
+              type:
+                type: string
+                enum:
+                - string
+                - number
+                - duration
+          example:
+          - field: example_value
+            interval: 1
+            limit: 1
+            type: string
+        grquantity:
+          type: integer
+          description: Number of units of time for grouping results; with "granularity", determines interval of results.
+          minimum: 1
+          maximum: 200
+          example: 1
+        guid:
+          type: string
+          format: uuid
+          description: Identifier for the query.
+          example: example_value
+        include:
+          type: array
+          description: _Find method only._ Which fields to include in each document.
+          items:
+            type: string
+            description: Field name.
+          example:
+          - example_value
+        limit:
+          type: integer
+          description: _Find method only._ How many results to include per grouping
+          minimum: 1
+          example: 1
+        method:
+          type: string
+          description: Lexus query invoke method.
+          example: example_value
+        name:
+          type: string
+          description: A name to give the query.
+          example: Example Name
+        offset:
+          type: integer
+          description: _Find method only._ How many documents to skip.
+          minimum: 0
+          example: 1
+        org_guid:
+          type: integer
+          description: The guid of the organization the query is saved for.
+          example: 1
+        rateGranularity:
+          type: string
+          description: _Rate method only._ The granularity at which the rate is displayed.
+          enum:
+          - second
+          - minute
+          - hour
+          - day
+          example: second
+        sortField:
+          type: string
+          description: _Find method only._ Field by which to sort events.
+          maxProperties: 1
+          example: example_value
+        sortOrder:
+          type: integer
+          description: _Find method only._ Order in which to sort events. 1 (ascending) or -1 (descending).
+          enum:
+          - 1
+          - -1
+          maxProperties: 1
+          example: 1
+        span:
+          type: integer
+          description: Number of units of time for queried date range; with "unit", determines queried date range.
+          minimum: 1
+          maximum: 200
+          example: 1
+        type:
+          type: string
+          description: Type of chart to use to display results.
+          enum:
+          - list
+          - stream
+          - line
+          - bar
+          example: list
+        unit:
+          type: string
+          description: Unit of time for date range of query; with "span", determines queried date range.
+          enum:
+          - quarter
+          - month
+          - week
+          - day
+          - hour
+          - minute
+          example: quarter
+        valueFormat:
+          type: string
+          description: How to format values for the query
+          enum:
+          - duration
+          - percent
+          example: duration
+        yAxis:
+          type: string
+          description: How to display series in the y-Axis of the chart.
+          enum:
+          - overlap
+          - stacked
+          - ratio
+          example: overlap
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+    CustomQueryList:
+      title: CustomQueryList
+      type: array
+      description: A list of CustomQuery objects.
+      items:
+        $ref: '#/components/schemas/CustomQuery'
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    AnalyticsResponse:
+      description: Analytics Query Response
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/Response'
+            - properties:
+                success:
+                  type: boolean
+                  description: Whether the request was successful.
+                  default: true
+                result:
+                  oneOf:
+                  - type: array
+                    title: Mutli query response
+                    items:
+                      properties:
+                        data:
+                          type: object
+                          description: The analytics data.
+                        last_fetched:
+                          type: string
+                          description: When the data returned was last fetched.
+                  - title: Single query response
+                    properties:
+                      data:
+                        type: object
+                        description: The analytics data.
+                      last_fetched:
+                        type: string
+                        description: When the data returned was last fetched.
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

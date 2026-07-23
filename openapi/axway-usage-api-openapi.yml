@@ -1,0 +1,1046 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca usage API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: usage
+paths:
+  /usage/automatic:
+    parameters: []
+    post:
+      summary: Axway Uploads an Automatic Usage Report
+      description: "Uploads an automatic usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n"
+      externalDocs:
+        description: Usage Reporting Documentation
+        url: https://docs.axway.com/csh?context=222126025
+      tags:
+      - usage
+      operationId: usage_uploadAutomatic
+      x-max-content-length: 512000
+      x-publishes:
+      - platform.usage.report
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MAX_FILE_SIZE:
+                  value:
+                    success: false
+                    description: The file exceeds the maximum upload size of %d bytes.
+                    code: 400
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_INVALID_REASON:
+                  value:
+                    success: false
+                    description: '"%s" contained an invalid value: errors.reasons.undefined.'
+                    code: 400
+                    internalCode: 747
+                USAGE_EVENT_COUNT:
+                  value:
+                    success: false
+                    description: Usage report file must contain no greater than %d entries.
+                    code: 400
+                FILE_INVALID_TYPE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Not a valid json file.'
+                    code: 400
+                    internalCode: 747
+                FILE_POSSIBLE_XSS:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Possible XSS data in the file content.'
+                    code: 400
+                    internalCode: 747
+                USAGE_INVALID_DATE:
+                  value:
+                    success: false
+                    description: '"file.report" contained an invalid value: Invalid date in `report` keys.'
+                    code: 400
+                    internalCode: 747
+                USAGE_META_TYPE:
+                  value:
+                    success: false
+                    description: '"%s" contained an invalid value: Type "%s" is not supported for the field "%s".'
+                    code: 400
+                    internalCode: 747
+                USAGE_NO_METRICS:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: `report` did not include any valid metrics.'
+                    code: 400
+                    internalCode: 747
+                FILE_MISSING:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: No file attached.'
+                    code: 400
+                    internalCode: 747
+                FILE_MULTIPLE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Multiple files attached.'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_MIMETYPE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: File type should be application/json.'
+                    code: 400
+                    internalCode: 747
+                FILE_EMPTY:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Empty files not allowed.'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_EXTENSION:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: The file extension %s is not allowed.'
+                    code: 400
+                    internalCode: 747
+                FILE_NAME_TOO_LONG:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: The provided file name too long. Maximum allowed file name length is %d symbols.'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_FILENAME:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Invalid symbols in the file name.'
+                    code: 400
+                    internalCode: 747
+                FILE_MISSING_FIELDS:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Content is missing the required fields: [ %s ].'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_DATA_TYPE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Metrics data type invalid for %s: entitlement type %s.'
+                    code: 400
+                    internalCode: 747
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  type: string
+                  description: The usage report file. Max file size is 500 KiB or 4000 reported metrics.
+                  format: binary
+                organizationId:
+                  type: string
+                  description: Optional guid of an org to upload usage for.
+                uploadMethod:
+                  type: string
+                  description: Method for usage report upload or entry. Forbidden for automatic reporting.
+                  enum:
+                  - automatic
+                  - manual
+                  - entry
+                  default: automatic
+                userId:
+                  type: string
+                  description: Optional user guid for user uploading usage. Defaults to signed-in user.
+              required:
+              - file
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /usage:
+    parameters: []
+    get:
+      summary: Axway Fetches Usage Reports
+      description: "Fetches usage reports for an org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `auditor`, or `usage_reporter` access to the organization.\n"
+      tags:
+      - usage
+      operationId: usage_find
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/UsageEntryList'
+                - properties:
+                    metadata:
+                      $ref: '#/components/schemas/ResponseMetadata'
+              examples:
+                UsageFind200Example:
+                  summary: Default usage_find 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                DATE_RANGE_INVALID:
+                  value:
+                    success: false
+                    description: startDate must be before endDate
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: endDate
+        required: false
+        schema:
+          type: number
+          description: End of the reporting range; defaults to current time.
+        example: 1.0
+      - in: query
+        name: env_guid
+        required: false
+        schema:
+          type: string
+          description: Environment id
+          default: null
+        example: example_value
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: Optional id of an org to find usage reports for. Defaults to finding for the session org.
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: received
+        required: false
+        schema:
+          type: boolean
+          description: Whether to query usage uploads based on date received instead of reported period
+          default: false
+        example: true
+      - in: query
+        name: startDate
+        required: false
+        schema:
+          type: number
+          description: Start of the reporting range; defaults to last 24 hours.
+        example: 1.0
+      - in: query
+        name: status
+        required: false
+        schema:
+          type: string
+          description: Status
+          enum:
+          - VALIDATING
+          - VALIDATED
+          - PROCESSED
+          - INVALIDATED
+          - PARTIALLY_ACCEPTED
+          - MISSING_EVENTS
+          - INVALID_METRICS
+          - ENRICHMENT_ERROR
+          - ANALYTICS_UPLOAD_FAILED
+          - ANALYTICS_MISSMATCH
+          - ANALYTICS_ERROR
+          - INVALID_ENVIRONMENT
+          - MISSING_FILE
+          default: null
+        example: VALIDATING
+      - in: query
+        name: uploadMethod
+        required: false
+        schema:
+          type: string
+          description: Upload method to filter reports by.
+          enum:
+          - automatic
+          - manual
+          - entry
+        example: automatic
+      - in: query
+        name: limit
+        required: false
+        schema:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: Number of results per page. Zero will return an empty result, but the matched count in meta will be returned.
+          default: 10
+        example: 1.0
+      - in: query
+        name: page
+        required: false
+        schema:
+          type: number
+          description: Page of results.
+          default: 1
+        example: 1.0
+      - in: query
+        name: skip
+        required: false
+        schema:
+          type: number
+          description: Number of items to skip in results, used for pagination.
+          default: 0
+        example: 1.0
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      summary: Axway Uploads a Usage Report
+      description: "Uploads usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n"
+      externalDocs:
+        description: Usage Reporting Documentation
+        url: https://docs.axway.com/csh?context=222126025
+      tags:
+      - usage
+      operationId: usage_upload
+      x-max-content-length: 512000
+      x-publishes:
+      - platform.usage.report
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MAX_FILE_SIZE:
+                  value:
+                    success: false
+                    description: The file exceeds the maximum upload size of %d bytes.
+                    code: 400
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_INVALID_REASON:
+                  value:
+                    success: false
+                    description: '"%s" contained an invalid value: errors.reasons.undefined.'
+                    code: 400
+                    internalCode: 747
+                USAGE_EVENT_COUNT:
+                  value:
+                    success: false
+                    description: Usage report file must contain no greater than %d entries.
+                    code: 400
+                FILE_INVALID_TYPE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Not a valid json file.'
+                    code: 400
+                    internalCode: 747
+                FILE_POSSIBLE_XSS:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Possible XSS data in the file content.'
+                    code: 400
+                    internalCode: 747
+                USAGE_INVALID_DATE:
+                  value:
+                    success: false
+                    description: '"file.report" contained an invalid value: Invalid date in `report` keys.'
+                    code: 400
+                    internalCode: 747
+                USAGE_META_TYPE:
+                  value:
+                    success: false
+                    description: '"%s" contained an invalid value: Type "%s" is not supported for the field "%s".'
+                    code: 400
+                    internalCode: 747
+                USAGE_NO_METRICS:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: `report` did not include any valid metrics.'
+                    code: 400
+                    internalCode: 747
+                FILE_MISSING:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: No file attached.'
+                    code: 400
+                    internalCode: 747
+                FILE_MULTIPLE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Multiple files attached.'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_MIMETYPE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: File type should be application/json.'
+                    code: 400
+                    internalCode: 747
+                FILE_EMPTY:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Empty files not allowed.'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_EXTENSION:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: The file extension %s is not allowed.'
+                    code: 400
+                    internalCode: 747
+                FILE_NAME_TOO_LONG:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: The provided file name too long. Maximum allowed file name length is %d symbols.'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_FILENAME:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Invalid symbols in the file name.'
+                    code: 400
+                    internalCode: 747
+                FILE_MISSING_FIELDS:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Content is missing the required fields: [ %s ].'
+                    code: 400
+                    internalCode: 747
+                FILE_INVALID_DATA_TYPE:
+                  value:
+                    success: false
+                    description: '"file" contained an invalid value: Metrics data type invalid for %s: entitlement type %s.'
+                    code: 400
+                    internalCode: 747
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  type: string
+                  description: The usage report file. Max file size is 500 KiB or 4000 reported metrics.
+                  format: binary
+                organizationId:
+                  type: string
+                  description: Optional guid of an org to upload usage for.
+                uploadMethod:
+                  type: string
+                  description: Method for usage report upload or entry. Forbidden for automatic reporting.
+                  enum:
+                  - automatic
+                  - manual
+                  - entry
+                  default: automatic
+                userId:
+                  type: string
+                  description: Optional user guid for user uploading usage. Defaults to signed-in user.
+              required:
+              - file
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /usage/{file_id}:
+    parameters: []
+    get:
+      summary: Axway Downloads a Usage Report
+      description: 'Returns a download of a usage report for the org
+
+
+        ___Auth Requirement___
+
+
+        Requires support role or `administrator` or `usage_reporter` role in the organization the usage report is associated to.'
+      tags:
+      - usage
+      operationId: usage_download
+      responses:
+        '200':
+          description: Success
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+                description: Report file in JSON format.
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: file_id
+        required: true
+        schema:
+          type: string
+          description: The file_id of the usage report.
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_guid
+        required: true
+        schema:
+          type: string
+          description: Guid of the organization owning the report
+        example: example_value
+      - in: query
+        name: timestamp
+        required: true
+        schema:
+          type: integer
+          description: Timestamp when report is created
+        example: 1714000000000
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/usage:
+    parameters: []
+    get:
+      summary: Axway Organization Usage
+      description: "Returns usage information about an organization\n\n___Auth Requirement___\n - _One of_\n     - `administrator`, `auditor`, `developer`, or `usage_reporter` access to the organization. Developer access may be restricted by the organization usage access control setting.\n     - Auth token.\n"
+      tags:
+      - usage
+      operationId: org_findUsage
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        ending:
+                          type: string
+                          format: date-time
+                          description: Date/time the usage is calculated to.
+                        basis:
+                          type: string
+                          enum:
+                          - range
+                          - EOD
+                          - EOM
+                          - end_date
+                          description: Basis for the time range the data is calculated to.
+                        org_id:
+                          type: integer
+                          description: The org_id of the organization.
+                        created:
+                          type: string
+                          format: date-time
+                          description: Date/time the organization was created.
+                        from:
+                          type: string
+                          format: date-time
+                          description: Date/time the usage is calculated from.
+                        to:
+                          type: string
+                          format: date-time
+                          description: Date/time the usage is calculated to.
+                        from_ts:
+                          type: integer
+                          format: date-time
+                          description: Timestamp the usage is calculated from.
+                        to_ts:
+                          type: integer
+                          format: date-time
+                          description: Timestamp the usage is calculated to.
+                        usage:
+                          type: object
+                          description: Amount of usage for the org over the time range
+                          properties: {}
+                          additionalProperties: true
+              examples:
+                OrgFindusage200Example:
+                  summary: Default org_findUsage 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: The `guid` or `org_id` of the organization to get usage for.
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: entitlement
+        required: false
+        schema:
+          type: string
+          description: Single entitlement to get annual usage for
+        example: example_value
+      - in: query
+        name: from
+        required: false
+        schema:
+          type: string
+          description: Period starting timestamp
+        example: example_value
+      - in: query
+        name: month
+        required: false
+        schema:
+          type: number
+          description: Period ending in provided month to get usage for (optional, default is current month)
+        example: 1.0
+      - in: query
+        name: skipcache
+        required: false
+        schema:
+          type: boolean
+          description: Forces cache refresh
+        example: true
+      - in: query
+        name: to
+        required: false
+        schema:
+          type: string
+          description: Period ending timestamp
+        example: example_value
+      - in: query
+        name: year
+        required: false
+        schema:
+          type: number
+          description: Period ending in provided year to get usage for (optional, default is current year)
+        example: 1.0
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    UsageEntryList:
+      title: UsageEntryList
+      type: array
+      description: A list of UsageEntry objects.
+      items:
+        $ref: '#/components/schemas/UsageEntry'
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
+    UsageEntry:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date and time when report was created.
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Details of the user that created the organization.
+          required:
+          - guid
+          - type
+          properties:
+            client_id:
+              type: string
+              description: The client_id of the client that created the organization.
+            email:
+              type: string
+              format: email
+              description: Email address of the user that created the organization.
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            name:
+              type: string
+              description: The name of the user or client that created the organization.
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            client_id: 507f1f77bcf86cd799439011
+            email: user@example.com
+            guid: example_value
+            name: Example Name
+            type: user
+        downloadable:
+          type: boolean
+          description: Indicates if the report file is available for download.
+          example: true
+        endDate:
+          type: string
+          format: date-time
+          description: End of the reporting range.
+          example: '2026-04-21T00:00:00Z'
+        envId:
+          type: string
+          format: uuid
+          description: '`guid` of the environment the report is for.'
+          example: example_value
+        fileId:
+          type: string
+          description: Identifier of report entry file.
+          example: example_value
+        governance:
+          type: string
+          description: Governance of the environment this report is for.
+          enum:
+          - Customer Managed
+          - Axway Managed
+          example: Customer Managed
+        name:
+          type: string
+          description: Name of the report entry file.
+          example: Example Name
+        organizationId:
+          type: string
+          format: uuid
+          description: '`guid` of the organization the report is for.'
+          example: example_value
+        startDate:
+          type: string
+          format: date-time
+          description: Start of the reporting range.
+          example: '2026-04-21T00:00:00Z'
+        status:
+          type: string
+          description: Status of the report.
+          enum:
+          - PROCESSED
+          example: PROCESSED
+        unrecognized:
+          type: array
+          description: List of unrecognized metrics for reports with status `INVALID_METRIC`.
+          items:
+            type: string
+          example:
+          - example_value
+        uploadMethod:
+          type: string
+          description: Upload method.
+          enum:
+          - automatic
+          - manual
+          example: automatic
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+  examples:
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

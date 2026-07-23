@@ -1,0 +1,3848 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca auth API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: auth
+paths:
+  /auth/validatePassword:
+    parameters: []
+    post:
+      summary: Axway Validates a User Password
+      description: "Validates the supplied password is valid for the signed-in user.\n\n___Auth Requirement___\n - User password.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - auth
+      operationId: auth_validatePassword
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - Password: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: header
+        name: x-auth-password
+        required: true
+        schema:
+          type: string
+          description: Password to authorize the request.
+        example: '********'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/terms:
+    parameters: []
+    put:
+      summary: Axway Accept Terms & Conditions
+      description: "Marks acceptance of Terms & Conditions.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - auth
+      operationId: auth_acceptTerms
+      x-publishes:
+      - platform.terms.accept
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: grant
+        required: false
+        schema:
+          type: string
+          description: Optional grant value for use with Platform IdP
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/switchLoggedInOrg:
+    parameters: []
+    post:
+      summary: Axway Switch Signed-in Organization
+      description: "Changes the current session's organization to another that the signed-in user can access.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - auth
+      operationId: auth_sessionSwitchOrg
+      x-publishes:
+      - platform.session.create
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/SessionInfo'
+              examples:
+                AuthSessionswitchorg200Example:
+                  summary: Default auth_sessionSwitchOrg 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                INVALID_SWITCH_ORG:
+                  value:
+                    success: false
+                    description: You are not a member of this organization or it is no longer active. Please contact your administrator or the Amplify Platform support team.
+                    code: 400
+                USER_NOT_ACTIVATED:
+                  value:
+                    success: false
+                    description: Your account has not been activated yet. Please check your email.
+                    code: 400
+                    internalCode: 3
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NO_ACTIVE_ORGS:
+                  value:
+                    success: false
+                    description: You are not a member of any active organizations. Please contact your administrator or the Amplify Platform support team.
+                    code: 403
+                    internalCode: 626
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                org_id:
+                  type: string
+                  description: '`guid` or `org_id` of the organization to switch the user to.'
+              required:
+              - org_id
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/signup:
+    parameters: []
+    post:
+      summary: Axway Sign Up
+      description: 'Sign up org and user.
+
+
+        _Allows consumer organization access_
+
+        '
+      tags:
+      - auth
+      operationId: auth_signup
+      x-publishes:
+      - platform.org.create
+      - platform.activation.send
+      - platform.subscription.create
+      - marketplace.consumer.signup
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                INVALID_EMAIL_DOMAIN:
+                  value:
+                    success: false
+                    description: Sign-up is not allowed for this email domain.
+                    code: 400
+                    internalCode: 14
+                NEW_USER_SIGNUP:
+                  value:
+                    success: false
+                    description: You must be a new user to sign up.
+                    code: 400
+                NEW_USER_SIGNUP_INACTIVE:
+                  value:
+                    success: false
+                    description: You must be a new user to sign up.
+                    code: 400
+                PASSWORD_USER_INFO:
+                  value:
+                    success: false
+                    description: Passwords should not contain your name, email address, or other personally identifiable information.
+                    code: 400
+                    internalCode: 411
+                SIGNUP_DISABLED:
+                  value:
+                    success: false
+                    description: User signup attempts are temporarily disabled.
+                    code: 400
+                    internalCode: 430
+                PROVIDER_SIGNUP_DISABLED:
+                  value:
+                    success: false
+                    description: User signups are disabled.
+                    code: 400
+                    internalCode: 430
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                admin:
+                  type: string
+                  description: Email address of the person who will be the org administrator. It cannot be an email address already registered in the platform.
+                firstname:
+                  type: string
+                  description: First name of org administrator.
+                from:
+                  type: string
+                  description: Optional flag saying where the request is coming from.
+                lastname:
+                  type: string
+                  description: Last name of org administrator.
+                onboarding:
+                  $ref: '#/components/schemas/Org/properties/onboarding'
+                org_name:
+                  type: string
+                  description: Name of the organization.
+                password:
+                  type: string
+                  description: Password.
+                provider_guid:
+                  type: string
+                  description: Optional GUID of a provider marketplace to which the org and user are a consumer.
+                redirect:
+                  type: string
+                  description: URL to which admin user should be redirected after activation.
+                region:
+                  type: string
+                  description: Data residency region.
+                  enum:
+                  - US
+                  - EU
+                  - AP
+                  default: US
+              required:
+              - admin
+              - firstname
+              - lastname
+              - org_name
+              - password
+              - provider_guid
+              - region
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/password_policy:
+    parameters: []
+    get:
+      summary: Axway Get Effective Password Policy
+      description: 'Returns the combined most restrictive values for password policies along all organizations a user or provider belongs to and system wide password policy.
+
+
+        _Allows consumer organization access_
+
+        '
+      tags:
+      - auth
+      operationId: auth_findPasswordPolicy
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/PasswordPolicy'
+              examples:
+                AuthFindpasswordpolicy200Example:
+                  summary: Default auth_findPasswordPolicy 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: provider_guid
+        required: false
+        schema:
+          type: string
+          description: Optional GUID of an owning provider if for marketplace consumer context
+        example: example_value
+      - in: query
+        name: user_guid
+        required: false
+        schema:
+          type: string
+          description: Optional user guid to look up password policy for.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/onboarding:
+    parameters: []
+    put:
+      summary: Axway Onboarding Capture
+      description: "Capture required onboarding data prior to sessionc creation.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - auth
+      operationId: auth_onboarding
+      x-publishes:
+      - platform.org.update
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: grant
+        required: false
+        schema:
+          type: string
+          description: Optional grant value for use with Platform IdP
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                onboarding:
+                  type: object
+              required:
+              - onboarding
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/mfa/verify:
+    parameters: []
+    post:
+      summary: Axway Verify an Authorization Code
+      description: "Verify an authorization code. The code is expired once verified.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Multi-factor Authentication
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html#manage-multi-factor-authentication
+      tags:
+      - auth
+      operationId: auth_mfaVerify
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        valid:
+                          type: boolean
+                        expired:
+                          type: boolean
+              examples:
+                AuthMfaverify200Example:
+                  summary: Default auth_mfaVerify 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                authcode:
+                  type: string
+                  description: Authorization code to verify.
+                authcode_id:
+                  type: string
+                  description: guid of the authorization code to verify.
+                purpose:
+                  type: string
+                  description: Purpose of the authorization code to verify.
+                user_id:
+                  type: string
+                  description: '`guid` of the user to send an authorization code for. Staff only.'
+              required:
+              - authcode
+              - user_id
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/mfa/send:
+    parameters: []
+    post:
+      summary: Axway Send an Authorization Code
+      description: "Send a code for the user to verify using their configured mfa method.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Multi-factor Authentication
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html#manage-multi-factor-authentication
+      tags:
+      - auth
+      operationId: auth_mfaSend
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        guid:
+                          type: string
+                          description: Identifier for the auth code.
+              examples:
+                AuthMfasend200Example:
+                  summary: Default auth_mfaSend 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                purpose:
+                  type: string
+                  description: Purpose for the auth code being sent. Any existing auth code for the same purpose will be replaced.
+                template:
+                  type: string
+                  description: Name of the template for the message sent to the user.
+                user_id:
+                  type: string
+                  description: '`guid` of the user to send an authorization code for. Staff only.'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/logout:
+    parameters: []
+    get:
+      summary: Axway Sign-out
+      description: 'Destroys the current session and signs the user out.
+
+
+        _Allows consumer organization access_
+
+        '
+      tags:
+      - auth
+      operationId: auth_logout
+      x-publishes:
+      - platform.logout
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: string
+                      description: Signed-in state
+              examples:
+                AuthLogout200Example:
+                  summary: Default auth_logout 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: msg
+        required: false
+        schema:
+          type: string
+          description: Sign-in message
+        example: example_value
+      - in: query
+        name: redirect
+        required: false
+        schema:
+          type: string
+          description: Redirect URL for browsers
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/login:
+    parameters: []
+    post:
+      summary: Axway Sign-in
+      description: Attempts to sign a user in, creating a session for the user.
+      externalDocs:
+        description: Sign In Documentation
+        url: https://docs.axway.com/bundle/platform-management/page/docs/getting_started_with_amplify_platform_management/sign_in/index.html
+      tags:
+      - auth
+      operationId: auth_login
+      x-publishes:
+      - platform.login
+      - platform.session.create
+      - event: platform.login.failed
+        text: If the sign in is unsuccessful.
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/SessionInfo'
+              examples:
+                AuthLogin200Example:
+                  summary: Default auth_login 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                INVALID_LOGIN:
+                  value:
+                    success: false
+                    description: Invalid username or password.
+                    code: 400
+                    internalCode: 2
+                INVALID_LOGIN_HOSTNAME:
+                  value:
+                    success: false
+                    description: Sign-in not supported on this hostname.
+                    code: 400
+                INVALID_LOGIN_USERNAME:
+                  value:
+                    success: false
+                    description: Username must be a valid email address.
+                    code: 400
+                    internalCode: 2
+                LOGIN_EXTERNAL_CLI:
+                  value:
+                    success: false
+                    description: Your account is associated with an external identity provider. Please visit /user/credentials to set tooling credentials for your account.
+                    code: 400
+                    internalCode: 12
+                LOGIN_EXTERNAL_USER:
+                  value:
+                    success: false
+                    description: Your account is associated with an external identity provider. Please sign in via the service you created your account with.
+                    code: 400
+                MISSING_PASSWORD:
+                  value:
+                    success: false
+                    description: User must reset password.
+                    code: 400
+                    internalCode: 13
+                USER_NOT_ACTIVATED:
+                  value:
+                    success: false
+                    description: Your account has not been activated yet. Please check your email.
+                    code: 400
+                    internalCode: 3
+                INVALID_SWITCH_ORG:
+                  value:
+                    success: false
+                    description: You are not a member of this organization or it is no longer active. Please contact your administrator or the Amplify Platform support team.
+                    code: 400
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                PROVIDER_CONSUMER_DISABLED:
+                  value:
+                    success: false
+                    description: Consumer organization access is disabled.
+                    code: 400
+                    internalCode: 431
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                USER_NOT_ACTIVE:
+                  value:
+                    success: false
+                    description: Your account is not active. Please contact your administrator or the Amplify Platform support team.
+                    code: 401
+                    internalCode: 4
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NO_ACTIVE_ORGS:
+                  value:
+                    success: false
+                    description: You are not a member of any active organizations. Please contact your administrator or the Amplify Platform support team.
+                    code: 403
+                    internalCode: 626
+                PENDING_ORG:
+                  value:
+                    success: false
+                    description: Your organization requires approval. You will be notified by email when the organization is approved.
+                    code: 403
+                    internalCode: 7
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: grant
+        required: false
+        schema:
+          type: string
+          description: Optional grant value for use with Platform IdP
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                from:
+                  type: string
+                  description: Flag indicating where the sign-in is coming from
+                org_hint:
+                  type: string
+                  description: '`guid` or `org_id` of an organization to sign in to'
+                password:
+                  type: string
+                  description: Password
+                provider_guid:
+                  type: string
+                  description: guid of an owning provider if for marketplace consumer context
+                username:
+                  type: string
+                  description: Username
+              required:
+              - password
+              - username
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/impersonate:
+    parameters: []
+    delete:
+      summary: Axway Unimpersonate User
+      description: "Restores session of user impersonating another; accessible by staff or support only.\n\n___Auth Requirement___\n - Signed-in user.\n"
+      tags:
+      - auth
+      operationId: auth_unimpersonate
+      x-publishes:
+      - platform.user.unimpersonate
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/SessionInfo'
+              examples:
+                AuthUnimpersonate200Example:
+                  summary: Default auth_unimpersonate 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                INVALID_SWITCH_ORG:
+                  value:
+                    success: false
+                    description: You are not a member of this organization or it is no longer active. Please contact your administrator or the Amplify Platform support team.
+                    code: 400
+                USER_NOT_ACTIVATED:
+                  value:
+                    success: false
+                    description: Your account has not been activated yet. Please check your email.
+                    code: 400
+                    internalCode: 3
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                SOCKET_NOT_ALLOWED:
+                  value:
+                    success: false
+                    description: This API cannot be accessed via sockets; please use HTTPS.
+                    code: 403
+                NO_ACTIVE_ORGS:
+                  value:
+                    success: false
+                    description: You are not a member of any active organizations. Please contact your administrator or the Amplify Platform support team.
+                    code: 403
+                    internalCode: 626
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/forgot:
+    parameters: []
+    post:
+      summary: Axway Send Forgot Password Link
+      description: Send a forgot password link to the user. This will also remove any previous forgot password links for the user.
+      tags:
+      - auth
+      operationId: auth_forgot
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                PASSWORD_RESET_DISABLED:
+                  value:
+                    success: false
+                    description: Password reset attempts temporarily disabled.
+                    code: 400
+                    internalCode: 429
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                provider_guid:
+                  type: string
+                  description: GUID of the provider for the user.
+                username:
+                  type: string
+                  description: Email of the user to request a password reset for
+              required:
+              - username
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/findSession:
+    parameters: []
+    get:
+      summary: Axway Retrieves the Current Session
+      description: 'Returns the current session information.
+
+
+        _Allows consumer organization access_
+
+        '
+      externalDocs:
+        description: Viewing Sessions
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/viewing_and_editing_accounts/index.html
+      tags:
+      - auth
+      operationId: auth_sessionFind
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: object
+                      properties:
+                        from:
+                          type: string
+                          description: Type of client the session was initiated by, e.g. web/cli
+                        guid:
+                          type: string
+                          description: GUID of the signed-in user.
+                        idp:
+                          type: string
+                          description: GUID of the Identity Provider used to authenticate the session.
+                        org:
+                          $ref: '#/components/schemas/Org'
+                        org_id:
+                          type: string
+                          description: org_id of the signed-in org.
+                        orgs:
+                          type: string
+                          description: List of orgs that the user belongs to
+                        provider_org:
+                          type: object
+                          description: Owning provider organization of the marketplace; included in consumer org sessions only
+                          properties:
+                            guid:
+                              type: string
+                              format: uuid
+                              description: GUID identifier for the provider organization
+                            name:
+                              type: string
+                              description: Name of the provider organization.
+                            org_id:
+                              type: integer
+                              description: Identifier for the provider organization
+                        role:
+                          type: string
+                          description: Current role of the user signed-in with this session.
+                          enum:
+                          - administrator
+                          - developer
+                          - auditor
+                          - consumer
+                        roles:
+                          type: array
+                          description: List of roles the user is assigned on the signed-in org.
+                          items:
+                            type: string
+                            description: The id of the role.
+                            enum:
+                            - administrator
+                            - developer
+                            - auditor
+                            - consumer
+                            - usage_reporter
+                            - api_central_admin
+                        sessionID:
+                          type: string
+                          description: The session ID.
+                        sid:
+                          type: string
+                          description: Signed session ID.
+                        teams:
+                          $ref: '#/components/schemas/UserTeams'
+                        user:
+                          $ref: '#/components/schemas/User'
+                        username:
+                          type: string
+                          description: Username of the user this session belongs to.
+              examples:
+                AuthSessionfind200Example:
+                  summary: Default auth_sessionFind 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                DEVICE_AUTH_REQUIRED:
+                  value:
+                    success: false
+                    description: Device authorization required.
+                    code: 400
+                    internalCode: 232
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: from
+        required: false
+        schema:
+          type: string
+          description: Optional flag to limit session look to specific client type.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/deviceauth/resend:
+    parameters: []
+    post:
+      summary: Axway Resends Device Authorization
+      description: "Reset and resend the device authorization.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Multi-factor Authentication
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html#manage-multi-factor-authentication
+      tags:
+      - auth
+      operationId: auth_deviceauthResend
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                DEVICE_AUTH_DISABLED:
+                  value:
+                    success: false
+                    description: Multi-factor authentication is disabled
+                    code: 400
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                AUTH_CODE_DISABLED:
+                  value:
+                    success: false
+                    description: Auth code generation temporarily disabled.
+                    code: 403
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/deviceauth:
+    parameters: []
+    post:
+      summary: Axway Validates a New Sessions Device Authorization
+      description: "Validate a new device to the system for the first time\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Multi-factor Authentication
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html#manage-multi-factor-authentication
+      tags:
+      - auth
+      operationId: auth_deviceauthValidate
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        expired:
+                          type: boolean
+                        valid:
+                          type: boolean
+                        redirect:
+                          type: string
+              examples:
+                AuthDeviceauthvalidate200Example:
+                  summary: Default auth_deviceauthValidate 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                AUTH_CODE_DISABLED:
+                  value:
+                    success: false
+                    description: Auth code generation temporarily disabled.
+                    code: 403
+                AUTH_CODE_INVALIDATED:
+                  value:
+                    success: false
+                    description: Auth code validation temporarily disabled.
+                    code: 403
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: grant
+        required: false
+        schema:
+          type: string
+          description: Optional grant value for use with Platform IdP
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                code:
+                  type: string
+                  description: The activation code
+                remember:
+                  type: boolean
+                  description: Whether the device authorization should persist for future sign in.
+              required:
+              - code
+              - remember
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/checkSession:
+    parameters: []
+    get:
+      summary: Axway Checks if the User is Signed in
+      description: "Based on the current session, checks if the user is signed in or not.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - auth
+      operationId: auth_sessionCheck
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        user_id:
+                          type: integer
+                        guid:
+                          type: string
+                        email:
+                          type: string
+                        org_id:
+                          type: integer
+                        is_staff:
+                          type: boolean
+                        expiry:
+                          type: integer
+                        openid:
+                          type: string
+                        lastname:
+                          type: string
+                        _id:
+                          type: string
+                        firstname:
+                          type: string
+                        username:
+                          type: string
+              examples:
+                AuthSessioncheck200Example:
+                  summary: Default auth_sessionCheck 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/authenticator:
+    parameters: []
+    post:
+      summary: Axway Confirm Authenticator App
+      description: "Confirms the authenticator app is generating correct auth codes\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Multi-factor Authentication
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html#manage-multi-factor-authentication
+      tags:
+      - auth
+      operationId: auth_deviceauthConfirm
+      x-publishes:
+      - platform.user.mfa.app.add
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                code:
+                  type: number
+                  description: Code generated from the authenticator app.
+              required:
+              - code
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      summary: Axway Initiate Authenticator App Setup
+      description: "Initiate the setup process for an authenticator app\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Multi-factor Authentication
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html#manage-multi-factor-authentication
+      tags:
+      - auth
+      operationId: auth_deviceauthCreate
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Remove Authenticator App
+      description: "Removes the current configured authenticator application\n\n___Auth Requirement___\n - User password.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Multi-factor Authentication
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html#manage-multi-factor-authentication
+      tags:
+      - auth
+      operationId: auth_deviceauthRemoveApp
+      x-publishes:
+      - platform.user.mfa.app.remove
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - Password: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: header
+        name: x-auth-password
+        required: true
+        schema:
+          type: string
+          description: Password to authorize the request.
+        example: '********'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/activate/signup:
+    parameters: []
+    post:
+      summary: Axway Activate a Signup User
+      description: Attempts to activate a user from signup.
+      tags:
+      - auth
+      operationId: auth_activationSignup
+      x-publishes:
+      - platform.activation.complete
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                ITEM_NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/ITEM_NOT_FOUND/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                id:
+                  type: string
+                  description: GUID of the activation.
+              required:
+              - id
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/activate/resend:
+    parameters: []
+    post:
+      summary: Axway Resend Activation Link
+      description: 'Resend an activation link to a user. This will also remove any previous activation records for that user. Either `username` and `org_id` or the `activation_id` params are required.
+
+
+        _Allows consumer organization access_
+
+        '
+      tags:
+      - auth
+      operationId: auth_activationResend
+      x-publishes:
+      - platform.activation.send
+      - platform.org.user.resent
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                USER_ALREADY_ACTIVATED:
+                  value:
+                    success: false
+                    description: Your account has already been activated.
+                    code: 400
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                activation_id:
+                  type: string
+                  description: Guid of the activation record that we want to resend for.
+                org_id:
+                  type: string
+                  description: Organization from which the activation was resent.
+                provider_guid:
+                  type: string
+                  description: Provider guid for resending via username.
+                suppressEmail:
+                  type: boolean
+                  description: Whether to suppress the activation email (requires elevated privileges).
+                  default: false
+                username:
+                  type: string
+                  description: Email of the user that needs to be activated.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/activate/forgot:
+    parameters: []
+    post:
+      summary: Axway Reset User Password
+      description: Attempts to change a user password.
+      tags:
+      - auth
+      operationId: auth_activationForgot
+      x-publishes:
+      - platform.user.password.change
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                ITEM_NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/ITEM_NOT_FOUND/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                id:
+                  type: string
+                  description: GUID of the activation.
+                password:
+                  type: string
+                  description: New password for the user.
+              required:
+              - id
+              - password
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/activate:
+    parameters: []
+    post:
+      summary: Axway Activate a User
+      description: Attempts to activate a user.
+      tags:
+      - auth
+      operationId: auth_activationConfirm
+      x-publishes:
+      - platform.activation.complete
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                ITEM_NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/ITEM_NOT_FOUND/value'
+                USER_REQUIRED:
+                  value:
+                    success: false
+                    description: User is required.
+                    code: 400
+                FIRSTNAME_LENGTH:
+                  value:
+                    success: false
+                    description: First name must be at most 50 characters.
+                    code: 400
+                LASTNAME_LENGTH:
+                  value:
+                    success: false
+                    description: Last name must be at most 50 characters.
+                    code: 400
+                EXPIRED_LINK:
+                  value:
+                    success: false
+                    description: Link has expired.
+                    code: 400
+                    internalCode: 9
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                firstname:
+                  type: string
+                  description: First name of the activating user.
+                from:
+                  type: string
+                  description: Where the request is being made from, for example "web".
+                id:
+                  type: string
+                  description: GUID of the activation.
+                lastname:
+                  type: string
+                  description: Last name of the activating user.
+                password:
+                  type: string
+                  description: New password for the user.
+              required:
+              - firstname
+              - id
+              - lastname
+              - password
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/unlock/{activation_id}:
+    parameters: []
+    put:
+      summary: Axway Unlock Account
+      description: Unlocks a locked user account
+      tags:
+      - auth
+      operationId: auth_activationUnlock
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: activation_id
+        required: true
+        schema:
+          type: string
+          description: guid of the activation record
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/service/{service}:
+    parameters: []
+    delete:
+      summary: Axway Revoke OAuth Service
+      description: "Revoke an OAuth 2.0 service from being used to authenticate a user\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - auth
+      operationId: auth_revokeOauth
+      x-publishes:
+      - platform.user.social.disable
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: service
+        required: true
+        schema:
+          type: string
+          description: service to revoke OAuth 2.0 auth access
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/deviceauth/{user_id}:
+    parameters: []
+    get:
+      summary: Axway Retrieve Authorized Devices
+      description: "Returns the devices a user has authenticated using MFA\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Viewing Authorized Devices
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/viewing_authorized_devices/index.html
+      tags:
+      - auth
+      operationId: auth_deviceauthFind
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/UserDeviceList'
+              examples:
+                AuthDeviceauthfind200Example:
+                  summary: Default auth_deviceauthFind 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the user'
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/deviceauth/{device_id}:
+    parameters: []
+    delete:
+      summary: Axway Remove Authorized Device
+      description: "Removes a device previously authorized by a user and revokes associated sessions\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Viewing Authorized Devices
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/viewing_authorized_devices/index.html
+      tags:
+      - auth
+      operationId: auth_deviceauthRemove
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: device_id
+        required: true
+        schema:
+          type: string
+          description: device_id of the device record
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /auth/activation/{activation_id}:
+    parameters: []
+    get:
+      summary: Axway Find Activation
+      description: 'Returns the activation record.
+
+
+        _Allows consumer organization access_
+
+        '
+      tags:
+      - auth
+      operationId: auth_activationFind
+      x-publishes:
+      - platform.activation.access
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: activation_id
+        required: true
+        schema:
+          type: string
+          description: GUID of the activation.
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UserDevice:
+      type: object
+      properties:
+        authorized:
+          type: boolean
+          description: Whether the device has been authorized.
+          example: true
+        authorized_date:
+          type: string
+          format: date-time
+          description: Timestamp of when the device was authorized.
+          example: '2026-04-21T00:00:00Z'
+        browserVersion:
+          type: string
+          description: Device browser version identified from the devices user agent.
+          example: example_value
+        created:
+          type: string
+          format: date-time
+          description: Timestamp of when the record was created.
+          example: '2026-04-21T00:00:00Z'
+        ipaddress:
+          type: string
+          description: Anonymized device IP address.
+          example: 10.0.0.1
+        origin:
+          type: string
+          description: Origin of the MFA code used to authenticate the device.
+          enum:
+          - email
+          - app
+          example: email
+        osVersion:
+          type: string
+          description: Device operating system version identified from the devices user agent.
+          example: example_value
+        updated:
+          type: string
+          format: date-time
+          description: Timestamp of the most recent sign in on the device.
+          example: '2026-04-21T00:00:00Z'
+        user_device:
+          type: object
+          description: user-device relation.
+          properties:
+            browserFamily:
+              type: string
+              description: Device browser family identified from the devices user agent.
+            device_id:
+              type: string
+              description: GUID of the device record.
+            osFamily:
+              type: string
+              description: Device operating system family identified from the devices user agent.
+            user:
+              type: string
+              description: _id of the user the record is associated to.
+          example:
+            browserFamily: example_value
+            device_id: 507f1f77bcf86cd799439011
+            osFamily: example_value
+            user: example_value
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Entitlements:
+      type: object
+      description: Subscription entitlements
+      properties:
+        id:
+          type: string
+          title: ID
+          description: An identifier for the plan
+          example: 507f1f77bcf86cd799439011
+        name:
+          type: string
+          title: Name
+          description: A name for the plan
+          example: Example Name
+        ACT.Instances:
+          type: integer
+          title: Instances
+          description: Total allowed Instances.
+          example: 1
+        AgentSDK.Transactions:
+          type: integer
+          title: Third-party Gateway Traceability Agent Transactions
+          description: Third-party Gateway Traceability Agent Transactions per month. These are transactions instrumented using Agent SDK for vendors other than AWS, Azure, and Istio.
+          example: 1
+        provision_envs:
+          type: array
+          title: Provisioned Environments
+          x-immutable: true
+          x-deprecated: true
+          items:
+            type: string
+            enum:
+            - sandbox
+            - production
+          description: Environments to provision in Integration Builder.
+          example:
+          - sandbox
+        transactions:
+          type: integer
+          title: Integration Builder Transactions
+          x-deprecated: true
+          description: Integration Builder Transactions per month.
+          example: 1
+        AI.Transactions:
+          type: integer
+          title: AI Transactions
+          description: AI Transactions per month.
+          example: 1
+        AISuite.Cores:
+          type: integer
+          title: AI Suite Cores
+          description: Total allowed AI Suite Cores.
+          example: 1
+        AISuite.InputEvents:
+          type: integer
+          title: AI Suite Incoming Records
+          description: AI Suite Incoming Records per month.
+          example: 1
+        AISuite.Instances:
+          type: integer
+          title: AI Suite Rule Engine Instances
+          description: Total allowed AI Suite Rule Engine Instances.
+          example: 1
+        AISuite.Users:
+          type: integer
+          title: AI Suite Named Users
+          description: Total allowed AI Suite Named Users.
+          example: 1
+        AMPG.Transactions:
+          type: integer
+          title: Amplify Gateway Transactions
+          description: Amplify Gateway Transactions per month.
+          example: 1
+        AMPG.Volume:
+          type: number
+          title: Amplify Gateway Volume
+          description: Amplify Gateway transferred volume per month in GB.
+          example: 1.0
+        AMPI.Transactions:
+          type: integer
+          title: Integration Transactions
+          description: Integration Transactions per month.
+          example: 1
+        AMPI.Volume:
+          type: number
+          title: Data Volume
+          description: ' transferred volume per month in GB.'
+          example: 1.0
+        AOB.Transactions:
+          type: integer
+          title: Open Banking API Transactions
+          description: Open Banking API Transactions per month.
+          example: 1
+        API.Transactions:
+          type: integer
+          title: API Transactions
+          description: API Transactions per month.
+          example: 1
+        APIB.Transactions:
+          type: integer
+          title: API Builder Transactions
+          x-deprecated: true
+          description: API Builder Transactions per month.
+          example: 1
+        APIM.DRCores:
+          type: integer
+          title: DR Cores
+          description: Total allowed DR Cores.
+          example: 1
+        APIM.NonProdCores:
+          type: integer
+          title: Non-production Cores
+          description: Total allowed Non-production Cores.
+          example: 1
+        APIM.ProdCores:
+          type: integer
+          title: Production Cores
+          description: Total allowed Production Cores.
+          example: 1
+        APIM.Transactions:
+          type: integer
+          title: API Gateway Transactions
+          description: API Gateway Transactions per month.
+          example: 1
+        APIM.Volume:
+          type: number
+          title: API Gateway Outbound Volume
+          description: API Gateway transferred volume per month in GB.
+          example: 1.0
+        APIMG.Transactions:
+          type: integer
+          title: Amplify Istio Traceability Agent Transactions
+          description: Amplify Istio Traceability Agent Transactions per month.
+          example: 1
+        APIP.DRCores:
+          type: integer
+          title: DR Cores
+          description: Total allowed DR Cores.
+          example: 1
+        APIP.NonProdCores:
+          type: integer
+          title: Non-production Cores
+          description: Total allowed Non-production Cores.
+          example: 1
+        APIP.ProdCores:
+          type: integer
+          title: Production Cores
+          description: Total allowed Production Cores.
+          example: 1
+        Automator.CockpitEssential:
+          type: integer
+          title: Automator Cockpit Essential
+          description: Automator Cockpit Essential.
+          example: 1
+        Automator.CockpitPlus:
+          type: integer
+          title: Automator Cockpit Plus
+          description: Automator Cockpit Plus.
+          example: 1
+        Automator.Points:
+          type: integer
+          title: Automator Points
+          description: Automator Points.
+          example: 1
+        AWS.Transactions:
+          type: integer
+          title: AWS API Gateway Traceability Agent Transactions
+          description: AWS API Gateway Traceability Agent Transactions per month.
+          example: 1
+        Azure.Transactions:
+          type: integer
+          title: Azure API Gateway Traceability Agent Transactions
+          description: Azure API Gateway Traceability Agent Transactions per month.
+          example: 1
+        B2Bi.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed DR cores.
+          example: 1
+        B2Bi.Messages:
+          type: integer
+          title: B2Bi Messages
+          description: B2Bi Messages per month.
+          example: 1
+        B2Bi.Partners:
+          type: integer
+          title: B2Bi Partners
+          description: B2Bi Partners per month.
+          example: 1
+        B2Bi.Volume:
+          type: number
+          title: B2Bi Volume
+          description: B2Bi transferred volume per month in GB.
+          example: 1.0
+        B2Bi.WTPartners:
+          type: integer
+          title: Webtrader Partners
+          description: Total allowed Webtrader Partners.
+          example: 1
+        BN.Volume:
+          type: integer
+          title: Axway Business Network Volume
+          description: Axway Business Network Volume per month in KiloCharacters.
+          example: 1
+        CFT.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed Cores.
+          example: 1
+        CFT.MSUs:
+          type: integer
+          title: MSUs
+          description: Total allowed MSUs.
+          example: 1
+        CFT.Sessions:
+          type: integer
+          title: Sessions
+          description: Total allowed Sessions.
+          example: 1
+        CFT.Transfers:
+          type: integer
+          title: CFT File Transfers
+          description: CFT File Transfers per month.
+          example: 1
+        CSOS.CentralSigning:
+          type: boolean
+          title: CSOS Signing Instance
+          description: Allow access to CSOS Signing Instance feature.
+          example: true
+        CSOS.Monitoring:
+          type: boolean
+          title: CSOS Monitoring
+          description: Allow access to CSOS Monitoring feature.
+          example: true
+        CSOS.Orders:
+          type: integer
+          title: CSOS Orders
+          description: CSOS Orders per month.
+          example: 1
+        CSOS.Partners:
+          type: integer
+          title: CSOS Partners
+          description: Total allowed CSOS Partners.
+          example: 1
+        CSOS.Transformation:
+          type: boolean
+          title: CSOS Transformation
+          description: Allow access to CSOS Transformation feature.
+          example: true
+        CSOS.Validation:
+          type: boolean
+          title: CSOS Validation Instance
+          description: Allow access to CSOS Validation Instance feature.
+          example: true
+        DI.Dashboards:
+          type: integer
+          title: Axway Decision Insights Dashboards
+          description: Total allowed Axway Decision Insights Dashboards.
+          example: 1
+        DI.Users:
+          type: integer
+          title: Axway Decision Insights Named Users
+          description: Total allowed Axway Decision Insights Named Users.
+          example: 1
+        DS.Cores:
+          type: integer
+          title: Datastore Cores
+          description: Total allowed Datastore Cores.
+          example: 1
+        DS.Users:
+          type: integer
+          title: Datastore Client Users
+          description: Total allowed Datastore Client Users.
+          example: 1
+        DV.EnterpriseInstances:
+          type: integer
+          title: Desktop Validator Enterprise Instances
+          description: Total allowed Desktop Validator Enterprise Instances.
+          example: 1
+        DV.StandardInstances:
+          type: integer
+          title: Desktop Validator Standard Instances
+          description: Total allowed Desktop Validator Standard Instances.
+          example: 1
+        EBICSC.Channels:
+          type: integer
+          title: EBICS Client Channels
+          description: Total allowed EBICS Client Channels.
+          example: 1
+        EBICSCORP.Banks:
+          type: integer
+          title: Bank Connections Allowed
+          description: Total allowed EBICS Corporate bank connections.
+          example: 1
+        EBICSCORP.Treasurers:
+          type: integer
+          title: Treasurer Connections Allowed
+          description: Total allowed EBICS Corporate treasurer connections.
+          example: 1
+        EBICSG.Customers:
+          type: integer
+          title: EBICS Client Customers
+          description: Total allowed EBICS Client Customers.
+          example: 1
+        EBICSG.FileTransfers:
+          type: integer
+          title: EBICS Gateway File Transfers
+          description: EBICS Gateway File Transfers per month.
+          example: 1
+        EBICSG.Messages:
+          type: integer
+          title: EBICS Gateway Instant Payment Messages
+          description: EBICS Gateway Instant Payment Messages per month.
+          example: 1
+        EBICSG.Subscriptions:
+          type: integer
+          title: EBICS Gateway Subscriptions
+          description: Total allowed EBICS Gateway Subscriptions.
+          example: 1
+        EI.Archives:
+          type: integer
+          title: eInvoicing Archiving Transactions
+          description: eInvoicing Archiving Transactions per month.
+          example: 1
+        EI.Invoices:
+          type: integer
+          title: eInvoicing Transactions
+          description: eInvoicing Transactions per month.
+          example: 1
+        EI.OCRTransactions:
+          type: integer
+          title: OCR eInvoicing Transactions
+          description: OCR eInvoicing Transactions per month.
+          example: 1
+        EI.PeppolTransactions:
+          type: integer
+          title: PEPPOL Invoicing Transactions
+          description: PEPPOL Invoicing Transactions per month.
+          example: 1
+        EI.Transformations:
+          type: integer
+          title: eInvoicing Transformation Transactions
+          description: eInvoicing Transformation Transactions per month.
+          example: 1
+        EN.Environments:
+          type: integer
+          title: Connected Environments
+          description: Total allowed Connected Environments.
+          example: 1
+        EN.EnvironmentsNonProd:
+          type: integer
+          title: Connected Environments (Non-production)
+          description: Total allowed Connected Environments (Non-production).
+          example: 1
+        EN.Services:
+          type: integer
+          title: API Services
+          description: Total allowed API Services.
+          example: 1
+        ESUB.ClientLicense:
+          type: integer
+          title: eSubmissions Client Licenses
+          description: Total allowed eSubmissions Client Licenses.
+          example: 1
+        ESUB.CommunityLicense:
+          type: integer
+          title: eSubmissions Community Licenses
+          description: Total allowed eSubmissions Community Licenses.
+          example: 1
+        ESUB.Messages:
+          type: integer
+          title: eSubmissions Messages
+          description: eSubmissions Messages per month.
+          example: 1
+        ESUB.Partners:
+          type: integer
+          title: eSubmissions (Non-Regulatory) Trading Partners
+          description: eSubmissions (Non-Regulatory) Trading Partners per month.
+          example: 1
+        ESUB.Regulatory:
+          type: integer
+          title: eSubmissions Regulatory Trading Partners
+          description: eSubmissions Regulatory Trading Partners per month.
+          example: 1
+        ESUB.T1:
+          type: integer
+          title: eSubmissions Client Tier 1
+          description: Total allowed eSubmissions Client Tier 1.
+          example: 1
+        ESUB.T2:
+          type: integer
+          title: eSubmissions Client Tier 2
+          description: Total allowed eSubmissions Client Tier 2.
+          example: 1
+        ESUB.T3:
+          type: integer
+          title: eSubmissions Client Tier 3
+          description: Total allowed eSubmissions Client Tier 3.
+          example: 1
+        ESUB.Volume:
+          type: number
+          title: eSubmissions Volume
+          description: eSubmissions transferred volume per month in GB.
+          example: 1.0
+        FAH.ApplicationConnectors:
+          type: integer
+          title: Financial Accounting Hub ApplicationConnectors
+          description: Total allowed Financial Accounting Hub ApplicationConnectors.
+          example: 1
+        FAH.Records:
+          type: integer
+          title: Financial Accounting Hub Records
+          description: Financial Accounting Hub Records per month.
+          example: 1
+        FAH.Users:
+          type: integer
+          title: Financial Accounting Hub Named Users
+          description: Total allowed Financial Accounting Hub Named Users.
+          example: 1
+        flows:
+          type: integer
+          title: Flow Manager Unit Flows
+          description: Flow Manager Unit Flows per month.
+          example: 1
+        FU.MultiPatternTransactions:
+          type: integer
+          title: Multi-Pattern Transactions
+          description: Multi-Pattern Transactions per month.
+          example: 1
+        HBS.Messages:
+          type: integer
+          title: Shared Usage Metric
+          description: Hybrid B2B Solution messages per month.
+          example: 1
+        Hub.Assets:
+          type: integer
+          title: Asset Catalog Assets
+          description: Total allowed Asset Catalog Assets.
+          example: 1
+        Hub.Marketplaces:
+          type: integer
+          title: Marketplaces
+          description: Total allowed Marketplaces.
+          example: 1
+        Hub.Subscriptions:
+          type: integer
+          title: Marketplace Subscriptions
+          description: Total allowed Marketplace Subscriptions.
+          example: 1
+        Hub.Transactions:
+          type: integer
+          title: Analytics Transactions
+          description: Analytics Transactions per month.
+          example: 1
+        INTP.Designers:
+          type: integer
+          title: Interplay Designers
+          description: Total allowed Interplay Designers.
+          example: 1
+        INTP.Instances:
+          type: integer
+          title: Interplay Instances
+          description: Total allowed Interplay Instances.
+          example: 1
+        PEPPOL.Transactions:
+          type: integer
+          title: PEPPOL Service Transactions
+          description: PEPPOL Service Transactions per month.
+          example: 1
+        SC.Instances:
+          type: integer
+          title: Secure Client Instances
+          description: Secure Client Instances.
+          example: 1
+        SC.Licenses:
+          type: array
+          title: Secure Client License Activation ID
+          items:
+            type: string
+          description: License Activation ID for Secure Client instances.
+          example:
+          - example_value
+        SFC.Banks:
+          type: integer
+          title: Secure Financial Client Banks
+          description: Total allowed Secure Financial Client Banks.
+          example: 1
+        SFC.Partners:
+          type: integer
+          title: Secure Financial Client Connection Partners
+          description: Total allowed Secure Financial Client Connection Partners.
+          example: 1
+        SFC.Treasurers:
+          type: integer
+          title: Secure Financial Client Treasurers
+          description: Total allowed Secure Financial Client Treasurers.
+          example: 1
+        ST.ActiveUsers:
+          type: integer
+          title: Connections
+          description: Total allowed Connections.
+          example: 1
+        ST.Connections:
+          type: integer
+          title: Connections
+          description: Total allowed Connections.
+          example: 1
+        ST.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed Cores.
+          example: 1
+        ST.Instances:
+          type: integer
+          title: Production Instances
+          description: Total allowed Production Instances.
+          example: 1
+        ST.Sessions:
+          type: integer
+          title: Sessions
+          description: Total allowed Sessions.
+          example: 1
+        ST.Transfers:
+          type: integer
+          title: File Transfers
+          description: File Transfers per month.
+          example: 1
+        ST.TransfersIn:
+          type: integer
+          title: Transfers In
+          description: Transfers In per month.
+          example: 1
+        ST.TransfersOut:
+          type: integer
+          title: Transfers Out
+          description: Transfers Out per month.
+          example: 1
+        ST.Volume:
+          type: number
+          title: Incoming Data Volume
+          description: Transferred data volume per month in GB.
+          example: 1.0
+        STL.Applications:
+          type: integer
+          title: Monitored Applications
+          description: Total allowed Monitored Applications.
+          example: 1
+        STL.CPUs:
+          type: integer
+          title: CPUs
+          description: Total allowed CPUs.
+          example: 1
+        STL.Users:
+          type: integer
+          title: Users
+          description: Total allowed Users.
+          example: 1
+        Streams.Events:
+          type: integer
+          title: Streams Events
+          description: Streams Events per month.
+          example: 1
+        Streams.Volume:
+          type: number
+          title: Streams Volume
+          description: Streams transferred volume per month in GB.
+          example: 1.0
+        SV.Users:
+          type: integer
+          title: Server Validator Users
+          description: Total allowed Server Validator Users.
+          example: 1
+        TNT.Compliance:
+          type: array
+          title: Compliance Module
+          items:
+            type: string
+            enum:
+            - EU
+            - SA
+            - UAE
+          example:
+          - EU
+        TNT.Lines:
+          type: integer
+          title: Manufactoring/Distributor Lines
+          description: Total allowed Manufactoring&#x2F;Distributor Lines.
+          example: 1
+        TNT.Packs:
+          type: integer
+          title: Unit Packs
+          description: Total allowed Unit Packs.
+          example: 1
+        TNT.Routing:
+          type: boolean
+          title: DSCSA Routing Service
+          example: true
+        TNT.SerialNumbers:
+          type: integer
+          title: Track & Trace Serial Numbers
+          description: Track &amp; Trace Serial Numbers.
+          example: 1
+        Traceable.Discovery:
+          type: integer
+          title: Traceable API Discovery
+          description: Total allowed Traceable API Discovery.
+          example: 1
+        Traceable.SecurityTesting:
+          type: boolean
+          title: Traceable API Security Testing
+          description: Allow access to Traceable API Security Testing feature.
+          example: true
+        TSIM.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed DR cores.
+          example: 1
+        TSIM.Messages:
+          type: integer
+          title: TSIM Messages
+          description: TSIM Messages per month.
+          example: 1
+        TSIM.Partners:
+          type: integer
+          title: TSIM Partner Relations
+          description: TSIM allowed partners per month.
+          example: 1
+        TSIM.Users:
+          type: integer
+          title: ENGDAT Users
+          description: Total allowed ENGDAT Users.
+          example: 1
+        TSIM.Volume:
+          type: number
+          title: TSIM Volume
+          description: TSIM transferred volume per month in GB.
+          example: 1.0
+        VA.Policies:
+          type: integer
+          title: Policies
+          description: Total allowed Policies.
+          example: 1
+        VA.Repeaters:
+          type: integer
+          title: Repeater Instances
+          description: Total allowed Repeater Instances.
+          example: 1
+        VA.Responsers:
+          type: integer
+          title: Responser Instances
+          description: Total allowed Responser Instances.
+          example: 1
+        VRS.Transactions:
+          type: integer
+          title: Axway VRS Solution Transactions
+          description: Axway VRS Solution Transactions per month.
+          example: 1
+        WebEDI.Users:
+          type: integer
+          title: WebEDI Portal Users
+          description: Total allowed WebEDI Portal Users.
+          example: 1
+        WebEDI.Volume:
+          type: number
+          title: WebEDI Portal Volume
+          description: WebEDI Portal transferred volume per month in GB.
+          example: 1.0
+        APIConnect.Transactions:
+          type: integer
+          title: IBM APIConnect Traceability Agent Transactions
+          description: IBM APIConnect Traceability Agent Transactions per month.
+          example: 1
+        Apigee.Transactions:
+          type: integer
+          title: Apigee Traceability Agent Transactions
+          description: Apigee Traceability Agent Transactions per month.
+          example: 1
+        APIMAgent.Transactions:
+          type: integer
+          title: Axway Gateway Traceability Agent Transactions
+          description: Axway Gateway Traceability Agent Transactions per month.
+          example: 1
+        Kafka.Transactions:
+          type: integer
+          title: Kafka Traceability Agent Transactions
+          description: Kafka Traceability Agent Transactions per month.
+          example: 1
+        SAPAPIPortal.Transactions:
+          type: integer
+          title: SAP API Portal Traceability Agent Transactions
+          description: SAP API Portal Traceability Agent Transactions per month.
+          example: 1
+        Sensedia.Transactions:
+          type: integer
+          title: Sensedia Agent Transactions
+          description: Sensedia Agent Transactions per month.
+          example: 1
+        Tokens:
+          type: integer
+          title: Tokens
+          description: Amplify API Management Platform offering tokens per month.
+          example: 1
+        Volume:
+          type: integer
+          title: Volume
+          description: Amplify API Management Platform offering transaction volume per month.
+          example: 1
+        WebMethods.Transactions:
+          type: integer
+          title: Software AG webMethods Agent Transactions
+          description: Software AG webMethods Agent Transactions per month.
+          example: 1
+        WSO2.Transactions:
+          type: integer
+          title: WSO2 Traceability Agent Transactions
+          description: WSO2 Traceability Agent Transactions per month.
+          example: 1
+        AIIntegration:
+          type: boolean
+          title: AI Integration
+          description: Allow access to AI Integration feature.
+          example: true
+        APICompliance:
+          type: boolean
+          title: API Compliance
+          description: Allow access to API Compliance feature.
+          example: true
+        APIMocking:
+          type: boolean
+          title: API Mocking
+          description: Allow access to API Mocking feature.
+          example: true
+        catalog:
+          type: boolean
+          title: Unified Catalog Access
+          description: Allow access to Unified Catalog.
+          example: true
+        daysDataRetained:
+          type: integer
+          title: Data Retention
+          description: How long analytics events are kept in days.
+          example: 1
+        FIPS:
+          type: boolean
+          title: FIPS
+          example: true
+        idp:
+          type: boolean
+          title: External Identity Provider
+          description: Allow configuration of an external identity provider for authentication.
+          example: true
+        partners:
+          type: array
+          title: Partners
+          x-immutable:
+          - AEM
+          - AMP
+          - APIM
+          - APIMG
+          - AWS
+          - Azure
+          - Bundle
+          - EN
+          - Hub
+          - Streams
+          - ai
+          - ars
+          - fc
+          - ib
+          items:
+            type: string
+            enum:
+            - aca
+            - analytics
+            - api_central
+          description: Partners the organization has access to.
+          example:
+          - aca
+        public_provider:
+          type: boolean
+          title: Public Marketplace
+          description: Allow public Marketplace features including vanity URL, unauthorized access, consumer org support, homepage content, and paid plans.
+          example: true
+        retention:
+          type: integer
+          title: Analytics Event Retention
+          description: Length of time analytics events are kept in days.
+          example: 1
+        retentionTransactions:
+          type: integer
+          title: Transaction Event Retention
+          description: Length of time transaction events are kept in days.
+          example: 1
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    Role:
+      properties:
+        id:
+          type: string
+          description: Identifier of the role.
+          example: 507f1f77bcf86cd799439011
+        name:
+          type: string
+          description: The role's name.
+          minLength: 1
+          maxLength: 40
+          example: Example Name
+    UserTeams:
+      type: array
+      description: List of teams the user belongs to.
+      items:
+        type: object
+        description: Teams a user belongs to.
+        properties:
+          default:
+            $ref: '#/components/schemas/Team/properties/default'
+          guid:
+            $ref: '#/components/schemas/Team/properties/guid'
+          name:
+            $ref: '#/components/schemas/Team/properties/name'
+          roles:
+            type: array
+            description: A list of roles the user has in the team
+            items:
+              type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/Role/properties/id'
+                name:
+                  $ref: '#/components/schemas/Role/properties/name'
+          tags:
+            $ref: '#/components/schemas/Team/properties/tags'
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+    Team:
+      properties:
+        name:
+          type: string
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
+          x-no-tags: true
+          example: Example Name
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+    SessionInfo:
+      type: object
+      properties:
+        connect.sid:
+          type: string
+          description: Signed session ID.
+          example: example_value
+        deviceAuthRequired:
+          type: string
+          description: Whether the user is still pending device authorization.
+          example: example_value
+        email:
+          type: string
+          description: Email address of the signed-in user.
+          example: user@example.com
+        entitlements:
+          type: object
+          description: Entitlements of the signed-in org.
+          example: {}
+        expiry:
+          type: string
+          description: Session expiry (if not accessed).
+          example: example_value
+        firstname:
+          type: string
+          description: First name of the signed-in user.
+          example: Example Name
+        from:
+          type: string
+          description: Type of client the session was initiated by, e.g. web/cli
+          example: example_value
+        guid:
+          type: string
+          description: GUID of the signed-in user.
+          example: example_value
+        idp:
+          type: string
+          description: GUID of the Identity Provider used to authenticate the session.
+          example: example_value
+        lastname:
+          type: string
+          description: Last name of the signed-in user.
+          example: Example Name
+        org:
+          $ref: '#/components/schemas/Org'
+        org_id:
+          type: string
+          description: org_id of the signed-in org.
+          example: 507f1f77bcf86cd799439011
+        org_name:
+          type: string
+          description: Name of the signed-in org.
+          example: Example Name
+        orgs:
+          type: string
+          description: List of orgs that the user belongs to
+          example: example_value
+        provider_org:
+          type: object
+          description: Owning provider organization of the marketplace; included in consumer org sessions only
+          properties:
+            guid:
+              type: string
+              format: uuid
+              description: GUID identifier for the provider organization
+            name:
+              type: string
+              description: Name of the provider organization.
+            org_id:
+              type: integer
+              description: Identifier for the provider organization
+          example:
+            guid: example_value
+            name: Example Name
+            org_id: 1
+        redirect:
+          type: string
+          description: URL to redirect to after signing in.
+          example: example_value
+        role:
+          type: string
+          description: Current role of the user signed-in with this session.
+          enum:
+          - administrator
+          - developer
+          - auditor
+          - consumer
+          example: administrator
+        roles:
+          type: array
+          description: List of roles the user is assigned on the signed-in org.
+          items:
+            type: string
+            description: The id of the role.
+            enum:
+            - administrator
+            - developer
+            - auditor
+            - consumer
+            - usage_reporter
+            - api_central_admin
+          example:
+          - administrator
+        session:
+          type: string
+          description: Encoded session.
+          example: example_value
+        sessionID:
+          type: string
+          description: The session ID.
+          example: example_value
+        sid:
+          type: string
+          description: Signed session ID.
+          example: example_value
+        teams:
+          $ref: '#/components/schemas/UserTeams'
+        user:
+          $ref: '#/components/schemas/User'
+        user_guid:
+          type: string
+          description: GUID of the signed-in user.
+          example: example_value
+        username:
+          type: string
+          description: Username of the user this session belongs to.
+          example: Example Name
+    PasswordPolicy:
+      type: object
+      description: Password policy
+      properties:
+        length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 8
+          example: 1
+        max_length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 128
+          example: 1
+        lower:
+          type: integer
+          minimum: 1
+          example: 1
+        upper:
+          type: integer
+          minimum: 1
+          example: 1
+        special:
+          type: integer
+          minimum: 1
+          example: 1
+        digit:
+          type: integer
+          minimum: 1
+          example: 1
+        lockout:
+          type: integer
+          minimum: 1
+          maximum: 4
+          default: 5
+          example: 1
+        renewal:
+          type: integer
+          minimum: 1
+          example: 1
+        history:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 1
+    Org:
+      type: object
+      required:
+      - active
+      - guid
+      - name
+      - org_id
+      - region
+      - subscriptions
+      - users
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: The id of the organization.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        account_id:
+          type: integer
+          description: Account ID of the organization.
+          minimum: 10000
+          maximum: 999999
+          example: 1
+        active:
+          type: boolean
+          description: Active state of the organization. Organizations become inactive after passing their end date.
+          default: true
+          example: true
+        analytics:
+          type: object
+          description: Analytics details for the organization
+          additionalProperties: false
+          properties:
+            token:
+              type: string
+              description: Token used to identify the organization.
+          example:
+            token: eyJhbGciOiJIUzI1NiJ9.example
+        api_central:
+          type: object
+          description: Engage provision status
+          readOnly: true
+          example: {}
+        branding:
+          type: object
+          description: Organization branding.
+          additionalProperties: false
+          properties:
+            logo:
+              type: string
+              description: Logo image of the company.
+          example:
+            logo: example_value
+        consumer_id:
+          type: string
+          description: Mapped ID of the consumer org from the configured Identity Provider.
+          example: 507f1f77bcf86cd799439011
+        created_by:
+          type: object
+          description: Details of the user that created the organization.
+          unevaluatedProperties: false
+          properties:
+            client_id:
+              type: string
+              description: The client_id of the client that created the organization.
+              readOnly: true
+            email:
+              type: string
+              format: email
+              description: Email address of the user that created the organization.
+              readOnly: true
+            name:
+              type: string
+              description: The name of the user or client that created the organization.
+              readOnly: true
+          example:
+            client_id: 507f1f77bcf86cd799439011
+            email: user@example.com
+            name: Example Name
+        entitlements:
+          type: object
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Entitlements'
+          example: {}
+        guid:
+          type: string
+          format: uuid
+          description: GUID identifier for the organization
+          example: example_value
+        help_menu:
+          type: object
+          description: Contents of the help menu displayed in the navigation bar.
+          default:
+            enabled: false
+          additionalProperties: false
+          properties:
+            enabled:
+              type: boolean
+              description: Whether the custom help menu is enabled.
+              default: false
+            defaults:
+              type: boolean
+              description: Whether to include the default items.
+            icon:
+              type: string
+              description: Icon displayed in the navigation bar to show the help menu.
+            items:
+              type: array
+              description: Custom help menu shown in the navigation bar.
+              items:
+                type: object
+                required:
+                - text
+                - type
+                - url
+                unevaluatedProperties: false
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    url: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/0'
+                    document: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/1'
+                oneOf:
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - url
+                    url:
+                      type: string
+                      format: url
+                      description: URL for the link.
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - document
+                    url:
+                      type: string
+                      description: Document resource guid
+                properties:
+                  icon:
+                    type: string
+                    description: Icon displayed in the menu for the item.
+                  new_tab:
+                    type: boolean
+                    description: Whether the link opens in a new tab.
+                  provider_guid:
+                    type: string
+                    description: The GUID of the provider a document url is for
+                  text:
+                    type: string
+                    description: Label for the link.
+                    x-no-tags: true
+                  type:
+                    type: string
+                    description: Type of the link.
+                    enum:
+                    - document
+                    - url
+                  url:
+                    type: string
+                    description: URL, relative path, or document resource guid for the link.
+          example:
+            enabled: true
+            defaults: true
+            icon: example_value
+            items:
+            - icon: example_value
+              new_tab: true
+              provider_guid: example_value
+              text: example_value
+              type: document
+              url: https://example.com
+        last_login:
+          type: string
+          format: date-time
+          description: When the most recent session was created in the organization.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        logged_in_count:
+          type: number
+          description: How many session are been created in the organization.
+          readOnly: true
+          example: 1.0
+        name:
+          type: string
+          description: Name of the organization.
+          minLength: 2
+          maxLength: 64
+          x-no-tags: true
+          example: Example Name
+        onboarding:
+          type: object
+          description: Onboarding data for consumer org.
+          maxProperties: 50
+          writeOnly: true
+          patternProperties:
+            '[\w-]{21}':
+              type:
+              - string
+              - number
+              - boolean
+              - array
+              description: Onboarding data field value.
+              items:
+                type: string
+                description: Onboarding data field multi-select option value.
+          example: {}
+        onboarding_required:
+          type: array
+          readOnly: true
+          items:
+            type: string
+            pattern: '[\w-]{21}'
+          example:
+          - example_value
+        org_id:
+          type: integer
+          description: Identifier for the organization
+          example: 1
+        origin:
+          type:
+          - string
+          - 'null'
+          description: Source from which the organization creation originated.
+          enum:
+          - '360'
+          - sfdc
+          - signup
+          example: '360'
+        pending:
+          type: boolean
+          description: Whether the organization is pending approval for a provider organization administator.
+          example: true
+        provider_guid:
+          type: string
+          format: uuid
+          description: GUID identifier of the owning provider if the organization is a consumer of a marketplace.
+          example: example_value
+        region:
+          type: string
+          description: The data residency region of the organization.
+          default: US
+          enum:
+          - US
+          - EU
+          - AP
+          example: US
+        security:
+          type: object
+          description: Security settings for the organization.
+          additionalProperties: false
+          properties:
+            access_controls:
+              type: object
+              description: Developer visibility controls.
+              additionalProperties: false
+              properties:
+                enviroments:
+                  type: number
+                  description: Developer access to environments. 0 - Developers cannot view environments, 1 - Developer may view all environemnts.
+                  enum:
+                  - 0
+                  - 1
+                service_accounts:
+                  type: number
+                  description: Developer access to service accounts. 0 - Developers cannot view service accounts, 1 - Developers may view service accounts in their teams, 2 - Developer may view all service accounts.
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                usage:
+                  type: number
+                  description: Developer access to usage. 0 - Developers cannot view usage, 1 - Developer may view all usage.
+                  enum:
+                  - 0
+                  - 1
+                users:
+                  type: number
+                  description: Developer access to users.0 - Developers cannot view users, 1 - Developers may view administrators and users in their teams, 2 - Developer may view all users.
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+            allow_tooling:
+              type: boolean
+              description: Grant access using tooling credentials
+            disable_analytics:
+              type: boolean
+              description: Opt out from third-party support services.
+            password_policy:
+              $ref: '#/components/schemas/PasswordPolicy'
+            redact_personal:
+              type: boolean
+              description: Personal information like email addresses will be masked in UI.
+              default: false
+          example:
+            access_controls:
+              enviroments: 0
+              service_accounts: 0
+              usage: 0
+              users: 0
+            allow_tooling: true
+            disable_analytics: true
+            password_policy:
+              length: 1
+              max_length: 1
+              lower: 1
+              upper: 1
+              special: 1
+              digit: 1
+              lockout: 1
+              renewal: 1
+              history: 1
+            redact_personal: true
+        subscriptions:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Subscription'
+          example:
+          - end_date: '2026-04-21T00:00:00Z'
+            entitlements:
+            - key: example_value
+              value: example_value
+            governance: SaaS
+            id: 507f1f77bcf86cd799439011
+            opportunity_id: 1.0
+            plan: example_value
+            product: example_value
+            product_name: Example Name
+            source: API
+            start_date: '2026-04-21T00:00:00Z'
+        support_access_code:
+          type: integer
+          description: Support Access Code for the org.
+          minimum: 10000
+          maximum: 999999
+          example: 1
+        users:
+          type: array
+          description: List of users that are members of the organization.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
+            properties:
+              guid:
+                type: string
+                format: uuid
+                description: GUID of the user.
+              idp:
+                type: string
+                description: GUID of the Identity Provider the user is required to authenticate with to access the organization.
+              primary:
+                type: boolean
+                description: Whether the user is the primary contact for the organization.
+              roles:
+                type: array
+                description: Roles within the organization.
+                items:
+                  type: string
+                  enum:
+                  - administrator
+                  - developer
+                  - auditor
+                  - consumer
+                  - usage_reporter
+                  - api_central_admin
+          example:
+          - guid: example_value
+            idp: example_value
+            primary: true
+            roles:
+            - administrator
+    User:
+      type: object
+      required:
+      - activated
+      - active
+      - email
+      - firstname
+      - guid
+      - lastname
+      - user_id
+      unevaluatedProperties: false
+      properties:
+        _id:
+          type: string
+          description: ID of the user.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        activated:
+          type: boolean
+          description: Whether the user has activated.
+          default: false
+          example: true
+        active:
+          type: boolean
+          description: Whether the user is active.
+          default: false
+          example: true
+        authenticator_enabled:
+          type: boolean
+          description: Whether an authenticator app is enavled for the user.
+          example: true
+        created:
+          $ref: '#/components/schemas/DefaultFields/properties/created'
+        date_activated:
+          type: string
+          format: date-time
+          description: When the user activated.
+          example: '2026-04-21T00:00:00Z'
+        default_org:
+          type: number
+          description: The org_id for the organization to use when last_login is set to default.
+          example: 1.0
+        email:
+          type: string
+          format: email
+          description: Email address of the user.
+          maxLength: 217
+          example: user@example.com
+        external:
+          type: boolean
+          description: Whether the user is external.
+          example: true
+        firstname:
+          type: string
+          description: First name of the user.
+          default: ''
+          maxLength: 50
+          x-allow-empty: true
+          x-no-tags: true
+          example: Example Name
+        guid:
+          type: string
+          description: GUID of the user.
+          example: example_value
+        invited:
+          type: string
+          format: date-time
+          description: When the user was most recently invited. Only set for not-yet-activated users.
+          example: '2026-04-21T00:00:00Z'
+        last_logged_in_org:
+          type: number
+          description: The org_id of the organization the user last signed into.
+          example: 1.0
+        last_login:
+          type: string
+          format: date-time
+          description: When the user last signed in.
+          example: '2026-04-21T00:00:00Z'
+        lastname:
+          type: string
+          description: Last name of the user.
+          default: ''
+          maxLength: 50
+          x-allow-empty: true
+          x-no-tags: true
+          example: Example Name
+        locale:
+          type: string
+          description: Preferred display language for the user.
+          enum:
+          - en-US
+          - fr-FR
+          - de-DE
+          - pt-BR
+          example: en-US
+        logged_in_count:
+          type: number
+          description: The number of times the user has signed in.
+          example: 1.0
+        logged_in_from_cli:
+          type: boolean
+          description: Whether the user has previously signed in from cli.
+          example: true
+        logged_in_from_other:
+          type: boolean
+          description: Whether the user has previously signed in from an unknown source.
+          example: true
+        logged_in_from_studio:
+          type: boolean
+          description: Whether the user has previously signed in from studio.
+          example: true
+        logged_in_from_web:
+          type: boolean
+          description: Whether the user has previously signed in from web.
+          example: true
+        login_org:
+          type: string
+          description: Which organization is used when the user signs in.
+          enum:
+          - last_logged
+          - default
+          - ask
+          example: last_logged
+        mfa:
+          type: boolean
+          description: Whether multi-factor authentication is enabled for the user.
+          example: true
+        oauth:
+          type: array
+          description: Which social login services are associated with the user.
+          items:
+            type: string
+            description: The name of the social login service
+          example:
+          - example_value
+        password_updated:
+          type: string
+          format: date-time
+          description: Date the password was last updated
+          example: '********'
+        prefs:
+          type: object
+          description: User preferences.
+          example: {}
+        provider_guid:
+          type: string
+          format: uuid
+          description: GUID identifier of the owning provider if a consumer of a marketplace.
+          example: example_value
+        terms_updated:
+          type: string
+          format: date-time
+          description: Date the user accepted terms & conditions.
+          example: '2026-04-21T00:00:00Z'
+        timezone:
+          type: string
+          description: The timezone used to display dates for the user.
+          example: example_value
+        updated:
+          $ref: '#/components/schemas/DefaultFields/properties/updated'
+        user_id:
+          type: number
+          example: 1.0
+        username:
+          type: string
+          example: Example Name
+    Subscription:
+      type: object
+      description: Organization entitlements
+      required:
+      - id
+      - product
+      - plan
+      - entitlements
+      additionalProperties: false
+      properties:
+        end_date:
+          type: string
+          format: date-time
+          description: When the subscription is active to.
+          example: '2026-04-21T00:00:00Z'
+        entitlements:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                description: Entitlement key.
+              value:
+                oneOf:
+                - type: boolean
+                  description: Boolean entitlement, granting access to a feature of capability.
+                - type: integer
+                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
+                  maximum: 9999999999999
+                - type: number
+                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
+                  maximum: 9999999999999
+                - type: array
+                  description: Set entitlement, listing provisioned service or environment availability.
+                  items:
+                    type: string
+                    description: Service or environment key.
+          example:
+          - key: example_value
+            value: example_value
+        governance:
+          type: string
+          description: Governance model for the subscription.
+          enum:
+          - SaaS
+          - Customer Managed
+          - Axway Managed
+          example: SaaS
+        id:
+          type: string
+          description: Identifier for the subscription.
+          example: 507f1f77bcf86cd799439011
+        opportunity_id:
+          type: number
+          description: Opportunity ID associated with the subscription.
+          minimum: 10000
+          maximum: 999999
+          example: 1.0
+        plan:
+          type: string
+          description: Which plan the subscription is for.
+          example: example_value
+        product:
+          type: string
+          description: Name to identify the product, e.g. APIM, B2Bi.
+          example: example_value
+        product_name:
+          type: string
+          description: Official product name.
+          readOnly: true
+          example: Example Name
+        source:
+          type: string
+          description: Source of this subscription.
+          enum:
+          - API
+          - UI
+          - Platform
+          - Billing
+          example: API
+        start_date:
+          type: string
+          format: date-time
+          description: When the subscription is active from.
+          example: '2026-04-21T00:00:00Z'
+        tier:
+          type: string
+          description: Whether the subscription is a trial or paid for.
+          enum:
+          - paid
+          - trial
+          - free
+          example: paid
+    UserDeviceList:
+      title: UserDeviceList
+      type: array
+      description: A list of UserDevice objects.
+      items:
+        $ref: '#/components/schemas/UserDevice'
+  examples:
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    ITEM_NOT_FOUND:
+      value:
+        success: false
+        description: '"%s" Not Found'
+        code: 404
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

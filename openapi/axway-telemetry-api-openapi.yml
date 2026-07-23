@@ -1,0 +1,256 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca telemetry API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: telemetry
+paths:
+  /analytics:
+    parameters: []
+    post:
+      summary: Axway Send Events
+      description: "Send analytics events\n\n___Auth Requirement___\n - Service account access token.\n"
+      tags:
+      - telemetry
+      operationId: analytics_create
+      x-max-content-length: 10240
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                EVENT_COUNT:
+                  value:
+                    success: false
+                    description: '"event" contained an invalid value: Maximum number of %d exceeded.'
+                    code: 400
+                    internalCode: 747
+                EVENT_TYPE:
+                  value:
+                    success: false
+                    description: '"%s" contained an invalid value: Only telemetry events are accepted.'
+                    code: 400
+                    internalCode: 747
+                EVENT_INVALID_PRODUCT:
+                  value:
+                    success: false
+                    description: '"%s" contained an invalid value: Event %s is not allowed, product "%s" is not purchased.'
+                    code: 400
+                    internalCode: 747
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+        '413':
+          description: Payload Too Large
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                CONTENT_TOO_LARGE:
+                  value:
+                    success: false
+                    description: Request content length exceeds %d byte limit.
+                    code: 413
+      security:
+      - BearerClient: []
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                events:
+                  type: array
+                  description: List of `v4 Event Spec` events
+                  items:
+                    allOf:
+                    - $ref: '#/components/schemas/Event'
+                    properties:
+                      event:
+                        description: The name of the event. Must start with `telemetry.<product_id>.`.<br>Where `<product_id>` corresponds to a product for which the organization has a subscription or license.<br>Allowed values are `ACT`, `AEM`, `AIG`, `AISuite`, `AMP`, `AMPI`, `AOB`, `APIB`, `APIM`, `APIMG`, `APIP`, `AWS`, `Automator`, `Azure`, `B2Bi`, `BN`, `Bundle`, `CFT`, `CSOS`, `DI`, `DS`, `DV`, `EBICSC`, `EBICSCORP`, `EBICSG`, `EI`, `EN`, `ESUB`, `FAH`, `FU`, `HBS`, `Hub`, `INTP`, `MFT`, `PEPPOL`, `SC`, `SFC`, `ST`, `STL`, `SV`, `Streams`, `TNT`, `TSIM`, `VA`, `VRS`, `WebEDI`, `ai`, `fc`, `ib`
+                        pattern: ^telemetry\.\w+\.[\w.]+(?<!\.)$
+              required:
+              - events
+      parameters:
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    Event:
+      type: object
+      required:
+      - event
+      properties:
+        data:
+          type: object
+          description: All custom data must go here.
+          example: {}
+        event:
+          type: string
+          description: The name of the event.
+          example: example_value
+        id:
+          type: string
+          description: Unique event identifier.
+          example: 507f1f77bcf86cd799439011
+        timestamp:
+          type: number
+          description: A UTC timestamp in miliseconds.
+          example: 1.0
+        version:
+          type: string
+          description: Specification version in use.
+          enum:
+          - '4'
+          example: '4'
+  examples:
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

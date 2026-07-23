@@ -1,0 +1,1406 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca team API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: team
+paths:
+  /team:
+    parameters: []
+    post:
+      summary: Axway Create a Team
+      description: "This will create a team.\n\n___Auth Requirement___\n - `administrator` access to the organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_create
+      x-publishes:
+      - platform.team.create
+      - platform.team.default
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Team'
+              examples:
+                TeamCreate200Example:
+                  summary: Default team_create 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                EXISTING_TEAM_NAME:
+                  value:
+                    success: false
+                    description: That team name already exists.
+                    code: 400
+                ROLE_NOT_ENABLED:
+                  value:
+                    success: false
+                    description: '"%s" is not an allowed role for this organization.'
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                default:
+                  $ref: '#/components/schemas/Team/properties/default'
+                desc:
+                  $ref: '#/components/schemas/Team/properties/desc'
+                name:
+                  $ref: '#/components/schemas/Team/properties/name'
+                org_guid:
+                  $ref: '#/components/schemas/Team/properties/org_guid'
+                tags:
+                  $ref: '#/components/schemas/Team/properties/tags'
+                users:
+                  x-deprecated: This parameter has been deprecated and will be removed in a future release.
+                  allOf:
+                  - $ref: '#/components/schemas/Team/properties/users'
+                  deprecated: true
+              required:
+              - name
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      summary: Axway Get Accessible Teams for the Query
+      description: "Return the list of teams for the specified query parameters that can be accessed by this session.\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the organization, allowing consumer role.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_find
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/TeamList'
+                - properties:
+                    metadata:
+                      type: object
+                      description: Result metadata.
+                      properties:
+                        query:
+                          type: object
+                          description: The team query.
+                - properties:
+                    metadata:
+                      $ref: '#/components/schemas/ResponseMetadata'
+              examples:
+                TeamFind200Example:
+                  summary: Default team_find 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - AuthToken: []
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: default
+        required: false
+        schema:
+          $ref: '#/components/schemas/Team/properties/default'
+        example: {}
+      - in: query
+        name: name
+        required: false
+        schema:
+          $ref: '#/components/schemas/Team/properties/name'
+        example: {}
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: Optional id of an org to find teams for. Defaults to finding for the session org.
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: tag
+        required: false
+        schema:
+          $ref: '#/components/schemas/Team/properties/tags/items'
+        example: {}
+      - in: query
+        name: user_guid
+        required: false
+        schema:
+          type: string
+          description: Optional GUID of a user to find teams for. When called by non-admin users this will only include teams the calling user also belongs to.
+        example: example_value
+      - in: query
+        name: limit
+        required: false
+        schema:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: Number of results per page. Zero will return an empty result, but the matched count in meta will be returned.
+        example: 1.0
+      - in: query
+        name: page
+        required: false
+        schema:
+          type: number
+          description: Page of results.
+          default: 1
+        example: 1.0
+      - in: query
+        name: skip
+        required: false
+        schema:
+          type: number
+          description: Number of items to skip in results, used for pagination.
+          default: 0
+        example: 1.0
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /team/{team_id}/user/{user_id}:
+    parameters: []
+    post:
+      summary: Axway Add Member
+      description: "Adds a member to a team.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_userAdd
+      x-publishes:
+      - platform.team.user.add
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Team'
+              examples:
+                TeamUseradd200Example:
+                  summary: Default team_userAdd 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                EXISTING_TEAM_MEMBER:
+                  value:
+                    success: false
+                    description: User is already a member of this team.
+                    code: 400
+                ROLE_NOT_ENABLED:
+                  value:
+                    success: false
+                    description: '"%s" is not an allowed role for this organization.'
+                    code: 400
+                REQUIRED_ORG_ROLE:
+                  value:
+                    success: false
+                    description: '"roles" contained an invalid value: The "%s" role requires one of the following organization roles: %s.'
+                    code: 400
+                    internalCode: 747
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                USER_NOT_MEMBER:
+                  value:
+                    success: false
+                    description: User is not a member of this organization.
+                    code: 403
+      security:
+      - BearerClient: []
+      - BearerUser: []
+      - SessionCookie: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: team_id
+        required: true
+        schema:
+          type: string
+          description: guid of the team to add the member to
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: guid of the member being added to the team
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                roles:
+                  $ref: '#/components/schemas/Team/properties/users/items/properties/roles'
+                type:
+                  $ref: '#/components/schemas/Team/properties/users/items/properties/type'
+              required:
+              - roles
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Remove Member
+      description: "Removes a member from the team\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_userRemove
+      x-publishes:
+      - platform.team.user.remove
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Team'
+              examples:
+                TeamUserremove200Example:
+                  summary: Default team_userRemove 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - BearerUser: []
+      - SessionCookie: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: team_id
+        required: true
+        schema:
+          type: string
+          description: guid of the team to remove the member from
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: guid of the user being removed from the team
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      summary: Axway Sets the Team Member Role
+      description: "Sets the users roles.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_userUpdateRole
+      x-publishes:
+      - platform.team.user.role.update
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Team'
+              examples:
+                TeamUserupdaterole200Example:
+                  summary: Default team_userUpdateRole 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                ROLE_NOT_ENABLED:
+                  value:
+                    success: false
+                    description: '"%s" is not an allowed role for this organization.'
+                    code: 400
+                REQUIRED_ORG_ROLE:
+                  value:
+                    success: false
+                    description: '"roles" contained an invalid value: The "%s" role requires one of the following organization roles: %s.'
+                    code: 400
+                    internalCode: 747
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - BearerUser: []
+      - SessionCookie: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: team_id
+        required: true
+        schema:
+          type: string
+          description: guid of the team to add the user to
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: guid of the user being added to the team
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                roles:
+                  $ref: '#/components/schemas/Team/properties/users/items/properties/roles'
+              required:
+              - roles
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /team/{team_id}/user:
+    parameters: []
+    get:
+      summary: Axway Get Team Members
+      description: "Returns members for a team\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the team. Developer access may be restricted by the organization access control settings.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Users
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_users/index.html
+      tags:
+      - team
+      operationId: team_userFind
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      title: UserList
+                      type: array
+                      description: A list of User objects.
+                      items:
+                        type: object
+                        required:
+                        - email
+                        - firstname
+                        - guid
+                        - lastname
+                        unevaluatedProperties: false
+                        properties:
+                          email:
+                            type: string
+                            format: email
+                            description: Email address of the user.
+                            maxLength: 217
+                          firstname:
+                            type: string
+                            description: First name of the user.
+                            default: ''
+                            maxLength: 50
+                            x-allow-empty: true
+                            x-no-tags: true
+                          guid:
+                            type: string
+                            description: GUID of the user.
+                          lastname:
+                            type: string
+                            description: Last name of the user.
+                            default: ''
+                            maxLength: 50
+                            x-allow-empty: true
+                            x-no-tags: true
+                          name:
+                            type: string
+                            description: A display name for the user taken from email or firstname and lastname if available
+                          roles:
+                            $ref: '#/components/schemas/Team/properties/users/items/properties/roles'
+                          type:
+                            $ref: '#/components/schemas/Team/properties/users/items/properties/type'
+                          org_roles:
+                            $ref: '#/components/schemas/Org/properties/users/items/properties/roles'
+                - properties:
+                    metadata:
+                      $ref: '#/components/schemas/ResponseMetadata'
+              examples:
+                TeamUserfind200Example:
+                  summary: Default team_userFind 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - AuthToken: []
+      - BearerClient: []
+      - BearerUser: []
+      - SessionCookie: []
+      parameters:
+      - name: fields
+        in: query
+        description: A list of fields to include in the response.
+        schema:
+          type: array
+          items:
+            type: string
+          default: email,firstname,guid,lastname,name,roles
+        example:
+        - example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - $ref: '#/components/parameters/add_fields'
+        example: example_value
+      - in: path
+        name: team_id
+        required: true
+        schema:
+          type: string
+          description: guid of the team whose members you want to get
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: roles
+        required: false
+        schema:
+          type: array
+          description: Search for roles
+          items:
+            type: string
+          default: null
+        example:
+        - example_value
+      - in: query
+        name: term
+        required: false
+        schema:
+          type: string
+          description: Search term, matches name, email id and role
+          default: null
+        example: example_value
+      - in: query
+        name: type
+        required: false
+        schema:
+          type: string
+          description: Type of member, user or client
+          enum:
+          - user
+          - client
+          default: user
+        example: user
+      - in: query
+        name: limit
+        required: false
+        schema:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: Number of results per page. Zero will return an empty result, but the matched count in meta will be returned.
+        example: 1.0
+      - in: query
+        name: page
+        required: false
+        schema:
+          type: number
+          description: Page of results.
+          default: 1
+        example: 1.0
+      - in: query
+        name: skip
+        required: false
+        schema:
+          type: number
+          description: Number of items to skip in results, used for pagination.
+          default: 0
+        example: 1.0
+      - in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          description: Field on which to sort results, may pass multiple comma-separated. Prefix the field name with `-` for descending order.
+          items:
+            type: string
+            enum:
+            - name
+            - email
+          default:
+          - name
+          - email
+        example:
+        - name
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /team/{team_id}:
+    parameters: []
+    get:
+      summary: Axway Find Team
+      description: "Returns the team for given guid\n\n___Auth Requirement___\n - _One of_\n     - Service account access token.\n     - Signed-in user.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_findOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      oneOf:
+                      - $ref: '#/components/schemas/Team'
+                      - type: object
+                        properties:
+                          guid:
+                            type: string
+                            format: uuid
+                            description: '`guid` of the team.'
+                          name:
+                            type: string
+                            description: Name of the team.
+                            minLength: 2
+                            maxLength: 100
+                            x-no-tags: true
+                          desc:
+                            type:
+                            - string
+                            - 'null'
+                            description: Description of the team.
+                            maxLength: 200
+                            x-no-tags: true
+                          default:
+                            type: boolean
+                            description: Whether the team is the default for the organization. May only be set by org administrator users.
+                            default: false
+                        description: Fields accessible to members of the org who are not members of the team
+              examples:
+                TeamFindone200Example:
+                  summary: Default team_findOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: team_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/Team/properties/guid'
+        example: {}
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Remove Team
+      description: 'Remove a team from the platform if it is not the default. If another team''s GUID is specified in the `reassign_team` parameter, then the deleted team''s assets will be assigned to it, otherwise the assets will be unassigned. This is a destructive and irreversible action.
+
+
+        ___Auth Requirement___
+
+
+        `administrator` role in the organization the team belongs to.
+
+
+        _Allows consumer organization access_
+
+        '
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_remove
+      x-publishes:
+      - platform.team.remove
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Team'
+              examples:
+                TeamRemove200Example:
+                  summary: Default team_remove 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                IS_DEFAULT_TEAM:
+                  value:
+                    success: false
+                    description: Cannot delete the default team.
+                    code: 400
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - BearerUser: []
+      - SessionCookie: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: team_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/Team/properties/guid'
+        example: {}
+      - in: query
+        name: reassign_team
+        required: false
+        schema:
+          type: string
+          description: guid of the team to reassign the deleted team's assets to
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      summary: Axway Update Team
+      description: "This will update a team's attributes.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Teams
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_teams/index.html
+      tags:
+      - team
+      operationId: team_update
+      x-publishes:
+      - platform.team.update
+      - platform.team.default
+      - platform.team.app.add
+      - platform.team.app.remove
+      - platform.team.user.add
+      - platform.team.user.role.update
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Team'
+              examples:
+                TeamUpdate200Example:
+                  summary: Default team_update 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                DEFAULT_ADMIN_ONLY:
+                  value:
+                    success: false
+                    description: Only organization administrators can set the default team.
+                    code: 400
+                EXISTING_TEAM_NAME:
+                  value:
+                    success: false
+                    description: That team name already exists.
+                    code: 400
+                ROLE_NOT_ENABLED:
+                  value:
+                    success: false
+                    description: '"%s" is not an allowed role for this organization.'
+                    code: 400
+                REQUIRED_ORG_ROLE:
+                  value:
+                    success: false
+                    description: '"roles" contained an invalid value: The "%s" role requires one of the following organization roles: %s.'
+                    code: 400
+                    internalCode: 747
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - BearerUser: []
+      - SessionCookie: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: team_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/Team/properties/guid'
+        example: {}
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                default:
+                  $ref: '#/components/schemas/Team/properties/default'
+                desc:
+                  $ref: '#/components/schemas/Team/properties/desc'
+                name:
+                  $ref: '#/components/schemas/Team/properties/name'
+                tags:
+                  $ref: '#/components/schemas/Team/properties/tags'
+                users:
+                  x-deprecated: This parameter has been deprecated and will be removed in a future release.
+                  allOf:
+                  - $ref: '#/components/schemas/Team/properties/users'
+                  deprecated: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    add_fields:
+      name: add_fields
+      in: query
+      description: A list of fields to add to the default field set in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Team:
+      type: object
+      required:
+      - default
+      - guid
+      - name
+      - org_guid
+      - tags
+      - users
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the team.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          example: '2026-04-21T00:00:00Z'
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        desc:
+          type:
+          - string
+          - 'null'
+          description: Description of the team.
+          maxLength: 200
+          x-no-tags: true
+          example: example_value
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
+        name:
+          type: string
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
+          x-no-tags: true
+          example: Example Name
+        org_guid:
+          type: string
+          format: uuid
+          description: '`guid` of the organization the team belongs to.'
+          example: example_value
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+        updated:
+          type: string
+          format: date-time
+          description: Date updated.
+          example: '2026-04-21T00:00:00Z'
+        users:
+          type: array
+          description: Members that belong to this team and their roles.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
+            properties:
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the member.'
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+              type:
+                type: string
+                description: Type of the member.
+                default: user
+                enum:
+                - user
+                - client
+          example:
+          - guid: example_value
+            roles:
+            - consumer
+            type: user
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
+    TeamList:
+      title: TeamList
+      type: array
+      description: A list of Team objects.
+      items:
+        $ref: '#/components/schemas/Team'
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+    Org:
+      properties:
+        users:
+          items:
+            properties:
+              roles:
+                type: array
+                description: Roles within the organization.
+                items:
+                  type: string
+                  enum:
+                  - administrator
+                  - developer
+                  - auditor
+                  - consumer
+                  - usage_reporter
+                  - api_central_admin
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

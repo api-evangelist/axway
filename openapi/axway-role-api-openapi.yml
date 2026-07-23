@@ -1,0 +1,381 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca role API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: role
+paths:
+  /role:
+    parameters: []
+    get:
+      summary: Axway Get Roles Matching Query
+      description: Return the list of roles for the specified query parameters.
+      externalDocs:
+        description: Roles Documentation
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/organization_roles_and_features/index.html
+      tags:
+      - role
+      operationId: role_find
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/RoleList'
+              examples:
+                RoleFind200Example:
+                  summary: Default role_find 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: default
+        required: false
+        schema:
+          type: boolean
+          description: return default roles
+        example: true
+      - in: query
+        name: name
+        required: false
+        schema:
+          type: string
+          description: return role matching this name
+        example: Example Name
+      - in: query
+        name: org
+        required: false
+        schema:
+          type: boolean
+          description: return roles assignable at org level
+        example: true
+      - in: query
+        name: team
+        required: false
+        schema:
+          type: boolean
+          description: return roles assignable at team level
+        example: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /role/{role_id}:
+    parameters: []
+    get:
+      summary: Axway Get Role
+      description: Returns the role with the given id
+      externalDocs:
+        description: Roles Documentation
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/organization_roles_and_features/index.html
+      tags:
+      - role
+      operationId: role_findOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Role'
+              examples:
+                RoleFindone200Example:
+                  summary: Default role_findOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: role_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/Role/properties/id'
+        example: {}
+      - in: query
+        name: context
+        required: false
+        schema:
+          type: string
+          description: Context of the role.
+          enum:
+          - org
+          - team
+        example: org
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    RoleList:
+      title: RoleList
+      type: array
+      description: A list of Role objects.
+      items:
+        $ref: '#/components/schemas/Role'
+    Role:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        client:
+          type: boolean
+          description: Whether the role can be assigned to a client.
+          x-deprecated: true
+          example: true
+        consumer:
+          type: boolean
+          description: Whether the role is assignable on consumer org members (bypassing all other requirements for role).
+          example: true
+        default:
+          type: boolean
+          description: Whether the role is default.
+          example: true
+        disabled:
+          type: boolean
+          description: Indicates the role is deprecated and no longer assignable
+          example: true
+        entitlement:
+          type: string
+          description: Entitlement which must be active to allow the role.
+          example: example_value
+        id:
+          type: string
+          description: Identifier of the role.
+          example: 507f1f77bcf86cd799439011
+        name:
+          type: string
+          description: The role's name.
+          minLength: 1
+          maxLength: 40
+          example: Example Name
+        order:
+          type: number
+          description: Indicates the relative access rights for the role. The lower the value, the more access the role has.
+          example: 1.0
+        org:
+          type: boolean
+          description: Whether the role can be assigned as a org-level role.
+          example: true
+        partner:
+          type: string
+          description: Product name key for service to which a "service role" applies.
+          example: example_value
+        platform_restricted:
+          type: boolean
+          description: Whether the user has limited platform visibility and capabilities
+          example: true
+        product:
+          type: string
+          description: Partner that must be provisioned and have an active entitlement for to allow the role.
+          example: example_value
+        required_default_roles:
+          type: array
+          description: Org-level default roles a user must be assigned in order to allow the service role.
+          items:
+            type: string
+          example:
+          - example_value
+        subscription:
+          type: array
+          description: Subscriptions for which one or more of is required to allow the role.
+          items:
+            type: string
+          example:
+          - 10.0.0.1
+        team:
+          type: boolean
+          description: Whether the role can be assigned as a team-level role.
+          example: true
+        web_only:
+          type: boolean
+          description: Indicates that users with the role are only able to access the platform in web contexts.
+          example: true
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+  examples:
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

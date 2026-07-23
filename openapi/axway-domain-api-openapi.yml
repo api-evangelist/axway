@@ -1,0 +1,1027 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca domain API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: domain
+paths:
+  /org/{org_id}/domain/verify:
+    parameters: []
+    post:
+      summary: Axway Trigger Domain Association Flow
+      description: "Create and send IdP domain association verification email.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainAssociate
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                email:
+                  type: string
+                  description: Email of the user to validate the domain ownership
+                idp_id:
+                  type: string
+                  description: ID of the Identity Provider
+              required:
+              - email
+              - idp_id
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/domain/subdomain:
+    parameters: []
+    post:
+      summary: Axway Associate Subdomain to Parent Domain IdP
+      description: "Attempt to confirm the association of a subdomain to a parent domain's IdP.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainAssociateSubdomain
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: guid of the organization
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                domain:
+                  type: string
+                  description: Existing associated parent domain
+                subdomain:
+                  type: string
+                  description: Subdomain to inherit parent domain Identity Provider association
+              required:
+              - domain
+              - subdomain
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/domain/enable:
+    parameters: []
+    post:
+      summary: Axway Enable IdP for a Domain
+      description: "Enable the association of an Identity Provider for all users on a supplied domain.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainEnable
+      x-publishes:
+      - platform.org.idp.domain.associate
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                domain:
+                  type: string
+                  description: Domain to enable an IdP for
+              required:
+              - domain
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/domain/dissociate:
+    parameters: []
+    post:
+      summary: Axway Remove Domain Association
+      description: "Remove the association of a domain to an identity provider\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainDissociate
+      x-publishes:
+      - platform.org.idp.domain.dissociate
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                domain:
+                  type: string
+                  description: Domain to remove association of
+              required:
+              - domain
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/domain/consolidate:
+    parameters: []
+    post:
+      summary: Axway Consolidate Domain Users
+      description: "Add all users on a domain owned by an org that are not members of it to it.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainConsolidate
+      x-publishes:
+      - com.appcelerator.platform.org.user.create
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                domain:
+                  type: string
+                  description: Domain to consolidate users on
+              required:
+              - domain
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/domain/confirm:
+    parameters: []
+    post:
+      summary: Axway Confirm Domain Ownership
+      description: "Attempt to confirm the ownership of a domain to an organization via DNS TXT record.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainConfirm
+      x-publishes:
+      - platform.org.idp.domain.confirm
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        confirmed:
+                          type: boolean
+                          description: Whether the domain ownership is confirmed.
+                        records:
+                          type: array
+                          items:
+                            type: string
+                          title: TXT records list
+                          description: List of all TXT records for domain to be confirmed. Included only when confirmation fails.
+                        admins:
+                          title: Shared Administrators of organizations associated to the domainList
+                          type: array
+                          description: A list of Shared Administrators of organizations associated to the domain objects.
+                          items:
+                            type: object
+                            properties:
+                              firstname:
+                                type: string
+                                description: First name of the user.
+                                default: ''
+                                maxLength: 50
+                                x-allow-empty: true
+                                x-no-tags: true
+                              lastname:
+                                type: string
+                                description: Last name of the user.
+                                default: ''
+                                maxLength: 50
+                                x-allow-empty: true
+                                x-no-tags: true
+                              email:
+                                type: string
+                                format: email
+                                description: Email address of the user.
+                                maxLength: 217
+                              guid:
+                                type: string
+                                description: GUID of the user.
+                            description: List of users who have the Administrator role in the requesting organization and an org also associated to the domain that has an Identity Provider established. Included only when confirmation succeeds and the requesting user does not match the criteria.
+              examples:
+                OrgDomainconfirm200Example:
+                  summary: Default org_domainConfirm 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                domain:
+                  type: string
+                  description: Domain to verify TXT record for
+              required:
+              - domain
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/domain/{domain}:
+    parameters: []
+    delete:
+      summary: Axway Remove Domain Association
+      description: "Remove the association of a domain to an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainRemove
+      x-publishes:
+      - platform.org.idp.domain.remove
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: domain
+        required: true
+        schema:
+          type: string
+          description: Domain to remove association of
+        example: example.com
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/domain:
+    parameters: []
+    put:
+      summary: Axway Confirm Domain IdP Association
+      description: "Attempt to confirm the association of an email domain to an IdP.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainAssociateConfirm
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                ITEM_NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/ITEM_NOT_FOUND/value'
+                IDP_CONFIRM_ORIGIN:
+                  value:
+                    success: false
+                    description: You must sign in using your organization's Identity Provider to verify configuration and confirm domain ownership.
+                    code: 400
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: guid of the organization
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                id:
+                  type: string
+                  description: GUID of the activation.
+              required:
+              - id
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      summary: Axway Start Domain Ownership Process
+      description: "Trigger flow to associate a domain to an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainCreate
+      x-publishes:
+      - platform.org.idp.domain.create
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                IDP_DOMAIN_RESTRICTED:
+                  value:
+                    success: false
+                    description: You cannot create an Identity Provider for this domain.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                domain:
+                  type: string
+                  description: Domain to associate the IdP to
+              required:
+              - domain
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      summary: Axway Get All Domains
+      description: "Returns all email domains configured for organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator`, or `auditor` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Identity Providers
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
+      tags:
+      - domain
+      operationId: org_domainFind
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/DomainList'
+              examples:
+                OrgDomainfind200Example:
+                  summary: Default org_domainFind 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: org_id of the organization
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  examples:
+    ITEM_NOT_FOUND:
+      value:
+        success: false
+        description: '"%s" Not Found'
+        code: 404
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Domain:
+      type: object
+      required:
+      - orgs
+      - tld
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the Domain.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        orgs:
+          type: array
+          description: Organizations associated to this Domain, their association state, and any associated Identity Providers.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - status
+            additionalProperties: false
+            properties:
+              enabled:
+                type: string
+                format: date-time
+                description: Date the Identity Provider was enabled for users on the Domain.
+              associated:
+                type: string
+                format: date-time
+                description: Date the Domain was confirmed as associated to the Identity Provider.
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the Organization the Domain is associated to.'
+              idp:
+                type: string
+                format: uuid
+                description: Identifier of the Identity Provider associated to the Domain for the Organization.
+              status:
+                type: number
+                description: Indicator of the Organizations confirmed association to the Domain.
+                enum:
+                - 0
+                - 1
+                - 2
+                - 3
+              verified:
+                type: string
+                format: date-time
+                description: Date the Domain was verified as owned by the Organization.
+          example:
+          - enabled: '2026-04-21T00:00:00Z'
+            associated: '2026-04-21T00:00:00Z'
+            guid: example_value
+            idp: example_value
+            status: 0
+            verified: '2026-04-21T00:00:00Z'
+        provider_guid:
+          type: string
+          format: uuid
+          description: GUID identifier of the owning Provider if the Domain is configured in context of consumers of a marketplace.
+          example: example_value
+        tld:
+          type: string
+          format: domain
+          description: Domain name.
+          example: example_value
+    DomainList:
+      title: DomainList
+      type: array
+      description: A list of Domain objects.
+      items:
+        $ref: '#/components/schemas/Domain'
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

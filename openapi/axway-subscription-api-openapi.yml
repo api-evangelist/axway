@@ -1,0 +1,423 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca subscription API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: subscription
+paths:
+  /org/{org_id}/subscription/{subscription_id}:
+    parameters: []
+    get:
+      summary: Axway Find Subscription
+      description: "Returns a single subscription for an organization.\n\n___Auth Requirement___\n - Access to the organization.\n"
+      tags:
+      - subscription
+      operationId: org_findOneSubscription
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Subscription'
+              examples:
+                OrgFindonesubscription200Example:
+                  summary: Default org_findOneSubscription 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: subscription_id
+        required: true
+        schema:
+          type: string
+          description: id of the subscription
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/subscription:
+    parameters: []
+    get:
+      summary: Axway Find Subscriptions
+      description: "Returns an organization's subscriptions.\n\n___Auth Requirement___\n - _One of_\n     - Access to the organization.\n     - Auth token.\n"
+      tags:
+      - subscription
+      operationId: org_findSubscriptions
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/SubscriptionList'
+              examples:
+                OrgFindsubscriptions200Example:
+                  summary: Default org_findSubscriptions 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Subscription:
+      type: object
+      description: Organization entitlements
+      required:
+      - id
+      - product
+      - plan
+      - entitlements
+      additionalProperties: false
+      properties:
+        end_date:
+          type: string
+          format: date-time
+          description: When the subscription is active to.
+          example: '2026-04-21T00:00:00Z'
+        entitlements:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                description: Entitlement key.
+              value:
+                oneOf:
+                - type: boolean
+                  description: Boolean entitlement, granting access to a feature of capability.
+                - type: integer
+                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
+                  maximum: 9999999999999
+                - type: number
+                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
+                  maximum: 9999999999999
+                - type: array
+                  description: Set entitlement, listing provisioned service or environment availability.
+                  items:
+                    type: string
+                    description: Service or environment key.
+          example:
+          - key: example_value
+            value: example_value
+        governance:
+          type: string
+          description: Governance model for the subscription.
+          enum:
+          - SaaS
+          - Customer Managed
+          - Axway Managed
+          example: SaaS
+        id:
+          type: string
+          description: Identifier for the subscription.
+          example: 507f1f77bcf86cd799439011
+        opportunity_id:
+          type: number
+          description: Opportunity ID associated with the subscription.
+          minimum: 10000
+          maximum: 999999
+          example: 1.0
+        plan:
+          type: string
+          description: Which plan the subscription is for.
+          example: example_value
+        product:
+          type: string
+          description: Name to identify the product, e.g. APIM, B2Bi.
+          example: example_value
+        product_name:
+          type: string
+          description: Official product name.
+          readOnly: true
+          example: Example Name
+        source:
+          type: string
+          description: Source of this subscription.
+          enum:
+          - API
+          - UI
+          - Platform
+          - Billing
+          example: API
+        start_date:
+          type: string
+          format: date-time
+          description: When the subscription is active from.
+          example: '2026-04-21T00:00:00Z'
+        tier:
+          type: string
+          description: Whether the subscription is a trial or paid for.
+          enum:
+          - paid
+          - trial
+          - free
+          example: paid
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    SubscriptionList:
+      title: SubscriptionList
+      type: array
+      description: A list of Subscription objects.
+      items:
+        $ref: '#/components/schemas/Subscription'
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+  examples:
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

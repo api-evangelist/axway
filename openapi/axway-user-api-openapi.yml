@@ -1,0 +1,1177 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca user API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: user
+paths:
+  /user/pref:
+    parameters: []
+    put:
+      summary: Axway Update a Single User Preference
+      description: "This will store a user preference setting on the user record\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - user
+      operationId: user_updatePref
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                pref:
+                  type: string
+                  description: The preference you are saving
+                value:
+                  type: string
+                  description: The value of the preference you are saving
+              required:
+              - pref
+              - value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/organizations:
+    parameters: []
+    get:
+      summary: Axway Get Organizations
+      description: 'Returns all the organizations that the signed-in user belongs to.
+
+
+        ___Auth Requirement___
+
+
+        Staff, support, or auth token access for a guid or email to be given.
+
+
+        _Allows consumer organization access_
+
+        '
+      tags:
+      - user
+      operationId: user_findOrgs
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      title: OrgList
+                      type: array
+                      description: A list of Org objects.
+                      items:
+                        type: object
+                        properties:
+                          active:
+                            type: boolean
+                            description: Active state of the organization. Organizations become inactive after passing their end date.
+                            default: true
+                          created_by:
+                            type: object
+                            description: Details of the user that created the organization.
+                            unevaluatedProperties: false
+                            properties:
+                              client_id:
+                                type: string
+                                description: The client_id of the client that created the organization.
+                                readOnly: true
+                              email:
+                                type: string
+                                format: email
+                                description: Email address of the user that created the organization.
+                                readOnly: true
+                              name:
+                                type: string
+                                description: The name of the user or client that created the organization.
+                                readOnly: true
+                          guid:
+                            type: string
+                            format: uuid
+                            description: GUID identifier for the organization
+                          name:
+                            type: string
+                            description: Name of the organization.
+                            minLength: 2
+                            maxLength: 64
+                            x-no-tags: true
+                          org_id:
+                            type: integer
+                            description: Identifier for the organization
+                          support_access_code:
+                            type: integer
+                            description: Support Access Code for the org.
+                            minimum: 10000
+                            maximum: 999999
+                          current_users_role:
+                            type: string
+                            description: Default role of requesting user in the organization.
+                          current_users_roles:
+                            type: string
+                            description: Roles of requesting user in the organization.
+                          deletable:
+                            type: boolean
+                            description: Whether the organization can be deleted by administrator user.
+                          multiuser:
+                            type: boolean
+                            description: Whether the organization contains more than one user.
+                          primary:
+                            type: boolean
+                            description: Whether the requesting user is primary contact of the organization.
+              examples:
+                UserFindorgs200Example:
+                  summary: Default user_findOrgs 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                INVALID_EMAIL_DOMAIN:
+                  value:
+                    success: false
+                    description: Sign-up is not allowed for this email domain.
+                    code: 400
+                    internalCode: 14
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: email
+        required: false
+        schema:
+          type: string
+          description: Optional user email to look up organizations for; otherwise, the signed-in user is used.
+        example: user@example.com
+      - in: query
+        name: guid
+        required: false
+        schema:
+          type: string
+          description: Optional user guid to look up organizations for; otherwise, the signed-in user is used.
+        example: example_value
+      - in: query
+        name: include_inactive
+        required: false
+        schema:
+          type: boolean
+          description: Optional boolean for including orgs that are inactive
+        example: true
+      - in: query
+        name: provider_guid
+        required: false
+        schema:
+          type: string
+          description: Optional provider_guid for looking up a user by email.
+        example: example_value
+      - in: query
+        name: roles
+        required: false
+        schema:
+          type: string
+          description: Optional list for including only orgs where the user is a given role
+          enum:
+          - administrator
+          - developer
+          - auditor
+          - consumer
+          - usage_reporter
+          - api_central_admin
+        example: administrator
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/credentials:
+    parameters: []
+    put:
+      summary: Axway Set Credentials for Tooling
+      description: "Sets the password to be used for tooling access for externally provisioned users.\n\n___Auth Requirement___\n - Signed-in user.\n"
+      externalDocs:
+        description: Managing Credentials
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/managing_credentials/index.html
+      tags:
+      - user
+      operationId: user_updateCredentials
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                PASSWORD_IN_HISTORY:
+                  value:
+                    success: false
+                    description: Passwords should not be used recently.
+                    code: 400
+                PASSWORD_USER_INFO:
+                  value:
+                    success: false
+                    description: Passwords should not contain your name, email address, or other personally identifiable information.
+                    code: 400
+                    internalCode: 411
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                force_logout:
+                  type: boolean
+                  description: Whether to logout other existing sessions for the user
+                password:
+                  type: string
+                  description: Password
+              required:
+              - force_logout
+              - password
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/profile/{user_id}:
+    parameters: []
+    put:
+      summary: Axway Update User Profile
+      description: "This will update a user's profile\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Accounts
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/index.html
+      tags:
+      - user
+      operationId: user_update
+      x-publishes:
+      - platform.user.mfa.disabled
+      - platform.user.mfa.enabled
+      - platform.user.update
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FIRSTNAME_LENGTH:
+                  value:
+                    success: false
+                    description: First name must be at most 50 characters.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                INCORRECT_PASSWORD:
+                  value:
+                    success: false
+                    description: Password is incorrect; please try again.
+                    code: 400
+                    internalCode: 412
+                LASTNAME_LENGTH:
+                  value:
+                    success: false
+                    description: Last name must be at most 50 characters.
+                    code: 400
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                PASSWORD_USER_INFO:
+                  value:
+                    success: false
+                    description: Passwords should not contain your name, email address, or other personally identifiable information.
+                    code: 400
+                    internalCode: 411
+                PASSWORD_IN_HISTORY:
+                  value:
+                    success: false
+                    description: Passwords should not be used recently.
+                    code: 400
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the user to update.'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                active:
+                  description: Whether the user is active; can only be set by staff
+                  allOf:
+                  - $ref: '#/components/schemas/User/properties/active'
+                authenticator_enabled:
+                  $ref: '#/components/schemas/User/properties/mfa'
+                current_password:
+                  type: string
+                  description: Current password for the user. Required when setting a new password.
+                default_org:
+                  $ref: '#/components/schemas/User/properties/default_org'
+                firstname:
+                  $ref: '#/components/schemas/User/properties/firstname'
+                force_logout:
+                  type: boolean
+                  description: Whether to terminate all other session when setting a new password
+                lastname:
+                  $ref: '#/components/schemas/User/properties/lastname'
+                locale:
+                  $ref: '#/components/schemas/User/properties/locale'
+                login_org:
+                  $ref: '#/components/schemas/User/properties/login_org'
+                mfa:
+                  $ref: '#/components/schemas/User/properties/mfa'
+                password:
+                  type: string
+                  description: New password for the user.
+                preferred_mfa:
+                  type: string
+                  description: The default method a Multi-factor authentication token will be generated for.
+                  enum:
+                  - email
+                  - app
+                timezone:
+                  $ref: '#/components/schemas/User/properties/timezone'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/domain/{domain}:
+    parameters: []
+    get:
+      summary: Axway Find Missing Domain Users
+      description: "Find users on a domain owned by the org that are not members of the org.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - user
+      operationId: user_findDomain
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      title: UserList
+                      type: array
+                      description: A list of User objects.
+                      items:
+                        type: object
+                        required:
+                        - email
+                        - firstname
+                        - guid
+                        - lastname
+                        unevaluatedProperties: false
+                        properties:
+                          email:
+                            type: string
+                            format: email
+                            description: Email address of the user.
+                            maxLength: 217
+                          guid:
+                            type: string
+                            description: GUID of the user.
+                          firstname:
+                            type: string
+                            description: First name of the user.
+                            default: ''
+                            maxLength: 50
+                            x-allow-empty: true
+                            x-no-tags: true
+                          lastname:
+                            type: string
+                            description: Last name of the user.
+                            default: ''
+                            maxLength: 50
+                            x-allow-empty: true
+                            x-no-tags: true
+              examples:
+                UserFinddomain200Example:
+                  summary: Default user_findDomain 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: domain
+        required: true
+        schema:
+          type: string
+          description: Owned domain to find missing users on
+        example: example.com
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: number
+          description: org_id of the organization to find users missing from
+        example: 1.0
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/{user_id}/attribute:
+    parameters: []
+    get:
+      summary: Axway Find a Mapped Attribute for a User
+      description: "Find the value and other related metadata for a configured Identity Providers mapped attribute.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - user
+      operationId: user_findAttribute
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        email:
+                          $ref: '#/components/schemas/User/properties/email'
+                        firstname:
+                          $ref: '#/components/schemas/User/properties/firstname'
+                        lastname:
+                          $ref: '#/components/schemas/User/properties/lastname'
+                        value:
+                          type: string
+                          description: The value of the mapped attribute.
+                        last_login:
+                          $ref: '#/components/schemas/User/properties/last_login'
+              examples:
+                UserFindattribute200Example:
+                  summary: Default user_findAttribute 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `email` of the user.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: attr
+        required: true
+        schema:
+          type: string
+          description: Configured attribute to lookup
+        example: example_value
+      - in: query
+        name: idp_id
+        required: false
+        schema:
+          type: string
+          description: '`guid` of the Identity Provider to check.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the org to which the Identity Provider is configured'
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/{user_id}:
+    parameters: []
+    get:
+      summary: Axway Get a User
+      description: "Returns the user with the given ID\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Service account access token.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Accounts
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/index.html
+      tags:
+      - user
+      operationId: user_findOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/User'
+              examples:
+                UserFindone200Example:
+                  summary: Default user_findOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      - AuthToken: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: _id of the user to get.
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: provider_guid
+        required: false
+        schema:
+          type: string
+          description: provider_guid of the user to find when finding up by email. For consumer users and clients this is set to their provider guid.
+        example: example_value
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Remove User
+      description: "Remove a user and its related data from the platform. This is a destructive and irreversible action.\n\n___Auth Requirement___\n - _One of_\n     - Staff access.\n     - Auth token.\n     - _All of_\n         - `guid` of the signed-in user.\n         - User password.\n         - Multi-factor authentication code (remove-account).\n     - Administrator access to an organization with an IdP enabled for the user's email domain.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Accounts
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_accounts/index.html
+      tags:
+      - user
+      operationId: user_remove
+      x-publishes:
+      - platform.user.remove
+      - platform.team.user.remove
+      - event: com.appcelerator.platform.org.user.remove
+        text: Sent for each of the organizations the user belonged to.
+      - platform.org.delete
+      - marketplace.consumer.remove
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                ORG_DELETE_UNAVAILABLE:
+                  value:
+                    success: false
+                    description: Your organization cannot be automatically deleted.
+                    code: 400
+                USER_IS_PRIMARY:
+                  value:
+                    success: false
+                    description: The primary contact of an organization cannot be removed.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                AUTH_CODE_INVALID:
+                  value:
+                    success: false
+                    description: Invalid authorization code.
+                    code: 400
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      - Password: []
+      - MFA: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+          description: guid of the user to delete.
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: suppressEmail
+        required: false
+        schema:
+          type: boolean
+          description: Whether email notifications to the user should be suppressed.
+        example: true
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      - in: header
+        name: x-auth-password
+        required: false
+        schema:
+          type: string
+          description: Password to authorize the request.
+        example: '********'
+      - in: header
+        name: x-auth-code
+        required: false
+        schema:
+          type: string
+          description: MFA code to authorize the request.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    User:
+      type: object
+      required:
+      - activated
+      - active
+      - email
+      - firstname
+      - guid
+      - lastname
+      - user_id
+      unevaluatedProperties: false
+      properties:
+        _id:
+          type: string
+          description: ID of the user.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        activated:
+          type: boolean
+          description: Whether the user has activated.
+          default: false
+          example: true
+        active:
+          type: boolean
+          description: Whether the user is active.
+          default: false
+          example: true
+        authenticator_enabled:
+          type: boolean
+          description: Whether an authenticator app is enavled for the user.
+          example: true
+        created:
+          $ref: '#/components/schemas/DefaultFields/properties/created'
+        date_activated:
+          type: string
+          format: date-time
+          description: When the user activated.
+          example: '2026-04-21T00:00:00Z'
+        default_org:
+          type: number
+          description: The org_id for the organization to use when last_login is set to default.
+          example: 1.0
+        email:
+          type: string
+          format: email
+          description: Email address of the user.
+          maxLength: 217
+          example: user@example.com
+        external:
+          type: boolean
+          description: Whether the user is external.
+          example: true
+        firstname:
+          type: string
+          description: First name of the user.
+          default: ''
+          maxLength: 50
+          x-allow-empty: true
+          x-no-tags: true
+          example: Example Name
+        guid:
+          type: string
+          description: GUID of the user.
+          example: example_value
+        invited:
+          type: string
+          format: date-time
+          description: When the user was most recently invited. Only set for not-yet-activated users.
+          example: '2026-04-21T00:00:00Z'
+        last_logged_in_org:
+          type: number
+          description: The org_id of the organization the user last signed into.
+          example: 1.0
+        last_login:
+          type: string
+          format: date-time
+          description: When the user last signed in.
+          example: '2026-04-21T00:00:00Z'
+        lastname:
+          type: string
+          description: Last name of the user.
+          default: ''
+          maxLength: 50
+          x-allow-empty: true
+          x-no-tags: true
+          example: Example Name
+        locale:
+          type: string
+          description: Preferred display language for the user.
+          enum:
+          - en-US
+          - fr-FR
+          - de-DE
+          - pt-BR
+          example: en-US
+        logged_in_count:
+          type: number
+          description: The number of times the user has signed in.
+          example: 1.0
+        logged_in_from_cli:
+          type: boolean
+          description: Whether the user has previously signed in from cli.
+          example: true
+        logged_in_from_other:
+          type: boolean
+          description: Whether the user has previously signed in from an unknown source.
+          example: true
+        logged_in_from_studio:
+          type: boolean
+          description: Whether the user has previously signed in from studio.
+          example: true
+        logged_in_from_web:
+          type: boolean
+          description: Whether the user has previously signed in from web.
+          example: true
+        login_org:
+          type: string
+          description: Which organization is used when the user signs in.
+          enum:
+          - last_logged
+          - default
+          - ask
+          example: last_logged
+        mfa:
+          type: boolean
+          description: Whether multi-factor authentication is enabled for the user.
+          example: true
+        oauth:
+          type: array
+          description: Which social login services are associated with the user.
+          items:
+            type: string
+            description: The name of the social login service
+          example:
+          - example_value
+        password_updated:
+          type: string
+          format: date-time
+          description: Date the password was last updated
+          example: '********'
+        prefs:
+          type: object
+          description: User preferences.
+          example: {}
+        provider_guid:
+          type: string
+          format: uuid
+          description: GUID identifier of the owning provider if a consumer of a marketplace.
+          example: example_value
+        terms_updated:
+          type: string
+          format: date-time
+          description: Date the user accepted terms & conditions.
+          example: '2026-04-21T00:00:00Z'
+        timezone:
+          type: string
+          description: The timezone used to display dates for the user.
+          example: example_value
+        updated:
+          $ref: '#/components/schemas/DefaultFields/properties/updated'
+        user_id:
+          type: number
+          example: 1.0
+        username:
+          type: string
+          example: Example Name
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    DefaultFields:
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

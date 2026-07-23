@@ -1,0 +1,715 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca env API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: env
+paths:
+  /env:
+    parameters: []
+    post:
+      summary: Axway Create Environment
+      description: "Creates an environment.\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator` access to the organization.\n"
+      externalDocs:
+        description: Managing Environments
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_environments/index.html
+      tags:
+      - env
+      operationId: env_create
+      x-publishes:
+      - platform.env.create
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Environment'
+              examples:
+                EnvCreate200Example:
+                  summary: Default env_create 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                governance:
+                  enum:
+                  - Customer Managed
+                  - Axway Managed
+                  allOf:
+                  - $ref: '#/components/schemas/Environment/properties/governance'
+                guid:
+                  type: string
+                  description: GUID of the environment.
+                isProduction:
+                  default: false
+                  allOf:
+                  - $ref: '#/components/schemas/Environment/properties/isProduction'
+                name:
+                  type: string
+                  description: Name of the environment
+                org_guid:
+                  type: string
+                  description: GUID of the org
+                type:
+                  default: usage
+                  allOf:
+                  - $ref: '#/components/schemas/Environment/properties/type'
+                url:
+                  $ref: '#/components/schemas/Environment/properties/url'
+              required:
+              - name
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      summary: Axway Find Environments
+      description: "Returns a list of environments.\n\n___Auth Requirement___\n - _One of_\n     - `administrator`, `auditor`, `developer`, or `usage_reporter` access to the organization. Developer access may be restricted by the organization environments access control setting.\n     - Auth token.\n"
+      externalDocs:
+        description: Managing Environments
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_environments/index.html
+      tags:
+      - env
+      operationId: env_find
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Environment'
+              examples:
+                EnvFind200Example:
+                  summary: Default env_find 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: org_guid
+        required: false
+        schema:
+          type: string
+          description: guid of an organization for which to find environments.
+        example: example_value
+      - in: query
+        name: type
+        required: false
+        schema:
+          description: Filter environments by type.
+          allOf:
+          - $ref: '#/components/schemas/Environment/properties/type'
+        example: example_value
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /env/{env_id}:
+    parameters: []
+    get:
+      summary: Axway Find Environment
+      description: "Returns an environment.\n\n___Auth Requirement___\n\n- _One of_\n    - Staff access.\n    - Support access.\n    - `administrator`, `auditor`, or `usage_reporter` role in the organization the environment belongs to."
+      externalDocs:
+        description: Managing Environments
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_environments/index.html
+      tags:
+      - env
+      operationId: env_findOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Environment'
+              examples:
+                EnvFindone200Example:
+                  summary: Default env_findOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: env_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the environment.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: org_guid
+        required: false
+        schema:
+          type: string
+          description: guid of an organization for which to find the environment.
+        example: example_value
+      - in: query
+        name: type
+        required: false
+        schema:
+          description: Filter environment by type.
+          allOf:
+          - $ref: '#/components/schemas/Environment/properties/type'
+        example: example_value
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Delete Environment
+      description: 'Delete an environment.
+
+
+        ___Auth Requirement___
+
+
+        `administrator` role in the organization the environment belongs to.'
+      externalDocs:
+        description: Managing Environments
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_environments/index.html
+      tags:
+      - env
+      operationId: env_remove
+      x-publishes:
+      - platform.env.remove
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                ENV_SOURCE:
+                  value:
+                    success: false
+                    description: Environment is not managed by the Amplify Platform.
+                    code: 400
+                ENV_USAGE:
+                  value:
+                    success: false
+                    description: Environment cannot be removed as it has associated usage.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: env_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the environment to delete.'
+        example: 507f1f77bcf86cd799439011
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      summary: Axway Update Environment
+      description: "Updates an environment.\n\n___Auth Requirement___\n\n- _One of_\n    - Staff access.\n    - Support access.\n    - `administrator` role in the organization the environment belongs to."
+      externalDocs:
+        description: Managing Environments
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_environments/index.html
+      tags:
+      - env
+      operationId: env_update
+      x-publishes:
+      - platform.env.update
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/Environment'
+              examples:
+                EnvUpdate200Example:
+                  summary: Default env_update 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                ENV_SOURCE:
+                  value:
+                    success: false
+                    description: Environment is not managed by the Amplify Platform.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: env_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` of the environment to update.'
+        example: 507f1f77bcf86cd799439011
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                governance:
+                  enum:
+                  - Customer Managed
+                  - Axway Managed
+                  allOf:
+                  - $ref: '#/components/schemas/Environment/properties/governance'
+                isProduction:
+                  $ref: '#/components/schemas/Environment/properties/isProduction'
+                name:
+                  $ref: '#/components/schemas/Environment/properties/name'
+                url:
+                  $ref: '#/components/schemas/Environment/properties/url'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Environment:
+      type: object
+      required:
+      - guid
+      - isProduction
+      - name
+      - org_guid
+      - type
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the environment.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        governance:
+          type: string
+          description: Governance of the environment.
+          enum:
+          - Customer Managed
+          - Axway Managed
+          example: Customer Managed
+        guid:
+          type: string
+          description: GUID of the environment.
+          example: example_value
+        isProduction:
+          type: boolean
+          description: Whether the environment is a production environment.
+          default: false
+          example: true
+        name:
+          type: string
+          description: Name of the environment
+          x-no-tags: true
+          example: Example Name
+        org_guid:
+          type: string
+          description: '`guid` of the organization the environment is associated to.'
+          example: example_value
+        source:
+          type: string
+          example: example_value
+        type:
+          type: string
+          description: Type of environment
+          default: usage
+          enum:
+          - usage
+          - integration
+          example: usage
+        url:
+          type: string
+          format: secure-url
+          description: URL of the integration environment.
+          example: https://example.com
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

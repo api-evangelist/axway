@@ -1,0 +1,602 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca export API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: export
+paths:
+  /export:
+    parameters: []
+    post:
+      summary: Axway Export Data
+      description: "Generates an export of the user or org data.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `body.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Exporting Data
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
+      tags:
+      - export
+      operationId: export_create
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: object
+                      required:
+                      - guid
+                      - items
+                      - status
+                      - user_guid
+                      additionalProperties: false
+                      properties:
+                        _id:
+                          type: string
+                          description: Document ID of the export.
+                          readOnly: true
+                          deprecated: true
+                        completed:
+                          type: string
+                          format: date-time
+                          description: Date the export was completed
+                        created:
+                          $ref: '#/components/schemas/DefaultFields/properties/created'
+                        filename:
+                          type: string
+                          format: url
+                          description: Location the export is saved to.
+                        guid:
+                          type: string
+                          format: uuid
+                          description: '`guid` of the export.'
+                        items:
+                          type: array
+                          description: Items included in the export.
+                          items:
+                            type: string
+                            enum:
+                            - user_metadata
+                            - user_activity
+                            - user_devices
+                            - orgs
+                            - org_metadata
+                            - org_activity
+                            - subscriptions
+                            - envs
+                            - teams
+                            - apps
+                            - providers
+                            - idps
+                            - domains
+                        org_guid:
+                          type: string
+                          description: '`guid` of the org for org specific exports.'
+                        status:
+                          type: string
+                          description: Status of the export.
+                          default: pending
+                          enum:
+                          - pending
+                          - complete
+                          - failed
+                        updated:
+                          $ref: '#/components/schemas/DefaultFields/properties/updated'
+                        user_guid:
+                          type: string
+                          description: '`guid` of the user that initiated the export.'
+              examples:
+                ExportCreate200Example:
+                  summary: Default export_create 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                from:
+                  type: number
+                  description: Starting timestamp to get activity from
+                items:
+                  type: array
+                  description: What items to include in the export
+                  items:
+                    type: string
+                org_id:
+                  type: string
+                  description: '`guid` or `org_id` of an organization for and org context export'
+                to:
+                  type: number
+                  description: Ending timestamp to get activity from
+              required:
+              - items
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      summary: Axway Find Exports
+      description: "Returns all the exports the user has access to.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `query.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Exporting Data
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
+      tags:
+      - export
+      operationId: export_findAll
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/DataExportList'
+              examples:
+                ExportFindall200Example:
+                  summary: Default export_findAll 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: '`guid` or `org_id` of an organization to find exports for'
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /export/download/{export_id}:
+    parameters: []
+    get:
+      summary: Axway Retrieve a Download Url
+      description: 'Retrieve a signed download url for previous user data export.
+
+
+        ___Auth Requirement___
+
+
+        Creator of the export or `administrator` role in the organization for org context exports.
+
+
+        _Allows consumer organization access_
+
+        '
+      externalDocs:
+        description: Exporting Data
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
+      tags:
+      - export
+      operationId: export_download
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: string
+                      description: Signed download url
+              examples:
+                ExportDownload200Example:
+                  summary: Default export_download 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: export_id
+        required: true
+        schema:
+          type: string
+          description: guid of the export
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /export/{export_id}:
+    parameters: []
+    delete:
+      summary: Axway Remove Export
+      description: "Removes a previous data export.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Exporting Data
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
+      tags:
+      - export
+      operationId: export_remove
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: export_id
+        required: true
+        schema:
+          type: string
+          description: guid of the export to remove
+        example: 507f1f77bcf86cd799439011
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DataExportList:
+      title: DataExportList
+      type: array
+      description: A list of DataExport objects.
+      items:
+        $ref: '#/components/schemas/DataExport'
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    DataExport:
+      type: object
+      required:
+      - guid
+      - items
+      - status
+      - user_guid
+      additionalProperties: false
+      properties:
+        _id:
+          type: string
+          description: Document ID of the export.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        completed:
+          type: string
+          format: date-time
+          description: Date the export was completed
+          example: '2026-04-21T00:00:00Z'
+        created:
+          $ref: '#/components/schemas/DefaultFields/properties/created'
+        filename:
+          type: string
+          format: url
+          description: Location the export is saved to.
+          example: Example Name
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the export.'
+          example: example_value
+        items:
+          type: array
+          description: Items included in the export.
+          items:
+            type: string
+            enum:
+            - user_metadata
+            - user_activity
+            - user_devices
+            - orgs
+            - org_metadata
+            - org_activity
+            - subscriptions
+            - envs
+            - teams
+            - apps
+            - providers
+            - idps
+            - domains
+          example:
+          - user_metadata
+        org_guid:
+          type: string
+          description: '`guid` of the org for org specific exports.'
+          example: example_value
+        status:
+          type: string
+          description: Status of the export.
+          default: pending
+          enum:
+          - pending
+          - complete
+          - failed
+          example: pending
+        updated:
+          $ref: '#/components/schemas/DefaultFields/properties/updated'
+        user_guid:
+          type: string
+          description: '`guid` of the user that initiated the export.'
+          example: example_value
+    DefaultFields:
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+  examples:
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

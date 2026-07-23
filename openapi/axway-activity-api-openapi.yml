@@ -1,0 +1,4644 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca activity API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: activity
+paths:
+  /activity/event:
+    parameters: []
+    get:
+      summary: Axway Get Activity Event Names
+      description: "Returns list of known activity event names\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Service account access token.\n"
+      tags:
+      - activity
+      operationId: activity_findEvents
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /activity:
+    parameters: []
+    get:
+      summary: Axway Get Activity
+      description: "Returns all of the activity events for the signed-in user\n\n___Auth Requirement___\n - Access to the organization, allowing consumer role.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - activity
+      operationId: activity_find
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      title: EventsList
+                      type: array
+                      description: A list of Events objects.
+                      items:
+                        type: object
+                        oneOf:
+                        - type: object
+                          title: api_central.provision
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/api_central.provision'
+                            event:
+                              enum:
+                              - api_central.provision
+                        - type: object
+                          title: api_central.provisioned
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/api_central.provisioned'
+                            event:
+                              enum:
+                              - api_central.provisioned
+                        - type: object
+                          title: apic.ucs.catalogitem.create
+                          properties:
+                            context:
+                              enum:
+                              - catalog
+                            data:
+                              $ref: '#/components/schemas/apic.ucs.catalogitem.create'
+                            event:
+                              enum:
+                              - apic.ucs.catalogitem.create
+                        - type: object
+                          title: apic.ucs.catalogitem.remove
+                          properties:
+                            context:
+                              enum:
+                              - catalog
+                            data:
+                              $ref: '#/components/schemas/apic.ucs.catalogitem.remove'
+                            event:
+                              enum:
+                              - apic.ucs.catalogitem.remove
+                        - type: object
+                          title: apic.ucs.catalogitem.share
+                          properties:
+                            context:
+                              enum:
+                              - catalog
+                            data:
+                              $ref: '#/components/schemas/apic.ucs.catalogitem.share'
+                            event:
+                              enum:
+                              - apic.ucs.catalogitem.share
+                        - type: object
+                          title: apic.ucs.catalogitem.update
+                          properties:
+                            context:
+                              enum:
+                              - catalog
+                            data:
+                              $ref: '#/components/schemas/apic.ucs.catalogitem.update'
+                            event:
+                              enum:
+                              - apic.ucs.catalogitem.update
+                        - type: object
+                          title: apic.ucs.subscription.create
+                          properties:
+                            context:
+                              enum:
+                              - catalog
+                            data:
+                              $ref: '#/components/schemas/apic.ucs.subscription.create'
+                            event:
+                              enum:
+                              - apic.ucs.subscription.create
+                        - type: object
+                          title: apic.ucs.subscription.remove
+                          properties:
+                            context:
+                              enum:
+                              - catalog
+                            data:
+                              $ref: '#/components/schemas/apic.ucs.subscription.remove'
+                            event:
+                              enum:
+                              - apic.ucs.subscription.remove
+                        - type: object
+                          title: apic.ucs.subscription.update
+                          properties:
+                            context:
+                              enum:
+                              - catalog
+                            data:
+                              $ref: '#/components/schemas/apic.ucs.subscription.update'
+                            event:
+                              enum:
+                              - apic.ucs.subscription.update
+                        - type: object
+                          title: apicentral.{resource}.{action}
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral._._'
+                            event:
+                              pattern: apicentral\.\w+\.\w+
+                        - type: object
+                          title: apicentral.{resource}.{subresource}.update
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral._._.update'
+                            event:
+                              pattern: apicentral\.\w+\.\w+\.update
+                        - type: object
+                          title: apicentral.agent.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.agent.create'
+                            event:
+                              enum:
+                              - apicentral.agent.create
+                        - type: object
+                          title: apicentral.agent.failed
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.agent.failed'
+                            event:
+                              enum:
+                              - apicentral.agent.failed
+                        - type: object
+                          title: apicentral.agent.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.agent.remove'
+                            event:
+                              enum:
+                              - apicentral.agent.remove
+                        - type: object
+                          title: apicentral.agent.start
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.agent.start'
+                            event:
+                              enum:
+                              - apicentral.agent.start
+                        - type: object
+                          title: apicentral.agent.stop
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.agent.stop'
+                            event:
+                              enum:
+                              - apicentral.agent.stop
+                        - type: object
+                          title: apicentral.agent.unhealthy
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.agent.unhealthy'
+                            event:
+                              enum:
+                              - apicentral.agent.unhealthy
+                        - type: object
+                          title: apicentral.apiservice.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.apiservice.create'
+                            event:
+                              enum:
+                              - apicentral.apiservice.create
+                        - type: object
+                          title: apicentral.apiservice.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.apiservice.remove'
+                            event:
+                              enum:
+                              - apicentral.apiservice.remove
+                        - type: object
+                          title: apicentral.apiservice.update
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.apiservice.update'
+                            event:
+                              enum:
+                              - apicentral.apiservice.update
+                        - type: object
+                          title: apicentral.asset.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.asset.create'
+                            event:
+                              enum:
+                              - apicentral.asset.create
+                        - type: object
+                          title: apicentral.asset.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.asset.remove'
+                            event:
+                              enum:
+                              - apicentral.asset.remove
+                        - type: object
+                          title: apicentral.asset.update
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.asset.update'
+                            event:
+                              enum:
+                              - apicentral.asset.update
+                        - type: object
+                          title: apicentral.credential.expire
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.credential.expire'
+                            event:
+                              enum:
+                              - apicentral.credential.expire
+                        - type: object
+                          title: apicentral.documentresource.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.documentresource.create'
+                            event:
+                              enum:
+                              - apicentral.documentresource.create
+                        - type: object
+                          title: apicentral.documentresource.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.documentresource.remove'
+                            event:
+                              enum:
+                              - apicentral.documentresource.remove
+                        - type: object
+                          title: apicentral.documentresource.update
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.documentresource.update'
+                            event:
+                              enum:
+                              - apicentral.documentresource.update
+                        - type: object
+                          title: apicentral.env.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.env.create'
+                            event:
+                              enum:
+                              - apicentral.env.create
+                        - type: object
+                          title: apicentral.env.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.env.remove'
+                            event:
+                              enum:
+                              - apicentral.env.remove
+                        - type: object
+                          title: apicentral.env.update
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.env.update'
+                            event:
+                              enum:
+                              - apicentral.env.update
+                        - type: object
+                          title: apicentral.publisheddocumentresource.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.publisheddocumentresource.create'
+                            event:
+                              enum:
+                              - apicentral.publisheddocumentresource.create
+                        - type: object
+                          title: apicentral.publisheddocumentresource.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.publisheddocumentresource.remove'
+                            event:
+                              enum:
+                              - apicentral.publisheddocumentresource.remove
+                        - type: object
+                          title: apicentral.publishedproduct.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.publishedproduct.create'
+                            event:
+                              enum:
+                              - apicentral.publishedproduct.create
+                        - type: object
+                          title: apicentral.publishedproduct.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.publishedproduct.remove'
+                            event:
+                              enum:
+                              - apicentral.publishedproduct.remove
+                        - type: object
+                          title: apicentral.subscription.create
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.subscription.create'
+                            event:
+                              enum:
+                              - apicentral.subscription.create
+                        - type: object
+                          title: apicentral.subscription.remove
+                          properties:
+                            context:
+                              enum:
+                              - api_central
+                            data:
+                              $ref: '#/components/schemas/apicentral.subscription.remove'
+                            event:
+                              enum:
+                              - apicentral.subscription.remove
+                        - type: object
+                          title: com.appcelerator.platform.org.user.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/com.appcelerator.platform.org.user.create'
+                            event:
+                              enum:
+                              - com.appcelerator.platform.org.user.create
+                        - type: object
+                          title: com.appcelerator.platform.org.user.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/com.appcelerator.platform.org.user.remove'
+                            event:
+                              enum:
+                              - com.appcelerator.platform.org.user.remove
+                        - type: object
+                          title: marketplace.ai.disable
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.ai.disable'
+                            event:
+                              enum:
+                              - marketplace.ai.disable
+                        - type: object
+                          title: marketplace.ai.enable
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.ai.enable'
+                            event:
+                              enum:
+                              - marketplace.ai.enable
+                        - type: object
+                          title: marketplace.ai.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.ai.update'
+                            event:
+                              enum:
+                              - marketplace.ai.update
+                        - type: object
+                          title: marketplace.appearance.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.appearance.update'
+                            event:
+                              enum:
+                              - marketplace.appearance.update
+                        - type: object
+                          title: marketplace.billing.disable
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.billing.disable'
+                            event:
+                              enum:
+                              - marketplace.billing.disable
+                        - type: object
+                          title: marketplace.billing.enable
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.billing.enable'
+                            event:
+                              enum:
+                              - marketplace.billing.enable
+                        - type: object
+                          title: marketplace.billing.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.billing.update'
+                            event:
+                              enum:
+                              - marketplace.billing.update
+                        - type: object
+                          title: marketplace.consumer.active
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.consumer.active'
+                            event:
+                              enum:
+                              - marketplace.consumer.active
+                        - type: object
+                          title: marketplace.consumer.approve
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.consumer.approve'
+                            event:
+                              enum:
+                              - marketplace.consumer.approve
+                        - type: object
+                          title: marketplace.consumer.deny
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.consumer.deny'
+                            event:
+                              enum:
+                              - marketplace.consumer.deny
+                        - type: object
+                          title: marketplace.consumer.inactive
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.consumer.inactive'
+                            event:
+                              enum:
+                              - marketplace.consumer.inactive
+                        - type: object
+                          title: marketplace.consumer.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.consumer.remove'
+                            event:
+                              enum:
+                              - marketplace.consumer.remove
+                        - type: object
+                          title: marketplace.consumer.signup
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.consumer.signup'
+                            event:
+                              enum:
+                              - marketplace.consumer.signup
+                        - type: object
+                          title: marketplace.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.create'
+                            event:
+                              enum:
+                              - marketplace.create
+                        - type: object
+                          title: marketplace.idp.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.idp.create'
+                            event:
+                              enum:
+                              - marketplace.idp.create
+                        - type: object
+                          title: marketplace.idp.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.idp.remove'
+                            event:
+                              enum:
+                              - marketplace.idp.remove
+                        - type: object
+                          title: marketplace.idp.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.idp.update'
+                            event:
+                              enum:
+                              - marketplace.idp.update
+                        - type: object
+                          title: marketplace.lang.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.lang.update'
+                            event:
+                              enum:
+                              - marketplace.lang.update
+                        - type: object
+                          title: marketplace.onboarding.disable
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.onboarding.disable'
+                            event:
+                              enum:
+                              - marketplace.onboarding.disable
+                        - type: object
+                          title: marketplace.onboarding.enable
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.onboarding.enable'
+                            event:
+                              enum:
+                              - marketplace.onboarding.enable
+                        - type: object
+                          title: marketplace.onboarding.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.onboarding.update'
+                            event:
+                              enum:
+                              - marketplace.onboarding.update
+                        - type: object
+                          title: marketplace.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.remove'
+                            event:
+                              enum:
+                              - marketplace.remove
+                        - type: object
+                          title: marketplace.settings.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/marketplace.settings.update'
+                            event:
+                              enum:
+                              - marketplace.settings.update
+                        - type: object
+                          title: marketplace.user.remove
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/marketplace.user.remove'
+                            event:
+                              enum:
+                              - marketplace.user.remove
+                        - type: object
+                          title: platform.activation.access
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.activation.access'
+                            event:
+                              enum:
+                              - platform.activation.access
+                        - type: object
+                          title: platform.activation.complete
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.activation.complete'
+                            event:
+                              enum:
+                              - platform.activation.complete
+                        - type: object
+                          title: platform.activation.send
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.activation.send'
+                            event:
+                              enum:
+                              - platform.activation.send
+                        - type: object
+                          title: platform.app.create
+                          properties:
+                            context:
+                              enum:
+                              - app
+                            data:
+                              $ref: '#/components/schemas/platform.app.create'
+                            event:
+                              enum:
+                              - platform.app.create
+                        - type: object
+                          title: platform.app.remove
+                          properties:
+                            context:
+                              enum:
+                              - app
+                            data:
+                              $ref: '#/components/schemas/platform.app.remove'
+                            event:
+                              enum:
+                              - platform.app.remove
+                        - type: object
+                          title: platform.app.update
+                          properties:
+                            context:
+                              enum:
+                              - app
+                            data:
+                              $ref: '#/components/schemas/platform.app.update'
+                            event:
+                              enum:
+                              - platform.app.update
+                        - type: object
+                          title: platform.client.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.client.create'
+                            event:
+                              enum:
+                              - platform.client.create
+                        - type: object
+                          title: platform.client.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.client.remove'
+                            event:
+                              enum:
+                              - platform.client.remove
+                        - type: object
+                          title: platform.client.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.client.update'
+                            event:
+                              enum:
+                              - platform.client.update
+                        - type: object
+                          title: platform.env.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.env.create'
+                            event:
+                              enum:
+                              - platform.env.create
+                        - type: object
+                          title: platform.env.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.env.remove'
+                            event:
+                              enum:
+                              - platform.env.remove
+                        - type: object
+                          title: platform.env.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.env.update'
+                            event:
+                              enum:
+                              - platform.env.update
+                        - type: object
+                          title: platform.login.failed
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.login.failed'
+                            event:
+                              enum:
+                              - platform.login.failed
+                        - type: object
+                          title: platform.login
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.login'
+                            event:
+                              enum:
+                              - platform.login
+                        - type: object
+                          title: platform.logout
+                          properties:
+                            context:
+                              enum:
+                              - auth
+                            data:
+                              $ref: '#/components/schemas/platform.logout'
+                            event:
+                              enum:
+                              - platform.logout
+                        - type: object
+                          title: platform.org.active
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.active'
+                            event:
+                              enum:
+                              - platform.org.active
+                        - type: object
+                          title: platform.org.branding.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.branding.update'
+                            event:
+                              enum:
+                              - platform.org.branding.update
+                        - type: object
+                          title: platform.org.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.create'
+                            event:
+                              enum:
+                              - platform.org.create
+                        - type: object
+                          title: platform.org.idp.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.create'
+                            event:
+                              enum:
+                              - platform.org.idp.create
+                        - type: object
+                          title: platform.org.idp.domain.associate
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.domain.associate'
+                            event:
+                              enum:
+                              - platform.org.idp.domain.associate
+                        - type: object
+                          title: platform.org.idp.domain.confirm
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.domain.confirm'
+                            event:
+                              enum:
+                              - platform.org.idp.domain.confirm
+                        - type: object
+                          title: platform.org.idp.domain.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.domain.create'
+                            event:
+                              enum:
+                              - platform.org.idp.domain.create
+                        - type: object
+                          title: platform.org.idp.domain.dissociate
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.domain.dissociate'
+                            event:
+                              enum:
+                              - platform.org.idp.domain.dissociate
+                        - type: object
+                          title: platform.org.idp.domain.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.domain.remove'
+                            event:
+                              enum:
+                              - platform.org.idp.domain.remove
+                        - type: object
+                          title: platform.org.idp.remove
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.remove'
+                            event:
+                              enum:
+                              - platform.org.idp.remove
+                        - type: object
+                          title: platform.org.idp.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.idp.update'
+                            event:
+                              enum:
+                              - platform.org.idp.update
+                        - type: object
+                          title: platform.org.inactive
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.inactive'
+                            event:
+                              enum:
+                              - platform.org.inactive
+                        - type: object
+                          title: platform.org.security.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.security.update'
+                            event:
+                              enum:
+                              - platform.org.security.update
+                        - type: object
+                          title: platform.org.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.update'
+                            event:
+                              enum:
+                              - platform.org.update
+                        - type: object
+                          title: platform.org.user.idp.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.user.idp.update'
+                            event:
+                              enum:
+                              - platform.org.user.idp.update
+                        - type: object
+                          title: platform.org.user.primary
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.user.primary'
+                            event:
+                              enum:
+                              - platform.org.user.primary
+                        - type: object
+                          title: platform.org.user.resent
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.user.resent'
+                            event:
+                              enum:
+                              - platform.org.user.resent
+                        - type: object
+                          title: platform.org.user.role.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.org.user.role.update'
+                            event:
+                              enum:
+                              - platform.org.user.role.update
+                        - type: object
+                          title: platform.session.create
+                          properties:
+                            context:
+                              enum:
+                              - auth
+                            data:
+                              $ref: '#/components/schemas/platform.session.create'
+                            event:
+                              enum:
+                              - platform.session.create
+                        - type: object
+                          title: platform.subscription.create
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.subscription.create'
+                            event:
+                              enum:
+                              - platform.subscription.create
+                        - type: object
+                          title: platform.subscription.delete
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.subscription.delete'
+                            event:
+                              enum:
+                              - platform.subscription.delete
+                        - type: object
+                          title: platform.subscription.expired
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.subscription.expired'
+                            event:
+                              enum:
+                              - platform.subscription.expired
+                        - type: object
+                          title: platform.subscription.update
+                          properties:
+                            context:
+                              enum:
+                              - org
+                            data:
+                              $ref: '#/components/schemas/platform.subscription.update'
+                            event:
+                              enum:
+                              - platform.subscription.update
+                        - type: object
+                          title: platform.team.app.add
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.app.add'
+                            event:
+                              enum:
+                              - platform.team.app.add
+                        - type: object
+                          title: platform.team.app.remove
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.app.remove'
+                            event:
+                              enum:
+                              - platform.team.app.remove
+                        - type: object
+                          title: platform.team.create
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.create'
+                            event:
+                              enum:
+                              - platform.team.create
+                        - type: object
+                          title: platform.team.default
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.default'
+                            event:
+                              enum:
+                              - platform.team.default
+                        - type: object
+                          title: platform.team.remove
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.remove'
+                            event:
+                              enum:
+                              - platform.team.remove
+                        - type: object
+                          title: platform.team.update
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.update'
+                            event:
+                              enum:
+                              - platform.team.update
+                        - type: object
+                          title: platform.team.user.add
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.user.add'
+                            event:
+                              enum:
+                              - platform.team.user.add
+                        - type: object
+                          title: platform.team.user.remove
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.user.remove'
+                            event:
+                              enum:
+                              - platform.team.user.remove
+                        - type: object
+                          title: platform.team.user.role.update
+                          properties:
+                            context:
+                              enum:
+                              - team
+                            data:
+                              $ref: '#/components/schemas/platform.team.user.role.update'
+                            event:
+                              enum:
+                              - platform.team.user.role.update
+                        - type: object
+                          title: platform.terms.accept
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.terms.accept'
+                            event:
+                              enum:
+                              - platform.terms.accept
+                        - type: object
+                          title: platform.user.mfa.app.add
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.mfa.app.add'
+                            event:
+                              enum:
+                              - platform.user.mfa.app.add
+                        - type: object
+                          title: platform.user.mfa.app.remove
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.mfa.app.remove'
+                            event:
+                              enum:
+                              - platform.user.mfa.app.remove
+                        - type: object
+                          title: platform.user.mfa.disabled
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.mfa.disabled'
+                            event:
+                              enum:
+                              - platform.user.mfa.disabled
+                        - type: object
+                          title: platform.user.mfa.enabled
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.mfa.enabled'
+                            event:
+                              enum:
+                              - platform.user.mfa.enabled
+                        - type: object
+                          title: platform.user.password.change
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.password.change'
+                            event:
+                              enum:
+                              - platform.user.password.change
+                        - type: object
+                          title: platform.user.password.reset
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.password.reset'
+                            event:
+                              enum:
+                              - platform.user.password.reset
+                        - type: object
+                          title: platform.user.social.disable
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.social.disable'
+                            event:
+                              enum:
+                              - platform.user.social.disable
+                        - type: object
+                          title: platform.user.social.enable
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.social.enable'
+                            event:
+                              enum:
+                              - platform.user.social.enable
+                        - type: object
+                          title: platform.user.update
+                          properties:
+                            context:
+                              enum:
+                              - user
+                            data:
+                              $ref: '#/components/schemas/platform.user.update'
+                            event:
+                              enum:
+                              - platform.user.update
+                        properties:
+                          event:
+                            type: string
+                            description: The event name.
+                          id:
+                            type: string
+                            description: Event identifier.
+                          ts:
+                            type: number
+                            description: Timestamp of when the event occurred.
+                          message:
+                            type: string
+                            description: Message describing the event.
+                          context:
+                            type: string
+                            description: The context the event is for.
+                - properties:
+                    metadata:
+                      type: object
+                      description: Result metadata.
+                      properties:
+                        contexts:
+                          type: string
+                          description: Type of events included in the response.
+                        query:
+                          type: object
+                          description: Activity query. Included when debug is true.
+                - properties:
+                    metadata:
+                      $ref: '#/components/schemas/ResponseMetadata'
+              examples:
+                ActivityFind200Example:
+                  summary: Default activity_find 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: app_guid
+        required: false
+        schema:
+          type: string
+          description: guid of the app to query.
+        example: example_value
+      - in: query
+        name: contexts
+        required: false
+        schema:
+          type: array
+          description: Type of events to return.
+          items:
+            type: string
+            enum:
+            - api_central
+            - app
+            - auth
+            - catalog
+            - org
+            - team
+            - user
+        example:
+        - api_central
+      - in: query
+        name: data
+        required: false
+        schema:
+          type: boolean
+          description: Return event and data properties for events
+        example: true
+      - in: query
+        name: enrich
+        required: false
+        schema:
+          type: boolean
+          description: Whether to replace identifiers with user names in event messages. Requires "limit" parameter to be passed.
+        example: true
+      - in: query
+        name: exclude_contexts
+        required: false
+        schema:
+          type: array
+          description: Type of events to exclude.
+          items:
+            type: string
+            enum:
+            - api_central
+            - app
+            - auth
+            - catalog
+            - org
+            - team
+            - user
+        example:
+        - api_central
+      - in: query
+        name: from
+        required: false
+        schema:
+          type: number
+          description: Starting timestamp to get data for.
+        example: 1.0
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the org to query.'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: redact
+        required: false
+        schema:
+          type: boolean
+          description: Whether to apply redaction of email addresses per the org's setting.
+        example: true
+      - in: query
+        name: sort
+        required: false
+        schema:
+          type: number
+          description: 'Sort direction: `1` - ascending, `-1` - descending.'
+          enum:
+          - -1
+          - 1
+          default: -1
+        example: -1
+      - in: query
+        name: term
+        required: false
+        schema:
+          type: string
+          description: Prefix or exact search term
+        example: example_value
+      - in: query
+        name: to
+        required: false
+        schema:
+          type: number
+          description: Ending timestamp to get data for.
+        example: 1.0
+      - in: query
+        name: user_guid
+        required: false
+        schema:
+          type: string
+          description: guid of the user to query.
+        example: example_value
+      - in: query
+        name: user_messages
+        required: false
+        schema:
+          type: boolean
+          description: Use user-specific message for events for the signed-in user.
+        example: true
+      - in: query
+        name: limit
+        required: false
+        schema:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: Number of results per page. Zero will return an empty result, but the matched count in meta will be returned.
+          default: 25
+        example: 1.0
+      - in: query
+        name: page
+        required: false
+        schema:
+          type: number
+          description: Page of results.
+          default: 1
+        example: 1.0
+      - in: query
+        name: skip
+        required: false
+        schema:
+          type: number
+          description: Number of items to skip in results, used for pagination.
+          default: 0
+        example: 1.0
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    platform.user.password.change:
+      type: object
+      description: Published when a users password is updated.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        ip:
+          type: string
+          description: Anonymized IP address.
+          example: 10.0.0.1
+    Provider:
+      properties:
+        lang:
+          properties:
+            supported:
+              type: array
+              description: Languages supported by the marketplace.
+              default:
+              - en-US
+              items:
+                type: string
+                enum:
+                - en-US
+                - fr-FR
+                - de-DE
+                - pt-BR
+            products:
+              type: string
+              description: Behavior for display of products in the marketplace based on translation state.
+              default: all
+              enum:
+              - all
+              - translated
+            default:
+              type: string
+              description: Default language to use for users of the marketplace.
+              default: en-US
+              enum:
+              - en-US
+              - fr-FR
+              - de-DE
+              - pt-BR
+        oauth:
+          properties:
+            gitlab:
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether "Sign in with GitLab" is enabled for the provider marketplace's consumer users.
+                  default: false
+                secret_updated:
+                  type: string
+                  format: date-time
+                  description: Date client_secret last updated.
+            google:
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether "Sign in with Google" is enabled for the provider marketplace's consumer users.
+                  default: false
+                secret_updated:
+                  type: string
+                  format: date-time
+                  description: Date client_secret last updated.
+            github:
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether "Sign in with GitHub" is enabled for the provider marketplace's consumer users.
+                  default: false
+                secret_updated:
+                  type: string
+                  format: date-time
+                  description: Date client_secret last updated.
+        terms_url:
+          type: string
+          format: url
+          description: URL of the provider marketplace Terms & Conditions.
+          example: https://example.com
+        reviews:
+          type: object
+          description: Ratings & Reviews settings for the provider marketplace.
+          default:
+            enabled: false
+          properties:
+            enabled:
+              type: boolean
+              description: Whether Ratings & Reviews are enabled for the provider marketplace.
+            char_limit:
+              type: number
+              description: Character limit for written feedback for products or services in the provider marketplace.
+              enum:
+              - 280
+              - 1000
+              - 4000
+            flagged_handling:
+              type: string
+              description: How reported review content is handled within the provider marketplace
+              enum:
+              - hide
+              - show
+            instructions:
+              type: object
+              description: Review guidelines and policies within the provider marketplace.
+              default: {}
+              properties:
+                en-US:
+                  type: string
+                  description: English language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+                fr-FR:
+                  type: string
+                  description: French language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+                de-DE:
+                  type: string
+                  description: German language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+                pt-BR:
+                  type: string
+                  description: Portuguese language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+            moderation_process:
+              type: string
+              description: Which type of moderation process is to be used for reviews in the provider marketplace
+              enum:
+              - manual
+              - automatic
+            permissions:
+              type: string
+              description: Who is allowed to provide feedback for products or services in the provider marketplace.
+              enum:
+              - subscribers
+              - all
+            public_responses:
+              type: boolean
+              description: Whether to enable public responses to reviews in the provider marketplace.
+            response_time:
+              type: number
+              description: Expected response time for feedback in the provider marketplace, in `response_time_unit`.
+              minimum: 1
+            response_time_unit:
+              type: string
+              description: Unit of time that `response_time` correlates to.
+          example:
+            enabled: true
+            char_limit: 280
+            flagged_handling: hide
+            instructions:
+              en-US: example_value
+              fr-FR: example_value
+              de-DE: example_value
+              pt-BR: example_value
+            moderation_process: manual
+            permissions: subscribers
+            public_responses: true
+            response_time: 1.0
+            response_time_unit: example_value
+        public:
+          type: boolean
+          description: Whether the provider marketplace allows access to unauthenticated users or users authenticated to orgs other than the provider org.
+          default: false
+          example: true
+        help_menu:
+          type: object
+          description: Content shown in the navigation bar help menu.
+          default: {}
+          properties:
+            en-US:
+              type: array
+              description: English language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
+            fr-FR:
+              type: array
+              description: French language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
+            de-DE:
+              type: array
+              description: German language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
+            pt-BR:
+              type: array
+              description: Portuguese language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
+          example:
+            en-US:
+            - example_value
+            fr-FR:
+            - example_value
+            de-DE:
+            - example_value
+            pt-BR:
+            - example_value
+        sitename:
+          type: object
+          description: Page title of the provider marketplace instance.
+          default: {}
+          properties:
+            en-US:
+              type: string
+              description: English language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+            fr-FR:
+              type: string
+              description: French language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+            de-DE:
+              type: string
+              description: German language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+            pt-BR:
+              type: string
+              description: Portuguese language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+          example:
+            en-US: example_value
+            fr-FR: example_value
+            de-DE: example_value
+            pt-BR: example_value
+        consumer_approve:
+          type: boolean
+          description: Whether to Require newly registered consumer organizations in the marketplace to require approval from an organization administrator.
+          default: false
+          example: true
+        signup:
+          type: boolean
+          description: Whether to allow self-service sign up for consumer organizations in the marketplace.
+          default: false
+          example: true
+        name:
+          type: object
+          description: Name of the provider marketplace instance.
+          default: {}
+          properties:
+            en-US:
+              type: string
+              description: English language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+            fr-FR:
+              type: string
+              description: French language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+            de-DE:
+              type: string
+              description: German language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+            pt-BR:
+              type: string
+              description: Portuguese language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+          example:
+            en-US: example_value
+            fr-FR: example_value
+            de-DE: example_value
+            pt-BR: example_value
+        guid:
+          type: string
+          description: Identifier of the provider marketplace instance.
+          example: example_value
+        idp:
+          type: boolean
+          description: Whether to allow consumer organizations in the marketplace to establish custom Identity Providers.
+          default: false
+          example: true
+        admin_teams:
+          description: Administration access.
+          default: false
+          oneOf:
+          - type: boolean
+            description: Flag indicating if `marketplace_admin` role members in all teams can administer the provider marketplace.
+          - type: array
+            description: '`guid` of a selected team whose `marketplace_admin` role members can administer the provider marketplace.'
+            items:
+              type: string
+              format: uuid
+          example: example_value
+        certificate_expires:
+          type: string
+          format: date-time
+          description: Expiry date of certificate provided for marketplace domain.
+          example: '2026-04-21T00:00:00Z'
+        consumer:
+          type: boolean
+          description: Whether to allow authenticated consumer org user access to the marketplace.
+          default: false
+          example: true
+        idp_hint:
+          type:
+          - string
+          - 'null'
+          description: Identity Provider `guid` to use for sign in attempts originating from the marketplace. Cannot be set at the same time as `consumer`.
+          example: example_value
+        publish_teams:
+          type: object
+          description: Preference for which org members can publish products to the provider marketplace.
+          default:
+            type: teams
+            value: true
+          unevaluatedProperties: false
+          discriminator:
+            propertyName: type
+            mapping:
+              teams: '#/components/schemas/Provider/properties/publish_teams/oneOf/0'
+              included: '#/components/schemas/Provider/properties/publish_teams/oneOf/1'
+              excluded: '#/components/schemas/Provider/properties/publish_teams/oneOf/1'
+              tags: '#/components/schemas/Provider/properties/publish_teams/oneOf/2'
+          oneOf:
+          - type: object
+            title: All Teams
+            properties:
+              type:
+                enum:
+                - teams
+              value:
+                type: boolean
+                description: Indicates if `catalog_manager` role members in all teams can publish to the provider marketplace.
+          - type: object
+            title: Specific Teams
+            properties:
+              type:
+                enum:
+                - included
+                - excluded
+              value:
+                type: array
+                description: '`guid` of a selected teams whose `catalog_manager` role members can publish to the provider marketplace.'
+                items:
+                  type: string
+                  format: uuid
+          - type: object
+            title: Tagged Teams
+            properties:
+              type:
+                enum:
+                - tags
+              value:
+                type: array
+                description: '`catalog_manager` role members in teams with any value in its `tags` can publish to the provider marketplace.'
+                items:
+                  type: string
+          properties:
+            type:
+              type: string
+              description: Setting for how to apply publication preference value.
+          example:
+            type: example_value
+        url:
+          type: string
+          description: Fully qualified domain name on which the provider marketplace can be accessed.
+          pattern: ^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$
+          example: https://example.com
+        terms:
+          type: boolean
+          description: Whether the provider marketplace access should be gated on acceptance of Terms & Conditions.
+          default: false
+          example: true
+        versions:
+          type: object
+          description: Product version settings for the provider marketplace.
+          default:
+            custom: false
+            display: all
+          properties:
+            custom:
+              type: boolean
+              description: Whether custom product versions are displayed in the provider marketplace.
+              default: false
+            display:
+              type: string
+              description: What product version types will be displayed in the provider marketplace.
+              default: all
+              enum:
+              - all
+              - latest
+          example:
+            custom: true
+            display: all
+        subdomain:
+          type: string
+          description: Subdomain on which the provider marketplace can be accessed.
+          pattern: ^[a-z0-9\-]{4,63}$
+          example: example.com
+        terms_updated:
+          type: string
+          format: date-time
+          description: Date Terms & Conditions last updated.
+          example: '2026-04-21T00:00:00Z'
+        consume_teams:
+          type: object
+          description: Preference for which org members can consume the provider marketplace.
+          default:
+            type: teams
+            value: true
+          unevaluatedProperties: false
+          discriminator:
+            propertyName: type
+            mapping:
+              teams: '#/components/schemas/Provider/properties/consume_teams/oneOf/0'
+              included: '#/components/schemas/Provider/properties/consume_teams/oneOf/1'
+              excluded: '#/components/schemas/Provider/properties/consume_teams/oneOf/1'
+              tags: '#/components/schemas/Provider/properties/consume_teams/oneOf/2'
+          oneOf:
+          - type: object
+            title: All Teams
+            properties:
+              type:
+                enum:
+                - teams
+              value:
+                type: boolean
+                description: Indicates if `consumer` role members in all teams can consume the provider marketplace.
+          - type: object
+            title: Specific Teams
+            properties:
+              type:
+                enum:
+                - included
+                - excluded
+              value:
+                type: array
+                description: '`guid` of a selected teams whose `consumer` role members can consume the provider marketplace.'
+                items:
+                  type: string
+                  format: uuid
+          - type: object
+            title: Tagged Teams
+            properties:
+              type:
+                enum:
+                - tags
+              value:
+                type: array
+                description: '`consumer` role members in teams with any value in its `tags` can consume the provider marketplace.'
+                items:
+                  type: string
+          properties:
+            type:
+              type: string
+              description: Setting for how to apply consumption preference value.
+          example:
+            type: example_value
+        ai:
+          properties:
+            embedded:
+              type: boolean
+              description: Whether AI integration uses built-in LLM (or customer hosted).
+              default: false
+            url:
+              type: string
+              format: secure-url
+              description: URL of customer hosted LLM.
+            stream:
+              type: boolean
+              description: Whether LLM supports SSE events stream.
+              default: true
+        billing:
+          properties:
+            vendor:
+              type: string
+              description: Billing integration vendor for the provider marketplace.
+              enum:
+              - stripe
+              - myFatoorah
+              - custom
+      x-defs:
+        sitename:
+          type: string
+          description: Page title of the provider marketplace instance.
+          maxLength: 350
+          x-no-tags: true
+        menu_item:
+          type: object
+          required:
+          - type
+          - text
+          - url
+          unevaluatedProperties: false
+          discriminator:
+            propertyName: type
+            mapping:
+              url: '#/components/schemas/Provider/x-defs/menu_item/oneOf/0'
+              document: '#/components/schemas/Provider/x-defs/menu_item/oneOf/1'
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - url
+              url:
+                type: string
+                description: URL or relative path for the link.
+                pattern: (^((https?:\/\/[A-Za-z0-9.-]+|(?:www\.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w\-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w?/:@\-._~!$&'()*+,;=]*))?)$|^(?:\/[+~%/.\w\-_]*)(?:\?[-+=&;%@.\w_]*)?(?:#[.!/\\\w]*)?$)
+          - type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - document
+              url:
+                type: string
+                description: Document resource guid
+          properties:
+            new_tab:
+              type: boolean
+              description: Whether the link opens in a new tab.
+            text:
+              type: string
+              description: Label for the link.
+              x-no-tags: true
+            type:
+              type: string
+              description: Type of the link.
+              enum:
+              - document
+              - url
+            url:
+              type: string
+              description: URL, relative path, or document resource guid for the link.
+            visibility:
+              type: integer
+              description: 'Which users the link is visible to. Always shown: 0, Signed in: 1, Signed out: 2, Hidden: 3'
+              enum:
+              - 0
+              - 1
+              - 2
+              - 3
+        help_menu:
+          type: array
+          description: Content shown in the navigation bar help menu.
+          items:
+            type: object
+            unevaluatedProperties: false
+            allOf:
+            - $ref: '#/components/schemas/Provider/x-defs/menu_item'
+            properties:
+              icon:
+                type: string
+                description: Icon displayed in the menu for the item.
+        name:
+          type: string
+          description: Name of the provider marketplace instance.
+          minLength: 2
+          maxLength: 350
+          x-no-tags: true
+        reviews.instructions:
+          type: string
+          description: Review guidelines and policies within the provider marketplace.
+          x-no-tags: true
+    apic.ucs.catalogitem.remove:
+      type: object
+      description: Published when a catalog asset is removed.
+      x-context: catalog
+      allOf:
+      - $ref: '#/components/schemas/apic.ucs.catalogitem.create'
+    IdentityProvider:
+      properties:
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the Identity Provider.'
+          example: example_value
+        name:
+          type: string
+          description: Name of Identity Provider
+          example: Example Name
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    Environment:
+      properties:
+        type:
+          type: string
+          description: Type of environment
+          default: usage
+          enum:
+          - usage
+          - integration
+          example: usage
+        governance:
+          type: string
+          description: Governance of the environment.
+          enum:
+          - Customer Managed
+          - Axway Managed
+          example: Customer Managed
+        name:
+          type: string
+          description: Name of the environment
+          x-no-tags: true
+          example: Example Name
+        guid:
+          type: string
+          description: GUID of the environment.
+          example: example_value
+    EventDataActionClient:
+      type: object
+      title: Action Service Account
+      properties:
+        action_client_guid:
+          description: The `guid` of the client that performed the action.
+          allOf:
+          - $ref: '#/components/schemas/Client/properties/guid'
+          example: example_value
+        action_client_id:
+          description: The `client_id` of the client that performed the action.
+          allOf:
+          - $ref: '#/components/schemas/Client/properties/client_id'
+          example: 507f1f77bcf86cd799439011
+        action_client_name:
+          description: The `name` of the client that performed the action.
+          allOf:
+          - $ref: '#/components/schemas/Client/properties/name'
+          example: Example Name
+    platform.app.create:
+      type: object
+      description: Published when an application is created.
+      x-context: app
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        app:
+          type: object
+          description: The created application
+          properties:
+            guid:
+              $ref: '#/components/schemas/Application/properties/guid'
+            name:
+              $ref: '#/components/schemas/Application/then/properties/name'
+            platform:
+              $ref: '#/components/schemas/Application/properties/platform'
+            provider_guid:
+              $ref: '#/components/schemas/Application/properties/provider_guid'
+            source:
+              $ref: '#/components/schemas/Application/properties/source'
+            type:
+              $ref: '#/components/schemas/Application/properties/type'
+          example:
+            guid: {}
+            name: {}
+            platform: {}
+            provider_guid: {}
+            source: {}
+            type: {}
+    Team:
+      properties:
+        name:
+          type: string
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
+          x-no-tags: true
+          example: Example Name
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
+        users:
+          items:
+            properties:
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+    platform.team.default:
+      type: object
+      description: Published when a team is changed to the default within an org.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        team:
+          type: object
+          description: The created team
+          properties:
+            default:
+              $ref: '#/components/schemas/Team/properties/default'
+            guid:
+              $ref: '#/components/schemas/Team/properties/guid'
+            name:
+              $ref: '#/components/schemas/Team/properties/name'
+          example:
+            default: {}
+            guid: {}
+            name: {}
+    platform.activation.send:
+      type: object
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        activation_type:
+          $ref: '#/components/schemas/Activation/properties/type'
+    apic.ucs.catalogitem.update:
+      type: object
+      description: Published when a catalog asset is updated.
+      x-context: catalog
+      allOf:
+      - $ref: '#/components/schemas/apic.ucs.catalogitem.create'
+    EventDataFrom:
+      type: string
+      description: Client type.
+    platform.user.mfa.app.remove:
+      type: object
+      description: Published when an MFA application is removed for a user.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      - $ref: '#/components/schemas/EventDataUser'
+    marketplace.consumer.active:
+      type: object
+      description: Published when a consumer organization is set active.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.consumer.approve'
+    marketplace.create:
+      type: object
+      description: 'Published when a marketplace is created.
+
+
+        `subdomain` prop will always be included. Once `url` is established, `subdomain` prop value will be passed as the `guid`.'
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        admin_teams:
+          $ref: '#/components/schemas/Provider/properties/admin_teams'
+        certificate_expires:
+          $ref: '#/components/schemas/Provider/properties/certificate_expires'
+        consume_teams:
+          $ref: '#/components/schemas/Provider/properties/consume_teams'
+        consumer:
+          $ref: '#/components/schemas/Provider/properties/consumer'
+        consumer_approve:
+          $ref: '#/components/schemas/Provider/properties/consumer_approve'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        help_menu:
+          $ref: '#/components/schemas/Provider/properties/help_menu'
+        idp:
+          $ref: '#/components/schemas/Provider/properties/idp'
+        idp_hint:
+          $ref: '#/components/schemas/Provider/properties/idp_hint'
+        lang_default:
+          $ref: '#/components/schemas/Provider/properties/lang/properties/default'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+        oauth:
+          type: object
+          properties:
+            github:
+              type: object
+              properties:
+                enabled:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/github/properties/enabled'
+                secret_updated:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/github/properties/secret_updated'
+            gitlab:
+              type: object
+              properties:
+                enabled:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/gitlab/properties/enabled'
+                secret_updated:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/gitlab/properties/secret_updated'
+            google:
+              type: object
+              properties:
+                enabled:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/google/properties/enabled'
+                secret_updated:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/google/properties/secret_updated'
+          example:
+            github:
+              enabled: {}
+              secret_updated: {}
+            gitlab:
+              enabled: {}
+              secret_updated: {}
+            google:
+              enabled: {}
+              secret_updated: {}
+        public:
+          $ref: '#/components/schemas/Provider/properties/public'
+        publish_teams:
+          $ref: '#/components/schemas/Provider/properties/publish_teams'
+        reviews:
+          $ref: '#/components/schemas/Provider/properties/reviews'
+        signup:
+          $ref: '#/components/schemas/Provider/properties/signup'
+        sitename:
+          $ref: '#/components/schemas/Provider/properties/sitename'
+        subdomain:
+          $ref: '#/components/schemas/Provider/properties/subdomain'
+        terms:
+          $ref: '#/components/schemas/Provider/properties/terms'
+        terms_updated:
+          $ref: '#/components/schemas/Provider/properties/terms_updated'
+        terms_url:
+          $ref: '#/components/schemas/Provider/properties/terms_url'
+        url:
+          $ref: '#/components/schemas/Provider/properties/url'
+        versions:
+          $ref: '#/components/schemas/Provider/properties/versions'
+    platform.client.update:
+      type: object
+      description: Published when an organization admin updates a Service Account client.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataClient'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    platform.user.social.disable:
+      type: object
+      description: Published when an OAuth service provider is removed for a user.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/platform.user.social.enable'
+    apicentral._._.update:
+      type: object
+      title: apicentral.{resource}.{subresource}.update
+      description: Published when a Central resource's subresource is updated.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        group:
+          type: string
+          example: example_value
+    Org:
+      properties:
+        region:
+          type: string
+          description: The data residency region of the organization.
+          default: US
+          enum:
+          - US
+          - EU
+          - AP
+          example: US
+        org_id:
+          type: integer
+          description: Identifier for the organization
+          example: 1
+        name:
+          type: string
+          description: Name of the organization.
+          minLength: 2
+          maxLength: 64
+          x-no-tags: true
+          example: Example Name
+        guid:
+          type: string
+          format: uuid
+          description: GUID identifier for the organization
+          example: example_value
+        provider_guid:
+          type: string
+          format: uuid
+          description: GUID identifier of the owning provider if the organization is a consumer of a marketplace.
+          example: example_value
+        users:
+          items:
+            properties:
+              roles:
+                items:
+                  type: string
+                  enum:
+                  - administrator
+                  - developer
+                  - auditor
+                  - consumer
+                  - usage_reporter
+                  - api_central_admin
+    platform.team.user.remove:
+      type: object
+      description: Published when a user or client is removed from a team.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - oneOf:
+        - $ref: '#/components/schemas/EventDataUser'
+        - $ref: '#/components/schemas/EventDataClient'
+      properties:
+        team_guid:
+          $ref: '#/components/schemas/Team/properties/guid'
+        team_name:
+          $ref: '#/components/schemas/Team/properties/name'
+    marketplace.onboarding.disable:
+      type: object
+      description: Published when marketplace onboarding data capture is disabled.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    api_central.provision:
+      type: object
+      description: Published when a Engage provisioning is requested.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      properties:
+        teams:
+          type: array
+          description: A list of the organization's teams.
+          items:
+            type: object
+            properties:
+              default:
+                $ref: '#/components/schemas/Team/properties/default'
+              guid:
+                $ref: '#/components/schemas/Team/properties/guid'
+              name:
+                $ref: '#/components/schemas/Team/properties/name'
+          example:
+          - default: {}
+            guid: {}
+            name: {}
+        trial:
+          type: boolean
+          example: true
+    marketplace.consumer.deny:
+      type: object
+      description: Published when a consumer organization sign-up denied.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.consumer.approve'
+    platform.env.update:
+      type: object
+      description: Published when an environment is updated.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.env.create'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    platform.org.idp.domain.dissociate:
+      type: object
+      description: Published when an Identity Provider is disabled for users on a domain in an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.org.idp.domain.associate'
+    platform.app.remove:
+      type: object
+      description: Published when an application is removed.
+      x-context: app
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        app_guid:
+          $ref: '#/components/schemas/Application/properties/guid'
+        app_name:
+          $ref: '#/components/schemas/Application/then/properties/name'
+    platform.subscription.create:
+      type: object
+      description: Published when a subscription for an org is created.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      properties:
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+    apicentral.documentresource.update:
+      type: object
+      description: Published when a document defined in the document library is updated.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.documentresource.create'
+    apic.ucs.catalogitem.create:
+      type: object
+      description: 'Published when a catalog asset is created.
+
+
+        Assets synced with type of "catalogitem".'
+      x-context: catalog
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        catalogSubType:
+          type: string
+          description: Synced as `platform`.
+          example: example_value
+        catalogType:
+          type: string
+          description: Synced as `subtype`.
+          example: example_value
+        envId:
+          $ref: '#/components/schemas/Environment/properties/guid'
+    apic.ucs.catalogitem.share:
+      type: object
+      description: Published when a catalog asset visibility or access controller list is updated.
+      x-context: catalog
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+    platform.team.create:
+      type: object
+      description: Published when a new team is created in an org.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        team:
+          type: object
+          description: The created team
+          properties:
+            default:
+              $ref: '#/components/schemas/Team/properties/default'
+            guid:
+              $ref: '#/components/schemas/Team/properties/guid'
+            name:
+              $ref: '#/components/schemas/Team/properties/name'
+          example:
+            default: {}
+            guid: {}
+            name: {}
+    marketplace.billing.disable:
+      type: object
+      description: Published when a marketplace billing integration is disabled.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    apicentral.agent.failed:
+      type: object
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.agent.start'
+    EventDataActionUser:
+      type: object
+      title: Action User
+      properties:
+        action_user_guid:
+          description: The `guid` of the user that performed the action
+          allOf:
+          - $ref: '#/components/schemas/User/properties/guid'
+          example: example_value
+    User:
+      properties:
+        guid:
+          type: string
+          description: GUID of the user.
+          example: example_value
+        active:
+          type: boolean
+          description: Whether the user is active.
+          default: false
+          example: true
+        provider_guid:
+          type: string
+          format: uuid
+          description: GUID identifier of the owning provider if a consumer of a marketplace.
+          example: example_value
+        activated:
+          type: boolean
+          description: Whether the user has activated.
+          default: false
+          example: true
+    platform.team.user.role.update:
+      type: object
+      description: Published when user's role is changed within team.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - oneOf:
+        - $ref: '#/components/schemas/EventDataUser'
+        - $ref: '#/components/schemas/EventDataClient'
+      properties:
+        roles:
+          $ref: '#/components/schemas/Team/properties/users/items/properties/roles'
+        team_guid:
+          $ref: '#/components/schemas/Team/properties/guid'
+        team_name:
+          $ref: '#/components/schemas/Team/properties/name'
+    Activation:
+      properties:
+        type:
+          type: string
+          description: Type of record.
+          example: example_value
+        guid:
+          type: string
+          description: Identifier for the activation record.
+          example: example_value
+    apicentral._._:
+      type: object
+      title: apicentral.{resource}.{action}
+      description: Published when a Central resource is created/updated/removed.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        group:
+          type: string
+          example: example_value
+    apicentral.publisheddocumentresource.create:
+      type: object
+      description: Published when a document defined in the document library is made available to be used in the marketplace content.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        document_resource_id:
+          type: string
+          description: Identifier of the document resource that is made available in the marketplace.
+          example: 507f1f77bcf86cd799439011
+        group:
+          type: string
+          enum:
+          - catalog
+          example: catalog
+        provider_guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+    apicentral.apiservice.create:
+      type: object
+      description: Published when a top-level Central asset is created.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        automatic:
+          type: boolean
+          description: Whether the asset is agent created.
+          example: true
+        envId:
+          $ref: '#/components/schemas/Environment/properties/guid'
+        group:
+          type: string
+          enum:
+          - management
+          example: management
+    api_central.provisioned:
+      type: object
+      description: Published when a Engage is successfully provisioned.
+      x-context: org
+      properties:
+        org_guid:
+          $ref: '#/components/schemas/Org/properties/guid'
+        org_id:
+          $ref: '#/components/schemas/Org/properties/org_id'
+        success:
+          type: boolean
+          example: true
+        url:
+          type: string
+          example: https://example.com
+        user_guid:
+          $ref: '#/components/schemas/User/properties/guid'
+    platform.org.security.update:
+      type: object
+      description: Published when organization security settings are updated.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        from:
+          $ref: '#/components/schemas/EventDataFrom'
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+    platform.user.password.reset:
+      type: object
+      description: Published when a users password is reset.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataUser'
+    apicentral.agent.unhealthy:
+      type: object
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.agent.start'
+    platform.org.active:
+      type: object
+      description: Published when `orgs.active` flag changes.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.org.create'
+    com.appcelerator.platform.org.user.create:
+      type: object
+      description: Published when a user is added or invited to an org.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        idp:
+          type: object
+          description: Identity Provider the user is required to authenticate with to access the organization
+          properties:
+            id:
+              $ref: '#/components/schemas/IdentityProvider/properties/guid'
+            name:
+              $ref: '#/components/schemas/IdentityProvider/properties/name'
+          example:
+            id: {}
+            name: {}
+        role:
+          type: string
+          description: Identifier of the invited users default role in the organization.
+          enum:
+          - administrator
+          - developer
+          - auditor
+          - consumer
+          example: administrator
+        roles:
+          type: array
+          description: User's roles within the organization.
+          items:
+            $ref: '#/components/schemas/Org/properties/users/items/properties/roles/items'
+          example:
+          - {}
+        user_activated:
+          $ref: '#/components/schemas/User/properties/activated'
+        user_active:
+          $ref: '#/components/schemas/User/properties/active'
+    marketplace.onboarding.update:
+      type: object
+      description: Published when marketplace onboarding data capture is changed.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.onboarding.enable'
+    EventDataUser:
+      type: object
+      title: User
+      properties:
+        provider_guid:
+          $ref: '#/components/schemas/User/properties/provider_guid'
+        user_guid:
+          $ref: '#/components/schemas/User/properties/guid'
+    Application:
+      properties:
+        guid:
+          type: string
+          description: Application guid.
+          example: example_value
+        source:
+          type: string
+          x-no-tags: true
+          example: example_value
+        provider_guid:
+          type: string
+          example: example_value
+        platform:
+          type: string
+          description: Name of the platform the application being developed for.
+          example: example_value
+        type:
+          type: string
+          description: Type of the application
+          x-no-tags: true
+          example: example_value
+      then:
+        properties:
+          name:
+            type: object
+            description: Name of the application.
+            properties:
+              en-US:
+                type:
+                - string
+                - 'null'
+                description: English language value.
+                x-no-tags: true
+              fr-FR:
+                type:
+                - string
+                - 'null'
+                description: French language value.
+                x-no-tags: true
+              de-DE:
+                type:
+                - string
+                - 'null'
+                description: German language value.
+                x-no-tags: true
+              pt-BR:
+                type:
+                - string
+                - 'null'
+                description: Portuguese language value.
+                x-no-tags: true
+    apicentral.subscription.remove:
+      type: object
+      description: Published when a marketplace subscription is removed.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.subscription.create'
+    EventDataActor:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/EventDataActionUser'
+      - $ref: '#/components/schemas/EventDataActionClient'
+    apicentral.documentresource.remove:
+      type: object
+      description: Published when a document defined in the document library is removed.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.documentresource.create'
+    platform.org.idp.remove:
+      type: object
+      description: Published when an Identity Provider is removed from an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.org.idp.create'
+    platform.org.inactive:
+      type: object
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.org.active'
+    platform.login.failed:
+      type: object
+      description: Published when a user sign in fails.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        from:
+          $ref: '#/components/schemas/EventDataFrom'
+        ip:
+          type: string
+          description: Anonymized IP address.
+          example: 10.0.0.1
+    platform.org.user.role.update:
+      type: object
+      description: 'Published when a user''s role in an organization is changed.
+
+
+        Changes array as a single entry for roles  containing new and previous values.
+
+
+        `added_roles`  and `removed_role`s  sets added to the event to more clearly identify changes to assigned roles. These can also be inferred from the difference between new and previous and vice versa.
+
+
+        `role`  and `previous_role`  are only included if the user''s Platform role is changed.'
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        added_roles:
+          type: array
+          description: Set of roles newly assigned to the user.
+          items:
+            type: string
+            enum:
+            - administrator
+            - developer
+            - auditor
+            - consumer
+            - usage_reporter
+            - api_central_admin
+          example:
+          - administrator
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        previous_role:
+          type: string
+          description: Identifier of the users previous default role in the organization. Only set if the default role is changed.
+          enum:
+          - administrator
+          - developer
+          - auditor
+          - consumer
+          example: administrator
+        removed_roles:
+          type: array
+          description: Set of roles no longer assigned to the user.
+          items:
+            type: string
+            enum:
+            - administrator
+            - developer
+            - auditor
+            - consumer
+            - usage_reporter
+            - api_central_admin
+          example:
+          - administrator
+        role:
+          type: string
+          description: Identifier of the users default role in the organization. Only set if the default role is changed.
+          enum:
+          - administrator
+          - developer
+          - auditor
+          - consumer
+          example: administrator
+    marketplace.consumer.approve:
+      type: object
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        consumer_org_guid:
+          $ref: '#/components/schemas/Org/properties/guid'
+        consumer_org_id:
+          $ref: '#/components/schemas/Org/properties/org_id'
+        consumer_org_name:
+          $ref: '#/components/schemas/Org/properties/name'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    platform.env.remove:
+      type: object
+      description: Published when an environment is removed.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.env.create'
+    marketplace.lang.update:
+      type: object
+      description: Published when marketplace language settings updated.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        lang_default:
+          $ref: '#/components/schemas/Provider/properties/lang/properties/default'
+        lang_products:
+          $ref: '#/components/schemas/Provider/properties/lang/properties/products'
+        lang_supported:
+          $ref: '#/components/schemas/Provider/properties/lang/properties/supported'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    marketplace.consumer.remove:
+      type: object
+      description: Published when a consumer organization is deleted.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.consumer.approve'
+    marketplace.billing.update:
+      type: object
+      description: Published when a marketplace billing settings are changed.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.billing.enable'
+    marketplace.consumer.inactive:
+      type: object
+      description: Published when a consumer organization is set inactive.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.consumer.approve'
+    Client:
+      properties:
+        roles:
+          type: array
+          description: Array of org-level role identifiers that are assigned to the client.
+          default: []
+          items:
+            type: string
+            enum:
+            - administrator
+            - developer
+            - auditor
+            - consumer
+            - usage_reporter
+            - api_central_admin
+          example:
+          - administrator
+        name:
+          type: string
+          description: Name of the client.
+          x-no-tags: true
+          example: Example Name
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the client.'
+          example: example_value
+        client_id:
+          type: string
+          description: Identifier of the client to use for authentication.
+          example: 507f1f77bcf86cd799439011
+    marketplace.ai.enable:
+      type: object
+      description: Published when AI integration is enabled for a marketplace.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.ai.disable'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        embedded:
+          $ref: '#/components/schemas/Provider/properties/ai/properties/embedded'
+        stream:
+          $ref: '#/components/schemas/Provider/properties/ai/properties/stream'
+        url:
+          $ref: '#/components/schemas/Provider/properties/ai/properties/url'
+    marketplace.idp.update:
+      type: object
+      description: Published when an Identity Provider is updated for a marketplace.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.idp.create'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    apicentral.env.create:
+      type: object
+      description: 'Published when a Central environment is created.
+
+
+        Either "action_user_guid" or "user_guid" can be provided to indicate the creator of the env. "action_user_guid" is preferred.
+
+        "governance" is optional and assumed as "Customer Managed" if not passed.
+
+        "production" is optional and assumed as false if not passed.'
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        governance:
+          type: string
+          enum:
+          - Axway Managed
+          - Customer Managed
+          example: Axway Managed
+        group:
+          type: string
+          enum:
+          - management
+          example: management
+        production:
+          type: boolean
+          example: true
+        user_guid:
+          $ref: '#/components/schemas/User/properties/guid'
+    platform.org.user.idp.update:
+      type: object
+      description: Published when an Identity Provider requirement is made for a user in an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        idp:
+          type: object
+          description: Identity Provider associated to the organization.
+          properties:
+            id:
+              $ref: '#/components/schemas/IdentityProvider/properties/guid'
+            name:
+              $ref: '#/components/schemas/IdentityProvider/properties/name'
+          example:
+            id: {}
+            name: {}
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+    apicentral.publisheddocumentresource.remove:
+      type: object
+      description: Published when a document defined in the document library is made unavailable for use in the marketplace content.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.publisheddocumentresource.create'
+    platform.team.app.remove:
+      type: object
+      description: Published when an asset is removed from a team.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        app_id:
+          $ref: '#/components/schemas/Application/properties/guid'
+        app_name:
+          $ref: '#/components/schemas/Application/then/properties/name'
+        team_guid:
+          $ref: '#/components/schemas/Team/properties/guid'
+        team_name:
+          $ref: '#/components/schemas/Team/properties/name'
+    com.appcelerator.platform.org.user.remove:
+      type: object
+      description: Published when a user is removed/uninvited from an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataUser'
+    platform.org.idp.update:
+      type: object
+      description: Published when an identity provider is updated for an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.org.idp.create'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    platform.user.update:
+      type: object
+      description: Published when user account/meta data is updated.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    platform.logout:
+      type: object
+      description: Published when a user signs out from any client.
+      x-context: auth
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        from:
+          $ref: '#/components/schemas/EventDataFrom'
+        ip:
+          type: string
+          description: Anonymized IP address.
+          example: 10.0.0.1
+    platform.client.remove:
+      type: object
+      description: Published when an organization admin removes a Service Account client.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataClient'
+    apicentral.asset.remove:
+      type: object
+      description: Published when a Central asset is removed.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.asset.create'
+    platform.login:
+      type: object
+      description: Published when a user signs in from any client type (tooling vs. browser).
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        from:
+          $ref: '#/components/schemas/EventDataFrom'
+        ip:
+          type: string
+          description: Anonymized IP address.
+          example: 10.0.0.1
+    platform.env.create:
+      type: object
+      description: Published when an environment is created.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        governance:
+          $ref: '#/components/schemas/Environment/properties/governance'
+        guid:
+          $ref: '#/components/schemas/Environment/properties/guid'
+        name:
+          $ref: '#/components/schemas/Environment/properties/name'
+        type:
+          $ref: '#/components/schemas/Environment/properties/type'
+    marketplace.billing.enable:
+      type: object
+      description: Published when a marketplace billing integration is enabled.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.billing.disable'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+        vendor:
+          $ref: '#/components/schemas/Provider/properties/billing/properties/vendor'
+    platform.org.idp.create:
+      type: object
+      description: Published when an Identity Provider is created for an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        idp:
+          type: object
+          description: Identity Provider associated to the organization.
+          properties:
+            id:
+              $ref: '#/components/schemas/IdentityProvider/properties/guid'
+            name:
+              $ref: '#/components/schemas/IdentityProvider/properties/name'
+          example:
+            id: {}
+            name: {}
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+    apicentral.credential.expire:
+      type: object
+      description: Published when a marketplace credential expiry notification needs to be sent.
+      x-context: api_central
+      properties:
+        application_id:
+          type: string
+          example: 507f1f77bcf86cd799439011
+        application_name:
+          type: string
+          example: Example Name
+        group:
+          type: string
+          enum:
+          - catalog
+          example: catalog
+        id:
+          type: string
+          example: 507f1f77bcf86cd799439011
+        name:
+          type: string
+          example: Example Name
+        org_guid:
+          $ref: '#/components/schemas/Org/properties/guid'
+        org_id:
+          $ref: '#/components/schemas/Org/properties/org_id'
+        product_id:
+          type: string
+          example: 507f1f77bcf86cd799439011
+        provider_guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        timestamp:
+          type: number
+          description: When the credential is set to expire. If the timestamp is less then the current timestamp, the credential has expired.
+          example: 1.0
+        user_guid:
+          description: Email recipient
+          allOf:
+          - $ref: '#/components/schemas/User/properties/guid'
+          example: example_value
+    EventDataOrg:
+      type: object
+      properties:
+        org_guid:
+          $ref: '#/components/schemas/Org/properties/guid'
+        org_id:
+          $ref: '#/components/schemas/Org/properties/org_id'
+        org_name:
+          $ref: '#/components/schemas/Org/properties/name'
+        provider_guid:
+          $ref: '#/components/schemas/Org/properties/provider_guid'
+        region:
+          $ref: '#/components/schemas/Org/properties/region'
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    apicentral.env.update:
+      type: object
+      description: 'Published when a Central environment is updated.
+
+
+        Either "action_user_guid" or "user_guid" can be provided to indicate the creator of the env. "action_user_guid" is preferred.
+
+        "governance" is optional and assumed as "Customer Managed" if not passed.
+
+        "production" is optional and assumed as false if not passed.'
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.env.create'
+    apicentral.agent.start:
+      type: object
+      description: Published when a Central agent changes its state in the status resource.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        agent_type:
+          type: string
+          enum:
+          - DiscoveryAgent
+          - TraceabilityAgent
+          example: DiscoveryAgent
+        agent_version:
+          type: string
+          example: example_value
+        dataplane_type:
+          type: string
+          description: Gateway the agent links to.
+          example: example_value
+        envId:
+          $ref: '#/components/schemas/Environment/properties/guid'
+        group:
+          type: string
+          enum:
+          - management
+          example: management
+    platform.subscription.delete:
+      type: object
+      description: Published when a subscription for an org is deleted.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      properties:
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
+    apic.ucs.subscription.remove:
+      type: object
+      description: Published when a subscription of a catalog asset is removed.
+      x-context: catalog
+      allOf:
+      - $ref: '#/components/schemas/apic.ucs.subscription.create'
+    platform.org.user.primary:
+      type: object
+      description: 'Published when org primary contact is changed.
+
+
+        User guid of prior and new primary user is reflected in changes array entry in "o" and "v" fields respectively.'
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    platform.user.mfa.disabled:
+      type: object
+      description: Published when multi-factor authentication is disabled for a user.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/platform.user.mfa.enabled'
+    platform.activation.access:
+      type: object
+      description: Published when an activation link is accessed.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        activation_guid:
+          $ref: '#/components/schemas/Activation/properties/guid'
+        activation_type:
+          $ref: '#/components/schemas/Activation/properties/type'
+    platform.org.idp.domain.confirm:
+      type: object
+      description: Published when ownership of a domain is verified for an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.org.idp.domain.associate'
+    apicentral.subscription.create:
+      type: object
+      description: Published when a marketplace subscription is created.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        group:
+          type: string
+          enum:
+          - catalog
+          example: catalog
+        provider_guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+    platform.user.mfa.app.add:
+      type: object
+      description: Published when an MFA application is added for a user.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      - $ref: '#/components/schemas/EventDataUser'
+    apicentral.publishedproduct.create:
+      type: object
+      description: Published when a product is published to a given marketplace.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        group:
+          type: string
+          enum:
+          - catalog
+          example: catalog
+        product_id:
+          type: string
+          example: 507f1f77bcf86cd799439011
+        provider_guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+    marketplace.consumer.signup:
+      type: object
+      description: Published when a new organization signs up to a marketplace.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      properties:
+        consumer_org_guid:
+          $ref: '#/components/schemas/Org/properties/guid'
+        consumer_org_id:
+          $ref: '#/components/schemas/Org/properties/org_id'
+        consumer_org_name:
+          $ref: '#/components/schemas/Org/properties/name'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+        pending:
+          type: boolean
+          description: Whether the signup is pending approval.
+          example: true
+    platform.client.create:
+      type: object
+      description: Published when an organization admin creates a Service Account client.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataClient'
+      properties:
+        roles:
+          $ref: '#/components/schemas/Client/properties/roles'
+    apicentral.agent.stop:
+      type: object
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.agent.start'
+    platform.org.idp.domain.associate:
+      type: object
+      description: Published when an Identity Provider is enabled for users on a domain in an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        idp:
+          type: object
+          description: Identity Provider associated to the organization.
+          properties:
+            id:
+              $ref: '#/components/schemas/IdentityProvider/properties/guid'
+            name:
+              $ref: '#/components/schemas/IdentityProvider/properties/name'
+          example:
+            id: {}
+            name: {}
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+        tld:
+          $ref: '#/components/schemas/Domain/properties/tld'
+    apicentral.documentresource.create:
+      type: object
+      description: Published when a document defined in the document library is created.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        description:
+          type: string
+          maxLength: 350
+          example: An example description
+        fileType:
+          type: string
+          description: For markdown documents the fileType will be "markdown". For document that respresent external URLs, we don't know the type and the fileType will be missing.
+          example: example_value
+        group:
+          type: string
+          enum:
+          - catalog
+          example: catalog
+        provider_guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        type:
+          type: string
+          enum:
+          - text
+          - binary
+          - url
+          example: text
+        version:
+          type: string
+          description: Document version
+          maxLength: 30
+          example: example_value
+    platform.user.social.enable:
+      type: object
+      description: Published when an OAuth service provider is added for a user.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        service:
+          type: string
+          description: An identifier for the service.
+          enum:
+          - github
+          - gitlab
+          - google
+          example: github
+        service_name:
+          type: string
+          description: Name of the service.
+          enum:
+          - GitHub
+          - GitLab
+          - Google
+          example: GitHub
+    platform.session.create:
+      type: object
+      description: Published when a session is created from an access token or external IdP, or a user switches platform org.
+      x-context: auth
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        from:
+          $ref: '#/components/schemas/EventDataFrom'
+        idp:
+          type: object
+          description: Identity Provider used to authenticate the session
+          properties:
+            id:
+              type: string
+              oneOf:
+              - enum:
+                - '360'
+                - github
+                - gitlab
+                - google
+              - $ref: '#/components/schemas/IdentityProvider/properties/guid'
+            name:
+              $ref: '#/components/schemas/IdentityProvider/properties/name'
+          example:
+            id: 507f1f77bcf86cd799439011
+            name: {}
+        ip:
+          type: string
+          description: Anonymized IP address.
+          example: 10.0.0.1
+        role:
+          type: string
+          description: Identifier of the invited users default role in the organization.
+          enum:
+          - administrator
+          - developer
+          - auditor
+          - consumer
+          example: administrator
+        roles:
+          type: array
+          description: User's roles within the organization.
+          items:
+            $ref: '#/components/schemas/Org/properties/users/items/properties/roles/items'
+          example:
+          - {}
+    EventDataClient:
+      type: object
+      title: Service Account
+      properties:
+        client_guid:
+          $ref: '#/components/schemas/Client/properties/guid'
+        client_id:
+          $ref: '#/components/schemas/Client/properties/client_id'
+        client_name:
+          $ref: '#/components/schemas/Client/properties/name'
+    platform.org.idp.domain.remove:
+      type: object
+      description: Published when an domain is removed from an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/platform.org.idp.domain.create'
+    Subscription:
+      type: object
+      description: Organization entitlements
+      required:
+      - id
+      - product
+      - plan
+      - entitlements
+      additionalProperties: false
+      properties:
+        end_date:
+          type: string
+          format: date-time
+          description: When the subscription is active to.
+          example: '2026-04-21T00:00:00Z'
+        entitlements:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                description: Entitlement key.
+              value:
+                oneOf:
+                - type: boolean
+                  description: Boolean entitlement, granting access to a feature of capability.
+                - type: integer
+                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
+                  maximum: 9999999999999
+                - type: number
+                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
+                  maximum: 9999999999999
+                - type: array
+                  description: Set entitlement, listing provisioned service or environment availability.
+                  items:
+                    type: string
+                    description: Service or environment key.
+          example:
+          - key: example_value
+            value: example_value
+        governance:
+          type: string
+          description: Governance model for the subscription.
+          enum:
+          - SaaS
+          - Customer Managed
+          - Axway Managed
+          example: SaaS
+        id:
+          type: string
+          description: Identifier for the subscription.
+          example: 507f1f77bcf86cd799439011
+        opportunity_id:
+          type: number
+          description: Opportunity ID associated with the subscription.
+          minimum: 10000
+          maximum: 999999
+          example: 1.0
+        plan:
+          type: string
+          description: Which plan the subscription is for.
+          example: example_value
+        product:
+          type: string
+          description: Name to identify the product, e.g. APIM, B2Bi.
+          example: example_value
+        product_name:
+          type: string
+          description: Official product name.
+          readOnly: true
+          example: Example Name
+        source:
+          type: string
+          description: Source of this subscription.
+          enum:
+          - API
+          - UI
+          - Platform
+          - Billing
+          example: API
+        start_date:
+          type: string
+          format: date-time
+          description: When the subscription is active from.
+          example: '2026-04-21T00:00:00Z'
+        tier:
+          type: string
+          description: Whether the subscription is a trial or paid for.
+          enum:
+          - paid
+          - trial
+          - free
+          example: paid
+    platform.team.update:
+      type: object
+      description: Published when an existing team is modified.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        team:
+          type: object
+          description: The updated team
+          properties:
+            default:
+              $ref: '#/components/schemas/Team/properties/default'
+            guid:
+              $ref: '#/components/schemas/Team/properties/guid'
+            name:
+              $ref: '#/components/schemas/Team/properties/name'
+          example:
+            default: {}
+            guid: {}
+            name: {}
+    EventDataChanges:
+      type: array
+      description: Changes that were made.
+      items:
+        type: object
+        required:
+        - k
+        properties:
+          a:
+            type: integer
+            description: Action indication for changes to sensitive data. Values represent added, changed, and removed respectively.
+            enum:
+            - 0
+            - 1
+            - 2
+          k:
+            type: string
+            description: The full path to the modified value.
+          o:
+            description: The original value.
+          v:
+            description: The new value.
+    marketplace.ai.update:
+      type: object
+      description: Published when marketplace AI integration settings are changed.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.ai.enable'
+    platform.activation.complete:
+      type: object
+      description: Published when a user activates their account.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        orgs:
+          type: array
+          description: Array of orgs the user is a member of
+          items:
+            type: object
+            properties:
+              guid:
+                $ref: '#/components/schemas/Org/properties/guid'
+              name:
+                $ref: '#/components/schemas/Org/properties/name'
+              org_id:
+                $ref: '#/components/schemas/Org/properties/org_id'
+          example:
+          - guid: {}
+            name: {}
+            org_id: {}
+    apic.ucs.subscription.create:
+      type: object
+      description: Published when a subscription of a catalog asset is created.
+      x-context: catalog
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        catalogItemId:
+          type: string
+          example: example_value
+        envId:
+          $ref: '#/components/schemas/Environment/properties/guid'
+    platform.org.create:
+      type: object
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      properties:
+        from:
+          $ref: '#/components/schemas/EventDataFrom'
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+    marketplace.ai.disable:
+      type: object
+      description: Published when AI integration is disabled for a marketplace.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    marketplace.appearance.update:
+      type: object
+      description: Published when a marketplace appearance is set or changed.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    marketplace.onboarding.enable:
+      type: object
+      description: Published when marketplace onboarding data capture is enabled.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.onboarding.disable'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    apicentral.asset.create:
+      type: object
+      description: Published when a Central asset is created.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        envIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment/properties/guid'
+          example:
+          - {}
+        group:
+          type: string
+          enum:
+          - catalog
+          example: catalog
+    platform.org.user.resent:
+      type: object
+      description: Published when a user activation is resent.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataActor'
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        activation_type:
+          $ref: '#/components/schemas/Activation/properties/type'
+    apicentral.apiservice.remove:
+      type: object
+      description: Published when a top-level Central asset is updated.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.apiservice.create'
+    platform.subscription.expired:
+      type: object
+      description: Published when a subscription expires past its end date and any dunning period.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      properties:
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+    platform.subscription.update:
+      type: object
+      description: Published when a subscription for an org is updated.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+    platform.org.idp.domain.create:
+      type: object
+      description: Published when an domain is added to an organization.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+        tld:
+          $ref: '#/components/schemas/Domain/properties/tld'
+    apicentral.publishedproduct.remove:
+      type: object
+      description: Published when a product is unpublished from a given marketplace.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.publishedproduct.create'
+    marketplace.remove:
+      type: object
+      description: 'Published when a marketplace is removed.
+
+
+        `subdomain` prop will always be included. Once url is established, `subdomain` prop value will be passed as the `guid`.'
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+        subdomain:
+          $ref: '#/components/schemas/Provider/properties/subdomain'
+        url:
+          $ref: '#/components/schemas/Provider/properties/url'
+    platform.team.user.add:
+      type: object
+      description: Published when a user or client is added to a team.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      - oneOf:
+        - $ref: '#/components/schemas/EventDataUser'
+        - $ref: '#/components/schemas/EventDataClient'
+      properties:
+        roles:
+          $ref: '#/components/schemas/Team/properties/users/items/properties/roles'
+        team_guid:
+          $ref: '#/components/schemas/Team/properties/guid'
+        team_name:
+          $ref: '#/components/schemas/Team/properties/name'
+    platform.team.remove:
+      type: object
+      description: Published when an existing team is modified.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        reassign_team:
+          type: object
+          description: If provided the team where the resources are reassigned.
+          properties:
+            default:
+              $ref: '#/components/schemas/Team/properties/default'
+            guid:
+              $ref: '#/components/schemas/Team/properties/guid'
+            name:
+              $ref: '#/components/schemas/Team/properties/name'
+          example:
+            default: {}
+            guid: {}
+            name: {}
+        team:
+          type: object
+          description: The updated team
+          properties:
+            default:
+              $ref: '#/components/schemas/Team/properties/default'
+            guid:
+              $ref: '#/components/schemas/Team/properties/guid'
+            name:
+              $ref: '#/components/schemas/Team/properties/name'
+          example:
+            default: {}
+            guid: {}
+            name: {}
+    platform.team.app.add:
+      type: object
+      description: Published when an asset is added to a team.
+      x-context: team
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        app_id:
+          $ref: '#/components/schemas/Application/properties/guid'
+        app_name:
+          $ref: '#/components/schemas/Application/then/properties/name'
+        team_guid:
+          $ref: '#/components/schemas/Team/properties/guid'
+        team_name:
+          $ref: '#/components/schemas/Team/properties/name'
+    platform.org.branding.update:
+      type: object
+      description: 'Published when org branding is changed.
+
+
+        Branding attributes added, changed, or removed are indicated in changes array.'
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    Domain:
+      properties:
+        tld:
+          type: string
+          format: domain
+          description: Domain name.
+          example: example_value
+    apicentral.agent.create:
+      type: object
+      description: Published when a Central agent is created.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/EventDataCentral'
+      properties:
+        agent_type:
+          type: string
+          enum:
+          - DiscoveryAgent
+          - TraceabilityAgent
+          example: DiscoveryAgent
+        dataplane_type:
+          type: string
+          description: Gateway the agent links to.
+          example: example_value
+        envId:
+          $ref: '#/components/schemas/Environment/properties/guid'
+        group:
+          type: string
+          enum:
+          - management
+          example: management
+    platform.org.update:
+      type: object
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        from:
+          $ref: '#/components/schemas/EventDataFrom'
+        modified_by:
+          $ref: '#/components/schemas/EventDataModifiedBy'
+    EventDataModifiedBy:
+      type: string
+      description: '"platform" or received value from event''s `data.lastModifiedVia`.'
+    platform.terms.accept:
+      type: object
+      description: Published when Terms of Use are accepted by a user.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataUser'
+    marketplace.user.remove:
+      type: object
+      description: Published when a consumer organization user is deleted.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataActionUser'
+      - $ref: '#/components/schemas/EventDataUser'
+      properties:
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+        orgs:
+          type: array
+          description: Array of orgs the user was a member of
+          items:
+            type: object
+            properties:
+              guid:
+                $ref: '#/components/schemas/Org/properties/guid'
+              name:
+                $ref: '#/components/schemas/Org/properties/name'
+              org_id:
+                $ref: '#/components/schemas/Org/properties/org_id'
+          example:
+          - guid: {}
+            name: {}
+            org_id: {}
+    platform.user.mfa.enabled:
+      type: object
+      description: Published when multi-factor authentication is enabled for a user.
+      x-context: user
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActionUser'
+      - $ref: '#/components/schemas/EventDataUser'
+    marketplace.idp.remove:
+      type: object
+      description: Published when an Identity Provider is removed from a marketplace.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/marketplace.idp.create'
+    marketplace.idp.create:
+      type: object
+      description: Published when an Identity Provider is created for a marketplace.
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        idp:
+          type: object
+          description: Identity Provider associated to the marketplace.
+          properties:
+            id:
+              $ref: '#/components/schemas/IdentityProvider/properties/guid'
+            name:
+              $ref: '#/components/schemas/IdentityProvider/properties/name'
+          example:
+            id: {}
+            name: {}
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+    apic.ucs.subscription.update:
+      type: object
+      description: Published when a subscription of a catalog asset is updated.
+      x-context: catalog
+      allOf:
+      - $ref: '#/components/schemas/apic.ucs.subscription.create'
+    EventDataCentral:
+      type: object
+      oneOf:
+      - title: Action User
+        properties:
+          action_user_guid:
+            $ref: '#/components/schemas/EventDataActionUser/properties/action_user_guid'
+      - title: Action Service Account
+        properties:
+          action_client_guid:
+            $ref: '#/components/schemas/EventDataActionClient/properties/action_client_guid'
+      properties:
+        consumer_org_id:
+          type: string
+          description: The `org_id` of the consumer organization if applicable.
+          example: 507f1f77bcf86cd799439011
+        id:
+          type: string
+          example: 507f1f77bcf86cd799439011
+        name:
+          type: string
+          example: Example Name
+        org_guid:
+          $ref: '#/components/schemas/Org/properties/guid'
+        org_id:
+          $ref: '#/components/schemas/Org/properties/org_id'
+    apicentral.apiservice.update:
+      type: object
+      description: Published when a top-level Central asset is updated.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.apiservice.create'
+    apicentral.agent.remove:
+      type: object
+      description: Published when a Central agent is removed.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.agent.create'
+    platform.app.update:
+      type: object
+      description: Published when an application is updated.
+      x-context: app
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        app:
+          type: object
+          description: The updated application
+          properties:
+            guid:
+              $ref: '#/components/schemas/Application/properties/guid'
+            name:
+              $ref: '#/components/schemas/Application/then/properties/name'
+            platform:
+              $ref: '#/components/schemas/Application/properties/platform'
+            provider_guid:
+              $ref: '#/components/schemas/Application/properties/provider_guid'
+            source:
+              $ref: '#/components/schemas/Application/properties/source'
+            type:
+              $ref: '#/components/schemas/Application/properties/type'
+          example:
+            guid: {}
+            name: {}
+            platform: {}
+            provider_guid: {}
+            source: {}
+            type: {}
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+    apicentral.asset.update:
+      type: object
+      description: Published when a Central asset is updated.
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.asset.create'
+    marketplace.settings.update:
+      type: object
+      description: 'Published when marketplace settings are changed.
+
+
+        `subdomain` prop will always be included. Once url is established, `subdomain` prop value will be passed as the `guid`.'
+      x-context: org
+      allOf:
+      - $ref: '#/components/schemas/EventDataOrg'
+      - $ref: '#/components/schemas/EventDataActor'
+      properties:
+        admin_teams:
+          $ref: '#/components/schemas/Provider/properties/admin_teams'
+        certificate_expires:
+          $ref: '#/components/schemas/Provider/properties/certificate_expires'
+        changes:
+          $ref: '#/components/schemas/EventDataChanges'
+        consume_teams:
+          $ref: '#/components/schemas/Provider/properties/consume_teams'
+        consumer:
+          $ref: '#/components/schemas/Provider/properties/consumer'
+        consumer_approve:
+          $ref: '#/components/schemas/Provider/properties/consumer_approve'
+        guid:
+          $ref: '#/components/schemas/Provider/properties/guid'
+        help_menu:
+          $ref: '#/components/schemas/Provider/properties/help_menu'
+        idp:
+          $ref: '#/components/schemas/Provider/properties/idp'
+        idp_hint:
+          $ref: '#/components/schemas/Provider/properties/idp_hint'
+        lang_default:
+          $ref: '#/components/schemas/Provider/properties/lang/properties/default'
+        name:
+          $ref: '#/components/schemas/Provider/properties/name'
+        oauth:
+          type: object
+          properties:
+            github:
+              type: object
+              properties:
+                enabled:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/github/properties/enabled'
+                secret_updated:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/github/properties/secret_updated'
+            gitlab:
+              type: object
+              properties:
+                enabled:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/gitlab/properties/enabled'
+                secret_updated:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/gitlab/properties/secret_updated'
+            google:
+              type: object
+              properties:
+                enabled:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/google/properties/enabled'
+                secret_updated:
+                  $ref: '#/components/schemas/Provider/properties/oauth/properties/google/properties/secret_updated'
+          example:
+            github:
+              enabled: {}
+              secret_updated: {}
+            gitlab:
+              enabled: {}
+              secret_updated: {}
+            google:
+              enabled: {}
+              secret_updated: {}
+        public:
+          $ref: '#/components/schemas/Provider/properties/public'
+        publish_teams:
+          $ref: '#/components/schemas/Provider/properties/publish_teams'
+        reviews:
+          $ref: '#/components/schemas/Provider/properties/reviews'
+        signup:
+          $ref: '#/components/schemas/Provider/properties/signup'
+        sitename:
+          $ref: '#/components/schemas/Provider/properties/sitename'
+        subdomain:
+          $ref: '#/components/schemas/Provider/properties/subdomain'
+        terms:
+          $ref: '#/components/schemas/Provider/properties/terms'
+        terms_updated:
+          $ref: '#/components/schemas/Provider/properties/terms_updated'
+        terms_url:
+          $ref: '#/components/schemas/Provider/properties/terms_url'
+        url:
+          $ref: '#/components/schemas/Provider/properties/url'
+        versions:
+          $ref: '#/components/schemas/Provider/properties/versions'
+    apicentral.env.remove:
+      type: object
+      description: 'Published when a Central environment is removed.
+
+
+        Either "action_user_guid" or "user_guid" can be provided to indicate the creator of the env. "action_user_guid" is preferred.
+
+        "governance" is optional and assumed as "Customer Managed" if not passed.
+
+        "production" is optional and assumed as false if not passed.'
+      x-context: api_central
+      allOf:
+      - $ref: '#/components/schemas/apicentral.env.create'
+  examples:
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid

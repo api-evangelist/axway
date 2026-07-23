@@ -1,0 +1,3691 @@
+openapi: 3.1.0
+info:
+  version: 16.10.0
+  title: Amplify Platform API v1.0.0 aca org API
+  description: 'The Amplify Platform API provides the interface to perform the following:
+
+    - Manage account settings and credentials
+
+    - Manage organization settings, users, service accounts, and teams
+
+    - Retrieve organization usage data
+
+    - Register and manage applications
+
+    - Retrieve application metrics and analytics
+
+    - Retrieve user, organization, and application activity
+
+
+    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
+
+
+    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
+
+
+    &copy; Axway 2026. All rights reserved.'
+  contact:
+    email: support@axway.com
+  termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
+servers:
+- url: https://platform.axway.com/api/v1
+tags:
+- name: org
+paths:
+  /org/env:
+    parameters: []
+    get:
+      summary: Axway Find Organization Environments
+      description: "Returns the environments configured for the signed-in user's organization.\n\n___Auth Requirement___\n - `administrator`, `auditor`, `developer`, or `usage_reporter` access to the organization. Developer access may be restricted by the organization environments access control setting.\n"
+      tags:
+      - org
+      operationId: org_findEnvs
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/EnvironmentList'
+              examples:
+                OrgFindenvs200Example:
+                  summary: Default org_findEnvs 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: query
+        name: org_id
+        required: false
+        schema:
+          type: string
+          description: The `guid` or `org_id` of the organization.
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: target
+        required: false
+        schema:
+          type: string
+          description: The target in the UI that the data is being requested for. Filters the results to only environments that include the target.
+          enum:
+          - api_central
+        example: api_central
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/user/{user_guid}/primary:
+    parameters: []
+    put:
+      summary: Axway Sets the Primary Contract for the Org
+      description: "Set which user is listed as the primary contact for the organization.\n\n___Auth Requirement___\n - `administrator` access to the organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Users
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_users/index.html
+      tags:
+      - org
+      operationId: org_userPrimary
+      x-publishes:
+      - platform.org.user.primary
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: object
+                      required:
+                      - active
+                      - guid
+                      - name
+                      - org_id
+                      - region
+                      - subscriptions
+                      - users
+                      unevaluatedProperties: false
+                      allOf:
+                      - $ref: '#/components/schemas/DefaultFields'
+                      properties:
+                        account_id:
+                          type: integer
+                          description: Account ID of the organization.
+                          minimum: 10000
+                          maximum: 999999
+                        active:
+                          type: boolean
+                          description: Active state of the organization. Organizations become inactive after passing their end date.
+                          default: true
+                        analytics:
+                          type: object
+                          description: Analytics details for the organization
+                          additionalProperties: false
+                          properties:
+                            token:
+                              type: string
+                              description: Token used to identify the organization.
+                        branding:
+                          type: object
+                          description: Organization branding.
+                          additionalProperties: false
+                          properties:
+                            logo:
+                              type: string
+                              description: Logo image of the company.
+                        consumer_id:
+                          type: string
+                          description: Mapped ID of the consumer org from the configured Identity Provider.
+                        guid:
+                          type: string
+                          format: uuid
+                          description: GUID identifier for the organization
+                        name:
+                          type: string
+                          description: Name of the organization.
+                          minLength: 2
+                          maxLength: 64
+                          x-no-tags: true
+                        onboarding_required:
+                          type: array
+                          readOnly: true
+                          items:
+                            type: string
+                            pattern: '[\w-]{21}'
+                        org_id:
+                          type: integer
+                          description: Identifier for the organization
+                        origin:
+                          type:
+                          - string
+                          - 'null'
+                          description: Source from which the organization creation originated.
+                          enum:
+                          - '360'
+                          - sfdc
+                          - signup
+                        pending:
+                          type: boolean
+                          description: Whether the organization is pending approval for a provider organization administator.
+                        provider_guid:
+                          type: string
+                          format: uuid
+                          description: GUID identifier of the owning provider if the organization is a consumer of a marketplace.
+                        region:
+                          type: string
+                          description: The data residency region of the organization.
+                          default: US
+                          enum:
+                          - US
+                          - EU
+                          - AP
+                        security:
+                          type: object
+                          description: Security settings for the organization.
+                          additionalProperties: false
+                          properties:
+                            access_controls:
+                              type: object
+                              description: Developer visibility controls.
+                              additionalProperties: false
+                              properties:
+                                enviroments:
+                                  type: number
+                                  description: Developer access to environments. 0 - Developers cannot view environments, 1 - Developer may view all environemnts.
+                                  enum:
+                                  - 0
+                                  - 1
+                                service_accounts:
+                                  type: number
+                                  description: Developer access to service accounts. 0 - Developers cannot view service accounts, 1 - Developers may view service accounts in their teams, 2 - Developer may view all service accounts.
+                                  enum:
+                                  - 0
+                                  - 1
+                                  - 2
+                                usage:
+                                  type: number
+                                  description: Developer access to usage. 0 - Developers cannot view usage, 1 - Developer may view all usage.
+                                  enum:
+                                  - 0
+                                  - 1
+                                users:
+                                  type: number
+                                  description: Developer access to users.0 - Developers cannot view users, 1 - Developers may view administrators and users in their teams, 2 - Developer may view all users.
+                                  enum:
+                                  - 0
+                                  - 1
+                                  - 2
+                            allow_tooling:
+                              type: boolean
+                              description: Grant access using tooling credentials
+                            disable_analytics:
+                              type: boolean
+                              description: Opt out from third-party support services.
+                            password_policy:
+                              $ref: '#/components/schemas/PasswordPolicy'
+                            redact_personal:
+                              type: boolean
+                              description: Personal information like email addresses will be masked in UI.
+                              default: false
+                        subscriptions:
+                          type: array
+                          default: []
+                          items:
+                            $ref: '#/components/schemas/Subscription'
+                        support_access_code:
+                          type: integer
+                          description: Support Access Code for the org.
+                          minimum: 10000
+                          maximum: 999999
+                        users:
+                          type: array
+                          description: List of users that are members of the organization.
+                          default: []
+                          items:
+                            type: object
+                            required:
+                            - guid
+                            - roles
+                            additionalProperties: false
+                            properties:
+                              guid:
+                                type: string
+                                format: uuid
+                                description: GUID of the user.
+                              idp:
+                                type: string
+                                description: GUID of the Identity Provider the user is required to authenticate with to access the organization.
+                              primary:
+                                type: boolean
+                                description: Whether the user is the primary contact for the organization.
+                              roles:
+                                type: array
+                                description: Roles within the organization.
+                                items:
+                                  type: string
+                                  enum:
+                                  - administrator
+                                  - developer
+                                  - auditor
+                                  - consumer
+                                  - usage_reporter
+                                  - api_central_admin
+                        api_central:
+                          type: object
+                          description: Engage provision status
+                          readOnly: true
+                        entitlements:
+                          type: object
+                          readOnly: true
+                          allOf:
+                          - $ref: '#/components/schemas/Entitlements'
+              examples:
+                OrgUserprimary200Example:
+                  summary: Default org_userPrimary 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                PRIMARY_NOT_ADMIN:
+                  value:
+                    success: false
+                    description: The primary contact must be an administrator of the organization.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                USER_NOT_MEMBER:
+                  value:
+                    success: false
+                    description: User is not a member of this organization.
+                    code: 403
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the org.'
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+          description: guid of the user to set as the primary contact.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/user/{user_guid}:
+    parameters: []
+    get:
+      summary: Axway Get Org User
+      description: "Returns single user for an org\n\n___Auth Requirement___\n - _One of_\n     - Access to the organization, allowing consumer role.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Users
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_users/index.html
+      tags:
+      - org
+      operationId: org_userFindOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: object
+                      required:
+                      - activated
+                      - active
+                      - email
+                      - firstname
+                      - guid
+                      - lastname
+                      - user_id
+                      unevaluatedProperties: false
+                      properties:
+                        created:
+                          $ref: '#/components/schemas/DefaultFields/properties/created'
+                        activated:
+                          type: boolean
+                          description: Whether the user has activated.
+                          default: false
+                        active:
+                          type: boolean
+                          description: Whether the user is active.
+                          default: false
+                        date_activated:
+                          type: string
+                          format: date-time
+                          description: When the user activated.
+                        email:
+                          type: string
+                          format: email
+                          description: Email address of the user.
+                          maxLength: 217
+                        external:
+                          type: boolean
+                          description: Whether the user is external.
+                        firstname:
+                          type: string
+                          description: First name of the user.
+                          default: ''
+                          maxLength: 50
+                          x-allow-empty: true
+                          x-no-tags: true
+                        guid:
+                          type: string
+                          description: GUID of the user.
+                        lastname:
+                          type: string
+                          description: Last name of the user.
+                          default: ''
+                          maxLength: 50
+                          x-allow-empty: true
+                          x-no-tags: true
+                        last_login:
+                          type: string
+                          format: date-time
+                          description: When the user last signed in.
+                        mfa:
+                          type: boolean
+                          description: Whether multi-factor authentication is enabled for the user.
+                        user_id:
+                          type: number
+                        org_id:
+                          type: integer
+                          description: Identifier for the organization
+                        role:
+                          type: string
+                          description: The users default role in the organization
+                        name:
+                          type: string
+                          description: A display name for the user taken from email or firstname and lastname if available
+                        primary:
+                          type: boolean
+                          description: Whether the user is the primary user for the organization
+                        teams:
+                          oneOf:
+                          - type: integer
+                            description: Count of teams the user belongs to in the organization.
+                          - $ref: '#/components/schemas/UserTeams'
+              examples:
+                OrgUserfindone200Example:
+                  summary: Default org_userFindOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the org whose member you want to get'
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+          description: guid of the user whose org and team info you want to get
+        example: example_value
+      - in: query
+        name: teams
+        required: false
+        deprecated: true
+        schema:
+          type: boolean
+          description: Include name, guid, default, and roles for teams user is members of; by default, `teams` includes count of teams user is member of
+          x-deprecated: This parameter has been deprecated and will be removed in a future release.
+        x-deprecated: This parameter has been deprecated and will be removed in a future release.
+        example: true
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Remove User
+      description: "Removes a user from the organization.\n\n___Auth Requirement___\n - `administrator` access to the organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Users
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_users/index.html
+      tags:
+      - org
+      operationId: org_userRemove
+      x-publishes:
+      - com.appcelerator.platform.org.user.remove
+      - event: platform.user.remove
+        text: Sent if the user is no longer a member of any organizations.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                USER_SOLE_ADMIN:
+                  value:
+                    success: false
+                    description: The sole administrator of an organization cannot be removed.
+                    code: 400
+                USER_IS_PRIMARY:
+                  value:
+                    success: false
+                    description: The primary contact of an organization cannot be removed.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization to remove the user from'
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+          description: guid of the user who you want to remove
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      summary: Axway Update Org Member Association
+      description: "Updates a user's association to an org.\n\n___Auth Requirement___\n - `administrator` access to the organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Users
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_users/index.html
+      tags:
+      - org
+      operationId: org_userUpdate
+      x-publishes:
+      - platform.org.user.role.update
+      - platform.org.user.idp.update
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NO_ADMIN_LEFT:
+                  value:
+                    success: false
+                    description: Unable to demote user; one org admin is required.
+                    code: 400
+                CONFLICTING_TEAM_ROLE:
+                  value:
+                    success: false
+                    description: '"roles" contained an invalid value: The "%s" role assigned in the team "%s" requires one of the following organization roles: %s.'
+                    code: 400
+                    internalCode: 747
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the org.'
+        example: 507f1f77bcf86cd799439011
+      - in: path
+        name: user_guid
+        required: true
+        schema:
+          type: string
+          description: guid of the user to update the association of.
+        example: example_value
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                idp:
+                  $ref: '#/components/schemas/Org/properties/users/items/properties/idp'
+                roles:
+                  $ref: '#/components/schemas/Org/properties/users/items/properties/roles'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/user:
+    parameters: []
+    post:
+      summary: Axway Add User
+      description: "Adds a user to an organization.\n\n___Auth Requirement___\n - `administrator` access to the organization.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Users
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_users/index.html
+      tags:
+      - org
+      operationId: org_userCreate
+      x-publishes:
+      - com.appcelerator.platform.org.user.create
+      - event: platform.activation.send
+        text: Sent if the user being added is not an activated user.
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        guid:
+                          type: string
+                          description: The guid of the added user.
+              examples:
+                OrgUsercreate200Example:
+                  summary: Default org_userCreate 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                EXISTING_ORG_MEMBER:
+                  value:
+                    success: false
+                    description: User is already a member of this org.
+                    code: 400
+                INVALID_EMAIL_DOMAIN:
+                  value:
+                    success: false
+                    description: Sign-up is not allowed for this email domain.
+                    code: 400
+                    internalCode: 14
+                INVALID_STAFF_INVITE:
+                  value:
+                    success: false
+                    description: User must be activated and have an email on an allowed domain (axway.com, 74software.com) to be added to the staff organization.
+                    code: 400
+                ITEM_NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/ITEM_NOT_FOUND/value'
+                USER_INVITE_DISABLED:
+                  value:
+                    success: false
+                    description: This organization has reached the maximum number of invited users. New user invitation is temporarily disabled. Please try again later.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization to add the user to'
+        example: 507f1f77bcf86cd799439011
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                email:
+                  type: string
+                  description: Email of the user to create or add
+                idp:
+                  $ref: '#/components/schemas/Org/properties/users/items/properties/idp'
+                role:
+                  type: string
+                  description: Role of the user to create or add; DEPRECATED - use `roles` instead
+                  x-deprecated: This parameter has been deprecated and will be removed in a future release.
+                  enum:
+                  - administrator
+                  - developer
+                  - auditor
+                  - consumer
+                  deprecated: true
+                roles:
+                  $ref: '#/components/schemas/Org/properties/users/items/properties/roles'
+                suppressEmail:
+                  type: boolean
+                  description: Whether activation email to the user should be suppressed
+                  default: false
+                teams:
+                  type: array
+                  description: List of teams and roles to assign the user to.
+                  items:
+                    properties:
+                      guid:
+                        $ref: '#/components/schemas/Team/properties/guid'
+                      roles:
+                        $ref: '#/components/schemas/Team/properties/users/items/properties/roles'
+              required:
+              - email
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      summary: Axway Get Members
+      description: "Returns members for an org\n\n___Auth Requirement___\n - _One of_\n     - Access to the organization, allowing consumer role. Developer access may be restricted by the organization users access control setting.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+      externalDocs:
+        description: Managing Users
+        url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_users/index.html
+      tags:
+      - org
+      operationId: org_userFind
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      title: UserList
+                      type: array
+                      description: A list of User objects.
+                      items:
+                        type: object
+                        required:
+                        - activated
+                        - active
+                        - email
+                        - firstname
+                        - guid
+                        - lastname
+                        - user_id
+                        unevaluatedProperties: false
+                        properties:
+                          created:
+                            $ref: '#/components/schemas/DefaultFields/properties/created'
+                          activated:
+                            type: boolean
+                            description: Whether the user has activated.
+                            default: false
+                          active:
+                            type: boolean
+                            description: Whether the user is active.
+                            default: false
+                          date_activated:
+                            type: string
+                            format: date-time
+                            description: When the user activated.
+                          email:
+                            type: string
+                            format: email
+                            description: Email address of the user.
+                            maxLength: 217
+                          external:
+                            type: boolean
+                            description: Whether the user is external.
+                          firstname:
+                            type: string
+                            description: First name of the user.
+                            default: ''
+                            maxLength: 50
+                            x-allow-empty: true
+                            x-no-tags: true
+                          guid:
+                            type: string
+                            description: GUID of the user.
+                          lastname:
+                            type: string
+                            description: Last name of the user.
+                            default: ''
+                            maxLength: 50
+                            x-allow-empty: true
+                            x-no-tags: true
+                          last_login:
+                            type: string
+                            format: date-time
+                            description: When the user last signed in.
+                          mfa:
+                            type: boolean
+                            description: Whether multi-factor authentication is enabled for the user.
+                          user_id:
+                            type: number
+                          org_id:
+                            type: integer
+                            description: Identifier for the organization
+                          role:
+                            type: string
+                            description: The users default role in the organization
+                          name:
+                            type: string
+                            description: A display name for the user taken from email or firstname and lastname if available
+                          primary:
+                            type: boolean
+                            description: Whether the user is the primary user for the organization
+                          teams:
+                            type: integer
+                            description: Count of teams the user belongs to in the organization.
+                - properties:
+                    metadata:
+                      $ref: '#/components/schemas/ResponseMetadata'
+              examples:
+                OrgUserfind200Example:
+                  summary: Default org_userFind 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      parameters:
+      - name: fields
+        in: query
+        description: A list of fields to include in the response.
+        schema:
+          type: array
+          items:
+            type: string
+          default: created,activated,active,date_activated,email,external,firstname,guid,lastname,last_login,mfa,user_id,name,org_id,primary,role,roles,idp,teams
+        example:
+        - example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - $ref: '#/components/parameters/add_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the org whose members you want to get'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: email
+        required: false
+        schema:
+          type: array
+          description: Array of user emails to filter the results
+          items:
+            type: string
+          default: null
+        example:
+        - user@example.com
+      - in: query
+        name: primary
+        required: false
+        schema:
+          type: string
+          description: Return just the primary contact
+        example: example_value
+      - in: query
+        name: roles
+        required: false
+        schema:
+          type: array
+          description: Search for roles
+          items:
+            type: string
+          default: null
+        example:
+        - example_value
+      - in: query
+        name: term
+        required: false
+        schema:
+          type: string
+          description: Search term, matches name and email
+          default: null
+        example: example_value
+      - in: query
+        name: user_guid
+        required: false
+        schema:
+          type: array
+          description: Array of user guids to filter the results
+          items:
+            type: string
+          default: null
+        example:
+        - example_value
+      - in: query
+        name: limit
+        required: false
+        schema:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: Number of results per page. Zero will return an empty result, but the matched count in meta will be returned.
+        example: 1.0
+      - in: query
+        name: page
+        required: false
+        schema:
+          type: number
+          description: Page of results.
+          default: 1
+        example: 1.0
+      - in: query
+        name: skip
+        required: false
+        schema:
+          type: number
+          description: Number of items to skip in results, used for pagination.
+          default: 0
+        example: 1.0
+      - in: query
+        name: sort
+        required: false
+        schema:
+          type: array
+          description: Field on which to sort results, may pass multiple comma-separated. Prefix the field name with `-` for descending order.
+          items:
+            type: string
+            enum:
+            - activated
+            - email
+            - firstname
+            - idp
+            - last_login
+            - lastname
+            - name
+            - primary
+            - role
+          default:
+          - -primary
+          - activated
+          - role
+          - name
+          - email
+        example:
+        - activated
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}/stats:
+    parameters: []
+    get:
+      summary: Axway Get Organization Stats
+      description: "Returns stats for organization and product\n\n___Auth Requirement___\n - _One of_\n     - Access to the organization.\n     - Support access.\n"
+      tags:
+      - org
+      operationId: org_stats
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: env
+        required: false
+        schema:
+          type: string
+          description: Environment id for which to return stats
+        example: example_value
+      - in: query
+        name: from
+        required: false
+        schema:
+          type: integer
+          description: Timestamp from which stats will be returned (defaults to last 30 days)
+        example: 1
+      - in: query
+        name: product
+        required: false
+        schema:
+          type: string
+          description: Product line for which stats will be returned
+          enum:
+          - APIM
+          - analytics
+        example: APIM
+      - in: query
+        name: to
+        required: false
+        schema:
+          type: integer
+          description: Timestamp to which stats will be returned (defaults to current time)
+        example: 1
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /org/{org_id}:
+    parameters: []
+    get:
+      summary: Axway Get Organization
+      description: "Returns a single organization\n\n___Auth Requirement___\n - _One of_\n     - Access to the organization, allowing consumer role.\n     - Service account access token for an internal client with `platform-org-view` access.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - org
+      operationId: org_findOne
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      allOf:
+                      - type: object
+                        required:
+                        - active
+                        - guid
+                        - name
+                        - org_id
+                        - region
+                        - subscriptions
+                        - users
+                        unevaluatedProperties: false
+                        allOf:
+                        - $ref: '#/components/schemas/DefaultFields'
+                        properties:
+                          _id:
+                            type: string
+                            description: The id of the organization.
+                            readOnly: true
+                            deprecated: true
+                          account_id:
+                            type: integer
+                            description: Account ID of the organization.
+                            minimum: 10000
+                            maximum: 999999
+                          active:
+                            type: boolean
+                            description: Active state of the organization. Organizations become inactive after passing their end date.
+                            default: true
+                          analytics:
+                            type: object
+                            description: Analytics details for the organization
+                            additionalProperties: false
+                            properties:
+                              token:
+                                type: string
+                                description: Token used to identify the organization.
+                          api_central:
+                            type: object
+                            description: Engage provision status
+                            readOnly: true
+                          branding:
+                            type: object
+                            description: Organization branding.
+                            additionalProperties: false
+                            properties:
+                              logo:
+                                type: string
+                                description: Logo image of the company.
+                          consumer_id:
+                            type: string
+                            description: Mapped ID of the consumer org from the configured Identity Provider.
+                          created_by:
+                            type: object
+                            description: Details of the user that created the organization.
+                            unevaluatedProperties: false
+                            properties:
+                              client_id:
+                                type: string
+                                description: The client_id of the client that created the organization.
+                                readOnly: true
+                              email:
+                                type: string
+                                format: email
+                                description: Email address of the user that created the organization.
+                                readOnly: true
+                              name:
+                                type: string
+                                description: The name of the user or client that created the organization.
+                                readOnly: true
+                          entitlements:
+                            type: object
+                            readOnly: true
+                            allOf:
+                            - $ref: '#/components/schemas/Entitlements'
+                          guid:
+                            type: string
+                            format: uuid
+                            description: GUID identifier for the organization
+                          help_menu:
+                            type: object
+                            description: Contents of the help menu displayed in the navigation bar.
+                            default:
+                              enabled: false
+                            additionalProperties: false
+                            properties:
+                              enabled:
+                                type: boolean
+                                description: Whether the custom help menu is enabled.
+                                default: false
+                              defaults:
+                                type: boolean
+                                description: Whether to include the default items.
+                              icon:
+                                type: string
+                                description: Icon displayed in the navigation bar to show the help menu.
+                              items:
+                                type: array
+                                description: Custom help menu shown in the navigation bar.
+                                items:
+                                  type: object
+                                  required:
+                                  - text
+                                  - type
+                                  - url
+                                  unevaluatedProperties: false
+                                  discriminator:
+                                    propertyName: type
+                                    mapping:
+                                      url: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/0'
+                                      document: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/1'
+                                  oneOf:
+                                  - type: object
+                                    properties:
+                                      type:
+                                        type: string
+                                        enum:
+                                        - url
+                                      url:
+                                        type: string
+                                        format: url
+                                        description: URL for the link.
+                                  - type: object
+                                    properties:
+                                      type:
+                                        type: string
+                                        enum:
+                                        - document
+                                      url:
+                                        type: string
+                                        description: Document resource guid
+                                  properties:
+                                    icon:
+                                      type: string
+                                      description: Icon displayed in the menu for the item.
+                                    new_tab:
+                                      type: boolean
+                                      description: Whether the link opens in a new tab.
+                                    provider_guid:
+                                      type: string
+                                      description: The GUID of the provider a document url is for
+                                    text:
+                                      type: string
+                                      description: Label for the link.
+                                      x-no-tags: true
+                                    type:
+                                      type: string
+                                      description: Type of the link.
+                                      enum:
+                                      - document
+                                      - url
+                                    url:
+                                      type: string
+                                      description: URL, relative path, or document resource guid for the link.
+                          last_login:
+                            type: string
+                            format: date-time
+                            description: When the most recent session was created in the organization.
+                            readOnly: true
+                          logged_in_count:
+                            type: number
+                            description: How many session are been created in the organization.
+                            readOnly: true
+                          name:
+                            type: string
+                            description: Name of the organization.
+                            minLength: 2
+                            maxLength: 64
+                            x-no-tags: true
+                          onboarding_required:
+                            type: array
+                            readOnly: true
+                            items:
+                              type: string
+                              pattern: '[\w-]{21}'
+                          org_id:
+                            type: integer
+                            description: Identifier for the organization
+                          origin:
+                            type:
+                            - string
+                            - 'null'
+                            description: Source from which the organization creation originated.
+                            enum:
+                            - '360'
+                            - sfdc
+                            - signup
+                          pending:
+                            type: boolean
+                            description: Whether the organization is pending approval for a provider organization administator.
+                          provider_guid:
+                            type: string
+                            format: uuid
+                            description: GUID identifier of the owning provider if the organization is a consumer of a marketplace.
+                          region:
+                            type: string
+                            description: The data residency region of the organization.
+                            default: US
+                            enum:
+                            - US
+                            - EU
+                            - AP
+                          security:
+                            type: object
+                            description: Security settings for the organization.
+                            additionalProperties: false
+                            properties:
+                              access_controls:
+                                type: object
+                                description: Developer visibility controls.
+                                additionalProperties: false
+                                properties:
+                                  enviroments:
+                                    type: number
+                                    description: Developer access to environments. 0 - Developers cannot view environments, 1 - Developer may view all environemnts.
+                                    enum:
+                                    - 0
+                                    - 1
+                                  service_accounts:
+                                    type: number
+                                    description: Developer access to service accounts. 0 - Developers cannot view service accounts, 1 - Developers may view service accounts in their teams, 2 - Developer may view all service accounts.
+                                    enum:
+                                    - 0
+                                    - 1
+                                    - 2
+                                  usage:
+                                    type: number
+                                    description: Developer access to usage. 0 - Developers cannot view usage, 1 - Developer may view all usage.
+                                    enum:
+                                    - 0
+                                    - 1
+                                  users:
+                                    type: number
+                                    description: Developer access to users.0 - Developers cannot view users, 1 - Developers may view administrators and users in their teams, 2 - Developer may view all users.
+                                    enum:
+                                    - 0
+                                    - 1
+                                    - 2
+                              allow_tooling:
+                                type: boolean
+                                description: Grant access using tooling credentials
+                              disable_analytics:
+                                type: boolean
+                                description: Opt out from third-party support services.
+                              password_policy:
+                                $ref: '#/components/schemas/PasswordPolicy'
+                              redact_personal:
+                                type: boolean
+                                description: Personal information like email addresses will be masked in UI.
+                                default: false
+                          subscriptions:
+                            type: array
+                            default: []
+                            items:
+                              $ref: '#/components/schemas/Subscription'
+                          support_access_code:
+                            type: integer
+                            description: Support Access Code for the org.
+                            minimum: 10000
+                            maximum: 999999
+                          users:
+                            type: array
+                            description: List of users that are members of the organization.
+                            default: []
+                            items:
+                              type: object
+                              required:
+                              - guid
+                              - roles
+                              additionalProperties: false
+                              properties:
+                                guid:
+                                  type: string
+                                  format: uuid
+                                  description: GUID of the user.
+                                idp:
+                                  type: string
+                                  description: GUID of the Identity Provider the user is required to authenticate with to access the organization.
+                                primary:
+                                  type: boolean
+                                  description: Whether the user is the primary contact for the organization.
+                                roles:
+                                  type: array
+                                  description: Roles within the organization.
+                                  items:
+                                    type: string
+                                    enum:
+                                    - administrator
+                                    - developer
+                                    - auditor
+                                    - consumer
+                                    - usage_reporter
+                                    - api_central_admin
+                      properties:
+                        counts:
+                          type: object
+                          description: Counts of objects associated to the org.
+                          properties:
+                            users:
+                              type: integer
+                              description: Number of users in the organization
+                            subscriptions:
+                              type: integer
+                              description: Number of subscriptions for the organization
+                            active_subscriptions:
+                              type: integer
+                              description: Number of active subscriptions for the organization
+              examples:
+                OrgFindone200Example:
+                  summary: Default org_findOne 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerService: []
+      - AuthToken: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - name: exclude_fields
+        in: query
+        description: A list of fields to exclude from the response.
+        schema:
+          type: array
+          items:
+            type: string
+          default: onboarding
+        example:
+        - example_value
+      - $ref: '#/components/parameters/add_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization'
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: onboarding
+        required: false
+        deprecated: true
+        schema:
+          type: boolean
+          description: Opt-in to include the consumer org's onboarding data, if defined. Requires `administrator` access to the marketplace or the consumer org. Deprecated; will be removed in a future release. Use query parameter `add_fields[]=onboarding`.
+          x-deprecated: This parameter has been deprecated and will be removed in a future release.
+          default: false
+        x-deprecated: This parameter has been deprecated and will be removed in a future release.
+        example: true
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      summary: Axway Delete Organization
+      description: "Deletes an organization and its related data from the platform and all third parties. This is a destructive and irreversible delete.\n\n___Auth Requirement___\n - _One of_\n     - Staff access.\n     - Auth token.\n     - _All of_\n         - Multi-factor authentication code (remove-org).\n         - `primary` access to the organization.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - org
+      operationId: org_remove
+      x-publishes:
+      - platform.org.delete
+      - marketplace.consumer.remove
+      - marketplace.remove
+      - event: api_central.deprovision
+        text: Sent if partner has been provisioned for the org.
+      - platform.user.remove
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      properties:
+                        message:
+                          type: string
+                        org_id:
+                          type: integer
+              examples:
+                OrgRemove200Example:
+                  summary: Default org_remove 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                ORG_DELETE_OTHER_USERS:
+                  value:
+                    success: false
+                    description: Your organization has other members that cannot be automatically deleted. In order to delete this organization all other members must be removed or belong to another organization.
+                    code: 400
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                AUTH_CODE_INVALID:
+                  value:
+                    success: false
+                    description: Invalid authorization code.
+                    code: 400
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - SessionCookie: []
+      - BearerUser: []
+      - AuthToken: []
+      - MFA: []
+      - BearerClient: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: The org_id of the org
+        example: 507f1f77bcf86cd799439011
+      - in: query
+        name: suppressEmail
+        required: false
+        schema:
+          type: boolean
+          description: Whether email notifications to the users of the organization should be suppressed.
+        example: true
+      - in: header
+        name: x-auth-token
+        required: false
+        schema:
+          type: string
+          description: Token to authorize the request.
+        example: eyJhbGciOiJIUzI1NiJ9.example
+      - in: header
+        name: x-auth-code
+        required: false
+        schema:
+          type: string
+          description: MFA code to authorize the request.
+        example: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      summary: Axway Update Organization
+      description: "Updates an organization.\n\n___Auth Requirement___\n - _One of_\n     - `administrator` access to the organization.\n     - Service account access token for an internal client with `platform-org-manage` access.\n\n\n_Allows consumer organization access_\n"
+      tags:
+      - org
+      operationId: org_update
+      x-publishes:
+      - platform.org.update
+      - event: platform.org.active
+        text: Sent if the active status of the org is changed.
+      - event: platform.org.inactive
+        text: Sent if the active status of the org is changed.
+      - event: platform.org.user.primary
+        text: Sent if the primary contact is modified.
+      - event: platform.org.security.update
+        text: Sent if the security settings are modified.
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - properties:
+                    result:
+                      type: object
+                      required:
+                      - active
+                      - guid
+                      - name
+                      - org_id
+                      - region
+                      - subscriptions
+                      - users
+                      unevaluatedProperties: false
+                      allOf:
+                      - $ref: '#/components/schemas/DefaultFields'
+                      properties:
+                        _id:
+                          type: string
+                          description: The id of the organization.
+                          readOnly: true
+                          deprecated: true
+                        account_id:
+                          type: integer
+                          description: Account ID of the organization.
+                          minimum: 10000
+                          maximum: 999999
+                        active:
+                          type: boolean
+                          description: Active state of the organization. Organizations become inactive after passing their end date.
+                          default: true
+                        analytics:
+                          type: object
+                          description: Analytics details for the organization
+                          additionalProperties: false
+                          properties:
+                            token:
+                              type: string
+                              description: Token used to identify the organization.
+                        api_central:
+                          type: object
+                          description: Engage provision status
+                          readOnly: true
+                        branding:
+                          type: object
+                          description: Organization branding.
+                          additionalProperties: false
+                          properties:
+                            logo:
+                              type: string
+                              description: Logo image of the company.
+                        consumer_id:
+                          type: string
+                          description: Mapped ID of the consumer org from the configured Identity Provider.
+                        created_by:
+                          type: object
+                          description: Details of the user that created the organization.
+                          unevaluatedProperties: false
+                          properties:
+                            client_id:
+                              type: string
+                              description: The client_id of the client that created the organization.
+                              readOnly: true
+                            email:
+                              type: string
+                              format: email
+                              description: Email address of the user that created the organization.
+                              readOnly: true
+                            name:
+                              type: string
+                              description: The name of the user or client that created the organization.
+                              readOnly: true
+                        entitlements:
+                          type: object
+                          readOnly: true
+                          allOf:
+                          - $ref: '#/components/schemas/Entitlements'
+                        guid:
+                          type: string
+                          format: uuid
+                          description: GUID identifier for the organization
+                        help_menu:
+                          type: object
+                          description: Contents of the help menu displayed in the navigation bar.
+                          default:
+                            enabled: false
+                          additionalProperties: false
+                          properties:
+                            enabled:
+                              type: boolean
+                              description: Whether the custom help menu is enabled.
+                              default: false
+                            defaults:
+                              type: boolean
+                              description: Whether to include the default items.
+                            icon:
+                              type: string
+                              description: Icon displayed in the navigation bar to show the help menu.
+                            items:
+                              type: array
+                              description: Custom help menu shown in the navigation bar.
+                              items:
+                                type: object
+                                required:
+                                - text
+                                - type
+                                - url
+                                unevaluatedProperties: false
+                                discriminator:
+                                  propertyName: type
+                                  mapping:
+                                    url: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/0'
+                                    document: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/1'
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                      - url
+                                    url:
+                                      type: string
+                                      format: url
+                                      description: URL for the link.
+                                - type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                      - document
+                                    url:
+                                      type: string
+                                      description: Document resource guid
+                                properties:
+                                  icon:
+                                    type: string
+                                    description: Icon displayed in the menu for the item.
+                                  new_tab:
+                                    type: boolean
+                                    description: Whether the link opens in a new tab.
+                                  provider_guid:
+                                    type: string
+                                    description: The GUID of the provider a document url is for
+                                  text:
+                                    type: string
+                                    description: Label for the link.
+                                    x-no-tags: true
+                                  type:
+                                    type: string
+                                    description: Type of the link.
+                                    enum:
+                                    - document
+                                    - url
+                                  url:
+                                    type: string
+                                    description: URL, relative path, or document resource guid for the link.
+                        last_login:
+                          type: string
+                          format: date-time
+                          description: When the most recent session was created in the organization.
+                          readOnly: true
+                        logged_in_count:
+                          type: number
+                          description: How many session are been created in the organization.
+                          readOnly: true
+                        name:
+                          type: string
+                          description: Name of the organization.
+                          minLength: 2
+                          maxLength: 64
+                          x-no-tags: true
+                        onboarding_required:
+                          type: array
+                          readOnly: true
+                          items:
+                            type: string
+                            pattern: '[\w-]{21}'
+                        org_id:
+                          type: integer
+                          description: Identifier for the organization
+                        origin:
+                          type:
+                          - string
+                          - 'null'
+                          description: Source from which the organization creation originated.
+                          enum:
+                          - '360'
+                          - sfdc
+                          - signup
+                        pending:
+                          type: boolean
+                          description: Whether the organization is pending approval for a provider organization administator.
+                        provider_guid:
+                          type: string
+                          format: uuid
+                          description: GUID identifier of the owning provider if the organization is a consumer of a marketplace.
+                        region:
+                          type: string
+                          description: The data residency region of the organization.
+                          default: US
+                          enum:
+                          - US
+                          - EU
+                          - AP
+                        security:
+                          type: object
+                          description: Security settings for the organization.
+                          additionalProperties: false
+                          properties:
+                            access_controls:
+                              type: object
+                              description: Developer visibility controls.
+                              additionalProperties: false
+                              properties:
+                                enviroments:
+                                  type: number
+                                  description: Developer access to environments. 0 - Developers cannot view environments, 1 - Developer may view all environemnts.
+                                  enum:
+                                  - 0
+                                  - 1
+                                service_accounts:
+                                  type: number
+                                  description: Developer access to service accounts. 0 - Developers cannot view service accounts, 1 - Developers may view service accounts in their teams, 2 - Developer may view all service accounts.
+                                  enum:
+                                  - 0
+                                  - 1
+                                  - 2
+                                usage:
+                                  type: number
+                                  description: Developer access to usage. 0 - Developers cannot view usage, 1 - Developer may view all usage.
+                                  enum:
+                                  - 0
+                                  - 1
+                                users:
+                                  type: number
+                                  description: Developer access to users.0 - Developers cannot view users, 1 - Developers may view administrators and users in their teams, 2 - Developer may view all users.
+                                  enum:
+                                  - 0
+                                  - 1
+                                  - 2
+                            allow_tooling:
+                              type: boolean
+                              description: Grant access using tooling credentials
+                            disable_analytics:
+                              type: boolean
+                              description: Opt out from third-party support services.
+                            password_policy:
+                              $ref: '#/components/schemas/PasswordPolicy'
+                            redact_personal:
+                              type: boolean
+                              description: Personal information like email addresses will be masked in UI.
+                              default: false
+                        subscriptions:
+                          type: array
+                          default: []
+                          items:
+                            $ref: '#/components/schemas/Subscription'
+                        support_access_code:
+                          type: integer
+                          description: Support Access Code for the org.
+                          minimum: 10000
+                          maximum: 999999
+                        users:
+                          type: array
+                          description: List of users that are members of the organization.
+                          default: []
+                          items:
+                            type: object
+                            required:
+                            - guid
+                            - roles
+                            additionalProperties: false
+                            properties:
+                              guid:
+                                type: string
+                                format: uuid
+                                description: GUID of the user.
+                              idp:
+                                type: string
+                                description: GUID of the Identity Provider the user is required to authenticate with to access the organization.
+                              primary:
+                                type: boolean
+                                description: Whether the user is the primary contact for the organization.
+                              roles:
+                                type: array
+                                description: Roles within the organization.
+                                items:
+                                  type: string
+                                  enum:
+                                  - administrator
+                                  - developer
+                                  - auditor
+                                  - consumer
+                                  - usage_reporter
+                                  - api_central_admin
+              examples:
+                OrgUpdate200Example:
+                  summary: Default org_update 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                EXISTING_ORG_NAME:
+                  value:
+                    success: false
+                    description: Organization names must be unique. Please enter a different organization name.
+                    code: 400
+                LINK_NOT_FOUND:
+                  value:
+                    success: false
+                    description: '"help_menu.{idx}.url" contained an invalid value: Resource not found.'
+                    code: 400
+                    internalCode: 747
+                DOCUMENT_URL:
+                  value:
+                    success: false
+                    description: '"help_menu.{idx}.url" contained an invalid value: Document must be a URL.'
+                    code: 400
+                    internalCode: 747
+                FORBIDDEN:
+                  value:
+                    $ref: '#/components/examples/FORBIDDEN/value'
+                NOT_FOUND:
+                  value:
+                    $ref: '#/components/examples/NOT_FOUND/value'
+                IDP_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/IDP_REQUIRED/value'
+                USER_NOT_ADMIN:
+                  value:
+                    $ref: '#/components/examples/USER_NOT_ADMIN/value'
+                LOGIN_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/LOGIN_REQUIRED/value'
+                PARAM_INVALID:
+                  value:
+                    $ref: '#/components/examples/PARAM_INVALID/value'
+                PARAM_REQUIRED:
+                  value:
+                    $ref: '#/components/examples/PARAM_REQUIRED/value'
+      security:
+      - BearerClient: []
+      - SessionCookie: []
+      - BearerUser: []
+      - BearerService: []
+      parameters:
+      - $ref: '#/components/parameters/fields'
+        example: example_value
+      - $ref: '#/components/parameters/exclude_fields'
+        example: example_value
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+          description: '`guid` or `org_id` of the organization to update'
+        example: 507f1f77bcf86cd799439011
+      - in: header
+        name: authorization
+        required: false
+        schema:
+          type: string
+          description: Bearer token in JWT format to authorize the request.
+        example: example_value
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                account_id:
+                  $ref: '#/components/schemas/Org/properties/account_id'
+                active:
+                  description: Whether the org is active; can only be set by staff.
+                  allOf:
+                  - $ref: '#/components/schemas/Org/properties/active'
+                help_menu:
+                  description: Contents of the help menu displayed in the navigation bar.
+                  allOf:
+                  - $ref: '#/components/schemas/Org/properties/help_menu'
+                logo:
+                  type: string
+                  description: Uploaded logo file; accepts PNG, GIF, or JPG formats only.
+                  format: binary
+                name:
+                  $ref: '#/components/schemas/Org/properties/name'
+                region:
+                  $ref: '#/components/schemas/Org/properties/region'
+                security:
+                  $ref: '#/components/schemas/Org/properties/security'
+                support_access_code:
+                  $ref: '#/components/schemas/Org/properties/support_access_code'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    add_fields:
+      name: add_fields
+      in: query
+      description: A list of fields to add to the default field set in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  schemas:
+    Org:
+      properties:
+        account_id:
+          type: integer
+          description: Account ID of the organization.
+          minimum: 10000
+          maximum: 999999
+          example: 1
+        help_menu:
+          type: object
+          description: Contents of the help menu displayed in the navigation bar.
+          default:
+            enabled: false
+          additionalProperties: false
+          properties:
+            enabled:
+              type: boolean
+              description: Whether the custom help menu is enabled.
+              default: false
+            defaults:
+              type: boolean
+              description: Whether to include the default items.
+            icon:
+              type: string
+              description: Icon displayed in the navigation bar to show the help menu.
+            items:
+              type: array
+              description: Custom help menu shown in the navigation bar.
+              items:
+                type: object
+                required:
+                - text
+                - type
+                - url
+                unevaluatedProperties: false
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    url: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/0'
+                    document: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/1'
+                oneOf:
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - url
+                    url:
+                      type: string
+                      format: url
+                      description: URL for the link.
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - document
+                    url:
+                      type: string
+                      description: Document resource guid
+                properties:
+                  icon:
+                    type: string
+                    description: Icon displayed in the menu for the item.
+                  new_tab:
+                    type: boolean
+                    description: Whether the link opens in a new tab.
+                  provider_guid:
+                    type: string
+                    description: The GUID of the provider a document url is for
+                  text:
+                    type: string
+                    description: Label for the link.
+                    x-no-tags: true
+                  type:
+                    type: string
+                    description: Type of the link.
+                    enum:
+                    - document
+                    - url
+                  url:
+                    type: string
+                    description: URL, relative path, or document resource guid for the link.
+          example:
+            enabled: true
+            defaults: true
+            icon: example_value
+            items:
+            - icon: example_value
+              new_tab: true
+              provider_guid: example_value
+              text: example_value
+              type: document
+              url: https://example.com
+        support_access_code:
+          type: integer
+          description: Support Access Code for the org.
+          minimum: 10000
+          maximum: 999999
+          example: 1
+        name:
+          type: string
+          description: Name of the organization.
+          minLength: 2
+          maxLength: 64
+          x-no-tags: true
+          example: Example Name
+        security:
+          type: object
+          description: Security settings for the organization.
+          additionalProperties: false
+          properties:
+            access_controls:
+              type: object
+              description: Developer visibility controls.
+              additionalProperties: false
+              properties:
+                enviroments:
+                  type: number
+                  description: Developer access to environments. 0 - Developers cannot view environments, 1 - Developer may view all environemnts.
+                  enum:
+                  - 0
+                  - 1
+                service_accounts:
+                  type: number
+                  description: Developer access to service accounts. 0 - Developers cannot view service accounts, 1 - Developers may view service accounts in their teams, 2 - Developer may view all service accounts.
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                usage:
+                  type: number
+                  description: Developer access to usage. 0 - Developers cannot view usage, 1 - Developer may view all usage.
+                  enum:
+                  - 0
+                  - 1
+                users:
+                  type: number
+                  description: Developer access to users.0 - Developers cannot view users, 1 - Developers may view administrators and users in their teams, 2 - Developer may view all users.
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+            allow_tooling:
+              type: boolean
+              description: Grant access using tooling credentials
+            disable_analytics:
+              type: boolean
+              description: Opt out from third-party support services.
+            password_policy:
+              $ref: '#/components/schemas/PasswordPolicy'
+            redact_personal:
+              type: boolean
+              description: Personal information like email addresses will be masked in UI.
+              default: false
+          example:
+            access_controls:
+              enviroments: 0
+              service_accounts: 0
+              usage: 0
+              users: 0
+            allow_tooling: true
+            disable_analytics: true
+            password_policy:
+              length: 1
+              max_length: 1
+              lower: 1
+              upper: 1
+              special: 1
+              digit: 1
+              lockout: 1
+              renewal: 1
+              history: 1
+            redact_personal: true
+        region:
+          type: string
+          description: The data residency region of the organization.
+          default: US
+          enum:
+          - US
+          - EU
+          - AP
+          example: US
+        active:
+          type: boolean
+          description: Active state of the organization. Organizations become inactive after passing their end date.
+          default: true
+          example: true
+        users:
+          items:
+            properties:
+              idp:
+                type: string
+                description: GUID of the Identity Provider the user is required to authenticate with to access the organization.
+              roles:
+                type: array
+                description: Roles within the organization.
+                items:
+                  type: string
+                  enum:
+                  - administrator
+                  - developer
+                  - auditor
+                  - consumer
+                  - usage_reporter
+                  - api_central_admin
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Entitlements:
+      type: object
+      description: Subscription entitlements
+      properties:
+        id:
+          type: string
+          title: ID
+          description: An identifier for the plan
+          example: 507f1f77bcf86cd799439011
+        name:
+          type: string
+          title: Name
+          description: A name for the plan
+          example: Example Name
+        ACT.Instances:
+          type: integer
+          title: Instances
+          description: Total allowed Instances.
+          example: 1
+        AgentSDK.Transactions:
+          type: integer
+          title: Third-party Gateway Traceability Agent Transactions
+          description: Third-party Gateway Traceability Agent Transactions per month. These are transactions instrumented using Agent SDK for vendors other than AWS, Azure, and Istio.
+          example: 1
+        provision_envs:
+          type: array
+          title: Provisioned Environments
+          x-immutable: true
+          x-deprecated: true
+          items:
+            type: string
+            enum:
+            - sandbox
+            - production
+          description: Environments to provision in Integration Builder.
+          example:
+          - sandbox
+        transactions:
+          type: integer
+          title: Integration Builder Transactions
+          x-deprecated: true
+          description: Integration Builder Transactions per month.
+          example: 1
+        AI.Transactions:
+          type: integer
+          title: AI Transactions
+          description: AI Transactions per month.
+          example: 1
+        AISuite.Cores:
+          type: integer
+          title: AI Suite Cores
+          description: Total allowed AI Suite Cores.
+          example: 1
+        AISuite.InputEvents:
+          type: integer
+          title: AI Suite Incoming Records
+          description: AI Suite Incoming Records per month.
+          example: 1
+        AISuite.Instances:
+          type: integer
+          title: AI Suite Rule Engine Instances
+          description: Total allowed AI Suite Rule Engine Instances.
+          example: 1
+        AISuite.Users:
+          type: integer
+          title: AI Suite Named Users
+          description: Total allowed AI Suite Named Users.
+          example: 1
+        AMPG.Transactions:
+          type: integer
+          title: Amplify Gateway Transactions
+          description: Amplify Gateway Transactions per month.
+          example: 1
+        AMPG.Volume:
+          type: number
+          title: Amplify Gateway Volume
+          description: Amplify Gateway transferred volume per month in GB.
+          example: 1.0
+        AMPI.Transactions:
+          type: integer
+          title: Integration Transactions
+          description: Integration Transactions per month.
+          example: 1
+        AMPI.Volume:
+          type: number
+          title: Data Volume
+          description: ' transferred volume per month in GB.'
+          example: 1.0
+        AOB.Transactions:
+          type: integer
+          title: Open Banking API Transactions
+          description: Open Banking API Transactions per month.
+          example: 1
+        API.Transactions:
+          type: integer
+          title: API Transactions
+          description: API Transactions per month.
+          example: 1
+        APIB.Transactions:
+          type: integer
+          title: API Builder Transactions
+          x-deprecated: true
+          description: API Builder Transactions per month.
+          example: 1
+        APIM.DRCores:
+          type: integer
+          title: DR Cores
+          description: Total allowed DR Cores.
+          example: 1
+        APIM.NonProdCores:
+          type: integer
+          title: Non-production Cores
+          description: Total allowed Non-production Cores.
+          example: 1
+        APIM.ProdCores:
+          type: integer
+          title: Production Cores
+          description: Total allowed Production Cores.
+          example: 1
+        APIM.Transactions:
+          type: integer
+          title: API Gateway Transactions
+          description: API Gateway Transactions per month.
+          example: 1
+        APIM.Volume:
+          type: number
+          title: API Gateway Outbound Volume
+          description: API Gateway transferred volume per month in GB.
+          example: 1.0
+        APIMG.Transactions:
+          type: integer
+          title: Amplify Istio Traceability Agent Transactions
+          description: Amplify Istio Traceability Agent Transactions per month.
+          example: 1
+        APIP.DRCores:
+          type: integer
+          title: DR Cores
+          description: Total allowed DR Cores.
+          example: 1
+        APIP.NonProdCores:
+          type: integer
+          title: Non-production Cores
+          description: Total allowed Non-production Cores.
+          example: 1
+        APIP.ProdCores:
+          type: integer
+          title: Production Cores
+          description: Total allowed Production Cores.
+          example: 1
+        Automator.CockpitEssential:
+          type: integer
+          title: Automator Cockpit Essential
+          description: Automator Cockpit Essential.
+          example: 1
+        Automator.CockpitPlus:
+          type: integer
+          title: Automator Cockpit Plus
+          description: Automator Cockpit Plus.
+          example: 1
+        Automator.Points:
+          type: integer
+          title: Automator Points
+          description: Automator Points.
+          example: 1
+        AWS.Transactions:
+          type: integer
+          title: AWS API Gateway Traceability Agent Transactions
+          description: AWS API Gateway Traceability Agent Transactions per month.
+          example: 1
+        Azure.Transactions:
+          type: integer
+          title: Azure API Gateway Traceability Agent Transactions
+          description: Azure API Gateway Traceability Agent Transactions per month.
+          example: 1
+        B2Bi.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed DR cores.
+          example: 1
+        B2Bi.Messages:
+          type: integer
+          title: B2Bi Messages
+          description: B2Bi Messages per month.
+          example: 1
+        B2Bi.Partners:
+          type: integer
+          title: B2Bi Partners
+          description: B2Bi Partners per month.
+          example: 1
+        B2Bi.Volume:
+          type: number
+          title: B2Bi Volume
+          description: B2Bi transferred volume per month in GB.
+          example: 1.0
+        B2Bi.WTPartners:
+          type: integer
+          title: Webtrader Partners
+          description: Total allowed Webtrader Partners.
+          example: 1
+        BN.Volume:
+          type: integer
+          title: Axway Business Network Volume
+          description: Axway Business Network Volume per month in KiloCharacters.
+          example: 1
+        CFT.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed Cores.
+          example: 1
+        CFT.MSUs:
+          type: integer
+          title: MSUs
+          description: Total allowed MSUs.
+          example: 1
+        CFT.Sessions:
+          type: integer
+          title: Sessions
+          description: Total allowed Sessions.
+          example: 1
+        CFT.Transfers:
+          type: integer
+          title: CFT File Transfers
+          description: CFT File Transfers per month.
+          example: 1
+        CSOS.CentralSigning:
+          type: boolean
+          title: CSOS Signing Instance
+          description: Allow access to CSOS Signing Instance feature.
+          example: true
+        CSOS.Monitoring:
+          type: boolean
+          title: CSOS Monitoring
+          description: Allow access to CSOS Monitoring feature.
+          example: true
+        CSOS.Orders:
+          type: integer
+          title: CSOS Orders
+          description: CSOS Orders per month.
+          example: 1
+        CSOS.Partners:
+          type: integer
+          title: CSOS Partners
+          description: Total allowed CSOS Partners.
+          example: 1
+        CSOS.Transformation:
+          type: boolean
+          title: CSOS Transformation
+          description: Allow access to CSOS Transformation feature.
+          example: true
+        CSOS.Validation:
+          type: boolean
+          title: CSOS Validation Instance
+          description: Allow access to CSOS Validation Instance feature.
+          example: true
+        DI.Dashboards:
+          type: integer
+          title: Axway Decision Insights Dashboards
+          description: Total allowed Axway Decision Insights Dashboards.
+          example: 1
+        DI.Users:
+          type: integer
+          title: Axway Decision Insights Named Users
+          description: Total allowed Axway Decision Insights Named Users.
+          example: 1
+        DS.Cores:
+          type: integer
+          title: Datastore Cores
+          description: Total allowed Datastore Cores.
+          example: 1
+        DS.Users:
+          type: integer
+          title: Datastore Client Users
+          description: Total allowed Datastore Client Users.
+          example: 1
+        DV.EnterpriseInstances:
+          type: integer
+          title: Desktop Validator Enterprise Instances
+          description: Total allowed Desktop Validator Enterprise Instances.
+          example: 1
+        DV.StandardInstances:
+          type: integer
+          title: Desktop Validator Standard Instances
+          description: Total allowed Desktop Validator Standard Instances.
+          example: 1
+        EBICSC.Channels:
+          type: integer
+          title: EBICS Client Channels
+          description: Total allowed EBICS Client Channels.
+          example: 1
+        EBICSCORP.Banks:
+          type: integer
+          title: Bank Connections Allowed
+          description: Total allowed EBICS Corporate bank connections.
+          example: 1
+        EBICSCORP.Treasurers:
+          type: integer
+          title: Treasurer Connections Allowed
+          description: Total allowed EBICS Corporate treasurer connections.
+          example: 1
+        EBICSG.Customers:
+          type: integer
+          title: EBICS Client Customers
+          description: Total allowed EBICS Client Customers.
+          example: 1
+        EBICSG.FileTransfers:
+          type: integer
+          title: EBICS Gateway File Transfers
+          description: EBICS Gateway File Transfers per month.
+          example: 1
+        EBICSG.Messages:
+          type: integer
+          title: EBICS Gateway Instant Payment Messages
+          description: EBICS Gateway Instant Payment Messages per month.
+          example: 1
+        EBICSG.Subscriptions:
+          type: integer
+          title: EBICS Gateway Subscriptions
+          description: Total allowed EBICS Gateway Subscriptions.
+          example: 1
+        EI.Archives:
+          type: integer
+          title: eInvoicing Archiving Transactions
+          description: eInvoicing Archiving Transactions per month.
+          example: 1
+        EI.Invoices:
+          type: integer
+          title: eInvoicing Transactions
+          description: eInvoicing Transactions per month.
+          example: 1
+        EI.OCRTransactions:
+          type: integer
+          title: OCR eInvoicing Transactions
+          description: OCR eInvoicing Transactions per month.
+          example: 1
+        EI.PeppolTransactions:
+          type: integer
+          title: PEPPOL Invoicing Transactions
+          description: PEPPOL Invoicing Transactions per month.
+          example: 1
+        EI.Transformations:
+          type: integer
+          title: eInvoicing Transformation Transactions
+          description: eInvoicing Transformation Transactions per month.
+          example: 1
+        EN.Environments:
+          type: integer
+          title: Connected Environments
+          description: Total allowed Connected Environments.
+          example: 1
+        EN.EnvironmentsNonProd:
+          type: integer
+          title: Connected Environments (Non-production)
+          description: Total allowed Connected Environments (Non-production).
+          example: 1
+        EN.Services:
+          type: integer
+          title: API Services
+          description: Total allowed API Services.
+          example: 1
+        ESUB.ClientLicense:
+          type: integer
+          title: eSubmissions Client Licenses
+          description: Total allowed eSubmissions Client Licenses.
+          example: 1
+        ESUB.CommunityLicense:
+          type: integer
+          title: eSubmissions Community Licenses
+          description: Total allowed eSubmissions Community Licenses.
+          example: 1
+        ESUB.Messages:
+          type: integer
+          title: eSubmissions Messages
+          description: eSubmissions Messages per month.
+          example: 1
+        ESUB.Partners:
+          type: integer
+          title: eSubmissions (Non-Regulatory) Trading Partners
+          description: eSubmissions (Non-Regulatory) Trading Partners per month.
+          example: 1
+        ESUB.Regulatory:
+          type: integer
+          title: eSubmissions Regulatory Trading Partners
+          description: eSubmissions Regulatory Trading Partners per month.
+          example: 1
+        ESUB.T1:
+          type: integer
+          title: eSubmissions Client Tier 1
+          description: Total allowed eSubmissions Client Tier 1.
+          example: 1
+        ESUB.T2:
+          type: integer
+          title: eSubmissions Client Tier 2
+          description: Total allowed eSubmissions Client Tier 2.
+          example: 1
+        ESUB.T3:
+          type: integer
+          title: eSubmissions Client Tier 3
+          description: Total allowed eSubmissions Client Tier 3.
+          example: 1
+        ESUB.Volume:
+          type: number
+          title: eSubmissions Volume
+          description: eSubmissions transferred volume per month in GB.
+          example: 1.0
+        FAH.ApplicationConnectors:
+          type: integer
+          title: Financial Accounting Hub ApplicationConnectors
+          description: Total allowed Financial Accounting Hub ApplicationConnectors.
+          example: 1
+        FAH.Records:
+          type: integer
+          title: Financial Accounting Hub Records
+          description: Financial Accounting Hub Records per month.
+          example: 1
+        FAH.Users:
+          type: integer
+          title: Financial Accounting Hub Named Users
+          description: Total allowed Financial Accounting Hub Named Users.
+          example: 1
+        flows:
+          type: integer
+          title: Flow Manager Unit Flows
+          description: Flow Manager Unit Flows per month.
+          example: 1
+        FU.MultiPatternTransactions:
+          type: integer
+          title: Multi-Pattern Transactions
+          description: Multi-Pattern Transactions per month.
+          example: 1
+        HBS.Messages:
+          type: integer
+          title: Shared Usage Metric
+          description: Hybrid B2B Solution messages per month.
+          example: 1
+        Hub.Assets:
+          type: integer
+          title: Asset Catalog Assets
+          description: Total allowed Asset Catalog Assets.
+          example: 1
+        Hub.Marketplaces:
+          type: integer
+          title: Marketplaces
+          description: Total allowed Marketplaces.
+          example: 1
+        Hub.Subscriptions:
+          type: integer
+          title: Marketplace Subscriptions
+          description: Total allowed Marketplace Subscriptions.
+          example: 1
+        Hub.Transactions:
+          type: integer
+          title: Analytics Transactions
+          description: Analytics Transactions per month.
+          example: 1
+        INTP.Designers:
+          type: integer
+          title: Interplay Designers
+          description: Total allowed Interplay Designers.
+          example: 1
+        INTP.Instances:
+          type: integer
+          title: Interplay Instances
+          description: Total allowed Interplay Instances.
+          example: 1
+        PEPPOL.Transactions:
+          type: integer
+          title: PEPPOL Service Transactions
+          description: PEPPOL Service Transactions per month.
+          example: 1
+        SC.Instances:
+          type: integer
+          title: Secure Client Instances
+          description: Secure Client Instances.
+          example: 1
+        SC.Licenses:
+          type: array
+          title: Secure Client License Activation ID
+          items:
+            type: string
+          description: License Activation ID for Secure Client instances.
+          example:
+          - example_value
+        SFC.Banks:
+          type: integer
+          title: Secure Financial Client Banks
+          description: Total allowed Secure Financial Client Banks.
+          example: 1
+        SFC.Partners:
+          type: integer
+          title: Secure Financial Client Connection Partners
+          description: Total allowed Secure Financial Client Connection Partners.
+          example: 1
+        SFC.Treasurers:
+          type: integer
+          title: Secure Financial Client Treasurers
+          description: Total allowed Secure Financial Client Treasurers.
+          example: 1
+        ST.ActiveUsers:
+          type: integer
+          title: Connections
+          description: Total allowed Connections.
+          example: 1
+        ST.Connections:
+          type: integer
+          title: Connections
+          description: Total allowed Connections.
+          example: 1
+        ST.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed Cores.
+          example: 1
+        ST.Instances:
+          type: integer
+          title: Production Instances
+          description: Total allowed Production Instances.
+          example: 1
+        ST.Sessions:
+          type: integer
+          title: Sessions
+          description: Total allowed Sessions.
+          example: 1
+        ST.Transfers:
+          type: integer
+          title: File Transfers
+          description: File Transfers per month.
+          example: 1
+        ST.TransfersIn:
+          type: integer
+          title: Transfers In
+          description: Transfers In per month.
+          example: 1
+        ST.TransfersOut:
+          type: integer
+          title: Transfers Out
+          description: Transfers Out per month.
+          example: 1
+        ST.Volume:
+          type: number
+          title: Incoming Data Volume
+          description: Transferred data volume per month in GB.
+          example: 1.0
+        STL.Applications:
+          type: integer
+          title: Monitored Applications
+          description: Total allowed Monitored Applications.
+          example: 1
+        STL.CPUs:
+          type: integer
+          title: CPUs
+          description: Total allowed CPUs.
+          example: 1
+        STL.Users:
+          type: integer
+          title: Users
+          description: Total allowed Users.
+          example: 1
+        Streams.Events:
+          type: integer
+          title: Streams Events
+          description: Streams Events per month.
+          example: 1
+        Streams.Volume:
+          type: number
+          title: Streams Volume
+          description: Streams transferred volume per month in GB.
+          example: 1.0
+        SV.Users:
+          type: integer
+          title: Server Validator Users
+          description: Total allowed Server Validator Users.
+          example: 1
+        TNT.Compliance:
+          type: array
+          title: Compliance Module
+          items:
+            type: string
+            enum:
+            - EU
+            - SA
+            - UAE
+          example:
+          - EU
+        TNT.Lines:
+          type: integer
+          title: Manufactoring/Distributor Lines
+          description: Total allowed Manufactoring&#x2F;Distributor Lines.
+          example: 1
+        TNT.Packs:
+          type: integer
+          title: Unit Packs
+          description: Total allowed Unit Packs.
+          example: 1
+        TNT.Routing:
+          type: boolean
+          title: DSCSA Routing Service
+          example: true
+        TNT.SerialNumbers:
+          type: integer
+          title: Track & Trace Serial Numbers
+          description: Track &amp; Trace Serial Numbers.
+          example: 1
+        Traceable.Discovery:
+          type: integer
+          title: Traceable API Discovery
+          description: Total allowed Traceable API Discovery.
+          example: 1
+        Traceable.SecurityTesting:
+          type: boolean
+          title: Traceable API Security Testing
+          description: Allow access to Traceable API Security Testing feature.
+          example: true
+        TSIM.Cores:
+          type: integer
+          title: Cores
+          description: Total allowed DR cores.
+          example: 1
+        TSIM.Messages:
+          type: integer
+          title: TSIM Messages
+          description: TSIM Messages per month.
+          example: 1
+        TSIM.Partners:
+          type: integer
+          title: TSIM Partner Relations
+          description: TSIM allowed partners per month.
+          example: 1
+        TSIM.Users:
+          type: integer
+          title: ENGDAT Users
+          description: Total allowed ENGDAT Users.
+          example: 1
+        TSIM.Volume:
+          type: number
+          title: TSIM Volume
+          description: TSIM transferred volume per month in GB.
+          example: 1.0
+        VA.Policies:
+          type: integer
+          title: Policies
+          description: Total allowed Policies.
+          example: 1
+        VA.Repeaters:
+          type: integer
+          title: Repeater Instances
+          description: Total allowed Repeater Instances.
+          example: 1
+        VA.Responsers:
+          type: integer
+          title: Responser Instances
+          description: Total allowed Responser Instances.
+          example: 1
+        VRS.Transactions:
+          type: integer
+          title: Axway VRS Solution Transactions
+          description: Axway VRS Solution Transactions per month.
+          example: 1
+        WebEDI.Users:
+          type: integer
+          title: WebEDI Portal Users
+          description: Total allowed WebEDI Portal Users.
+          example: 1
+        WebEDI.Volume:
+          type: number
+          title: WebEDI Portal Volume
+          description: WebEDI Portal transferred volume per month in GB.
+          example: 1.0
+        APIConnect.Transactions:
+          type: integer
+          title: IBM APIConnect Traceability Agent Transactions
+          description: IBM APIConnect Traceability Agent Transactions per month.
+          example: 1
+        Apigee.Transactions:
+          type: integer
+          title: Apigee Traceability Agent Transactions
+          description: Apigee Traceability Agent Transactions per month.
+          example: 1
+        APIMAgent.Transactions:
+          type: integer
+          title: Axway Gateway Traceability Agent Transactions
+          description: Axway Gateway Traceability Agent Transactions per month.
+          example: 1
+        Kafka.Transactions:
+          type: integer
+          title: Kafka Traceability Agent Transactions
+          description: Kafka Traceability Agent Transactions per month.
+          example: 1
+        SAPAPIPortal.Transactions:
+          type: integer
+          title: SAP API Portal Traceability Agent Transactions
+          description: SAP API Portal Traceability Agent Transactions per month.
+          example: 1
+        Sensedia.Transactions:
+          type: integer
+          title: Sensedia Agent Transactions
+          description: Sensedia Agent Transactions per month.
+          example: 1
+        Tokens:
+          type: integer
+          title: Tokens
+          description: Amplify API Management Platform offering tokens per month.
+          example: 1
+        Volume:
+          type: integer
+          title: Volume
+          description: Amplify API Management Platform offering transaction volume per month.
+          example: 1
+        WebMethods.Transactions:
+          type: integer
+          title: Software AG webMethods Agent Transactions
+          description: Software AG webMethods Agent Transactions per month.
+          example: 1
+        WSO2.Transactions:
+          type: integer
+          title: WSO2 Traceability Agent Transactions
+          description: WSO2 Traceability Agent Transactions per month.
+          example: 1
+        AIIntegration:
+          type: boolean
+          title: AI Integration
+          description: Allow access to AI Integration feature.
+          example: true
+        APICompliance:
+          type: boolean
+          title: API Compliance
+          description: Allow access to API Compliance feature.
+          example: true
+        APIMocking:
+          type: boolean
+          title: API Mocking
+          description: Allow access to API Mocking feature.
+          example: true
+        catalog:
+          type: boolean
+          title: Unified Catalog Access
+          description: Allow access to Unified Catalog.
+          example: true
+        daysDataRetained:
+          type: integer
+          title: Data Retention
+          description: How long analytics events are kept in days.
+          example: 1
+        FIPS:
+          type: boolean
+          title: FIPS
+          example: true
+        idp:
+          type: boolean
+          title: External Identity Provider
+          description: Allow configuration of an external identity provider for authentication.
+          example: true
+        partners:
+          type: array
+          title: Partners
+          x-immutable:
+          - AEM
+          - AMP
+          - APIM
+          - APIMG
+          - AWS
+          - Azure
+          - Bundle
+          - EN
+          - Hub
+          - Streams
+          - ai
+          - ars
+          - fc
+          - ib
+          items:
+            type: string
+            enum:
+            - aca
+            - analytics
+            - api_central
+          description: Partners the organization has access to.
+          example:
+          - aca
+        public_provider:
+          type: boolean
+          title: Public Marketplace
+          description: Allow public Marketplace features including vanity URL, unauthorized access, consumer org support, homepage content, and paid plans.
+          example: true
+        retention:
+          type: integer
+          title: Analytics Event Retention
+          description: Length of time analytics events are kept in days.
+          example: 1
+        retentionTransactions:
+          type: integer
+          title: Transaction Event Retention
+          description: Length of time transaction events are kept in days.
+          example: 1
+    EnvironmentList:
+      title: EnvironmentList
+      type: array
+      description: A list of Environment objects.
+      items:
+        $ref: '#/components/schemas/Environment'
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    Role:
+      properties:
+        id:
+          type: string
+          description: Identifier of the role.
+          example: 507f1f77bcf86cd799439011
+        name:
+          type: string
+          description: The role's name.
+          minLength: 1
+          maxLength: 40
+          example: Example Name
+    UserTeams:
+      type: array
+      description: List of teams the user belongs to.
+      items:
+        type: object
+        description: Teams a user belongs to.
+        properties:
+          default:
+            $ref: '#/components/schemas/Team/properties/default'
+          guid:
+            $ref: '#/components/schemas/Team/properties/guid'
+          name:
+            $ref: '#/components/schemas/Team/properties/name'
+          roles:
+            type: array
+            description: A list of roles the user has in the team
+            items:
+              type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/Role/properties/id'
+                name:
+                  $ref: '#/components/schemas/Role/properties/name'
+          tags:
+            $ref: '#/components/schemas/Team/properties/tags'
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
+    Team:
+      properties:
+        users:
+          items:
+            properties:
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+        name:
+          type: string
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
+          x-no-tags: true
+          example: Example Name
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+    PasswordPolicy:
+      type: object
+      description: Password policy
+      properties:
+        length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 8
+          example: 1
+        max_length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 128
+          example: 1
+        lower:
+          type: integer
+          minimum: 1
+          example: 1
+        upper:
+          type: integer
+          minimum: 1
+          example: 1
+        special:
+          type: integer
+          minimum: 1
+          example: 1
+        digit:
+          type: integer
+          minimum: 1
+          example: 1
+        lockout:
+          type: integer
+          minimum: 1
+          maximum: 4
+          default: 5
+          example: 1
+        renewal:
+          type: integer
+          minimum: 1
+          example: 1
+        history:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 1
+    Subscription:
+      type: object
+      description: Organization entitlements
+      required:
+      - id
+      - product
+      - plan
+      - entitlements
+      additionalProperties: false
+      properties:
+        end_date:
+          type: string
+          format: date-time
+          description: When the subscription is active to.
+          example: '2026-04-21T00:00:00Z'
+        entitlements:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                description: Entitlement key.
+              value:
+                oneOf:
+                - type: boolean
+                  description: Boolean entitlement, granting access to a feature of capability.
+                - type: integer
+                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
+                  maximum: 9999999999999
+                - type: number
+                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
+                  maximum: 9999999999999
+                - type: array
+                  description: Set entitlement, listing provisioned service or environment availability.
+                  items:
+                    type: string
+                    description: Service or environment key.
+          example:
+          - key: example_value
+            value: example_value
+        governance:
+          type: string
+          description: Governance model for the subscription.
+          enum:
+          - SaaS
+          - Customer Managed
+          - Axway Managed
+          example: SaaS
+        id:
+          type: string
+          description: Identifier for the subscription.
+          example: 507f1f77bcf86cd799439011
+        opportunity_id:
+          type: number
+          description: Opportunity ID associated with the subscription.
+          minimum: 10000
+          maximum: 999999
+          example: 1.0
+        plan:
+          type: string
+          description: Which plan the subscription is for.
+          example: example_value
+        product:
+          type: string
+          description: Name to identify the product, e.g. APIM, B2Bi.
+          example: example_value
+        product_name:
+          type: string
+          description: Official product name.
+          readOnly: true
+          example: Example Name
+        source:
+          type: string
+          description: Source of this subscription.
+          enum:
+          - API
+          - UI
+          - Platform
+          - Billing
+          example: API
+        start_date:
+          type: string
+          format: date-time
+          description: When the subscription is active from.
+          example: '2026-04-21T00:00:00Z'
+        tier:
+          type: string
+          description: Whether the subscription is a trial or paid for.
+          enum:
+          - paid
+          - trial
+          - free
+          example: paid
+    Environment:
+      type: object
+      required:
+      - guid
+      - isProduction
+      - name
+      - org_guid
+      - type
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the environment.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        governance:
+          type: string
+          description: Governance of the environment.
+          enum:
+          - Customer Managed
+          - Axway Managed
+          example: Customer Managed
+        guid:
+          type: string
+          description: GUID of the environment.
+          example: example_value
+        isProduction:
+          type: boolean
+          description: Whether the environment is a production environment.
+          default: false
+          example: true
+        name:
+          type: string
+          description: Name of the environment
+          x-no-tags: true
+          example: Example Name
+        org_guid:
+          type: string
+          description: '`guid` of the organization the environment is associated to.'
+          example: example_value
+        source:
+          type: string
+          example: example_value
+        type:
+          type: string
+          description: Type of environment
+          default: usage
+          enum:
+          - usage
+          - integration
+          example: usage
+        url:
+          type: string
+          format: secure-url
+          description: URL of the integration environment.
+          example: https://example.com
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    ITEM_NOT_FOUND:
+      value:
+        success: false
+        description: '"%s" Not Found'
+        code: 404
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
+  securitySchemes:
+    AuthToken:
+      description: Auth token for internal services
+      type: apiKey
+      in: header
+      name: x-auth-token
+    BearerClient:
+      description: Service account access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerService:
+      description: Service account access token for an internal client
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    BearerUser:
+      description: AxwayID user session access token
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+    MFA:
+      description: Multi-factor authentication code
+      type: apiKey
+      in: header
+      name: x-auth-code
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.axway.com/auth/realms/Broker/protocol/openid-connect/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
+          scopes: {}
+        implicit:
+          authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
+          scopes: {}
+    Password:
+      description: User password
+      type: apiKey
+      in: header
+      name: x-auth-password
+    SessionCookie:
+      description: Platform session cookie
+      type: apiKey
+      in: cookie
+      name: connect.sid
