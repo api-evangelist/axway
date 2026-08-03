@@ -1,0 +1,1806 @@
+{
+  "info": {
+    "_postman_id": "afd4d047-5d24-4fb8-859c-7744ee2f4e47",
+    "name": "Amplify Platform API v1.0.0 aca user API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:55.000Z",
+    "updatedAt": "2026-07-28T01:09:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-afd4d047-5d24-4fb8-859c-7744ee2f4e47"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "pref",
+          "item": [
+            {
+              "name": "Axway Update a Single User Preference",
+              "id": "02a84e6a-297d-4185-ba4a-5e83bcf07604",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pref\": \"<string>\",\n  \"value\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/pref",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "pref"
+                  ]
+                },
+                "description": "This will store a user preference setting on the user record\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "37f8b712-519d-4a9f-b016-48fb8b2a947a",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"pref\": \"<string>\",\n  \"value\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/pref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "pref"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-37f8b712-519d-4a9f-b016-48fb8b2a947a"
+                },
+                {
+                  "id": "2009b3cf-7ec6-41dc-87b0-0287c3b36c3b",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"pref\": \"<string>\",\n  \"value\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/pref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "pref"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-2009b3cf-7ec6-41dc-87b0-0287c3b36c3b"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-02a84e6a-297d-4185-ba4a-5e83bcf07604"
+            }
+          ],
+          "id": "117be40d-09f9-416d-920d-1887d398d374",
+          "createdAt": "2026-07-28T01:09:56.000Z",
+          "updatedAt": "2026-07-28T01:09:56.000Z",
+          "uid": "35240-117be40d-09f9-416d-920d-1887d398d374"
+        },
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "Axway Get Organizations",
+              "id": "66beaecd-ffb6-4c00-9b19-52e7a397241c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/organizations?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&email=<string>&guid=<string>&include_inactive=<boolean>&provider_guid=<string>&roles=administrator",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "organizations"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_inactive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "provider_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "roles",
+                      "value": "administrator"
+                    }
+                  ]
+                },
+                "description": "Returns all the organizations that the signed-in user belongs to.\n\n___Auth Requirement___\n\nStaff, support, or auth token access for a guid or email to be given.\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "8d2385d9-3477-431b-885c-50882db3c3e0",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/organizations?fields=<string>&exclude_fields=<string>&email=<string>&guid=<string>&include_inactive=<boolean>&provider_guid=<string>&roles=administrator",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "organizations"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "guid",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "include_inactive",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "provider_guid",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "roles",
+                          "value": "administrator"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"active\": true,\n      \"created_by\": {\n        \"client_id\": \"<string>\",\n        \"email\": \"<email>\",\n        \"name\": \"<string>\"\n      },\n      \"guid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"org_id\": \"<integer>\",\n      \"support_access_code\": \"<integer>\",\n      \"current_users_role\": \"<string>\",\n      \"current_users_roles\": \"<string>\",\n      \"deletable\": \"<boolean>\",\n      \"multiuser\": \"<boolean>\",\n      \"primary\": \"<boolean>\"\n    },\n    {\n      \"active\": true,\n      \"created_by\": {\n        \"client_id\": \"<string>\",\n        \"email\": \"<email>\",\n        \"name\": \"<string>\"\n      },\n      \"guid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"org_id\": \"<integer>\",\n      \"support_access_code\": \"<integer>\",\n      \"current_users_role\": \"<string>\",\n      \"current_users_roles\": \"<string>\",\n      \"deletable\": \"<boolean>\",\n      \"multiuser\": \"<boolean>\",\n      \"primary\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-8d2385d9-3477-431b-885c-50882db3c3e0"
+                },
+                {
+                  "id": "1b7d1e48-e528-4615-a765-4ab1eab60a40",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/organizations?fields=<string>&exclude_fields=<string>&email=<string>&guid=<string>&include_inactive=<boolean>&provider_guid=<string>&roles=administrator",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "organizations"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "email",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "guid",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "include_inactive",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "provider_guid",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "roles",
+                          "value": "administrator"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-1b7d1e48-e528-4615-a765-4ab1eab60a40"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-66beaecd-ffb6-4c00-9b19-52e7a397241c"
+            }
+          ],
+          "id": "165a599f-e810-4547-a437-4e8b2be5a008",
+          "createdAt": "2026-07-28T01:09:56.000Z",
+          "updatedAt": "2026-07-28T01:09:56.000Z",
+          "uid": "35240-165a599f-e810-4547-a437-4e8b2be5a008"
+        },
+        {
+          "name": "credentials",
+          "item": [
+            {
+              "name": "Axway Set Credentials for Tooling",
+              "id": "41cc70c7-1422-473f-a987-aae67a44cbd2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"force_logout\": \"<boolean>\",\n  \"password\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/credentials",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "credentials"
+                  ]
+                },
+                "description": "Sets the password to be used for tooling access for externally provisioned users.\n\n___Auth Requirement___\n - Signed-in user.\n"
+              },
+              "response": [
+                {
+                  "id": "01f9266d-e538-453d-aa03-c88d5139ffbd",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"force_logout\": \"<boolean>\",\n  \"password\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/credentials",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "credentials"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-01f9266d-e538-453d-aa03-c88d5139ffbd"
+                },
+                {
+                  "id": "bce94812-e1c0-490f-89e4-b7fb4ae377fa",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"force_logout\": \"<boolean>\",\n  \"password\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/credentials",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "credentials"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-bce94812-e1c0-490f-89e4-b7fb4ae377fa"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-41cc70c7-1422-473f-a987-aae67a44cbd2"
+            }
+          ],
+          "id": "6eaa8653-993c-47b4-b17b-bae2bf573e75",
+          "createdAt": "2026-07-28T01:09:56.000Z",
+          "updatedAt": "2026-07-28T01:09:56.000Z",
+          "uid": "35240-6eaa8653-993c-47b4-b17b-bae2bf573e75"
+        },
+        {
+          "name": "profile",
+          "item": [
+            {
+              "name": "{user_id}",
+              "item": [
+                {
+                  "name": "Axway Update User Profile",
+                  "id": "8215c79d-4fdd-41c1-a85a-68ed027a9a60",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "connect.sid",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"active\": false,\n  \"authenticator_enabled\": \"<boolean>\",\n  \"current_password\": \"<string>\",\n  \"default_org\": \"<number>\",\n  \"firstname\": \"\",\n  \"force_logout\": \"<boolean>\",\n  \"lastname\": \"\",\n  \"locale\": \"de-DE\",\n  \"login_org\": \"ask\",\n  \"mfa\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"preferred_mfa\": \"email\",\n  \"timezone\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/profile/:user_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "profile",
+                        ":user_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "24dc1f4f-1292-4220-b06f-ad413f1b6afd",
+                          "key": "user_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "This will update a user's profile\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "2c584091-70a4-4692-88ec-82d79bb9dad8",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "connect.sid",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"active\": false,\n  \"authenticator_enabled\": \"<boolean>\",\n  \"current_password\": \"<string>\",\n  \"default_org\": \"<number>\",\n  \"firstname\": \"\",\n  \"force_logout\": \"<boolean>\",\n  \"lastname\": \"\",\n  \"locale\": \"de-DE\",\n  \"login_org\": \"ask\",\n  \"mfa\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"preferred_mfa\": \"email\",\n  \"timezone\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/profile/:user_id?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "profile",
+                            ":user_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"description\": \"The response data\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:09:56.000Z",
+                      "updatedAt": "2026-07-28T01:09:56.000Z",
+                      "uid": "35240-2c584091-70a4-4692-88ec-82d79bb9dad8"
+                    },
+                    {
+                      "id": "9ec75006-2ba5-4ce5-92e6-2d4d72e0b63e",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "connect.sid",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"active\": false,\n  \"authenticator_enabled\": \"<boolean>\",\n  \"current_password\": \"<string>\",\n  \"default_org\": \"<number>\",\n  \"firstname\": \"\",\n  \"force_logout\": \"<boolean>\",\n  \"lastname\": \"\",\n  \"locale\": \"de-DE\",\n  \"login_org\": \"ask\",\n  \"mfa\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"preferred_mfa\": \"email\",\n  \"timezone\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/profile/:user_id?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "profile",
+                            ":user_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:56.000Z",
+                      "updatedAt": "2026-07-28T01:09:56.000Z",
+                      "uid": "35240-9ec75006-2ba5-4ce5-92e6-2d4d72e0b63e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-8215c79d-4fdd-41c1-a85a-68ed027a9a60"
+                }
+              ],
+              "id": "08503083-a724-4dd6-becc-098461b37171",
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-08503083-a724-4dd6-becc-098461b37171"
+            }
+          ],
+          "id": "c662902b-1257-472d-bd74-a4eca13cdaf5",
+          "createdAt": "2026-07-28T01:09:56.000Z",
+          "updatedAt": "2026-07-28T01:09:56.000Z",
+          "uid": "35240-c662902b-1257-472d-bd74-a4eca13cdaf5"
+        },
+        {
+          "name": "domain",
+          "item": [
+            {
+              "name": "{domain}",
+              "item": [
+                {
+                  "name": "Axway Find Missing Domain Users",
+                  "id": "d2ca2b5f-9cf1-4643-a33c-42e91aa00bad",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/domain/:domain?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "domain",
+                        ":domain"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<number>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "b1d8f989-3bac-48fd-ad93-921e9a9d3561",
+                          "key": "domain",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Find users on a domain owned by the org that are not members of the org.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "41cf0b13-d6a2-4970-9795-3241f98eb70f",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/domain/:domain?fields=<string>&exclude_fields=<string>&org_id=<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "domain",
+                            ":domain"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<number>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "domain"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"\",\n      \"guid\": \"<string>\",\n      \"lastname\": \"\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"\",\n      \"guid\": \"<string>\",\n      \"lastname\": \"\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:09:56.000Z",
+                      "updatedAt": "2026-07-28T01:09:56.000Z",
+                      "uid": "35240-41cf0b13-d6a2-4970-9795-3241f98eb70f"
+                    },
+                    {
+                      "id": "110cef15-7855-4915-9689-ca1b5ee033aa",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/domain/:domain?fields=<string>&exclude_fields=<string>&org_id=<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "domain",
+                            ":domain"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<number>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "domain"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:56.000Z",
+                      "updatedAt": "2026-07-28T01:09:56.000Z",
+                      "uid": "35240-110cef15-7855-4915-9689-ca1b5ee033aa"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-d2ca2b5f-9cf1-4643-a33c-42e91aa00bad"
+                }
+              ],
+              "id": "4ada6c8c-40ca-4855-bdc5-f2d6ce1abcba",
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-4ada6c8c-40ca-4855-bdc5-f2d6ce1abcba"
+            }
+          ],
+          "id": "305f1c96-e511-4869-9a77-462b885ba1e1",
+          "createdAt": "2026-07-28T01:09:56.000Z",
+          "updatedAt": "2026-07-28T01:09:56.000Z",
+          "uid": "35240-305f1c96-e511-4869-9a77-462b885ba1e1"
+        },
+        {
+          "name": "{user_id}",
+          "item": [
+            {
+              "name": "attribute",
+              "item": [
+                {
+                  "name": "Axway Find a Mapped Attribute for a User",
+                  "id": "4c9ca9c0-807c-481e-be08-eaba70fd5494",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:user_id/attribute?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&attr=<string>&idp_id=<string>&org_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":user_id",
+                        "attribute"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "attr",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "idp_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2d5a06c2-8954-4096-af88-445718ece3c9",
+                          "key": "user_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Find the value and other related metadata for a configured Identity Providers mapped attribute.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f2b0d179-f0ef-44bc-affd-e6d19ff811c3",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/:user_id/attribute?fields=<string>&exclude_fields=<string>&attr=<string>&idp_id=<string>&org_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            ":user_id",
+                            "attribute"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "attr",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "idp_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"email\": \"<email>\",\n    \"firstname\": \"\",\n    \"lastname\": \"\",\n    \"value\": \"<string>\",\n    \"last_login\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:09:56.000Z",
+                      "updatedAt": "2026-07-28T01:09:56.000Z",
+                      "uid": "35240-f2b0d179-f0ef-44bc-affd-e6d19ff811c3"
+                    },
+                    {
+                      "id": "07e620e9-73a4-4c3a-8d3e-e9c47d4dfddd",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/:user_id/attribute?fields=<string>&exclude_fields=<string>&attr=<string>&idp_id=<string>&org_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            ":user_id",
+                            "attribute"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "attr",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "idp_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:56.000Z",
+                      "updatedAt": "2026-07-28T01:09:56.000Z",
+                      "uid": "35240-07e620e9-73a4-4c3a-8d3e-e9c47d4dfddd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-4c9ca9c0-807c-481e-be08-eaba70fd5494"
+                }
+              ],
+              "id": "31db576f-f0a2-47c5-b0cf-784af4e176c5",
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-31db576f-f0a2-47c5-b0cf-784af4e176c5"
+            },
+            {
+              "name": "Axway Get a User",
+              "id": "7f49d3aa-5269-410a-9089-69ecc3caacd0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/:user_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&provider_guid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    ":user_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider_guid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "4211a37c-ebb9-4b80-8f7a-c5e4bf2e7aec",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns the user with the given ID\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Service account access token.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "39f53abf-72bd-46fa-9c37-e993485913dd",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:user_id?fields=<string>&exclude_fields=<string>&provider_guid=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":user_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "provider_guid",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"activated\": false,\n    \"active\": false,\n    \"email\": \"<email>\",\n    \"firstname\": \"\",\n    \"guid\": \"<string>\",\n    \"lastname\": \"\",\n    \"user_id\": \"<number>\",\n    \"_id\": \"<string>\",\n    \"authenticator_enabled\": \"<boolean>\",\n    \"created\": \"<dateTime>\",\n    \"date_activated\": \"<dateTime>\",\n    \"default_org\": \"<number>\",\n    \"external\": \"<boolean>\",\n    \"invited\": \"<dateTime>\",\n    \"last_logged_in_org\": \"<number>\",\n    \"last_login\": \"<dateTime>\",\n    \"locale\": \"en-US\",\n    \"logged_in_count\": \"<number>\",\n    \"logged_in_from_cli\": \"<boolean>\",\n    \"logged_in_from_other\": \"<boolean>\",\n    \"logged_in_from_studio\": \"<boolean>\",\n    \"logged_in_from_web\": \"<boolean>\",\n    \"login_org\": \"last_logged\",\n    \"mfa\": \"<boolean>\",\n    \"oauth\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password_updated\": \"<dateTime>\",\n    \"prefs\": {},\n    \"provider_guid\": \"<uuid>\",\n    \"terms_updated\": \"<dateTime>\",\n    \"timezone\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"username\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-39f53abf-72bd-46fa-9c37-e993485913dd"
+                },
+                {
+                  "id": "24c1416a-18d5-4da2-ae92-0e0dec341d5f",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:user_id?fields=<string>&exclude_fields=<string>&provider_guid=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":user_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "provider_guid",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-24c1416a-18d5-4da2-ae92-0e0dec341d5f"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-7f49d3aa-5269-410a-9089-69ecc3caacd0"
+            },
+            {
+              "name": "Axway Remove User",
+              "id": "4248b594-2b0b-4bc5-a359-2bb6ad560f31",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "x-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "x-auth-password",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "x-auth-code",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/:user_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&suppressEmail=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    ":user_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "suppressEmail",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "2fee3778-b333-4fee-bea8-b97c8d7e66c7",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Remove a user and its related data from the platform. This is a destructive and irreversible action.\n\n___Auth Requirement___\n - _One of_\n     - Staff access.\n     - Auth token.\n     - _All of_\n         - `guid` of the signed-in user.\n         - User password.\n         - Multi-factor authentication code (remove-account).\n     - Administrator access to an organization with an IdP enabled for the user's email domain.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "066d5672-53a5-4282-b1f1-4fb233290720",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "x-auth-password",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "x-auth-code",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:user_id?fields=<string>&exclude_fields=<string>&suppressEmail=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":user_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "suppressEmail",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"description\": \"The response data\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-066d5672-53a5-4282-b1f1-4fb233290720"
+                },
+                {
+                  "id": "5457c8e4-12ee-4dfc-a21e-3825cdf85011",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "x-auth-password",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "x-auth-code",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:user_id?fields=<string>&exclude_fields=<string>&suppressEmail=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":user_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "suppressEmail",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:56.000Z",
+                  "updatedAt": "2026-07-28T01:09:56.000Z",
+                  "uid": "35240-5457c8e4-12ee-4dfc-a21e-3825cdf85011"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:56.000Z",
+              "updatedAt": "2026-07-28T01:09:56.000Z",
+              "uid": "35240-4248b594-2b0b-4bc5-a359-2bb6ad560f31"
+            }
+          ],
+          "id": "f817c3bb-2315-47c1-a22d-3009a730155a",
+          "createdAt": "2026-07-28T01:09:56.000Z",
+          "updatedAt": "2026-07-28T01:09:56.000Z",
+          "uid": "35240-f817c3bb-2315-47c1-a22d-3009a730155a"
+        }
+      ],
+      "id": "58f90021-db9b-4b02-8ab8-91582fc9e0e5",
+      "createdAt": "2026-07-28T01:09:56.000Z",
+      "updatedAt": "2026-07-28T01:09:56.000Z",
+      "uid": "35240-58f90021-db9b-4b02-8ab8-91582fc9e0e5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

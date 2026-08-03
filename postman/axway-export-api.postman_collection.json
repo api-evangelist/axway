@@ -1,0 +1,806 @@
+{
+  "info": {
+    "_postman_id": "03dad69d-e6ac-43c5-be85-f825b85232e2",
+    "name": "Amplify Platform API v1.0.0 aca export API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:17.000Z",
+    "updatedAt": "2026-07-28T01:09:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-03dad69d-e6ac-43c5-be85-f825b85232e2"
+  },
+  "item": [
+    {
+      "name": "export",
+      "item": [
+        {
+          "name": "download",
+          "item": [
+            {
+              "name": "{export_id}",
+              "item": [
+                {
+                  "name": "Axway Retrieve a Download Url",
+                  "id": "f65c031c-6cee-4848-9c29-e6763e845b05",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "connect.sid",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/export/download/:export_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "export",
+                        "download",
+                        ":export_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e3925067-14fa-41f1-9bfd-8c2dac37b90a",
+                          "key": "export_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a signed download url for previous user data export.\n\n___Auth Requirement___\n\nCreator of the export or `administrator` role in the organization for org context exports.\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "3ddd0a50-7b3d-476c-b4b5-7785fc407ccf",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "connect.sid",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/export/download/:export_id?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "export",
+                            "download",
+                            ":export_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "export_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:09:18.000Z",
+                      "updatedAt": "2026-07-28T01:09:18.000Z",
+                      "uid": "35240-3ddd0a50-7b3d-476c-b4b5-7785fc407ccf"
+                    },
+                    {
+                      "id": "471c259b-dd17-49dd-b8cc-752baa783b3b",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "connect.sid",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/export/download/:export_id?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "export",
+                            "download",
+                            ":export_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "export_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:18.000Z",
+                      "updatedAt": "2026-07-28T01:09:18.000Z",
+                      "uid": "35240-471c259b-dd17-49dd-b8cc-752baa783b3b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:18.000Z",
+                  "updatedAt": "2026-07-28T01:09:18.000Z",
+                  "uid": "35240-f65c031c-6cee-4848-9c29-e6763e845b05"
+                }
+              ],
+              "id": "2db8e8f8-b62b-4bfc-8186-b9acca9099b6",
+              "createdAt": "2026-07-28T01:09:18.000Z",
+              "updatedAt": "2026-07-28T01:09:18.000Z",
+              "uid": "35240-2db8e8f8-b62b-4bfc-8186-b9acca9099b6"
+            }
+          ],
+          "id": "0639c23e-bfa1-4e75-bc18-5e1ff47f71fd",
+          "createdAt": "2026-07-28T01:09:18.000Z",
+          "updatedAt": "2026-07-28T01:09:18.000Z",
+          "uid": "35240-0639c23e-bfa1-4e75-bc18-5e1ff47f71fd"
+        },
+        {
+          "name": "{export_id}",
+          "item": [
+            {
+              "name": "Axway Remove Export",
+              "id": "fbdf8c82-ebc3-4fb8-ab75-8e7ce5c91a55",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/export/:export_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "export",
+                    ":export_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "bb27577f-a7d4-4e61-b98b-8b779e3a7b65",
+                      "key": "export_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Removes a previous data export.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "13f3e65b-9693-482d-aadd-03f8282ae464",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/export/:export_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "export",
+                        ":export_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "export_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:09:18.000Z",
+                  "updatedAt": "2026-07-28T01:09:18.000Z",
+                  "uid": "35240-13f3e65b-9693-482d-aadd-03f8282ae464"
+                },
+                {
+                  "id": "adb9aaa4-1168-46ce-ad20-8c80a966665d",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/export/:export_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "export",
+                        ":export_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "export_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:18.000Z",
+                  "updatedAt": "2026-07-28T01:09:18.000Z",
+                  "uid": "35240-adb9aaa4-1168-46ce-ad20-8c80a966665d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:18.000Z",
+              "updatedAt": "2026-07-28T01:09:18.000Z",
+              "uid": "35240-fbdf8c82-ebc3-4fb8-ab75-8e7ce5c91a55"
+            }
+          ],
+          "id": "5d8de2a6-9318-4f6f-a680-888bb7a07ba2",
+          "createdAt": "2026-07-28T01:09:18.000Z",
+          "updatedAt": "2026-07-28T01:09:18.000Z",
+          "uid": "35240-5d8de2a6-9318-4f6f-a680-888bb7a07ba2"
+        },
+        {
+          "name": "Axway Export Data",
+          "id": "e4649466-de3c-4c92-a3ee-7ea53f02a638",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"from\": \"<number>\",\n  \"org_id\": \"<string>\",\n  \"to\": \"<number>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/export?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "export"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Generates an export of the user or org data.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `body.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+          },
+          "response": [
+            {
+              "id": "ec8b989f-7631-4eae-ad42-02747def6b4d",
+              "name": "Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"from\": \"<number>\",\n  \"org_id\": \"<string>\",\n  \"to\": \"<number>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/export?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "export"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"guid\": \"<uuid>\",\n    \"items\": [\n      \"org_activity\",\n      \"subscriptions\"\n    ],\n    \"status\": \"pending\",\n    \"user_guid\": \"<string>\",\n    \"_id\": \"<string>\",\n    \"completed\": \"<dateTime>\",\n    \"created\": \"<dateTime>\",\n    \"filename\": \"<string>\",\n    \"org_guid\": \"<string>\",\n    \"updated\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:09:18.000Z",
+              "updatedAt": "2026-07-28T01:09:18.000Z",
+              "uid": "35240-ec8b989f-7631-4eae-ad42-02747def6b4d"
+            },
+            {
+              "id": "ee8a2feb-4af3-4756-ac32-e4fb57c9ba9f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"from\": \"<number>\",\n  \"org_id\": \"<string>\",\n  \"to\": \"<number>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/export?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "export"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:18.000Z",
+              "updatedAt": "2026-07-28T01:09:18.000Z",
+              "uid": "35240-ee8a2feb-4af3-4756-ac32-e4fb57c9ba9f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:18.000Z",
+          "updatedAt": "2026-07-28T01:09:18.000Z",
+          "uid": "35240-e4649466-de3c-4c92-a3ee-7ea53f02a638"
+        },
+        {
+          "name": "Axway Find Exports",
+          "id": "ace8433a-78d9-4bc7-a412-b3c273f16095",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/export?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "export"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "org_id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns all the exports the user has access to.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `query.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+          },
+          "response": [
+            {
+              "id": "511f330b-b5f9-4aa3-9f8c-13e4458cb2df",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/export?fields=<string>&exclude_fields=<string>&org_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "export"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"guid\": \"<uuid>\",\n      \"items\": [\n        \"subscriptions\",\n        \"org_metadata\"\n      ],\n      \"status\": \"pending\",\n      \"user_guid\": \"<string>\",\n      \"_id\": \"<string>\",\n      \"completed\": \"<dateTime>\",\n      \"created\": \"<dateTime>\",\n      \"filename\": \"<string>\",\n      \"org_guid\": \"<string>\",\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"guid\": \"<uuid>\",\n      \"items\": [\n        \"providers\",\n        \"org_activity\"\n      ],\n      \"status\": \"pending\",\n      \"user_guid\": \"<string>\",\n      \"_id\": \"<string>\",\n      \"completed\": \"<dateTime>\",\n      \"created\": \"<dateTime>\",\n      \"filename\": \"<string>\",\n      \"org_guid\": \"<string>\",\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:09:18.000Z",
+              "updatedAt": "2026-07-28T01:09:18.000Z",
+              "uid": "35240-511f330b-b5f9-4aa3-9f8c-13e4458cb2df"
+            },
+            {
+              "id": "1dc511cd-91b3-44ce-9c6f-c01e625e1ab7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/export?fields=<string>&exclude_fields=<string>&org_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "export"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:18.000Z",
+              "updatedAt": "2026-07-28T01:09:18.000Z",
+              "uid": "35240-1dc511cd-91b3-44ce-9c6f-c01e625e1ab7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:18.000Z",
+          "updatedAt": "2026-07-28T01:09:18.000Z",
+          "uid": "35240-ace8433a-78d9-4bc7-a412-b3c273f16095"
+        }
+      ],
+      "id": "ce9253ec-5b26-4fa7-993e-537d43875001",
+      "createdAt": "2026-07-28T01:09:18.000Z",
+      "updatedAt": "2026-07-28T01:09:18.000Z",
+      "uid": "35240-ce9253ec-5b26-4fa7-993e-537d43875001"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

@@ -1,0 +1,631 @@
+{
+  "info": {
+    "_postman_id": "65467634-a04a-4282-bde8-541533a129c7",
+    "name": "Amplify Platform API v1.0.0 aca session API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:50.000Z",
+    "updatedAt": "2026-07-28T01:09:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-65467634-a04a-4282-bde8-541533a129c7"
+  },
+  "item": [
+    {
+      "name": "session",
+      "item": [
+        {
+          "name": "query",
+          "item": [
+            {
+              "name": "Axway Find Sessions",
+              "id": "8fc2ff85-4f1b-4cc5-b9ce-8ce1c59e990f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_token\": \"<string>\",\n  \"created\": \"<string>\",\n  \"from\": \"<string>\",\n  \"last_modified\": \"<string>\",\n  \"org_guid\": \"<string>\",\n  \"user_email\": \"<string>\",\n  \"user_id\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/session/query?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&limit=10&page=1&skip=0&sort=created",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "session",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "created"
+                    }
+                  ]
+                },
+                "description": "Return sessions matching search criteria.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "dd6706f1-d6a9-434e-a027-fc3976d56e44",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"access_token\": \"<string>\",\n  \"created\": \"<string>\",\n  \"from\": \"<string>\",\n  \"last_modified\": \"<string>\",\n  \"org_guid\": \"<string>\",\n  \"user_email\": \"<string>\",\n  \"user_id\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/session/query?fields=<string>&exclude_fields=<string>&limit=10&page=1&skip=0&sort=created",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "session",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "key": "sort",
+                          "value": "created"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"dvid\": \"<string>\",\n      \"from\": \"<string>\",\n      \"ipaddress\": {},\n      \"os\": {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      \"software\": {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      \"org\": {\n        \"guid\": \"urn:uuid:19831e9d-d409-87d7-8bdc-d7e1be3785c8\",\n        \"name\": \"fugiat veniam\",\n        \"org_id\": -91006100,\n        \"created\": \"<dateTime>\",\n        \"created_by\": {\n          \"guid\": \"<string>\",\n          \"type\": \"client\"\n        },\n        \"updated\": \"<dateTime>\"\n      },\n      \"org_id\": \"<string>\",\n      \"org_name\": \"<string>\",\n      \"user\": {\n        \"email\": \"<email>\",\n        \"guid\": \"<string>\"\n      },\n      \"current\": \"<boolean>\"\n    },\n    {\n      \"dvid\": \"<string>\",\n      \"from\": \"<string>\",\n      \"ipaddress\": {},\n      \"os\": {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      \"software\": {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      \"org\": {\n        \"guid\": \"urn:uuid:aeb86334-98ed-5a93-723c-a0696f360b7b\",\n        \"name\": \"labore Excepteur ex\",\n        \"org_id\": 30665499,\n        \"created\": \"<dateTime>\",\n        \"created_by\": {\n          \"guid\": \"<string>\",\n          \"type\": \"client\"\n        },\n        \"updated\": \"<dateTime>\"\n      },\n      \"org_id\": \"<string>\",\n      \"org_name\": \"<string>\",\n      \"user\": {\n        \"email\": \"<email>\",\n        \"guid\": \"<string>\"\n      },\n      \"current\": \"<boolean>\"\n    }\n  ],\n  \"metadata\": {\n    \"count\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"matched\": \"<number>\",\n    \"page\": \"<number>\",\n    \"pages\": \"<number>\",\n    \"skip\": \"<number>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:50.000Z",
+                  "updatedAt": "2026-07-28T01:09:50.000Z",
+                  "uid": "35240-dd6706f1-d6a9-434e-a027-fc3976d56e44"
+                },
+                {
+                  "id": "6d7058a3-0a75-4fd2-802c-c62cb561b9c8",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"access_token\": \"<string>\",\n  \"created\": \"<string>\",\n  \"from\": \"<string>\",\n  \"last_modified\": \"<string>\",\n  \"org_guid\": \"<string>\",\n  \"user_email\": \"<string>\",\n  \"user_id\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/session/query?fields=<string>&exclude_fields=<string>&limit=10&page=1&skip=0&sort=created",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "session",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "key": "sort",
+                          "value": "created"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:50.000Z",
+                  "updatedAt": "2026-07-28T01:09:50.000Z",
+                  "uid": "35240-6d7058a3-0a75-4fd2-802c-c62cb561b9c8"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:50.000Z",
+              "updatedAt": "2026-07-28T01:09:50.000Z",
+              "uid": "35240-8fc2ff85-4f1b-4cc5-b9ce-8ce1c59e990f"
+            }
+          ],
+          "id": "b787d44e-fc25-4560-86f4-c24981cb5024",
+          "createdAt": "2026-07-28T01:09:50.000Z",
+          "updatedAt": "2026-07-28T01:09:50.000Z",
+          "uid": "35240-b787d44e-fc25-4560-86f4-c24981cb5024"
+        },
+        {
+          "name": "{session_id}",
+          "item": [
+            {
+              "name": "Axway Delete Session",
+              "id": "41134a54-ba88-481f-8996-33aadb4657eb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/session/:session_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "session",
+                    ":session_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a778313f-1e02-4712-a359-608dffc50786",
+                      "key": "session_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes a session. This is a destructive and irreversible action.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "496dd4fe-6e89-4755-be21-e63de4425859",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/session/:session_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "session",
+                        ":session_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "session_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:09:50.000Z",
+                  "updatedAt": "2026-07-28T01:09:50.000Z",
+                  "uid": "35240-496dd4fe-6e89-4755-be21-e63de4425859"
+                },
+                {
+                  "id": "b9b180c1-c2cb-4d55-bc30-bf00ed065fd0",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/session/:session_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "session",
+                        ":session_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "session_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:50.000Z",
+                  "updatedAt": "2026-07-28T01:09:50.000Z",
+                  "uid": "35240-b9b180c1-c2cb-4d55-bc30-bf00ed065fd0"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:50.000Z",
+              "updatedAt": "2026-07-28T01:09:50.000Z",
+              "uid": "35240-41134a54-ba88-481f-8996-33aadb4657eb"
+            }
+          ],
+          "id": "b233ece1-1c47-411d-80d2-1661cfe9aa57",
+          "createdAt": "2026-07-28T01:09:50.000Z",
+          "updatedAt": "2026-07-28T01:09:50.000Z",
+          "uid": "35240-b233ece1-1c47-411d-80d2-1661cfe9aa57"
+        },
+        {
+          "name": "Axway Get Session",
+          "id": "20525aaf-714d-4227-83c7-aa7676f31c6a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/session?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "session"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves the active session for the user.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+          },
+          "response": [
+            {
+              "id": "dac48ccf-22e0-49b4-85aa-9ae88f322d91",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/session?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "session"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"sessionID\": \"<string>\",\n    \"user_guid\": \"<string>\",\n    \"idp\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"org_guid\": \"<uuid>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:09:50.000Z",
+              "updatedAt": "2026-07-28T01:09:50.000Z",
+              "uid": "35240-dac48ccf-22e0-49b4-85aa-9ae88f322d91"
+            },
+            {
+              "id": "feecab9f-2056-4e38-bf95-eb47f9a7e859",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/session?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "session"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:50.000Z",
+              "updatedAt": "2026-07-28T01:09:50.000Z",
+              "uid": "35240-feecab9f-2056-4e38-bf95-eb47f9a7e859"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:50.000Z",
+          "updatedAt": "2026-07-28T01:09:50.000Z",
+          "uid": "35240-20525aaf-714d-4227-83c7-aa7676f31c6a"
+        }
+      ],
+      "id": "cab55c23-72a7-409d-963e-9e82ad93024e",
+      "createdAt": "2026-07-28T01:09:50.000Z",
+      "updatedAt": "2026-07-28T01:09:50.000Z",
+      "uid": "35240-cab55c23-72a7-409d-963e-9e82ad93024e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

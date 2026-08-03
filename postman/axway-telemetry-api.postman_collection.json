@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "67f2643a-5ecf-4dae-abcc-a740d5df516a",
+    "name": "Amplify Platform API v1.0.0 aca telemetry API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:53.000Z",
+    "updatedAt": "2026-07-28T01:09:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-67f2643a-5ecf-4dae-abcc-a740d5df516a"
+  },
+  "item": [
+    {
+      "name": "analytics",
+      "item": [
+        {
+          "name": "Axway Send Events",
+          "id": "bf6c65db-fb57-47bc-a480-adf54a1f453a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/analytics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "analytics"
+              ]
+            },
+            "description": "Send analytics events\n\n___Auth Requirement___\n - Service account access token.\n"
+          },
+          "response": [
+            {
+              "id": "63912d8d-939b-44d1-85c2-03c8609d513a",
+              "name": "Accepted",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/analytics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:09:54.000Z",
+              "updatedAt": "2026-07-28T01:09:54.000Z",
+              "uid": "35240-63912d8d-939b-44d1-85c2-03c8609d513a"
+            },
+            {
+              "id": "d2f442fe-ed43-4a70-b56c-714e3e936986",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/analytics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:54.000Z",
+              "updatedAt": "2026-07-28T01:09:54.000Z",
+              "uid": "35240-d2f442fe-ed43-4a70-b56c-714e3e936986"
+            },
+            {
+              "id": "7783391f-9c2f-42e8-bbe1-4d2b9d504f04",
+              "name": "Payload Too Large",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    },\n    {\n      \"event\": \"<string>\",\n      \"data\": {},\n      \"id\": \"<string>\",\n      \"timestamp\": \"<number>\",\n      \"version\": \"4\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/analytics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics"
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:54.000Z",
+              "updatedAt": "2026-07-28T01:09:54.000Z",
+              "uid": "35240-7783391f-9c2f-42e8-bbe1-4d2b9d504f04"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:54.000Z",
+          "updatedAt": "2026-07-28T01:09:54.000Z",
+          "uid": "35240-bf6c65db-fb57-47bc-a480-adf54a1f453a"
+        }
+      ],
+      "id": "fa462563-35b3-4b82-bcbe-f42c96e14c23",
+      "createdAt": "2026-07-28T01:09:53.000Z",
+      "updatedAt": "2026-07-28T01:09:53.000Z",
+      "uid": "35240-fa462563-35b3-4b82-bcbe-f42c96e14c23"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

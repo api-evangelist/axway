@@ -1,0 +1,1700 @@
+{
+  "info": {
+    "_postman_id": "3a64c222-bbc2-4610-9a68-153bd55d0d9f",
+    "name": "Amplify Platform API v1.0.0 aca analytics API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:05.000Z",
+    "updatedAt": "2026-07-28T01:09:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3a64c222-bbc2-4610-9a68-153bd55d0d9f"
+  },
+  "item": [
+    {
+      "name": "analytics",
+      "item": [
+        {
+          "name": "query",
+          "item": [
+            {
+              "name": "Axway Analytics Query Using Lexus",
+              "id": "c599baef-82bb-4f37-9958-fe065b330a50",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/analytics/query?apim_tier=paid&app_guid=<string>&clients=<string>&clients=<string>&cross_org=false&custom_query=<string>&debug=false&endpoint=<string>&events=<string>&field=<string>&from=<number>&granularity=minute&group_by=<string>&grquantity=<number>&include_query=<string>&org_id=<string>&platform=<string>&post_process=<boolean>&prefix=<string>&preprocessor=<string>&processor=<string>&query=<string>&region=EU&status=<string>&to=<number>&type=<string>&username=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "apim_tier",
+                      "value": "paid"
+                    },
+                    {
+                      "key": "app_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clients",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cross_org",
+                      "value": "false"
+                    },
+                    {
+                      "key": "custom_query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "false"
+                    },
+                    {
+                      "key": "endpoint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "events",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "minute"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "grquantity",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "include_query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "post_process",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "prefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "preprocessor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "EU"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Requests analytics data using lexus queries\n\n___Auth Requirement___\n - _If:_ The parameter `query.app_guid` is given.\n     - _Then:_ `write` access to the organization to which the application belongs.\n     - _Else:_ Access to the organization.\n"
+              },
+              "response": [
+                {
+                  "id": "e2283393-9a5f-43ee-823a-c8f965674a9c",
+                  "name": "Analytics Query Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/query?apim_tier=paid&app_guid=<string>&clients=<string>&cross_org=false&custom_query=<string>&debug=false&endpoint=<string>&events=<string>&field=<string>&from=<number>&granularity=minute&group_by=<string>&grquantity=<number>&include_query=<string>&org_id=<string>&platform=<string>&post_process=<boolean>&prefix=<string>&preprocessor=<string>&processor=<string>&query=<string>&region=EU&status=<string>&to=<number>&type=<string>&username=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "key": "apim_tier",
+                          "value": "paid"
+                        },
+                        {
+                          "key": "app_guid",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "clients",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "cross_org",
+                          "value": "false"
+                        },
+                        {
+                          "key": "custom_query",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "debug",
+                          "value": "false"
+                        },
+                        {
+                          "key": "endpoint",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "events",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "field",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "from",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "granularity",
+                          "value": "minute"
+                        },
+                        {
+                          "key": "group_by",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "grquantity",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "include_query",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "platform",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "post_process",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "prefix",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "preprocessor",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "processor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "region",
+                          "value": "EU"
+                        },
+                        {
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "to",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "type",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "username",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"data\": {},\n      \"last_fetched\": \"<string>\"\n    },\n    {\n      \"data\": {},\n      \"last_fetched\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-e2283393-9a5f-43ee-823a-c8f965674a9c"
+                },
+                {
+                  "id": "e6a06dbf-766f-4a3d-af32-b2768d9dcce2",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/query?apim_tier=paid&app_guid=<string>&clients=<string>&cross_org=false&custom_query=<string>&debug=false&endpoint=<string>&events=<string>&field=<string>&from=<number>&granularity=minute&group_by=<string>&grquantity=<number>&include_query=<string>&org_id=<string>&platform=<string>&post_process=<boolean>&prefix=<string>&preprocessor=<string>&processor=<string>&query=<string>&region=EU&status=<string>&to=<number>&type=<string>&username=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "key": "apim_tier",
+                          "value": "paid"
+                        },
+                        {
+                          "key": "app_guid",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "clients",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "cross_org",
+                          "value": "false"
+                        },
+                        {
+                          "key": "custom_query",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "debug",
+                          "value": "false"
+                        },
+                        {
+                          "key": "endpoint",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "events",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "field",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "from",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "granularity",
+                          "value": "minute"
+                        },
+                        {
+                          "key": "group_by",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "grquantity",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "include_query",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "platform",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "post_process",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "prefix",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "preprocessor",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "processor",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "region",
+                          "value": "EU"
+                        },
+                        {
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "to",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "type",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "username",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-e6a06dbf-766f-4a3d-af32-b2768d9dcce2"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:06.000Z",
+              "updatedAt": "2026-07-28T01:09:06.000Z",
+              "uid": "35240-c599baef-82bb-4f37-9958-fe065b330a50"
+            }
+          ],
+          "id": "4f07a4d8-2086-46cc-8054-cbe3de3c8efd",
+          "createdAt": "2026-07-28T01:09:06.000Z",
+          "updatedAt": "2026-07-28T01:09:06.000Z",
+          "uid": "35240-4f07a4d8-2086-46cc-8054-cbe3de3c8efd"
+        },
+        {
+          "name": "error",
+          "item": [
+            {
+              "name": "Axway Report an Error",
+              "id": "eee723f4-eeb3-4c89-ac72-2a776eab7b3b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"meta\": {},\n  \"stack\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/analytics/error",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics",
+                    "error"
+                  ]
+                },
+                "description": "Report an error to platform analytics\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "a6ea2ecf-bb50-4e58-b18d-fa03ca9ed9e2",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"message\": \"<string>\",\n  \"meta\": {},\n  \"stack\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/error",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "error"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-a6ea2ecf-bb50-4e58-b18d-fa03ca9ed9e2"
+                },
+                {
+                  "id": "ec603748-7d82-451b-ab62-b2a3cca14ae6",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"message\": \"<string>\",\n  \"meta\": {},\n  \"stack\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/error",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "error"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-ec603748-7d82-451b-ab62-b2a3cca14ae6"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:06.000Z",
+              "updatedAt": "2026-07-28T01:09:06.000Z",
+              "uid": "35240-eee723f4-eeb3-4c89-ac72-2a776eab7b3b"
+            }
+          ],
+          "id": "50082dc3-edba-4b5b-ae51-7361b4f73225",
+          "createdAt": "2026-07-28T01:09:06.000Z",
+          "updatedAt": "2026-07-28T01:09:06.000Z",
+          "uid": "35240-50082dc3-edba-4b5b-ae51-7361b4f73225"
+        },
+        {
+          "name": "custom_query",
+          "item": [
+            {
+              "name": "{query_id}",
+              "item": [
+                {
+                  "name": "Axway Delete a Custom Query",
+                  "id": "f29db322-585a-4d33-8fc5-a6ac44e1536d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/custom_query/:query_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "custom_query",
+                        ":query_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "20250ca6-11e1-42a4-8eea-f41f394c97f0",
+                          "key": "query_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Delete a custom query for an org.\n\n___Auth Requirement___\n - `write` access to the organization.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "303e4c4d-7087-49ef-b0a2-2ca77cf500ec",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/custom_query/:query_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "custom_query",
+                            ":query_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "query_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"span\": \"<integer>\",\n    \"unit\": \"month\",\n    \"_id\": \"ex mollit cupidatat esse\",\n    \"cross_org\": \"<boolean>\",\n    \"endpoint\": \"laboris ut in Lorem\",\n    \"field\": \"<string>\",\n    \"filters\": \"<string>\",\n    \"granularity\": \"minute\",\n    \"groupings\": [\n      {\n        \"field\": \"<string>\",\n        \"type\": \"string\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"type\": \"duration\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      }\n    ],\n    \"grquantity\": \"<integer>\",\n    \"guid\": \"urn:uuid:504426c8-23e2-44b6-ddf4-fa7aa3033c07\",\n    \"include\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"limit\": \"<integer>\",\n    \"method\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"org_guid\": -18183711,\n    \"rateGranularity\": \"hour\",\n    \"sortField\": \"<string>\",\n    \"sortOrder\": 1,\n    \"type\": \"stream\",\n    \"valueFormat\": \"duration\",\n    \"yAxis\": \"overlap\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:09:06.000Z",
+                      "updatedAt": "2026-07-28T01:09:06.000Z",
+                      "uid": "35240-303e4c4d-7087-49ef-b0a2-2ca77cf500ec"
+                    },
+                    {
+                      "id": "f84206d5-eb6e-482e-a036-82eec8239683",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/custom_query/:query_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "custom_query",
+                            ":query_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "query_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:06.000Z",
+                      "updatedAt": "2026-07-28T01:09:06.000Z",
+                      "uid": "35240-f84206d5-eb6e-482e-a036-82eec8239683"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-f29db322-585a-4d33-8fc5-a6ac44e1536d"
+                },
+                {
+                  "name": "Axway Update a Custom Query",
+                  "id": "8d09a0f3-411e-42c6-b97b-7125304e4177",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<string>\",\n  \"granularity\": \"minute\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"month\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"number\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"string\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": 1,\n  \"valueFormat\": \"duration\",\n  \"yAxis\": \"stacked\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/custom_query/:query_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "custom_query",
+                        ":query_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8a237a0e-42cc-4582-8328-6b1aca1d190d",
+                          "key": "query_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Updates a custom query for an app/org.\n\n___Auth Requirement___\n - `write` access to the organization.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "94f8986c-afc5-4d4d-9878-7ef837a30dde",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<string>\",\n  \"granularity\": \"minute\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"month\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"number\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"string\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": 1,\n  \"valueFormat\": \"duration\",\n  \"yAxis\": \"stacked\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/custom_query/:query_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "custom_query",
+                            ":query_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "query_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"span\": \"<integer>\",\n    \"unit\": \"month\",\n    \"_id\": \"ex mollit cupidatat esse\",\n    \"cross_org\": \"<boolean>\",\n    \"endpoint\": \"laboris ut in Lorem\",\n    \"field\": \"<string>\",\n    \"filters\": \"<string>\",\n    \"granularity\": \"minute\",\n    \"groupings\": [\n      {\n        \"field\": \"<string>\",\n        \"type\": \"string\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"type\": \"duration\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      }\n    ],\n    \"grquantity\": \"<integer>\",\n    \"guid\": \"urn:uuid:504426c8-23e2-44b6-ddf4-fa7aa3033c07\",\n    \"include\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"limit\": \"<integer>\",\n    \"method\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"org_guid\": -18183711,\n    \"rateGranularity\": \"hour\",\n    \"sortField\": \"<string>\",\n    \"sortOrder\": 1,\n    \"type\": \"stream\",\n    \"valueFormat\": \"duration\",\n    \"yAxis\": \"overlap\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:09:06.000Z",
+                      "updatedAt": "2026-07-28T01:09:06.000Z",
+                      "uid": "35240-94f8986c-afc5-4d4d-9878-7ef837a30dde"
+                    },
+                    {
+                      "id": "5fd10e06-dd2c-45e9-ab63-592bdc66b146",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<string>\",\n  \"granularity\": \"minute\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"month\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"number\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"string\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": 1,\n  \"valueFormat\": \"duration\",\n  \"yAxis\": \"stacked\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/custom_query/:query_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "custom_query",
+                            ":query_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "query_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:06.000Z",
+                      "updatedAt": "2026-07-28T01:09:06.000Z",
+                      "uid": "35240-5fd10e06-dd2c-45e9-ab63-592bdc66b146"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-8d09a0f3-411e-42c6-b97b-7125304e4177"
+                }
+              ],
+              "id": "b2e6e307-4714-4e4d-b88f-704cf4ab6418",
+              "createdAt": "2026-07-28T01:09:06.000Z",
+              "updatedAt": "2026-07-28T01:09:06.000Z",
+              "uid": "35240-b2e6e307-4714-4e4d-b88f-704cf4ab6418"
+            },
+            {
+              "name": "Axway Create a Custom Query",
+              "id": "cf40b397-652a-4877-8c55-f021234b750e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<string>\",\n  \"granularity\": \"day\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"day\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"string\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"duration\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": 1,\n  \"type\": \"bar\",\n  \"valueFormat\": \"percent\",\n  \"yAxis\": \"ratio\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/analytics/custom_query?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics",
+                    "custom_query"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Creates a custom query for an app/org.\n\n___Auth Requirement___\n - `write` access to the organization.\n"
+              },
+              "response": [
+                {
+                  "id": "22ad67c7-32fa-47e6-8c97-9c71653d121f",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<string>\",\n  \"granularity\": \"day\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"day\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"string\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"duration\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": 1,\n  \"type\": \"bar\",\n  \"valueFormat\": \"percent\",\n  \"yAxis\": \"ratio\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/custom_query?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "custom_query"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"span\": \"<integer>\",\n    \"unit\": \"month\",\n    \"_id\": \"ex mollit cupidatat esse\",\n    \"cross_org\": \"<boolean>\",\n    \"endpoint\": \"laboris ut in Lorem\",\n    \"field\": \"<string>\",\n    \"filters\": \"<string>\",\n    \"granularity\": \"minute\",\n    \"groupings\": [\n      {\n        \"field\": \"<string>\",\n        \"type\": \"string\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"type\": \"duration\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      }\n    ],\n    \"grquantity\": \"<integer>\",\n    \"guid\": \"urn:uuid:504426c8-23e2-44b6-ddf4-fa7aa3033c07\",\n    \"include\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"limit\": \"<integer>\",\n    \"method\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"org_guid\": -18183711,\n    \"rateGranularity\": \"hour\",\n    \"sortField\": \"<string>\",\n    \"sortOrder\": 1,\n    \"type\": \"stream\",\n    \"valueFormat\": \"duration\",\n    \"yAxis\": \"overlap\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-22ad67c7-32fa-47e6-8c97-9c71653d121f"
+                },
+                {
+                  "id": "156404bf-69f3-4d1c-9314-aeec05f44d6c",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<string>\",\n  \"granularity\": \"day\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"day\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"string\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"duration\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": 1,\n  \"type\": \"bar\",\n  \"valueFormat\": \"percent\",\n  \"yAxis\": \"ratio\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/custom_query?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "custom_query"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-156404bf-69f3-4d1c-9314-aeec05f44d6c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:06.000Z",
+              "updatedAt": "2026-07-28T01:09:06.000Z",
+              "uid": "35240-cf40b397-652a-4877-8c55-f021234b750e"
+            }
+          ],
+          "id": "c16c80a5-bda8-4b3f-85aa-9f42400a07ad",
+          "createdAt": "2026-07-28T01:09:06.000Z",
+          "updatedAt": "2026-07-28T01:09:06.000Z",
+          "uid": "35240-c16c80a5-bda8-4b3f-85aa-9f42400a07ad"
+        },
+        {
+          "name": "custom_queries",
+          "item": [
+            {
+              "name": "{query_id}",
+              "item": [
+                {
+                  "name": "Axway Get Custom Query",
+                  "id": "6f0fef99-7b96-4680-a30a-c563b240a9ec",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/custom_queries/:query_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "custom_queries",
+                        ":query_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cc35bdb5-1f24-4fbe-a29e-9aa9234e0dc0",
+                          "key": "query_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns a single custom query.\n\n___Auth Requirement___\n - Access to the organization.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f7adf528-d523-45a5-bd43-aed9024e37f0",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/custom_queries/:query_id?fields=<string>&exclude_fields=<string>&org_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "custom_queries",
+                            ":query_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "query_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"span\": \"<integer>\",\n    \"unit\": \"month\",\n    \"_id\": \"ex mollit cupidatat esse\",\n    \"cross_org\": \"<boolean>\",\n    \"endpoint\": \"laboris ut in Lorem\",\n    \"field\": \"<string>\",\n    \"filters\": \"<string>\",\n    \"granularity\": \"minute\",\n    \"groupings\": [\n      {\n        \"field\": \"<string>\",\n        \"type\": \"string\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"type\": \"duration\",\n        \"interval\": \"<integer>\",\n        \"limit\": \"<integer>\"\n      }\n    ],\n    \"grquantity\": \"<integer>\",\n    \"guid\": \"urn:uuid:504426c8-23e2-44b6-ddf4-fa7aa3033c07\",\n    \"include\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"limit\": \"<integer>\",\n    \"method\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"org_guid\": -18183711,\n    \"rateGranularity\": \"hour\",\n    \"sortField\": \"<string>\",\n    \"sortOrder\": 1,\n    \"type\": \"stream\",\n    \"valueFormat\": \"duration\",\n    \"yAxis\": \"overlap\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:09:06.000Z",
+                      "updatedAt": "2026-07-28T01:09:06.000Z",
+                      "uid": "35240-f7adf528-d523-45a5-bd43-aed9024e37f0"
+                    },
+                    {
+                      "id": "55b5cbf1-c500-41ac-84b2-3e87ffec1579",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/analytics/custom_queries/:query_id?fields=<string>&exclude_fields=<string>&org_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "analytics",
+                            "custom_queries",
+                            ":query_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "org_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "query_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:06.000Z",
+                      "updatedAt": "2026-07-28T01:09:06.000Z",
+                      "uid": "35240-55b5cbf1-c500-41ac-84b2-3e87ffec1579"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-6f0fef99-7b96-4680-a30a-c563b240a9ec"
+                }
+              ],
+              "id": "e8ed717d-a9ed-432d-ab0d-f28aa190ef24",
+              "createdAt": "2026-07-28T01:09:06.000Z",
+              "updatedAt": "2026-07-28T01:09:06.000Z",
+              "uid": "35240-e8ed717d-a9ed-432d-ab0d-f28aa190ef24"
+            },
+            {
+              "name": "Axway Find Custom Queries",
+              "id": "bfc710b5-b590-404b-989c-0e5012a35c10",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/analytics/custom_queries?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "analytics",
+                    "custom_queries"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Finds all the custom queries a user has access to for a given org.\n\n___Auth Requirement___\n - Access to the organization.\n"
+              },
+              "response": [
+                {
+                  "id": "06d5e1cc-bf80-4588-a4ef-77d6234b1fe1",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/custom_queries?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "custom_queries"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"name\": \"<string>\",\n      \"span\": \"<integer>\",\n      \"unit\": \"quarter\",\n      \"_id\": \"in voluptate esse dolor\",\n      \"cross_org\": \"<boolean>\",\n      \"endpoint\": \"sunt Excepteur\",\n      \"field\": \"<string>\",\n      \"filters\": \"<string>\",\n      \"granularity\": \"minute\",\n      \"groupings\": [\n        {\n          \"field\": \"<string>\",\n          \"type\": \"duration\",\n          \"interval\": \"<integer>\",\n          \"limit\": \"<integer>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"type\": \"number\",\n          \"interval\": \"<integer>\",\n          \"limit\": \"<integer>\"\n        }\n      ],\n      \"grquantity\": \"<integer>\",\n      \"guid\": \"urn:uuid:24055401-b677-8af6-f77c-110a62387e67\",\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"limit\": \"<integer>\",\n      \"method\": \"<string>\",\n      \"offset\": \"<integer>\",\n      \"org_guid\": -62404259,\n      \"rateGranularity\": \"hour\",\n      \"sortField\": \"<string>\",\n      \"sortOrder\": 1,\n      \"type\": \"list\",\n      \"valueFormat\": \"duration\",\n      \"yAxis\": \"ratio\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"user\"\n      },\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"span\": \"<integer>\",\n      \"unit\": \"hour\",\n      \"_id\": \"voluptate dolore in\",\n      \"cross_org\": \"<boolean>\",\n      \"endpoint\": \"in veniam fugiat\",\n      \"field\": \"<string>\",\n      \"filters\": \"<string>\",\n      \"granularity\": \"day\",\n      \"groupings\": [\n        {\n          \"field\": \"<string>\",\n          \"type\": \"duration\",\n          \"interval\": \"<integer>\",\n          \"limit\": \"<integer>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"type\": \"number\",\n          \"interval\": \"<integer>\",\n          \"limit\": \"<integer>\"\n        }\n      ],\n      \"grquantity\": \"<integer>\",\n      \"guid\": \"urn:uuid:705cd4cf-c8e0-a583-a95d-4b2504404ff1\",\n      \"include\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"limit\": \"<integer>\",\n      \"method\": \"<string>\",\n      \"offset\": \"<integer>\",\n      \"org_guid\": -13317966,\n      \"rateGranularity\": \"minute\",\n      \"sortField\": \"<string>\",\n      \"sortOrder\": 1,\n      \"type\": \"stream\",\n      \"valueFormat\": \"duration\",\n      \"yAxis\": \"ratio\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"client\"\n      },\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-06d5e1cc-bf80-4588-a4ef-77d6234b1fe1"
+                },
+                {
+                  "id": "9c9ea101-7558-42a5-ac8c-15d033f31869",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/analytics/custom_queries?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "analytics",
+                        "custom_queries"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:06.000Z",
+                  "updatedAt": "2026-07-28T01:09:06.000Z",
+                  "uid": "35240-9c9ea101-7558-42a5-ac8c-15d033f31869"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:06.000Z",
+              "updatedAt": "2026-07-28T01:09:06.000Z",
+              "uid": "35240-bfc710b5-b590-404b-989c-0e5012a35c10"
+            }
+          ],
+          "id": "6a58162a-bab6-4ff1-99d1-55fbaea3ec3f",
+          "createdAt": "2026-07-28T01:09:06.000Z",
+          "updatedAt": "2026-07-28T01:09:06.000Z",
+          "uid": "35240-6a58162a-bab6-4ff1-99d1-55fbaea3ec3f"
+        }
+      ],
+      "id": "a63dbb01-0f1d-403b-959b-85957d2b8380",
+      "createdAt": "2026-07-28T01:09:06.000Z",
+      "updatedAt": "2026-07-28T01:09:06.000Z",
+      "uid": "35240-a63dbb01-0f1d-403b-959b-85957d2b8380"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

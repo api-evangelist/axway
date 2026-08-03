@@ -1,0 +1,536 @@
+{
+  "info": {
+    "_postman_id": "812e93aa-15cd-40a7-a57b-8a66cc630d7e",
+    "name": "Amplify Platform API v1.0.0 aca API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:03.000Z",
+    "updatedAt": "2026-07-28T01:09:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-812e93aa-15cd-40a7-a57b-8a66cc630d7e"
+  },
+  "item": [
+    {
+      "name": "aca",
+      "item": [
+        {
+          "name": "{app_id}",
+          "item": [
+            {
+              "name": "crash",
+              "item": [
+                {
+                  "name": "{aca_id}",
+                  "item": [
+                    {
+                      "name": "metadata",
+                      "item": [
+                        {
+                          "name": "{name}",
+                          "item": [
+                            {
+                              "name": "Axway Set Metadata by ID",
+                              "id": "17f95b48-94bb-4e38-b280-0f994364ba76",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "bearer",
+                                  "bearer": [
+                                    {
+                                      "key": "token",
+                                      "value": "{{bearerToken}}",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"value\": \"<string>\"\n}"
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/aca/:app_id/crash/:aca_id/metadata/:name?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "aca",
+                                    ":app_id",
+                                    "crash",
+                                    ":aca_id",
+                                    "metadata",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "A list of fields to include in the response.",
+                                      "key": "fields",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A list of fields to include in the response.",
+                                      "key": "fields",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A list of fields to exclude from the response.",
+                                      "key": "exclude_fields",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "A list of fields to exclude from the response.",
+                                      "key": "exclude_fields",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b6907d5e-2b67-4464-badf-f4581f3d3a5a",
+                                      "key": "app_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "1c0d167f-b227-4dc4-aeaa-b49989a470a2",
+                                      "key": "aca_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "3d782fe1-2c11-4c1d-ae24-721dd6679f97",
+                                      "key": "name",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Sets metadata in a crash record for the given crash ID by name and value\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "e11fd0ab-c9de-4f51-b155-47fafca80695",
+                                  "name": "Success",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "*/*"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"value\": \"<string>\"\n}"
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/aca/:app_id/crash/:aca_id/metadata/:name?fields=<string>&exclude_fields=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "aca",
+                                        ":app_id",
+                                        "crash",
+                                        ":aca_id",
+                                        "metadata",
+                                        ":name"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "A list of fields to include in the response.",
+                                          "key": "fields",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "A list of fields to exclude from the response.",
+                                          "key": "exclude_fields",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "app_id"
+                                        },
+                                        {
+                                          "key": "aca_id"
+                                        },
+                                        {
+                                          "key": "name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"description\": \"The response data\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:09:04.000Z",
+                                  "updatedAt": "2026-07-28T01:09:04.000Z",
+                                  "uid": "35240-e11fd0ab-c9de-4f51-b155-47fafca80695"
+                                },
+                                {
+                                  "id": "5a8e7ca2-b440-4e22-bf64-c36542780aed",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "*/*"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"value\": \"<string>\"\n}"
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/aca/:app_id/crash/:aca_id/metadata/:name?fields=<string>&exclude_fields=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "aca",
+                                        ":app_id",
+                                        "crash",
+                                        ":aca_id",
+                                        "metadata",
+                                        ":name"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "A list of fields to include in the response.",
+                                          "key": "fields",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "A list of fields to exclude from the response.",
+                                          "key": "exclude_fields",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "app_id"
+                                        },
+                                        {
+                                          "key": "aca_id"
+                                        },
+                                        {
+                                          "key": "name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                                  "createdAt": "2026-07-28T01:09:04.000Z",
+                                  "updatedAt": "2026-07-28T01:09:04.000Z",
+                                  "uid": "35240-5a8e7ca2-b440-4e22-bf64-c36542780aed"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:09:04.000Z",
+                              "updatedAt": "2026-07-28T01:09:04.000Z",
+                              "uid": "35240-17f95b48-94bb-4e38-b280-0f994364ba76"
+                            }
+                          ],
+                          "id": "a9002199-327b-4dfe-ac09-999028e14777",
+                          "createdAt": "2026-07-28T01:09:04.000Z",
+                          "updatedAt": "2026-07-28T01:09:04.000Z",
+                          "uid": "35240-a9002199-327b-4dfe-ac09-999028e14777"
+                        }
+                      ],
+                      "id": "408109c1-e03b-4b78-8eeb-7117beefafa1",
+                      "createdAt": "2026-07-28T01:09:04.000Z",
+                      "updatedAt": "2026-07-28T01:09:04.000Z",
+                      "uid": "35240-408109c1-e03b-4b78-8eeb-7117beefafa1"
+                    },
+                    {
+                      "name": "Axway Find Crash Record by ID",
+                      "id": "b517402e-8928-4d86-b0ac-52715723cd92",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/aca/:app_id/crash/:aca_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "aca",
+                            ":app_id",
+                            "crash",
+                            ":aca_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "427fcdfa-c835-4877-ac32-aa4770f3a395",
+                              "key": "app_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "bcebcf9c-5254-4111-8c58-93e30e5409fe",
+                              "key": "aca_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns a crash record for the given crash ID\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "c50d666d-aba6-46bf-a821-91727cc546b9",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/aca/:app_id/crash/:aca_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "aca",
+                                ":app_id",
+                                "crash",
+                                ":aca_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "app_id"
+                                },
+                                {
+                                  "key": "aca_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"description\": \"The response data\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:09:04.000Z",
+                          "updatedAt": "2026-07-28T01:09:04.000Z",
+                          "uid": "35240-c50d666d-aba6-46bf-a821-91727cc546b9"
+                        },
+                        {
+                          "id": "459594a2-1400-4f98-a2eb-74648370611c",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/aca/:app_id/crash/:aca_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "aca",
+                                ":app_id",
+                                "crash",
+                                ":aca_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "app_id"
+                                },
+                                {
+                                  "key": "aca_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:04.000Z",
+                          "updatedAt": "2026-07-28T01:09:04.000Z",
+                          "uid": "35240-459594a2-1400-4f98-a2eb-74648370611c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:04.000Z",
+                      "updatedAt": "2026-07-28T01:09:04.000Z",
+                      "uid": "35240-b517402e-8928-4d86-b0ac-52715723cd92"
+                    }
+                  ],
+                  "id": "abbba054-d520-40a6-a5fc-00647bd693a4",
+                  "createdAt": "2026-07-28T01:09:04.000Z",
+                  "updatedAt": "2026-07-28T01:09:04.000Z",
+                  "uid": "35240-abbba054-d520-40a6-a5fc-00647bd693a4"
+                }
+              ],
+              "id": "3e60ceaf-80ca-4d9f-838f-e3b345fe8e35",
+              "createdAt": "2026-07-28T01:09:04.000Z",
+              "updatedAt": "2026-07-28T01:09:04.000Z",
+              "uid": "35240-3e60ceaf-80ca-4d9f-838f-e3b345fe8e35"
+            }
+          ],
+          "id": "e1909927-5ce8-4109-a3dd-0bc207fefa6c",
+          "createdAt": "2026-07-28T01:09:04.000Z",
+          "updatedAt": "2026-07-28T01:09:04.000Z",
+          "uid": "35240-e1909927-5ce8-4109-a3dd-0bc207fefa6c"
+        }
+      ],
+      "id": "4fe52f5c-8b0e-47ca-8257-e06e288eddd4",
+      "createdAt": "2026-07-28T01:09:04.000Z",
+      "updatedAt": "2026-07-28T01:09:04.000Z",
+      "uid": "35240-4fe52f5c-8b0e-47ca-8257-e06e288eddd4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

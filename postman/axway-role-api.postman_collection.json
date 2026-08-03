@@ -1,0 +1,421 @@
+{
+  "info": {
+    "_postman_id": "e4e2ed0a-f74d-4caa-ad68-c0eac29e3fcc",
+    "name": "Amplify Platform API v1.0.0 aca role API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:46.000Z",
+    "updatedAt": "2026-07-28T01:09:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e4e2ed0a-f74d-4caa-ad68-c0eac29e3fcc"
+  },
+  "item": [
+    {
+      "name": "role",
+      "item": [
+        {
+          "name": "{role_id}",
+          "item": [
+            {
+              "name": "Axway Get Role",
+              "id": "41a417ae-27fc-48a2-8fbc-e0ac1c714e2f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/role/:role_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&context=org",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "role",
+                    ":role_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "context",
+                      "value": "org"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "40c42ca6-7ba8-40ef-af89-70f217bc5fad",
+                      "key": "role_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns the role with the given id"
+              },
+              "response": [
+                {
+                  "id": "65dd4960-9985-4a94-9bbc-71b159bd1b1c",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/role/:role_id?fields=<string>&exclude_fields=<string>&context=org",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "role",
+                        ":role_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "context",
+                          "value": "org"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "role_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"client\": \"<boolean>\",\n    \"consumer\": \"<boolean>\",\n    \"default\": \"<boolean>\",\n    \"disabled\": \"<boolean>\",\n    \"entitlement\": \"<string>\",\n    \"order\": \"<number>\",\n    \"org\": \"<boolean>\",\n    \"partner\": \"<string>\",\n    \"platform_restricted\": \"<boolean>\",\n    \"product\": \"<string>\",\n    \"required_default_roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"subscription\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"team\": \"<boolean>\",\n    \"web_only\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:46.000Z",
+                  "updatedAt": "2026-07-28T01:09:46.000Z",
+                  "uid": "35240-65dd4960-9985-4a94-9bbc-71b159bd1b1c"
+                },
+                {
+                  "id": "9bf01dd5-c753-4f21-a9c4-4ace49a8c0b8",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/role/:role_id?fields=<string>&exclude_fields=<string>&context=org",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "role",
+                        ":role_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "context",
+                          "value": "org"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "role_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:46.000Z",
+                  "updatedAt": "2026-07-28T01:09:46.000Z",
+                  "uid": "35240-9bf01dd5-c753-4f21-a9c4-4ace49a8c0b8"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:46.000Z",
+              "updatedAt": "2026-07-28T01:09:46.000Z",
+              "uid": "35240-41a417ae-27fc-48a2-8fbc-e0ac1c714e2f"
+            }
+          ],
+          "id": "e5b40ca5-0cc5-42be-81e5-0d479f48bff9",
+          "createdAt": "2026-07-28T01:09:46.000Z",
+          "updatedAt": "2026-07-28T01:09:46.000Z",
+          "uid": "35240-e5b40ca5-0cc5-42be-81e5-0d479f48bff9"
+        },
+        {
+          "name": "Axway Get Roles Matching Query",
+          "id": "c88fad1e-fdf4-4868-98e3-78ec6a33c4d5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/role?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&default=<boolean>&name=<string>&org=<boolean>&team=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "role"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "default",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "org",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "team",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Return the list of roles for the specified query parameters."
+          },
+          "response": [
+            {
+              "id": "498fc2f5-ee7d-41c4-ba32-630cefe24b3e",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/role?fields=<string>&exclude_fields=<string>&default=<boolean>&name=<string>&org=<boolean>&team=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "role"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "default",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "team",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"client\": \"<boolean>\",\n      \"consumer\": \"<boolean>\",\n      \"default\": \"<boolean>\",\n      \"disabled\": \"<boolean>\",\n      \"entitlement\": \"<string>\",\n      \"order\": \"<number>\",\n      \"org\": \"<boolean>\",\n      \"partner\": \"<string>\",\n      \"platform_restricted\": \"<boolean>\",\n      \"product\": \"<string>\",\n      \"required_default_roles\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subscription\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"team\": \"<boolean>\",\n      \"web_only\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"client\": \"<boolean>\",\n      \"consumer\": \"<boolean>\",\n      \"default\": \"<boolean>\",\n      \"disabled\": \"<boolean>\",\n      \"entitlement\": \"<string>\",\n      \"order\": \"<number>\",\n      \"org\": \"<boolean>\",\n      \"partner\": \"<string>\",\n      \"platform_restricted\": \"<boolean>\",\n      \"product\": \"<string>\",\n      \"required_default_roles\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subscription\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"team\": \"<boolean>\",\n      \"web_only\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:09:46.000Z",
+              "updatedAt": "2026-07-28T01:09:46.000Z",
+              "uid": "35240-498fc2f5-ee7d-41c4-ba32-630cefe24b3e"
+            },
+            {
+              "id": "73d09e7e-edf6-4a0f-bc42-9e6d9b7b9aa4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/role?fields=<string>&exclude_fields=<string>&default=<boolean>&name=<string>&org=<boolean>&team=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "role"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "default",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "team",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:46.000Z",
+              "updatedAt": "2026-07-28T01:09:46.000Z",
+              "uid": "35240-73d09e7e-edf6-4a0f-bc42-9e6d9b7b9aa4"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:46.000Z",
+          "updatedAt": "2026-07-28T01:09:46.000Z",
+          "uid": "35240-c88fad1e-fdf4-4868-98e3-78ec6a33c4d5"
+        }
+      ],
+      "id": "d2267057-c094-4bc9-9b34-0a494246ad39",
+      "createdAt": "2026-07-28T01:09:46.000Z",
+      "updatedAt": "2026-07-28T01:09:46.000Z",
+      "uid": "35240-d2267057-c094-4bc9-9b34-0a494246ad39"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

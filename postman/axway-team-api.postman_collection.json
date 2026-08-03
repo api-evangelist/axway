@@ -1,0 +1,2235 @@
+{
+  "info": {
+    "_postman_id": "cade514d-5f04-4e7b-b824-2c12332e3614",
+    "name": "Amplify Platform API v1.0.0 aca team API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:52.000Z",
+    "updatedAt": "2026-07-28T01:09:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cade514d-5f04-4e7b-b824-2c12332e3614"
+  },
+  "item": [
+    {
+      "name": "team",
+      "item": [
+        {
+          "name": "{team_id}",
+          "item": [
+            {
+              "name": "user",
+              "item": [
+                {
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "Axway Add Member",
+                      "id": "ebcec0f5-1ccc-417c-a8ca-ea61a1bebffb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"roles\": [\n    \"subscription_approver\",\n    \"consumer\"\n  ],\n  \"type\": \"user\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "team",
+                            ":team_id",
+                            "user",
+                            ":user_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "978633ab-6084-4a95-ab6d-e05bbc613c9d",
+                              "key": "team_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "4950f69e-ac2a-440a-b688-87f555a7dfe1",
+                              "key": "user_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Adds a member to a team.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "787dce81-0408-4bd1-beac-cbeddaac0971",
+                          "name": "Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"roles\": [\n    \"subscription_approver\",\n    \"consumer\"\n  ],\n  \"type\": \"user\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "team",
+                                ":team_id",
+                                "user",
+                                ":user_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "team_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"default\": false,\n    \"guid\": \"urn:uuid:e8a833ac-f641-5736-940c-396615cb2139\",\n    \"name\": \"<string>\",\n    \"org_guid\": \"<uuid>\",\n    \"tags\": [],\n    \"users\": [],\n    \"_id\": \"commodo proident culpa\",\n    \"created\": \"<dateTime>\",\n    \"desc\": \"<string,null>\",\n    \"updated\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:09:52.000Z",
+                          "updatedAt": "2026-07-28T01:09:52.000Z",
+                          "uid": "35240-787dce81-0408-4bd1-beac-cbeddaac0971"
+                        },
+                        {
+                          "id": "8ecf8e46-927f-4377-a1d2-4e10651bab94",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"roles\": [\n    \"subscription_approver\",\n    \"consumer\"\n  ],\n  \"type\": \"user\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "team",
+                                ":team_id",
+                                "user",
+                                ":user_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "team_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:52.000Z",
+                          "updatedAt": "2026-07-28T01:09:52.000Z",
+                          "uid": "35240-8ecf8e46-927f-4377-a1d2-4e10651bab94"
+                        },
+                        {
+                          "id": "54ba7b93-ed3c-4987-9820-1c6a48ba846c",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"roles\": [\n    \"subscription_approver\",\n    \"consumer\"\n  ],\n  \"type\": \"user\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "team",
+                                ":team_id",
+                                "user",
+                                ":user_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "team_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:52.000Z",
+                          "updatedAt": "2026-07-28T01:09:52.000Z",
+                          "uid": "35240-54ba7b93-ed3c-4987-9820-1c6a48ba846c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:52.000Z",
+                      "updatedAt": "2026-07-28T01:09:52.000Z",
+                      "uid": "35240-ebcec0f5-1ccc-417c-a8ca-ea61a1bebffb"
+                    },
+                    {
+                      "name": "Axway Remove Member",
+                      "id": "65bd78fc-b86a-4551-8f08-f5bd07e38ec8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "team",
+                            ":team_id",
+                            "user",
+                            ":user_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "f9c350cb-6090-4a46-b9cf-343e16234136",
+                              "key": "team_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "f7bb5676-0df9-4030-805e-0f4a931e2c2b",
+                              "key": "user_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Removes a member from the team\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "9d2b0cb1-1ad6-4abf-897d-c727a93c6428",
+                          "name": "Response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "team",
+                                ":team_id",
+                                "user",
+                                ":user_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "team_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"default\": false,\n    \"guid\": \"urn:uuid:e8a833ac-f641-5736-940c-396615cb2139\",\n    \"name\": \"<string>\",\n    \"org_guid\": \"<uuid>\",\n    \"tags\": [],\n    \"users\": [],\n    \"_id\": \"commodo proident culpa\",\n    \"created\": \"<dateTime>\",\n    \"desc\": \"<string,null>\",\n    \"updated\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:09:52.000Z",
+                          "updatedAt": "2026-07-28T01:09:52.000Z",
+                          "uid": "35240-9d2b0cb1-1ad6-4abf-897d-c727a93c6428"
+                        },
+                        {
+                          "id": "3b67823b-4840-4c5f-bd03-21391b81f0fd",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "team",
+                                ":team_id",
+                                "user",
+                                ":user_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "team_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:52.000Z",
+                          "updatedAt": "2026-07-28T01:09:52.000Z",
+                          "uid": "35240-3b67823b-4840-4c5f-bd03-21391b81f0fd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:52.000Z",
+                      "updatedAt": "2026-07-28T01:09:52.000Z",
+                      "uid": "35240-65bd78fc-b86a-4551-8f08-f5bd07e38ec8"
+                    },
+                    {
+                      "name": "Axway Sets the Team Member Role",
+                      "id": "5aa15f38-cfde-48c8-bd74-75c74c149f9e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"roles\": [\n    \"administrator\",\n    \"consumer\"\n  ]\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "team",
+                            ":team_id",
+                            "user",
+                            ":user_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "f4f3b2c5-7632-4dad-a544-5839a0ffb61f",
+                              "key": "team_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "290964d3-8782-4ccf-80cf-32bfe1b86f69",
+                              "key": "user_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Sets the users roles.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0da54cf5-8c44-43bb-b683-45accd9c1ac3",
+                          "name": "Response",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"roles\": [\n    \"administrator\",\n    \"consumer\"\n  ]\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "team",
+                                ":team_id",
+                                "user",
+                                ":user_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "team_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"default\": false,\n    \"guid\": \"urn:uuid:e8a833ac-f641-5736-940c-396615cb2139\",\n    \"name\": \"<string>\",\n    \"org_guid\": \"<uuid>\",\n    \"tags\": [],\n    \"users\": [],\n    \"_id\": \"commodo proident culpa\",\n    \"created\": \"<dateTime>\",\n    \"desc\": \"<string,null>\",\n    \"updated\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:09:52.000Z",
+                          "updatedAt": "2026-07-28T01:09:52.000Z",
+                          "uid": "35240-0da54cf5-8c44-43bb-b683-45accd9c1ac3"
+                        },
+                        {
+                          "id": "329ed1e4-97c8-4ada-b13b-bf44c6267a60",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"roles\": [\n    \"administrator\",\n    \"consumer\"\n  ]\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/team/:team_id/user/:user_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "team",
+                                ":team_id",
+                                "user",
+                                ":user_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "team_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:52.000Z",
+                          "updatedAt": "2026-07-28T01:09:52.000Z",
+                          "uid": "35240-329ed1e4-97c8-4ada-b13b-bf44c6267a60"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:52.000Z",
+                      "updatedAt": "2026-07-28T01:09:52.000Z",
+                      "uid": "35240-5aa15f38-cfde-48c8-bd74-75c74c149f9e"
+                    }
+                  ],
+                  "id": "97c2a31d-3a4c-458c-9d4a-bea8426425a7",
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-97c2a31d-3a4c-458c-9d4a-bea8426425a7"
+                },
+                {
+                  "name": "Axway Get Team Members",
+                  "id": "d6f09baf-a7b0-4612-ac0a-f444a58ef892",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-auth-token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/team/:team_id/user?fields=email,firstname,guid,lastname,name,roles&exclude_fields=<string>&exclude_fields=<string>&add_fields=<string>&add_fields=<string>&roles=&term=&type=user&limit=<number>&page=1&skip=0&sort=name&sort=email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "team",
+                        ":team_id",
+                        "user"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "email,firstname,guid,lastname,name,roles"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to add to the default field set in the response.",
+                          "key": "add_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to add to the default field set in the response.",
+                          "key": "add_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "roles",
+                          "value": ""
+                        },
+                        {
+                          "key": "term",
+                          "value": ""
+                        },
+                        {
+                          "key": "type",
+                          "value": "user"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "skip",
+                          "value": "0"
+                        },
+                        {
+                          "key": "sort",
+                          "value": "name"
+                        },
+                        {
+                          "key": "sort",
+                          "value": "email"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "374f55d9-ba09-40d7-805d-8b2a67d4b792",
+                          "key": "team_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns members for a team\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the team. Developer access may be restricted by the organization access control settings.\n\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "96772cd6-9990-4326-a093-98635bae4112",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "x-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/team/:team_id/user?fields=email,firstname,guid,lastname,name,roles&exclude_fields=<string>&add_fields=<string>&roles=&term=&type=user&limit=<number>&page=1&skip=0&sort=email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "team",
+                            ":team_id",
+                            "user"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "email,firstname,guid,lastname,name,roles"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to add to the default field set in the response.",
+                              "key": "add_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "roles",
+                              "value": ""
+                            },
+                            {
+                              "key": "term",
+                              "value": ""
+                            },
+                            {
+                              "key": "type",
+                              "value": "user"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "key": "sort",
+                              "value": "email"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "team_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"\",\n      \"guid\": \"<string>\",\n      \"lastname\": \"\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        \"developer\",\n        \"subscription_approver\"\n      ],\n      \"type\": \"user\",\n      \"org_roles\": [\n        \"auditor\",\n        \"consumer\"\n      ]\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"\",\n      \"guid\": \"<string>\",\n      \"lastname\": \"\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        \"consumer\",\n        \"api_access\"\n      ],\n      \"type\": \"user\",\n      \"org_roles\": [\n        \"developer\",\n        \"administrator\"\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"count\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"matched\": \"<number>\",\n    \"page\": \"<number>\",\n    \"pages\": \"<number>\",\n    \"skip\": \"<number>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:09:52.000Z",
+                      "updatedAt": "2026-07-28T01:09:52.000Z",
+                      "uid": "35240-96772cd6-9990-4326-a093-98635bae4112"
+                    },
+                    {
+                      "id": "e71affaf-6615-4932-8e91-1ed44ff1453c",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "x-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-auth-token",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/team/:team_id/user?fields=email,firstname,guid,lastname,name,roles&exclude_fields=<string>&add_fields=<string>&roles=&term=&type=user&limit=<number>&page=1&skip=0&sort=email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "team",
+                            ":team_id",
+                            "user"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "email,firstname,guid,lastname,name,roles"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to add to the default field set in the response.",
+                              "key": "add_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "roles",
+                              "value": ""
+                            },
+                            {
+                              "key": "term",
+                              "value": ""
+                            },
+                            {
+                              "key": "type",
+                              "value": "user"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "skip",
+                              "value": "0"
+                            },
+                            {
+                              "key": "sort",
+                              "value": "email"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "team_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:52.000Z",
+                      "updatedAt": "2026-07-28T01:09:52.000Z",
+                      "uid": "35240-e71affaf-6615-4932-8e91-1ed44ff1453c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-d6f09baf-a7b0-4612-ac0a-f444a58ef892"
+                }
+              ],
+              "id": "abc84a8c-b525-4ea7-9542-bf7e1395e153",
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-abc84a8c-b525-4ea7-9542-bf7e1395e153"
+            },
+            {
+              "name": "Axway Find Team",
+              "id": "adf59268-8454-45f4-a45c-19ba4bfb3904",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/team/:team_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "team",
+                    ":team_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "defa21f4-f187-4957-b53f-8cb858e3cced",
+                      "key": "team_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns the team for given guid\n\n___Auth Requirement___\n - _One of_\n     - Service account access token.\n     - Signed-in user.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "6a308f64-04ba-4ca3-b044-ae0a87438710",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/team/:team_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "team",
+                        ":team_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "team_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"default\": false,\n    \"guid\": \"urn:uuid:e8a833ac-f641-5736-940c-396615cb2139\",\n    \"name\": \"<string>\",\n    \"org_guid\": \"<uuid>\",\n    \"tags\": [],\n    \"users\": [],\n    \"_id\": \"commodo proident culpa\",\n    \"created\": \"<dateTime>\",\n    \"desc\": \"<string,null>\",\n    \"updated\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-6a308f64-04ba-4ca3-b044-ae0a87438710"
+                },
+                {
+                  "id": "f6e6748b-a2dc-44e1-b3f9-abd3cd07bfcc",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/team/:team_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "team",
+                        ":team_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "team_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-f6e6748b-a2dc-44e1-b3f9-abd3cd07bfcc"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-adf59268-8454-45f4-a45c-19ba4bfb3904"
+            },
+            {
+              "name": "Axway Remove Team",
+              "id": "ebefd4b8-ca91-4757-8981-1daf4adb421e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/team/:team_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&reassign_team=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "team",
+                    ":team_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reassign_team",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "3ffa093a-3405-431a-bed0-85edb1595637",
+                      "key": "team_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Remove a team from the platform if it is not the default. If another team's GUID is specified in the `reassign_team` parameter, then the deleted team's assets will be assigned to it, otherwise the assets will be unassigned. This is a destructive and irreversible action.\n\n___Auth Requirement___\n\n`administrator` role in the organization the team belongs to.\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "5b1597a0-0e66-4932-a150-98392d3881f9",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/team/:team_id?fields=<string>&exclude_fields=<string>&reassign_team=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "team",
+                        ":team_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "reassign_team",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "team_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"default\": false,\n    \"guid\": \"urn:uuid:e8a833ac-f641-5736-940c-396615cb2139\",\n    \"name\": \"<string>\",\n    \"org_guid\": \"<uuid>\",\n    \"tags\": [],\n    \"users\": [],\n    \"_id\": \"commodo proident culpa\",\n    \"created\": \"<dateTime>\",\n    \"desc\": \"<string,null>\",\n    \"updated\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-5b1597a0-0e66-4932-a150-98392d3881f9"
+                },
+                {
+                  "id": "1d424219-4fcc-4d58-9ad3-1fc5ebfc0232",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/team/:team_id?fields=<string>&exclude_fields=<string>&reassign_team=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "team",
+                        ":team_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "reassign_team",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "team_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-1d424219-4fcc-4d58-9ad3-1fc5ebfc0232"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-ebefd4b8-ca91-4757-8981-1daf4adb421e"
+            },
+            {
+              "name": "Axway Update Team",
+              "id": "81374d17-a8fa-4f7b-95aa-7c035b159228",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"default\": false,\n  \"desc\": \"<string,null>\",\n  \"name\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/team/:team_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "team",
+                    ":team_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "e434fac1-0511-47fe-a5ec-4c9125325546",
+                      "key": "team_id",
+                      "value": "<uuid>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "This will update a team's attributes.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+              },
+              "response": [
+                {
+                  "id": "34d287c5-9a28-4c1d-945a-13bdc9241a20",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"default\": false,\n  \"desc\": \"<string,null>\",\n  \"name\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/team/:team_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "team",
+                        ":team_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "team_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"default\": false,\n    \"guid\": \"urn:uuid:e8a833ac-f641-5736-940c-396615cb2139\",\n    \"name\": \"<string>\",\n    \"org_guid\": \"<uuid>\",\n    \"tags\": [],\n    \"users\": [],\n    \"_id\": \"commodo proident culpa\",\n    \"created\": \"<dateTime>\",\n    \"desc\": \"<string,null>\",\n    \"updated\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-34d287c5-9a28-4c1d-945a-13bdc9241a20"
+                },
+                {
+                  "id": "d7e38db4-30d4-48f4-80bc-4dcba5f8511e",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"default\": false,\n  \"desc\": \"<string,null>\",\n  \"name\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/team/:team_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "team",
+                        ":team_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "team_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:52.000Z",
+                  "updatedAt": "2026-07-28T01:09:52.000Z",
+                  "uid": "35240-d7e38db4-30d4-48f4-80bc-4dcba5f8511e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-81374d17-a8fa-4f7b-95aa-7c035b159228"
+            }
+          ],
+          "id": "fa55dada-b22f-400a-9f7c-2c82c18ca9b9",
+          "createdAt": "2026-07-28T01:09:52.000Z",
+          "updatedAt": "2026-07-28T01:09:52.000Z",
+          "uid": "35240-fa55dada-b22f-400a-9f7c-2c82c18ca9b9"
+        },
+        {
+          "name": "Axway Create a Team",
+          "id": "5a900495-d845-45bf-8c5e-21fe13c14d0b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"desc\": \"<string,null>\",\n  \"org_guid\": \"<uuid>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/team?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "team"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "This will create a team.\n\n___Auth Requirement___\n - `administrator` access to the organization.\n\n\n_Allows consumer organization access_\n"
+          },
+          "response": [
+            {
+              "id": "698f456a-e478-4f97-8c90-e409efdeb3e4",
+              "name": "Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"desc\": \"<string,null>\",\n  \"org_guid\": \"<uuid>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/team?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "team"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"default\": false,\n    \"guid\": \"urn:uuid:e8a833ac-f641-5736-940c-396615cb2139\",\n    \"name\": \"<string>\",\n    \"org_guid\": \"<uuid>\",\n    \"tags\": [],\n    \"users\": [],\n    \"_id\": \"commodo proident culpa\",\n    \"created\": \"<dateTime>\",\n    \"desc\": \"<string,null>\",\n    \"updated\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-698f456a-e478-4f97-8c90-e409efdeb3e4"
+            },
+            {
+              "id": "fcc8a0dc-921e-40be-95d2-935f6d4cc8f8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"desc\": \"<string,null>\",\n  \"org_guid\": \"<uuid>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/team?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "team"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-fcc8a0dc-921e-40be-95d2-935f6d4cc8f8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:52.000Z",
+          "updatedAt": "2026-07-28T01:09:52.000Z",
+          "uid": "35240-5a900495-d845-45bf-8c5e-21fe13c14d0b"
+        },
+        {
+          "name": "Axway Get Accessible Teams for the Query",
+          "id": "0cd81823-e5c5-417f-9234-3818017ecaf4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-auth-token",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-auth-token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/team?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&default=false&name=<string>&org_id=<string>&tag=<string>&user_guid=<string>&limit=<number>&page=1&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "team"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "default",
+                  "value": "false"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "org_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "tag",
+                  "value": "<string>"
+                },
+                {
+                  "key": "user_guid",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Return the list of teams for the specified query parameters that can be accessed by this session.\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the organization, allowing consumer role.\n\n\n_Allows consumer organization access_\n"
+          },
+          "response": [
+            {
+              "id": "dccdc4f5-a460-4d0b-9ba9-5adf17b83781",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/team?fields=<string>&exclude_fields=<string>&default=false&name=<string>&org_id=<string>&tag=<string>&user_guid=<string>&limit=<number>&page=1&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "team"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "default",
+                      "value": "false"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"default\": false,\n      \"guid\": \"d400e8d8-1521-2fa1-ffad-6156bfcf9660\",\n      \"name\": \"<string>\",\n      \"org_guid\": \"<uuid>\",\n      \"tags\": [],\n      \"users\": [],\n      \"_id\": \"amet non cillum\",\n      \"created\": \"<dateTime>\",\n      \"desc\": \"<string,null>\",\n      \"updated\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"client\"\n      }\n    },\n    {\n      \"default\": false,\n      \"guid\": \"665004ff-2b85-ea4d-ccea-0d63a96333a1\",\n      \"name\": \"<string>\",\n      \"org_guid\": \"<uuid>\",\n      \"tags\": [],\n      \"users\": [],\n      \"_id\": \"adipisi\",\n      \"created\": \"<dateTime>\",\n      \"desc\": \"<string,null>\",\n      \"updated\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"client\"\n      }\n    }\n  ],\n  \"metadata\": {\n    \"query\": {},\n    \"count\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"matched\": \"<number>\",\n    \"page\": \"<number>\",\n    \"pages\": \"<number>\",\n    \"skip\": \"<number>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-dccdc4f5-a460-4d0b-9ba9-5adf17b83781"
+            },
+            {
+              "id": "07f6df6b-dc65-4ed3-a3dd-f951eba929dd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/team?fields=<string>&exclude_fields=<string>&default=false&name=<string>&org_id=<string>&tag=<string>&user_guid=<string>&limit=<number>&page=1&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "team"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "default",
+                      "value": "false"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:52.000Z",
+              "updatedAt": "2026-07-28T01:09:52.000Z",
+              "uid": "35240-07f6df6b-dc65-4ed3-a3dd-f951eba929dd"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:52.000Z",
+          "updatedAt": "2026-07-28T01:09:52.000Z",
+          "uid": "35240-0cd81823-e5c5-417f-9234-3818017ecaf4"
+        }
+      ],
+      "id": "faaae99f-729c-48fa-9827-129a4e189b37",
+      "createdAt": "2026-07-28T01:09:52.000Z",
+      "updatedAt": "2026-07-28T01:09:52.000Z",
+      "uid": "35240-faaae99f-729c-48fa-9827-129a4e189b37"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

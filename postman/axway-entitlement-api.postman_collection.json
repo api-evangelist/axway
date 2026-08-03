@@ -1,0 +1,222 @@
+{
+  "info": {
+    "_postman_id": "460c9c56-e873-4606-94aa-80263b913512",
+    "name": "Amplify Platform API v1.0.0 aca entitlement API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:12.000Z",
+    "updatedAt": "2026-07-28T01:09:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-460c9c56-e873-4606-94aa-80263b913512"
+  },
+  "item": [
+    {
+      "name": "entitlement",
+      "item": [
+        {
+          "name": "Axway Get Entitlement Meta",
+          "id": "cf929918-72d7-4591-ba9c-51e9fb833918",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-auth-token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/entitlement?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "entitlement"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns entitlement definitions\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Auth token.\n"
+          },
+          "response": [
+            {
+              "id": "8fa099f6-eea5-4e00-b47e-bb6aea0d0ce2",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entitlement?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entitlement"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"type\": \"string\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"type\": \"boolean\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:09:12.000Z",
+              "updatedAt": "2026-07-28T01:09:12.000Z",
+              "uid": "35240-8fa099f6-eea5-4e00-b47e-bb6aea0d0ce2"
+            },
+            {
+              "id": "6428a874-c96a-40f2-8de6-11a86f1e3735",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-auth-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/entitlement?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "entitlement"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:12.000Z",
+              "updatedAt": "2026-07-28T01:09:12.000Z",
+              "uid": "35240-6428a874-c96a-40f2-8de6-11a86f1e3735"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:12.000Z",
+          "updatedAt": "2026-07-28T01:09:12.000Z",
+          "uid": "35240-cf929918-72d7-4591-ba9c-51e9fb833918"
+        }
+      ],
+      "id": "3b068765-5772-439b-9a47-206231fea147",
+      "createdAt": "2026-07-28T01:09:12.000Z",
+      "updatedAt": "2026-07-28T01:09:12.000Z",
+      "uid": "35240-3b068765-5772-439b-9a47-206231fea147"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

@@ -1,0 +1,1855 @@
+{
+  "info": {
+    "_postman_id": "d30bd78f-483e-4d6c-93e6-4d049d7745ad",
+    "name": "Amplify Platform API v1.0.0 aca domain API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:10.000Z",
+    "updatedAt": "2026-07-28T01:09:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d30bd78f-483e-4d6c-93e6-4d049d7745ad"
+  },
+  "item": [
+    {
+      "name": "org",
+      "item": [
+        {
+          "name": "{org_id}",
+          "item": [
+            {
+              "name": "domain",
+              "item": [
+                {
+                  "name": "verify",
+                  "item": [
+                    {
+                      "name": "Axway Trigger Domain Association Flow",
+                      "id": "cacb7481-3e08-416e-9bab-7b70a1860a55",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"<string>\",\n  \"idp_id\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain/verify",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain",
+                            "verify"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cdb45e99-11f9-4cd2-bf78-ec1757f155c0",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Create and send IdP domain association verification email.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "9563f8d3-cf0e-48d4-b381-418a7dc6f722",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"idp_id\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-9563f8d3-cf0e-48d4-b381-418a7dc6f722"
+                        },
+                        {
+                          "id": "130329b3-c3d2-4b03-90eb-8c81095f1386",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"<string>\",\n  \"idp_id\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-130329b3-c3d2-4b03-90eb-8c81095f1386"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-cacb7481-3e08-416e-9bab-7b70a1860a55"
+                    }
+                  ],
+                  "id": "8dcaedb5-1256-4d57-8b9d-ba1e730b1fc9",
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-8dcaedb5-1256-4d57-8b9d-ba1e730b1fc9"
+                },
+                {
+                  "name": "subdomain",
+                  "item": [
+                    {
+                      "name": "Axway Associate Subdomain to Parent Domain IdP",
+                      "id": "767c8373-b73a-4118-85af-7345ca553111",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"domain\": \"<string>\",\n  \"subdomain\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain/subdomain",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain",
+                            "subdomain"
+                          ],
+                          "variable": [
+                            {
+                              "id": "84c4fe3d-50d0-462c-8239-0a9d1b48cd8a",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Attempt to confirm the association of a subdomain to a parent domain's IdP.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "eb5176a7-ff46-4dd7-8c16-d985ca47abf9",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\",\n  \"subdomain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/subdomain",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "subdomain"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-eb5176a7-ff46-4dd7-8c16-d985ca47abf9"
+                        },
+                        {
+                          "id": "77b26292-cbb0-431a-961a-e5ab7985eb86",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\",\n  \"subdomain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/subdomain",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "subdomain"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-77b26292-cbb0-431a-961a-e5ab7985eb86"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-767c8373-b73a-4118-85af-7345ca553111"
+                    }
+                  ],
+                  "id": "171854e0-fc2a-450d-8078-a9d089a060b1",
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-171854e0-fc2a-450d-8078-a9d089a060b1"
+                },
+                {
+                  "name": "enable",
+                  "item": [
+                    {
+                      "name": "Axway Enable IdP for a Domain",
+                      "id": "8221ccb4-f9eb-4276-84b9-93a4d9fc9228",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"domain\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain/enable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain",
+                            "enable"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ff12fadd-22c4-42f9-b16e-11dbe1511fb4",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Enable the association of an Identity Provider for all users on a supplied domain.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0634c70d-3221-4695-bc72-eb26e0e8ed29",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/enable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "enable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-0634c70d-3221-4695-bc72-eb26e0e8ed29"
+                        },
+                        {
+                          "id": "c81a24b2-1cb3-4509-bee9-394c497166e3",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/enable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "enable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-c81a24b2-1cb3-4509-bee9-394c497166e3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-8221ccb4-f9eb-4276-84b9-93a4d9fc9228"
+                    }
+                  ],
+                  "id": "80e0afa2-f9f8-4f25-9b41-0a71a475da71",
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-80e0afa2-f9f8-4f25-9b41-0a71a475da71"
+                },
+                {
+                  "name": "dissociate",
+                  "item": [
+                    {
+                      "name": "Axway Remove Domain Association",
+                      "id": "ba2443e7-240b-40dc-a902-337ecf5eaca0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"domain\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain/dissociate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain",
+                            "dissociate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e738f113-7aad-42b8-9d43-759d49e8d004",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Remove the association of a domain to an identity provider\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0ce8e322-cb85-4845-99a3-004721effcc0",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/dissociate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "dissociate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-0ce8e322-cb85-4845-99a3-004721effcc0"
+                        },
+                        {
+                          "id": "50def02f-4e73-4536-9220-53fbf1e2625e",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/dissociate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "dissociate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-50def02f-4e73-4536-9220-53fbf1e2625e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-ba2443e7-240b-40dc-a902-337ecf5eaca0"
+                    }
+                  ],
+                  "id": "a0851d09-ac9e-4941-955c-213de91b717f",
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-a0851d09-ac9e-4941-955c-213de91b717f"
+                },
+                {
+                  "name": "consolidate",
+                  "item": [
+                    {
+                      "name": "Axway Consolidate Domain Users",
+                      "id": "48f55913-0607-4d93-9d08-5a8c9a094b2b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"domain\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain/consolidate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain",
+                            "consolidate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "50d68941-5939-406f-8004-083f5b4703e4",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Add all users on a domain owned by an org that are not members of it to it.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "d8056807-032b-4c62-9d3c-37bb7b9e398f",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/consolidate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "consolidate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-d8056807-032b-4c62-9d3c-37bb7b9e398f"
+                        },
+                        {
+                          "id": "815bcd6b-a384-4e59-a669-57a8458b99e3",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/consolidate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "consolidate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-815bcd6b-a384-4e59-a669-57a8458b99e3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-48f55913-0607-4d93-9d08-5a8c9a094b2b"
+                    }
+                  ],
+                  "id": "1327f871-f913-4bb5-9906-7e07f5121c91",
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-1327f871-f913-4bb5-9906-7e07f5121c91"
+                },
+                {
+                  "name": "confirm",
+                  "item": [
+                    {
+                      "name": "Axway Confirm Domain Ownership",
+                      "id": "052c1636-1493-4bf8-9912-084c244ef5d7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"domain\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain/confirm?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain",
+                            "confirm"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "2d4694ff-a52a-4d9f-b695-ecfee3476277",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Attempt to confirm the ownership of a domain to an organization via DNS TXT record.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "26ed5df6-3d38-4ccd-a179-5d1d5c973333",
+                          "name": "Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/confirm?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "confirm"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"confirmed\": \"<boolean>\",\n    \"records\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"admins\": [\n      {\n        \"firstname\": \"\",\n        \"lastname\": \"\",\n        \"email\": \"<email>\",\n        \"guid\": \"<string>\"\n      },\n      {\n        \"firstname\": \"\",\n        \"lastname\": \"\",\n        \"email\": \"<email>\",\n        \"guid\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-26ed5df6-3d38-4ccd-a179-5d1d5c973333"
+                        },
+                        {
+                          "id": "e291829a-6a43-4aae-8228-df589b993876",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"domain\": \"<string>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/confirm?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                "confirm"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-e291829a-6a43-4aae-8228-df589b993876"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-052c1636-1493-4bf8-9912-084c244ef5d7"
+                    }
+                  ],
+                  "id": "9e7846f4-bae1-400b-a0b0-93fe0de314b4",
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-9e7846f4-bae1-400b-a0b0-93fe0de314b4"
+                },
+                {
+                  "name": "{domain}",
+                  "item": [
+                    {
+                      "name": "Axway Remove Domain Association",
+                      "id": "bd2fdf1e-8ee5-43ed-abb9-eace3dea845d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain/:domain",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain",
+                            ":domain"
+                          ],
+                          "variable": [
+                            {
+                              "id": "74ba9227-3853-45d1-836b-758e1b6ab0b7",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "f1e51283-dbae-48a6-9406-30efe3f5ccb5",
+                              "key": "domain",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Remove the association of a domain to an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                      },
+                      "response": [
+                        {
+                          "id": "08f34c52-cbf4-4eb3-b193-3be0327982c1",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/:domain",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                ":domain"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                },
+                                {
+                                  "key": "domain"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-08f34c52-cbf4-4eb3-b193-3be0327982c1"
+                        },
+                        {
+                          "id": "11c2fe54-e53d-4e5f-98c0-4bd9b5d5c570",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/domain/:domain",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "domain",
+                                ":domain"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                },
+                                {
+                                  "key": "domain"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:11.000Z",
+                          "updatedAt": "2026-07-28T01:09:11.000Z",
+                          "uid": "35240-11c2fe54-e53d-4e5f-98c0-4bd9b5d5c570"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-bd2fdf1e-8ee5-43ed-abb9-eace3dea845d"
+                    }
+                  ],
+                  "id": "8791f85e-933b-4094-87c0-204ef04f7add",
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-8791f85e-933b-4094-87c0-204ef04f7add"
+                },
+                {
+                  "name": "Axway Confirm Domain IdP Association",
+                  "id": "8a4ef04e-9030-4d02-8cb5-795f8fbd82c2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "connect.sid",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:org_id/domain",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":org_id",
+                        "domain"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1d673256-35cc-4d61-9075-094232ff778a",
+                          "key": "org_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Attempt to confirm the association of an email domain to an IdP.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "e430f8db-b7b7-47e2-835c-1e1310712ea8",
+                      "name": "No Content",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "connect.sid",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain"
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-e430f8db-b7b7-47e2-835c-1e1310712ea8"
+                    },
+                    {
+                      "id": "b2580eca-d0c0-4acb-a21f-635128fe9f8f",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "connect.sid",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain"
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-b2580eca-d0c0-4acb-a21f-635128fe9f8f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-8a4ef04e-9030-4d02-8cb5-795f8fbd82c2"
+                },
+                {
+                  "name": "Axway Start Domain Ownership Process",
+                  "id": "a02cdc87-03db-4f72-ba2f-ade93002dbd6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"domain\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:org_id/domain",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":org_id",
+                        "domain"
+                      ],
+                      "variable": [
+                        {
+                          "id": "abd041a1-cfcd-47d9-96d3-3a0b04f686a7",
+                          "key": "org_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Trigger flow to associate a domain to an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "2c4a5bd2-3307-4c8d-ba33-f643fb30f30d",
+                      "name": "No Content",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"domain\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain"
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-2c4a5bd2-3307-4c8d-ba33-f643fb30f30d"
+                    },
+                    {
+                      "id": "d9cb67b7-a4de-4bd2-9c05-9dd62494378e",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"domain\": \"<string>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain"
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-d9cb67b7-a4de-4bd2-9c05-9dd62494378e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-a02cdc87-03db-4f72-ba2f-ade93002dbd6"
+                },
+                {
+                  "name": "Axway Get All Domains",
+                  "id": "c626d42a-82d2-40b0-af91-d4740ea5512d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:org_id/domain?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":org_id",
+                        "domain"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6d1d79a1-963e-4409-91a5-38a044546212",
+                          "key": "org_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all email domains configured for organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator`, or `auditor` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n\n\n_Allows consumer organization access_\n"
+                  },
+                  "response": [
+                    {
+                      "id": "21da1678-2ff1-438f-9123-3280d4c78bb6",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"orgs\": [],\n      \"tld\": \"s\",\n      \"_id\": \"ut\",\n      \"provider_guid\": \"urn:uuid:d5bfb1fd-45cc-ed2f-94b6-cc21f7f821e6\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"client\"\n      },\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"orgs\": [],\n      \"tld\": \"in fugiat aliqua et\",\n      \"_id\": \"do ea en\",\n      \"provider_guid\": \"urn:uuid:11abbebb-ad85-be18-04e6-1a8b6011160e\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"client\"\n      },\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-21da1678-2ff1-438f-9123-3280d4c78bb6"
+                    },
+                    {
+                      "id": "2d33ea4d-ab4b-4bc9-864e-337bd3ab1209",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/domain?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "domain"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:11.000Z",
+                      "updatedAt": "2026-07-28T01:09:11.000Z",
+                      "uid": "35240-2d33ea4d-ab4b-4bc9-864e-337bd3ab1209"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:11.000Z",
+                  "updatedAt": "2026-07-28T01:09:11.000Z",
+                  "uid": "35240-c626d42a-82d2-40b0-af91-d4740ea5512d"
+                }
+              ],
+              "id": "d72cf1e1-cc25-4763-aa01-71eaab31e05b",
+              "createdAt": "2026-07-28T01:09:11.000Z",
+              "updatedAt": "2026-07-28T01:09:11.000Z",
+              "uid": "35240-d72cf1e1-cc25-4763-aa01-71eaab31e05b"
+            }
+          ],
+          "id": "4e75c979-25c9-4af1-acdb-53eab1686d95",
+          "createdAt": "2026-07-28T01:09:11.000Z",
+          "updatedAt": "2026-07-28T01:09:11.000Z",
+          "uid": "35240-4e75c979-25c9-4af1-acdb-53eab1686d95"
+        }
+      ],
+      "id": "e0444b92-afb0-4bf2-9070-9a735c1359fd",
+      "createdAt": "2026-07-28T01:09:11.000Z",
+      "updatedAt": "2026-07-28T01:09:11.000Z",
+      "uid": "35240-e0444b92-afb0-4bf2-9070-9a735c1359fd"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

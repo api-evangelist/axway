@@ -1,0 +1,1091 @@
+{
+  "info": {
+    "_postman_id": "d80561d0-e30b-4eda-9493-8a2cc2b29b94",
+    "name": "Amplify Platform API v1.0.0 aca app API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:07.000Z",
+    "updatedAt": "2026-07-28T01:09:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d80561d0-e30b-4eda-9493-8a2cc2b29b94"
+  },
+  "item": [
+    {
+      "name": "app",
+      "item": [
+        {
+          "name": "{app_id}",
+          "item": [
+            {
+              "name": "Axway Find App",
+              "id": "9f0a78fa-ebca-4288-916a-62f2bd0a59a2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/app/:app_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "6dd4c7bc-a17f-41c1-92e9-af6f4acf26ae",
+                      "key": "app_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns an application for the signed-in user\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+              },
+              "response": [
+                {
+                  "id": "36f04134-8d73-4802-8408-1e2ba5f4f093",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/app/:app_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "app",
+                        ":app_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "app_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"guid\": \"<string>\",\n    \"org_guid\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"type\": \"<string>\",\n    \"_id\": \"sed deserunt ad ullamco culpa\",\n    \"apis\": [\n      \"Lorem non\",\n      \"enim laboris irure dolore\"\n    ],\n    \"automatic\": false,\n    \"env\": \"magna mollit in anim\",\n    \"provider_guid\": \"et\",\n    \"providers\": [\n      {\n        \"guid\": \"veniam ut\",\n        \"published_id\": \"in proident\"\n      },\n      {\n        \"guid\": \"laborum\",\n        \"published_id\": \"aute nisi officia do\"\n      }\n    ],\n    \"source\": \"deserunt dolor\",\n    \"subtype\": \"proident in\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    },\n    \"updated\": \"<dateTime>\",\n    \"app_guid\": \"<string>\",\n    \"app_name\": \"<string>\",\n    \"org_id\": \"<number>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:07.000Z",
+                  "updatedAt": "2026-07-28T01:09:07.000Z",
+                  "uid": "35240-36f04134-8d73-4802-8408-1e2ba5f4f093"
+                },
+                {
+                  "id": "42d3bb2c-8209-4e60-9b23-7659dac29dd0",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/app/:app_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "app",
+                        ":app_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "app_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:07.000Z",
+                  "updatedAt": "2026-07-28T01:09:07.000Z",
+                  "uid": "35240-42d3bb2c-8209-4e60-9b23-7659dac29dd0"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:07.000Z",
+              "updatedAt": "2026-07-28T01:09:07.000Z",
+              "uid": "35240-9f0a78fa-ebca-4288-916a-62f2bd0a59a2"
+            },
+            {
+              "name": "Axway Remove App",
+              "id": "9daa0d90-1c49-4237-9803-123364d9830c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/app/:app_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "3caa3fed-e129-4c19-b700-169f50175561",
+                      "key": "app_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Removes an app from the platform and all third parties\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+              },
+              "response": [
+                {
+                  "id": "707c2a2e-875f-4881-a59a-73d4884de286",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/app/:app_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "app",
+                        ":app_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "app_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"description\": \"The response data\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:07.000Z",
+                  "updatedAt": "2026-07-28T01:09:07.000Z",
+                  "uid": "35240-707c2a2e-875f-4881-a59a-73d4884de286"
+                },
+                {
+                  "id": "892b7037-4871-4c1a-b923-7c0c8e470a89",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/app/:app_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "app",
+                        ":app_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "app_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:07.000Z",
+                  "updatedAt": "2026-07-28T01:09:07.000Z",
+                  "uid": "35240-892b7037-4871-4c1a-b923-7c0c8e470a89"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:07.000Z",
+              "updatedAt": "2026-07-28T01:09:07.000Z",
+              "uid": "35240-9daa0d90-1c49-4237-9803-123364d9830c"
+            },
+            {
+              "name": "Axway Update App",
+              "id": "255d2e48-2849-4875-8f0c-4dfadf1d54b8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/app/:app_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "2fa495f4-83f4-4536-9355-6879cbf16b29",
+                      "key": "app_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates an app\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+              },
+              "response": [
+                {
+                  "id": "a4166b7a-c35f-4dad-bf61-7443aa8d468f",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/app/:app_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "app",
+                        ":app_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "app_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"guid\": \"<string>\",\n    \"org_guid\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"type\": \"<string>\",\n    \"_id\": \"sunt\",\n    \"apis\": [\n      \"ex veniam pariatur\",\n      \"elit minim Lorem\"\n    ],\n    \"automatic\": true,\n    \"env\": \"nost\",\n    \"provider_guid\": \"aliqua mollit exercitation\",\n    \"providers\": [\n      {\n        \"guid\": \"labore sed esse pariatur\",\n        \"published_id\": \"laborum Excepteur\"\n      },\n      {\n        \"guid\": \"ullamco\",\n        \"published_id\": \"enim deserunt\"\n      }\n    ],\n    \"source\": \"venia\",\n    \"subtype\": \"exercitation elit dolore\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"user\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:07.000Z",
+                  "updatedAt": "2026-07-28T01:09:07.000Z",
+                  "uid": "35240-a4166b7a-c35f-4dad-bf61-7443aa8d468f"
+                },
+                {
+                  "id": "9afe4944-37c8-4330-ac3b-72ea3b5cfcd0",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/app/:app_id?fields=<string>&exclude_fields=<string>&org_id=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "app",
+                        ":app_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "org_id",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "app_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:07.000Z",
+                  "updatedAt": "2026-07-28T01:09:07.000Z",
+                  "uid": "35240-9afe4944-37c8-4330-ac3b-72ea3b5cfcd0"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:07.000Z",
+              "updatedAt": "2026-07-28T01:09:07.000Z",
+              "uid": "35240-255d2e48-2849-4875-8f0c-4dfadf1d54b8"
+            }
+          ],
+          "id": "56c60d9a-bddc-4846-b8f3-0876ce2adb72",
+          "createdAt": "2026-07-28T01:09:07.000Z",
+          "updatedAt": "2026-07-28T01:09:07.000Z",
+          "uid": "35240-56c60d9a-bddc-4846-b8f3-0876ce2adb72"
+        },
+        {
+          "name": "Axway Create App",
+          "id": "6dd6357a-8c33-4c1d-a19d-470119440a05",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"org_guid\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"guid\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/app?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "app"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Adds an app to the platform.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization `partners` entitlement includes `analytics`.\n"
+          },
+          "response": [
+            {
+              "id": "3dea432d-7f6b-417a-ad04-c54ccab80368",
+              "name": "Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"org_guid\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"guid\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/app?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "app"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"guid\": \"<string>\",\n    \"org_guid\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"type\": \"<string>\",\n    \"_id\": \"sunt\",\n    \"apis\": [\n      \"ex veniam pariatur\",\n      \"elit minim Lorem\"\n    ],\n    \"automatic\": true,\n    \"env\": \"nost\",\n    \"provider_guid\": \"aliqua mollit exercitation\",\n    \"providers\": [\n      {\n        \"guid\": \"labore sed esse pariatur\",\n        \"published_id\": \"laborum Excepteur\"\n      },\n      {\n        \"guid\": \"ullamco\",\n        \"published_id\": \"enim deserunt\"\n      }\n    ],\n    \"source\": \"venia\",\n    \"subtype\": \"exercitation elit dolore\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"user\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:09:07.000Z",
+              "updatedAt": "2026-07-28T01:09:07.000Z",
+              "uid": "35240-3dea432d-7f6b-417a-ad04-c54ccab80368"
+            },
+            {
+              "id": "2c75e26d-c03a-4fb4-8ac0-c1f144e4dcdb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"org_guid\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"guid\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/app?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "app"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:07.000Z",
+              "updatedAt": "2026-07-28T01:09:07.000Z",
+              "uid": "35240-2c75e26d-c03a-4fb4-8ac0-c1f144e4dcdb"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:07.000Z",
+          "updatedAt": "2026-07-28T01:09:07.000Z",
+          "uid": "35240-6dd6357a-8c33-4c1d-a19d-470119440a05"
+        },
+        {
+          "name": "Axway Find Apps",
+          "id": "e57fbb94-8311-4c61-8704-839e76a07b4a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/app?fields=guid,name,created,created_by,type&exclude_fields=<string>&exclude_fields=<string>&add_fields=<string>&add_fields=<string>&org_id=<integer>&provider_guid=<string>&subtype=<string>&type=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "app"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "guid,name,created,created_by,type"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to add to the default field set in the response.",
+                  "key": "add_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to add to the default field set in the response.",
+                  "key": "add_fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "org_id",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "provider_guid",
+                  "value": "<string>"
+                },
+                {
+                  "key": "subtype",
+                  "value": "<string>"
+                },
+                {
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of applications for the signed-in user\n\n___Auth Requirement___\n - Access to the organization.\n"
+          },
+          "response": [
+            {
+              "id": "f295b25b-2833-4844-8c6b-4b262f0d47b4",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/app?fields=guid,name,created,created_by,type&exclude_fields=<string>&add_fields=<string>&org_id=<integer>&provider_guid=<string>&subtype=<string>&type=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "app"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "guid,name,created,created_by,type"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to add to the default field set in the response.",
+                      "key": "add_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "provider_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"guid\": \"<string>\",\n      \"org_guid\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"type\": \"<string>\",\n      \"_id\": \"et pariatur officia\",\n      \"apis\": [\n        \"magna aute\",\n        \"sit anim dolore\"\n      ],\n      \"automatic\": false,\n      \"env\": \"sit id occaecat tempor dolor\",\n      \"provider_guid\": \"ad pariatur voluptate\",\n      \"providers\": [\n        {\n          \"guid\": \"nisi\",\n          \"published_id\": \"consequat\"\n        },\n        {\n          \"guid\": \"tempor Ut sit\",\n          \"published_id\": \"et in Lorem\"\n        }\n      ],\n      \"source\": \"qui et nisi ut\",\n      \"subtype\": \"est magna\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"user\"\n      },\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"org_guid\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"type\": \"<string>\",\n      \"_id\": \"exercitation laborum cillum sint\",\n      \"apis\": [\n        \"quis dolore\",\n        \"dolore esse irure occaecat\"\n      ],\n      \"automatic\": true,\n      \"env\": \"do in eiusmod n\",\n      \"provider_guid\": \"fugiat et deserunt dolore\",\n      \"providers\": [\n        {\n          \"guid\": \"consequat ea\",\n          \"published_id\": \"qui deserunt\"\n        },\n        {\n          \"guid\": \"magna sunt laboris et nisi\",\n          \"published_id\": \"sed nulla tempor\"\n        }\n      ],\n      \"source\": \"enim Lorem\",\n      \"subtype\": \"et aute cupidatat\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"client\"\n      },\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:09:07.000Z",
+              "updatedAt": "2026-07-28T01:09:07.000Z",
+              "uid": "35240-f295b25b-2833-4844-8c6b-4b262f0d47b4"
+            },
+            {
+              "id": "9934ef48-2578-4da6-8b1b-7472b687f28b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/app?fields=guid,name,created,created_by,type&exclude_fields=<string>&add_fields=<string>&org_id=<integer>&provider_guid=<string>&subtype=<string>&type=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "app"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "guid,name,created,created_by,type"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to add to the default field set in the response.",
+                      "key": "add_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "provider_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subtype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:07.000Z",
+              "updatedAt": "2026-07-28T01:09:07.000Z",
+              "uid": "35240-9934ef48-2578-4da6-8b1b-7472b687f28b"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:07.000Z",
+          "updatedAt": "2026-07-28T01:09:07.000Z",
+          "uid": "35240-e57fbb94-8311-4c61-8704-839e76a07b4a"
+        }
+      ],
+      "id": "e88bfc13-61a5-48c4-9608-3c7999bb66ea",
+      "createdAt": "2026-07-28T01:09:07.000Z",
+      "updatedAt": "2026-07-28T01:09:07.000Z",
+      "uid": "35240-e88bfc13-61a5-48c4-9608-3c7999bb66ea"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

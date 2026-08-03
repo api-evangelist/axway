@@ -1,0 +1,593 @@
+{
+  "info": {
+    "_postman_id": "af68d63f-193b-47d4-88ad-047efc6fcbf0",
+    "name": "Amplify Platform API v1.0.0 aca activity API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:04.000Z",
+    "updatedAt": "2026-07-28T01:09:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-af68d63f-193b-47d4-88ad-047efc6fcbf0"
+  },
+  "item": [
+    {
+      "name": "activity",
+      "item": [
+        {
+          "name": "event",
+          "item": [
+            {
+              "name": "Axway Get Activity Event Names",
+              "id": "987a6dfc-9484-4f45-ab9e-e644d0d520df",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "connect.sid",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/activity/event?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activity",
+                    "event"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns list of known activity event names\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Service account access token.\n"
+              },
+              "response": [
+                {
+                  "id": "cd5179da-773c-4464-be0b-ccfbcb8171b7",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/activity/event?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "activity",
+                        "event"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"description\": \"The response data\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:05.000Z",
+                  "updatedAt": "2026-07-28T01:09:05.000Z",
+                  "uid": "35240-cd5179da-773c-4464-be0b-ccfbcb8171b7"
+                },
+                {
+                  "id": "653b1d5d-7f19-455d-9c04-4714031741d1",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "connect.sid",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/activity/event?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "activity",
+                        "event"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:05.000Z",
+                  "updatedAt": "2026-07-28T01:09:05.000Z",
+                  "uid": "35240-653b1d5d-7f19-455d-9c04-4714031741d1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:05.000Z",
+              "updatedAt": "2026-07-28T01:09:05.000Z",
+              "uid": "35240-987a6dfc-9484-4f45-ab9e-e644d0d520df"
+            }
+          ],
+          "id": "756422d0-aca8-4cac-9cb7-38bdcc8c80f3",
+          "createdAt": "2026-07-28T01:09:05.000Z",
+          "updatedAt": "2026-07-28T01:09:05.000Z",
+          "uid": "35240-756422d0-aca8-4cac-9cb7-38bdcc8c80f3"
+        },
+        {
+          "name": "Axway Get Activity",
+          "id": "cfa10da3-18ae-44ea-aa94-ad4b98df54cc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/activity?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&app_guid=<string>&contexts=auth&contexts=user&data=<boolean>&enrich=<boolean>&exclude_contexts=team&exclude_contexts=api_central&from=<number>&org_id=<string>&redact=<boolean>&sort=-1&term=<string>&to=<number>&user_guid=<string>&user_messages=<boolean>&limit=25&page=1&skip=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "activity"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "key": "app_guid",
+                  "value": "<string>"
+                },
+                {
+                  "key": "contexts",
+                  "value": "auth"
+                },
+                {
+                  "key": "contexts",
+                  "value": "user"
+                },
+                {
+                  "key": "data",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "enrich",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "exclude_contexts",
+                  "value": "team"
+                },
+                {
+                  "key": "exclude_contexts",
+                  "value": "api_central"
+                },
+                {
+                  "key": "from",
+                  "value": "<number>"
+                },
+                {
+                  "key": "org_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "redact",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "sort",
+                  "value": "-1"
+                },
+                {
+                  "key": "term",
+                  "value": "<string>"
+                },
+                {
+                  "key": "to",
+                  "value": "<number>"
+                },
+                {
+                  "key": "user_guid",
+                  "value": "<string>"
+                },
+                {
+                  "key": "user_messages",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns all of the activity events for the signed-in user\n\n___Auth Requirement___\n - Access to the organization, allowing consumer role.\n\n\n_Allows consumer organization access_\n"
+          },
+          "response": [
+            {
+              "id": "6153bfb8-3792-47bc-8a57-bb0d6da1711e",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/activity?fields=<string>&exclude_fields=<string>&app_guid=<string>&contexts=user&data=<boolean>&enrich=<boolean>&exclude_contexts=api_central&from=<number>&org_id=<string>&redact=<boolean>&sort=-1&term=<string>&to=<number>&user_guid=<string>&user_messages=<boolean>&limit=25&page=1&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activity"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contexts",
+                      "value": "user"
+                    },
+                    {
+                      "key": "data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "enrich",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude_contexts",
+                      "value": "api_central"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-1"
+                    },
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "user_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_messages",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"context\": \"org\",\n      \"data\": {\n        \"teams\": [\n          {\n            \"$ref\": \"#/components/schemas/Team/properties/default\"\n          },\n          {\n            \"$ref\": \"#/components/schemas/Team/properties/default\"\n          }\n        ],\n        \"trial\": true,\n        \"org_guid\": \"<uuid>\",\n        \"org_id\": \"<integer>\",\n        \"org_name\": \"<string>\",\n        \"provider_guid\": \"<uuid>\",\n        \"region\": \"US\",\n        \"action_user_guid\": \"<string>\"\n      },\n      \"event\": \"api_central.provision\"\n    },\n    {\n      \"context\": \"org\",\n      \"data\": {\n        \"teams\": [\n          {\n            \"$ref\": \"#/components/schemas/Team/properties/default\"\n          },\n          {\n            \"$ref\": \"#/components/schemas/Team/properties/default\"\n          }\n        ],\n        \"trial\": false,\n        \"org_guid\": \"<uuid>\",\n        \"org_id\": \"<integer>\",\n        \"org_name\": \"<string>\",\n        \"provider_guid\": \"<uuid>\",\n        \"region\": \"US\",\n        \"action_user_guid\": \"<string>\"\n      },\n      \"event\": \"api_central.provision\"\n    }\n  ],\n  \"metadata\": {\n    \"contexts\": \"<string>\",\n    \"query\": {},\n    \"count\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"matched\": \"<number>\",\n    \"page\": \"<number>\",\n    \"pages\": \"<number>\",\n    \"skip\": \"<number>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:09:05.000Z",
+              "updatedAt": "2026-07-28T01:09:05.000Z",
+              "uid": "35240-6153bfb8-3792-47bc-8a57-bb0d6da1711e"
+            },
+            {
+              "id": "3d98f902-7463-4af2-9ed9-ad7be8637a3f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/activity?fields=<string>&exclude_fields=<string>&app_guid=<string>&contexts=user&data=<boolean>&enrich=<boolean>&exclude_contexts=api_central&from=<number>&org_id=<string>&redact=<boolean>&sort=-1&term=<string>&to=<number>&user_guid=<string>&user_messages=<boolean>&limit=25&page=1&skip=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "activity"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contexts",
+                      "value": "user"
+                    },
+                    {
+                      "key": "data",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "enrich",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude_contexts",
+                      "value": "api_central"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redact",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-1"
+                    },
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "user_guid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_messages",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:05.000Z",
+              "updatedAt": "2026-07-28T01:09:05.000Z",
+              "uid": "35240-3d98f902-7463-4af2-9ed9-ad7be8637a3f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:05.000Z",
+          "updatedAt": "2026-07-28T01:09:05.000Z",
+          "uid": "35240-cfa10da3-18ae-44ea-aa94-ad4b98df54cc"
+        }
+      ],
+      "id": "40c43050-9ea8-4c9c-86e9-8177ecfd241a",
+      "createdAt": "2026-07-28T01:09:05.000Z",
+      "updatedAt": "2026-07-28T01:09:05.000Z",
+      "uid": "35240-40c43050-9ea8-4c9c-86e9-8177ecfd241a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

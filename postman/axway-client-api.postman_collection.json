@@ -1,0 +1,1194 @@
+{
+  "info": {
+    "_postman_id": "a3593b32-9e90-48f8-8254-24c3f5dcc61b",
+    "name": "Amplify Platform API v1.0.0 aca client API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:09.000Z",
+    "updatedAt": "2026-07-28T01:09:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a3593b32-9e90-48f8-8254-24c3f5dcc61b"
+  },
+  "item": [
+    {
+      "name": "client",
+      "item": [
+        {
+          "name": "{client_id}",
+          "item": [
+            {
+              "name": "json",
+              "item": [
+                {
+                  "name": "Axway Get Service Account JSON Representation",
+                  "id": "ad1eb174-f9a2-4341-a1b3-96d156ec6a1d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/octet-stream"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/client/:client_id/json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "client",
+                        ":client_id",
+                        "json"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b768e17d-d5c4-4702-b37c-b0d5919c6afd",
+                          "key": "client_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Triggers the download of a JSON representation of a service account\n\n___Auth Requirement___\n - Access to the organization.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "ab99febb-4c15-43bb-8196-ac14041bbea7",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/octet-stream"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/client/:client_id/json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "client",
+                            ":client_id",
+                            "json"
+                          ],
+                          "variable": [
+                            {
+                              "key": "client_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/octet-stream"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"clientId\": \"<string>\",\n  \"kid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"publicKey\": \"<string>\",\n  \"tokenUrl\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:09:10.000Z",
+                      "updatedAt": "2026-07-28T01:09:10.000Z",
+                      "uid": "35240-ab99febb-4c15-43bb-8196-ac14041bbea7"
+                    },
+                    {
+                      "id": "faeadb9e-e6f8-4b5d-8148-22eba4d3bdf7",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/client/:client_id/json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "client",
+                            ":client_id",
+                            "json"
+                          ],
+                          "variable": [
+                            {
+                              "key": "client_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:10.000Z",
+                      "updatedAt": "2026-07-28T01:09:10.000Z",
+                      "uid": "35240-faeadb9e-e6f8-4b5d-8148-22eba4d3bdf7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:10.000Z",
+                  "updatedAt": "2026-07-28T01:09:10.000Z",
+                  "uid": "35240-ad1eb174-f9a2-4341-a1b3-96d156ec6a1d"
+                }
+              ],
+              "id": "3fefc0fd-1997-4185-9067-916ce358cbc3",
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-3fefc0fd-1997-4185-9067-916ce358cbc3"
+            },
+            {
+              "name": "Axway Get a Service Account",
+              "id": "aec3d860-8b20-48a7-8f4b-2b0d92cbb312",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/client/:client_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "client",
+                    ":client_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "3111dcd2-4825-4edf-b129-81528151ae08",
+                      "key": "client_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns a single service account\n\n___Auth Requirement___\n\nAccess to organization the client belongs to."
+              },
+              "response": [
+                {
+                  "id": "27c6e0a5-3082-4d31-9b4f-0f9a7ee50b3b",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/client/:client_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "client",
+                        ":client_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "client_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"guid\": \"urn:uuid:2bf718c4-5fea-ff0a-76ad-c1e809f8d078\",\n    \"name\": \"Excepteur ut\",\n    \"org_guid\": \"dd3245cb-b91e-62fb-869c-cf4863a60a54\",\n    \"roles\": [],\n    \"tags\": [],\n    \"_id\": \"pariatur labore ut\",\n    \"client_id\": \"do incididunt dolor Duis\",\n    \"type\": \"secret\",\n    \"description\": \"Excepteur ea velit\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"client\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:10.000Z",
+                  "updatedAt": "2026-07-28T01:09:10.000Z",
+                  "uid": "35240-27c6e0a5-3082-4d31-9b4f-0f9a7ee50b3b"
+                },
+                {
+                  "id": "f54d38ab-d4af-4d9b-b285-189b2264cc43",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/client/:client_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "client",
+                        ":client_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "client_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:10.000Z",
+                  "updatedAt": "2026-07-28T01:09:10.000Z",
+                  "uid": "35240-f54d38ab-d4af-4d9b-b285-189b2264cc43"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-aec3d860-8b20-48a7-8f4b-2b0d92cbb312"
+            },
+            {
+              "name": "Axway Delete Service Account",
+              "id": "dc1e5ce8-4a6e-49cb-b0f3-35bc6034c3fa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/client/:client_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "client",
+                    ":client_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c5e3811a-ddd5-48fe-bcb5-a1add9433109",
+                      "key": "client_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes a service account. This is a destructive and irreversible delete.\n\n___Auth Requirement___\n\n`administrator` role in the organization the client belongs to."
+              },
+              "response": [
+                {
+                  "id": "2251f76f-ea51-4084-a189-7a69220c0324",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/client/:client_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "client",
+                        ":client_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "client_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:09:10.000Z",
+                  "updatedAt": "2026-07-28T01:09:10.000Z",
+                  "uid": "35240-2251f76f-ea51-4084-a189-7a69220c0324"
+                },
+                {
+                  "id": "86706ebd-510e-483b-b1c0-0d602dbb78dd",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/client/:client_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "client",
+                        ":client_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "client_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:10.000Z",
+                  "updatedAt": "2026-07-28T01:09:10.000Z",
+                  "uid": "35240-86706ebd-510e-483b-b1c0-0d602dbb78dd"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-dc1e5ce8-4a6e-49cb-b0f3-35bc6034c3fa"
+            },
+            {
+              "name": "Axway Update Service Account",
+              "id": "0aac56f3-c4e4-4b43-b6c4-236d565fd4c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"generateKey\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"publicKey\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"teams\": [\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"catalog_manager\",\n        \"insights\"\n      ]\n    },\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"administrator\",\n        \"subscription_approver\"\n      ]\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/client/:client_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "client",
+                    ":client_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "d353c8a5-8d8a-46c3-99dc-704538b09068",
+                      "key": "client_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates a service account.\n\n___Auth Requirement___\n\n`administrator` role in the organization the client belongs to."
+              },
+              "response": [
+                {
+                  "id": "60012892-00b9-4fdc-a882-14f69045445c",
+                  "name": "Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"generateKey\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"publicKey\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"teams\": [\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"catalog_manager\",\n        \"insights\"\n      ]\n    },\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"administrator\",\n        \"subscription_approver\"\n      ]\n    }\n  ]\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/client/:client_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "client",
+                        ":client_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "client_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"guid\": \"2c17ebee-40be-6a67-3f18-82ff38c32c65\",\n    \"name\": \"eu velit nulla\",\n    \"org_guid\": \"e63ab88d-f4b1-1360-c5b6-83a4668ccd69\",\n    \"roles\": [],\n    \"tags\": [],\n    \"_id\": \"fugiat nostrud\",\n    \"client_id\": \"labore sit et\",\n    \"type\": \"secret\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"user\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:09:10.000Z",
+                  "updatedAt": "2026-07-28T01:09:10.000Z",
+                  "uid": "35240-60012892-00b9-4fdc-a882-14f69045445c"
+                },
+                {
+                  "id": "573ea1c1-c827-4544-88d5-6c12a4ea67b8",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"generateKey\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"publicKey\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"teams\": [\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"catalog_manager\",\n        \"insights\"\n      ]\n    },\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"administrator\",\n        \"subscription_approver\"\n      ]\n    }\n  ]\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/client/:client_id?fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "client",
+                        ":client_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "client_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T01:09:10.000Z",
+                  "updatedAt": "2026-07-28T01:09:10.000Z",
+                  "uid": "35240-573ea1c1-c827-4544-88d5-6c12a4ea67b8"
+                }
+              ],
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-0aac56f3-c4e4-4b43-b6c4-236d565fd4c4"
+            }
+          ],
+          "id": "429651d5-87af-4cf0-a55b-1d2da878a048",
+          "createdAt": "2026-07-28T01:09:10.000Z",
+          "updatedAt": "2026-07-28T01:09:10.000Z",
+          "uid": "35240-429651d5-87af-4cf0-a55b-1d2da878a048"
+        },
+        {
+          "name": "Axway Add Service Account",
+          "id": "612a6baf-6150-43e1-a57f-df2648ff563f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"org_guid\": \"<uuid>\",\n  \"type\": \"secret\",\n  \"description\": \"<string>\",\n  \"generateKey\": \"<boolean>\",\n  \"publicKey\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"teams\": [\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"administrator\",\n        \"subscription_approver\"\n      ]\n    },\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"catalog_manager\",\n        \"subscription_admin\"\n      ]\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "client"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Register a new service account\n\n___Auth Requirement___\n - `administrator` access to the organization.\n"
+          },
+          "response": [
+            {
+              "id": "7aa50051-c9f5-4c83-a4bf-8376adb2583d",
+              "name": "Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"org_guid\": \"<uuid>\",\n  \"type\": \"secret\",\n  \"description\": \"<string>\",\n  \"generateKey\": \"<boolean>\",\n  \"publicKey\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"teams\": [\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"administrator\",\n        \"subscription_approver\"\n      ]\n    },\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"catalog_manager\",\n        \"subscription_admin\"\n      ]\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/client?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "client"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"guid\": \"2c17ebee-40be-6a67-3f18-82ff38c32c65\",\n    \"name\": \"eu velit nulla\",\n    \"org_guid\": \"e63ab88d-f4b1-1360-c5b6-83a4668ccd69\",\n    \"roles\": [],\n    \"tags\": [],\n    \"_id\": \"fugiat nostrud\",\n    \"client_id\": \"labore sit et\",\n    \"type\": \"secret\",\n    \"created\": \"<dateTime>\",\n    \"created_by\": {\n      \"guid\": \"<string>\",\n      \"type\": \"user\"\n    },\n    \"updated\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-7aa50051-c9f5-4c83-a4bf-8376adb2583d"
+            },
+            {
+              "id": "cbbaf43a-13ea-4dc7-bec1-fe6c1c7f37ed",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"org_guid\": \"<uuid>\",\n  \"type\": \"secret\",\n  \"description\": \"<string>\",\n  \"generateKey\": \"<boolean>\",\n  \"publicKey\": \"<string>\",\n  \"secret\": \"<string>\",\n  \"teams\": [\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"administrator\",\n        \"subscription_approver\"\n      ]\n    },\n    {\n      \"guid\": \"<uuid>\",\n      \"roles\": [\n        \"catalog_manager\",\n        \"subscription_admin\"\n      ]\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/client?fields=<string>&exclude_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "client"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-cbbaf43a-13ea-4dc7-bec1-fe6c1c7f37ed"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:10.000Z",
+          "updatedAt": "2026-07-28T01:09:10.000Z",
+          "uid": "35240-612a6baf-6150-43e1-a57f-df2648ff563f"
+        },
+        {
+          "name": "Axway Get Service Accounts",
+          "id": "db8be9d2-60c7-4964-97ac-be84f8284c0c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/client?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>&org_id=<string>&roles=&term=&limit=<number>&page=1&skip=0&sort=name",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "client"
+              ],
+              "query": [
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to include in the response.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of fields to exclude from the response.",
+                  "key": "exclude_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "org_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "roles",
+                  "value": ""
+                },
+                {
+                  "key": "term",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "key": "sort",
+                  "value": "name"
+                }
+              ]
+            },
+            "description": "Returns all the service accounts for an organization.\n\n___Auth Requirement___\n - Access to the organization. Developer access may be restricted by the organization service accounts access control setting.\n"
+          },
+          "response": [
+            {
+              "id": "79011b31-8899-42c8-8504-3f87050789ae",
+              "name": "Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/client?fields=<string>&exclude_fields=<string>&org_id=<string>&roles=&term=&limit=<number>&page=1&skip=0&sort=name",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "client"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "org_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "roles",
+                      "value": ""
+                    },
+                    {
+                      "key": "term",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"guid\": \"urn:uuid:6db857c2-5b7c-0a34-6cfd-80797f923119\",\n      \"name\": \"<string>\",\n      \"org_guid\": \"<uuid>\",\n      \"roles\": [],\n      \"tags\": [],\n      \"_id\": \"elit magna\",\n      \"client_id\": \"elit\",\n      \"type\": \"secret\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"user\"\n      },\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"guid\": \"urn:uuid:a6dd2055-7354-720a-0b5b-dd6308dc824b\",\n      \"name\": \"<string>\",\n      \"org_guid\": \"<uuid>\",\n      \"roles\": [],\n      \"tags\": [],\n      \"_id\": \"ad aliqua elit labore\",\n      \"client_id\": \"in reprehenderit dolore\",\n      \"type\": \"secret\",\n      \"created\": \"<dateTime>\",\n      \"created_by\": {\n        \"guid\": \"<string>\",\n        \"type\": \"user\"\n      },\n      \"updated\": \"<dateTime>\"\n    }\n  ],\n  \"metadata\": {\n    \"count\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"matched\": \"<number>\",\n    \"page\": \"<number>\",\n    \"pages\": \"<number>\",\n    \"skip\": \"<number>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-79011b31-8899-42c8-8504-3f87050789ae"
+            },
+            {
+              "id": "43c891f2-bec8-4dd0-862a-19110e4337f4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/client?fields=<string>&exclude_fields=<string>&org_id=<string>&roles=&term=&limit=<number>&page=1&skip=0&sort=name",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "client"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of fields to include in the response.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of fields to exclude from the response.",
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "org_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "roles",
+                      "value": ""
+                    },
+                    {
+                      "key": "term",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "name"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T01:09:10.000Z",
+              "updatedAt": "2026-07-28T01:09:10.000Z",
+              "uid": "35240-43c891f2-bec8-4dd0-862a-19110e4337f4"
+            }
+          ],
+          "createdAt": "2026-07-28T01:09:10.000Z",
+          "updatedAt": "2026-07-28T01:09:10.000Z",
+          "uid": "35240-db8be9d2-60c7-4964-97ac-be84f8284c0c"
+        }
+      ],
+      "id": "aef43862-cd51-427e-93fc-0cdc1815ee1e",
+      "createdAt": "2026-07-28T01:09:10.000Z",
+      "updatedAt": "2026-07-28T01:09:10.000Z",
+      "uid": "35240-aef43862-cd51-427e-93fc-0cdc1815ee1e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}

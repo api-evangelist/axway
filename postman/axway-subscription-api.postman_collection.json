@@ -1,0 +1,473 @@
+{
+  "info": {
+    "_postman_id": "2bb78b7e-c855-456d-ac42-1ce3be9b7ae7",
+    "name": "Amplify Platform API v1.0.0 aca subscription API",
+    "description": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:09:51.000Z",
+    "updatedAt": "2026-07-28T01:09:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2bb78b7e-c855-456d-ac42-1ce3be9b7ae7"
+  },
+  "item": [
+    {
+      "name": "org",
+      "item": [
+        {
+          "name": "{org_id}",
+          "item": [
+            {
+              "name": "subscription",
+              "item": [
+                {
+                  "name": "{subscription_id}",
+                  "item": [
+                    {
+                      "name": "Axway Find Subscription",
+                      "id": "5a72cc77-13fa-4644-9b1f-be7062790fb2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/subscription/:subscription_id?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "subscription",
+                            ":subscription_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "aebad350-37b2-4edb-a64b-68f5d89bf18d",
+                              "key": "org_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "2d30ba10-9a44-49c8-a5b5-fe01ffd5964f",
+                              "key": "subscription_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns a single subscription for an organization.\n\n___Auth Requirement___\n - Access to the organization.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "6cf22ca5-101a-40a0-a6a0-fcd9d9d752d9",
+                          "name": "Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/subscription/:subscription_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "subscription",
+                                ":subscription_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                },
+                                {
+                                  "key": "subscription_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<string>\",\n    \"product\": \"<string>\",\n    \"plan\": \"<string>\",\n    \"entitlements\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ],\n    \"end_date\": \"<dateTime>\",\n    \"governance\": \"Axway Managed\",\n    \"opportunity_id\": \"<number>\",\n    \"product_name\": \"<string>\",\n    \"source\": \"UI\",\n    \"start_date\": \"<dateTime>\",\n    \"tier\": \"trial\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:09:51.000Z",
+                          "updatedAt": "2026-07-28T01:09:51.000Z",
+                          "uid": "35240-6cf22ca5-101a-40a0-a6a0-fcd9d9d752d9"
+                        },
+                        {
+                          "id": "ee3c0b72-23a3-429e-9387-b3c5726aaabf",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:org_id/subscription/:subscription_id?fields=<string>&exclude_fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":org_id",
+                                "subscription",
+                                ":subscription_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "A list of fields to include in the response.",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A list of fields to exclude from the response.",
+                                  "key": "exclude_fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "org_id"
+                                },
+                                {
+                                  "key": "subscription_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T01:09:51.000Z",
+                          "updatedAt": "2026-07-28T01:09:51.000Z",
+                          "uid": "35240-ee3c0b72-23a3-429e-9387-b3c5726aaabf"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:09:51.000Z",
+                      "updatedAt": "2026-07-28T01:09:51.000Z",
+                      "uid": "35240-5a72cc77-13fa-4644-9b1f-be7062790fb2"
+                    }
+                  ],
+                  "id": "3f3e5339-0517-44f5-a50b-5c4c3192305a",
+                  "createdAt": "2026-07-28T01:09:51.000Z",
+                  "updatedAt": "2026-07-28T01:09:51.000Z",
+                  "uid": "35240-3f3e5339-0517-44f5-a50b-5c4c3192305a"
+                },
+                {
+                  "name": "Axway Find Subscriptions",
+                  "id": "ad871e42-7428-4ffb-9bd3-ee28df7c91d3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "x-auth-token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:org_id/subscription?fields=<string>&fields=<string>&exclude_fields=<string>&exclude_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":org_id",
+                        "subscription"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to include in the response.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A list of fields to exclude from the response.",
+                          "key": "exclude_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "3bd6a0d4-33b0-49f5-8398-59476c151d14",
+                          "key": "org_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns an organization's subscriptions.\n\n___Auth Requirement___\n - _One of_\n     - Access to the organization.\n     - Auth token.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "26a53d8f-d345-44d1-b433-2eb741770895",
+                      "name": "Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "x-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/subscription?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "subscription"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<string>\",\n      \"product\": \"<string>\",\n      \"plan\": \"<string>\",\n      \"entitlements\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<boolean>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<boolean>\"\n        }\n      ],\n      \"end_date\": \"<dateTime>\",\n      \"governance\": \"SaaS\",\n      \"opportunity_id\": \"<number>\",\n      \"product_name\": \"<string>\",\n      \"source\": \"Billing\",\n      \"start_date\": \"<dateTime>\",\n      \"tier\": \"free\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"product\": \"<string>\",\n      \"plan\": \"<string>\",\n      \"entitlements\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<boolean>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<boolean>\"\n        }\n      ],\n      \"end_date\": \"<dateTime>\",\n      \"governance\": \"SaaS\",\n      \"opportunity_id\": \"<number>\",\n      \"product_name\": \"<string>\",\n      \"source\": \"API\",\n      \"start_date\": \"<dateTime>\",\n      \"tier\": \"paid\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:09:51.000Z",
+                      "updatedAt": "2026-07-28T01:09:51.000Z",
+                      "uid": "35240-26a53d8f-d345-44d1-b433-2eb741770895"
+                    },
+                    {
+                      "id": "3bd7b93b-4c44-4cae-a348-f4d344b295f1",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "x-auth-token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:org_id/subscription?fields=<string>&exclude_fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":org_id",
+                            "subscription"
+                          ],
+                          "query": [
+                            {
+                              "description": "A list of fields to include in the response.",
+                              "key": "fields",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A list of fields to exclude from the response.",
+                              "key": "exclude_fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "org_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"description\": \"<string>\",\n  \"internalCode\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T01:09:51.000Z",
+                      "updatedAt": "2026-07-28T01:09:51.000Z",
+                      "uid": "35240-3bd7b93b-4c44-4cae-a348-f4d344b295f1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:09:51.000Z",
+                  "updatedAt": "2026-07-28T01:09:51.000Z",
+                  "uid": "35240-ad871e42-7428-4ffb-9bd3-ee28df7c91d3"
+                }
+              ],
+              "id": "64c48f30-19d7-4911-91e6-a19aba580119",
+              "createdAt": "2026-07-28T01:09:51.000Z",
+              "updatedAt": "2026-07-28T01:09:51.000Z",
+              "uid": "35240-64c48f30-19d7-4911-91e6-a19aba580119"
+            }
+          ],
+          "id": "a5badcb1-1b7a-442e-9a73-e1ee1a9e11f5",
+          "createdAt": "2026-07-28T01:09:51.000Z",
+          "updatedAt": "2026-07-28T01:09:51.000Z",
+          "uid": "35240-a5badcb1-1b7a-442e-9a73-e1ee1a9e11f5"
+        }
+      ],
+      "id": "9510c306-6197-420b-9cb8-51a443ba6671",
+      "createdAt": "2026-07-28T01:09:51.000Z",
+      "updatedAt": "2026-07-28T01:09:51.000Z",
+      "uid": "35240-9510c306-6197-420b-9cb8-51a443ba6671"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://platform.axway.com/api/v1"
+    }
+  ]
+}
