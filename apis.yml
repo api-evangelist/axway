@@ -604,6 +604,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 common:
+  - type: Compliance
+    url: https://www.axway.com/en/gdpr
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/axway/overview
   - type: AgenticAccess
