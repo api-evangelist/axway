@@ -1,0 +1,92 @@
+# Axway 
+
+> Amplify API management platform, MFT & B2B integration
+
+Axway is a leader in core enterprise integration solutions for more than 20 years, Axway helps companies shape and implement sound strategies for success in a shifting digital business landscape.
+
+Unlock your enterprise data to open everything: new digital experiences, new offerings, and new markets.
+
+## General Information
+
+- [Skip to main content](https://www.axway.com/#main-content): A quick navigation option to bypass introductory content.
+- [Support](https://support.axway.com/): Access to customer support resources for assistance with Axway products.
+- [Axway Community](https://community.axway.com/s/): A platform for users to connect, share knowledge, and collaborate on Axway solutions.
+- [Documentation](https://docs.axway.com/): Comprehensive resources and guides for using Axway products.
+- [Developer Portal](https://github.com/Axway): A dedicated space for developers to access tools, APIs, and documentation.
+- [Axway Security Statement](https://www.axway.com/en/customers/axway-security-statement): Information regarding Axway's security practices and policies.
+- [User Group Program](https://www.axway.com/en/customers/user-groups): Details on how to join user groups for networking and learning opportunities.
+- [Login](https://platform.axway.com/): Portal for users to access their Axway accounts.
+- [Partner](https://axway.channeltivity.com/Login): Information for potential partners interested in collaborating with Axway.
+
+## Products Overview
+
+- [Products](https://www.axway.com/#): An overview of all Axway products available for enterprise integration.
+- [View Product](https://www.axway.com/en/products/amplify-platform): A link to explore specific products in detail.
+- [Amplify AI Gateway](https://www.axway.com/en/products/amplify-ai-gateway): A product that leverages AI for enhanced API management.
+- [Amplify API Management](https://www.axway.com/en/products/amplify-api-management): A solution for managing APIs effectively across the enterprise.
+- [Amplify Engage](https://www.axway.com/en/products/amplify-engage): A platform designed to enhance customer engagement through APIs.
+- [Amplify Fusion](https://www.axway.com/en/products/amplify-fusion): A product that integrates various services and applications seamlessly.
+- [Amplify Open Banking](https://www.axway.com/en/products/amplify-open-banking): A solution tailored for the open banking ecosystem.
+- [B2B Cloud Services](https://www.axway.com/en/products/b2b-integration/axway-b2b-cloud-services): Cloud-based services for B2B integration.
+- [B2Bi Enterprise Edition](https://www.axway.com/en/products/b2b-integration/axway-b2bi-enterprise-edition): A comprehensive B2B integration solution for enterprises.
+- [Business Network (VAN)](https://www.axway.com/en/products/b2b-integration/business-network): A value-added network for secure B2B transactions.
+
+## Specialized Solutions
+
+- [Controlled Substance Ordering System](https://www.axway.com/en/products/b2b-integration/axway-controlled-substance-ordering-system-csos): A system designed for managing controlled substance orders.
+- [eInvoicing](https://www.axway.com/en/products/b2b-integration/einvoice): A solution for electronic invoicing to streamline billing processes.
+- [Track & Trace](https://www.axway.com/en/products/b2b-integration/track-and-trace): A service for tracking shipments and inventory.
+- [WebEDI Supplier Portal](https://www.axway.com/en/products/b2b-integration/webedi-supplier-portal): A portal for suppliers to manage electronic data interchange (EDI) transactions.
+- [AFAH HubLedger](https://www.axway.com/en/products/afah/afah-hubLedger): A specialized ledger solution for financial transactions.
+- [AFAH Model](https://www.axway.com/en/products/afah/afah-model): A model designed for advanced financial analytics.
+
+## Resources and Learning
+
+- [Read the Report](https://go2.axway.com/2024-GartnerMagicQuadrantforAPIManagementReport_EN_Registration.html): Access to detailed reports on Axway's solutions and market insights.
+- [Read the Guide](https://resources.axway.com/accelerate-digital-projects/guide-enterprise-api-strategy): Guides providing in-depth information on specific Axway products.
+- [Read the Excerpt](https://go2.axway.com/NA-WC-2024-IDCMarketscapeB2BMiddleware2024Report_LandingPageRegistration.html): A preview of a larger document or report.
+- [Read the Blog](https://blog.axway.com/learning-center/edi-b2b-integration/what-is-as4): Insights and updates from the Axway blog.
+- [Read the Flyer](https://resources.axway.com/axway-financial-accounting-hub-product/fl-afah-hubledger-en): Promotional material outlining Axway's offerings.
+- [Read the White Paper](https://resources.axway.com/axway-financial-accounting-hub-product/erp-transformation): In-depth analysis and research on relevant topics.
+- [Explore Resources](https://resources.axway.com/): A collection of various resources available for users.
+- [Analyst Reports](https://www.axway.com/en/company/analyst-recognition): Reports from industry analysts evaluating Axway's products and services.
+- [Blogs](https://blog.axway.com/): A collection of articles and posts from Axway's thought leaders.
+- [Videos](https://www.axway.com/en/resources/videos): Multimedia content showcasing Axway's solutions and customer stories.
+- [Live Events](https://www.axway.com/en/events-and-webinars?event_type_filter%5Bevent%5D=event&topic=All&industries=All&country=All): Information on upcoming live events hosted by Axway.
+- [Upcoming Webinars](https://www.axway.com/en/events-and-webinars?event_type_filter%5Bwebinar%5D=webinar&topic=All&industries=All&country=All): Schedule of future webinars for learning about Axway products.
+- [On-Demand Webinars](https://www.axway.com/en/events-and-webinars?event_type_filter%5Bon_demand_webinar%5D=on_demand_webinar&topic=All&industries=All&country=All): Access to previously recorded webinars for flexible learning.
+
+## Partner and Training Information
+
+- [Find a partner](https://www.axway.com/en/partners/find-partner): A resource for locating Axway partners for collaboration.
+- [Become a Partner](https://www.axway.com/en/partners/become-partner): Information on how to join Axway's partner program.
+- [Partner Resources](https://www.axway.com/en/partners/resources): Tools and materials available for Axway partners.
+- [Training & Certification](https://www.axway.com/en/resources/training-certification): Opportunities for training and certification on Axway products.
+- [Axway University](https://university.axway.com/learn): An educational platform for learning about Axway solutions.
+
+## Corporate Information
+
+- [Discover Why Axway](https://www.axway.com/en/why-axway): Insights into the benefits of choosing Axway for enterprise integration.
+- [You're in good company with Axway](https://www.axway.com/en/why-axway/you-re-in-a-good-company-with-axway): Testimonials and case studies from satisfied customers.
+- [Careers](https://www.axway.com/en/company/careers): Job opportunities and career information at Axway.
+- [Leadership](https://www.axway.com/en/about-us/axway-leadership): Information about Axway's leadership team.
+- [Corporate Social Responsibility](https://www.74software.com/about-us/corporate-social-responsibility): Axway's commitment to social responsibility and sustainability.
+- [Investor Relations](https://www.74software.com/investor-relations): Information for investors regarding Axway's financial performance.
+- [Locations](https://www.axway.com/en/locations): Details on Axway's global presence and office locations.
+
+## Legal and Compliance
+
+- [Legal contracts](https://www.axway.com/en/legal/contract-documents): Information regarding legal agreements and contracts with Axway.
+- [Impressum & Term of Use](https://www.axway.com/en/terms-of-use): Legal information regarding the use of Axway's services.
+- [Privacy Statement](https://www.axway.com/en/privacy-statement): Axway's policies on user privacy and data protection.
+- [Ethics and anti-corruption](https://www.axway.com/en/legal/ethics-and-anti-corruption): Axway's commitment to ethical practices.
+- [Privacy Compliance Program - GDPR](https://www.axway.com/en/gdpr): Information on Axway's compliance with GDPR regulations.
+
+## Additional Resources
+
+- [Customer Stories](https://www.axway.com/en/customers/customer-stories): Case studies highlighting successful implementations of Axway solutions.
+- [Read the Case Study](https://resources.axway.com/case-studies-api-management/cs-renta-4-drives-service-innovation-with-apis-en): Detailed case studies showcasing specific customer experiences.
+- [Read the Guide](https://resources.axway.com/case-studies-b2b-integration/cs-health-care-service-corporation-en): Additional guides available for users seeking more information.
+- [Customer Advocacy](https://www.axway.com/en/customers/advocacy-program): Programs aimed at promoting customer success and satisfaction.
+- [Axway Excellence Awards](https://www.axway.com/en/2025-axway-excellence-awards): Recognition programs for outstanding achievements in using Axway products.
+- [Sitemap](https://www.axway.com/en/sitemap): A structured overview of all available pages and resources on the Axway website.
