@@ -1,0 +1,287 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca usage API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Uploads an Automatic Usage Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/usage/automatic",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "organizationId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "uploadMethod",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "userId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Uploads an automatic usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Fetches Usage Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/usage",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "endDate",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "env_guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "org_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "query"
+              },
+              {
+                "name": "received",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "VALIDATING",
+                "type": "query"
+              },
+              {
+                "name": "uploadMethod",
+                "value": "automatic",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "1",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Fetches usage reports for an org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `auditor`, or `usage_reporter` access to the organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Uploads a Usage Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/usage",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "organizationId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "uploadMethod",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "userId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Uploads usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Downloads a Usage Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/usage/:file_id",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "org_guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "timestamp",
+                "value": "1714000000000",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a download of a usage report for the org\n\n___Auth Requirement___\n\nRequires support role or `administrator` or `usage_reporter` role in the organization the usage report is associated to."
+        },
+        {
+          "info": {
+            "name": "Axway Organization Usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/org/:org_id/usage",
+            "headers": [
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "org_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "entitlement",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "month",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "skipcache",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "year",
+                "value": "1",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns usage information about an organization\n\n___Auth Requirement___\n - _One of_\n     - `administrator`, `auditor`, `developer`, or `usage_reporter` access to the organization. Developer access may be restricted by the organization usage access control setting.\n     - Auth token.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

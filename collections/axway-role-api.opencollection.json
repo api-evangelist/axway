@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca role API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "role",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Get Roles Matching Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/role",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "default",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "query"
+              },
+              {
+                "name": "org",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "team",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return the list of roles for the specified query parameters."
+        },
+        {
+          "info": {
+            "name": "Axway Get Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/role/:role_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "role_id",
+                "value": "[object Object]",
+                "type": "path"
+              },
+              {
+                "name": "context",
+                "value": "org",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the role with the given id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

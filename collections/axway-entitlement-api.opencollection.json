@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca entitlement API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "entitlement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Get Entitlement Meta",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/entitlement",
+            "headers": [
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns entitlement definitions\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Auth token.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

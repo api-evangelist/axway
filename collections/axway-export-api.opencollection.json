@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca export API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Find Exports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/export",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "org_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns all the exports the user has access to.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `query.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Export Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/export",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Generates an export of the user or org data.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `body.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Retrieve a Download Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/export/download/:export_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "export_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a signed download url for previous user data export.\n\n___Auth Requirement___\n\nCreator of the export or `administrator` role in the organization for org context exports.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Remove Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/export/:export_id",
+            "params": [
+              {
+                "name": "export_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Removes a previous data export.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

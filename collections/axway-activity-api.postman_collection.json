@@ -1,0 +1,649 @@
+{
+  "item": [
+    {
+      "id": "2ced7142-5f8d-44b5-8bb9-be39c81d089e",
+      "name": "activity",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6143d325-3dd0-4794-94ea-da935455fd57",
+          "name": "Axway Get Activity Event Names",
+          "request": {
+            "name": "Axway Get Activity Event Names",
+            "description": {
+              "content": "Returns list of known activity event names\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Service account access token.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76538114-57ea-4f97-bdc4-e346db1691e1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "authorization",
+                    "value": "example_value",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a35121ba-f318-4785-8024-319017be60e0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "authorization",
+                    "value": "example_value",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/LOGIN_REQUIRED/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6116887c-5a72-4be6-8c14-fe73fc51171b",
+          "name": "Axway Get Activity",
+          "request": {
+            "name": "Axway Get Activity",
+            "description": {
+              "content": "Returns all of the activity events for the signed-in user\n\n___Auth Requirement___\n - Access to the organization, allowing consumer role.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "app_guid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contexts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contexts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "enrich",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_contexts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_contexts",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "redact",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "-1"
+                },
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_guid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_messages",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "618c8199-cb21-42f7-b59d-d2971c4832b7",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "contexts",
+                      "value": "api_central"
+                    },
+                    {
+                      "key": "data",
+                      "value": "true"
+                    },
+                    {
+                      "key": "enrich",
+                      "value": "true"
+                    },
+                    {
+                      "key": "exclude_contexts",
+                      "value": "api_central"
+                    },
+                    {
+                      "key": "from",
+                      "value": "1"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    },
+                    {
+                      "key": "redact",
+                      "value": "true"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-1"
+                    },
+                    {
+                      "key": "term",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1"
+                    },
+                    {
+                      "key": "user_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "user_messages",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "893c8bc2-127d-4e5f-8d28-32a9d4334eb2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "contexts",
+                      "value": "api_central"
+                    },
+                    {
+                      "key": "data",
+                      "value": "true"
+                    },
+                    {
+                      "key": "enrich",
+                      "value": "true"
+                    },
+                    {
+                      "key": "exclude_contexts",
+                      "value": "api_central"
+                    },
+                    {
+                      "key": "from",
+                      "value": "1"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    },
+                    {
+                      "key": "redact",
+                      "value": "true"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-1"
+                    },
+                    {
+                      "key": "term",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1"
+                    },
+                    {
+                      "key": "user_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "user_messages",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.axway.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "02edc975-d162-40e8-a8f4-7b2eb7d38d89",
+    "name": "Amplify Platform API v1.0.0 aca activity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1756 @@
+{
+  "item": [
+    {
+      "id": "7db51efb-235e-4089-b726-c5de650a3718",
+      "name": "analytics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "528d10aa-6aa6-4c5d-a676-af954d1962ed",
+          "name": "Axway Analytics Query Using Lexus",
+          "request": {
+            "name": "Axway Analytics Query Using Lexus",
+            "description": {
+              "content": "Requests analytics data using lexus queries\n\n___Auth Requirement___\n - _If:_ The parameter `query.app_guid` is given.\n     - _Then:_ `write` access to the organization to which the application belongs.\n     - _Else:_ Access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apim_tier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "app_guid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "clients",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "clients",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cross_org",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "custom_query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "debug",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "endpoint",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "events",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "field",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "granularity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_by",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "grquantity",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "platform",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "post_process",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "prefix",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "preprocessor",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "processor",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36b9e5cd-8bfc-495e-ae8e-9009995a6603",
+              "name": "Analytics Query Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apim_tier",
+                      "value": "paid"
+                    },
+                    {
+                      "key": "app_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "clients",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "cross_org",
+                      "value": "true"
+                    },
+                    {
+                      "key": "custom_query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "true"
+                    },
+                    {
+                      "key": "endpoint",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "events",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "field",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "from",
+                      "value": "1"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "month"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "grquantity",
+                      "value": "1"
+                    },
+                    {
+                      "key": "include_query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "post_process",
+                      "value": "true"
+                    },
+                    {
+                      "key": "prefix",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "preprocessor",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "processor",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "region",
+                      "value": "US"
+                    },
+                    {
+                      "key": "status",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1"
+                    },
+                    {
+                      "key": "type",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "username",
+                      "value": "Example Name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"result\": [\n    {\n      \"data\": {},\n      \"last_fetched\": \"string\"\n    },\n    {\n      \"data\": {},\n      \"last_fetched\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "910f2902-bcb8-4a04-ba5a-35600bd2f2a6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apim_tier",
+                      "value": "paid"
+                    },
+                    {
+                      "key": "app_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "clients",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "cross_org",
+                      "value": "true"
+                    },
+                    {
+                      "key": "custom_query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "true"
+                    },
+                    {
+                      "key": "endpoint",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "events",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "field",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "from",
+                      "value": "1"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "month"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "grquantity",
+                      "value": "1"
+                    },
+                    {
+                      "key": "include_query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "post_process",
+                      "value": "true"
+                    },
+                    {
+                      "key": "prefix",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "preprocessor",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "processor",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "query",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "region",
+                      "value": "US"
+                    },
+                    {
+                      "key": "status",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1"
+                    },
+                    {
+                      "key": "type",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "username",
+                      "value": "Example Name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b096ce6e-9a07-4d45-a010-94606d1c061e",
+          "name": "Axway Report an Error",
+          "request": {
+            "name": "Axway Report an Error",
+            "description": {
+              "content": "Report an error to platform analytics\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "error"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\",\n  \"meta\": \"<object>\",\n  \"stack\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "d5e79d87-f31c-4de1-b55c-5866350935fd",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "error"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"meta\": \"<object>\",\n  \"stack\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ee043cf-c302-4be2-81de-4034065e5149",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "error"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"meta\": \"<object>\",\n  \"stack\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/PARAM_INVALID/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36ecc740-2c8f-4060-8df7-590fd26cabbe",
+          "name": "Axway Create a Custom Query",
+          "request": {
+            "name": "Axway Create a Custom Query",
+            "description": {
+              "content": "Creates a custom query for an app/org.\n\n___Auth Requirement___\n - `write` access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "custom_query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<json>\",\n  \"granularity\": \"<string>\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"<string>\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"<string>\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"<string>\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"valueFormat\": \"<string>\",\n  \"yAxis\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "a37e43ee-0a76-41e4-b267-e5255b39a1d5",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": \"example_value\",\n  \"filters\": \"example_value\",\n  \"granularity\": \"month\",\n  \"grquantity\": 1,\n  \"method\": \"example_value\",\n  \"name\": \"Example Name\",\n  \"span\": 1,\n  \"unit\": \"quarter\",\n  \"cross_org\": true,\n  \"groupings\": [\n    {\n      \"field\": \"example_value\",\n      \"interval\": 1,\n      \"limit\": 1,\n      \"type\": \"string\"\n    }\n  ],\n  \"include\": [\n    \"example_value\"\n  ],\n  \"limit\": 1,\n  \"offset\": 1,\n  \"sortField\": \"example_value\",\n  \"sortOrder\": 1,\n  \"type\": \"list\",\n  \"valueFormat\": \"duration\",\n  \"yAxis\": \"overlap\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2f48aa5-3ca3-46a9-b150-2dffa573b9fb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": \"example_value\",\n  \"filters\": \"example_value\",\n  \"granularity\": \"month\",\n  \"grquantity\": 1,\n  \"method\": \"example_value\",\n  \"name\": \"Example Name\",\n  \"span\": 1,\n  \"unit\": \"quarter\",\n  \"cross_org\": true,\n  \"groupings\": [\n    {\n      \"field\": \"example_value\",\n      \"interval\": 1,\n      \"limit\": 1,\n      \"type\": \"string\"\n    }\n  ],\n  \"include\": [\n    \"example_value\"\n  ],\n  \"limit\": 1,\n  \"offset\": 1,\n  \"sortField\": \"example_value\",\n  \"sortOrder\": 1,\n  \"type\": \"list\",\n  \"valueFormat\": \"duration\",\n  \"yAxis\": \"overlap\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f39598b-8adc-4879-871e-d77f294937e4",
+          "name": "Axway Find Custom Queries",
+          "request": {
+            "name": "Axway Find Custom Queries",
+            "description": {
+              "content": "Finds all the custom queries a user has access to for a given org.\n\n___Auth Requirement___\n - Access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "custom_queries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "56fc4bf8-8c09-4bd9-afe7-7ddac5bad0f0",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1998ffd-ec0a-48f5-9b02-96c4cdc8c0c7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e663b1c9-74e7-4c24-af79-1ddb0f940b9b",
+          "name": "Axway Delete a Custom Query",
+          "request": {
+            "name": "Axway Delete a Custom Query",
+            "description": {
+              "content": "Delete a custom query for an org.\n\n___Auth Requirement___\n - `write` access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "custom_query",
+                ":query_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "005f18da-531d-4710-a0f7-0129a499fa6f",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_query",
+                    ":query_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71455d71-7b9e-4db5-ab60-dd4b316a1605",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_query",
+                    ":query_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44e37892-590b-422f-a50f-25a9dc4cbac7",
+          "name": "Axway Update a Custom Query",
+          "request": {
+            "name": "Axway Update a Custom Query",
+            "description": {
+              "content": "Updates a custom query for an app/org.\n\n___Auth Requirement___\n - `write` access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "custom_query",
+                ":query_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field\": \"<string>\",\n  \"filters\": \"<json>\",\n  \"granularity\": \"<string>\",\n  \"grquantity\": \"<integer>\",\n  \"method\": \"<string>\",\n  \"name\": \"<string>\",\n  \"span\": \"<integer>\",\n  \"unit\": \"<string>\",\n  \"cross_org\": \"<boolean>\",\n  \"groupings\": [\n    {\n      \"field\": \"<string>\",\n      \"type\": \"<string>\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"type\": \"<string>\",\n      \"interval\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  ],\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": \"<integer>\",\n  \"sortField\": \"<string>\",\n  \"sortOrder\": \"<integer>\",\n  \"valueFormat\": \"<string>\",\n  \"yAxis\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "1a0c8870-1582-4af2-8876-0fed34f9850b",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_query",
+                    ":query_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": \"example_value\",\n  \"filters\": \"example_value\",\n  \"granularity\": \"month\",\n  \"grquantity\": 1,\n  \"method\": \"example_value\",\n  \"name\": \"Example Name\",\n  \"span\": 1,\n  \"unit\": \"quarter\",\n  \"cross_org\": true,\n  \"groupings\": [\n    {\n      \"field\": \"example_value\",\n      \"interval\": 1,\n      \"limit\": 1,\n      \"type\": \"string\"\n    }\n  ],\n  \"include\": [\n    \"example_value\"\n  ],\n  \"offset\": 1,\n  \"sortField\": \"example_value\",\n  \"sortOrder\": 1,\n  \"valueFormat\": \"duration\",\n  \"yAxis\": \"overlap\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea4a71a1-0ee6-44fb-9b89-f861f9c588dc",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_query",
+                    ":query_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": \"example_value\",\n  \"filters\": \"example_value\",\n  \"granularity\": \"month\",\n  \"grquantity\": 1,\n  \"method\": \"example_value\",\n  \"name\": \"Example Name\",\n  \"span\": 1,\n  \"unit\": \"quarter\",\n  \"cross_org\": true,\n  \"groupings\": [\n    {\n      \"field\": \"example_value\",\n      \"interval\": 1,\n      \"limit\": 1,\n      \"type\": \"string\"\n    }\n  ],\n  \"include\": [\n    \"example_value\"\n  ],\n  \"offset\": 1,\n  \"sortField\": \"example_value\",\n  \"sortOrder\": 1,\n  \"valueFormat\": \"duration\",\n  \"yAxis\": \"overlap\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6528a123-b6c3-40fb-a646-982cea10fd7d",
+          "name": "Axway Get Custom Query",
+          "request": {
+            "name": "Axway Get Custom Query",
+            "description": {
+              "content": "Returns a single custom query.\n\n___Auth Requirement___\n - Access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "custom_queries",
+                ":query_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "172891af-3997-490c-b7d8-635827ed7095",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_queries",
+                    ":query_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63d8bc28-b52b-49b7-a99b-f70d1b56a28b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "custom_queries",
+                    ":query_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.axway.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "531cba33-89ce-4f49-b717-a60cd793aac4",
+    "name": "Amplify Platform API v1.0.0 aca analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+      "type": "text/plain"
+    }
+  }
+}

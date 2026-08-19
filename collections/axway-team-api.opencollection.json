@@ -1,0 +1,441 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca team API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "team",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Get Accessible Teams for the Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/team",
+            "headers": [
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "default",
+                "value": "[object Object]",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "[object Object]",
+                "type": "query"
+              },
+              {
+                "name": "org_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "[object Object]",
+                "type": "query"
+              },
+              {
+                "name": "user_guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "1",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-auth-token",
+              "value": "{{x-auth-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return the list of teams for the specified query parameters that can be accessed by this session.\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the organization, allowing consumer role.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Create a Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/team",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This will create a team.\n\n___Auth Requirement___\n - `administrator` access to the organization.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Add Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/team/:team_id/user/:user_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "team_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a member to a team.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Sets the Team Member Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/team/:team_id/user/:user_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "team_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the users roles.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Remove Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/team/:team_id/user/:user_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "team_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a member from the team\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Team Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/team/:team_id/user",
+            "headers": [
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "example_value",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "add_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to add to the default field set in the response."
+              },
+              {
+                "name": "team_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "roles",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "term",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "user",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "name",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-auth-token",
+              "value": "{{x-auth-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns members for a team\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the team. Developer access may be restricted by the organization access control settings.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Find Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/team/:team_id",
+            "headers": [
+              {
+                "name": "authorization",
+                "value": "example_value"
+              },
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "team_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the team for given guid\n\n___Auth Requirement___\n - _One of_\n     - Service account access token.\n     - Signed-in user.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Update Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/team/:team_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "team_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This will update a team's attributes.\n\n___Auth Requirement___\n - `administrator` access to the team.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Remove Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/team/:team_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "team_id",
+                "value": "[object Object]",
+                "type": "path"
+              },
+              {
+                "name": "reassign_team",
+                "value": "example_value",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove a team from the platform if it is not the default. If another team's GUID is specified in the `reassign_team` parameter, then the deleted team's assets will be assigned to it, otherwise the assets will be unassigned. This is a destructive and irreversible action.\n\n___Auth Requirement___\n\n`administrator` role in the organization the team belongs to.\n\n_Allows consumer organization access_\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca telemetry API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Send Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/analytics",
+            "headers": [
+              {
+                "name": "authorization",
+                "value": "example_value"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Send analytics events\n\n___Auth Requirement___\n - Service account access token.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

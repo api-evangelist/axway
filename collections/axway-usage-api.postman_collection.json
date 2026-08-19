@@ -1,0 +1,1358 @@
+{
+  "item": [
+    {
+      "id": "b8c07f25-dc06-49f4-af7c-b37c49f227d5",
+      "name": "usage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80ab2249-f0ac-4aee-ba36-15b8231c9a06",
+          "name": "Axway Uploads an Automatic Usage Report",
+          "request": {
+            "name": "Axway Uploads an Automatic Usage Report",
+            "description": {
+              "content": "Uploads an automatic usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage",
+                "automatic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) The usage report file. Max file size is 500 KiB or 4000 reported metrics."
+                },
+                {
+                  "key": "organizationId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional guid of an org to upload usage for."
+                },
+                {
+                  "key": "uploadMethod",
+                  "value": "automatic",
+                  "type": "text",
+                  "description": "Method for usage report upload or entry. Forbidden for automatic reporting. (This can only be one of automatic,manual,entry)"
+                },
+                {
+                  "key": "userId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional user guid for user uploading usage. Defaults to signed-in user."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "366bc2f9-e049-4088-8ca5-d137e9f78026",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    "automatic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The usage report file. Max file size is 500 KiB or 4000 reported metrics.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional guid of an org to upload usage for.",
+                        "type": "text/plain"
+                      },
+                      "key": "organizationId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Method for usage report upload or entry. Forbidden for automatic reporting. (This can only be one of automatic,manual,entry)",
+                        "type": "text/plain"
+                      },
+                      "key": "uploadMethod",
+                      "value": "automatic",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional user guid for user uploading usage. Defaults to signed-in user.",
+                        "type": "text/plain"
+                      },
+                      "key": "userId",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55909ce1-ade6-4f39-bd15-c9e6b34a2a36",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    "automatic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The usage report file. Max file size is 500 KiB or 4000 reported metrics.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional guid of an org to upload usage for.",
+                        "type": "text/plain"
+                      },
+                      "key": "organizationId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Method for usage report upload or entry. Forbidden for automatic reporting. (This can only be one of automatic,manual,entry)",
+                        "type": "text/plain"
+                      },
+                      "key": "uploadMethod",
+                      "value": "automatic",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional user guid for user uploading usage. Defaults to signed-in user.",
+                        "type": "text/plain"
+                      },
+                      "key": "userId",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"description\": \"The file exceeds the maximum upload size of %d bytes.\",\n  \"code\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d58b5e92-04cb-47f7-ada9-4311e4e0a4de",
+          "name": "Axway Fetches Usage Reports",
+          "request": {
+            "name": "Axway Fetches Usage Reports",
+            "description": {
+              "content": "Fetches usage reports for an org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `auditor`, or `usage_reporter` access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "env_guid",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "received",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "uploadMethod",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f19c54bf-8d20-4fc1-a2f4-584eb5f01963",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "1"
+                    },
+                    {
+                      "key": "env_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    },
+                    {
+                      "key": "received",
+                      "value": "true"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "1"
+                    },
+                    {
+                      "key": "status",
+                      "value": "VALIDATING"
+                    },
+                    {
+                      "key": "uploadMethod",
+                      "value": "automatic"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "335ded4c-b29f-4193-8e38-7d98985703ad",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "1"
+                    },
+                    {
+                      "key": "env_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "org_id",
+                      "value": "507f1f77bcf86cd799439011"
+                    },
+                    {
+                      "key": "received",
+                      "value": "true"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "1"
+                    },
+                    {
+                      "key": "status",
+                      "value": "VALIDATING"
+                    },
+                    {
+                      "key": "uploadMethod",
+                      "value": "automatic"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"description\": \"startDate must be before endDate\",\n  \"code\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eda167fc-030a-485c-84ec-2033e76812d1",
+          "name": "Axway Uploads a Usage Report",
+          "request": {
+            "name": "Axway Uploads a Usage Report",
+            "description": {
+              "content": "Uploads usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) The usage report file. Max file size is 500 KiB or 4000 reported metrics."
+                },
+                {
+                  "key": "organizationId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional guid of an org to upload usage for."
+                },
+                {
+                  "key": "uploadMethod",
+                  "value": "automatic",
+                  "type": "text",
+                  "description": "Method for usage report upload or entry. Forbidden for automatic reporting. (This can only be one of automatic,manual,entry)"
+                },
+                {
+                  "key": "userId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional user guid for user uploading usage. Defaults to signed-in user."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "23060562-62d4-43c3-ac38-2e2c798919d2",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The usage report file. Max file size is 500 KiB or 4000 reported metrics.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional guid of an org to upload usage for.",
+                        "type": "text/plain"
+                      },
+                      "key": "organizationId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Method for usage report upload or entry. Forbidden for automatic reporting. (This can only be one of automatic,manual,entry)",
+                        "type": "text/plain"
+                      },
+                      "key": "uploadMethod",
+                      "value": "automatic",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional user guid for user uploading usage. Defaults to signed-in user.",
+                        "type": "text/plain"
+                      },
+                      "key": "userId",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7105b8f8-d163-44d0-9463-ca3fd608c38d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The usage report file. Max file size is 500 KiB or 4000 reported metrics.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional guid of an org to upload usage for.",
+                        "type": "text/plain"
+                      },
+                      "key": "organizationId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Method for usage report upload or entry. Forbidden for automatic reporting. (This can only be one of automatic,manual,entry)",
+                        "type": "text/plain"
+                      },
+                      "key": "uploadMethod",
+                      "value": "automatic",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional user guid for user uploading usage. Defaults to signed-in user.",
+                        "type": "text/plain"
+                      },
+                      "key": "userId",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"description\": \"The file exceeds the maximum upload size of %d bytes.\",\n  \"code\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5a3c96e-4558-4dda-9d61-d9a966d39888",
+          "name": "Axway Downloads a Usage Report",
+          "request": {
+            "name": "Axway Downloads a Usage Report",
+            "description": {
+              "content": "Returns a download of a usage report for the org\n\n___Auth Requirement___\n\nRequires support role or `administrator` or `usage_reporter` role in the organization the usage report is associated to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage",
+                ":file_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_guid",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "connect.sid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "483ae88c-fdbc-4fb2-b4cc-77face1bf1cb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    ":file_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "1714000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c21a2211-9d11-4d62-9600-6f03059ff25a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage",
+                    ":file_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_guid",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "1714000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "connect.sid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b50aff8-712e-4cd0-a608-4d339e96e761",
+          "name": "Axway Organization Usage",
+          "request": {
+            "name": "Axway Organization Usage",
+            "description": {
+              "content": "Returns usage information about an organization\n\n___Auth Requirement___\n - _One of_\n     - `administrator`, `auditor`, `developer`, or `usage_reporter` access to the organization. Developer access may be restricted by the organization usage access control setting.\n     - Auth token.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "entitlement",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skipcache",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "x-auth-token",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6cd427fb-9b5a-4c9b-ab7e-197a8a32bb33",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlement",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "from",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "month",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skipcache",
+                      "value": "true"
+                    },
+                    {
+                      "key": "to",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "year",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiJ9.example",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4d4cdbd-01a9-4f98-a528-4dbc71d337ad",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlement",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "from",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "month",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skipcache",
+                      "value": "true"
+                    },
+                    {
+                      "key": "to",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "year",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiJ9.example",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.axway.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "562f5479-c1fd-4c32-83e5-ab30c0e185a0",
+    "name": "Amplify Platform API v1.0.0 aca usage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+      "type": "text/plain"
+    }
+  }
+}

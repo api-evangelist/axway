@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca activity API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "activity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Get Activity Event Names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/activity/event",
+            "headers": [
+              {
+                "name": "authorization",
+                "value": "example_value"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns list of known activity event names\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Service account access token.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/activity",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "app_guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "contexts",
+                "value": "api_central",
+                "type": "query"
+              },
+              {
+                "name": "data",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "enrich",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "exclude_contexts",
+                "value": "api_central",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "org_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "query"
+              },
+              {
+                "name": "redact",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "-1",
+                "type": "query"
+              },
+              {
+                "name": "term",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "user_guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "user_messages",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "1",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all of the activity events for the signed-in user\n\n___Auth Requirement___\n - Access to the organization, allowing consumer role.\n\n\n_Allows consumer organization access_\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

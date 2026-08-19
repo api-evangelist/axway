@@ -1,0 +1,3264 @@
+{
+  "item": [
+    {
+      "id": "da4b5d74-dbee-4b72-9f83-84d88aa2726f",
+      "name": "idp",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b6263c3-f6e6-4f5a-8090-9f7ffb0c16c1",
+          "name": "Axway Create Consumer SAML V2.0 IdP",
+          "request": {
+            "name": "Axway Create Consumer SAML V2.0 IdP",
+            "description": {
+              "content": "Configure a custom SAML v2.0 Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                ":provider_id",
+                "idp",
+                "saml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"defaultRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"backchannelSupported\": false,\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": false,\n  \"idpEntityId\": \"<string>\",\n  \"loginHint\": true,\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"postBindingAuthnRequest\": true,\n  \"postBindingLogout\": false,\n  \"postBindingResponse\": true,\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"wantAssertionsEncrypted\": false,\n  \"wantAssertionsSigned\": false,\n  \"wantAuthnRequestsSigned\": true,\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"caseInsensitiveMappedRoles\": \"<boolean>\",\n  \"enforceMappedRoles\": \"<boolean>\",\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"mapperFriendlyConsumerId\": \"<string>\",\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"consumerDefaultTeamPrivate\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "44a93d44-9f1b-4f51-a9ac-8def5950236e",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp",
+                    "saml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Name\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"defaultRoles\": [\n    \"usage_reporter\",\n    \"developer\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"backchannelSupported\": false,\n  \"description\": \"An example description\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": false,\n  \"idpEntityId\": \"<string>\",\n  \"loginHint\": true,\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"postBindingAuthnRequest\": true,\n  \"postBindingLogout\": false,\n  \"postBindingResponse\": true,\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"wantAssertionsEncrypted\": false,\n  \"wantAssertionsSigned\": false,\n  \"wantAuthnRequestsSigned\": true,\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"caseInsensitiveMappedRoles\": false,\n  \"enforceMappedRoles\": true,\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"mapperFriendlyConsumerId\": \"<string>\",\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"consumerDefaultTeamPrivate\": \"<boolean>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9116de63-8338-4edd-9ecf-cc31c9bca0b7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp",
+                    "saml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Name\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"defaultRoles\": [\n    \"usage_reporter\",\n    \"developer\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"backchannelSupported\": false,\n  \"description\": \"An example description\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": false,\n  \"idpEntityId\": \"<string>\",\n  \"loginHint\": true,\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"postBindingAuthnRequest\": true,\n  \"postBindingLogout\": false,\n  \"postBindingResponse\": true,\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"wantAssertionsEncrypted\": false,\n  \"wantAssertionsSigned\": false,\n  \"wantAuthnRequestsSigned\": true,\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"caseInsensitiveMappedRoles\": false,\n  \"enforceMappedRoles\": true,\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"mapperFriendlyConsumerId\": \"<string>\",\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"consumerDefaultTeamPrivate\": \"<boolean>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"description\": \"Cannot configure mappers with the same value in both Friendly and Attribute Names.\",\n  \"code\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6393a3a-33f6-4734-a39a-cdaeb9dbccf9",
+          "name": "Axway Create Consumer OIDC IdP",
+          "request": {
+            "name": "Axway Create Consumer OIDC IdP",
+            "description": {
+              "content": "Configure a custom OIDC Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                ":provider_id",
+                "idp",
+                "oidc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authorizationUrl\": \"<string>\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"defaultScope\": \"<string>\",\n  \"name\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"defaultRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"backchannelSupported\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientSecret\": \"<string>\",\n  \"description\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"caseInsensitiveMappedRoles\": \"<boolean>\",\n  \"enforceMappedRoles\": \"<boolean>\",\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"consumerDefaultTeamPrivate\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "2ab64b72-e7d6-4c7a-ac2e-e5723154bee2",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp",
+                    "oidc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationUrl\": \"<string>\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"defaultScope\": \"<string>\",\n  \"name\": \"Example Name\",\n  \"tokenUrl\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"defaultRoles\": [\n    \"administrator\",\n    \"api_central_admin\"\n  ],\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"backchannelSupported\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientSecret\": \"<string>\",\n  \"description\": \"An example description\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"caseInsensitiveMappedRoles\": true,\n  \"enforceMappedRoles\": false,\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"consumerDefaultTeamPrivate\": \"<boolean>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a16bfa74-f72d-43d4-90af-abb2a0c96d3e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp",
+                    "oidc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationUrl\": \"<string>\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"defaultScope\": \"<string>\",\n  \"name\": \"Example Name\",\n  \"tokenUrl\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"defaultRoles\": [\n    \"administrator\",\n    \"api_central_admin\"\n  ],\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"backchannelSupported\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientSecret\": \"<string>\",\n  \"description\": \"An example description\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"caseInsensitiveMappedRoles\": true,\n  \"enforceMappedRoles\": false,\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"consumerDefaultTeamPrivate\": \"<boolean>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "261b80b3-80e3-4785-9dea-e4ba3d29c4fc",
+          "name": "Axway Get Consumer IdP",
+          "request": {
+            "name": "Axway Get Consumer IdP",
+            "description": {
+              "content": "Returns external IdP configured for the marketplace's consumer organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                ":provider_id",
+                "idp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "basic",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "89e9bccd-11d4-441b-8935-c566e9612ff4",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "basic",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b4f50a7-d487-4310-9dde-f2100d104dc8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "basic",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf25f117-f9a8-47bc-bd2e-ddbe94ac805b",
+          "name": "Axway Remove Consumer IdP",
+          "request": {
+            "name": "Axway Remove Consumer IdP",
+            "description": {
+              "content": "Removes a custom Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                ":provider_id",
+                "idp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cleanup",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3b9785c4-b456-4a8c-bfb4-e0ba59974940",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cleanup",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff807a1a-5738-40d1-a63d-446d6aceff26",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cleanup",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ed9ae47-a0bb-4b87-8686-574d2095ffb5",
+          "name": "Axway Update Consumer IdP",
+          "request": {
+            "name": "Axway Update Consumer IdP",
+            "description": {
+              "content": "Update a custom Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "provider",
+                ":provider_id",
+                "idp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"providerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"authorizationUrl\": \"<string>\",\n  \"backchannelSupported\": \"<boolean>\",\n  \"caseInsensitiveMappedRoles\": \"<boolean>\",\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"defaultRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultScope\": \"<string>\",\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"enforceMappedRoles\": \"<boolean>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": \"<boolean>\",\n  \"idpEntityId\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"postBindingAuthnRequest\": \"<boolean>\",\n  \"postBindingLogout\": \"<boolean>\",\n  \"postBindingResponse\": \"<boolean>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": \"<boolean>\",\n  \"wantAssertionsEncrypted\": \"<boolean>\",\n  \"wantAssertionsSigned\": \"<boolean>\",\n  \"wantAuthnRequestsSigned\": \"<boolean>\",\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamPrivate\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"mapperFriendlyConsumerId\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "5ce9b016-8215-4731-9cb0-3684f99be054",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"authorizationUrl\": \"<string>\",\n  \"backchannelSupported\": \"<boolean>\",\n  \"caseInsensitiveMappedRoles\": true,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"defaultRoles\": [\n    \"usage_reporter\",\n    \"consumer\"\n  ],\n  \"defaultScope\": \"<string>\",\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"enforceMappedRoles\": true,\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": \"<boolean>\",\n  \"idpEntityId\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"postBindingAuthnRequest\": \"<boolean>\",\n  \"postBindingLogout\": \"<boolean>\",\n  \"postBindingResponse\": \"<boolean>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": \"<boolean>\",\n  \"wantAssertionsEncrypted\": \"<boolean>\",\n  \"wantAssertionsSigned\": \"<boolean>\",\n  \"wantAuthnRequestsSigned\": \"<boolean>\",\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamPrivate\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"mapperFriendlyConsumerId\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a186d43a-4a2d-448b-a63b-dc96dadf1960",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provider",
+                    ":provider_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"authorizationUrl\": \"<string>\",\n  \"backchannelSupported\": \"<boolean>\",\n  \"caseInsensitiveMappedRoles\": true,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"defaultRoles\": [\n    \"usage_reporter\",\n    \"consumer\"\n  ],\n  \"defaultScope\": \"<string>\",\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"enforceMappedRoles\": true,\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": \"<boolean>\",\n  \"idpEntityId\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"postBindingAuthnRequest\": \"<boolean>\",\n  \"postBindingLogout\": \"<boolean>\",\n  \"postBindingResponse\": \"<boolean>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": \"<boolean>\",\n  \"wantAssertionsEncrypted\": \"<boolean>\",\n  \"wantAssertionsSigned\": \"<boolean>\",\n  \"wantAuthnRequestsSigned\": \"<boolean>\",\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"consumerDefaultTeam\": \"<boolean>\",\n  \"consumerDefaultTeamPrivate\": \"<boolean>\",\n  \"consumerDefaultTeamRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mapperAttrConsumerId\": \"<string>\",\n  \"mapperFriendlyConsumerId\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"description\": \"Cannot configure mappers with the same value in both Friendly and Attribute Names.\",\n  \"code\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fa77241-5199-44c6-87ff-1abf534da587",
+          "name": "Axway Create SAML V2.0 IdP",
+          "request": {
+            "name": "Axway Create SAML V2.0 IdP",
+            "description": {
+              "content": "Configure a custom SAML v2.0 IdP for an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                "saml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"defaultRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"backchannelSupported\": false,\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": false,\n  \"idpEntityId\": \"<string>\",\n  \"loginHint\": true,\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"postBindingAuthnRequest\": true,\n  \"postBindingLogout\": false,\n  \"postBindingResponse\": true,\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"wantAssertionsEncrypted\": false,\n  \"wantAssertionsSigned\": false,\n  \"wantAuthnRequestsSigned\": true,\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"provisionAdHoc\": false,\n  \"restrictDomainUsers\": false,\n  \"caseInsensitiveMappedRoles\": \"<boolean>\",\n  \"enforceMappedRoles\": \"<boolean>\",\n  \"enforceMappedTeams\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "1be2d5ce-f4b9-48f8-8162-5738f714499b",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    "saml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Name\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"defaultRoles\": [\n    \"consumer\",\n    \"consumer\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"backchannelSupported\": false,\n  \"description\": \"An example description\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": false,\n  \"idpEntityId\": \"<string>\",\n  \"loginHint\": true,\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"postBindingAuthnRequest\": true,\n  \"postBindingLogout\": false,\n  \"postBindingResponse\": true,\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"wantAssertionsEncrypted\": false,\n  \"wantAssertionsSigned\": false,\n  \"wantAuthnRequestsSigned\": true,\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"provisionAdHoc\": false,\n  \"restrictDomainUsers\": false,\n  \"caseInsensitiveMappedRoles\": false,\n  \"enforceMappedRoles\": true,\n  \"enforceMappedTeams\": true\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98654b4b-9a67-4b7c-8530-46d90638a5a5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    "saml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Name\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"defaultRoles\": [\n    \"consumer\",\n    \"consumer\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"backchannelSupported\": false,\n  \"description\": \"An example description\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": false,\n  \"idpEntityId\": \"<string>\",\n  \"loginHint\": true,\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"postBindingAuthnRequest\": true,\n  \"postBindingLogout\": false,\n  \"postBindingResponse\": true,\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"wantAssertionsEncrypted\": false,\n  \"wantAssertionsSigned\": false,\n  \"wantAuthnRequestsSigned\": true,\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"provisionAdHoc\": false,\n  \"restrictDomainUsers\": false,\n  \"caseInsensitiveMappedRoles\": false,\n  \"enforceMappedRoles\": true,\n  \"enforceMappedTeams\": true\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"description\": \"Cannot configure mappers with the same value in both Friendly and Attribute Names.\",\n  \"code\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "028391bb-7ec1-4359-8259-e4a23cf4c845",
+          "name": "Axway Create OIDC IdP",
+          "request": {
+            "name": "Axway Create OIDC IdP",
+            "description": {
+              "content": "Configure a custom OIDC IdP for an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                "oidc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authorizationUrl\": \"<string>\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"defaultScope\": \"<string>\",\n  \"name\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"defaultRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"backchannelSupported\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientSecret\": \"<string>\",\n  \"description\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"provisionAdHoc\": false,\n  \"restrictDomainUsers\": false,\n  \"caseInsensitiveMappedRoles\": \"<boolean>\",\n  \"enforceMappedRoles\": \"<boolean>\",\n  \"enforceMappedTeams\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "01e80ce9-59e7-41b2-b808-8e296ed6ea6e",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    "oidc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationUrl\": \"<string>\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"defaultScope\": \"<string>\",\n  \"name\": \"Example Name\",\n  \"tokenUrl\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"defaultRoles\": [\n    \"developer\",\n    \"usage_reporter\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"backchannelSupported\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientSecret\": \"<string>\",\n  \"description\": \"An example description\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"provisionAdHoc\": false,\n  \"restrictDomainUsers\": false,\n  \"caseInsensitiveMappedRoles\": true,\n  \"enforceMappedRoles\": false,\n  \"enforceMappedTeams\": false\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f35b7ae6-6e9a-444c-92d0-f73eb1be174d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    "oidc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationUrl\": \"<string>\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"defaultScope\": \"<string>\",\n  \"name\": \"Example Name\",\n  \"tokenUrl\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"defaultRoles\": [\n    \"developer\",\n    \"usage_reporter\"\n  ],\n  \"allowedClockSkew\": 0,\n  \"backchannelSupported\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientSecret\": \"<string>\",\n  \"description\": \"An example description\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"validateSignature\": false,\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"provisionAdHoc\": false,\n  \"restrictDomainUsers\": false,\n  \"caseInsensitiveMappedRoles\": true,\n  \"enforceMappedRoles\": false,\n  \"enforceMappedTeams\": false\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97bdc6ed-6f27-4b1c-8fde-941e8985bc31",
+          "name": "Axway Reload SAML Validating Certificates",
+          "request": {
+            "name": "Axway Reload SAML Validating Certificates",
+            "description": {
+              "content": "Trigger the fetching of updated Validating X509 Certificates from the configured Metadata Descriptor URL\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                ":idp_id",
+                "reload-keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idp_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d136ce3-64a9-4968-97f9-a6f2368f327a",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id",
+                    "reload-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4bea1550-468d-43e3-9a6d-970b9f9bb86c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id",
+                    "reload-keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0ed2744-ef5a-47e1-a585-744eb7f45814",
+          "name": "Axway Get IdP Descriptor",
+          "request": {
+            "name": "Axway Get IdP Descriptor",
+            "description": {
+              "content": "Trigger the download of an IdPs SAML descriptor\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                ":idp_id",
+                "descriptor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idp_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9b423373-56f1-4e2a-8856-f1dfac499536",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id",
+                    "descriptor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12fda251-a967-4949-a668-f770accd5ec4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id",
+                    "descriptor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf36cd81-2164-4767-8f76-093a3d1b10a1",
+          "name": "Axway Get Public IdP Signing or Encryption Certificate",
+          "request": {
+            "name": "Axway Get Public IdP Signing or Encryption Certificate",
+            "description": {
+              "content": "Trigger the download of the public key certificate used for signatures or encryption\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                ":idp_id",
+                "certificate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "use",
+                  "value": "signing"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idp_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f3204373-d0ff-4c5f-8067-3e3516b4c92f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id",
+                    "certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "use",
+                      "value": "signing"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24b83272-b5db-436e-beea-44c9aff83c15",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id",
+                    "certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "use",
+                      "value": "signing"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fee9a5b1-3adb-4553-9f39-7171e9a2461e",
+          "name": "Axway Associate with Another Organizations IdP",
+          "request": {
+            "name": "Axway Associate with Another Organizations IdP",
+            "description": {
+              "content": "Associates an existing organizations custom IdP with the requested organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                ":idp_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idp_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domain\": \"<string>\",\n  \"org_id\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "51eed56f-d2c4-43b4-b60e-ab96e020c8b3",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain\": \"<string>\",\n  \"org_id\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2aa906ac-5667-4a5e-8e00-4ab0c57fdaf4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain\": \"<string>\",\n  \"org_id\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af3609cb-83f9-4ac1-89f4-e3e0cc6fbb62",
+          "name": "Axway Get IdP",
+          "request": {
+            "name": "Axway Get IdP",
+            "description": {
+              "content": "Returns configuration for an external IdP\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                ":idp_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idp_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ad8e2055-fe0e-4183-af61-702b9e56778c",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df2f8295-bfdb-437d-a02d-5581846f0724",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fbda039-9851-4349-a372-c00d65b27c3f",
+          "name": "Axway Remove Organization IdP Config",
+          "request": {
+            "name": "Axway Remove Organization IdP Config",
+            "description": {
+              "content": "Removes an organizations custom IdP\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                ":idp_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idp_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08728f89-782e-41d3-9e14-18bb338fb2d0",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79cca246-9859-4b16-ab61-2fafc75cc6cb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/NOT_FOUND/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "686ab793-3d31-4a1f-a5b6-8720c271454b",
+          "name": "Axway Update Organizations Custom IdP",
+          "request": {
+            "name": "Axway Update Organizations Custom IdP",
+            "description": {
+              "content": "Update the custom IdP for an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp",
+                ":idp_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idp_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"providerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"authorizationUrl\": \"<string>\",\n  \"backchannelSupported\": \"<boolean>\",\n  \"caseInsensitiveMappedRoles\": \"<boolean>\",\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"defaultRoles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"defaultScope\": \"<string>\",\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"enforceMappedRoles\": \"<boolean>\",\n  \"enforceMappedTeams\": \"<boolean>\",\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": \"<boolean>\",\n  \"idpEntityId\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"postBindingAuthnRequest\": \"<boolean>\",\n  \"postBindingLogout\": \"<boolean>\",\n  \"postBindingResponse\": \"<boolean>\",\n  \"provisionAdHoc\": false,\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"restrictDomainUsers\": \"<boolean>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": \"<boolean>\",\n  \"wantAssertionsEncrypted\": \"<boolean>\",\n  \"wantAssertionsSigned\": \"<boolean>\",\n  \"wantAuthnRequestsSigned\": \"<boolean>\",\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "2cd2d01d-e30e-4988-978a-48ec7beeea76",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"authorizationUrl\": \"<string>\",\n  \"backchannelSupported\": \"<boolean>\",\n  \"caseInsensitiveMappedRoles\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"defaultRoles\": [\n    \"administrator\",\n    \"administrator\"\n  ],\n  \"defaultScope\": \"<string>\",\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"enforceMappedRoles\": false,\n  \"enforceMappedTeams\": true,\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": \"<boolean>\",\n  \"idpEntityId\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"postBindingAuthnRequest\": \"<boolean>\",\n  \"postBindingLogout\": \"<boolean>\",\n  \"postBindingResponse\": \"<boolean>\",\n  \"provisionAdHoc\": false,\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"restrictDomainUsers\": \"<boolean>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": \"<boolean>\",\n  \"wantAssertionsEncrypted\": \"<boolean>\",\n  \"wantAssertionsSigned\": \"<boolean>\",\n  \"wantAuthnRequestsSigned\": \"<boolean>\",\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f8f0282-c4c8-478d-9b33-9477a91cc7c5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp",
+                    ":idp_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idp_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerId\": \"<string>\",\n  \"allowedClockSkew\": 0,\n  \"attributeConsumingServiceIndex\": 0,\n  \"attributeConsumingServiceName\": \"<string>\",\n  \"authorizationUrl\": \"<string>\",\n  \"backchannelSupported\": \"<boolean>\",\n  \"caseInsensitiveMappedRoles\": false,\n  \"clientAssertionAudience\": \"<string>\",\n  \"clientAssertionSigningAlg\": \"algorithmNotSpecified\",\n  \"clientAuthMethod\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"defaultRoles\": [\n    \"administrator\",\n    \"administrator\"\n  ],\n  \"defaultScope\": \"<string>\",\n  \"description\": \"<string>\",\n  \"encryptionAlgorithm\": \"<string>\",\n  \"enforceMappedRoles\": false,\n  \"enforceMappedTeams\": true,\n  \"entityId\": \"<string>\",\n  \"forceAuthn\": \"<boolean>\",\n  \"idpEntityId\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"jwksUrl\": \"<string>\",\n  \"jwtX509HeadersEnabled\": \"<boolean>\",\n  \"loginHint\": true,\n  \"logoutUrl\": \"<string>\",\n  \"mapperAttrCountry\": \"<string>\",\n  \"mapperAttrEmail\": \"<string>\",\n  \"mapperAttrFirstname\": \"<string>\",\n  \"mapperAttrLastname\": \"<string>\",\n  \"mapperAttrPhone\": \"<string>\",\n  \"mapperFriendlyCountry\": \"<string>\",\n  \"mapperFriendlyEmail\": \"<string>\",\n  \"mapperFriendlyFirstname\": \"<string>\",\n  \"mapperFriendlyLastname\": \"<string>\",\n  \"mapperFriendlyPhone\": \"<string>\",\n  \"metadataDescriptorUrl\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nameIDPolicyFormat\": \"<string>\",\n  \"pkceEnabled\": \"<boolean>\",\n  \"pkceMethod\": \"<string>\",\n  \"postBindingAuthnRequest\": \"<boolean>\",\n  \"postBindingLogout\": \"<boolean>\",\n  \"postBindingResponse\": \"<boolean>\",\n  \"provisionAdHoc\": false,\n  \"publicKeySignatureVerifier\": \"<string>\",\n  \"publicKeySignatureVerifierKeyId\": \"<string>\",\n  \"restrictDomainUsers\": \"<boolean>\",\n  \"sendClientIdOnLogout\": \"<boolean>\",\n  \"sendIdTokenOnLogout\": \"<boolean>\",\n  \"signatureAlgorithm\": \"<string>\",\n  \"signingCertificate\": \"<string>\",\n  \"signSpMetadata\": \"<boolean>\",\n  \"singleLogoutServiceUrl\": \"<string>\",\n  \"singleSignOnServiceUrl\": \"<string>\",\n  \"tokenUrl\": \"<string>\",\n  \"useJwksUrl\": \"<boolean>\",\n  \"useMetadataDescriptorUrl\": \"<boolean>\",\n  \"validateSignature\": \"<boolean>\",\n  \"wantAssertionsEncrypted\": \"<boolean>\",\n  \"wantAssertionsSigned\": \"<boolean>\",\n  \"wantAuthnRequestsSigned\": \"<boolean>\",\n  \"xmlSigKeyInfoKeyNameTransformer\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"description\": \"Cannot configure mappers with the same value in both Friendly and Attribute Names.\",\n  \"code\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff48af15-a29a-4f81-a0bd-9152db43f75c",
+          "name": "Axway Get All Organization IdPs",
+          "request": {
+            "name": "Axway Get All Organization IdPs",
+            "description": {
+              "content": "Returns all external IdPs configured for organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator`, or `auditor` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n\n\n_Allows consumer organization access_\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":org_id",
+                "idp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>",
+                  "description": "A list of fields to exclude from the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c8e53bc8-c236-4fb9-9892-4ef2addee253",
+              "name": "Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "027652fa-046c-49c0-a50c-db600c9c55cc",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":org_id",
+                    "idp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$ref\": \"#/components/examples/FORBIDDEN/value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.axway.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "212d454e-5562-419b-ad16-50c0c5aa52e4",
+    "name": "Amplify Platform API v1.0.0 aca idp API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amplify Platform API provides the interface to perform the following:\n- Manage account settings and credentials\n- Manage organization settings, users, service accounts, and teams\n- Retrieve organization usage data\n- Register and manage applications\n- Retrieve application metrics and analytics\n- Retrieve user, organization, and application activity\n\nSee the <a href=\"https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html\" target=\"_blank\">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.\n\nFor general documentation refer to the <a href=\"https://docs.axway.com/category/platform\" target=\"_blank\">Amplify Platform documentation</a>.\n\n&copy; Axway 2026. All rights reserved.\n\nContact Support:\n Email: support@axway.com",
+      "type": "text/plain"
+    }
+  }
+}

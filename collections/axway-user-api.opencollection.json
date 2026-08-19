@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca user API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Update a Single User Preference",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/user/pref",
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "This will store a user preference setting on the user record\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/user/organizations",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "email",
+                "value": "user@example.com",
+                "type": "query"
+              },
+              {
+                "name": "guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "include_inactive",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "provider_guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "roles",
+                "value": "administrator",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns all the organizations that the signed-in user belongs to.\n\n___Auth Requirement___\n\nStaff, support, or auth token access for a guid or email to be given.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Set Credentials for Tooling",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/user/credentials",
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Sets the password to be used for tooling access for externally provisioned users.\n\n___Auth Requirement___\n - Signed-in user.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Update User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/user/profile/:user_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "This will update a user's profile\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Find Missing Domain Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/user/domain/:domain",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "domain",
+                "value": "example.com",
+                "type": "path"
+              },
+              {
+                "name": "org_id",
+                "value": "1",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Find users on a domain owned by the org that are not members of the org.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Find a Mapped Attribute for a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/user/:user_id/attribute",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "attr",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "idp_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "query"
+              },
+              {
+                "name": "org_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Find the value and other related metadata for a configured Identity Providers mapped attribute.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/user/:user_id",
+            "headers": [
+              {
+                "name": "authorization",
+                "value": "example_value"
+              },
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "provider_guid",
+                "value": "example_value",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns the user with the given ID\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Service account access token.\n     - Auth token.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Remove User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/user/:user_id",
+            "headers": [
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              },
+              {
+                "name": "x-auth-password",
+                "value": "********"
+              },
+              {
+                "name": "x-auth-code",
+                "value": "example_value"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "suppressEmail",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Remove a user and its related data from the platform. This is a destructive and irreversible action.\n\n___Auth Requirement___\n - _One of_\n     - Staff access.\n     - Auth token.\n     - _All of_\n         - `guid` of the signed-in user.\n         - User password.\n         - Multi-factor authentication code (remove-account).\n     - Administrator access to an organization with an IdP enabled for the user's email domain.\n\n\n_Allows consumer organization access_\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

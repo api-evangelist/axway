@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "aca",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Set Metadata by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/aca/:app_id/crash/:aca_id/metadata/:name",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "aca_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "app_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets metadata in a crash record for the given crash ID by name and value\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Find Crash Record by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/aca/:app_id/crash/:aca_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "aca_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "app_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a crash record for the given crash ID\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

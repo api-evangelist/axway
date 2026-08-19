@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca session API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Find Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/session/query",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "limit",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "access_token",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Return sessions matching search criteria.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/session",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieves the active session for the user.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Delete Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/session/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Deletes a session. This is a destructive and irreversible action.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

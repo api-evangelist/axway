@@ -1,0 +1,1134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca provider API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "provider",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Get Provider Marketplaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "org_guid",
+                "value": "example_value",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the provider marketplaces for an organization\n\n___Auth Requirement___\n - Access to the organization, allowing consumer role.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Create Provider Marketplace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/provider",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "ai",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "appearance",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "billing",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "certificate",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "consumer",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "consumer_approve",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "favicon",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "footer",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "help_menu",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "help_menu_icon",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "homepage",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "idp",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "idp_hint",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "lang",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "logo",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "nav_items",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "oauth",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "onboarding",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "org_guid",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "public",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "reviews",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "search_engines",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "signup",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sitename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "subdomain",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms_file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms_updated",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "versions",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a provider marketplace.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `Hub.Marketplaces`.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Provider Marketplace Onboarding Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/onboarding",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns provider marketplace onboarding settings.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway OAuth 2.0 Auth Signup Confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/oauth/:service/confirm",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "service",
+                "value": "github",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Confirm user signup via an OAuth 2.0 auth flow"
+        },
+        {
+          "info": {
+            "name": "Axway Concludes OAuth 2.0 Auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/oauth/:service/callback",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "service",
+                "value": "github",
+                "type": "path"
+              },
+              {
+                "name": "code",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "example_value",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Concludes an OAuth 2.0 auth flow"
+        },
+        {
+          "info": {
+            "name": "Axway Initiates OAuth 2.0 Auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/oauth/:service/authorize",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "service",
+                "value": "github",
+                "type": "path"
+              },
+              {
+                "name": "grant",
+                "value": "example_value",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Initiates an OAuth 2.0 auth flow"
+        },
+        {
+          "info": {
+            "name": "Axway Create Consumer SAML V2.0 IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/idp/saml",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Configure a custom SAML v2.0 Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Create Consumer OIDC IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/idp/oidc",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Configure a custom OIDC Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Update Consumer IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/idp",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a custom Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Remove Consumer IdP",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/idp",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              },
+              {
+                "name": "cleanup",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a custom Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Update Consumer Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/consumer/:org_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a consumer organization.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Find Consumer Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/consumer/:consumer_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "consumer_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              },
+              {
+                "name": "admin",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "onboarding",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "teams",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Find a consumer organization for a given provider marketplace.\n\n___Auth Requirement___\n - `administrator`, `auditor`, `developer`, or `api_central_admin` access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Delete a Consumer Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/consumer/:consumer_id",
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a consumer organization and its related data from the platform. This is a destructive and irreversible delete.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Find Consumer Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/consumer",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              },
+              {
+                "name": "created_from",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "created_to",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "last_login_from",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "last_login_to",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "Example Name",
+                "type": "query"
+              },
+              {
+                "name": "teams",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Find consumer organizations for a given provider marketplace.\n\n___Auth Requirement___\n - `administrator`, `auditor`, `developer`, or `api_central_admin` access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Create Consumer Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/consumer",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a consumer organization.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Marketplace Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id/activity",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              },
+              {
+                "name": "consumer_id",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "contexts",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "data",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "enrich",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "exclude_contexts",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "redact",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "-1",
+                "type": "query"
+              },
+              {
+                "name": "term",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "1",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all of the activity events for the marketplace and any associated consumer organizations\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Provider Marketplace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id",
+            "headers": [
+              {
+                "name": "x-auth-token",
+                "value": "eyJhbGciOiJIUzI1NiJ9.example"
+              }
+            ],
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "example_value",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "add_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to add to the default field set in the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-auth-token",
+              "value": "{{x-auth-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a provider marketplace\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Update Provider Marketplace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_id",
+                "value": "[object Object]",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "admin_teams",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ai",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "appearance",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "billing",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "certificate",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "consume_teams",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "consumer",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "consumer_approve",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "favicon",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "footer",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "help_menu",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "help_menu_icon",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "homepage",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "idp",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "idp_hint",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "lang",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "logo",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name_gender",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "nav_items",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "oauth",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "onboarding",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "org_guid",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "public",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "publish_teams",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "reviews",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "search_engines",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "signup",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sitename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sitename_gender",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "subdomain",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms_file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms_updated",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terms_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "versions",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a provider marketplace.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Delete Provider Marketplace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/provider/:provider_id",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a provider marketplace and all associated consumer org and user data\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

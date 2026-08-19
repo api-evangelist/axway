@@ -1,0 +1,746 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amplify Platform API v1.0.0 aca auth API",
+    "version": "16.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Axway Validates a User Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/validatePassword",
+            "headers": [
+              {
+                "name": "x-auth-password",
+                "value": "********"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-auth-password",
+              "value": "{{x-auth-password}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Validates the supplied password is valid for the signed-in user.\n\n___Auth Requirement___\n - User password.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Accept Terms & Conditions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/auth/terms",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "grant",
+                "value": "example_value",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Marks acceptance of Terms & Conditions.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Switch Signed-in Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/switchLoggedInOrg",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Changes the current session's organization to another that the signed-in user can access.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Sign Up",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/signup"
+          },
+          "docs": "Sign up org and user.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Get Effective Password Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/auth/password_policy",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "provider_guid",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "user_guid",
+                "value": "example_value",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the combined most restrictive values for password policies along all organizations a user or provider belongs to and system wide password policy.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Onboarding Capture",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/auth/onboarding",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "grant",
+                "value": "example_value",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Capture required onboarding data prior to sessionc creation.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Verify an Authorization Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/mfa/verify",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Verify an authorization code. The code is expired once verified.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Send an Authorization Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/mfa/send",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Send a code for the user to verify using their configured mfa method.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Sign-out",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/auth/logout",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "msg",
+                "value": "example_value",
+                "type": "query"
+              },
+              {
+                "name": "redirect",
+                "value": "example_value",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Destroys the current session and signs the user out.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Sign-in",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/login",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "grant",
+                "value": "example_value",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Attempts to sign a user in, creating a session for the user."
+        },
+        {
+          "info": {
+            "name": "Axway Unimpersonate User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/auth/impersonate",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Restores session of user impersonating another; accessible by staff or support only.\n\n___Auth Requirement___\n - Signed-in user.\n"
+        },
+        {
+          "info": {
+            "name": "Axway Send Forgot Password Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/forgot"
+          },
+          "docs": "Send a forgot password link to the user. This will also remove any previous forgot password links for the user."
+        },
+        {
+          "info": {
+            "name": "Axway Retrieves the Current Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/auth/findSession",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "from",
+                "value": "example_value",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the current session information.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Resends Device Authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/deviceauth/resend",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Reset and resend the device authorization.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Validates a New Sessions Device Authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/deviceauth",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "grant",
+                "value": "example_value",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Validate a new device to the system for the first time\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Checks if the User is Signed in",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/auth/checkSession",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Based on the current session, checks if the user is signed in or not.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Initiate Authenticator App Setup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/auth/authenticator",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Initiate the setup process for an authenticator app\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Confirm Authenticator App",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/authenticator",
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Confirms the authenticator app is generating correct auth codes\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Remove Authenticator App",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/auth/authenticator",
+            "headers": [
+              {
+                "name": "x-auth-password",
+                "value": "********"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-auth-password",
+              "value": "{{x-auth-password}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes the current configured authenticator application\n\n___Auth Requirement___\n - User password.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Activate a Signup User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/activate/signup"
+          },
+          "docs": "Attempts to activate a user from signup."
+        },
+        {
+          "info": {
+            "name": "Axway Resend Activation Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/activate/resend"
+          },
+          "docs": "Resend an activation link to a user. This will also remove any previous activation records for that user. Either `username` and `org_id` or the `activation_id` params are required.\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Reset User Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/activate/forgot"
+          },
+          "docs": "Attempts to change a user password."
+        },
+        {
+          "info": {
+            "name": "Axway Activate a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.axway.com/api/v1/auth/activate"
+          },
+          "docs": "Attempts to activate a user."
+        },
+        {
+          "info": {
+            "name": "Axway Unlock Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://platform.axway.com/api/v1/auth/unlock/:activation_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "activation_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unlocks a locked user account"
+        },
+        {
+          "info": {
+            "name": "Axway Revoke OAuth Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/auth/service/:service",
+            "params": [
+              {
+                "name": "service",
+                "value": "example_value",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Revoke an OAuth 2.0 service from being used to authenticate a user\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Retrieve Authorized Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/auth/deviceauth/:user_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "user_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns the devices a user has authenticated using MFA\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Remove Authorized Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.axway.com/api/v1/auth/deviceauth/:device_id",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "connect.sid",
+              "value": "{{connect.sid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Removes a device previously authorized by a user and revokes associated sessions\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+        },
+        {
+          "info": {
+            "name": "Axway Find Activation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.axway.com/api/v1/auth/activation/:activation_id",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to include in the response."
+              },
+              {
+                "name": "exclude_fields",
+                "value": "",
+                "type": "query",
+                "description": "A list of fields to exclude from the response."
+              },
+              {
+                "name": "activation_id",
+                "value": "507f1f77bcf86cd799439011",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the activation record.\n\n_Allows consumer organization access_\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
