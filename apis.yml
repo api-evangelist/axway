@@ -173,6 +173,12 @@ apis:
     prompt management, and MCP server support.
   humanURL: https://www.axway.com/en/products/amplify-ai-gateway
   tags:
+  - Artificial Intelligence
+  - AI Gateway
+  - Governance
+  - LLM
+  - MCP
+  tags_raw:
   - AI
   - AI Gateway
   - Governance
@@ -189,6 +195,11 @@ apis:
     interfaces, event-driven automation, and visual orchestration with out-of-the-box connectors and templates.
   humanURL: https://www.axway.com/en/products/amplify-fusion
   tags:
+  - Automation
+  - Integration
+  - Low-Code
+  - Workflows
+  tags_raw:
   - Automation
   - Integration
   - Low-Code
@@ -282,6 +293,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - ACA
+  tags_raw:
   - aca
   properties:
   - type: OpenAPI
@@ -299,6 +312,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Activity
+  tags_raw:
   - activity
   properties:
   - type: OpenAPI
@@ -316,6 +331,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Analytics
+  tags_raw:
   - analytics
   properties:
   - type: OpenAPI
@@ -333,6 +350,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - App
+  tags_raw:
   - app
   properties:
   - type: OpenAPI
@@ -350,6 +369,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Authentication
+  tags_raw:
   - auth
   properties:
   - type: OpenAPI
@@ -367,6 +388,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Clients
+  tags_raw:
   - client
   properties:
   - type: OpenAPI
@@ -384,6 +407,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Domain
+  tags_raw:
   - domain
   properties:
   - type: OpenAPI
@@ -401,6 +426,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Entitlement
+  tags_raw:
   - entitlement
   properties:
   - type: OpenAPI
@@ -418,6 +445,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Env
+  tags_raw:
   - env
   properties:
   - type: OpenAPI
@@ -435,6 +464,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Export
+  tags_raw:
   - export
   properties:
   - type: OpenAPI
@@ -452,6 +483,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - IDP
+  tags_raw:
   - idp
   properties:
   - type: OpenAPI
@@ -469,6 +502,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Org
+  tags_raw:
   - org
   properties:
   - type: OpenAPI
@@ -486,6 +521,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Provider
+  tags_raw:
   - provider
   properties:
   - type: OpenAPI
@@ -503,6 +540,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Role
+  tags_raw:
   - role
   properties:
   - type: OpenAPI
@@ -520,6 +559,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Session
+  tags_raw:
   - session
   properties:
   - type: OpenAPI
@@ -537,6 +578,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Subscription
+  tags_raw:
   - subscription
   properties:
   - type: OpenAPI
@@ -554,6 +597,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Team
+  tags_raw:
   - team
   properties:
   - type: OpenAPI
@@ -571,6 +616,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Telemetry
+  tags_raw:
   - telemetry
   properties:
   - type: OpenAPI
@@ -588,6 +635,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - Usage
+  tags_raw:
   - usage
   properties:
   - type: OpenAPI
@@ -605,6 +654,8 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI
