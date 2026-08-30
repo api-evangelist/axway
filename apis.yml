@@ -293,7 +293,7 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
-  - ACA
+  - aca
   tags_raw:
   - aca
   properties:
@@ -388,7 +388,7 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
-  - Clients
+  - client
   tags_raw:
   - client
   properties:
@@ -426,7 +426,7 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
-  - Entitlement
+  - entitlement
   tags_raw:
   - entitlement
   properties:
@@ -445,7 +445,7 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
-  - Env
+  - env
   tags_raw:
   - env
   properties:
@@ -502,7 +502,7 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
-  - Org
+  - org
   tags_raw:
   - org
   properties:
@@ -521,7 +521,7 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
-  - Provider
+  - provider
   tags_raw:
   - provider
   properties:
