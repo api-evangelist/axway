@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca app API
+  title: Amplify Platform API v1.0.0 App API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,28 +17,31 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: app
+- name: App
 paths:
   /app:
     parameters: []
     post:
       summary: Axway Create App
-      description: "Adds an app to the platform.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization `partners` entitlement includes `analytics`.\n"
+      description: 'Adds an app to the platform.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization `partners` entitlement includes `analytics`.'
       tags:
-      - app
+      - App
       operationId: app_create
       x-publishes:
       - platform.app.create
@@ -122,9 +125,14 @@ paths:
         dispatcher: FALLBACK
     get:
       summary: Axway Find Apps
-      description: "Returns a list of applications for the signed-in user\n\n___Auth Requirement___\n - Access to the organization.\n"
+      description: 'Returns a list of applications for the signed-in user
+
+
+        ___Auth Requirement___
+
+        - Access to the organization.'
       tags:
-      - app
+      - App
       operationId: app_find
       responses:
         '200':
@@ -221,9 +229,14 @@ paths:
     parameters: []
     get:
       summary: Axway Find App
-      description: "Returns an application for the signed-in user\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+      description: 'Returns an application for the signed-in user
+
+
+        ___Auth Requirement___
+
+        - `write` access to the organization to which the application belongs.'
       tags:
-      - app
+      - App
       operationId: app_findOne
       responses:
         '200':
@@ -306,9 +319,14 @@ paths:
         dispatcher: FALLBACK
     delete:
       summary: Axway Remove App
-      description: "Removes an app from the platform and all third parties\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+      description: 'Removes an app from the platform and all third parties
+
+
+        ___Auth Requirement___
+
+        - `write` access to the organization to which the application belongs.'
       tags:
-      - app
+      - App
       operationId: app_remove
       responses:
         '200':
@@ -361,9 +379,14 @@ paths:
         dispatcher: FALLBACK
     put:
       summary: Axway Update App
-      description: "Updates an app\n\n___Auth Requirement___\n - `write` access to the organization to which the application belongs.\n"
+      description: 'Updates an app
+
+
+        ___Auth Requirement___
+
+        - `write` access to the organization to which the application belongs.'
       tags:
-      - app
+      - App
       operationId: app_update
       responses:
         '200':
@@ -443,32 +466,29 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    add_fields:
-      name: add_fields
-      in: query
-      description: A list of fields to add to the default field set in the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
   schemas:
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
     Application:
       type: object
       required:
@@ -665,13 +685,6 @@ components:
           description: Type of the application
           x-no-tags: true
           example: example_value
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
     Success:
       type: object
       allOf:
@@ -680,21 +693,12 @@ components:
         properties:
           result:
             description: The response data
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
+    ApplicationList:
+      title: ApplicationList
+      type: array
+      description: A list of Application objects.
+      items:
+        $ref: '#/components/schemas/Application'
     DefaultFields:
       type: object
       unevaluatedProperties: false
@@ -728,39 +732,37 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
-    ApplicationList:
-      title: ApplicationList
-      type: array
-      description: A list of Application objects.
-      items:
-        $ref: '#/components/schemas/Application'
+  parameters:
+    add_fields:
+      name: add_fields
+      in: query
+      description: A list of fields to add to the default field set in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   examples:
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
     LOGIN_REQUIRED:
       value:
         success: false
         description: Sign-in Required
         code: 401
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
     PARAM_REQUIRED:
       value:
         success: false
@@ -773,6 +775,27 @@ components:
         description: '"%s" contained an invalid value.'
         code: 400
         internalCode: 74
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
   responses:
     SuccessResponse:
       description: Success

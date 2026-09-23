@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca domain API
+  title: Amplify Platform API v1.0.0 Domain API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,31 +17,39 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: domain
+- name: Domain
 paths:
   /org/{org_id}/domain/verify:
     parameters: []
     post:
       summary: Axway Trigger Domain Association Flow
-      description: "Create and send IdP domain association verification email.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Create and send IdP domain association verification email.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainAssociate
       responses:
         '204':
@@ -107,12 +115,26 @@ paths:
     parameters: []
     post:
       summary: Axway Associate Subdomain to Parent Domain IdP
-      description: "Attempt to confirm the association of a subdomain to a parent domain's IdP.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Attempt to confirm the association of a subdomain to a parent domain''s IdP.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainAssociateSubdomain
       responses:
         '204':
@@ -178,12 +200,26 @@ paths:
     parameters: []
     post:
       summary: Axway Enable IdP for a Domain
-      description: "Enable the association of an Identity Provider for all users on a supplied domain.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Enable the association of an Identity Provider for all users on a supplied domain.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainEnable
       x-publishes:
       - platform.org.idp.domain.associate
@@ -247,12 +283,26 @@ paths:
     parameters: []
     post:
       summary: Axway Remove Domain Association
-      description: "Remove the association of a domain to an identity provider\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Remove the association of a domain to an identity provider
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainDissociate
       x-publishes:
       - platform.org.idp.domain.dissociate
@@ -316,12 +366,26 @@ paths:
     parameters: []
     post:
       summary: Axway Consolidate Domain Users
-      description: "Add all users on a domain owned by an org that are not members of it to it.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Add all users on a domain owned by an org that are not members of it to it.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainConsolidate
       x-publishes:
       - com.appcelerator.platform.org.user.create
@@ -385,12 +449,26 @@ paths:
     parameters: []
     post:
       summary: Axway Confirm Domain Ownership
-      description: "Attempt to confirm the ownership of a domain to an organization via DNS TXT record.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Attempt to confirm the ownership of a domain to an organization via DNS TXT record.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainConfirm
       x-publishes:
       - platform.org.idp.domain.confirm
@@ -510,12 +588,26 @@ paths:
     parameters: []
     delete:
       summary: Axway Remove Domain Association
-      description: "Remove the association of a domain to an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Remove the association of a domain to an organization
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainRemove
       x-publishes:
       - platform.org.idp.domain.remove
@@ -576,12 +668,20 @@ paths:
     parameters: []
     put:
       summary: Axway Confirm Domain IdP Association
-      description: "Attempt to confirm the association of an email domain to an IdP.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      description: 'Attempt to confirm the association of an email domain to an IdP.
+
+
+        ___Auth Requirement___
+
+        - Signed-in user.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainAssociateConfirm
       responses:
         '204':
@@ -639,12 +739,26 @@ paths:
         dispatcher: FALLBACK
     post:
       summary: Axway Start Domain Ownership Process
-      description: "Trigger flow to associate a domain to an organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `idp`.\n     - Disallow action for internal organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Trigger flow to associate a domain to an organization
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `idp`.
+
+        - Disallow action for internal organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainCreate
       x-publishes:
       - platform.org.idp.domain.create
@@ -711,12 +825,24 @@ paths:
         dispatcher: FALLBACK
     get:
       summary: Axway Get All Domains
-      description: "Returns all email domains configured for organization\n\n___Auth Requirement___\n - _All of_\n     - `administrator`, or `auditor` access to the organization.\n     - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.\n\n\n_Allows consumer organization access_\n"
+      description: 'Returns all email domains configured for organization
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator`, or `auditor` access to the organization.
+
+        - The organization entitlements allow `idp`. Allows unentitled access to an existing configuration.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - domain
+      - Domain
       operationId: org_domainFind
       responses:
         '200':
@@ -782,58 +908,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  examples:
-    ITEM_NOT_FOUND:
-      value:
-        success: false
-        description: '"%s" Not Found'
-        code: 404
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
   schemas:
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
     Domain:
       type: object
       required:
@@ -905,12 +980,13 @@ components:
           format: domain
           description: Domain name.
           example: example_value
-    DomainList:
-      title: DomainList
-      type: array
-      description: A list of Domain objects.
-      items:
-        $ref: '#/components/schemas/Domain'
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
     Error:
       type: object
       allOf:
@@ -959,15 +1035,13 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
+    DomainList:
+      title: DomainList
+      type: array
+      description: A list of Domain objects.
+      items:
+        $ref: '#/components/schemas/Domain'
   parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
     fields:
       name: fields
       in: query
@@ -976,6 +1050,58 @@ components:
         type: array
         items:
           type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    ITEM_NOT_FOUND:
+      value:
+        success: false
+        description: '"%s" Not Found'
+        code: 404
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

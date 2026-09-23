@@ -1,26 +1,7 @@
 {
   "provider": "axway",
   "sources": [
-    "axway-aca-api-openapi.yml",
-    "axway-activity-api-openapi.yml",
-    "axway-analytics-api-openapi.yml",
-    "axway-app-api-openapi.yml",
-    "axway-auth-api-openapi.yml",
-    "axway-client-api-openapi.yml",
-    "axway-domain-api-openapi.yml",
-    "axway-entitlement-api-openapi.yml",
-    "axway-env-api-openapi.yml",
-    "axway-export-api-openapi.yml",
-    "axway-idp-api-openapi.yml",
-    "axway-org-api-openapi.yml",
-    "axway-provider-api-openapi.yml",
-    "axway-role-api-openapi.yml",
-    "axway-session-api-openapi.yml",
-    "axway-subscription-api-openapi.yml",
-    "axway-team-api-openapi.yml",
-    "axway-telemetry-api-openapi.yml",
-    "axway-usage-api-openapi.yml",
-    "axway-user-api-openapi.yml"
+    "_original/axway-amplify-platform-openapi-original.json"
   ],
   "outputs": [
     "axway-aca-api-openapi.yml",
@@ -47,6 +28,31 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "axway-amplify-platform-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "axway-aca-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-activity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-app-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-client-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-domain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-entitlement-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-env-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-export-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-idp-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-org-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-provider-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-role-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-subscription-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-team-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-telemetry-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-usage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "axway-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

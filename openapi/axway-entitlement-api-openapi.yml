@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca entitlement API
+  title: Amplify Platform API v1.0.0 Entitlement API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,28 +17,31 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: entitlement
+- name: Entitlement
 paths:
   /entitlement:
     parameters: []
     get:
       summary: Axway Get Entitlement Meta
-      description: "Returns entitlement definitions\n\n___Auth Requirement___\n - _One of_\n     - Signed-in user.\n     - Auth token.\n"
+      description: 'Returns entitlement definitions
+
+
+        ___Auth Requirement___
+
+        - _One of_
+
+        - Signed-in user.
+
+        - Auth token.'
       tags:
-      - entitlement
+      - Entitlement
       operationId: entitlement_find
       responses:
         '200':
@@ -100,6 +103,12 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
+    EntitlementList:
+      title: EntitlementList
+      type: array
+      description: A list of Entitlement objects.
+      items:
+        $ref: '#/components/schemas/Entitlement'
     Error:
       type: object
       allOf:
@@ -115,12 +124,6 @@ components:
           internalCode:
             type: number
             description: Internal code.
-    EntitlementList:
-      title: EntitlementList
-      type: array
-      description: A list of Entitlement objects.
-      items:
-        $ref: '#/components/schemas/Entitlement'
     Entitlement:
       type: object
       required:
@@ -146,23 +149,6 @@ components:
           - number
           - string
           example: array
-  parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
   examples:
     PARAM_INVALID:
       value:
@@ -180,6 +166,23 @@ components:
         success: false
         description: Sign-in Required
         code: 401
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

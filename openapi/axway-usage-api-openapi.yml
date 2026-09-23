@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca usage API
+  title: Amplify Platform API v1.0.0 Usage API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,31 +17,34 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: usage
+- name: Usage
 paths:
   /usage/automatic:
     parameters: []
     post:
       summary: Axway Uploads an Automatic Usage Report
-      description: "Uploads an automatic usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n"
+      description: 'Uploads an automatic usage report for org
+
+
+        ___Auth Requirement___
+
+        - _One of_
+
+        - Support access.
+
+        - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.'
       externalDocs:
         description: Usage Reporting Documentation
         url: https://docs.axway.com/csh?context=222126025
       tags:
-      - usage
+      - Usage
       operationId: usage_uploadAutomatic
       x-max-content-length: 512000
       x-publishes:
@@ -213,9 +216,18 @@ paths:
     parameters: []
     get:
       summary: Axway Fetches Usage Reports
-      description: "Fetches usage reports for an org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `auditor`, or `usage_reporter` access to the organization.\n"
+      description: 'Fetches usage reports for an org
+
+
+        ___Auth Requirement___
+
+        - _One of_
+
+        - Support access.
+
+        - `administrator`, `auditor`, or `usage_reporter` access to the organization.'
       tags:
-      - usage
+      - Usage
       operationId: usage_find
       responses:
         '200':
@@ -376,12 +388,21 @@ paths:
         dispatcher: FALLBACK
     post:
       summary: Axway Uploads a Usage Report
-      description: "Uploads usage report for org\n\n___Auth Requirement___\n - _One of_\n     - Support access.\n     - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.\n"
+      description: 'Uploads usage report for org
+
+
+        ___Auth Requirement___
+
+        - _One of_
+
+        - Support access.
+
+        - `administrator`, `api_central_admin`, or `usage_reporter` access to the organization.'
       externalDocs:
         description: Usage Reporting Documentation
         url: https://docs.axway.com/csh?context=222126025
       tags:
-      - usage
+      - Usage
       operationId: usage_upload
       x-max-content-length: 512000
       x-publishes:
@@ -561,7 +582,7 @@ paths:
 
         Requires support role or `administrator` or `usage_reporter` role in the organization the usage report is associated to.'
       tags:
-      - usage
+      - Usage
       operationId: usage_download
       responses:
         '200':
@@ -626,9 +647,18 @@ paths:
     parameters: []
     get:
       summary: Axway Organization Usage
-      description: "Returns usage information about an organization\n\n___Auth Requirement___\n - _One of_\n     - `administrator`, `auditor`, `developer`, or `usage_reporter` access to the organization. Developer access may be restricted by the organization usage access control setting.\n     - Auth token.\n"
+      description: 'Returns usage information about an organization
+
+
+        ___Auth Requirement___
+
+        - _One of_
+
+        - `administrator`, `auditor`, `developer`, or `usage_reporter` access to the organization. Developer access may be restricted by the organization usage access control setting.
+
+        - Auth token.'
       tags:
-      - usage
+      - Usage
       operationId: org_findUsage
       responses:
         '200':
@@ -792,54 +822,6 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-    UsageEntryList:
-      title: UsageEntryList
-      type: array
-      description: A list of UsageEntry objects.
-      items:
-        $ref: '#/components/schemas/UsageEntry'
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
-    ResponseMetadata:
-      type: object
-      properties:
-        count:
-          type: number
-          description: Number of results included in the response.
-          example: 1.0
-        limit:
-          type: number
-          description: Number of results per page.
-          example: 1.0
-        matched:
-          type: number
-          description: Total number of matched results.
-          example: 1.0
-        page:
-          type: number
-          description: Page of results.
-          example: 1.0
-        pages:
-          type: number
-          description: Total number of pages of results.
-          example: 1.0
-        skip:
-          type: number
-          description: Number of results skipped in pagination.
-          example: 1.0
     UsageEntry:
       type: object
       properties:
@@ -939,15 +921,55 @@ components:
           - automatic
           - manual
           example: automatic
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    UsageEntryList:
+      title: UsageEntryList
+      type: array
+      description: A list of UsageEntry objects.
+      items:
+        $ref: '#/components/schemas/UsageEntry'
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
   parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
     fields:
       name: fields
       in: query
@@ -956,17 +978,36 @@ components:
         type: array
         items:
           type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
   examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
     IDP_REQUIRED:
       value:
         success: false
         description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
         code: 401
         internalCode: 235
-    USER_NOT_ADMIN:
+    FORBIDDEN:
       value:
         success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
+        description: You do not have access privileges to view this content.
         code: 403
     PARAM_INVALID:
       value:
@@ -979,17 +1020,6 @@ components:
         success: false
         description: Resource Not Found
         code: 404
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
     LOGIN_REQUIRED:
       value:
         success: false

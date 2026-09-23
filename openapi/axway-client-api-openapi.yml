@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca client API
+  title: Amplify Platform API v1.0.0 Client API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,31 +17,30 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: client
+- name: Client
 paths:
   /client:
     parameters: []
     post:
       summary: Axway Add Service Account
-      description: "Register a new service account\n\n___Auth Requirement___\n - `administrator` access to the organization.\n"
+      description: 'Register a new service account
+
+
+        ___Auth Requirement___
+
+        - `administrator` access to the organization.'
       externalDocs:
         description: Managing Service Accounts
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_service_accounts/index.html
       tags:
-      - client
+      - Client
       operationId: client_create
       x-publishes:
       - platform.client.create
@@ -233,12 +232,17 @@ paths:
         dispatcher: FALLBACK
     get:
       summary: Axway Get Service Accounts
-      description: "Returns all the service accounts for an organization.\n\n___Auth Requirement___\n - Access to the organization. Developer access may be restricted by the organization service accounts access control setting.\n"
+      description: 'Returns all the service accounts for an organization.
+
+
+        ___Auth Requirement___
+
+        - Access to the organization. Developer access may be restricted by the organization service accounts access control setting.'
       externalDocs:
         description: Managing Service Accounts
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_service_accounts/index.html
       tags:
-      - client
+      - Client
       operationId: client_find
       responses:
         '200':
@@ -370,12 +374,17 @@ paths:
     parameters: []
     get:
       summary: Axway Get Service Account JSON Representation
-      description: "Triggers the download of a JSON representation of a service account\n\n___Auth Requirement___\n - Access to the organization.\n"
+      description: 'Triggers the download of a JSON representation of a service account
+
+
+        ___Auth Requirement___
+
+        - Access to the organization.'
       externalDocs:
         description: Managing Service Accounts
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_service_accounts/index.html
       tags:
-      - client
+      - Client
       operationId: client_download
       responses:
         '200':
@@ -455,7 +464,7 @@ paths:
         description: Managing Service Accounts
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_service_accounts/index.html
       tags:
-      - client
+      - Client
       operationId: client_findOne
       responses:
         '200':
@@ -622,7 +631,7 @@ paths:
         description: Managing Service Accounts
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_service_accounts/index.html
       tags:
-      - client
+      - Client
       operationId: client_remove
       x-publishes:
       - platform.client.remove
@@ -686,7 +695,7 @@ paths:
         description: Managing Service Accounts
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_service_accounts/index.html
       tags:
-      - client
+      - Client
       operationId: client_update
       x-publishes:
       - platform.client.update
@@ -1008,6 +1017,125 @@ components:
           internalCode:
             type: number
             description: Internal code.
+    ClientList:
+      title: ClientList
+      type: array
+      description: A list of Client objects.
+      items:
+        $ref: '#/components/schemas/Client'
+    Team:
+      type: object
+      required:
+      - default
+      - guid
+      - name
+      - org_guid
+      - tags
+      - users
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the team.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          example: '2026-04-21T00:00:00Z'
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        desc:
+          type:
+          - string
+          - 'null'
+          description: Description of the team.
+          maxLength: 200
+          x-no-tags: true
+          example: example_value
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
+        name:
+          type: string
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
+          x-no-tags: true
+          example: Example Name
+        org_guid:
+          type: string
+          format: uuid
+          description: '`guid` of the organization the team belongs to.'
+          example: example_value
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+        updated:
+          type: string
+          format: date-time
+          description: Date updated.
+          example: '2026-04-21T00:00:00Z'
+        users:
+          type: array
+          description: Members that belong to this team and their roles.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
+            properties:
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the member.'
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+              type:
+                type: string
+                description: Type of the member.
+                default: user
+                enum:
+                - user
+                - client
+          example:
+          - guid: example_value
+            roles:
+            - consumer
+            type: user
     ResponseMetadata:
       type: object
       properties:
@@ -1035,12 +1163,6 @@ components:
           type: number
           description: Number of results skipped in pagination.
           example: 1.0
-    ClientList:
-      title: ClientList
-      type: array
-      description: A list of Client objects.
-      items:
-        $ref: '#/components/schemas/Client'
     DefaultFields:
       type: object
       unevaluatedProperties: false
@@ -1074,58 +1196,12 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
-    Team:
-      properties:
-        users:
-          items:
-            properties:
-              roles:
-                type: array
-                description: Array of role identifiers that are assigned to the member.
-                items:
-                  type: string
-                  enum:
-                  - consumer
-                  - subscription_admin
-                  - developer
-                  - catalog_manager
-                  - subscription_approver
-                  - api_access
-                  - insights
-                  - administrator
-                  - marketplace_admin
-        guid:
-          type: string
-          format: uuid
-          description: '`guid` of the team.'
-          example: example_value
   examples:
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
     LOGIN_REQUIRED:
       value:
         success: false
         description: Sign-in Required
         code: 401
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
     PARAM_REQUIRED:
       value:
         success: false
@@ -1138,19 +1214,40 @@ components:
         description: '"%s" contained an invalid value.'
         code: 400
         internalCode: 74
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
   parameters:
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
     exclude_fields:
       name: exclude_fields
       in: query
       description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
       schema:
         type: array
         items:

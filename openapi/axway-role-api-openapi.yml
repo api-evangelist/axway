@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca role API
+  title: Amplify Platform API v1.0.0 Role API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,20 +17,14 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: role
+- name: Role
 paths:
   /role:
     parameters: []
@@ -41,7 +35,7 @@ paths:
         description: Roles Documentation
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/organization_roles_and_features/index.html
       tags:
-      - role
+      - Role
       operationId: role_find
       responses:
         '200':
@@ -120,7 +114,7 @@ paths:
         description: Roles Documentation
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/organization_roles_and_features/index.html
       tags:
-      - role
+      - Role
       operationId: role_findOne
       responses:
         '200':
@@ -190,12 +184,6 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-    RoleList:
-      title: RoleList
-      type: array
-      description: A list of Role objects.
-      items:
-        $ref: '#/components/schemas/Role'
     Role:
       type: object
       required:
@@ -275,6 +263,12 @@ components:
           type: boolean
           description: Indicates that users with the role are only able to access the platform in web contexts.
           example: true
+    RoleList:
+      title: RoleList
+      type: array
+      description: A list of Role objects.
+      items:
+        $ref: '#/components/schemas/Role'
     Error:
       type: object
       allOf:
@@ -291,14 +285,6 @@ components:
             type: number
             description: Internal code.
   parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
     fields:
       name: fields
       in: query
@@ -307,7 +293,21 @@ components:
         type: array
         items:
           type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
   examples:
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
     PARAM_INVALID:
       value:
         success: false
@@ -319,12 +319,6 @@ components:
         success: false
         description: Resource Not Found
         code: 404
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
     LOGIN_REQUIRED:
       value:
         success: false

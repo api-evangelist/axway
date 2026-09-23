@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca provider API
+  title: Amplify Platform API v1.0.0 Provider API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,31 +17,34 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: provider
+- name: Provider
 paths:
   /provider:
     parameters: []
     post:
       summary: Axway Create Provider Marketplace
-      description: "Creates a provider marketplace.\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the organization.\n     - The organization entitlements allow `Hub.Marketplaces`.\n"
+      description: 'Creates a provider marketplace.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the organization.
+
+        - The organization entitlements allow `Hub.Marketplaces`.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_create
       x-publishes:
       - marketplace.create
@@ -2191,12 +2194,17 @@ paths:
         dispatcher: FALLBACK
     get:
       summary: Axway Get Provider Marketplaces
-      description: "Returns the provider marketplaces for an organization\n\n___Auth Requirement___\n - Access to the organization, allowing consumer role.\n"
+      description: 'Returns the provider marketplaces for an organization
+
+
+        ___Auth Requirement___
+
+        - Access to the organization, allowing consumer role.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_find
       responses:
         '200':
@@ -3850,11 +3858,9 @@ paths:
       description: 'Returns provider marketplace onboarding settings.
 
 
-        _Allows consumer organization access_
-
-        '
+        _Allows consumer organization access_'
       tags:
-      - provider
+      - Provider
       operationId: provider_findOnboarding
       responses:
         '200':
@@ -3909,7 +3915,7 @@ paths:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_oauthConfirm
       x-publishes:
       - marketplace.consumer.signup
@@ -3994,7 +4000,7 @@ paths:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_oauthCallback
       x-publishes:
       - platform.user.social.enable
@@ -4066,7 +4072,7 @@ paths:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_oauthAuthorize
       responses:
         '200':
@@ -4127,9 +4133,18 @@ paths:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - provider
+      - Provider
       summary: Axway Create Consumer SAML V2.0 IdP
-      description: "Configure a custom SAML v2.0 Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+      description: 'Configure a custom SAML v2.0 Identity Provider for a marketplace''s consumer organizations
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the provider''s organization.
+
+        - The organization entitlements allow `idp`.'
       operationId: provider_idpCreateSAML
       x-publishes:
       - marketplace.idp.create
@@ -4409,9 +4424,18 @@ paths:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - provider
+      - Provider
       summary: Axway Create Consumer OIDC IdP
-      description: "Configure a custom OIDC Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+      description: 'Configure a custom OIDC Identity Provider for a marketplace''s consumer organizations
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the provider''s organization.
+
+        - The organization entitlements allow `idp`.'
       operationId: provider_idpCreateOIDC
       x-publishes:
       - marketplace.idp.create
@@ -4662,12 +4686,21 @@ paths:
     parameters: []
     delete:
       summary: Axway Remove Consumer IdP
-      description: "Removes a custom Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+      description: 'Removes a custom Identity Provider for a marketplace''s consumer organizations
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the provider''s organization.
+
+        - The organization entitlements allow `idp`.'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_idpRemove
       x-publishes:
       - marketplace.idp.remove
@@ -4728,12 +4761,21 @@ paths:
         dispatcher: FALLBACK
     put:
       summary: Axway Update Consumer IdP
-      description: "Update a custom Identity Provider for a marketplace's consumer organizations\n\n___Auth Requirement___\n - _All of_\n     - `administrator` access to the provider's organization.\n     - The organization entitlements allow `idp`.\n"
+      description: 'Update a custom Identity Provider for a marketplace''s consumer organizations
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - `administrator` access to the provider''s organization.
+
+        - The organization entitlements allow `idp`.'
       externalDocs:
         description: Managing Identity Providers
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/configuring_and_managing_identity_providers/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_idpUpdate
       x-publishes:
       - marketplace.idp.update
@@ -5086,12 +5128,17 @@ paths:
     parameters: []
     put:
       summary: Axway Update Consumer Organization
-      description: "Update a consumer organization.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+      description: 'Update a consumer organization.
+
+
+        ___Auth Requirement___
+
+        - `administrator` access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_consumerUpdate
       x-publishes:
       - platform.org.update
@@ -5175,12 +5222,17 @@ paths:
     parameters: []
     get:
       summary: Axway Find Consumer Organization
-      description: "Find a consumer organization for a given provider marketplace.\n\n___Auth Requirement___\n - `administrator`, `auditor`, `developer`, or `api_central_admin` access to the provider's organization.\n"
+      description: 'Find a consumer organization for a given provider marketplace.
+
+
+        ___Auth Requirement___
+
+        - `administrator`, `auditor`, `developer`, or `api_central_admin` access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_consumerFindOne
       responses:
         '200':
@@ -5274,9 +5326,14 @@ paths:
         dispatcher: FALLBACK
     delete:
       summary: Axway Delete a Consumer Organization
-      description: "Deletes a consumer organization and its related data from the platform. This is a destructive and irreversible delete.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+      description: 'Deletes a consumer organization and its related data from the platform. This is a destructive and irreversible delete.
+
+
+        ___Auth Requirement___
+
+        - `administrator` access to the provider''s organization.'
       tags:
-      - provider
+      - Provider
       operationId: provider_consumerRemove
       x-publishes:
       - platform.org.delete
@@ -5334,12 +5391,17 @@ paths:
     parameters: []
     post:
       summary: Axway Create Consumer Organization
-      description: "Creates a consumer organization.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+      description: 'Creates a consumer organization.
+
+
+        ___Auth Requirement___
+
+        - `administrator` access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_consumerCreate
       x-publishes:
       - platform.org.create
@@ -5734,12 +5796,17 @@ paths:
         dispatcher: FALLBACK
     get:
       summary: Axway Find Consumer Organizations
-      description: "Find consumer organizations for a given provider marketplace.\n\n___Auth Requirement___\n - `administrator`, `auditor`, `developer`, or `api_central_admin` access to the provider's organization.\n"
+      description: 'Find consumer organizations for a given provider marketplace.
+
+
+        ___Auth Requirement___
+
+        - `administrator`, `auditor`, `developer`, or `api_central_admin` access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_consumerFind
       responses:
         '200':
@@ -5907,12 +5974,17 @@ paths:
     parameters: []
     get:
       summary: Axway Get Marketplace Activity
-      description: "Returns all of the activity events for the marketplace and any associated consumer organizations\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+      description: 'Returns all of the activity events for the marketplace and any associated consumer organizations
+
+
+        ___Auth Requirement___
+
+        - `administrator` access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_activity
       responses:
         '200':
@@ -6095,12 +6167,21 @@ paths:
     parameters: []
     get:
       summary: Axway Get Provider Marketplace
-      description: "Returns a provider marketplace\n\n___Auth Requirement___\n - _One of_\n     - Auth token.\n     - Access to the provider's organization.\n"
+      description: 'Returns a provider marketplace
+
+
+        ___Auth Requirement___
+
+        - _One of_
+
+        - Auth token.
+
+        - Access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_findOne
       responses:
         '200':
@@ -7770,12 +7851,17 @@ paths:
         dispatcher: FALLBACK
     delete:
       summary: Axway Delete Provider Marketplace
-      description: "Deletes a provider marketplace and all associated consumer org and user data\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+      description: 'Deletes a provider marketplace and all associated consumer org and user data
+
+
+        ___Auth Requirement___
+
+        - `administrator` access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_remove
       x-publishes:
       - marketplace.remove
@@ -7843,12 +7929,17 @@ paths:
         dispatcher: FALLBACK
     put:
       summary: Axway Update Provider Marketplace
-      description: "Updates a provider marketplace.\n\n___Auth Requirement___\n - `administrator` access to the provider's organization.\n"
+      description: 'Updates a provider marketplace.
+
+
+        ___Auth Requirement___
+
+        - `administrator` access to the provider''s organization.'
       externalDocs:
         description: Managing Marketplaces
         url: https://docs.axway.com/bundle/amplify-central/page/docs/manage_marketplace/customize_marketplace/index.html
       tags:
-      - provider
+      - Provider
       operationId: provider_update
       x-publishes:
       - marketplace.ai.disable
@@ -10019,84 +10110,17 @@ paths:
 components:
   schemas:
     Provider:
+      type: object
+      required:
+      - consumer
+      - consumer_approve
+      - guid
+      - name
+      - org_guid
+      - public
+      - signup
+      - terms
       x-defs:
-        onboarding.items.hint:
-          type: string
-          description: Contextual information for the element.
-        onboarding.items.text:
-          type: string
-          description: Label for the element.
-        onboarding.items.on:
-          type: string
-          description: Label for enabled toggle state.
-        onboarding.items.placeholder:
-          type: string
-          description: Placeholder or example value for the element.
-        sitename:
-          type: string
-          description: Page title of the provider marketplace instance.
-          maxLength: 350
-          x-no-tags: true
-        homepage_border:
-          type: object
-          description: Item border properties.
-          properties:
-            color:
-              type: string
-              format: color
-              description: Border color
-            radius:
-              type: string
-              description: Border radius
-              default: square
-              enum:
-              - square
-              - rounded
-              - pill
-            style:
-              type: string
-              description: Border style
-              default: solid
-              enum:
-              - solid
-              - dashed
-              - dotted
-            width:
-              type: object
-              additionalProperties: false
-              properties:
-                bottom:
-                  type: string
-                  pattern: ^[0-9]+\.?([0-9]+)?px$
-                left:
-                  type: string
-                  pattern: ^[0-9]+\.?([0-9]+)?px$
-                right:
-                  type: string
-                  pattern: ^[0-9]+\.?([0-9]+)?px$
-                top:
-                  type: string
-                  pattern: ^[0-9]+\.?([0-9]+)?px$
-        nav_items:
-          type: array
-          description: Links added in the common navigation menu.
-          maxItems: 9
-          items:
-            $ref: '#/components/schemas/Provider/x-defs/menu_item'
-        description:
-          type: string
-          description: Description of the provider marketplace instance.
-          default: ''
-          maxLength: 200
-        homepage_content_search_text:
-          type: string
-          description: Placeholder text
-        onboarding.items.options.text:
-          type: string
-          description: Label for value.
-        homepage_categories_title:
-          type: string
-          description: Title for the categories.
         menu_item:
           type: object
           required:
@@ -10154,52 +10178,12 @@ components:
               - 1
               - 2
               - 3
-        help_menu:
-          type: array
-          description: Content shown in the navigation bar help menu.
-          items:
-            type: object
-            unevaluatedProperties: false
-            allOf:
-            - $ref: '#/components/schemas/Provider/x-defs/menu_item'
-            properties:
-              icon:
-                type: string
-                description: Icon displayed in the menu for the item.
-        onboarding.items.off:
+        onboarding.items.hint:
           type: string
-          description: Label for disabled toggle state.
-        placeholder:
-          type: object
-          description: Placeholder or example value for the element.
-          default: {}
-          properties:
-            en-US:
-              type: string
-              description: English language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
-            fr-FR:
-              type: string
-              description: French language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
-            de-DE:
-              type: string
-              description: German language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
-            pt-BR:
-              type: string
-              description: Portuguese language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
-        name:
+          description: Contextual information for the element.
+        onboarding.items.text:
           type: string
-          description: Name of the provider marketplace instance.
-          minLength: 2
-          maxLength: 350
-          x-no-tags: true
+          description: Label for the element.
         onboarding_props:
           type: object
           required:
@@ -10282,13 +10266,74 @@ components:
               enum:
               - 0
               - 1
-        homepage_content_button_text:
+        onboarding.items.placeholder:
           type: string
-          description: Button text
-        reviews.instructions:
-          type: string
-          description: Review guidelines and policies within the provider marketplace.
-          x-no-tags: true
+          description: Placeholder or example value for the element.
+        placeholder:
+          type: object
+          description: Placeholder or example value for the element.
+          default: {}
+          properties:
+            en-US:
+              type: string
+              description: English language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
+            fr-FR:
+              type: string
+              description: French language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
+            de-DE:
+              type: string
+              description: German language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
+            pt-BR:
+              type: string
+              description: Portuguese language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.placeholder'
+        homepage_border:
+          type: object
+          description: Item border properties.
+          properties:
+            color:
+              type: string
+              format: color
+              description: Border color
+            radius:
+              type: string
+              description: Border radius
+              default: square
+              enum:
+              - square
+              - rounded
+              - pill
+            style:
+              type: string
+              description: Border style
+              default: solid
+              enum:
+              - solid
+              - dashed
+              - dotted
+            width:
+              type: object
+              additionalProperties: false
+              properties:
+                bottom:
+                  type: string
+                  pattern: ^[0-9]+\.?([0-9]+)?px$
+                left:
+                  type: string
+                  pattern: ^[0-9]+\.?([0-9]+)?px$
+                right:
+                  type: string
+                  pattern: ^[0-9]+\.?([0-9]+)?px$
+                top:
+                  type: string
+                  pattern: ^[0-9]+\.?([0-9]+)?px$
         homepage_spacing:
           type: object
           additionalProperties: false
@@ -10305,9 +10350,6 @@ components:
             top:
               type: string
               pattern: ^[0-9]+\.?([0-9]+)?(px|%|em|rem)$
-        homepage_content_text:
-          type: string
-          description: Text content, using markdown formatting.
         genderedLangSchema:
           type: object
           properties:
@@ -10335,9 +10377,11 @@ components:
               enum:
               - m
               - f
-        homepage_content_image_alt:
+        description:
           type: string
-          description: Image alt text.
+          description: Description of the provider marketplace instance.
+          default: ''
+          maxLength: 200
         footer.items:
           type: array
           description: Elements shown in the footer block.
@@ -10412,230 +10456,233 @@ components:
               type:
                 type: string
                 description: Content type
+        help_menu:
+          type: array
+          description: Content shown in the navigation bar help menu.
+          items:
+            type: object
+            unevaluatedProperties: false
+            allOf:
+            - $ref: '#/components/schemas/Provider/x-defs/menu_item'
+            properties:
+              icon:
+                type: string
+                description: Icon displayed in the menu for the item.
+        homepage_categories_title:
+          type: string
+          description: Title for the categories.
+        homepage_content_button_text:
+          type: string
+          description: Button text
+        homepage_content_image_alt:
+          type: string
+          description: Image alt text.
+        homepage_content_search_text:
+          type: string
+          description: Placeholder text
+        homepage_content_text:
+          type: string
+          description: Text content, using markdown formatting.
         homepage_products_title:
           type: string
           description: Title for the products.
+        name:
+          type: string
+          description: Name of the provider marketplace instance.
+          minLength: 2
+          maxLength: 350
+          x-no-tags: true
+        nav_items:
+          type: array
+          description: Links added in the common navigation menu.
+          maxItems: 9
+          items:
+            $ref: '#/components/schemas/Provider/x-defs/menu_item'
+        onboarding.items.off:
+          type: string
+          description: Label for disabled toggle state.
+        onboarding.items.on:
+          type: string
+          description: Label for enabled toggle state.
+        onboarding.items.options.text:
+          type: string
+          description: Label for value.
+        reviews.instructions:
+          type: string
+          description: Review guidelines and policies within the provider marketplace.
+          x-no-tags: true
+        sitename:
+          type: string
+          description: Page title of the provider marketplace instance.
+          maxLength: 350
+          x-no-tags: true
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
       properties:
-        sitename_gender:
-          description: Gender of the `sitename` of the provider marketplace instance.
-          allOf:
-          - $ref: '#/components/schemas/Provider/x-defs/genderedLangSchema'
-          example: Example Name
-        org_guid:
+        _id:
           type: string
-          format: uuid
-          description: '`guid` of the organization the provider marketplace belongs to.'
+          description: Document ID of the provider.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        admin_teams:
+          description: Administration access.
+          default: false
+          oneOf:
+          - type: boolean
+            description: Flag indicating if `marketplace_admin` role members in all teams can administer the provider marketplace.
+          - type: array
+            description: '`guid` of a selected team whose `marketplace_admin` role members can administer the provider marketplace.'
+            items:
+              type: string
+              format: uuid
           example: example_value
-        oauth:
+        consume_teams:
           type: object
-          description: OAuth 2.0 client settings for the provider marketplace's consumer users.
+          description: Preference for which org members can consume the provider marketplace.
           default:
-            enabled: false
+            type: teams
+            value: true
+          unevaluatedProperties: false
+          discriminator:
+            propertyName: type
+            mapping:
+              teams: '#/components/schemas/Provider/properties/consume_teams/oneOf/0'
+              included: '#/components/schemas/Provider/properties/consume_teams/oneOf/1'
+              excluded: '#/components/schemas/Provider/properties/consume_teams/oneOf/1'
+              tags: '#/components/schemas/Provider/properties/consume_teams/oneOf/2'
+          oneOf:
+          - type: object
+            title: All Teams
+            properties:
+              type:
+                enum:
+                - teams
+              value:
+                type: boolean
+                description: Indicates if `consumer` role members in all teams can consume the provider marketplace.
+          - type: object
+            title: Specific Teams
+            properties:
+              type:
+                enum:
+                - included
+                - excluded
+              value:
+                type: array
+                description: '`guid` of a selected teams whose `consumer` role members can consume the provider marketplace.'
+                items:
+                  type: string
+                  format: uuid
+          - type: object
+            title: Tagged Teams
+            properties:
+              type:
+                enum:
+                - tags
+              value:
+                type: array
+                description: '`consumer` role members in teams with any value in its `tags` can consume the provider marketplace.'
+                items:
+                  type: string
           properties:
-            github:
-              type: object
-              description: Settings for the provider marketplace's GitHub OAuth 2.0 client.
-              properties:
-                enabled:
-                  type: boolean
-                  description: Whether "Sign in with GitHub" is enabled for the provider marketplace's consumer users.
-                  default: false
-                client_id:
-                  type: string
-                  description: Client ID of the registered application within GitHub.
-                client_secret:
-                  type: string
-                  description: Client secret for the registered application within GitHub.
-                  writeOnly: true
-                secret_updated:
-                  type: string
-                  format: date-time
-                  description: Date client_secret last updated.
-            gitlab:
-              type: object
-              description: Settings for the provider marketplace's GitLab OAuth 2.0 client.
-              properties:
-                enabled:
-                  type: boolean
-                  description: Whether "Sign in with GitLab" is enabled for the provider marketplace's consumer users.
-                  default: false
-                client_id:
-                  type: string
-                  description: Application ID of the registered application within GitLab.
-                client_secret:
-                  type: string
-                  description: Application Secret for the registered application within GitLab.
-                  writeOnly: true
-                secret_updated:
-                  type: string
-                  format: date-time
-                  description: Date client_secret last updated.
-            google:
-              type: object
-              description: Settings for the provider marketplace's Google OAuth 2.0 client.
-              properties:
-                enabled:
-                  type: boolean
-                  description: Whether "Sign in with Google" is enabled for the provider marketplace's consumer users.
-                  default: false
-                client_id:
-                  type: string
-                  description: Client ID of the registered OAuth 2.0 Credentials within Google.
-                client_secret:
-                  type: string
-                  description: Client secret for the registered OAuth 2.0 Credentials within Google.
-                  writeOnly: true
-                secret_updated:
-                  type: string
-                  format: date-time
-                  description: Date client_secret last updated.
+            type:
+              type: string
+              description: Setting for how to apply consumption preference value.
           example:
-            github:
-              enabled: true
-              client_id: 507f1f77bcf86cd799439011
-              client_secret: '********'
-              secret_updated: '********'
-            gitlab:
-              enabled: true
-              client_id: 507f1f77bcf86cd799439011
-              client_secret: '********'
-              secret_updated: '********'
-            google:
-              enabled: true
-              client_id: 507f1f77bcf86cd799439011
-              client_secret: '********'
-              secret_updated: '********'
-        terms_url:
-          type: string
-          format: url
-          description: URL of the provider marketplace Terms & Conditions.
-          example: https://example.com
-        reviews:
+            type: example_value
+        publish_teams:
           type: object
-          description: Ratings & Reviews settings for the provider marketplace.
+          description: Preference for which org members can publish products to the provider marketplace.
+          default:
+            type: teams
+            value: true
+          unevaluatedProperties: false
+          discriminator:
+            propertyName: type
+            mapping:
+              teams: '#/components/schemas/Provider/properties/publish_teams/oneOf/0'
+              included: '#/components/schemas/Provider/properties/publish_teams/oneOf/1'
+              excluded: '#/components/schemas/Provider/properties/publish_teams/oneOf/1'
+              tags: '#/components/schemas/Provider/properties/publish_teams/oneOf/2'
+          oneOf:
+          - type: object
+            title: All Teams
+            properties:
+              type:
+                enum:
+                - teams
+              value:
+                type: boolean
+                description: Indicates if `catalog_manager` role members in all teams can publish to the provider marketplace.
+          - type: object
+            title: Specific Teams
+            properties:
+              type:
+                enum:
+                - included
+                - excluded
+              value:
+                type: array
+                description: '`guid` of a selected teams whose `catalog_manager` role members can publish to the provider marketplace.'
+                items:
+                  type: string
+                  format: uuid
+          - type: object
+            title: Tagged Teams
+            properties:
+              type:
+                enum:
+                - tags
+              value:
+                type: array
+                description: '`catalog_manager` role members in teams with any value in its `tags` can publish to the provider marketplace.'
+                items:
+                  type: string
+          properties:
+            type:
+              type: string
+              description: Setting for how to apply publication preference value.
+          example:
+            type: example_value
+        ai:
+          type: object
           default:
             enabled: false
           properties:
             enabled:
               type: boolean
-              description: Whether Ratings & Reviews are enabled for the provider marketplace.
-            char_limit:
-              type: number
-              description: Character limit for written feedback for products or services in the provider marketplace.
-              enum:
-              - 280
-              - 1000
-              - 4000
-            flagged_handling:
-              type: string
-              description: How reported review content is handled within the provider marketplace
-              enum:
-              - hide
-              - show
-            instructions:
-              type: object
-              description: Review guidelines and policies within the provider marketplace.
-              default: {}
-              properties:
-                en-US:
-                  type: string
-                  description: English language value.
-                  allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
-                fr-FR:
-                  type: string
-                  description: French language value.
-                  allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
-                de-DE:
-                  type: string
-                  description: German language value.
-                  allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
-                pt-BR:
-                  type: string
-                  description: Portuguese language value.
-                  allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
-            moderation_process:
-              type: string
-              description: Which type of moderation process is to be used for reviews in the provider marketplace
-              enum:
-              - manual
-              - automatic
-            permissions:
-              type: string
-              description: Who is allowed to provide feedback for products or services in the provider marketplace.
-              enum:
-              - subscribers
-              - all
-            public_responses:
+              description: Whether AI integration is enabled for the provider marketplace.
+              default: false
+            embedded:
               type: boolean
-              description: Whether to enable public responses to reviews in the provider marketplace.
-            response_time:
-              type: number
-              description: Expected response time for feedback in the provider marketplace, in `response_time_unit`.
-              minimum: 1
-            response_time_unit:
+              description: Whether AI integration uses built-in LLM (or customer hosted).
+              default: false
+            key:
               type: string
-              description: Unit of time that `response_time` correlates to.
+              description: API key of customer hosted LLM.
+              writeOnly: true
+            key_set:
+              type: string
+              format: date-time
+              description: Date and time when API key was last set.
+              readOnly: true
+            stream:
+              type: boolean
+              description: Whether LLM supports SSE events stream.
+              default: true
+            url:
+              type: string
+              format: secure-url
+              description: URL of customer hosted LLM.
           example:
             enabled: true
-            char_limit: 280
-            flagged_handling: hide
-            instructions:
-              en-US: example_value
-              fr-FR: example_value
-              de-DE: example_value
-              pt-BR: example_value
-            moderation_process: manual
-            permissions: subscribers
-            public_responses: true
-            response_time: 1.0
-            response_time_unit: example_value
-        help_menu_icon:
-          type: string
-          description: Icon displayed in the navigation bar to show the help menu.
-          example: example_value
-        public:
-          type: boolean
-          description: Whether the provider marketplace allows access to unauthenticated users or users authenticated to orgs other than the provider org.
-          default: false
-          example: true
-        help_menu:
-          type: object
-          description: Content shown in the navigation bar help menu.
-          default: {}
-          properties:
-            en-US:
-              type: array
-              description: English language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
-            fr-FR:
-              type: array
-              description: French language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
-            de-DE:
-              type: array
-              description: German language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
-            pt-BR:
-              type: array
-              description: Portuguese language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
-          example:
-            en-US:
-            - example_value
-            fr-FR:
-            - example_value
-            de-DE:
-            - example_value
-            pt-BR:
-            - example_value
+            embedded: true
+            key: example_value
+            key_set: '2026-04-21T00:00:00Z'
+            stream: true
+            url: https://example.com
         appearance:
           type: object
           description: Appearance settings for the provider marketplace.
@@ -10835,46 +10882,6 @@ components:
             theme_secondary: example_value
             theme_secondary_alt: example_value
             theme_tertiary: example_value
-        sitename:
-          type: object
-          description: Page title of the provider marketplace instance.
-          default: {}
-          properties:
-            en-US:
-              type: string
-              description: English language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/sitename'
-            fr-FR:
-              type: string
-              description: French language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/sitename'
-            de-DE:
-              type: string
-              description: German language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/sitename'
-            pt-BR:
-              type: string
-              description: Portuguese language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/sitename'
-          example:
-            en-US: example_value
-            fr-FR: example_value
-            de-DE: example_value
-            pt-BR: example_value
-        consumer_approve:
-          type: boolean
-          description: Whether to Require newly registered consumer organizations in the marketplace to require approval from an organization administrator.
-          default: false
-          example: true
-        signup:
-          type: boolean
-          description: Whether to allow self-service sign up for consumer organizations in the marketplace.
-          default: false
-          example: true
         billing:
           type: object
           description: Billing integration settings for the provider marketplace.
@@ -10933,220 +10940,91 @@ components:
             signature_set: '2026-04-21T00:00:00Z'
             url: https://api.myfatoorah.com
             vendor: stripe
-        name:
+        certificate:
+          type: string
+          description: Encrypted certificate
+          writeOnly: true
+          example: example_value
+        certificate_expires:
+          type: string
+          format: date-time
+          description: Expiry date of certificate provided for marketplace domain.
+          example: '2026-04-21T00:00:00Z'
+        console:
           type: object
-          description: Name of the provider marketplace instance.
-          default: {}
-          properties:
-            en-US:
-              type: string
-              description: English language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/name'
-            fr-FR:
-              type: string
-              description: French language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/name'
-            de-DE:
-              type: string
-              description: German language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/name'
-            pt-BR:
-              type: string
-              description: Portuguese language value.
-              allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/name'
-          example:
-            en-US: example_value
-            fr-FR: example_value
-            de-DE: example_value
-            pt-BR: example_value
-        lang:
-          type: object
-          description: Internationalization settings for the provider marketplace.
+          description: Console page settings for the provider marketplace.
           default:
-            default: en-US
-            supported:
-            - en-US
-            products: all
-          properties:
-            default:
-              type: string
-              description: Default language to use for users of the marketplace.
-              default: en-US
-              enum:
-              - en-US
-              - fr-FR
-              - de-DE
-              - pt-BR
-            products:
-              type: string
-              description: Behavior for display of products in the marketplace based on translation state.
-              default: all
-              enum:
-              - all
-              - translated
-            supported:
-              type: array
-              description: Languages supported by the marketplace.
-              default:
-              - en-US
-              items:
-                type: string
-                enum:
-                - en-US
-                - fr-FR
-                - de-DE
-                - pt-BR
-          example:
-            default: en-US
-            products: all
-            supported:
-            - en-US
-        search_engines:
-          type: object
-          default:
-            indexing_enabled: true
+            getting_started:
+              enabled: false
           additionalProperties: false
           properties:
-            google_site_verification_id:
-              type: string
-              description: Site Verification ID for Google Search Console integration.
-              minLength: 1
-            indexing_enabled:
-              type: boolean
-              description: Whether indexing by search engines is enabled for the marketplace.
-              default: true
+            getting_started:
+              type: object
+              description: Getting Started section settings for the provider marketplace console page.
+              default:
+                enabled: false
+              required:
+              - enabled
+              additionalProperties: false
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether Getting Started section is enabled for the provider marketplace console page.
+                  default: false
+                type:
+                  type: string
+                  description: Type of document to display on Getting Started section on the provider marketplace console page.
+                  enum:
+                  - document
+                url:
+                  type: string
+                  description: Document resource guid
+                  x-no-tags: true
           example:
-            google_site_verification_id: 507f1f77bcf86cd799439011
-            indexing_enabled: true
-        guid:
-          type: string
-          description: Identifier of the provider marketplace instance.
-          example: example_value
-        idp:
-          type: boolean
-          description: Whether to allow consumer organizations in the marketplace to establish custom Identity Providers.
-          default: false
-          example: true
-        admin_teams:
-          description: Administration access.
-          default: false
-          oneOf:
-          - type: boolean
-            description: Flag indicating if `marketplace_admin` role members in all teams can administer the provider marketplace.
-          - type: array
-            description: '`guid` of a selected team whose `marketplace_admin` role members can administer the provider marketplace.'
-            items:
-              type: string
-              format: uuid
-          example: example_value
+            getting_started:
+              enabled: true
+              type: document
+              url: https://example.com
         consumer:
           type: boolean
           description: Whether to allow authenticated consumer org user access to the marketplace.
           default: false
           example: true
-        idp_hint:
-          type:
-          - string
-          - 'null'
-          description: Identity Provider `guid` to use for sign in attempts originating from the marketplace. Cannot be set at the same time as `consumer`.
-          example: example_value
-        publish_teams:
+        consumer_approve:
+          type: boolean
+          description: Whether to Require newly registered consumer organizations in the marketplace to require approval from an organization administrator.
+          default: false
+          example: true
+        description:
           type: object
-          description: Preference for which org members can publish products to the provider marketplace.
-          default:
-            type: teams
-            value: true
-          unevaluatedProperties: false
-          discriminator:
-            propertyName: type
-            mapping:
-              teams: '#/components/schemas/Provider/properties/publish_teams/oneOf/0'
-              included: '#/components/schemas/Provider/properties/publish_teams/oneOf/1'
-              excluded: '#/components/schemas/Provider/properties/publish_teams/oneOf/1'
-              tags: '#/components/schemas/Provider/properties/publish_teams/oneOf/2'
-          oneOf:
-          - type: object
-            title: All Teams
-            properties:
-              type:
-                enum:
-                - teams
-              value:
-                type: boolean
-                description: Indicates if `catalog_manager` role members in all teams can publish to the provider marketplace.
-          - type: object
-            title: Specific Teams
-            properties:
-              type:
-                enum:
-                - included
-                - excluded
-              value:
-                type: array
-                description: '`guid` of a selected teams whose `catalog_manager` role members can publish to the provider marketplace.'
-                items:
-                  type: string
-                  format: uuid
-          - type: object
-            title: Tagged Teams
-            properties:
-              type:
-                enum:
-                - tags
-              value:
-                type: array
-                description: '`catalog_manager` role members in teams with any value in its `tags` can publish to the provider marketplace.'
-                items:
-                  type: string
-          properties:
-            type:
-              type: string
-              description: Setting for how to apply publication preference value.
-          example:
-            type: example_value
-        url:
-          type: string
-          description: Fully qualified domain name on which the provider marketplace can be accessed.
-          pattern: ^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$
-          example: https://example.com
-        nav_items:
-          type: object
-          description: Links added in the common navigation menu.
+          description: Description of the provider marketplace instance.
           default: {}
           properties:
             en-US:
-              type: array
+              type: string
               description: English language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+              - $ref: '#/components/schemas/Provider/x-defs/description'
             fr-FR:
-              type: array
+              type: string
               description: French language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+              - $ref: '#/components/schemas/Provider/x-defs/description'
             de-DE:
-              type: array
+              type: string
               description: German language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+              - $ref: '#/components/schemas/Provider/x-defs/description'
             pt-BR:
-              type: array
+              type: string
               description: Portuguese language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+              - $ref: '#/components/schemas/Provider/x-defs/description'
           example:
-            en-US:
-            - example_value
-            fr-FR:
-            - example_value
-            de-DE:
-            - example_value
-            pt-BR:
-            - example_value
+            en-US: example_value
+            fr-FR: example_value
+            de-DE: example_value
+            pt-BR: example_value
         footer:
           type: object
           description: Appearance and content settings for the provider marketplace common footer element.
@@ -11231,262 +11109,48 @@ components:
               - example_value
               pt-BR:
               - example_value
-        terms:
-          type: boolean
-          description: Whether the provider marketplace access should be gated on acceptance of Terms & Conditions.
-          default: false
-          example: true
-        name_gender:
-          description: Gender of the `name` of the provider marketplace instance.
-          allOf:
-          - $ref: '#/components/schemas/Provider/x-defs/genderedLangSchema'
-          example: Example Name
-        versions:
-          type: object
-          description: Product version settings for the provider marketplace.
-          default:
-            custom: false
-            display: all
-          properties:
-            custom:
-              type: boolean
-              description: Whether custom product versions are displayed in the provider marketplace.
-              default: false
-            display:
-              type: string
-              description: What product version types will be displayed in the provider marketplace.
-              default: all
-              enum:
-              - all
-              - latest
-          example:
-            custom: true
-            display: all
-        subdomain:
+        guid:
           type: string
-          description: Subdomain on which the provider marketplace can be accessed.
-          pattern: ^[a-z0-9\-]{4,63}$
-          example: example.com
-        onboarding:
+          description: Identifier of the provider marketplace instance.
+          example: example_value
+        help_menu:
           type: object
-          description: Onboarding data capture settings for the provider marketplace.
-          default:
-            enabled: false
-            items: []
-          properties:
-            enabled:
-              type: boolean
-              description: Whether onboarding data capture feature is enabled for the provider marketplace.
-            items:
-              type: array
-              description: Onboarding fields to capture for consumer orgs of the provider marketplace.
-              minItems: 1
-              maxItems: 50
-              items:
-                type: object
-                discriminator:
-                  propertyName: type
-                  mapping:
-                    header: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/0'
-                    text: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/1'
-                    number: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2'
-                    date: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2'
-                    checkbox: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2'
-                    toggle: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/3'
-                    select: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/4'
-                    multiselect: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/4'
-                oneOf:
-                - type: object
-                  required:
-                  - id
-                  - type
-                  - text
-                  properties:
-                    id:
-                      $ref: '#/components/schemas/Provider/x-defs/onboarding_props/properties/id'
-                    text:
-                      $ref: '#/components/schemas/Provider/x-defs/onboarding_props/properties/text'
-                    type:
-                      $ref: '#/components/schemas/Provider/x-defs/onboarding_props/properties/type'
-                - allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
-                  properties:
-                    maxlen:
-                      type: number
-                      description: Maximum value length for the element.
-                    placeholder:
-                      $ref: '#/components/schemas/Provider/x-defs/placeholder'
-                - allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
-                  properties:
-                    placeholder:
-                      $ref: '#/components/schemas/Provider/x-defs/placeholder'
-                - allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
-                  properties:
-                    'off':
-                      type: object
-                      description: Label for disabled toggle state.
-                      default: {}
-                      properties:
-                        en-US:
-                          type: string
-                          description: English language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
-                        fr-FR:
-                          type: string
-                          description: French language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
-                        de-DE:
-                          type: string
-                          description: German language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
-                        pt-BR:
-                          type: string
-                          description: Portuguese language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
-                    'on':
-                      type: object
-                      description: Label for enabled toggle state.
-                      default: {}
-                      properties:
-                        en-US:
-                          type: string
-                          description: English language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
-                        fr-FR:
-                          type: string
-                          description: French language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
-                        de-DE:
-                          type: string
-                          description: German language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
-                        pt-BR:
-                          type: string
-                          description: Portuguese language value.
-                          allOf:
-                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
-                - allOf:
-                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
-                  properties:
-                    options:
-                      type: array
-                      minItems: 2
-                      maxItems: 1000
-                      items:
-                        type: object
-                        required:
-                        - text
-                        - value
-                        properties:
-                          text:
-                            type: object
-                            description: Label for value.
-                            default: {}
-                            properties:
-                              en-US:
-                                type: string
-                                description: English language value.
-                                allOf:
-                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
-                              fr-FR:
-                                type: string
-                                description: French language value.
-                                allOf:
-                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
-                              de-DE:
-                                type: string
-                                description: German language value.
-                                allOf:
-                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
-                              pt-BR:
-                                type: string
-                                description: Portuguese language value.
-                                allOf:
-                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
-                          value:
-                            type: string
-                    placeholder:
-                      $ref: '#/components/schemas/Provider/x-defs/placeholder'
-          example:
-            enabled: true
-            items:
-            - {}
-        ai:
-          type: object
-          default:
-            enabled: false
-          properties:
-            enabled:
-              type: boolean
-              description: Whether AI integration is enabled for the provider marketplace.
-              default: false
-            embedded:
-              type: boolean
-              description: Whether AI integration uses built-in LLM (or customer hosted).
-              default: false
-            key:
-              type: string
-              description: API key of customer hosted LLM.
-              writeOnly: true
-            key_set:
-              type: string
-              format: date-time
-              description: Date and time when API key was last set.
-              readOnly: true
-            stream:
-              type: boolean
-              description: Whether LLM supports SSE events stream.
-              default: true
-            url:
-              type: string
-              format: secure-url
-              description: URL of customer hosted LLM.
-          example:
-            enabled: true
-            embedded: true
-            key: example_value
-            key_set: '2026-04-21T00:00:00Z'
-            stream: true
-            url: https://example.com
-        description:
-          type: object
-          description: Description of the provider marketplace instance.
+          description: Content shown in the navigation bar help menu.
           default: {}
           properties:
             en-US:
-              type: string
+              type: array
               description: English language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/description'
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
             fr-FR:
-              type: string
+              type: array
               description: French language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/description'
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
             de-DE:
-              type: string
+              type: array
               description: German language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/description'
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
             pt-BR:
-              type: string
+              type: array
               description: Portuguese language value.
               allOf:
-              - $ref: '#/components/schemas/Provider/x-defs/description'
+              - $ref: '#/components/schemas/Provider/x-defs/help_menu'
           example:
-            en-US: example_value
-            fr-FR: example_value
-            de-DE: example_value
-            pt-BR: example_value
+            en-US:
+            - example_value
+            fr-FR:
+            - example_value
+            de-DE:
+            - example_value
+            pt-BR:
+            - example_value
+        help_menu_icon:
+          type: string
+          description: Icon displayed in the navigation bar to show the help menu.
+          example: example_value
         homepage:
           type: object
           description: Homepage settings for the provider marketplace.
@@ -12026,81 +11690,943 @@ components:
               type: example_value
               visibility: 0
               width: 0
-        consume_teams:
-          type: object
-          description: Preference for which org members can consume the provider marketplace.
-          default:
-            type: teams
-            value: true
-          unevaluatedProperties: false
-          discriminator:
-            propertyName: type
-            mapping:
-              teams: '#/components/schemas/Provider/properties/consume_teams/oneOf/0'
-              included: '#/components/schemas/Provider/properties/consume_teams/oneOf/1'
-              excluded: '#/components/schemas/Provider/properties/consume_teams/oneOf/1'
-              tags: '#/components/schemas/Provider/properties/consume_teams/oneOf/2'
-          oneOf:
-          - type: object
-            title: All Teams
-            properties:
-              type:
-                enum:
-                - teams
-              value:
-                type: boolean
-                description: Indicates if `consumer` role members in all teams can consume the provider marketplace.
-          - type: object
-            title: Specific Teams
-            properties:
-              type:
-                enum:
-                - included
-                - excluded
-              value:
-                type: array
-                description: '`guid` of a selected teams whose `consumer` role members can consume the provider marketplace.'
-                items:
-                  type: string
-                  format: uuid
-          - type: object
-            title: Tagged Teams
-            properties:
-              type:
-                enum:
-                - tags
-              value:
-                type: array
-                description: '`consumer` role members in teams with any value in its `tags` can consume the provider marketplace.'
-                items:
-                  type: string
-          properties:
-            type:
-              type: string
-              description: Setting for how to apply consumption preference value.
-          example:
-            type: example_value
-    Response:
-      type: object
-      properties:
-        success:
+        idp:
           type: boolean
-          description: Whether the request was successful.
+          description: Whether to allow consumer organizations in the marketplace to establish custom Identity Providers.
+          default: false
           example: true
-    IdentityProvider:
+        idp_hint:
+          type:
+          - string
+          - 'null'
+          description: Identity Provider `guid` to use for sign in attempts originating from the marketplace. Cannot be set at the same time as `consumer`.
+          example: example_value
+        lang:
+          type: object
+          description: Internationalization settings for the provider marketplace.
+          default:
+            default: en-US
+            supported:
+            - en-US
+            products: all
+          properties:
+            default:
+              type: string
+              description: Default language to use for users of the marketplace.
+              default: en-US
+              enum:
+              - en-US
+              - fr-FR
+              - de-DE
+              - pt-BR
+            products:
+              type: string
+              description: Behavior for display of products in the marketplace based on translation state.
+              default: all
+              enum:
+              - all
+              - translated
+            supported:
+              type: array
+              description: Languages supported by the marketplace.
+              default:
+              - en-US
+              items:
+                type: string
+                enum:
+                - en-US
+                - fr-FR
+                - de-DE
+                - pt-BR
+          example:
+            default: en-US
+            products: all
+            supported:
+            - en-US
+        name:
+          type: object
+          description: Name of the provider marketplace instance.
+          default: {}
+          properties:
+            en-US:
+              type: string
+              description: English language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+            fr-FR:
+              type: string
+              description: French language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+            de-DE:
+              type: string
+              description: German language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+            pt-BR:
+              type: string
+              description: Portuguese language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/name'
+          example:
+            en-US: example_value
+            fr-FR: example_value
+            de-DE: example_value
+            pt-BR: example_value
+        name_gender:
+          description: Gender of the `name` of the provider marketplace instance.
+          allOf:
+          - $ref: '#/components/schemas/Provider/x-defs/genderedLangSchema'
+          example: Example Name
+        nav_items:
+          type: object
+          description: Links added in the common navigation menu.
+          default: {}
+          properties:
+            en-US:
+              type: array
+              description: English language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+            fr-FR:
+              type: array
+              description: French language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+            de-DE:
+              type: array
+              description: German language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+            pt-BR:
+              type: array
+              description: Portuguese language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/nav_items'
+          example:
+            en-US:
+            - example_value
+            fr-FR:
+            - example_value
+            de-DE:
+            - example_value
+            pt-BR:
+            - example_value
+        oauth:
+          type: object
+          description: OAuth 2.0 client settings for the provider marketplace's consumer users.
+          default:
+            enabled: false
+          properties:
+            github:
+              type: object
+              description: Settings for the provider marketplace's GitHub OAuth 2.0 client.
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether "Sign in with GitHub" is enabled for the provider marketplace's consumer users.
+                  default: false
+                client_id:
+                  type: string
+                  description: Client ID of the registered application within GitHub.
+                client_secret:
+                  type: string
+                  description: Client secret for the registered application within GitHub.
+                  writeOnly: true
+                secret_updated:
+                  type: string
+                  format: date-time
+                  description: Date client_secret last updated.
+            gitlab:
+              type: object
+              description: Settings for the provider marketplace's GitLab OAuth 2.0 client.
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether "Sign in with GitLab" is enabled for the provider marketplace's consumer users.
+                  default: false
+                client_id:
+                  type: string
+                  description: Application ID of the registered application within GitLab.
+                client_secret:
+                  type: string
+                  description: Application Secret for the registered application within GitLab.
+                  writeOnly: true
+                secret_updated:
+                  type: string
+                  format: date-time
+                  description: Date client_secret last updated.
+            google:
+              type: object
+              description: Settings for the provider marketplace's Google OAuth 2.0 client.
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether "Sign in with Google" is enabled for the provider marketplace's consumer users.
+                  default: false
+                client_id:
+                  type: string
+                  description: Client ID of the registered OAuth 2.0 Credentials within Google.
+                client_secret:
+                  type: string
+                  description: Client secret for the registered OAuth 2.0 Credentials within Google.
+                  writeOnly: true
+                secret_updated:
+                  type: string
+                  format: date-time
+                  description: Date client_secret last updated.
+          example:
+            github:
+              enabled: true
+              client_id: 507f1f77bcf86cd799439011
+              client_secret: '********'
+              secret_updated: '********'
+            gitlab:
+              enabled: true
+              client_id: 507f1f77bcf86cd799439011
+              client_secret: '********'
+              secret_updated: '********'
+            google:
+              enabled: true
+              client_id: 507f1f77bcf86cd799439011
+              client_secret: '********'
+              secret_updated: '********'
+        onboarding:
+          type: object
+          description: Onboarding data capture settings for the provider marketplace.
+          default:
+            enabled: false
+            items: []
+          properties:
+            enabled:
+              type: boolean
+              description: Whether onboarding data capture feature is enabled for the provider marketplace.
+            items:
+              type: array
+              description: Onboarding fields to capture for consumer orgs of the provider marketplace.
+              minItems: 1
+              maxItems: 50
+              items:
+                type: object
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    header: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/0'
+                    text: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/1'
+                    number: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2'
+                    date: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2'
+                    checkbox: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/2'
+                    toggle: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/3'
+                    select: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/4'
+                    multiselect: '#/components/schemas/Provider/properties/onboarding/properties/items/items/oneOf/4'
+                oneOf:
+                - type: object
+                  required:
+                  - id
+                  - type
+                  - text
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/Provider/x-defs/onboarding_props/properties/id'
+                    text:
+                      $ref: '#/components/schemas/Provider/x-defs/onboarding_props/properties/text'
+                    type:
+                      $ref: '#/components/schemas/Provider/x-defs/onboarding_props/properties/type'
+                - allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
+                  properties:
+                    maxlen:
+                      type: number
+                      description: Maximum value length for the element.
+                    placeholder:
+                      $ref: '#/components/schemas/Provider/x-defs/placeholder'
+                - allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
+                  properties:
+                    placeholder:
+                      $ref: '#/components/schemas/Provider/x-defs/placeholder'
+                - allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
+                  properties:
+                    'off':
+                      type: object
+                      description: Label for disabled toggle state.
+                      default: {}
+                      properties:
+                        en-US:
+                          type: string
+                          description: English language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
+                        fr-FR:
+                          type: string
+                          description: French language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
+                        de-DE:
+                          type: string
+                          description: German language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
+                        pt-BR:
+                          type: string
+                          description: Portuguese language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.off'
+                    'on':
+                      type: object
+                      description: Label for enabled toggle state.
+                      default: {}
+                      properties:
+                        en-US:
+                          type: string
+                          description: English language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
+                        fr-FR:
+                          type: string
+                          description: French language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
+                        de-DE:
+                          type: string
+                          description: German language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
+                        pt-BR:
+                          type: string
+                          description: Portuguese language value.
+                          allOf:
+                          - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.on'
+                - allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/onboarding_props'
+                  properties:
+                    options:
+                      type: array
+                      minItems: 2
+                      maxItems: 1000
+                      items:
+                        type: object
+                        required:
+                        - text
+                        - value
+                        properties:
+                          text:
+                            type: object
+                            description: Label for value.
+                            default: {}
+                            properties:
+                              en-US:
+                                type: string
+                                description: English language value.
+                                allOf:
+                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
+                              fr-FR:
+                                type: string
+                                description: French language value.
+                                allOf:
+                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
+                              de-DE:
+                                type: string
+                                description: German language value.
+                                allOf:
+                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
+                              pt-BR:
+                                type: string
+                                description: Portuguese language value.
+                                allOf:
+                                - $ref: '#/components/schemas/Provider/x-defs/onboarding.items.options.text'
+                          value:
+                            type: string
+                    placeholder:
+                      $ref: '#/components/schemas/Provider/x-defs/placeholder'
+          example:
+            enabled: true
+            items:
+            - {}
+        org_guid:
+          type: string
+          format: uuid
+          description: '`guid` of the organization the provider marketplace belongs to.'
+          example: example_value
+        provider_idp:
+          type: object
+          default:
+            enabled: false
+          properties:
+            enabled:
+              type: boolean
+              default: false
+            allow_external:
+              type: boolean
+              default: false
+            enforce_association:
+              type: boolean
+              default: false
+          example:
+            enabled: true
+            allow_external: true
+            enforce_association: true
+        public:
+          type: boolean
+          description: Whether the provider marketplace allows access to unauthenticated users or users authenticated to orgs other than the provider org.
+          default: false
+          example: true
+        reviews:
+          type: object
+          description: Ratings & Reviews settings for the provider marketplace.
+          default:
+            enabled: false
+          properties:
+            enabled:
+              type: boolean
+              description: Whether Ratings & Reviews are enabled for the provider marketplace.
+            char_limit:
+              type: number
+              description: Character limit for written feedback for products or services in the provider marketplace.
+              enum:
+              - 280
+              - 1000
+              - 4000
+            flagged_handling:
+              type: string
+              description: How reported review content is handled within the provider marketplace
+              enum:
+              - hide
+              - show
+            instructions:
+              type: object
+              description: Review guidelines and policies within the provider marketplace.
+              default: {}
+              properties:
+                en-US:
+                  type: string
+                  description: English language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+                fr-FR:
+                  type: string
+                  description: French language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+                de-DE:
+                  type: string
+                  description: German language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+                pt-BR:
+                  type: string
+                  description: Portuguese language value.
+                  allOf:
+                  - $ref: '#/components/schemas/Provider/x-defs/reviews.instructions'
+            moderation_process:
+              type: string
+              description: Which type of moderation process is to be used for reviews in the provider marketplace
+              enum:
+              - manual
+              - automatic
+            permissions:
+              type: string
+              description: Who is allowed to provide feedback for products or services in the provider marketplace.
+              enum:
+              - subscribers
+              - all
+            public_responses:
+              type: boolean
+              description: Whether to enable public responses to reviews in the provider marketplace.
+            response_time:
+              type: number
+              description: Expected response time for feedback in the provider marketplace, in `response_time_unit`.
+              minimum: 1
+            response_time_unit:
+              type: string
+              description: Unit of time that `response_time` correlates to.
+          example:
+            enabled: true
+            char_limit: 280
+            flagged_handling: hide
+            instructions:
+              en-US: example_value
+              fr-FR: example_value
+              de-DE: example_value
+              pt-BR: example_value
+            moderation_process: manual
+            permissions: subscribers
+            public_responses: true
+            response_time: 1.0
+            response_time_unit: example_value
+        search_engines:
+          type: object
+          default:
+            indexing_enabled: true
+          additionalProperties: false
+          properties:
+            google_site_verification_id:
+              type: string
+              description: Site Verification ID for Google Search Console integration.
+              minLength: 1
+            indexing_enabled:
+              type: boolean
+              description: Whether indexing by search engines is enabled for the marketplace.
+              default: true
+          example:
+            google_site_verification_id: 507f1f77bcf86cd799439011
+            indexing_enabled: true
+        signup:
+          type: boolean
+          description: Whether to allow self-service sign up for consumer organizations in the marketplace.
+          default: false
+          example: true
+        sitename:
+          type: object
+          description: Page title of the provider marketplace instance.
+          default: {}
+          properties:
+            en-US:
+              type: string
+              description: English language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+            fr-FR:
+              type: string
+              description: French language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+            de-DE:
+              type: string
+              description: German language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+            pt-BR:
+              type: string
+              description: Portuguese language value.
+              allOf:
+              - $ref: '#/components/schemas/Provider/x-defs/sitename'
+          example:
+            en-US: example_value
+            fr-FR: example_value
+            de-DE: example_value
+            pt-BR: example_value
+        sitename_gender:
+          description: Gender of the `sitename` of the provider marketplace instance.
+          allOf:
+          - $ref: '#/components/schemas/Provider/x-defs/genderedLangSchema'
+          example: Example Name
+        subdomain:
+          type: string
+          description: Subdomain on which the provider marketplace can be accessed.
+          pattern: ^[a-z0-9\-]{4,63}$
+          example: example.com
+        terms:
+          type: boolean
+          description: Whether the provider marketplace access should be gated on acceptance of Terms & Conditions.
+          default: false
+          example: true
+        terms_updated:
+          type: string
+          format: date-time
+          description: Date Terms & Conditions last updated.
+          example: '2026-04-21T00:00:00Z'
+        terms_url:
+          type: string
+          format: url
+          description: URL of the provider marketplace Terms & Conditions.
+          example: https://example.com
+        url:
+          type: string
+          description: Fully qualified domain name on which the provider marketplace can be accessed.
+          pattern: ^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$
+          example: https://example.com
+        versions:
+          type: object
+          description: Product version settings for the provider marketplace.
+          default:
+            custom: false
+            display: all
+          properties:
+            custom:
+              type: boolean
+              description: Whether custom product versions are displayed in the provider marketplace.
+              default: false
+            display:
+              type: string
+              description: What product version types will be displayed in the provider marketplace.
+              default: all
+              enum:
+              - all
+              - latest
+          example:
+            custom: true
+            display: all
+    Org:
+      type: object
+      required:
+      - active
+      - guid
+      - name
+      - org_id
+      - region
+      - subscriptions
+      - users
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
       properties:
-        orgs:
+        _id:
+          type: string
+          description: The id of the organization.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        account_id:
+          type: integer
+          description: Account ID of the organization.
+          minimum: 10000
+          maximum: 999999
+          example: 1
+        active:
+          type: boolean
+          description: Active state of the organization. Organizations become inactive after passing their end date.
+          default: true
+          example: true
+        analytics:
+          type: object
+          description: Analytics details for the organization
+          additionalProperties: false
+          properties:
+            token:
+              type: string
+              description: Token used to identify the organization.
+          example:
+            token: eyJhbGciOiJIUzI1NiJ9.example
+        api_central:
+          type: object
+          description: Engage provision status
+          readOnly: true
+          example: {}
+        branding:
+          type: object
+          description: Organization branding.
+          additionalProperties: false
+          properties:
+            logo:
+              type: string
+              description: Logo image of the company.
+          example:
+            logo: example_value
+        consumer_id:
+          type: string
+          description: Mapped ID of the consumer org from the configured Identity Provider.
+          example: 507f1f77bcf86cd799439011
+        created_by:
+          type: object
+          description: Details of the user that created the organization.
+          unevaluatedProperties: false
+          properties:
+            client_id:
+              type: string
+              description: The client_id of the client that created the organization.
+              readOnly: true
+            email:
+              type: string
+              format: email
+              description: Email address of the user that created the organization.
+              readOnly: true
+            name:
+              type: string
+              description: The name of the user or client that created the organization.
+              readOnly: true
+          example:
+            client_id: 507f1f77bcf86cd799439011
+            email: user@example.com
+            name: Example Name
+        entitlements:
+          type: object
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/Entitlements'
+          example: {}
+        guid:
+          type: string
+          format: uuid
+          description: GUID identifier for the organization
+          example: example_value
+        help_menu:
+          type: object
+          description: Contents of the help menu displayed in the navigation bar.
+          default:
+            enabled: false
+          additionalProperties: false
+          properties:
+            enabled:
+              type: boolean
+              description: Whether the custom help menu is enabled.
+              default: false
+            defaults:
+              type: boolean
+              description: Whether to include the default items.
+            icon:
+              type: string
+              description: Icon displayed in the navigation bar to show the help menu.
+            items:
+              type: array
+              description: Custom help menu shown in the navigation bar.
+              items:
+                type: object
+                required:
+                - text
+                - type
+                - url
+                unevaluatedProperties: false
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    url: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/0'
+                    document: '#/components/schemas/Org/properties/help_menu/properties/items/items/oneOf/1'
+                oneOf:
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - url
+                    url:
+                      type: string
+                      format: url
+                      description: URL for the link.
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - document
+                    url:
+                      type: string
+                      description: Document resource guid
+                properties:
+                  icon:
+                    type: string
+                    description: Icon displayed in the menu for the item.
+                  new_tab:
+                    type: boolean
+                    description: Whether the link opens in a new tab.
+                  provider_guid:
+                    type: string
+                    description: The GUID of the provider a document url is for
+                  text:
+                    type: string
+                    description: Label for the link.
+                    x-no-tags: true
+                  type:
+                    type: string
+                    description: Type of the link.
+                    enum:
+                    - document
+                    - url
+                  url:
+                    type: string
+                    description: URL, relative path, or document resource guid for the link.
+          example:
+            enabled: true
+            defaults: true
+            icon: example_value
+            items:
+            - icon: example_value
+              new_tab: true
+              provider_guid: example_value
+              text: example_value
+              type: document
+              url: https://example.com
+        last_login:
+          type: string
+          format: date-time
+          description: When the most recent session was created in the organization.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        logged_in_count:
+          type: number
+          description: How many session are been created in the organization.
+          readOnly: true
+          example: 1.0
+        name:
+          type: string
+          description: Name of the organization.
+          minLength: 2
+          maxLength: 64
+          x-no-tags: true
+          example: Example Name
+        onboarding:
+          type: object
+          description: Onboarding data for consumer org.
+          maxProperties: 50
+          writeOnly: true
+          patternProperties:
+            '[\w-]{21}':
+              type:
+              - string
+              - number
+              - boolean
+              - array
+              description: Onboarding data field value.
+              items:
+                type: string
+                description: Onboarding data field multi-select option value.
+          example: {}
+        onboarding_required:
+          type: array
+          readOnly: true
           items:
+            type: string
+            pattern: '[\w-]{21}'
+          example:
+          - example_value
+        org_id:
+          type: integer
+          description: Identifier for the organization
+          example: 1
+        origin:
+          type:
+          - string
+          - 'null'
+          description: Source from which the organization creation originated.
+          enum:
+          - '360'
+          - sfdc
+          - signup
+          example: '360'
+        pending:
+          type: boolean
+          description: Whether the organization is pending approval for a provider organization administator.
+          example: true
+        provider_guid:
+          type: string
+          format: uuid
+          description: GUID identifier of the owning provider if the organization is a consumer of a marketplace.
+          example: example_value
+        region:
+          type: string
+          description: The data residency region of the organization.
+          default: US
+          enum:
+          - US
+          - EU
+          - AP
+          example: US
+        security:
+          type: object
+          description: Security settings for the organization.
+          additionalProperties: false
+          properties:
+            access_controls:
+              type: object
+              description: Developer visibility controls.
+              additionalProperties: false
+              properties:
+                enviroments:
+                  type: number
+                  description: Developer access to environments. 0 - Developers cannot view environments, 1 - Developer may view all environemnts.
+                  enum:
+                  - 0
+                  - 1
+                service_accounts:
+                  type: number
+                  description: Developer access to service accounts. 0 - Developers cannot view service accounts, 1 - Developers may view service accounts in their teams, 2 - Developer may view all service accounts.
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                usage:
+                  type: number
+                  description: Developer access to usage. 0 - Developers cannot view usage, 1 - Developer may view all usage.
+                  enum:
+                  - 0
+                  - 1
+                users:
+                  type: number
+                  description: Developer access to users.0 - Developers cannot view users, 1 - Developers may view administrators and users in their teams, 2 - Developer may view all users.
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+            allow_tooling:
+              type: boolean
+              description: Grant access using tooling credentials
+            disable_analytics:
+              type: boolean
+              description: Opt out from third-party support services.
+            password_policy:
+              $ref: '#/components/schemas/PasswordPolicy'
+            redact_personal:
+              type: boolean
+              description: Personal information like email addresses will be masked in UI.
+              default: false
+          example:
+            access_controls:
+              enviroments: 0
+              service_accounts: 0
+              usage: 0
+              users: 0
+            allow_tooling: true
+            disable_analytics: true
+            password_policy:
+              length: 1
+              max_length: 1
+              lower: 1
+              upper: 1
+              special: 1
+              digit: 1
+              lockout: 1
+              renewal: 1
+              history: 1
+            redact_personal: true
+        subscriptions:
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Subscription'
+          example:
+          - end_date: '2026-04-21T00:00:00Z'
+            entitlements:
+            - key: example_value
+              value: example_value
+            governance: SaaS
+            id: 507f1f77bcf86cd799439011
+            opportunity_id: 1.0
+            plan: example_value
+            product: example_value
+            product_name: Example Name
+            source: API
+            start_date: '2026-04-21T00:00:00Z'
+        support_access_code:
+          type: integer
+          description: Support Access Code for the org.
+          minimum: 10000
+          maximum: 999999
+          example: 1
+        users:
+          type: array
+          description: List of users that are members of the organization.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
             properties:
-              case_insensitive_mapped_roles:
+              guid:
+                type: string
+                format: uuid
+                description: GUID of the user.
+              idp:
+                type: string
+                description: GUID of the Identity Provider the user is required to authenticate with to access the organization.
+              primary:
                 type: boolean
-                description: Whether to match returned mapped attribute values to expected attribute values without letter case sensitivity.
-              enforce_mapped_roles:
-                type: boolean
-                description: Whether to restrict organization role management solely to mapped IdP attributes. Any organization role(s) that a user has that does not match to an associated mapper (or the Default Organization Roles) will be removed on subsequent sign in.
-              default_roles:
+                description: Whether the user is the primary contact for the organization.
+              roles:
                 type: array
-                description: Array of role identifiers that are assigned to newly provisioned users in the Organization.
+                description: Roles within the organization.
                 items:
                   type: string
                   enum:
@@ -12110,54 +12636,12 @@ components:
                   - consumer
                   - usage_reporter
                   - api_central_admin
-              mapped_roles:
-                type: array
-                description: Array of role identifiers to assign users in the Organization based on attributes defined by the Identity Provider.
-                default: []
-                items:
-                  type: object
-                  required:
-                  - value
-                  - roles
-                  additionalProperties: false
-                  properties:
-                    friendly:
-                      type: string
-                      description: Friendly name of the attribute provided by the SAML Identity Provider.
-                    name:
-                      type: string
-                      description: Name of the attribute provided by the Identity Provider.
-                    roles:
-                      type: array
-                      description: Array of role identifiers to be assigned to matching users in the Organization.
-                      items:
-                        type: string
-                        enum:
-                        - administrator
-                        - developer
-                        - auditor
-                        - consumer
-                        - usage_reporter
-                        - api_central_admin
-                    value:
-                      type: string
-                      description: Value of the named attribute to determine whether to apply the role.
-        name:
-          type: string
-          description: Name of Identity Provider
-          example: Example Name
-        description:
-          type: string
-          description: Description of the Identity Provider.
-          example: An example description
-    Success:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          result:
-            description: The response data
+          example:
+          - guid: example_value
+            idp: example_value
+            primary: true
+            roles:
+            - administrator
     Consumer:
       type: object
       properties:
@@ -12191,55 +12675,48 @@ components:
           type: integer
           description: Count of users in the consumer org.
           example: 1
-    PasswordPolicy:
-      type: object
-      description: Password policy
-      properties:
-        length:
-          type: integer
-          minimum: 9
-          maximum: 127
-          default: 8
-          example: 1
-        max_length:
-          type: integer
-          minimum: 9
-          maximum: 127
-          default: 128
-          example: 1
-        lower:
-          type: integer
-          minimum: 1
-          example: 1
-        upper:
-          type: integer
-          minimum: 1
-          example: 1
-        special:
-          type: integer
-          minimum: 1
-          example: 1
-        digit:
-          type: integer
-          minimum: 1
-          example: 1
-        lockout:
-          type: integer
-          minimum: 1
-          maximum: 4
-          default: 5
-          example: 1
-        renewal:
-          type: integer
-          minimum: 1
-          example: 1
-        history:
-          type: integer
-          minimum: 1
-          maximum: 10
-          example: 1
     Team:
+      type: object
+      required:
+      - default
+      - guid
+      - name
+      - org_guid
+      - tags
+      - users
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
       properties:
+        _id:
+          type: string
+          description: Document ID of the team.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          example: '2026-04-21T00:00:00Z'
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        desc:
+          type:
+          - string
+          - 'null'
+          description: Description of the team.
+          maxLength: 200
+          x-no-tags: true
+          example: example_value
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
         name:
           type: string
           description: Name of the team.
@@ -12247,59 +12724,283 @@ components:
           maxLength: 100
           x-no-tags: true
           example: Example Name
+        org_guid:
+          type: string
+          format: uuid
+          description: '`guid` of the organization the team belongs to.'
+          example: example_value
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+        updated:
+          type: string
+          format: date-time
+          description: Date updated.
+          example: '2026-04-21T00:00:00Z'
+        users:
+          type: array
+          description: Members that belong to this team and their roles.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
+            properties:
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the member.'
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+              type:
+                type: string
+                description: Type of the member.
+                default: user
+                enum:
+                - user
+                - client
+          example:
+          - guid: example_value
+            roles:
+            - consumer
+            type: user
+    IdentityProvider:
+      type: object
+      required:
+      - guid
+      - name
+      - protocol
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the Identity Provider.
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        description:
+          type: string
+          description: Description of the Identity Provider.
+          example: An example description
         guid:
           type: string
           format: uuid
-          description: '`guid` of the team.'
+          description: '`guid` of the Identity Provider.'
           example: example_value
-    Org:
-      properties:
-        org_id:
-          type: integer
-          description: Identifier for the organization
-          example: 1
         name:
           type: string
-          description: Name of the organization.
-          minLength: 2
-          maxLength: 64
-          x-no-tags: true
+          description: Name of Identity Provider
           example: Example Name
-        active:
-          type: boolean
-          description: Active state of the organization. Organizations become inactive after passing their end date.
-          default: true
-          example: true
-        pending:
-          type: boolean
-          description: Whether the organization is pending approval for a provider organization administator.
-          example: true
-        guid:
-          type: string
-          format: uuid
-          description: GUID identifier for the organization
-          example: example_value
-        onboarding:
-          type: object
-          description: Onboarding data for consumer org.
-          maxProperties: 50
-          writeOnly: true
-          patternProperties:
-            '[\w-]{21}':
-              type:
-              - string
-              - number
-              - boolean
-              - array
-              description: Onboarding data field value.
-              items:
+        orgs:
+          type: array
+          description: Organizations associated to this Identity Provider and their user associations.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - default_roles
+            - default_teams
+            - mapped_roles
+            - mapped_teams
+            additionalProperties: false
+            properties:
+              case_insensitive_mapped_roles:
+                type: boolean
+                description: Whether to match returned mapped attribute values to expected attribute values without letter case sensitivity.
+              default_roles:
+                type: array
+                description: Array of role identifiers that are assigned to newly provisioned users in the Organization.
+                items:
+                  type: string
+                  enum:
+                  - administrator
+                  - developer
+                  - auditor
+                  - consumer
+                  - usage_reporter
+                  - api_central_admin
+              default_teams:
+                type: array
+                description: Array of teams to assign newly provisioned users in the Organization.
+                default: []
+                items:
+                  type: object
+                  required:
+                  - guid
+                  - roles
+                  additionalProperties: false
+                  properties:
+                    guid:
+                      type: string
+                      format: uuid
+                      description: '`guid` of the team within the Organization the assign newly provisioned users.'
+                    roles:
+                      type: array
+                      description: Array of role identifiers that are assigned to newly provisioned users in the team.
+                      items:
+                        type: string
+                        enum:
+                        - consumer
+                        - subscription_admin
+                        - developer
+                        - catalog_manager
+                        - subscription_approver
+                        - api_access
+                        - insights
+                        - administrator
+                        - marketplace_admin
+              enforce_mapped_roles:
+                type: boolean
+                description: Whether to restrict organization role management solely to mapped IdP attributes. Any organization role(s) that a user has that does not match to an associated mapper (or the Default Organization Roles) will be removed on subsequent sign in.
+              enforce_mapped_teams:
+                type: boolean
+                description: Whether to restrict team membership and role management solely to mapped IdP attributes. Any team memberships or roles that a user has that does not match to an associated mapper will be removed on subsequent sign in.
+              guid:
                 type: string
-                description: Onboarding data field multi-select option value.
-          example: {}
-        consumer_id:
+                format: uuid
+                description: '`guid` of the Organization the Identity Provider is associated to.'
+              mapped_roles:
+                type: array
+                description: Array of role identifiers to assign users in the Organization based on attributes defined by the Identity Provider.
+                default: []
+                items:
+                  type: object
+                  required:
+                  - value
+                  - roles
+                  additionalProperties: false
+                  properties:
+                    friendly:
+                      type: string
+                      description: Friendly name of the attribute provided by the SAML Identity Provider.
+                    name:
+                      type: string
+                      description: Name of the attribute provided by the Identity Provider.
+                    roles:
+                      type: array
+                      description: Array of role identifiers to be assigned to matching users in the Organization.
+                      items:
+                        type: string
+                        enum:
+                        - administrator
+                        - developer
+                        - auditor
+                        - consumer
+                        - usage_reporter
+                        - api_central_admin
+                    value:
+                      type: string
+                      description: Value of the named attribute to determine whether to apply the role.
+              mapped_teams:
+                type: array
+                description: Array of teams to assign users in the Organization based on attributes defined by the Identity Provider.
+                default: []
+                items:
+                  type: object
+                  required:
+                  - team_guid
+                  - value
+                  - roles
+                  additionalProperties: false
+                  properties:
+                    friendly:
+                      type: string
+                      description: Friendly name of the attribute provided by the SAML Identity Provider.
+                    name:
+                      type: string
+                      description: Name of the attribute provided by the Identity Provider.
+                    roles:
+                      type: array
+                      description: Array of role identifiers to be assigned to matching users in the team.
+                      items:
+                        type: string
+                        enum:
+                        - consumer
+                        - subscription_admin
+                        - developer
+                        - catalog_manager
+                        - subscription_approver
+                        - api_access
+                        - insights
+                        - administrator
+                        - marketplace_admin
+                    team_guid:
+                      type: string
+                      format: uuid
+                      description: '`guid` of the team within the Organization the assign matching users.'
+                    value:
+                      type: string
+                      description: Value of the named attribute to determine whether to apply the team association.
+              provision_adhoc:
+                type: boolean
+                description: Whether to automatically register users who authenticate using the Identity Provider that are not on an associated claimed email domain as members of the organization.
+                default: false
+              restrict_domain_users:
+                type: boolean
+                description: Whether to automatically restrict users provisioned via domain association to authenticate using the Identity Provider.
+                default: false
+          example:
+          - case_insensitive_mapped_roles: true
+            default_roles:
+            - administrator
+            default_teams:
+            - guid: example_value
+              roles:
+              - consumer
+            enforce_mapped_roles: true
+            enforce_mapped_teams: true
+            guid: example_value
+            mapped_roles:
+            - friendly: example_value
+              name: Example Name
+              roles:
+              - administrator
+              value: example_value
+            mapped_teams:
+            - friendly: example_value
+              name: Example Name
+              roles:
+              - consumer
+              team_guid: example_value
+              value: example_value
+            provision_adhoc: true
+            restrict_domain_users: true
+        protocol:
           type: string
-          description: Mapped ID of the consumer org from the configured Identity Provider.
-          example: 507f1f77bcf86cd799439011
+          description: Protocol the Identity Provider uses.
+          enum:
+          - oidc
+          - saml
+          example: oidc
+        provider_guid:
+          type: string
+          example: example_value
     Entitlements:
       type: object
       description: Subscription entitlements
@@ -13093,39 +13794,13 @@ components:
           title: Transaction Event Retention
           description: Length of time transaction events are kept in days.
           example: 1
-    DefaultFields:
+    Response:
       type: object
-      unevaluatedProperties: false
       properties:
-        created:
-          type: string
-          format: date-time
-          description: Date created.
-          readOnly: true
-          example: '2026-04-21T00:00:00Z'
-        created_by:
-          type: object
-          description: Creator user or client.
-          readOnly: true
-          properties:
-            guid:
-              type: string
-              description: '`guid` of the creator.'
-            type:
-              type: string
-              description: Type of the creator.
-              enum:
-              - user
-              - client
-          example:
-            guid: example_value
-            type: user
-        updated:
-          type: string
-          format: date-time
-          description: Date last updated.
-          readOnly: true
-          example: '2026-04-21T00:00:00Z'
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
     Error:
       type: object
       allOf:
@@ -13265,58 +13940,99 @@ components:
           - trial
           - free
           example: paid
-  examples:
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    PasswordPolicy:
+      type: object
+      description: Password policy
+      properties:
+        length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 8
+          example: 1
+        max_length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 128
+          example: 1
+        lower:
+          type: integer
+          minimum: 1
+          example: 1
+        upper:
+          type: integer
+          minimum: 1
+          example: 1
+        special:
+          type: integer
+          minimum: 1
+          example: 1
+        digit:
+          type: integer
+          minimum: 1
+          example: 1
+        lockout:
+          type: integer
+          minimum: 1
+          maximum: 4
+          default: 5
+          example: 1
+        renewal:
+          type: integer
+          minimum: 1
+          example: 1
+        history:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 1
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
   parameters:
     add_fields:
       name: add_fields
       in: query
       description: A list of fields to add to the default field set in the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
       schema:
         type: array
         items:
@@ -13329,6 +14045,53 @@ components:
         type: array
         items:
           type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+  examples:
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
   responses:
     SuccessResponse:
       description: Success

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   version: 16.10.0
-  title: Amplify Platform API v1.0.0 aca export API
+  title: Amplify Platform API v1.0.0 Export API
   description: 'The Amplify Platform API provides the interface to perform the following:
 
     - Manage account settings and credentials
@@ -17,31 +17,39 @@ info:
     - Retrieve user, organization, and application activity
 
 
-    See the <a href="https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/platform-auth-examples/index.html" target="_blank">Amplify Guide</a> for documentation and examples on how to authorize API calls to platform services.
-
-
-    For general documentation refer to the <a href="https://docs.axway.com/category/platform" target="_blank">Amplify Platform documentation</a>.
-
-
-    &copy; Axway 2026. All rights reserved.'
+    See the Amplify Guide for documentation and examples on how to authorize API calls to platform services.'
   contact:
     email: support@axway.com
   termsOfService: https://www.axway.com/en/axway-platform-terms-of-use
 servers:
 - url: https://platform.axway.com/api/v1
 tags:
-- name: export
+- name: Export
 paths:
   /export:
     parameters: []
     post:
       summary: Axway Export Data
-      description: "Generates an export of the user or org data.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `body.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Generates an export of the user or org data.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - Signed-in user.
+
+        - _If:_ The parameter `body.org_id` is given.
+
+        - _Then:_ Access to the organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Exporting Data
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
       tags:
-      - export
+      - Export
       operationId: export_create
       responses:
         '200':
@@ -183,12 +191,26 @@ paths:
         dispatcher: FALLBACK
     get:
       summary: Axway Find Exports
-      description: "Returns all the exports the user has access to.\n\n___Auth Requirement___\n - _All of_\n     - Signed-in user.\n     - _If:_ The parameter `query.org_id` is given.\n         - _Then:_ Access to the organization.\n\n\n_Allows consumer organization access_\n"
+      description: 'Returns all the exports the user has access to.
+
+
+        ___Auth Requirement___
+
+        - _All of_
+
+        - Signed-in user.
+
+        - _If:_ The parameter `query.org_id` is given.
+
+        - _Then:_ Access to the organization.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Exporting Data
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
       tags:
-      - export
+      - Export
       operationId: export_findAll
       responses:
         '200':
@@ -263,14 +285,12 @@ paths:
         Creator of the export or `administrator` role in the organization for org context exports.
 
 
-        _Allows consumer organization access_
-
-        '
+        _Allows consumer organization access_'
       externalDocs:
         description: Exporting Data
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
       tags:
-      - export
+      - Export
       operationId: export_download
       responses:
         '200':
@@ -333,12 +353,20 @@ paths:
     parameters: []
     delete:
       summary: Axway Remove Export
-      description: "Removes a previous data export.\n\n___Auth Requirement___\n - Signed-in user.\n\n\n_Allows consumer organization access_\n"
+      description: 'Removes a previous data export.
+
+
+        ___Auth Requirement___
+
+        - Signed-in user.
+
+
+        _Allows consumer organization access_'
       externalDocs:
         description: Exporting Data
         url: https://docs.axway.com/bundle/platform-management/page/docs/management_guide/organizations/managing_organizations/managing_organization_settings/changing_org_name_deleting_org/index.html#export-organization-data
       tags:
-      - export
+      - Export
       operationId: export_remove
       responses:
         '204':
@@ -394,21 +422,6 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
     DataExport:
       type: object
       required:
@@ -481,7 +494,24 @@ components:
           type: string
           description: '`guid` of the user that initiated the export.'
           example: example_value
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
     DefaultFields:
+      type: object
+      unevaluatedProperties: false
       properties:
         created:
           type: string
@@ -489,60 +519,30 @@ components:
           description: Date created.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
         updated:
           type: string
           format: date-time
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
-  examples:
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
   parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
     fields:
       name: fields
       in: query
@@ -551,6 +551,53 @@ components:
         type: array
         items:
           type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+  examples:
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
   securitySchemes:
     AuthToken:
       description: Auth token for internal services
