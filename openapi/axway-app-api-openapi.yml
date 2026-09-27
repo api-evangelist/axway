@@ -467,28 +467,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
     Application:
       type: object
       required:
@@ -685,20 +663,13 @@ components:
           description: Type of the application
           x-no-tags: true
           example: example_value
-    Success:
+    Response:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          result:
-            description: The response data
-    ApplicationList:
-      title: ApplicationList
-      type: array
-      description: A list of Application objects.
-      items:
-        $ref: '#/components/schemas/Application'
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
     DefaultFields:
       type: object
       unevaluatedProperties: false
@@ -732,11 +703,40 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    ApplicationList:
+      title: ApplicationList
+      type: array
+      description: A list of Application objects.
+      items:
+        $ref: '#/components/schemas/Application'
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
   parameters:
-    add_fields:
-      name: add_fields
+    fields:
+      name: fields
       in: query
-      description: A list of fields to add to the default field set in the response.
+      description: A list of fields to include in the response.
       schema:
         type: array
         items:
@@ -749,26 +749,30 @@ components:
         type: array
         items:
           type: string
-    fields:
-      name: fields
+    add_fields:
+      name: add_fields
       in: query
-      description: A list of fields to include in the response.
+      description: A list of fields to add to the default field set in the response.
       schema:
         type: array
         items:
           type: string
   examples:
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
     LOGIN_REQUIRED:
       value:
         success: false
         description: Sign-in Required
         code: 401
-    PARAM_REQUIRED:
+    NOT_FOUND:
       value:
         success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
+        description: Resource Not Found
+        code: 404
     PARAM_INVALID:
       value:
         success: false
@@ -781,20 +785,16 @@ components:
         description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
         code: 401
         internalCode: 235
-    NOT_FOUND:
+    PARAM_REQUIRED:
       value:
         success: false
-        description: Resource Not Found
-        code: 404
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
     USER_NOT_ADMIN:
       value:
         success: false
         description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
         code: 403
   responses:
     SuccessResponse:

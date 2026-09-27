@@ -127,28 +127,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
     Event:
       type: object
       required:
@@ -176,6 +154,28 @@ components:
           enum:
           - '4'
           example: '4'
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
   examples:
     PARAM_REQUIRED:
       value:
@@ -183,12 +183,11 @@ components:
         description: '"%s" is a required parameter.'
         code: 400
         internalCode: 77
-    PARAM_INVALID:
+    LOGIN_REQUIRED:
       value:
         success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
+        description: Sign-in Required
+        code: 401
     FORBIDDEN:
       value:
         success: false
@@ -199,11 +198,12 @@ components:
         success: false
         description: Resource Not Found
         code: 404
-    LOGIN_REQUIRED:
+    PARAM_INVALID:
       value:
         success: false
-        description: Sign-in Required
-        code: 401
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

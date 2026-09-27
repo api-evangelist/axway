@@ -199,13 +199,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
+    SubscriptionList:
+      title: SubscriptionList
+      type: array
+      description: A list of Subscription objects.
+      items:
+        $ref: '#/components/schemas/Subscription'
     Subscription:
       type: object
       description: Organization entitlements
@@ -303,12 +302,13 @@ components:
           - trial
           - free
           example: paid
-    SubscriptionList:
-      title: SubscriptionList
-      type: array
-      description: A list of Subscription objects.
-      items:
-        $ref: '#/components/schemas/Subscription'
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
     Error:
       type: object
       allOf:
@@ -325,14 +325,6 @@ components:
             type: number
             description: Internal code.
   parameters:
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
     exclude_fields:
       name: exclude_fields
       in: query
@@ -341,45 +333,53 @@ components:
         type: array
         items:
           type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   examples:
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
     PARAM_REQUIRED:
       value:
         success: false
         description: '"%s" is a required parameter.'
         code: 400
         internalCode: 77
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
     PARAM_INVALID:
       value:
         success: false
         description: '"%s" contained an invalid value.'
         code: 400
         internalCode: 74
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
     IDP_REQUIRED:
       value:
         success: false
         description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
         code: 401
         internalCode: 235
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

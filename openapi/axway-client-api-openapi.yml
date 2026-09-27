@@ -901,13 +901,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
     Client:
       type: object
       required:
@@ -1002,27 +995,46 @@ components:
           - secret
           - certificate
           example: secret
-    Error:
+    Response:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
-    ClientList:
-      title: ClientList
-      type: array
-      description: A list of Client objects.
-      items:
-        $ref: '#/components/schemas/Client'
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
     Team:
       type: object
       required:
@@ -1136,6 +1148,27 @@ components:
             roles:
             - consumer
             type: user
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    ClientList:
+      title: ClientList
+      type: array
+      description: A list of Client objects.
+      items:
+        $ref: '#/components/schemas/Client'
     ResponseMetadata:
       type: object
       properties:
@@ -1163,51 +1196,39 @@ components:
           type: number
           description: Number of results skipped in pagination.
           example: 1.0
-    DefaultFields:
-      type: object
-      unevaluatedProperties: false
-      properties:
-        created:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
           type: string
-          format: date-time
-          description: Date created.
-          readOnly: true
-          example: '2026-04-21T00:00:00Z'
-        created_by:
-          type: object
-          description: Creator user or client.
-          readOnly: true
-          properties:
-            guid:
-              type: string
-              description: '`guid` of the creator.'
-            type:
-              type: string
-              description: Type of the creator.
-              enum:
-              - user
-              - client
-          example:
-            guid: example_value
-            type: user
-        updated:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
           type: string
-          format: date-time
-          description: Date last updated.
-          readOnly: true
-          example: '2026-04-21T00:00:00Z'
   examples:
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
     LOGIN_REQUIRED:
       value:
         success: false
         description: Sign-in Required
         code: 401
-    PARAM_REQUIRED:
+    NOT_FOUND:
       value:
         success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
+        description: Resource Not Found
+        code: 404
     PARAM_INVALID:
       value:
         success: false
@@ -1220,38 +1241,17 @@ components:
         description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
         code: 401
         internalCode: 235
-    NOT_FOUND:
+    PARAM_REQUIRED:
       value:
         success: false
-        description: Resource Not Found
-        code: 404
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
     USER_NOT_ADMIN:
       value:
         success: false
         description: You are not authorized to perform this action. Please contact your organization administrator.
         code: 403
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-  parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

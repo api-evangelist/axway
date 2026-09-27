@@ -6,17 +6,20 @@ description: >-
   integration and security products for enterprises.
 type: Index
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - axway/api-builder-standalone-tech-enablement
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: paid
@@ -288,7 +291,7 @@ apis:
   - type: Documentation
     url: https://docs.axway.com/
 - aid: axway:axway-aca-api
-  name: Axway aca API
+  name: Axway Aca API
   description: The aca API from Axway — 2 operation(s) for aca.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -307,7 +310,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-activity-api
-  name: Axway activity API
+  name: Axway Activity API
   description: The activity API from Axway — 2 operation(s) for activity.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -326,7 +329,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-analytics-api
-  name: Axway analytics API
+  name: Axway Analytics API
   description: The analytics API from Axway — 6 operation(s) for analytics.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -345,7 +348,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-app-api
-  name: Axway app API
+  name: Axway App API
   description: The app API from Axway — 2 operation(s) for app.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -364,7 +367,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-auth-api
-  name: Axway auth API
+  name: Axway Auth API
   description: The auth API from Axway — 26 operation(s) for auth.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -383,7 +386,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-client-api
-  name: Axway client API
+  name: Axway Client API
   description: The client API from Axway — 3 operation(s) for client.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -402,7 +405,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-domain-api
-  name: Axway domain API
+  name: Axway Domain API
   description: The domain API from Axway — 8 operation(s) for domain.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -421,7 +424,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-entitlement-api
-  name: Axway entitlement API
+  name: Axway Entitlement API
   description: The entitlement API from Axway — 1 operation(s) for entitlement.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -440,7 +443,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-env-api
-  name: Axway env API
+  name: Axway Env API
   description: The env API from Axway — 2 operation(s) for env.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -459,7 +462,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-export-api
-  name: Axway export API
+  name: Axway Export API
   description: The export API from Axway — 3 operation(s) for export.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -478,7 +481,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-idp-api
-  name: Axway idp API
+  name: Axway Idp API
   description: The idp API from Axway — 10 operation(s) for idp.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -497,7 +500,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-org-api
-  name: Axway org API
+  name: Axway Org API
   description: The org API from Axway — 6 operation(s) for org.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -516,7 +519,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-provider-api
-  name: Axway provider API
+  name: Axway Provider API
   description: The provider API from Axway — 13 operation(s) for provider.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -535,7 +538,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-role-api
-  name: Axway role API
+  name: Axway Role API
   description: The role API from Axway — 2 operation(s) for role.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -554,7 +557,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-session-api
-  name: Axway session API
+  name: Axway Session API
   description: The session API from Axway — 3 operation(s) for session.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -573,7 +576,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-subscription-api
-  name: Axway subscription API
+  name: Axway Subscription API
   description: The subscription API from Axway — 2 operation(s) for subscription.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -592,7 +595,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-team-api
-  name: Axway team API
+  name: Axway Team API
   description: The team API from Axway — 4 operation(s) for team.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -611,7 +614,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-telemetry-api
-  name: Axway telemetry API
+  name: Axway Telemetry API
   description: The telemetry API from Axway — 1 operation(s) for telemetry.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -630,7 +633,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-usage-api
-  name: Axway usage API
+  name: Axway Usage API
   description: The usage API from Axway — 4 operation(s) for usage.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
@@ -649,7 +652,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 - aid: axway:axway-user-api
-  name: Axway user API
+  name: Axway User API
   description: The user API from Axway — 7 operation(s) for user.
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1

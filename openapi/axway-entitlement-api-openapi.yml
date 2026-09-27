@@ -95,7 +95,49 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  examples:
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
   schemas:
+    Entitlement:
+      type: object
+      required:
+      - type
+      - title
+      - description
+      properties:
+        description:
+          type: string
+          description: Description of entitlement.
+          example: An example description
+        title:
+          type: string
+          description: Entitlement or metric name
+          example: example_value
+        type:
+          type: string
+          description: Type of entitlement
+          enum:
+          - array
+          - boolean
+          - integer
+          - number
+          - string
+          example: array
     Response:
       type: object
       properties:
@@ -124,61 +166,19 @@ components:
           internalCode:
             type: number
             description: Internal code.
-    Entitlement:
-      type: object
-      required:
-      - type
-      - title
-      - description
-      properties:
-        description:
-          type: string
-          description: Description of entitlement.
-          example: An example description
-        title:
-          type: string
-          description: Entitlement or metric name
-          example: example_value
-        type:
-          type: string
-          description: Type of entitlement
-          enum:
-          - array
-          - boolean
-          - integer
-          - number
-          - string
-          example: array
-  examples:
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
   parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
     fields:
       name: fields
       in: query
       description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
       schema:
         type: array
         items:
