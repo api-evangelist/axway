@@ -1142,13 +1142,193 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    add_fields:
+      name: add_fields
+      in: query
+      description: A list of fields to add to the default field set in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   schemas:
+    Team:
+      type: object
+      required:
+      - default
+      - guid
+      - name
+      - org_guid
+      - tags
+      - users
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the team.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          example: '2026-04-21T00:00:00Z'
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        desc:
+          type:
+          - string
+          - 'null'
+          description: Description of the team.
+          maxLength: 200
+          x-no-tags: true
+          example: example_value
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
+        name:
+          type: string
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
+          x-no-tags: true
+          example: Example Name
+        org_guid:
+          type: string
+          format: uuid
+          description: '`guid` of the organization the team belongs to.'
+          example: example_value
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+        updated:
+          type: string
+          format: date-time
+          description: Date updated.
+          example: '2026-04-21T00:00:00Z'
+        users:
+          type: array
+          description: Members that belong to this team and their roles.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
+            properties:
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the member.'
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+              type:
+                type: string
+                description: Type of the member.
+                default: user
+                enum:
+                - user
+                - client
+          example:
+          - guid: example_value
+            roles:
+            - consumer
+            type: user
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
     TeamList:
       title: TeamList
       type: array
       description: A list of Team objects.
       items:
         $ref: '#/components/schemas/Team'
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
     Response:
       type: object
       properties:
@@ -1156,6 +1336,39 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
+    DefaultFields:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
+        created_by:
+          type: object
+          description: Creator user or client.
+          readOnly: true
+          properties:
+            guid:
+              type: string
+              description: '`guid` of the creator.'
+            type:
+              type: string
+              description: Type of the creator.
+              enum:
+              - user
+              - client
+          example:
+            guid: example_value
+            type: user
+        updated:
+          type: string
+          format: date-time
+          description: Date last updated.
+          readOnly: true
+          example: '2026-04-21T00:00:00Z'
     Org:
       type: object
       required:
@@ -1540,247 +1753,18 @@ components:
             primary: true
             roles:
             - administrator
-    Team:
-      type: object
-      required:
-      - default
-      - guid
-      - name
-      - org_guid
-      - tags
-      - users
-      unevaluatedProperties: false
-      allOf:
-      - $ref: '#/components/schemas/DefaultFields'
-      properties:
-        _id:
-          type: string
-          description: Document ID of the team.
-          readOnly: true
-          deprecated: true
-          example: 507f1f77bcf86cd799439011
-        created:
-          type: string
-          format: date-time
-          description: Date created.
-          example: '2026-04-21T00:00:00Z'
-        default:
-          type: boolean
-          description: Whether the team is the default for the organization. May only be set by org administrator users.
-          default: false
-          example: true
-        desc:
-          type:
-          - string
-          - 'null'
-          description: Description of the team.
-          maxLength: 200
-          x-no-tags: true
-          example: example_value
-        guid:
-          type: string
-          format: uuid
-          description: '`guid` of the team.'
-          example: example_value
-        name:
-          type: string
-          description: Name of the team.
-          minLength: 2
-          maxLength: 100
-          x-no-tags: true
-          example: Example Name
-        org_guid:
-          type: string
-          format: uuid
-          description: '`guid` of the organization the team belongs to.'
-          example: example_value
-        tags:
-          type: array
-          description: Tags assigned to the team.
-          default: []
-          minItems: 0
-          uniqueItems: true
-          maxItems: 30
-          items:
-            type: string
-            maxLength: 40
-          example:
-          - example_value
-        updated:
-          type: string
-          format: date-time
-          description: Date updated.
-          example: '2026-04-21T00:00:00Z'
-        users:
-          type: array
-          description: Members that belong to this team and their roles.
-          default: []
-          items:
-            type: object
-            required:
-            - guid
-            - roles
-            additionalProperties: false
-            properties:
-              guid:
-                type: string
-                format: uuid
-                description: '`guid` of the member.'
-              roles:
-                type: array
-                description: Array of role identifiers that are assigned to the member.
-                items:
-                  type: string
-                  enum:
-                  - consumer
-                  - subscription_admin
-                  - developer
-                  - catalog_manager
-                  - subscription_approver
-                  - api_access
-                  - insights
-                  - administrator
-                  - marketplace_admin
-              type:
-                type: string
-                description: Type of the member.
-                default: user
-                enum:
-                - user
-                - client
-          example:
-          - guid: example_value
-            roles:
-            - consumer
-            type: user
-    DefaultFields:
-      type: object
-      unevaluatedProperties: false
-      properties:
-        created:
-          type: string
-          format: date-time
-          description: Date created.
-          readOnly: true
-          example: '2026-04-21T00:00:00Z'
-        created_by:
-          type: object
-          description: Creator user or client.
-          readOnly: true
-          properties:
-            guid:
-              type: string
-              description: '`guid` of the creator.'
-            type:
-              type: string
-              description: Type of the creator.
-              enum:
-              - user
-              - client
-          example:
-            guid: example_value
-            type: user
-        updated:
-          type: string
-          format: date-time
-          description: Date last updated.
-          readOnly: true
-          example: '2026-04-21T00:00:00Z'
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
-    ResponseMetadata:
-      type: object
-      properties:
-        count:
-          type: number
-          description: Number of results included in the response.
-          example: 1.0
-        limit:
-          type: number
-          description: Number of results per page.
-          example: 1.0
-        matched:
-          type: number
-          description: Total number of matched results.
-          example: 1.0
-        page:
-          type: number
-          description: Page of results.
-          example: 1.0
-        pages:
-          type: number
-          description: Total number of pages of results.
-          example: 1.0
-        skip:
-          type: number
-          description: Number of results skipped in pagination.
-          example: 1.0
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-    add_fields:
-      name: add_fields
-      in: query
-      description: A list of fields to add to the default field set in the response.
-      schema:
-        type: array
-        items:
-          type: string
   examples:
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
     IDP_REQUIRED:
       value:
         success: false
         description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
         code: 401
         internalCode: 235
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
     PARAM_REQUIRED:
       value:
         success: false
@@ -1792,6 +1776,22 @@ components:
         success: false
         description: You are not authorized to perform this action. Please contact your organization administrator.
         code: 403
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

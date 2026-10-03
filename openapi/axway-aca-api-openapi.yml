@@ -177,6 +177,23 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   schemas:
     Success:
       type: object
@@ -186,13 +203,6 @@ components:
         properties:
           result:
             description: The response data
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
     Error:
       type: object
       allOf:
@@ -208,13 +218,21 @@ components:
           internalCode:
             type: number
             description: Internal code.
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
   examples:
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
     LOGIN_REQUIRED:
       value:
         success: false
@@ -230,36 +248,18 @@ components:
         success: false
         description: Resource Not Found
         code: 404
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
     PARAM_INVALID:
       value:
         success: false
         description: '"%s" contained an invalid value.'
         code: 400
         internalCode: 74
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-  responses:
-    SuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Success'
   securitySchemes:
     AuthToken:
       description: Auth token for internal services
