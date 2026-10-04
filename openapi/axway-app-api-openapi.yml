@@ -466,6 +466,45 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  examples:
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
   parameters:
     add_fields:
       name: add_fields
@@ -491,7 +530,20 @@ components:
         type: array
         items:
           type: string
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
   schemas:
+    ApplicationList:
+      title: ApplicationList
+      type: array
+      description: A list of Application objects.
+      items:
+        $ref: '#/components/schemas/Application'
     Application:
       type: object
       required:
@@ -743,12 +795,6 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
-    ApplicationList:
-      title: ApplicationList
-      type: array
-      description: A list of Application objects.
-      items:
-        $ref: '#/components/schemas/Application'
     Success:
       type: object
       allOf:
@@ -757,52 +803,6 @@ components:
         properties:
           result:
             description: The response data
-  examples:
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
-  responses:
-    SuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Success'
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

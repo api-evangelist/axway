@@ -1,0 +1,59 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/axway-aca-api-openapi.yml
+- openapi/axway-activity-api-openapi.yml
+- openapi/axway-analytics-api-openapi.yml
+- openapi/axway-app-api-openapi.yml
+- openapi/axway-auth-api-openapi.yml
+- openapi/axway-client-api-openapi.yml
+- openapi/axway-domain-api-openapi.yml
+- openapi/axway-entitlement-api-openapi.yml
+- openapi/axway-env-api-openapi.yml
+- openapi/axway-export-api-openapi.yml
+- openapi/axway-idp-api-openapi.yml
+- openapi/axway-org-api-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: Error
+coverage:
+  operations: 145
+  statuses_declared: 5
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request
+  operations: 145
+  media_types:
+  - application/json
+  schema: Error
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 1
+  media_types:
+  - application/json
+  schema: Error
+- status: 403
+  title: Forbidden
+  description: Forbidden
+  operations: 7
+  media_types:
+  - application/json
+  schema: Error
+- status: 405
+  title: Method Not Allowed
+  description: Method Not Allowed
+  operations: 1
+  media_types:
+  - application/json
+  schema: Error
+- status: 413
+  title: Content Too Large
+  description: Payload Too Large
+  operations: 1
+  media_types:
+  - application/json
+  schema: Error

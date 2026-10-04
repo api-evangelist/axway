@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-com-appcelerator-platform-org-user-create-schema.json",
+  "title": "com.appcelerator.platform.org.user.create",
+  "description": "Published when a user is added or invited to an org.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-activity-api-openapi.yml#/components/schemas/com.appcelerator.platform.org.user.create",
+  "type": "object",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/$defs/EventDataOrg"
+    },
+    {
+      "$ref": "#/$defs/EventDataActor"
+    },
+    {
+      "$ref": "#/$defs/EventDataUser"
+    }
+  ],
+  "properties": {
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider the user is required to authenticate with to access the organization",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/guid"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        }
+      }
+    },
+    "role": {
+      "type": "string",
+      "description": "Identifier of the invited users default role in the organization.",
+      "enum": [
+        "administrator",
+        "developer",
+        "auditor",
+        "consumer"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "description": "User's roles within the organization.",
+      "items": {
+        "$ref": "#/$defs/items"
+      }
+    },
+    "user_activated": {
+      "$ref": "#/$defs/activated"
+    },
+    "user_active": {
+      "$ref": "#/$defs/active"
+    }
+  },
+  "$defs": {
+    "EventDataActionClient": {
+      "type": "object",
+      "title": "Action Service Account",
+      "properties": {
+        "action_client_guid": {
+          "description": "The `guid` of the client that performed the action.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/guid"
+            }
+          ]
+        },
+        "action_client_id": {
+          "description": "The `client_id` of the client that performed the action.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/client_id"
+            }
+          ]
+        },
+        "action_client_name": {
+          "description": "The `name` of the client that performed the action.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/name"
+            }
+          ]
+        }
+      }
+    },
+    "EventDataActionUser": {
+      "type": "object",
+      "title": "Action User",
+      "properties": {
+        "action_user_guid": {
+          "description": "The `guid` of the user that performed the action",
+          "allOf": [
+            {
+              "$ref": "#/$defs/guid"
+            }
+          ]
+        }
+      }
+    },
+    "EventDataActor": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/EventDataActionUser"
+        },
+        {
+          "$ref": "#/$defs/EventDataActionClient"
+        }
+      ]
+    },
+    "EventDataOrg": {
+      "type": "object",
+      "properties": {
+        "org_guid": {
+          "$ref": "#/$defs/guid"
+        },
+        "org_id": {
+          "$ref": "#/$defs/org_id"
+        },
+        "org_name": {
+          "$ref": "#/$defs/name"
+        },
+        "provider_guid": {
+          "$ref": "#/$defs/provider_guid"
+        },
+        "region": {
+          "$ref": "#/$defs/region"
+        }
+      }
+    },
+    "EventDataUser": {
+      "type": "object",
+      "title": "User",
+      "properties": {
+        "provider_guid": {
+          "$ref": "#/$defs/provider_guid"
+        },
+        "user_guid": {
+          "$ref": "#/$defs/guid"
+        }
+      }
+    }
+  }
+}

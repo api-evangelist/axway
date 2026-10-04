@@ -18,4 +18,6 @@ schemes:
     tokenUrl: https://login.axway.com/auth/realms/Broker/openid-connect/token
   - flow: implicit
     authorizationUrl: https://login.axway.com/auth/realms/Broker/openid-connect/auth
-scopes: []
+scopes:
+  - name: none
+    description: No OAuth scopes are published for this API; authorization is role‑based.

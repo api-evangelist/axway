@@ -1,0 +1,518 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-data-model.py
+source:
+- openapi/axway-aca-api-openapi.yml
+- openapi/axway-activity-api-openapi.yml
+- openapi/axway-analytics-api-openapi.yml
+- openapi/axway-app-api-openapi.yml
+- openapi/axway-auth-api-openapi.yml
+- openapi/axway-client-api-openapi.yml
+- openapi/axway-domain-api-openapi.yml
+- openapi/axway-entitlement-api-openapi.yml
+- openapi/axway-env-api-openapi.yml
+- openapi/axway-export-api-openapi.yml
+- openapi/axway-idp-api-openapi.yml
+- openapi/axway-org-api-openapi.yml
+notation: has_one = property $ref; has_many = array of $ref; belongs_to = <entity>_id field
+summary:
+  entities: 153
+  entities_in_spec: 153
+  relationships: 17
+entities:
+- name: Activation
+  fields: 6
+- name: Application
+  fields: 12
+- name: Client
+  fields: 8
+- name: Consumer
+  fields: 9
+- name: CustomQuery
+  fields: 23
+- name: DataExport
+  fields: 10
+- name: DefaultFields
+  fields: 0
+  description: Referenced by this document but never defined in it. API Evangelist added this empty placeholder
+    so the document resolves; the shape is unknown and is NOT a claim about the API.
+- name: Domain
+  fields: 4
+- name: Entitlement
+  fields: 3
+- name: Entitlements
+  fields: 0
+  description: Referenced by this document but never defined in it. API Evangelist added this empty placeholder
+    so the document resolves; the shape is unknown and is NOT a claim about the API.
+- name: Environment
+  fields: 9
+- name: Error
+  fields: 0
+- name: Event
+  fields: 5
+- name: EventDataActionClient
+  fields: 3
+- name: EventDataActionUser
+  fields: 1
+- name: EventDataActor
+  fields: 0
+- name: EventDataCentral
+  fields: 5
+- name: EventDataClient
+  fields: 3
+- name: EventDataOrg
+  fields: 5
+- name: EventDataUser
+  fields: 2
+- name: IdentityProvider
+  fields: 7
+- name: Org
+  fields: 25
+- name: PasswordPolicy
+  fields: 0
+  description: Referenced by this document but never defined in it. API Evangelist added this empty placeholder
+    so the document resolves; the shape is unknown and is NOT a claim about the API.
+- name: Provider
+  fields: 40
+- name: Response
+  fields: 1
+- name: ResponseMetadata
+  fields: 6
+- name: Role
+  fields: 16
+- name: SessionInfo
+  fields: 25
+- name: Subscription
+  fields: 11
+  description: Organization entitlements
+- name: Success
+  fields: 0
+- name: Team
+  fields: 10
+- name: UsageEntry
+  fields: 13
+- name: User
+  fields: 32
+- name: UserDevice
+  fields: 9
+- name: api_central.provision
+  fields: 2
+  description: Published when a Engage provisioning is requested.
+- name: api_central.provisioned
+  fields: 5
+  description: Published when a Engage is successfully provisioned.
+- name: apic.ucs.catalogitem.create
+  fields: 3
+  description: Published when a catalog asset is created.
+- name: apic.ucs.catalogitem.remove
+  fields: 0
+  description: Published when a catalog asset is removed.
+- name: apic.ucs.catalogitem.share
+  fields: 0
+  description: Published when a catalog asset visibility or access controller list is updated.
+- name: apic.ucs.catalogitem.update
+  fields: 0
+  description: Published when a catalog asset is updated.
+- name: apic.ucs.subscription.create
+  fields: 2
+  description: Published when a subscription of a catalog asset is created.
+- name: apic.ucs.subscription.remove
+  fields: 0
+  description: Published when a subscription of a catalog asset is removed.
+- name: apic.ucs.subscription.update
+  fields: 0
+  description: Published when a subscription of a catalog asset is updated.
+- name: apicentral._._
+  fields: 1
+  description: Published when a Central resource is created/updated/removed.
+- name: apicentral._._.update
+  fields: 1
+  description: Published when a Central resource's subresource is updated.
+- name: apicentral.agent.create
+  fields: 4
+  description: Published when a Central agent is created.
+- name: apicentral.agent.failed
+  fields: 0
+- name: apicentral.agent.remove
+  fields: 0
+  description: Published when a Central agent is removed.
+- name: apicentral.agent.start
+  fields: 5
+  description: Published when a Central agent changes its state in the status resource.
+- name: apicentral.agent.stop
+  fields: 0
+- name: apicentral.agent.unhealthy
+  fields: 0
+- name: apicentral.apiservice.create
+  fields: 3
+  description: Published when a top-level Central asset is created.
+- name: apicentral.apiservice.remove
+  fields: 0
+  description: Published when a top-level Central asset is updated.
+- name: apicentral.apiservice.update
+  fields: 0
+  description: Published when a top-level Central asset is updated.
+- name: apicentral.asset.create
+  fields: 2
+  description: Published when a Central asset is created.
+- name: apicentral.asset.remove
+  fields: 0
+  description: Published when a Central asset is removed.
+- name: apicentral.asset.update
+  fields: 0
+  description: Published when a Central asset is updated.
+- name: apicentral.credential.expire
+  fields: 11
+  description: Published when a marketplace credential expiry notification needs to be sent.
+- name: apicentral.documentresource.create
+  fields: 6
+  description: Published when a document defined in the document library is created.
+- name: apicentral.documentresource.remove
+  fields: 0
+  description: Published when a document defined in the document library is removed.
+- name: apicentral.documentresource.update
+  fields: 0
+  description: Published when a document defined in the document library is updated.
+- name: apicentral.env.create
+  fields: 4
+  description: Published when a Central environment is created.
+- name: apicentral.env.remove
+  fields: 0
+  description: Published when a Central environment is removed.
+- name: apicentral.env.update
+  fields: 0
+  description: Published when a Central environment is updated.
+- name: apicentral.publisheddocumentresource.create
+  fields: 3
+  description: Published when a document defined in the document library is made available to be used in the marketplace
+    content.
+- name: apicentral.publisheddocumentresource.remove
+  fields: 0
+  description: Published when a document defined in the document library is made unavailable for use in the marketplace
+    content.
+- name: apicentral.publishedproduct.create
+  fields: 3
+  description: Published when a product is published to a given marketplace.
+- name: apicentral.publishedproduct.remove
+  fields: 0
+  description: Published when a product is unpublished from a given marketplace.
+- name: apicentral.subscription.create
+  fields: 2
+  description: Published when a marketplace subscription is created.
+- name: apicentral.subscription.remove
+  fields: 0
+  description: Published when a marketplace subscription is removed.
+- name: com.appcelerator.platform.org.user.create
+  fields: 5
+  description: Published when a user is added or invited to an org.
+- name: com.appcelerator.platform.org.user.remove
+  fields: 0
+  description: Published when a user is removed/uninvited from an organization.
+- name: marketplace.ai.disable
+  fields: 2
+  description: Published when AI integration is disabled for a marketplace.
+- name: marketplace.ai.enable
+  fields: 4
+  description: Published when AI integration is enabled for a marketplace.
+- name: marketplace.ai.update
+  fields: 0
+  description: Published when marketplace AI integration settings are changed.
+- name: marketplace.appearance.update
+  fields: 3
+  description: Published when a marketplace appearance is set or changed.
+- name: marketplace.billing.disable
+  fields: 2
+  description: Published when a marketplace billing integration is disabled.
+- name: marketplace.billing.enable
+  fields: 4
+  description: Published when a marketplace billing integration is enabled.
+- name: marketplace.billing.update
+  fields: 0
+  description: Published when a marketplace billing settings are changed.
+- name: marketplace.consumer.active
+  fields: 0
+  description: Published when a consumer organization is set active.
+- name: marketplace.consumer.approve
+  fields: 5
+- name: marketplace.consumer.deny
+  fields: 0
+  description: Published when a consumer organization sign-up denied.
+- name: marketplace.consumer.inactive
+  fields: 0
+  description: Published when a consumer organization is set inactive.
+- name: marketplace.consumer.remove
+  fields: 0
+  description: Published when a consumer organization is deleted.
+- name: marketplace.consumer.signup
+  fields: 6
+  description: Published when a new organization signs up to a marketplace.
+- name: marketplace.create
+  fields: 23
+  description: Published when a marketplace is created.
+- name: marketplace.idp.create
+  fields: 3
+  description: Published when an Identity Provider is created for a marketplace.
+- name: marketplace.idp.remove
+  fields: 0
+  description: Published when an Identity Provider is removed from a marketplace.
+- name: marketplace.idp.update
+  fields: 1
+  description: Published when an Identity Provider is updated for a marketplace.
+- name: marketplace.lang.update
+  fields: 6
+  description: Published when marketplace language settings updated.
+- name: marketplace.onboarding.disable
+  fields: 2
+  description: Published when marketplace onboarding data capture is disabled.
+- name: marketplace.onboarding.enable
+  fields: 3
+  description: Published when marketplace onboarding data capture is enabled.
+- name: marketplace.onboarding.update
+  fields: 0
+  description: Published when marketplace onboarding data capture is changed.
+- name: marketplace.remove
+  fields: 4
+  description: Published when a marketplace is removed.
+- name: marketplace.settings.update
+  fields: 24
+  description: Published when marketplace settings are changed.
+- name: marketplace.user.remove
+  fields: 3
+  description: Published when a consumer organization user is deleted.
+- name: platform.activation.access
+  fields: 2
+  description: Published when an activation link is accessed.
+- name: platform.activation.complete
+  fields: 1
+  description: Published when a user activates their account.
+- name: platform.activation.send
+  fields: 1
+- name: platform.app.create
+  fields: 1
+  description: Published when an application is created.
+- name: platform.app.remove
+  fields: 2
+  description: Published when an application is removed.
+- name: platform.app.update
+  fields: 2
+  description: Published when an application is updated.
+- name: platform.client.create
+  fields: 1
+  description: Published when an organization admin creates a Service Account client.
+- name: platform.client.remove
+  fields: 0
+  description: Published when an organization admin removes a Service Account client.
+- name: platform.client.update
+  fields: 1
+  description: Published when an organization admin updates a Service Account client.
+- name: platform.env.create
+  fields: 4
+  description: Published when an environment is created.
+- name: platform.env.remove
+  fields: 0
+  description: Published when an environment is removed.
+- name: platform.env.update
+  fields: 1
+  description: Published when an environment is updated.
+- name: platform.login
+  fields: 2
+  description: Published when a user signs in from any client type (tooling vs. browser).
+- name: platform.login.failed
+  fields: 2
+  description: Published when a user sign in fails.
+- name: platform.logout
+  fields: 2
+  description: Published when a user signs out from any client.
+- name: platform.org.active
+  fields: 0
+  description: Published when `orgs.active` flag changes.
+- name: platform.org.branding.update
+  fields: 1
+  description: Published when org branding is changed.
+- name: platform.org.create
+  fields: 2
+- name: platform.org.idp.create
+  fields: 2
+  description: Published when an Identity Provider is created for an organization.
+- name: platform.org.idp.domain.associate
+  fields: 3
+  description: Published when an Identity Provider is enabled for users on a domain in an organization.
+- name: platform.org.idp.domain.confirm
+  fields: 0
+  description: Published when ownership of a domain is verified for an organization.
+- name: platform.org.idp.domain.create
+  fields: 2
+  description: Published when an domain is added to an organization.
+- name: platform.org.idp.domain.dissociate
+  fields: 0
+  description: Published when an Identity Provider is disabled for users on a domain in an organization.
+- name: platform.org.idp.domain.remove
+  fields: 0
+  description: Published when an domain is removed from an organization.
+- name: platform.org.idp.remove
+  fields: 0
+  description: Published when an Identity Provider is removed from an organization.
+- name: platform.org.idp.update
+  fields: 1
+  description: Published when an identity provider is updated for an organization.
+- name: platform.org.inactive
+  fields: 0
+- name: platform.org.security.update
+  fields: 3
+  description: Published when organization security settings are updated.
+- name: platform.org.update
+  fields: 3
+- name: platform.org.user.idp.update
+  fields: 2
+  description: Published when an Identity Provider requirement is made for a user in an organization.
+- name: platform.org.user.primary
+  fields: 1
+  description: Published when org primary contact is changed.
+- name: platform.org.user.resent
+  fields: 1
+  description: Published when a user activation is resent.
+- name: platform.org.user.role.update
+  fields: 5
+  description: Published when a user's role in an organization is changed.
+- name: platform.session.create
+  fields: 5
+  description: Published when a session is created from an access token or external IdP, or a user switches platform
+    org.
+- name: platform.subscription.create
+  fields: 2
+  description: Published when a subscription for an org is created.
+- name: platform.subscription.delete
+  fields: 2
+  description: Published when a subscription for an org is deleted.
+- name: platform.subscription.expired
+  fields: 2
+  description: Published when a subscription expires past its end date and any dunning period.
+- name: platform.subscription.update
+  fields: 3
+  description: Published when a subscription for an org is updated.
+- name: platform.team.app.add
+  fields: 4
+  description: Published when an asset is added to a team.
+- name: platform.team.app.remove
+  fields: 4
+  description: Published when an asset is removed from a team.
+- name: platform.team.create
+  fields: 1
+  description: Published when a new team is created in an org.
+- name: platform.team.default
+  fields: 1
+  description: Published when a team is changed to the default within an org.
+- name: platform.team.remove
+  fields: 2
+  description: Published when an existing team is modified.
+- name: platform.team.update
+  fields: 2
+  description: Published when an existing team is modified.
+- name: platform.team.user.add
+  fields: 3
+  description: Published when a user or client is added to a team.
+- name: platform.team.user.remove
+  fields: 2
+  description: Published when a user or client is removed from a team.
+- name: platform.team.user.role.update
+  fields: 3
+  description: Published when user's role is changed within team.
+- name: platform.terms.accept
+  fields: 0
+  description: Published when Terms of Use are accepted by a user.
+- name: platform.user.mfa.app.add
+  fields: 0
+  description: Published when an MFA application is added for a user.
+- name: platform.user.mfa.app.remove
+  fields: 0
+  description: Published when an MFA application is removed for a user.
+- name: platform.user.mfa.disabled
+  fields: 0
+  description: Published when multi-factor authentication is disabled for a user.
+- name: platform.user.mfa.enabled
+  fields: 0
+  description: Published when multi-factor authentication is enabled for a user.
+- name: platform.user.password.change
+  fields: 1
+  description: Published when a users password is updated.
+- name: platform.user.password.reset
+  fields: 0
+  description: Published when a users password is reset.
+- name: platform.user.social.disable
+  fields: 0
+  description: Published when an OAuth service provider is removed for a user.
+- name: platform.user.social.enable
+  fields: 2
+  description: Published when an OAuth service provider is added for a user.
+- name: platform.user.update
+  fields: 1
+  description: Published when user account/meta data is updated.
+relationships:
+- from: Org
+  to: Consumer
+  type: belongs_to
+  via: consumer_id
+- from: Org
+  to: Entitlements
+  type: has_one
+  via: entitlements
+- from: Org
+  to: Subscription
+  type: has_many
+  via: subscriptions
+- from: platform.subscription.delete
+  to: Subscription
+  type: has_one
+  via: subscription
+- from: platform.subscription.expired
+  to: Subscription
+  type: has_one
+  via: subscription
+- from: EventDataClient
+  to: Client
+  type: belongs_to
+  via: client_id
+- from: EventDataOrg
+  to: Org
+  type: belongs_to
+  via: org_id
+- from: platform.subscription.create
+  to: Subscription
+  type: has_one
+  via: subscription
+- from: apicentral.credential.expire
+  to: Application
+  type: belongs_to
+  via: application_id
+- from: apicentral.credential.expire
+  to: Org
+  type: belongs_to
+  via: org_id
+- from: EventDataCentral
+  to: Org
+  type: belongs_to
+  via: org_id
+- from: platform.subscription.update
+  to: Subscription
+  type: has_one
+  via: subscription
+- from: api_central.provisioned
+  to: Org
+  type: belongs_to
+  via: org_id
+- from: SessionInfo
+  to: Org
+  type: has_one
+  via: org
+- from: SessionInfo
+  to: Org
+  type: belongs_to
+  via: org_id
+- from: SessionInfo
+  to: User
+  type: has_one
+  via: user
+- from: Consumer
+  to: Org
+  type: belongs_to
+  via: org_id

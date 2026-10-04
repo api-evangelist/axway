@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-custom-query-list-schema.json",
+  "title": "CustomQueryList",
+  "description": "A list of CustomQuery objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-analytics-api-openapi.yml#/components/schemas/CustomQueryList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/CustomQuery"
+  },
+  "$defs": {
+    "CustomQuery": {
+      "type": "object",
+      "required": [
+        "name",
+        "span",
+        "unit"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/DefaultFields"
+        }
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "Identifier of the query.",
+          "readOnly": true,
+          "deprecated": true
+        },
+        "cross_org": {
+          "type": "boolean",
+          "description": "Whether the query is run against all organizations instead of just the organization it belongs to."
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "url",
+          "description": "The analytics endpoint called for the query."
+        },
+        "field": {
+          "type": "string",
+          "description": "Lexus query invoke field."
+        },
+        "filters": {
+          "type": "string",
+          "format": "json",
+          "description": "Lexus filters JSON."
+        },
+        "granularity": {
+          "type": "string",
+          "description": "Unit of time for grouping results; with \"grquantity\", determines interval of results.",
+          "enum": [
+            "month",
+            "day",
+            "hour",
+            "minute"
+          ]
+        },
+        "groupings": {
+          "type": "array",
+          "description": "Field to group results by.",
+          "items": {
+            "type": "object",
+            "required": [
+              "field",
+              "type"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "interval": {
+                "type": "integer",
+                "description": "Interval used when grouping by a numeric field.",
+                "minimum": 1
+              },
+              "limit": {
+                "type": "integer",
+                "description": "Maximum number of items to return for a grouping",
+                "minimum": 1
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "string",
+                  "number",
+                  "duration"
+                ]
+              }
+            }
+          }
+        },
+        "grquantity": {
+          "type": "integer",
+          "description": "Number of units of time for grouping results; with \"granularity\", determines interval of results.",
+          "minimum": 1,
+          "maximum": 200
+        },
+        "guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Identifier for the query."
+        },
+        "include": {
+          "type": "array",
+          "description": "_Find method only._ Which fields to include in each document.",
+          "items": {
+            "type": "string",
+            "description": "Field name."
+          }
+        },
+        "limit": {
+          "type": "integer",
+          "description": "_Find method only._ How many results to include per grouping",
+          "minimum": 1
+        },
+        "method": {
+          "type": "string",
+          "description": "Lexus query invoke method."
+        },
+        "name": {
+          "type": "string",
+          "description": "A name to give the query."
+        },
+        "offset": {
+          "type": "integer",
+          "description": "_Find method only._ How many documents to skip.",
+          "minimum": 0
+        },
+        "org_guid": {
+          "type": "integer",
+          "description": "The guid of the organization the query is saved for."
+        },
+        "rateGranularity": {
+          "type": "string",
+          "description": "_Rate method only._ The granularity at which the rate is displayed.",
+          "enum": [
+            "second",
+            "minute",
+            "hour",
+            "day"
+          ]
+        },
+        "sortField": {
+          "type": "string",
+          "description": "_Find method only._ Field by which to sort events.",
+          "maxProperties": 1
+        },
+        "sortOrder": {
+          "type": "integer",
+          "description": "_Find method only._ Order in which to sort events. 1 (ascending) or -1 (descending).",
+          "enum": [
+            1,
+            -1
+          ],
+          "maxProperties": 1
+        },
+        "span": {
+          "type": "integer",
+          "description": "Number of units of time for queried date range; with \"unit\", determines queried date range.",
+          "minimum": 1,
+          "maximum": 200
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of chart to use to display results.",
+          "enum": [
+            "list",
+            "stream",
+            "line",
+            "bar"
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit of time for date range of query; with \"span\", determines queried date range.",
+          "enum": [
+            "quarter",
+            "month",
+            "week",
+            "day",
+            "hour",
+            "minute"
+          ]
+        },
+        "valueFormat": {
+          "type": "string",
+          "description": "How to format values for the query",
+          "enum": [
+            "duration",
+            "percent"
+          ]
+        },
+        "yAxis": {
+          "type": "string",
+          "description": "How to display series in the y-Axis of the chart.",
+          "enum": [
+            "overlap",
+            "stacked",
+            "ratio"
+          ]
+        }
+      }
+    },
+    "DefaultFields": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date created.",
+          "readOnly": true
+        },
+        "created_by": {
+          "type": "object",
+          "description": "Creator user or client.",
+          "readOnly": true,
+          "properties": {
+            "guid": {
+              "type": "string",
+              "description": "`guid` of the creator."
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of the creator.",
+              "enum": [
+                "user",
+                "client"
+              ]
+            }
+          }
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date last updated.",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

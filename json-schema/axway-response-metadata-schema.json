@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-response-metadata-schema.json",
+  "title": "ResponseMetadata",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-client-api-openapi.yml#/components/schemas/ResponseMetadata",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "number",
+      "description": "Number of results included in the response."
+    },
+    "limit": {
+      "type": "number",
+      "description": "Number of results per page."
+    },
+    "matched": {
+      "type": "number",
+      "description": "Total number of matched results."
+    },
+    "page": {
+      "type": "number",
+      "description": "Page of results."
+    },
+    "pages": {
+      "type": "number",
+      "description": "Total number of pages of results."
+    },
+    "skip": {
+      "type": "number",
+      "description": "Number of results skipped in pagination."
+    }
+  }
+}

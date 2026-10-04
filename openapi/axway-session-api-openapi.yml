@@ -402,21 +402,33 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
-    Error:
+    ResponseMetadata:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
     Org:
       type: object
       required:
@@ -801,6 +813,21 @@ components:
             primary: true
             roles:
             - administrator
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
     Response:
       type: object
       properties:
@@ -808,50 +835,6 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-    ResponseMetadata:
-      type: object
-      properties:
-        count:
-          type: number
-          description: Number of results included in the response.
-          example: 1.0
-        limit:
-          type: number
-          description: Number of results per page.
-          example: 1.0
-        matched:
-          type: number
-          description: Total number of matched results.
-          example: 1.0
-        page:
-          type: number
-          description: Page of results.
-          example: 1.0
-        pages:
-          type: number
-          description: Total number of pages of results.
-          example: 1.0
-        skip:
-          type: number
-          description: Number of results skipped in pagination.
-          example: 1.0
-  parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
   examples:
     LOGIN_REQUIRED:
       value:
@@ -870,6 +853,23 @@ components:
         description: '"%s" contained an invalid value.'
         code: 400
         internalCode: 74
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

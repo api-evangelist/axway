@@ -1,0 +1,16 @@
+generated: '2026-10-04'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io)
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s domain (agentic-access/axway-agentic-access.yml,
+  authentication/axway-authentication.yml, axway.com, linkedin.com, npmjs.com, postman.com, scopes/axway-scopes.yml, security/axway-domain-security.yml,
+  security/axway-trust-center.yml, x.com, youtube.com) or its accepted GitHub org.'
+packages:
+- name: axway
+  registry: npm
+  url: https://www.npmjs.com/package/axway
+  language: JavaScript
+  official: true
+  version: 4.1.0
+  published: '2026-03-04'
+  evidence: metadata names axway.com

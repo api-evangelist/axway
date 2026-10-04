@@ -1,4 +1,4 @@
-generated: '2026-07-11'
+generated: '2026-10-04'
 method: searched
 probe: true
 source: https://trust.axway.com/
@@ -12,6 +12,7 @@ certifications:
 - HIPAA
 - FedRAMP
 - GDPR
+- CSA STAR
 evidence:
 - source: https://trust.axway.com/
   keywords:

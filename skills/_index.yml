@@ -1,0 +1,12 @@
+generated: '2026-10-04'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/axway-auth-api-openapi.yml
+skills:
+- file: skills/axway-delete-session.md
+  name: axway-delete-session
+  api: openapi/axway-session-api-openapi.yml
+  operations:
+  - session_query
+  - session_find
+  - session_remove

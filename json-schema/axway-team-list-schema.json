@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-team-list-schema.json",
+  "title": "TeamList",
+  "description": "A list of Team objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-team-api-openapi.yml#/components/schemas/TeamList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/Team"
+  },
+  "$defs": {
+    "DefaultFields": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date created.",
+          "readOnly": true
+        },
+        "created_by": {
+          "type": "object",
+          "description": "Creator user or client.",
+          "readOnly": true,
+          "properties": {
+            "guid": {
+              "type": "string",
+              "description": "`guid` of the creator."
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of the creator.",
+              "enum": [
+                "user",
+                "client"
+              ]
+            }
+          }
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date last updated.",
+          "readOnly": true
+        }
+      }
+    },
+    "Team": {
+      "type": "object",
+      "required": [
+        "default",
+        "guid",
+        "name",
+        "org_guid",
+        "tags",
+        "users"
+      ],
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/$defs/DefaultFields"
+        }
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "Document ID of the team.",
+          "readOnly": true,
+          "deprecated": true
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date created."
+        },
+        "default": {
+          "type": "boolean",
+          "description": "Whether the team is the default for the organization. May only be set by org administrator users.",
+          "default": false
+        },
+        "desc": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Description of the team.",
+          "maxLength": 200,
+          "x-no-tags": true
+        },
+        "guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "`guid` of the team."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the team.",
+          "minLength": 2,
+          "maxLength": 100,
+          "x-no-tags": true
+        },
+        "org_guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "`guid` of the organization the team belongs to."
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags assigned to the team.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "maxItems": 30,
+          "items": {
+            "type": "string",
+            "maxLength": 40
+          }
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date updated."
+        },
+        "users": {
+          "type": "array",
+          "description": "Members that belong to this team and their roles.",
+          "default": [],
+          "items": {
+            "type": "object",
+            "required": [
+              "guid",
+              "roles"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "guid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "`guid` of the member."
+              },
+              "roles": {
+                "type": "array",
+                "description": "Array of role identifiers that are assigned to the member.",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "consumer",
+                    "subscription_admin",
+                    "developer",
+                    "catalog_manager",
+                    "subscription_approver",
+                    "api_access",
+                    "insights",
+                    "administrator",
+                    "marketplace_admin"
+                  ]
+                }
+              },
+              "type": {
+                "type": "string",
+                "description": "Type of the member.",
+                "default": "user",
+                "enum": [
+                  "user",
+                  "client"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

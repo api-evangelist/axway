@@ -1142,31 +1142,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    add_fields:
-      name: add_fields
-      in: query
-      description: A list of fields to add to the default field set in the response.
-      schema:
-        type: array
-        items:
-          type: string
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
   schemas:
     Team:
       type: object
@@ -1281,6 +1256,12 @@ components:
             roles:
             - consumer
             type: user
+    TeamList:
+      title: TeamList
+      type: array
+      description: A list of Team objects.
+      items:
+        $ref: '#/components/schemas/Team'
     Error:
       type: object
       allOf:
@@ -1296,39 +1277,6 @@ components:
           internalCode:
             type: number
             description: Internal code.
-    TeamList:
-      title: TeamList
-      type: array
-      description: A list of Team objects.
-      items:
-        $ref: '#/components/schemas/Team'
-    ResponseMetadata:
-      type: object
-      properties:
-        count:
-          type: number
-          description: Number of results included in the response.
-          example: 1.0
-        limit:
-          type: number
-          description: Number of results per page.
-          example: 1.0
-        matched:
-          type: number
-          description: Total number of matched results.
-          example: 1.0
-        page:
-          type: number
-          description: Page of results.
-          example: 1.0
-        pages:
-          type: number
-          description: Total number of pages of results.
-          example: 1.0
-        skip:
-          type: number
-          description: Number of results skipped in pagination.
-          example: 1.0
     Response:
       type: object
       properties:
@@ -1369,6 +1317,33 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
     Org:
       type: object
       required:
@@ -1754,12 +1729,6 @@ components:
             roles:
             - administrator
   examples:
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
     FORBIDDEN:
       value:
         success: false
@@ -1771,11 +1740,6 @@ components:
         description: '"%s" is a required parameter.'
         code: 400
         internalCode: 77
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
     PARAM_INVALID:
       value:
         success: false
@@ -1787,11 +1751,47 @@ components:
         success: false
         description: Resource Not Found
         code: 404
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
     LOGIN_REQUIRED:
       value:
         success: false
         description: Sign-in Required
         code: 401
+  parameters:
+    add_fields:
+      name: add_fields
+      in: query
+      description: A list of fields to add to the default field set in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

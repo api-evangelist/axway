@@ -2287,218 +2287,51 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    add_fields:
-      name: add_fields
-      in: query
-      description: A list of fields to add to the default field set in the response.
-      schema:
-        type: array
-        items:
-          type: string
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
+  examples:
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    ITEM_NOT_FOUND:
+      value:
+        success: false
+        description: '"%s" Not Found'
+        code: 404
   schemas:
-    EnvironmentList:
-      title: EnvironmentList
-      type: array
-      description: A list of Environment objects.
-      items:
-        $ref: '#/components/schemas/Environment'
-    UserTeams:
-      type: array
-      description: List of teams the user belongs to.
-      items:
-        type: object
-        description: Teams a user belongs to.
-        properties:
-          default:
-            $ref: '#/components/schemas/Team/properties/default'
-          guid:
-            $ref: '#/components/schemas/Team/properties/guid'
-          name:
-            $ref: '#/components/schemas/Team/properties/name'
-          roles:
-            type: array
-            description: A list of roles the user has in the team
-            items:
-              type: object
-              properties:
-                id:
-                  $ref: '#/components/schemas/Role/properties/id'
-                name:
-                  $ref: '#/components/schemas/Role/properties/name'
-          tags:
-            $ref: '#/components/schemas/Team/properties/tags'
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
-    Team:
-      type: object
-      required:
-      - default
-      - guid
-      - name
-      - org_guid
-      - tags
-      - users
-      unevaluatedProperties: false
-      allOf:
-      - $ref: '#/components/schemas/DefaultFields'
-      properties:
-        _id:
-          type: string
-          description: Document ID of the team.
-          readOnly: true
-          deprecated: true
-          example: 507f1f77bcf86cd799439011
-        created:
-          type: string
-          format: date-time
-          description: Date created.
-          example: '2026-04-21T00:00:00Z'
-        default:
-          type: boolean
-          description: Whether the team is the default for the organization. May only be set by org administrator users.
-          default: false
-          example: true
-        desc:
-          type:
-          - string
-          - 'null'
-          description: Description of the team.
-          maxLength: 200
-          x-no-tags: true
-          example: example_value
-        guid:
-          type: string
-          format: uuid
-          description: '`guid` of the team.'
-          example: example_value
-        name:
-          type: string
-          description: Name of the team.
-          minLength: 2
-          maxLength: 100
-          x-no-tags: true
-          example: Example Name
-        org_guid:
-          type: string
-          format: uuid
-          description: '`guid` of the organization the team belongs to.'
-          example: example_value
-        tags:
-          type: array
-          description: Tags assigned to the team.
-          default: []
-          minItems: 0
-          uniqueItems: true
-          maxItems: 30
-          items:
-            type: string
-            maxLength: 40
-          example:
-          - example_value
-        updated:
-          type: string
-          format: date-time
-          description: Date updated.
-          example: '2026-04-21T00:00:00Z'
-        users:
-          type: array
-          description: Members that belong to this team and their roles.
-          default: []
-          items:
-            type: object
-            required:
-            - guid
-            - roles
-            additionalProperties: false
-            properties:
-              guid:
-                type: string
-                format: uuid
-                description: '`guid` of the member.'
-              roles:
-                type: array
-                description: Array of role identifiers that are assigned to the member.
-                items:
-                  type: string
-                  enum:
-                  - consumer
-                  - subscription_admin
-                  - developer
-                  - catalog_manager
-                  - subscription_approver
-                  - api_access
-                  - insights
-                  - administrator
-                  - marketplace_admin
-              type:
-                type: string
-                description: Type of the member.
-                default: user
-                enum:
-                - user
-                - client
-          example:
-          - guid: example_value
-            roles:
-            - consumer
-            type: user
-    ResponseMetadata:
-      type: object
-      properties:
-        count:
-          type: number
-          description: Number of results included in the response.
-          example: 1.0
-        limit:
-          type: number
-          description: Number of results per page.
-          example: 1.0
-        matched:
-          type: number
-          description: Total number of matched results.
-          example: 1.0
-        page:
-          type: number
-          description: Page of results.
-          example: 1.0
-        pages:
-          type: number
-          description: Total number of pages of results.
-          example: 1.0
-        skip:
-          type: number
-          description: Number of results skipped in pagination.
-          example: 1.0
     Org:
       type: object
       required:
@@ -2883,65 +2716,127 @@ components:
             primary: true
             roles:
             - administrator
-    Environment:
+    Team:
       type: object
       required:
+      - default
       - guid
-      - isProduction
       - name
       - org_guid
-      - type
+      - tags
+      - users
       unevaluatedProperties: false
       allOf:
       - $ref: '#/components/schemas/DefaultFields'
       properties:
         _id:
           type: string
-          description: Document ID of the environment.
+          description: Document ID of the team.
           readOnly: true
           deprecated: true
           example: 507f1f77bcf86cd799439011
-        governance:
+        created:
           type: string
-          description: Governance of the environment.
-          enum:
-          - Customer Managed
-          - Axway Managed
-          example: Customer Managed
-        guid:
-          type: string
-          description: GUID of the environment.
-          example: example_value
-        isProduction:
+          format: date-time
+          description: Date created.
+          example: '2026-04-21T00:00:00Z'
+        default:
           type: boolean
-          description: Whether the environment is a production environment.
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
           default: false
           example: true
+        desc:
+          type:
+          - string
+          - 'null'
+          description: Description of the team.
+          maxLength: 200
+          x-no-tags: true
+          example: example_value
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
         name:
           type: string
-          description: Name of the environment
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
           x-no-tags: true
           example: Example Name
         org_guid:
           type: string
-          description: '`guid` of the organization the environment is associated to.'
+          format: uuid
+          description: '`guid` of the organization the team belongs to.'
           example: example_value
-        source:
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+        updated:
           type: string
-          example: example_value
-        type:
-          type: string
-          description: Type of environment
-          default: usage
-          enum:
-          - usage
-          - integration
-          example: usage
-        url:
-          type: string
-          format: secure-url
-          description: URL of the integration environment.
-          example: https://example.com
+          format: date-time
+          description: Date updated.
+          example: '2026-04-21T00:00:00Z'
+        users:
+          type: array
+          description: Members that belong to this team and their roles.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
+            properties:
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the member.'
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+              type:
+                type: string
+                description: Type of the member.
+                default: user
+                enum:
+                - user
+                - client
+          example:
+          - guid: example_value
+            roles:
+            - consumer
+            type: user
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
     Role:
       type: object
       required:
@@ -3054,157 +2949,6 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
-    Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
-    Subscription:
-      type: object
-      description: Organization entitlements
-      required:
-      - id
-      - product
-      - plan
-      - entitlements
-      additionalProperties: false
-      properties:
-        end_date:
-          type: string
-          format: date-time
-          description: When the subscription is active to.
-          example: '2026-04-21T00:00:00Z'
-        entitlements:
-          type: array
-          items:
-            type: object
-            required:
-            - key
-            - value
-            properties:
-              key:
-                type: string
-                description: Entitlement key.
-              value:
-                oneOf:
-                - type: boolean
-                  description: Boolean entitlement, granting access to a feature of capability.
-                - type: integer
-                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
-                  maximum: 9999999999999
-                - type: number
-                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
-                  maximum: 9999999999999
-                - type: array
-                  description: Set entitlement, listing provisioned service or environment availability.
-                  items:
-                    type: string
-                    description: Service or environment key.
-          example:
-          - key: example_value
-            value: example_value
-        governance:
-          type: string
-          description: Governance model for the subscription.
-          enum:
-          - SaaS
-          - Customer Managed
-          - Axway Managed
-          example: SaaS
-        id:
-          type: string
-          description: Identifier for the subscription.
-          example: 507f1f77bcf86cd799439011
-        opportunity_id:
-          type: number
-          description: Opportunity ID associated with the subscription.
-          minimum: 10000
-          maximum: 999999
-          example: 1.0
-        plan:
-          type: string
-          description: Which plan the subscription is for.
-          example: example_value
-        product:
-          type: string
-          description: Name to identify the product, e.g. APIM, B2Bi.
-          example: example_value
-        product_name:
-          type: string
-          description: Official product name.
-          readOnly: true
-          example: Example Name
-        source:
-          type: string
-          description: Source of this subscription.
-          enum:
-          - API
-          - UI
-          - Platform
-          - Billing
-          example: API
-        start_date:
-          type: string
-          format: date-time
-          description: When the subscription is active from.
-          example: '2026-04-21T00:00:00Z'
-        tier:
-          type: string
-          description: Whether the subscription is a trial or paid for.
-          enum:
-          - paid
-          - trial
-          - free
-          example: paid
-    PasswordPolicy:
-      type: object
-      description: Password policy
-      properties:
-        length:
-          type: integer
-          minimum: 9
-          maximum: 127
-          default: 8
-          example: 1
-        max_length:
-          type: integer
-          minimum: 9
-          maximum: 127
-          default: 128
-          example: 1
-        lower:
-          type: integer
-          minimum: 1
-          example: 1
-        upper:
-          type: integer
-          minimum: 1
-          example: 1
-        special:
-          type: integer
-          minimum: 1
-          example: 1
-        digit:
-          type: integer
-          minimum: 1
-          example: 1
-        lockout:
-          type: integer
-          minimum: 1
-          maximum: 4
-          default: 5
-          example: 1
-        renewal:
-          type: integer
-          minimum: 1
-          example: 1
-        history:
-          type: integer
-          minimum: 1
-          maximum: 10
-          example: 1
     Entitlements:
       type: object
       description: Subscription entitlements
@@ -3998,58 +3742,314 @@ components:
           title: Transaction Event Retention
           description: Length of time transaction events are kept in days.
           example: 1
-    Success:
+    PasswordPolicy:
+      type: object
+      description: Password policy
+      properties:
+        length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 8
+          example: 1
+        max_length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 128
+          example: 1
+        lower:
+          type: integer
+          minimum: 1
+          example: 1
+        upper:
+          type: integer
+          minimum: 1
+          example: 1
+        special:
+          type: integer
+          minimum: 1
+          example: 1
+        digit:
+          type: integer
+          minimum: 1
+          example: 1
+        lockout:
+          type: integer
+          minimum: 1
+          maximum: 4
+          default: 5
+          example: 1
+        renewal:
+          type: integer
+          minimum: 1
+          example: 1
+        history:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 1
+    Error:
       type: object
       allOf:
       - $ref: '#/components/schemas/Response'
       - type: object
         properties:
-          result:
-            description: The response data
-  examples:
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    ITEM_NOT_FOUND:
-      value:
-        success: false
-        description: '"%s" Not Found'
-        code: 404
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
+    Environment:
+      type: object
+      required:
+      - guid
+      - isProduction
+      - name
+      - org_guid
+      - type
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the environment.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        governance:
+          type: string
+          description: Governance of the environment.
+          enum:
+          - Customer Managed
+          - Axway Managed
+          example: Customer Managed
+        guid:
+          type: string
+          description: GUID of the environment.
+          example: example_value
+        isProduction:
+          type: boolean
+          description: Whether the environment is a production environment.
+          default: false
+          example: true
+        name:
+          type: string
+          description: Name of the environment
+          x-no-tags: true
+          example: Example Name
+        org_guid:
+          type: string
+          description: '`guid` of the organization the environment is associated to.'
+          example: example_value
+        source:
+          type: string
+          example: example_value
+        type:
+          type: string
+          description: Type of environment
+          default: usage
+          enum:
+          - usage
+          - integration
+          example: usage
+        url:
+          type: string
+          format: secure-url
+          description: URL of the integration environment.
+          example: https://example.com
+    UserTeams:
+      type: array
+      description: List of teams the user belongs to.
+      items:
+        type: object
+        description: Teams a user belongs to.
+        properties:
+          default:
+            $ref: '#/components/schemas/Team/properties/default'
+          guid:
+            $ref: '#/components/schemas/Team/properties/guid'
+          name:
+            $ref: '#/components/schemas/Team/properties/name'
+          roles:
+            type: array
+            description: A list of roles the user has in the team
+            items:
+              type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/Role/properties/id'
+                name:
+                  $ref: '#/components/schemas/Role/properties/name'
+          tags:
+            $ref: '#/components/schemas/Team/properties/tags'
+    Subscription:
+      type: object
+      description: Organization entitlements
+      required:
+      - id
+      - product
+      - plan
+      - entitlements
+      additionalProperties: false
+      properties:
+        end_date:
+          type: string
+          format: date-time
+          description: When the subscription is active to.
+          example: '2026-04-21T00:00:00Z'
+        entitlements:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                description: Entitlement key.
+              value:
+                oneOf:
+                - type: boolean
+                  description: Boolean entitlement, granting access to a feature of capability.
+                - type: integer
+                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
+                  maximum: 9999999999999
+                - type: number
+                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
+                  maximum: 9999999999999
+                - type: array
+                  description: Set entitlement, listing provisioned service or environment availability.
+                  items:
+                    type: string
+                    description: Service or environment key.
+          example:
+          - key: example_value
+            value: example_value
+        governance:
+          type: string
+          description: Governance model for the subscription.
+          enum:
+          - SaaS
+          - Customer Managed
+          - Axway Managed
+          example: SaaS
+        id:
+          type: string
+          description: Identifier for the subscription.
+          example: 507f1f77bcf86cd799439011
+        opportunity_id:
+          type: number
+          description: Opportunity ID associated with the subscription.
+          minimum: 10000
+          maximum: 999999
+          example: 1.0
+        plan:
+          type: string
+          description: Which plan the subscription is for.
+          example: example_value
+        product:
+          type: string
+          description: Name to identify the product, e.g. APIM, B2Bi.
+          example: example_value
+        product_name:
+          type: string
+          description: Official product name.
+          readOnly: true
+          example: Example Name
+        source:
+          type: string
+          description: Source of this subscription.
+          enum:
+          - API
+          - UI
+          - Platform
+          - Billing
+          example: API
+        start_date:
+          type: string
+          format: date-time
+          description: When the subscription is active from.
+          example: '2026-04-21T00:00:00Z'
+        tier:
+          type: string
+          description: Whether the subscription is a trial or paid for.
+          enum:
+          - paid
+          - trial
+          - free
+          example: paid
+    EnvironmentList:
+      title: EnvironmentList
+      type: array
+      description: A list of Environment objects.
+      items:
+        $ref: '#/components/schemas/Environment'
+  parameters:
+    add_fields:
+      name: add_fields
+      in: query
+      description: A list of fields to add to the default field set in the response.
+      schema:
+        type: array
+        items:
+          type: string
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   responses:
     SuccessResponse:
       description: Success

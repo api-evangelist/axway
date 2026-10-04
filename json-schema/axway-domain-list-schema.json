@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-domain-list-schema.json",
+  "title": "DomainList",
+  "description": "A list of Domain objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-domain-api-openapi.yml#/components/schemas/DomainList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/Domain"
+  },
+  "$defs": {
+    "DefaultFields": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date created.",
+          "readOnly": true
+        },
+        "created_by": {
+          "type": "object",
+          "description": "Creator user or client.",
+          "readOnly": true,
+          "properties": {
+            "guid": {
+              "type": "string",
+              "description": "`guid` of the creator."
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of the creator.",
+              "enum": [
+                "user",
+                "client"
+              ]
+            }
+          }
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date last updated.",
+          "readOnly": true
+        }
+      }
+    },
+    "Domain": {
+      "type": "object",
+      "required": [
+        "orgs",
+        "tld"
+      ],
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/$defs/DefaultFields"
+        }
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "Document ID of the Domain.",
+          "readOnly": true,
+          "deprecated": true
+        },
+        "orgs": {
+          "type": "array",
+          "description": "Organizations associated to this Domain, their association state, and any associated Identity Providers.",
+          "default": [],
+          "items": {
+            "type": "object",
+            "required": [
+              "guid",
+              "status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "enabled": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date the Identity Provider was enabled for users on the Domain."
+              },
+              "associated": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date the Domain was confirmed as associated to the Identity Provider."
+              },
+              "guid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "`guid` of the Organization the Domain is associated to."
+              },
+              "idp": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Identifier of the Identity Provider associated to the Domain for the Organization."
+              },
+              "status": {
+                "type": "number",
+                "description": "Indicator of the Organizations confirmed association to the Domain.",
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "verified": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date the Domain was verified as owned by the Organization."
+              }
+            }
+          }
+        },
+        "provider_guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "GUID identifier of the owning Provider if the Domain is configured in context of consumers of a marketplace."
+        },
+        "tld": {
+          "type": "string",
+          "format": "domain",
+          "description": "Domain name."
+        }
+      }
+    }
+  }
+}

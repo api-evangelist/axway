@@ -176,6 +176,46 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  examples:
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+  parameters:
+    exclude_fields:
+      name: exclude_fields
+      in: query
+      description: A list of fields to exclude from the response.
+      schema:
+        type: array
+        items:
+          type: string
+    fields:
+      name: fields
+      in: query
+      description: A list of fields to include in the response.
+      schema:
+        type: array
+        items:
+          type: string
   schemas:
     Role:
       type: object
@@ -256,6 +296,12 @@ components:
           type: boolean
           description: Indicates that users with the role are only able to access the platform in web contexts.
           example: true
+    RoleList:
+      title: RoleList
+      type: array
+      description: A list of Role objects.
+      items:
+        $ref: '#/components/schemas/Role'
     Error:
       type: object
       allOf:
@@ -271,12 +317,6 @@ components:
           internalCode:
             type: number
             description: Internal code.
-    RoleList:
-      title: RoleList
-      type: array
-      description: A list of Role objects.
-      items:
-        $ref: '#/components/schemas/Role'
     Response:
       type: object
       properties:
@@ -284,46 +324,6 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-  parameters:
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: A list of fields to exclude from the response.
-      schema:
-        type: array
-        items:
-          type: string
-    fields:
-      name: fields
-      in: query
-      description: A list of fields to include in the response.
-      schema:
-        type: array
-        items:
-          type: string
-  examples:
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

@@ -12258,332 +12258,6 @@ components:
           example:
             custom: true
             display: all
-    Team:
-      type: object
-      required:
-      - default
-      - guid
-      - name
-      - org_guid
-      - tags
-      - users
-      unevaluatedProperties: false
-      allOf:
-      - $ref: '#/components/schemas/DefaultFields'
-      properties:
-        _id:
-          type: string
-          description: Document ID of the team.
-          readOnly: true
-          deprecated: true
-          example: 507f1f77bcf86cd799439011
-        created:
-          type: string
-          format: date-time
-          description: Date created.
-          example: '2026-04-21T00:00:00Z'
-        default:
-          type: boolean
-          description: Whether the team is the default for the organization. May only be set by org administrator users.
-          default: false
-          example: true
-        desc:
-          type:
-          - string
-          - 'null'
-          description: Description of the team.
-          maxLength: 200
-          x-no-tags: true
-          example: example_value
-        guid:
-          type: string
-          format: uuid
-          description: '`guid` of the team.'
-          example: example_value
-        name:
-          type: string
-          description: Name of the team.
-          minLength: 2
-          maxLength: 100
-          x-no-tags: true
-          example: Example Name
-        org_guid:
-          type: string
-          format: uuid
-          description: '`guid` of the organization the team belongs to.'
-          example: example_value
-        tags:
-          type: array
-          description: Tags assigned to the team.
-          default: []
-          minItems: 0
-          uniqueItems: true
-          maxItems: 30
-          items:
-            type: string
-            maxLength: 40
-          example:
-          - example_value
-        updated:
-          type: string
-          format: date-time
-          description: Date updated.
-          example: '2026-04-21T00:00:00Z'
-        users:
-          type: array
-          description: Members that belong to this team and their roles.
-          default: []
-          items:
-            type: object
-            required:
-            - guid
-            - roles
-            additionalProperties: false
-            properties:
-              guid:
-                type: string
-                format: uuid
-                description: '`guid` of the member.'
-              roles:
-                type: array
-                description: Array of role identifiers that are assigned to the member.
-                items:
-                  type: string
-                  enum:
-                  - consumer
-                  - subscription_admin
-                  - developer
-                  - catalog_manager
-                  - subscription_approver
-                  - api_access
-                  - insights
-                  - administrator
-                  - marketplace_admin
-              type:
-                type: string
-                description: Type of the member.
-                default: user
-                enum:
-                - user
-                - client
-          example:
-          - guid: example_value
-            roles:
-            - consumer
-            type: user
-    IdentityProvider:
-      type: object
-      required:
-      - guid
-      - name
-      - protocol
-      unevaluatedProperties: false
-      allOf:
-      - $ref: '#/components/schemas/DefaultFields'
-      properties:
-        _id:
-          type: string
-          description: Document ID of the Identity Provider.
-          deprecated: true
-          example: 507f1f77bcf86cd799439011
-        description:
-          type: string
-          description: Description of the Identity Provider.
-          example: An example description
-        guid:
-          type: string
-          format: uuid
-          description: '`guid` of the Identity Provider.'
-          example: example_value
-        name:
-          type: string
-          description: Name of Identity Provider
-          example: Example Name
-        orgs:
-          type: array
-          description: Organizations associated to this Identity Provider and their user associations.
-          default: []
-          items:
-            type: object
-            required:
-            - guid
-            - default_roles
-            - default_teams
-            - mapped_roles
-            - mapped_teams
-            additionalProperties: false
-            properties:
-              case_insensitive_mapped_roles:
-                type: boolean
-                description: Whether to match returned mapped attribute values to expected attribute values without letter case sensitivity.
-              default_roles:
-                type: array
-                description: Array of role identifiers that are assigned to newly provisioned users in the Organization.
-                items:
-                  type: string
-                  enum:
-                  - administrator
-                  - developer
-                  - auditor
-                  - consumer
-                  - usage_reporter
-                  - api_central_admin
-              default_teams:
-                type: array
-                description: Array of teams to assign newly provisioned users in the Organization.
-                default: []
-                items:
-                  type: object
-                  required:
-                  - guid
-                  - roles
-                  additionalProperties: false
-                  properties:
-                    guid:
-                      type: string
-                      format: uuid
-                      description: '`guid` of the team within the Organization the assign newly provisioned users.'
-                    roles:
-                      type: array
-                      description: Array of role identifiers that are assigned to newly provisioned users in the team.
-                      items:
-                        type: string
-                        enum:
-                        - consumer
-                        - subscription_admin
-                        - developer
-                        - catalog_manager
-                        - subscription_approver
-                        - api_access
-                        - insights
-                        - administrator
-                        - marketplace_admin
-              enforce_mapped_roles:
-                type: boolean
-                description: Whether to restrict organization role management solely to mapped IdP attributes. Any organization role(s) that a user has that does not match to an associated mapper (or the Default Organization Roles) will be removed on subsequent sign in.
-              enforce_mapped_teams:
-                type: boolean
-                description: Whether to restrict team membership and role management solely to mapped IdP attributes. Any team memberships or roles that a user has that does not match to an associated mapper will be removed on subsequent sign in.
-              guid:
-                type: string
-                format: uuid
-                description: '`guid` of the Organization the Identity Provider is associated to.'
-              mapped_roles:
-                type: array
-                description: Array of role identifiers to assign users in the Organization based on attributes defined by the Identity Provider.
-                default: []
-                items:
-                  type: object
-                  required:
-                  - value
-                  - roles
-                  additionalProperties: false
-                  properties:
-                    friendly:
-                      type: string
-                      description: Friendly name of the attribute provided by the SAML Identity Provider.
-                    name:
-                      type: string
-                      description: Name of the attribute provided by the Identity Provider.
-                    roles:
-                      type: array
-                      description: Array of role identifiers to be assigned to matching users in the Organization.
-                      items:
-                        type: string
-                        enum:
-                        - administrator
-                        - developer
-                        - auditor
-                        - consumer
-                        - usage_reporter
-                        - api_central_admin
-                    value:
-                      type: string
-                      description: Value of the named attribute to determine whether to apply the role.
-              mapped_teams:
-                type: array
-                description: Array of teams to assign users in the Organization based on attributes defined by the Identity Provider.
-                default: []
-                items:
-                  type: object
-                  required:
-                  - team_guid
-                  - value
-                  - roles
-                  additionalProperties: false
-                  properties:
-                    friendly:
-                      type: string
-                      description: Friendly name of the attribute provided by the SAML Identity Provider.
-                    name:
-                      type: string
-                      description: Name of the attribute provided by the Identity Provider.
-                    roles:
-                      type: array
-                      description: Array of role identifiers to be assigned to matching users in the team.
-                      items:
-                        type: string
-                        enum:
-                        - consumer
-                        - subscription_admin
-                        - developer
-                        - catalog_manager
-                        - subscription_approver
-                        - api_access
-                        - insights
-                        - administrator
-                        - marketplace_admin
-                    team_guid:
-                      type: string
-                      format: uuid
-                      description: '`guid` of the team within the Organization the assign matching users.'
-                    value:
-                      type: string
-                      description: Value of the named attribute to determine whether to apply the team association.
-              provision_adhoc:
-                type: boolean
-                description: Whether to automatically register users who authenticate using the Identity Provider that are not on an associated claimed email domain as members of the organization.
-                default: false
-              restrict_domain_users:
-                type: boolean
-                description: Whether to automatically restrict users provisioned via domain association to authenticate using the Identity Provider.
-                default: false
-          example:
-          - case_insensitive_mapped_roles: true
-            default_roles:
-            - administrator
-            default_teams:
-            - guid: example_value
-              roles:
-              - consumer
-            enforce_mapped_roles: true
-            enforce_mapped_teams: true
-            guid: example_value
-            mapped_roles:
-            - friendly: example_value
-              name: Example Name
-              roles:
-              - administrator
-              value: example_value
-            mapped_teams:
-            - friendly: example_value
-              name: Example Name
-              roles:
-              - consumer
-              team_guid: example_value
-              value: example_value
-            provision_adhoc: true
-            restrict_domain_users: true
-        protocol:
-          type: string
-          description: Protocol the Identity Provider uses.
-          enum:
-          - oidc
-          - saml
-          example: oidc
-        provider_guid:
-          type: string
-          example: example_value
     Consumer:
       type: object
       properties:
@@ -12617,110 +12291,53 @@ components:
           type: integer
           description: Count of users in the consumer org.
           example: 1
-    Response:
+    PasswordPolicy:
       type: object
+      description: Password policy
       properties:
-        success:
-          type: boolean
-          description: Whether the request was successful.
-          example: true
-    Subscription:
-      type: object
-      description: Organization entitlements
-      required:
-      - id
-      - product
-      - plan
-      - entitlements
-      additionalProperties: false
-      properties:
-        end_date:
-          type: string
-          format: date-time
-          description: When the subscription is active to.
-          example: '2026-04-21T00:00:00Z'
-        entitlements:
-          type: array
-          items:
-            type: object
-            required:
-            - key
-            - value
-            properties:
-              key:
-                type: string
-                description: Entitlement key.
-              value:
-                oneOf:
-                - type: boolean
-                  description: Boolean entitlement, granting access to a feature of capability.
-                - type: integer
-                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
-                  maximum: 9999999999999
-                - type: number
-                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
-                  maximum: 9999999999999
-                - type: array
-                  description: Set entitlement, listing provisioned service or environment availability.
-                  items:
-                    type: string
-                    description: Service or environment key.
-          example:
-          - key: example_value
-            value: example_value
-        governance:
-          type: string
-          description: Governance model for the subscription.
-          enum:
-          - SaaS
-          - Customer Managed
-          - Axway Managed
-          example: SaaS
-        id:
-          type: string
-          description: Identifier for the subscription.
-          example: 507f1f77bcf86cd799439011
-        opportunity_id:
-          type: number
-          description: Opportunity ID associated with the subscription.
-          minimum: 10000
-          maximum: 999999
-          example: 1.0
-        plan:
-          type: string
-          description: Which plan the subscription is for.
-          example: example_value
-        product:
-          type: string
-          description: Name to identify the product, e.g. APIM, B2Bi.
-          example: example_value
-        product_name:
-          type: string
-          description: Official product name.
-          readOnly: true
-          example: Example Name
-        source:
-          type: string
-          description: Source of this subscription.
-          enum:
-          - API
-          - UI
-          - Platform
-          - Billing
-          example: API
-        start_date:
-          type: string
-          format: date-time
-          description: When the subscription is active from.
-          example: '2026-04-21T00:00:00Z'
-        tier:
-          type: string
-          description: Whether the subscription is a trial or paid for.
-          enum:
-          - paid
-          - trial
-          - free
-          example: paid
+        length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 8
+          example: 1
+        max_length:
+          type: integer
+          minimum: 9
+          maximum: 127
+          default: 128
+          example: 1
+        lower:
+          type: integer
+          minimum: 1
+          example: 1
+        upper:
+          type: integer
+          minimum: 1
+          example: 1
+        special:
+          type: integer
+          minimum: 1
+          example: 1
+        digit:
+          type: integer
+          minimum: 1
+          example: 1
+        lockout:
+          type: integer
+          minimum: 1
+          maximum: 4
+          default: 5
+          example: 1
+        renewal:
+          type: integer
+          minimum: 1
+          example: 1
+        history:
+          type: integer
+          minimum: 1
+          maximum: 10
+          example: 1
     Org:
       type: object
       required:
@@ -13105,6 +12722,234 @@ components:
             primary: true
             roles:
             - administrator
+    IdentityProvider:
+      type: object
+      required:
+      - guid
+      - name
+      - protocol
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the Identity Provider.
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        description:
+          type: string
+          description: Description of the Identity Provider.
+          example: An example description
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the Identity Provider.'
+          example: example_value
+        name:
+          type: string
+          description: Name of Identity Provider
+          example: Example Name
+        orgs:
+          type: array
+          description: Organizations associated to this Identity Provider and their user associations.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - default_roles
+            - default_teams
+            - mapped_roles
+            - mapped_teams
+            additionalProperties: false
+            properties:
+              case_insensitive_mapped_roles:
+                type: boolean
+                description: Whether to match returned mapped attribute values to expected attribute values without letter case sensitivity.
+              default_roles:
+                type: array
+                description: Array of role identifiers that are assigned to newly provisioned users in the Organization.
+                items:
+                  type: string
+                  enum:
+                  - administrator
+                  - developer
+                  - auditor
+                  - consumer
+                  - usage_reporter
+                  - api_central_admin
+              default_teams:
+                type: array
+                description: Array of teams to assign newly provisioned users in the Organization.
+                default: []
+                items:
+                  type: object
+                  required:
+                  - guid
+                  - roles
+                  additionalProperties: false
+                  properties:
+                    guid:
+                      type: string
+                      format: uuid
+                      description: '`guid` of the team within the Organization the assign newly provisioned users.'
+                    roles:
+                      type: array
+                      description: Array of role identifiers that are assigned to newly provisioned users in the team.
+                      items:
+                        type: string
+                        enum:
+                        - consumer
+                        - subscription_admin
+                        - developer
+                        - catalog_manager
+                        - subscription_approver
+                        - api_access
+                        - insights
+                        - administrator
+                        - marketplace_admin
+              enforce_mapped_roles:
+                type: boolean
+                description: Whether to restrict organization role management solely to mapped IdP attributes. Any organization role(s) that a user has that does not match to an associated mapper (or the Default Organization Roles) will be removed on subsequent sign in.
+              enforce_mapped_teams:
+                type: boolean
+                description: Whether to restrict team membership and role management solely to mapped IdP attributes. Any team memberships or roles that a user has that does not match to an associated mapper will be removed on subsequent sign in.
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the Organization the Identity Provider is associated to.'
+              mapped_roles:
+                type: array
+                description: Array of role identifiers to assign users in the Organization based on attributes defined by the Identity Provider.
+                default: []
+                items:
+                  type: object
+                  required:
+                  - value
+                  - roles
+                  additionalProperties: false
+                  properties:
+                    friendly:
+                      type: string
+                      description: Friendly name of the attribute provided by the SAML Identity Provider.
+                    name:
+                      type: string
+                      description: Name of the attribute provided by the Identity Provider.
+                    roles:
+                      type: array
+                      description: Array of role identifiers to be assigned to matching users in the Organization.
+                      items:
+                        type: string
+                        enum:
+                        - administrator
+                        - developer
+                        - auditor
+                        - consumer
+                        - usage_reporter
+                        - api_central_admin
+                    value:
+                      type: string
+                      description: Value of the named attribute to determine whether to apply the role.
+              mapped_teams:
+                type: array
+                description: Array of teams to assign users in the Organization based on attributes defined by the Identity Provider.
+                default: []
+                items:
+                  type: object
+                  required:
+                  - team_guid
+                  - value
+                  - roles
+                  additionalProperties: false
+                  properties:
+                    friendly:
+                      type: string
+                      description: Friendly name of the attribute provided by the SAML Identity Provider.
+                    name:
+                      type: string
+                      description: Name of the attribute provided by the Identity Provider.
+                    roles:
+                      type: array
+                      description: Array of role identifiers to be assigned to matching users in the team.
+                      items:
+                        type: string
+                        enum:
+                        - consumer
+                        - subscription_admin
+                        - developer
+                        - catalog_manager
+                        - subscription_approver
+                        - api_access
+                        - insights
+                        - administrator
+                        - marketplace_admin
+                    team_guid:
+                      type: string
+                      format: uuid
+                      description: '`guid` of the team within the Organization the assign matching users.'
+                    value:
+                      type: string
+                      description: Value of the named attribute to determine whether to apply the team association.
+              provision_adhoc:
+                type: boolean
+                description: Whether to automatically register users who authenticate using the Identity Provider that are not on an associated claimed email domain as members of the organization.
+                default: false
+              restrict_domain_users:
+                type: boolean
+                description: Whether to automatically restrict users provisioned via domain association to authenticate using the Identity Provider.
+                default: false
+          example:
+          - case_insensitive_mapped_roles: true
+            default_roles:
+            - administrator
+            default_teams:
+            - guid: example_value
+              roles:
+              - consumer
+            enforce_mapped_roles: true
+            enforce_mapped_teams: true
+            guid: example_value
+            mapped_roles:
+            - friendly: example_value
+              name: Example Name
+              roles:
+              - administrator
+              value: example_value
+            mapped_teams:
+            - friendly: example_value
+              name: Example Name
+              roles:
+              - consumer
+              team_guid: example_value
+              value: example_value
+            provision_adhoc: true
+            restrict_domain_users: true
+        protocol:
+          type: string
+          description: Protocol the Identity Provider uses.
+          enum:
+          - oidc
+          - saml
+          example: oidc
+        provider_guid:
+          type: string
+          example: example_value
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful.
+          example: true
     Error:
       type: object
       allOf:
@@ -13120,6 +12965,146 @@ components:
           internalCode:
             type: number
             description: Internal code.
+    Team:
+      type: object
+      required:
+      - default
+      - guid
+      - name
+      - org_guid
+      - tags
+      - users
+      unevaluatedProperties: false
+      allOf:
+      - $ref: '#/components/schemas/DefaultFields'
+      properties:
+        _id:
+          type: string
+          description: Document ID of the team.
+          readOnly: true
+          deprecated: true
+          example: 507f1f77bcf86cd799439011
+        created:
+          type: string
+          format: date-time
+          description: Date created.
+          example: '2026-04-21T00:00:00Z'
+        default:
+          type: boolean
+          description: Whether the team is the default for the organization. May only be set by org administrator users.
+          default: false
+          example: true
+        desc:
+          type:
+          - string
+          - 'null'
+          description: Description of the team.
+          maxLength: 200
+          x-no-tags: true
+          example: example_value
+        guid:
+          type: string
+          format: uuid
+          description: '`guid` of the team.'
+          example: example_value
+        name:
+          type: string
+          description: Name of the team.
+          minLength: 2
+          maxLength: 100
+          x-no-tags: true
+          example: Example Name
+        org_guid:
+          type: string
+          format: uuid
+          description: '`guid` of the organization the team belongs to.'
+          example: example_value
+        tags:
+          type: array
+          description: Tags assigned to the team.
+          default: []
+          minItems: 0
+          uniqueItems: true
+          maxItems: 30
+          items:
+            type: string
+            maxLength: 40
+          example:
+          - example_value
+        updated:
+          type: string
+          format: date-time
+          description: Date updated.
+          example: '2026-04-21T00:00:00Z'
+        users:
+          type: array
+          description: Members that belong to this team and their roles.
+          default: []
+          items:
+            type: object
+            required:
+            - guid
+            - roles
+            additionalProperties: false
+            properties:
+              guid:
+                type: string
+                format: uuid
+                description: '`guid` of the member.'
+              roles:
+                type: array
+                description: Array of role identifiers that are assigned to the member.
+                items:
+                  type: string
+                  enum:
+                  - consumer
+                  - subscription_admin
+                  - developer
+                  - catalog_manager
+                  - subscription_approver
+                  - api_access
+                  - insights
+                  - administrator
+                  - marketplace_admin
+              type:
+                type: string
+                description: Type of the member.
+                default: user
+                enum:
+                - user
+                - client
+          example:
+          - guid: example_value
+            roles:
+            - consumer
+            type: user
+    ResponseMetadata:
+      type: object
+      properties:
+        count:
+          type: number
+          description: Number of results included in the response.
+          example: 1.0
+        limit:
+          type: number
+          description: Number of results per page.
+          example: 1.0
+        matched:
+          type: number
+          description: Total number of matched results.
+          example: 1.0
+        page:
+          type: number
+          description: Page of results.
+          example: 1.0
+        pages:
+          type: number
+          description: Total number of pages of results.
+          example: 1.0
+        skip:
+          type: number
+          description: Number of results skipped in pagination.
+          example: 1.0
     DefaultFields:
       type: object
       unevaluatedProperties: false
@@ -13153,53 +13138,103 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
-    PasswordPolicy:
+    Subscription:
       type: object
-      description: Password policy
+      description: Organization entitlements
+      required:
+      - id
+      - product
+      - plan
+      - entitlements
+      additionalProperties: false
       properties:
-        length:
-          type: integer
-          minimum: 9
-          maximum: 127
-          default: 8
-          example: 1
-        max_length:
-          type: integer
-          minimum: 9
-          maximum: 127
-          default: 128
-          example: 1
-        lower:
-          type: integer
-          minimum: 1
-          example: 1
-        upper:
-          type: integer
-          minimum: 1
-          example: 1
-        special:
-          type: integer
-          minimum: 1
-          example: 1
-        digit:
-          type: integer
-          minimum: 1
-          example: 1
-        lockout:
-          type: integer
-          minimum: 1
-          maximum: 4
-          default: 5
-          example: 1
-        renewal:
-          type: integer
-          minimum: 1
-          example: 1
-        history:
-          type: integer
-          minimum: 1
-          maximum: 10
-          example: 1
+        end_date:
+          type: string
+          format: date-time
+          description: When the subscription is active to.
+          example: '2026-04-21T00:00:00Z'
+        entitlements:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+                description: Entitlement key.
+              value:
+                oneOf:
+                - type: boolean
+                  description: Boolean entitlement, granting access to a feature of capability.
+                - type: integer
+                  description: Integer entitlement value, granting quota of allow transactions or requests per month.
+                  maximum: 9999999999999
+                - type: number
+                  description: Numeric entitlement value, granting allow volumes of network throughput or storage.
+                  maximum: 9999999999999
+                - type: array
+                  description: Set entitlement, listing provisioned service or environment availability.
+                  items:
+                    type: string
+                    description: Service or environment key.
+          example:
+          - key: example_value
+            value: example_value
+        governance:
+          type: string
+          description: Governance model for the subscription.
+          enum:
+          - SaaS
+          - Customer Managed
+          - Axway Managed
+          example: SaaS
+        id:
+          type: string
+          description: Identifier for the subscription.
+          example: 507f1f77bcf86cd799439011
+        opportunity_id:
+          type: number
+          description: Opportunity ID associated with the subscription.
+          minimum: 10000
+          maximum: 999999
+          example: 1.0
+        plan:
+          type: string
+          description: Which plan the subscription is for.
+          example: example_value
+        product:
+          type: string
+          description: Name to identify the product, e.g. APIM, B2Bi.
+          example: example_value
+        product_name:
+          type: string
+          description: Official product name.
+          readOnly: true
+          example: Example Name
+        source:
+          type: string
+          description: Source of this subscription.
+          enum:
+          - API
+          - UI
+          - Platform
+          - Billing
+          example: API
+        start_date:
+          type: string
+          format: date-time
+          description: When the subscription is active from.
+          example: '2026-04-21T00:00:00Z'
+        tier:
+          type: string
+          description: Whether the subscription is a trial or paid for.
+          enum:
+          - paid
+          - trial
+          - free
+          example: paid
     Entitlements:
       type: object
       description: Subscription entitlements
@@ -13993,92 +14028,11 @@ components:
           title: Transaction Event Retention
           description: Length of time transaction events are kept in days.
           example: 1
-    ResponseMetadata:
-      type: object
-      properties:
-        count:
-          type: number
-          description: Number of results included in the response.
-          example: 1.0
-        limit:
-          type: number
-          description: Number of results per page.
-          example: 1.0
-        matched:
-          type: number
-          description: Total number of matched results.
-          example: 1.0
-        page:
-          type: number
-          description: Page of results.
-          example: 1.0
-        pages:
-          type: number
-          description: Total number of pages of results.
-          example: 1.0
-        skip:
-          type: number
-          description: Number of results skipped in pagination.
-          example: 1.0
-    Success:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          result:
-            description: The response data
-  responses:
-    SuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Success'
-  examples:
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
   parameters:
-    exclude_fields:
-      name: exclude_fields
+    add_fields:
+      name: add_fields
       in: query
-      description: A list of fields to exclude from the response.
+      description: A list of fields to add to the default field set in the response.
       schema:
         type: array
         items:
@@ -14091,14 +14045,60 @@ components:
         type: array
         items:
           type: string
-    add_fields:
-      name: add_fields
+    exclude_fields:
+      name: exclude_fields
       in: query
-      description: A list of fields to add to the default field set in the response.
+      description: A list of fields to exclude from the response.
       schema:
         type: array
         items:
           type: string
+  examples:
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

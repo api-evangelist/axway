@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-application-list-schema.json",
+  "title": "ApplicationList",
+  "description": "A list of Application objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-app-api-openapi.yml#/components/schemas/ApplicationList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/Application"
+  },
+  "$defs": {
+    "Application": {
+      "type": "object",
+      "required": [
+        "guid",
+        "name",
+        "org_guid",
+        "platform",
+        "type"
+      ],
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/$defs/DefaultFields"
+        }
+      ],
+      "if": {
+        "type": "object",
+        "title": "Document Resource",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "documentresource"
+            ]
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "title": "Document Resource",
+        "properties": {
+          "default_lang": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "en-US",
+              "fr-FR",
+              "de-DE",
+              "pt-BR"
+            ]
+          },
+          "description": {
+            "type": "object",
+            "description": "Description of the application.",
+            "properties": {
+              "en-US": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "English language value.",
+                "x-no-tags": true
+              },
+              "fr-FR": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "French language value.",
+                "x-no-tags": true
+              },
+              "de-DE": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "German language value.",
+                "x-no-tags": true
+              },
+              "pt-BR": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Portuguese language value.",
+                "x-no-tags": true
+              }
+            }
+          },
+          "name": {
+            "type": "object",
+            "description": "Name of the application.",
+            "properties": {
+              "en-US": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "English language value.",
+                "x-no-tags": true
+              },
+              "fr-FR": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "French language value.",
+                "x-no-tags": true
+              },
+              "de-DE": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "German language value.",
+                "x-no-tags": true
+              },
+              "pt-BR": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Portuguese language value.",
+                "x-no-tags": true
+              }
+            }
+          },
+          "url": {
+            "type": "object",
+            "description": "URL for the application.",
+            "properties": {
+              "en-US": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "English language value.",
+                "x-no-tags": true
+              },
+              "fr-FR": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "French language value.",
+                "x-no-tags": true
+              },
+              "de-DE": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "German language value.",
+                "x-no-tags": true
+              },
+              "pt-BR": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Portuguese language value.",
+                "x-no-tags": true
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "type": "object",
+        "title": "Other Type",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Description of the application.",
+            "x-no-tags": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the application.",
+            "x-no-tags": true
+          },
+          "url": {
+            "type": "string",
+            "description": "URL for the application.",
+            "x-no-tags": true
+          }
+        }
+      },
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "ID of the application.",
+          "readOnly": true,
+          "deprecated": true
+        },
+        "apis": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "automatic": {
+          "type": "boolean"
+        },
+        "env": {
+          "type": "string"
+        },
+        "guid": {
+          "type": "string",
+          "description": "Application guid."
+        },
+        "org_guid": {
+          "type": "string",
+          "description": "The `guid` of the org the application belongs to."
+        },
+        "platform": {
+          "type": "string",
+          "description": "Name of the platform the application being developed for."
+        },
+        "provider_guid": {
+          "type": "string"
+        },
+        "providers": {
+          "type": "array",
+          "description": "The provider marketplaces the application is published to. Set for \"product\" and \"documentresource\" applications.",
+          "items": {
+            "type": "object",
+            "required": [
+              "guid"
+            ],
+            "properties": {
+              "guid": {
+                "type": "string",
+                "description": "The `guid` of the provider marketplace."
+              },
+              "published_id": {
+                "type": "string",
+                "description": "The published id of the application in the provider marketplace."
+              }
+            }
+          }
+        },
+        "source": {
+          "type": "string",
+          "x-no-tags": true
+        },
+        "subtype": {
+          "type": "string",
+          "x-no-tags": true
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the application",
+          "x-no-tags": true
+        }
+      }
+    },
+    "DefaultFields": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date created.",
+          "readOnly": true
+        },
+        "created_by": {
+          "type": "object",
+          "description": "Creator user or client.",
+          "readOnly": true,
+          "properties": {
+            "guid": {
+              "type": "string",
+              "description": "`guid` of the creator."
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of the creator.",
+              "enum": [
+                "user",
+                "client"
+              ]
+            }
+          }
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date last updated.",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

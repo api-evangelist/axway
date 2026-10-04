@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-default-fields-schema.json",
+  "title": "DefaultFields",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-client-api-openapi.yml#/components/schemas/DefaultFields",
+  "type": "object",
+  "unevaluatedProperties": false,
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date created.",
+      "readOnly": true
+    },
+    "created_by": {
+      "type": "object",
+      "description": "Creator user or client.",
+      "readOnly": true,
+      "properties": {
+        "guid": {
+          "type": "string",
+          "description": "`guid` of the creator."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the creator.",
+          "enum": [
+            "user",
+            "client"
+          ]
+        }
+      }
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date last updated.",
+      "readOnly": true
+    }
+  }
+}

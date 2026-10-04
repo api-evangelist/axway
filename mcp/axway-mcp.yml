@@ -1,0 +1,233 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/axway-aca-api-openapi.yml
+- openapi/axway-activity-api-openapi.yml
+- openapi/axway-analytics-api-openapi.yml
+- openapi/axway-app-api-openapi.yml
+- openapi/axway-auth-api-openapi.yml
+- openapi/axway-client-api-openapi.yml
+- openapi/axway-domain-api-openapi.yml
+- openapi/axway-entitlement-api-openapi.yml
+- openapi/axway-env-api-openapi.yml
+- openapi/axway-export-api-openapi.yml
+- openapi/axway-idp-api-openapi.yml
+- openapi/axway-org-api-openapi.yml
+- openapi/axway-provider-api-openapi.yml
+- openapi/axway-role-api-openapi.yml
+- openapi/axway-session-api-openapi.yml
+- openapi/axway-subscription-api-openapi.yml
+- openapi/axway-team-api-openapi.yml
+- openapi/axway-telemetry-api-openapi.yml
+- openapi/axway-usage-api-openapi.yml
+- openapi/axway-user-api-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: No MCP server was found. The pre-flight posted tools/list to /mcp on api.axway.com, api.netlify.app, apicentral.axway.com, docs.axway.com;
+  verdict absent. Candidate tools below are derived from the 141 operation(s) in the provider's own OpenAPI (40 listed); they describe what a
+  server WOULD expose, not one that exists.
+tools:
+- name: aca_set_metadata
+  operationId: aca_setMetadata
+  method: PUT
+  path: /aca/{app_id}/crash/{aca_id}/metadata/{name}
+  description: Axway Set Metadata by ID
+- name: activity_find_events
+  operationId: activity_findEvents
+  method: GET
+  path: /activity/event
+  description: Axway Get Activity Event Names
+- name: analytics_query
+  operationId: analytics_query
+  method: GET
+  path: /analytics/query
+  description: Axway Analytics Query Using Lexus
+- name: app_create
+  operationId: app_create
+  method: POST
+  path: /app
+  description: Axway Create App
+- name: auth_validate_password
+  operationId: auth_validatePassword
+  method: POST
+  path: /auth/validatePassword
+  description: Axway Validates a User Password
+- name: client_create
+  operationId: client_create
+  method: POST
+  path: /client
+  description: Axway Add Service Account
+- name: org_domain_associate
+  operationId: org_domainAssociate
+  method: POST
+  path: /org/{org_id}/domain/verify
+  description: Axway Trigger Domain Association Flow
+- name: entitlement_find
+  operationId: entitlement_find
+  method: GET
+  path: /entitlement
+  description: Axway Get Entitlement Meta
+- name: env_create
+  operationId: env_create
+  method: POST
+  path: /env
+  description: Axway Create Environment
+- name: export_create
+  operationId: export_create
+  method: POST
+  path: /export
+  description: Axway Export Data
+- name: provider_idp_create_saml
+  operationId: provider_idpCreateSAML
+  method: POST
+  path: /provider/{provider_id}/idp/saml
+  description: Axway Create Consumer SAML V2.0 IdP
+- name: org_find_envs
+  operationId: org_findEnvs
+  method: GET
+  path: /org/env
+  description: Axway Find Organization Environments
+- name: provider_create
+  operationId: provider_create
+  method: POST
+  path: /provider
+  description: Axway Create Provider Marketplace
+- name: role_find
+  operationId: role_find
+  method: GET
+  path: /role
+  description: Axway Get Roles Matching Query
+- name: session_query
+  operationId: session_query
+  method: POST
+  path: /session/query
+  description: Axway Find Sessions
+- name: org_find_one_subscription
+  operationId: org_findOneSubscription
+  method: GET
+  path: /org/{org_id}/subscription/{subscription_id}
+  description: Axway Find Subscription
+- name: team_create
+  operationId: team_create
+  method: POST
+  path: /team
+  description: Axway Create a Team
+- name: analytics_create
+  operationId: analytics_create
+  method: POST
+  path: /analytics
+  description: Axway Send Events
+- name: usage_upload_automatic
+  operationId: usage_uploadAutomatic
+  method: POST
+  path: /usage/automatic
+  description: Axway Uploads an Automatic Usage Report
+- name: user_update_pref
+  operationId: user_updatePref
+  method: PUT
+  path: /user/pref
+  description: Axway Update a Single User Preference
+- name: aca_find_one
+  operationId: aca_findOne
+  method: GET
+  path: /aca/{app_id}/crash/{aca_id}
+  description: Axway Find Crash Record by ID
+- name: activity_find
+  operationId: activity_find
+  method: GET
+  path: /activity
+  description: Axway Get Activity
+- name: analytics_error
+  operationId: analytics_error
+  method: POST
+  path: /analytics/error
+  description: Axway Report an Error
+- name: app_find
+  operationId: app_find
+  method: GET
+  path: /app
+  description: Axway Find Apps
+- name: auth_accept_terms
+  operationId: auth_acceptTerms
+  method: PUT
+  path: /auth/terms
+  description: Axway Accept Terms & Conditions
+- name: client_find
+  operationId: client_find
+  method: GET
+  path: /client
+  description: Axway Get Service Accounts
+- name: org_domain_associate_subdomain
+  operationId: org_domainAssociateSubdomain
+  method: POST
+  path: /org/{org_id}/domain/subdomain
+  description: Axway Associate Subdomain to Parent Domain IdP
+- name: env_find
+  operationId: env_find
+  method: GET
+  path: /env
+  description: Axway Find Environments
+- name: export_find_all
+  operationId: export_findAll
+  method: GET
+  path: /export
+  description: Axway Find Exports
+- name: provider_idp_create_oidc
+  operationId: provider_idpCreateOIDC
+  method: POST
+  path: /provider/{provider_id}/idp/oidc
+  description: Axway Create Consumer OIDC IdP
+- name: org_user_primary
+  operationId: org_userPrimary
+  method: PUT
+  path: /org/{org_id}/user/{user_guid}/primary
+  description: Axway Sets the Primary Contract for the Org
+- name: provider_find
+  operationId: provider_find
+  method: GET
+  path: /provider
+  description: Axway Get Provider Marketplaces
+- name: role_find_one
+  operationId: role_findOne
+  method: GET
+  path: /role/{role_id}
+  description: Axway Get Role
+- name: session_find
+  operationId: session_find
+  method: GET
+  path: /session
+  description: Axway Get Session
+- name: org_find_subscriptions
+  operationId: org_findSubscriptions
+  method: GET
+  path: /org/{org_id}/subscription
+  description: Axway Find Subscriptions
+- name: team_find
+  operationId: team_find
+  method: GET
+  path: /team
+  description: Axway Get Accessible Teams for the Query
+- name: usage_find
+  operationId: usage_find
+  method: GET
+  path: /usage
+  description: Axway Fetches Usage Reports
+- name: user_find_orgs
+  operationId: user_findOrgs
+  method: GET
+  path: /user/organizations
+  description: Axway Get Organizations
+- name: analytics_custom_create
+  operationId: analytics_customCreate
+  method: POST
+  path: /analytics/custom_query
+  description: Axway Create a Custom Query
+- name: app_find_one
+  operationId: app_findOne
+  method: GET
+  path: /app/{app_id}
+  description: Axway Find App

@@ -1,0 +1,15 @@
+generated: '2026-10-04'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.axway.com/bundle/AccountingIntegrator_221_ReleaseNotes_allOS_en_HTML5/page/Content/ReleaseNotes/AccountingIntegrator_ReleaseNotes_allOS_en.htm
+sources:
+- https://docs.axway.com/bundle/AccountingIntegrator_221_ReleaseNotes_allOS_en_HTML5/page/Content/ReleaseNotes/AccountingIntegrator_ReleaseNotes_allOS_en.htm
+entries:
+- breaking: false
+  highlights:
+  - Turbo mode is only available on z/OS and can only be used if all numbers are valid integers.
+  - The Rule Engine Server is a new optional component of AccountingIntegrator providing an online accounting transformation service.
+  - Audit traces are enriched with rule information such as aggregation rule name and transformation rule name.
+current_version: 2.2.1
+note: Only the AccountingIntegrator 2.2.1 release notes are listed on the page; no other versions or dates are provided.
+docs: https://docs.axway.com/bundle/AccountingIntegrator_221_ReleaseNotes_allOS_en_HTML5/page/Content/ReleaseNotes/AccountingIntegrator_ReleaseNotes_allOS_en.htm

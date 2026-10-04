@@ -1,0 +1,57 @@
+generated: '2026-10-04'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: fastly
+  name: Fastly
+  area: cdn
+  host: www.axway.com
+  evidence: header:x-served-by:cache-
+  signal: header
+  confidence: high
+  kin_score: []
+- vendor: netlify
+  name: Netlify
+  area: hosting
+  host: streams-open-docs.netlify.app
+  evidence: header:x-nf-request-id
+  signal: header
+  confidence: high
+  kin_score: []
+reliance:
+  areas_vendor_served:
+  - cdn
+  - hosting
+  vendor_count: 2
+  areas_observed: 12
+  share_of_observable_areas: 0.167
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: unreachable'
+- platform.axway.com (SignUp)
+- developer.axway.com (Portal)
+- www.axway.com (Website)
+- docs.axway.com (Documentation)
+- developer.axway.com (GettingStarted)
+- support.axway.com (Support)
+- community.axway.com (Community)
+- status.axway.com (StatusPage)
+- apicentral.axway.com (baseURL)
+- docs.axway.com (baseURL)
+- streams-open-docs.netlify.app (baseURL)
+- platform.axway.com (baseURL)

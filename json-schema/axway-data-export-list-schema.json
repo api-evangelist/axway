@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-data-export-list-schema.json",
+  "title": "DataExportList",
+  "description": "A list of DataExport objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-export-api-openapi.yml#/components/schemas/DataExportList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/DataExport"
+  },
+  "$defs": {
+    "DataExport": {
+      "type": "object",
+      "required": [
+        "guid",
+        "items",
+        "status",
+        "user_guid"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "Document ID of the export.",
+          "readOnly": true,
+          "deprecated": true
+        },
+        "completed": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date the export was completed"
+        },
+        "created": {
+          "$ref": "#/$defs/created"
+        },
+        "filename": {
+          "type": "string",
+          "format": "url",
+          "description": "Location the export is saved to."
+        },
+        "guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "`guid` of the export."
+        },
+        "items": {
+          "type": "array",
+          "description": "Items included in the export.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "user_metadata",
+              "user_activity",
+              "user_devices",
+              "orgs",
+              "org_metadata",
+              "org_activity",
+              "subscriptions",
+              "envs",
+              "teams",
+              "apps",
+              "providers",
+              "idps",
+              "domains"
+            ]
+          }
+        },
+        "org_guid": {
+          "type": "string",
+          "description": "`guid` of the org for org specific exports."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the export.",
+          "default": "pending",
+          "enum": [
+            "pending",
+            "complete",
+            "failed"
+          ]
+        },
+        "updated": {
+          "$ref": "#/$defs/updated"
+        },
+        "user_guid": {
+          "type": "string",
+          "description": "`guid` of the user that initiated the export."
+        }
+      }
+    }
+  }
+}

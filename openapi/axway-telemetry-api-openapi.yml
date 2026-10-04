@@ -126,22 +126,35 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  examples:
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
   schemas:
-    Error:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
     Event:
       type: object
       required:
@@ -169,6 +182,21 @@ components:
           enum:
           - '4'
           example: '4'
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
     Response:
       type: object
       properties:
@@ -176,34 +204,6 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-  examples:
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

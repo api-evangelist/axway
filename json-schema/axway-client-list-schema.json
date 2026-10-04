@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-client-list-schema.json",
+  "title": "ClientList",
+  "description": "A list of Client objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-client-api-openapi.yml#/components/schemas/ClientList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/Client"
+  },
+  "$defs": {
+    "Client": {
+      "type": "object",
+      "required": [
+        "guid",
+        "name",
+        "org_guid",
+        "roles",
+        "tags"
+      ],
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/$defs/DefaultFields"
+        }
+      ],
+      "if": {
+        "type": "object",
+        "title": "Certificate Auth",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "certificate"
+            ]
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "key_id": {
+            "type": "string",
+            "description": "Identifier of the public key used for the client.",
+            "readOnly": true
+          }
+        }
+      },
+      "else": {
+        "type": "object",
+        "title": "Secret Auth",
+        "additionalProperties": false
+      },
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "Document ID of the client.",
+          "readOnly": true,
+          "deprecated": true
+        },
+        "client_id": {
+          "type": "string",
+          "description": "Identifier of the client to use for authentication."
+        },
+        "guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "`guid` of the client."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the client.",
+          "x-no-tags": true
+        },
+        "org_guid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "`guid` of the organization the client belongs to."
+        },
+        "roles": {
+          "type": "array",
+          "description": "Array of org-level role identifiers that are assigned to the client.",
+          "default": [],
+          "items": {
+            "type": "string",
+            "enum": [
+              "administrator",
+              "developer",
+              "auditor",
+              "consumer",
+              "usage_reporter",
+              "api_central_admin"
+            ]
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags assigned to the client.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "maxItems": 30,
+          "items": {
+            "type": "string",
+            "maxLength": 40
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "Authentication method for the client.",
+          "default": "secret",
+          "enum": [
+            "secret",
+            "certificate"
+          ]
+        }
+      }
+    },
+    "DefaultFields": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date created.",
+          "readOnly": true
+        },
+        "created_by": {
+          "type": "object",
+          "description": "Creator user or client.",
+          "readOnly": true,
+          "properties": {
+            "guid": {
+              "type": "string",
+              "description": "`guid` of the creator."
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of the creator.",
+              "enum": [
+                "user",
+                "client"
+              ]
+            }
+          }
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date last updated.",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

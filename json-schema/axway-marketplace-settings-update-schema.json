@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-marketplace-settings-update-schema.json",
+  "title": "marketplace.settings.update",
+  "description": "Published when marketplace settings are changed.\n\n`subdomain` prop will always be included. Once url is established, `subdomain` prop value will be passed as the `guid`.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-activity-api-openapi.yml#/components/schemas/marketplace.settings.update",
+  "type": "object",
+  "x-context": "org",
+  "allOf": [
+    {
+      "$ref": "#/$defs/EventDataOrg"
+    },
+    {
+      "$ref": "#/$defs/EventDataActor"
+    }
+  ],
+  "properties": {
+    "admin_teams": {
+      "$ref": "#/$defs/admin_teams"
+    },
+    "certificate_expires": {
+      "$ref": "#/$defs/certificate_expires"
+    },
+    "changes": {
+      "$ref": "#/$defs/EventDataChanges"
+    },
+    "consume_teams": {
+      "$ref": "#/$defs/consume_teams"
+    },
+    "consumer": {
+      "$ref": "#/$defs/consumer"
+    },
+    "consumer_approve": {
+      "$ref": "#/$defs/consumer_approve"
+    },
+    "guid": {
+      "$ref": "#/$defs/guid"
+    },
+    "help_menu": {
+      "$ref": "#/$defs/help_menu"
+    },
+    "idp": {
+      "$ref": "#/$defs/idp"
+    },
+    "idp_hint": {
+      "$ref": "#/$defs/idp_hint"
+    },
+    "lang_default": {
+      "$ref": "#/$defs/default"
+    },
+    "name": {
+      "$ref": "#/$defs/name"
+    },
+    "oauth": {
+      "type": "object",
+      "properties": {
+        "github": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "$ref": "#/$defs/enabled"
+            },
+            "secret_updated": {
+              "$ref": "#/$defs/secret_updated"
+            }
+          }
+        },
+        "gitlab": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "$ref": "#/$defs/enabled"
+            },
+            "secret_updated": {
+              "$ref": "#/$defs/secret_updated"
+            }
+          }
+        },
+        "google": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "$ref": "#/$defs/enabled"
+            },
+            "secret_updated": {
+              "$ref": "#/$defs/secret_updated"
+            }
+          }
+        }
+      }
+    },
+    "public": {
+      "$ref": "#/$defs/public"
+    },
+    "publish_teams": {
+      "$ref": "#/$defs/publish_teams"
+    },
+    "reviews": {
+      "$ref": "#/$defs/reviews"
+    },
+    "signup": {
+      "$ref": "#/$defs/signup"
+    },
+    "sitename": {
+      "$ref": "#/$defs/sitename"
+    },
+    "subdomain": {
+      "$ref": "#/$defs/subdomain"
+    },
+    "terms": {
+      "$ref": "#/$defs/terms"
+    },
+    "terms_updated": {
+      "$ref": "#/$defs/terms_updated"
+    },
+    "terms_url": {
+      "$ref": "#/$defs/terms_url"
+    },
+    "url": {
+      "$ref": "#/$defs/url"
+    },
+    "versions": {
+      "$ref": "#/$defs/versions"
+    }
+  },
+  "$defs": {
+    "EventDataActionClient": {
+      "type": "object",
+      "title": "Action Service Account",
+      "properties": {
+        "action_client_guid": {
+          "description": "The `guid` of the client that performed the action.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/guid"
+            }
+          ]
+        },
+        "action_client_id": {
+          "description": "The `client_id` of the client that performed the action.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/client_id"
+            }
+          ]
+        },
+        "action_client_name": {
+          "description": "The `name` of the client that performed the action.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/name"
+            }
+          ]
+        }
+      }
+    },
+    "EventDataActionUser": {
+      "type": "object",
+      "title": "Action User",
+      "properties": {
+        "action_user_guid": {
+          "description": "The `guid` of the user that performed the action",
+          "allOf": [
+            {
+              "$ref": "#/$defs/guid"
+            }
+          ]
+        }
+      }
+    },
+    "EventDataActor": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/EventDataActionUser"
+        },
+        {
+          "$ref": "#/$defs/EventDataActionClient"
+        }
+      ]
+    },
+    "EventDataChanges": {
+      "type": "array",
+      "description": "Changes that were made.",
+      "items": {
+        "type": "object",
+        "required": [
+          "k"
+        ],
+        "properties": {
+          "a": {
+            "type": "integer",
+            "description": "Action indication for changes to sensitive data. Values represent added, changed, and removed respectively.",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "k": {
+            "type": "string",
+            "description": "The full path to the modified value."
+          },
+          "o": {
+            "description": "The original value."
+          },
+          "v": {
+            "description": "The new value."
+          }
+        }
+      }
+    },
+    "EventDataOrg": {
+      "type": "object",
+      "properties": {
+        "org_guid": {
+          "$ref": "#/$defs/guid"
+        },
+        "org_id": {
+          "$ref": "#/$defs/org_id"
+        },
+        "org_name": {
+          "$ref": "#/$defs/name"
+        },
+        "provider_guid": {
+          "$ref": "#/$defs/provider_guid"
+        },
+        "region": {
+          "$ref": "#/$defs/region"
+        }
+      }
+    }
+  }
+}

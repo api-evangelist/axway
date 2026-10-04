@@ -177,6 +177,34 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  examples:
+    NOT_FOUND:
+      value:
+        success: false
+        description: Resource Not Found
+        code: 404
+    FORBIDDEN:
+      value:
+        success: false
+        description: You do not have access privileges to view this content.
+        code: 403
+    LOGIN_REQUIRED:
+      value:
+        success: false
+        description: Sign-in Required
+        code: 401
+    PARAM_REQUIRED:
+      value:
+        success: false
+        description: '"%s" is a required parameter.'
+        code: 400
+        internalCode: 77
+    PARAM_INVALID:
+      value:
+        success: false
+        description: '"%s" contained an invalid value.'
+        code: 400
+        internalCode: 74
   parameters:
     exclude_fields:
       name: exclude_fields
@@ -194,15 +222,14 @@ components:
         type: array
         items:
           type: string
+  responses:
+    SuccessResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
   schemas:
-    Success:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          result:
-            description: The response data
     Error:
       type: object
       allOf:
@@ -218,6 +245,14 @@ components:
           internalCode:
             type: number
             description: Internal code.
+    Success:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          result:
+            description: The response data
     Response:
       type: object
       properties:
@@ -225,41 +260,6 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-  responses:
-    SuccessResponse:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Success'
-  examples:
-    LOGIN_REQUIRED:
-      value:
-        success: false
-        description: Sign-in Required
-        code: 401
-    FORBIDDEN:
-      value:
-        success: false
-        description: You do not have access privileges to view this content.
-        code: 403
-    NOT_FOUND:
-      value:
-        success: false
-        description: Resource Not Found
-        code: 404
-    PARAM_REQUIRED:
-      value:
-        success: false
-        description: '"%s" is a required parameter.'
-        code: 400
-        internalCode: 77
-    PARAM_INVALID:
-      value:
-        success: false
-        description: '"%s" contained an invalid value.'
-        code: 400
-        internalCode: 74
   securitySchemes:
     AuthToken:
       description: Auth token for internal services

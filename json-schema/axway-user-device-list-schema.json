@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-user-device-list-schema.json",
+  "title": "UserDeviceList",
+  "description": "A list of UserDevice objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-auth-api-openapi.yml#/components/schemas/UserDeviceList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/UserDevice"
+  },
+  "$defs": {
+    "UserDevice": {
+      "type": "object",
+      "properties": {
+        "authorized": {
+          "type": "boolean",
+          "description": "Whether the device has been authorized."
+        },
+        "authorized_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of when the device was authorized."
+        },
+        "browserVersion": {
+          "type": "string",
+          "description": "Device browser version identified from the devices user agent."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of when the record was created."
+        },
+        "ipaddress": {
+          "type": "string",
+          "description": "Anonymized device IP address."
+        },
+        "origin": {
+          "type": "string",
+          "description": "Origin of the MFA code used to authenticate the device.",
+          "enum": [
+            "email",
+            "app"
+          ]
+        },
+        "osVersion": {
+          "type": "string",
+          "description": "Device operating system version identified from the devices user agent."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the most recent sign in on the device."
+        },
+        "user_device": {
+          "type": "object",
+          "description": "user-device relation.",
+          "properties": {
+            "browserFamily": {
+              "type": "string",
+              "description": "Device browser family identified from the devices user agent."
+            },
+            "device_id": {
+              "type": "string",
+              "description": "GUID of the device record."
+            },
+            "osFamily": {
+              "type": "string",
+              "description": "Device operating system family identified from the devices user agent."
+            },
+            "user": {
+              "type": "string",
+              "description": "_id of the user the record is associated to."
+            }
+          }
+        }
+      }
+    }
+  }
+}

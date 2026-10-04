@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-platform-session-create-schema.json",
+  "title": "platform.session.create",
+  "description": "Published when a session is created from an access token or external IdP, or a user switches platform org.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-activity-api-openapi.yml#/components/schemas/platform.session.create",
+  "type": "object",
+  "x-context": "auth",
+  "allOf": [
+    {
+      "$ref": "#/$defs/EventDataOrg"
+    },
+    {
+      "$ref": "#/$defs/EventDataUser"
+    }
+  ],
+  "properties": {
+    "from": {
+      "$ref": "#/$defs/EventDataFrom"
+    },
+    "idp": {
+      "type": "object",
+      "description": "Identity Provider used to authenticate the session",
+      "properties": {
+        "id": {
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "360",
+                "github",
+                "gitlab",
+                "google"
+              ]
+            },
+            {
+              "$ref": "#/$defs/guid"
+            }
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        }
+      }
+    },
+    "ip": {
+      "type": "string",
+      "description": "Anonymized IP address."
+    },
+    "role": {
+      "type": "string",
+      "description": "Identifier of the invited users default role in the organization.",
+      "enum": [
+        "administrator",
+        "developer",
+        "auditor",
+        "consumer"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "description": "User's roles within the organization.",
+      "items": {
+        "$ref": "#/$defs/items"
+      }
+    }
+  },
+  "$defs": {
+    "EventDataFrom": {
+      "type": "string",
+      "description": "Client type."
+    },
+    "EventDataOrg": {
+      "type": "object",
+      "properties": {
+        "org_guid": {
+          "$ref": "#/$defs/guid"
+        },
+        "org_id": {
+          "$ref": "#/$defs/org_id"
+        },
+        "org_name": {
+          "$ref": "#/$defs/name"
+        },
+        "provider_guid": {
+          "$ref": "#/$defs/provider_guid"
+        },
+        "region": {
+          "$ref": "#/$defs/region"
+        }
+      }
+    },
+    "EventDataUser": {
+      "type": "object",
+      "title": "User",
+      "properties": {
+        "provider_guid": {
+          "$ref": "#/$defs/provider_guid"
+        },
+        "user_guid": {
+          "$ref": "#/$defs/guid"
+        }
+      }
+    }
+  }
+}

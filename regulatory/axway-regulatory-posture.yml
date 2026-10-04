@@ -1,0 +1,10 @@
+generated: '2026-10-04'
+method: probed
+source: https://trust.axway.com/
+signals:
+  subprocessors:
+    - source: https://trust.axway.com/
+      http_status: 200
+      fetched: /tmp/trust.html
+      quote: "Hosting Services"
+      note: "Subprocessor description indicating hosting services used in multiple regions."

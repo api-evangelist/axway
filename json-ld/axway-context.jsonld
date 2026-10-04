@@ -1,0 +1,1638 @@
+{
+  "@context": {
+    "@vocab": "https://axway.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "axway": "https://axway.com/schema#",
+    "Response": "axway:Response",
+    "success": {
+      "@id": "axway:success",
+      "@type": "xsd:boolean"
+    },
+    "Provider": "axway:Provider",
+    "_id": {
+      "@id": "axway:_id",
+      "@type": "xsd:string"
+    },
+    "admin_teams": {
+      "@id": "axway:admin_teams"
+    },
+    "consume_teams": {
+      "@id": "axway:consume_teams"
+    },
+    "publish_teams": {
+      "@id": "axway:publish_teams"
+    },
+    "ai": {
+      "@id": "axway:ai"
+    },
+    "appearance": {
+      "@id": "axway:appearance"
+    },
+    "billing": {
+      "@id": "axway:billing"
+    },
+    "certificate": {
+      "@id": "axway:certificate",
+      "@type": "xsd:string"
+    },
+    "certificate_expires": {
+      "@id": "axway:certificate_expires",
+      "@type": "xsd:dateTime"
+    },
+    "console": {
+      "@id": "axway:console"
+    },
+    "consumer": {
+      "@id": "axway:consumer",
+      "@type": "xsd:boolean"
+    },
+    "consumer_approve": {
+      "@id": "axway:consumer_approve",
+      "@type": "xsd:boolean"
+    },
+    "description": {
+      "@id": "axway:description"
+    },
+    "footer": {
+      "@id": "axway:footer"
+    },
+    "guid": {
+      "@id": "axway:guid",
+      "@type": "xsd:string"
+    },
+    "help_menu": {
+      "@id": "axway:help_menu"
+    },
+    "help_menu_icon": {
+      "@id": "axway:help_menu_icon",
+      "@type": "xsd:string"
+    },
+    "homepage": {
+      "@id": "axway:homepage"
+    },
+    "idp": {
+      "@id": "axway:idp",
+      "@type": "xsd:boolean"
+    },
+    "idp_hint": {
+      "@id": "axway:idp_hint",
+      "@type": "xsd:string"
+    },
+    "lang": {
+      "@id": "axway:lang"
+    },
+    "name": {
+      "@id": "axway:name"
+    },
+    "name_gender": {
+      "@id": "axway:name_gender"
+    },
+    "nav_items": {
+      "@id": "axway:nav_items"
+    },
+    "oauth": {
+      "@id": "axway:oauth"
+    },
+    "onboarding": {
+      "@id": "axway:onboarding"
+    },
+    "org_guid": {
+      "@id": "axway:org_guid",
+      "@type": "xsd:string"
+    },
+    "provider_idp": {
+      "@id": "axway:provider_idp"
+    },
+    "public": {
+      "@id": "axway:public",
+      "@type": "xsd:boolean"
+    },
+    "reviews": {
+      "@id": "axway:reviews"
+    },
+    "search_engines": {
+      "@id": "axway:search_engines"
+    },
+    "signup": {
+      "@id": "axway:signup",
+      "@type": "xsd:boolean"
+    },
+    "sitename": {
+      "@id": "axway:sitename"
+    },
+    "sitename_gender": {
+      "@id": "axway:sitename_gender"
+    },
+    "subdomain": {
+      "@id": "axway:subdomain",
+      "@type": "xsd:string"
+    },
+    "terms": {
+      "@id": "axway:terms",
+      "@type": "xsd:boolean"
+    },
+    "terms_updated": {
+      "@id": "axway:terms_updated",
+      "@type": "xsd:dateTime"
+    },
+    "terms_url": {
+      "@id": "axway:terms_url",
+      "@type": "@id"
+    },
+    "url": {
+      "@id": "axway:url",
+      "@type": "xsd:string"
+    },
+    "versions": {
+      "@id": "axway:versions"
+    },
+    "Org": "axway:Org",
+    "account_id": {
+      "@id": "axway:account_id",
+      "@type": "xsd:integer"
+    },
+    "active": {
+      "@id": "axway:active",
+      "@type": "xsd:boolean"
+    },
+    "analytics": {
+      "@id": "axway:analytics"
+    },
+    "api_central": {
+      "@id": "axway:api_central"
+    },
+    "branding": {
+      "@id": "axway:branding"
+    },
+    "consumer_id": {
+      "@id": "axway:consumer_id",
+      "@type": "xsd:string"
+    },
+    "created_by": {
+      "@id": "axway:created_by"
+    },
+    "entitlements": {
+      "@id": "axway:entitlements"
+    },
+    "last_login": {
+      "@id": "axway:last_login",
+      "@type": "xsd:dateTime"
+    },
+    "logged_in_count": {
+      "@id": "axway:logged_in_count",
+      "@type": "xsd:decimal"
+    },
+    "onboarding_required": {
+      "@id": "axway:onboarding_required",
+      "@container": "@list"
+    },
+    "org_id": {
+      "@id": "axway:org_id",
+      "@type": "xsd:integer"
+    },
+    "origin": {
+      "@id": "axway:origin",
+      "@type": "xsd:string"
+    },
+    "pending": {
+      "@id": "axway:pending",
+      "@type": "xsd:boolean"
+    },
+    "provider_guid": {
+      "@id": "axway:provider_guid",
+      "@type": "xsd:string"
+    },
+    "region": {
+      "@id": "axway:region",
+      "@type": "xsd:string"
+    },
+    "security": {
+      "@id": "axway:security"
+    },
+    "subscriptions": {
+      "@id": "axway:subscriptions",
+      "@container": "@list"
+    },
+    "support_access_code": {
+      "@id": "axway:support_access_code",
+      "@type": "xsd:integer"
+    },
+    "users": {
+      "@id": "axway:users",
+      "@container": "@list"
+    },
+    "marketplace.lang.update": "axway:marketplace.lang.update",
+    "changes": {
+      "@id": "axway:changes",
+      "@type": "@id"
+    },
+    "lang_default": {
+      "@id": "axway:lang_default",
+      "@type": "@id"
+    },
+    "lang_products": {
+      "@id": "axway:lang_products",
+      "@type": "@id"
+    },
+    "lang_supported": {
+      "@id": "axway:lang_supported",
+      "@type": "@id"
+    },
+    "marketplace.onboarding.disable": "axway:marketplace.onboarding.disable",
+    "marketplace.settings.update": "axway:marketplace.settings.update",
+    "Team": "axway:Team",
+    "created": {
+      "@id": "axway:created",
+      "@type": "xsd:dateTime"
+    },
+    "default": {
+      "@id": "axway:default",
+      "@type": "xsd:boolean"
+    },
+    "desc": {
+      "@id": "axway:desc",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "axway:tags",
+      "@container": "@list"
+    },
+    "updated": {
+      "@id": "axway:updated",
+      "@type": "xsd:dateTime"
+    },
+    "platform.team.user.role.update": "axway:platform.team.user.role.update",
+    "roles": {
+      "@id": "axway:roles",
+      "@type": "@id"
+    },
+    "team_guid": {
+      "@id": "axway:team_guid",
+      "@type": "@id"
+    },
+    "team_name": {
+      "@id": "axway:team_name",
+      "@type": "@id"
+    },
+    "Application": "axway:Application",
+    "apis": {
+      "@id": "axway:apis",
+      "@container": "@list"
+    },
+    "automatic": {
+      "@id": "axway:automatic",
+      "@type": "xsd:boolean"
+    },
+    "env": {
+      "@id": "axway:env",
+      "@type": "xsd:string"
+    },
+    "platform": {
+      "@id": "axway:platform",
+      "@type": "xsd:string"
+    },
+    "providers": {
+      "@id": "axway:providers",
+      "@container": "@list"
+    },
+    "source": {
+      "@id": "axway:source",
+      "@type": "xsd:string"
+    },
+    "subtype": {
+      "@id": "axway:subtype",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "axway:type",
+      "@type": "xsd:string"
+    },
+    "marketplace.billing.disable": "axway:marketplace.billing.disable",
+    "platform.session.create": "axway:platform.session.create",
+    "from": {
+      "@id": "axway:from",
+      "@type": "@id"
+    },
+    "ip": {
+      "@id": "axway:ip",
+      "@type": "xsd:string"
+    },
+    "role": {
+      "@id": "axway:role",
+      "@type": "xsd:string"
+    },
+    "platform.team.user.remove": "axway:platform.team.user.remove",
+    "marketplace.user.remove": "axway:marketplace.user.remove",
+    "orgs": {
+      "@id": "axway:orgs",
+      "@container": "@list"
+    },
+    "Client": "axway:Client",
+    "client_id": {
+      "@id": "axway:client_id",
+      "@type": "xsd:string"
+    },
+    "User": "axway:User",
+    "activated": {
+      "@id": "axway:activated",
+      "@type": "xsd:boolean"
+    },
+    "authenticator_enabled": {
+      "@id": "axway:authenticator_enabled",
+      "@type": "xsd:boolean"
+    },
+    "date_activated": {
+      "@id": "axway:date_activated",
+      "@type": "xsd:dateTime"
+    },
+    "default_org": {
+      "@id": "axway:default_org",
+      "@type": "xsd:decimal"
+    },
+    "email": {
+      "@id": "axway:email",
+      "@type": "xsd:string"
+    },
+    "external": {
+      "@id": "axway:external",
+      "@type": "xsd:boolean"
+    },
+    "firstname": {
+      "@id": "axway:firstname",
+      "@type": "xsd:string"
+    },
+    "invited": {
+      "@id": "axway:invited",
+      "@type": "xsd:dateTime"
+    },
+    "last_logged_in_org": {
+      "@id": "axway:last_logged_in_org",
+      "@type": "xsd:decimal"
+    },
+    "lastname": {
+      "@id": "axway:lastname",
+      "@type": "xsd:string"
+    },
+    "locale": {
+      "@id": "axway:locale",
+      "@type": "xsd:string"
+    },
+    "logged_in_from_cli": {
+      "@id": "axway:logged_in_from_cli",
+      "@type": "xsd:boolean"
+    },
+    "logged_in_from_other": {
+      "@id": "axway:logged_in_from_other",
+      "@type": "xsd:boolean"
+    },
+    "logged_in_from_studio": {
+      "@id": "axway:logged_in_from_studio",
+      "@type": "xsd:boolean"
+    },
+    "logged_in_from_web": {
+      "@id": "axway:logged_in_from_web",
+      "@type": "xsd:boolean"
+    },
+    "login_org": {
+      "@id": "axway:login_org",
+      "@type": "xsd:string"
+    },
+    "mfa": {
+      "@id": "axway:mfa",
+      "@type": "xsd:boolean"
+    },
+    "password_updated": {
+      "@id": "axway:password_updated",
+      "@type": "xsd:dateTime"
+    },
+    "prefs": {
+      "@id": "axway:prefs"
+    },
+    "timezone": {
+      "@id": "axway:timezone",
+      "@type": "xsd:string"
+    },
+    "user_id": {
+      "@id": "axway:user_id",
+      "@type": "xsd:decimal"
+    },
+    "username": {
+      "@id": "axway:username",
+      "@type": "xsd:string"
+    },
+    "marketplace.idp.create": "axway:marketplace.idp.create",
+    "Domain": "axway:Domain",
+    "tld": {
+      "@id": "axway:tld",
+      "@type": "xsd:string"
+    },
+    "platform.team.create": "axway:platform.team.create",
+    "team": {
+      "@id": "axway:team"
+    },
+    "platform.team.remove": "axway:platform.team.remove",
+    "reassign_team": {
+      "@id": "axway:reassign_team"
+    },
+    "platform.subscription.delete": "axway:platform.subscription.delete",
+    "modified_by": {
+      "@id": "axway:modified_by",
+      "@type": "@id"
+    },
+    "subscription": {
+      "@id": "axway:subscription",
+      "@type": "@id"
+    },
+    "Subscription": "axway:Subscription",
+    "end_date": {
+      "@id": "axway:end_date",
+      "@type": "xsd:dateTime"
+    },
+    "governance": {
+      "@id": "axway:governance",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "axway:id",
+      "@type": "xsd:string"
+    },
+    "opportunity_id": {
+      "@id": "axway:opportunity_id",
+      "@type": "xsd:decimal"
+    },
+    "plan": {
+      "@id": "axway:plan",
+      "@type": "xsd:string"
+    },
+    "product": {
+      "@id": "axway:product",
+      "@type": "xsd:string"
+    },
+    "product_name": {
+      "@id": "axway:product_name",
+      "@type": "xsd:string"
+    },
+    "start_date": {
+      "@id": "axway:start_date",
+      "@type": "xsd:dateTime"
+    },
+    "tier": {
+      "@id": "axway:tier",
+      "@type": "xsd:string"
+    },
+    "platform.subscription.expired": "axway:platform.subscription.expired",
+    "platform.org.create": "axway:platform.org.create",
+    "apicentral.agent.create": "axway:apicentral.agent.create",
+    "agent_type": {
+      "@id": "axway:agent_type",
+      "@type": "xsd:string"
+    },
+    "dataplane_type": {
+      "@id": "axway:dataplane_type",
+      "@type": "xsd:string"
+    },
+    "envId": {
+      "@id": "axway:envId",
+      "@type": "@id"
+    },
+    "group": {
+      "@id": "axway:group",
+      "@type": "xsd:string"
+    },
+    "apicentral.asset.create": "axway:apicentral.asset.create",
+    "envIds": {
+      "@id": "axway:envIds",
+      "@container": "@list"
+    },
+    "platform.team.app.add": "axway:platform.team.app.add",
+    "app_id": {
+      "@id": "axway:app_id",
+      "@type": "@id"
+    },
+    "app_name": {
+      "@id": "axway:app_name",
+      "@type": "@id"
+    },
+    "platform.org.update": "axway:platform.org.update",
+    "platform.app.create": "axway:platform.app.create",
+    "app": {
+      "@id": "axway:app"
+    },
+    "EventDataActionClient": "axway:EventDataActionClient",
+    "action_client_guid": {
+      "@id": "axway:action_client_guid"
+    },
+    "action_client_id": {
+      "@id": "axway:action_client_id"
+    },
+    "action_client_name": {
+      "@id": "axway:action_client_name"
+    },
+    "apic.ucs.catalogitem.create": "axway:apic.ucs.catalogitem.create",
+    "catalogSubType": {
+      "@id": "axway:catalogSubType",
+      "@type": "xsd:string"
+    },
+    "catalogType": {
+      "@id": "axway:catalogType",
+      "@type": "xsd:string"
+    },
+    "marketplace.remove": "axway:marketplace.remove",
+    "platform.activation.send": "axway:platform.activation.send",
+    "activation_type": {
+      "@id": "axway:activation_type",
+      "@type": "@id"
+    },
+    "platform.activation.complete": "axway:platform.activation.complete",
+    "apicentral.documentresource.create": "axway:apicentral.documentresource.create",
+    "fileType": {
+      "@id": "axway:fileType",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "axway:version",
+      "@type": "xsd:string"
+    },
+    "Activation": "axway:Activation",
+    "expire": {
+      "@id": "axway:expire",
+      "@type": "xsd:string"
+    },
+    "user_guid": {
+      "@id": "axway:user_guid",
+      "@type": "xsd:string"
+    },
+    "marketplace.appearance.update": "axway:marketplace.appearance.update",
+    "EventDataClient": "axway:EventDataClient",
+    "client_guid": {
+      "@id": "axway:client_guid",
+      "@type": "@id"
+    },
+    "client_name": {
+      "@id": "axway:client_name",
+      "@type": "@id"
+    },
+    "EventDataActionUser": "axway:EventDataActionUser",
+    "action_user_guid": {
+      "@id": "axway:action_user_guid"
+    },
+    "platform.user.password.change": "axway:platform.user.password.change",
+    "apicentral.publisheddocumentresource.create": "axway:apicentral.publisheddocumentresource.create",
+    "document_resource_id": {
+      "@id": "axway:document_resource_id",
+      "@type": "xsd:string"
+    },
+    "platform.env.update": "axway:platform.env.update",
+    "Environment": "axway:Environment",
+    "isProduction": {
+      "@id": "axway:isProduction",
+      "@type": "xsd:boolean"
+    },
+    "marketplace.ai.enable": "axway:marketplace.ai.enable",
+    "embedded": {
+      "@id": "axway:embedded",
+      "@type": "@id"
+    },
+    "stream": {
+      "@id": "axway:stream",
+      "@type": "@id"
+    },
+    "platform.login": "axway:platform.login",
+    "marketplace.consumer.signup": "axway:marketplace.consumer.signup",
+    "consumer_org_guid": {
+      "@id": "axway:consumer_org_guid",
+      "@type": "@id"
+    },
+    "consumer_org_id": {
+      "@id": "axway:consumer_org_id",
+      "@type": "@id"
+    },
+    "consumer_org_name": {
+      "@id": "axway:consumer_org_name",
+      "@type": "@id"
+    },
+    "platform.org.user.primary": "axway:platform.org.user.primary",
+    "platform.client.update": "axway:platform.client.update",
+    "platform.org.user.role.update": "axway:platform.org.user.role.update",
+    "added_roles": {
+      "@id": "axway:added_roles",
+      "@container": "@list"
+    },
+    "previous_role": {
+      "@id": "axway:previous_role",
+      "@type": "xsd:string"
+    },
+    "removed_roles": {
+      "@id": "axway:removed_roles",
+      "@container": "@list"
+    },
+    "marketplace.ai.disable": "axway:marketplace.ai.disable",
+    "platform.login.failed": "axway:platform.login.failed",
+    "apicentral.apiservice.create": "axway:apicentral.apiservice.create",
+    "apicentral._._": "axway:apicentral._._",
+    "marketplace.consumer.approve": "axway:marketplace.consumer.approve",
+    "platform.app.update": "axway:platform.app.update",
+    "platform.team.update": "axway:platform.team.update",
+    "apicentral.env.create": "axway:apicentral.env.create",
+    "production": {
+      "@id": "axway:production",
+      "@type": "xsd:boolean"
+    },
+    "platform.user.social.enable": "axway:platform.user.social.enable",
+    "service": {
+      "@id": "axway:service",
+      "@type": "xsd:string"
+    },
+    "service_name": {
+      "@id": "axway:service_name",
+      "@type": "xsd:string"
+    },
+    "EventDataOrg": "axway:EventDataOrg",
+    "org_name": {
+      "@id": "axway:org_name",
+      "@type": "@id"
+    },
+    "com.appcelerator.platform.org.user.create": "axway:com.appcelerator.platform.org.user.create",
+    "user_activated": {
+      "@id": "axway:user_activated",
+      "@type": "@id"
+    },
+    "user_active": {
+      "@id": "axway:user_active",
+      "@type": "@id"
+    },
+    "apicentral.subscription.create": "axway:apicentral.subscription.create",
+    "platform.org.user.idp.update": "axway:platform.org.user.idp.update",
+    "platform.user.update": "axway:platform.user.update",
+    "platform.org.idp.update": "axway:platform.org.idp.update",
+    "marketplace.create": "axway:marketplace.create",
+    "platform.env.create": "axway:platform.env.create",
+    "platform.org.idp.domain.create": "axway:platform.org.idp.domain.create",
+    "platform.subscription.create": "axway:platform.subscription.create",
+    "marketplace.onboarding.enable": "axway:marketplace.onboarding.enable",
+    "platform.team.app.remove": "axway:platform.team.app.remove",
+    "platform.activation.access": "axway:platform.activation.access",
+    "activation_guid": {
+      "@id": "axway:activation_guid",
+      "@type": "@id"
+    },
+    "platform.org.branding.update": "axway:platform.org.branding.update",
+    "apicentral.agent.start": "axway:apicentral.agent.start",
+    "agent_version": {
+      "@id": "axway:agent_version",
+      "@type": "xsd:string"
+    },
+    "api_central.provision": "axway:api_central.provision",
+    "teams": {
+      "@id": "axway:teams",
+      "@container": "@list"
+    },
+    "trial": {
+      "@id": "axway:trial",
+      "@type": "xsd:boolean"
+    },
+    "apic.ucs.subscription.create": "axway:apic.ucs.subscription.create",
+    "catalogItemId": {
+      "@id": "axway:catalogItemId",
+      "@type": "xsd:string"
+    },
+    "apicentral.credential.expire": "axway:apicentral.credential.expire",
+    "application_id": {
+      "@id": "axway:application_id",
+      "@type": "xsd:string"
+    },
+    "application_name": {
+      "@id": "axway:application_name",
+      "@type": "xsd:string"
+    },
+    "product_id": {
+      "@id": "axway:product_id",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "axway:timestamp",
+      "@type": "xsd:decimal"
+    },
+    "EventDataCentral": "axway:EventDataCentral",
+    "IdentityProvider": "axway:IdentityProvider",
+    "protocol": {
+      "@id": "axway:protocol",
+      "@type": "xsd:string"
+    },
+    "ResponseMetadata": "axway:ResponseMetadata",
+    "count": {
+      "@id": "axway:count",
+      "@type": "xsd:decimal"
+    },
+    "limit": {
+      "@id": "axway:limit",
+      "@type": "xsd:decimal"
+    },
+    "matched": {
+      "@id": "axway:matched",
+      "@type": "xsd:decimal"
+    },
+    "page": {
+      "@id": "axway:page",
+      "@type": "xsd:decimal"
+    },
+    "pages": {
+      "@id": "axway:pages",
+      "@type": "xsd:decimal"
+    },
+    "skip": {
+      "@id": "axway:skip",
+      "@type": "xsd:decimal"
+    },
+    "platform.subscription.update": "axway:platform.subscription.update",
+    "platform.logout": "axway:platform.logout",
+    "platform.client.create": "axway:platform.client.create",
+    "EventDataUser": "axway:EventDataUser",
+    "platform.team.user.add": "axway:platform.team.user.add",
+    "platform.org.user.resent": "axway:platform.org.user.resent",
+    "platform.org.idp.domain.associate": "axway:platform.org.idp.domain.associate",
+    "platform.app.remove": "axway:platform.app.remove",
+    "app_guid": {
+      "@id": "axway:app_guid",
+      "@type": "@id"
+    },
+    "marketplace.idp.update": "axway:marketplace.idp.update",
+    "platform.org.idp.create": "axway:platform.org.idp.create",
+    "apicentral._._.update": "axway:apicentral._._.update",
+    "apicentral.publishedproduct.create": "axway:apicentral.publishedproduct.create",
+    "api_central.provisioned": "axway:api_central.provisioned",
+    "platform.team.default": "axway:platform.team.default",
+    "platform.org.security.update": "axway:platform.org.security.update",
+    "marketplace.billing.enable": "axway:marketplace.billing.enable",
+    "vendor": {
+      "@id": "axway:vendor",
+      "@type": "@id"
+    },
+    "CustomQuery": "axway:CustomQuery",
+    "cross_org": {
+      "@id": "axway:cross_org",
+      "@type": "xsd:boolean"
+    },
+    "endpoint": {
+      "@id": "axway:endpoint",
+      "@type": "@id"
+    },
+    "field": {
+      "@id": "axway:field",
+      "@type": "xsd:string"
+    },
+    "filters": {
+      "@id": "axway:filters",
+      "@type": "xsd:string"
+    },
+    "granularity": {
+      "@id": "axway:granularity",
+      "@type": "xsd:string"
+    },
+    "groupings": {
+      "@id": "axway:groupings",
+      "@container": "@list"
+    },
+    "grquantity": {
+      "@id": "axway:grquantity",
+      "@type": "xsd:integer"
+    },
+    "include": {
+      "@id": "axway:include",
+      "@container": "@list"
+    },
+    "method": {
+      "@id": "axway:method",
+      "@type": "xsd:string"
+    },
+    "offset": {
+      "@id": "axway:offset",
+      "@type": "xsd:integer"
+    },
+    "rateGranularity": {
+      "@id": "axway:rateGranularity",
+      "@type": "xsd:string"
+    },
+    "sortField": {
+      "@id": "axway:sortField",
+      "@type": "xsd:string"
+    },
+    "sortOrder": {
+      "@id": "axway:sortOrder",
+      "@type": "xsd:integer"
+    },
+    "span": {
+      "@id": "axway:span",
+      "@type": "xsd:integer"
+    },
+    "unit": {
+      "@id": "axway:unit",
+      "@type": "xsd:string"
+    },
+    "valueFormat": {
+      "@id": "axway:valueFormat",
+      "@type": "xsd:string"
+    },
+    "yAxis": {
+      "@id": "axway:yAxis",
+      "@type": "xsd:string"
+    },
+    "DefaultFields": "axway:DefaultFields",
+    "Role": "axway:Role",
+    "client": {
+      "@id": "axway:client",
+      "@type": "xsd:boolean"
+    },
+    "disabled": {
+      "@id": "axway:disabled",
+      "@type": "xsd:boolean"
+    },
+    "entitlement": {
+      "@id": "axway:entitlement",
+      "@type": "xsd:string"
+    },
+    "order": {
+      "@id": "axway:order",
+      "@type": "xsd:decimal"
+    },
+    "org": {
+      "@id": "axway:org",
+      "@type": "xsd:boolean"
+    },
+    "partner": {
+      "@id": "axway:partner",
+      "@type": "xsd:string"
+    },
+    "platform_restricted": {
+      "@id": "axway:platform_restricted",
+      "@type": "xsd:boolean"
+    },
+    "required_default_roles": {
+      "@id": "axway:required_default_roles",
+      "@container": "@list"
+    },
+    "web_only": {
+      "@id": "axway:web_only",
+      "@type": "xsd:boolean"
+    },
+    "UserDevice": "axway:UserDevice",
+    "authorized": {
+      "@id": "axway:authorized",
+      "@type": "xsd:boolean"
+    },
+    "authorized_date": {
+      "@id": "axway:authorized_date",
+      "@type": "xsd:dateTime"
+    },
+    "browserVersion": {
+      "@id": "axway:browserVersion",
+      "@type": "xsd:string"
+    },
+    "ipaddress": {
+      "@id": "axway:ipaddress",
+      "@type": "xsd:string"
+    },
+    "osVersion": {
+      "@id": "axway:osVersion",
+      "@type": "xsd:string"
+    },
+    "user_device": {
+      "@id": "axway:user_device"
+    },
+    "PasswordPolicy": "axway:PasswordPolicy",
+    "length": {
+      "@id": "axway:length",
+      "@type": "xsd:integer"
+    },
+    "max_length": {
+      "@id": "axway:max_length",
+      "@type": "xsd:integer"
+    },
+    "lower": {
+      "@id": "axway:lower",
+      "@type": "xsd:integer"
+    },
+    "upper": {
+      "@id": "axway:upper",
+      "@type": "xsd:integer"
+    },
+    "special": {
+      "@id": "axway:special",
+      "@type": "xsd:integer"
+    },
+    "digit": {
+      "@id": "axway:digit",
+      "@type": "xsd:integer"
+    },
+    "lockout": {
+      "@id": "axway:lockout",
+      "@type": "xsd:integer"
+    },
+    "renewal": {
+      "@id": "axway:renewal",
+      "@type": "xsd:integer"
+    },
+    "history": {
+      "@id": "axway:history",
+      "@type": "xsd:integer"
+    },
+    "SessionInfo": "axway:SessionInfo",
+    "connect.sid": {
+      "@id": "axway:connect.sid",
+      "@type": "xsd:string"
+    },
+    "deviceAuthRequired": {
+      "@id": "axway:deviceAuthRequired",
+      "@type": "xsd:string"
+    },
+    "expiry": {
+      "@id": "axway:expiry",
+      "@type": "xsd:string"
+    },
+    "provider_org": {
+      "@id": "axway:provider_org"
+    },
+    "redirect": {
+      "@id": "axway:redirect",
+      "@type": "xsd:string"
+    },
+    "session": {
+      "@id": "axway:session",
+      "@type": "xsd:string"
+    },
+    "sessionID": {
+      "@id": "axway:sessionID",
+      "@type": "xsd:string"
+    },
+    "sid": {
+      "@id": "axway:sid",
+      "@type": "xsd:string"
+    },
+    "user": {
+      "@id": "axway:user",
+      "@type": "@id"
+    },
+    "Entitlements": "axway:Entitlements",
+    "ACT.Instances": {
+      "@id": "axway:ACT.Instances",
+      "@type": "xsd:integer"
+    },
+    "AgentSDK.Transactions": {
+      "@id": "axway:AgentSDK.Transactions",
+      "@type": "xsd:integer"
+    },
+    "provision_envs": {
+      "@id": "axway:provision_envs",
+      "@container": "@list"
+    },
+    "transactions": {
+      "@id": "axway:transactions",
+      "@type": "xsd:integer"
+    },
+    "AI.Transactions": {
+      "@id": "axway:AI.Transactions",
+      "@type": "xsd:integer"
+    },
+    "AISuite.Cores": {
+      "@id": "axway:AISuite.Cores",
+      "@type": "xsd:integer"
+    },
+    "AISuite.InputEvents": {
+      "@id": "axway:AISuite.InputEvents",
+      "@type": "xsd:integer"
+    },
+    "AISuite.Instances": {
+      "@id": "axway:AISuite.Instances",
+      "@type": "xsd:integer"
+    },
+    "AISuite.Users": {
+      "@id": "axway:AISuite.Users",
+      "@type": "xsd:integer"
+    },
+    "AMPG.Transactions": {
+      "@id": "axway:AMPG.Transactions",
+      "@type": "xsd:integer"
+    },
+    "AMPG.Volume": {
+      "@id": "axway:AMPG.Volume",
+      "@type": "xsd:decimal"
+    },
+    "AMPI.Transactions": {
+      "@id": "axway:AMPI.Transactions",
+      "@type": "xsd:integer"
+    },
+    "AMPI.Volume": {
+      "@id": "axway:AMPI.Volume",
+      "@type": "xsd:decimal"
+    },
+    "AOB.Transactions": {
+      "@id": "axway:AOB.Transactions",
+      "@type": "xsd:integer"
+    },
+    "API.Transactions": {
+      "@id": "axway:API.Transactions",
+      "@type": "xsd:integer"
+    },
+    "APIB.Transactions": {
+      "@id": "axway:APIB.Transactions",
+      "@type": "xsd:integer"
+    },
+    "APIM.DRCores": {
+      "@id": "axway:APIM.DRCores",
+      "@type": "xsd:integer"
+    },
+    "APIM.NonProdCores": {
+      "@id": "axway:APIM.NonProdCores",
+      "@type": "xsd:integer"
+    },
+    "APIM.ProdCores": {
+      "@id": "axway:APIM.ProdCores",
+      "@type": "xsd:integer"
+    },
+    "APIM.Transactions": {
+      "@id": "axway:APIM.Transactions",
+      "@type": "xsd:integer"
+    },
+    "APIM.Volume": {
+      "@id": "axway:APIM.Volume",
+      "@type": "xsd:decimal"
+    },
+    "APIMG.Transactions": {
+      "@id": "axway:APIMG.Transactions",
+      "@type": "xsd:integer"
+    },
+    "APIP.DRCores": {
+      "@id": "axway:APIP.DRCores",
+      "@type": "xsd:integer"
+    },
+    "APIP.NonProdCores": {
+      "@id": "axway:APIP.NonProdCores",
+      "@type": "xsd:integer"
+    },
+    "APIP.ProdCores": {
+      "@id": "axway:APIP.ProdCores",
+      "@type": "xsd:integer"
+    },
+    "Automator.CockpitEssential": {
+      "@id": "axway:Automator.CockpitEssential",
+      "@type": "xsd:integer"
+    },
+    "Automator.CockpitPlus": {
+      "@id": "axway:Automator.CockpitPlus",
+      "@type": "xsd:integer"
+    },
+    "Automator.Points": {
+      "@id": "axway:Automator.Points",
+      "@type": "xsd:integer"
+    },
+    "AWS.Transactions": {
+      "@id": "axway:AWS.Transactions",
+      "@type": "xsd:integer"
+    },
+    "Azure.Transactions": {
+      "@id": "axway:Azure.Transactions",
+      "@type": "xsd:integer"
+    },
+    "B2Bi.Cores": {
+      "@id": "axway:B2Bi.Cores",
+      "@type": "xsd:integer"
+    },
+    "B2Bi.Messages": {
+      "@id": "axway:B2Bi.Messages",
+      "@type": "xsd:integer"
+    },
+    "B2Bi.Partners": {
+      "@id": "axway:B2Bi.Partners",
+      "@type": "xsd:integer"
+    },
+    "B2Bi.Volume": {
+      "@id": "axway:B2Bi.Volume",
+      "@type": "xsd:decimal"
+    },
+    "B2Bi.WTPartners": {
+      "@id": "axway:B2Bi.WTPartners",
+      "@type": "xsd:integer"
+    },
+    "BN.Volume": {
+      "@id": "axway:BN.Volume",
+      "@type": "xsd:integer"
+    },
+    "CFT.Cores": {
+      "@id": "axway:CFT.Cores",
+      "@type": "xsd:integer"
+    },
+    "CFT.MSUs": {
+      "@id": "axway:CFT.MSUs",
+      "@type": "xsd:integer"
+    },
+    "CFT.Sessions": {
+      "@id": "axway:CFT.Sessions",
+      "@type": "xsd:integer"
+    },
+    "CFT.Transfers": {
+      "@id": "axway:CFT.Transfers",
+      "@type": "xsd:integer"
+    },
+    "CSOS.CentralSigning": {
+      "@id": "axway:CSOS.CentralSigning",
+      "@type": "xsd:boolean"
+    },
+    "CSOS.Monitoring": {
+      "@id": "axway:CSOS.Monitoring",
+      "@type": "xsd:boolean"
+    },
+    "CSOS.Orders": {
+      "@id": "axway:CSOS.Orders",
+      "@type": "xsd:integer"
+    },
+    "CSOS.Partners": {
+      "@id": "axway:CSOS.Partners",
+      "@type": "xsd:integer"
+    },
+    "CSOS.Transformation": {
+      "@id": "axway:CSOS.Transformation",
+      "@type": "xsd:boolean"
+    },
+    "CSOS.Validation": {
+      "@id": "axway:CSOS.Validation",
+      "@type": "xsd:boolean"
+    },
+    "DI.Dashboards": {
+      "@id": "axway:DI.Dashboards",
+      "@type": "xsd:integer"
+    },
+    "DI.Users": {
+      "@id": "axway:DI.Users",
+      "@type": "xsd:integer"
+    },
+    "DS.Cores": {
+      "@id": "axway:DS.Cores",
+      "@type": "xsd:integer"
+    },
+    "DS.Users": {
+      "@id": "axway:DS.Users",
+      "@type": "xsd:integer"
+    },
+    "DV.EnterpriseInstances": {
+      "@id": "axway:DV.EnterpriseInstances",
+      "@type": "xsd:integer"
+    },
+    "DV.StandardInstances": {
+      "@id": "axway:DV.StandardInstances",
+      "@type": "xsd:integer"
+    },
+    "EBICSC.Channels": {
+      "@id": "axway:EBICSC.Channels",
+      "@type": "xsd:integer"
+    },
+    "EBICSCORP.Banks": {
+      "@id": "axway:EBICSCORP.Banks",
+      "@type": "xsd:integer"
+    },
+    "EBICSCORP.Treasurers": {
+      "@id": "axway:EBICSCORP.Treasurers",
+      "@type": "xsd:integer"
+    },
+    "EBICSG.Customers": {
+      "@id": "axway:EBICSG.Customers",
+      "@type": "xsd:integer"
+    },
+    "EBICSG.FileTransfers": {
+      "@id": "axway:EBICSG.FileTransfers",
+      "@type": "xsd:integer"
+    },
+    "EBICSG.Messages": {
+      "@id": "axway:EBICSG.Messages",
+      "@type": "xsd:integer"
+    },
+    "EBICSG.Subscriptions": {
+      "@id": "axway:EBICSG.Subscriptions",
+      "@type": "xsd:integer"
+    },
+    "EI.Archives": {
+      "@id": "axway:EI.Archives",
+      "@type": "xsd:integer"
+    },
+    "EI.Invoices": {
+      "@id": "axway:EI.Invoices",
+      "@type": "xsd:integer"
+    },
+    "EI.OCRTransactions": {
+      "@id": "axway:EI.OCRTransactions",
+      "@type": "xsd:integer"
+    },
+    "EI.PeppolTransactions": {
+      "@id": "axway:EI.PeppolTransactions",
+      "@type": "xsd:integer"
+    },
+    "EI.Transformations": {
+      "@id": "axway:EI.Transformations",
+      "@type": "xsd:integer"
+    },
+    "EN.Environments": {
+      "@id": "axway:EN.Environments",
+      "@type": "xsd:integer"
+    },
+    "EN.EnvironmentsNonProd": {
+      "@id": "axway:EN.EnvironmentsNonProd",
+      "@type": "xsd:integer"
+    },
+    "EN.Services": {
+      "@id": "axway:EN.Services",
+      "@type": "xsd:integer"
+    },
+    "ESUB.ClientLicense": {
+      "@id": "axway:ESUB.ClientLicense",
+      "@type": "xsd:integer"
+    },
+    "ESUB.CommunityLicense": {
+      "@id": "axway:ESUB.CommunityLicense",
+      "@type": "xsd:integer"
+    },
+    "ESUB.Messages": {
+      "@id": "axway:ESUB.Messages",
+      "@type": "xsd:integer"
+    },
+    "ESUB.Partners": {
+      "@id": "axway:ESUB.Partners",
+      "@type": "xsd:integer"
+    },
+    "ESUB.Regulatory": {
+      "@id": "axway:ESUB.Regulatory",
+      "@type": "xsd:integer"
+    },
+    "ESUB.T1": {
+      "@id": "axway:ESUB.T1",
+      "@type": "xsd:integer"
+    },
+    "ESUB.T2": {
+      "@id": "axway:ESUB.T2",
+      "@type": "xsd:integer"
+    },
+    "ESUB.T3": {
+      "@id": "axway:ESUB.T3",
+      "@type": "xsd:integer"
+    },
+    "ESUB.Volume": {
+      "@id": "axway:ESUB.Volume",
+      "@type": "xsd:decimal"
+    },
+    "FAH.ApplicationConnectors": {
+      "@id": "axway:FAH.ApplicationConnectors",
+      "@type": "xsd:integer"
+    },
+    "FAH.Records": {
+      "@id": "axway:FAH.Records",
+      "@type": "xsd:integer"
+    },
+    "FAH.Users": {
+      "@id": "axway:FAH.Users",
+      "@type": "xsd:integer"
+    },
+    "flows": {
+      "@id": "axway:flows",
+      "@type": "xsd:integer"
+    },
+    "FU.MultiPatternTransactions": {
+      "@id": "axway:FU.MultiPatternTransactions",
+      "@type": "xsd:integer"
+    },
+    "HBS.Messages": {
+      "@id": "axway:HBS.Messages",
+      "@type": "xsd:integer"
+    },
+    "Hub.Assets": {
+      "@id": "axway:Hub.Assets",
+      "@type": "xsd:integer"
+    },
+    "Hub.Marketplaces": {
+      "@id": "axway:Hub.Marketplaces",
+      "@type": "xsd:integer"
+    },
+    "Hub.Subscriptions": {
+      "@id": "axway:Hub.Subscriptions",
+      "@type": "xsd:integer"
+    },
+    "Hub.Transactions": {
+      "@id": "axway:Hub.Transactions",
+      "@type": "xsd:integer"
+    },
+    "INTP.Designers": {
+      "@id": "axway:INTP.Designers",
+      "@type": "xsd:integer"
+    },
+    "INTP.Instances": {
+      "@id": "axway:INTP.Instances",
+      "@type": "xsd:integer"
+    },
+    "PEPPOL.Transactions": {
+      "@id": "axway:PEPPOL.Transactions",
+      "@type": "xsd:integer"
+    },
+    "SC.Instances": {
+      "@id": "axway:SC.Instances",
+      "@type": "xsd:integer"
+    },
+    "SC.Licenses": {
+      "@id": "axway:SC.Licenses",
+      "@container": "@list"
+    },
+    "SFC.Banks": {
+      "@id": "axway:SFC.Banks",
+      "@type": "xsd:integer"
+    },
+    "SFC.Partners": {
+      "@id": "axway:SFC.Partners",
+      "@type": "xsd:integer"
+    },
+    "SFC.Treasurers": {
+      "@id": "axway:SFC.Treasurers",
+      "@type": "xsd:integer"
+    },
+    "ST.ActiveUsers": {
+      "@id": "axway:ST.ActiveUsers",
+      "@type": "xsd:integer"
+    },
+    "ST.Connections": {
+      "@id": "axway:ST.Connections",
+      "@type": "xsd:integer"
+    },
+    "ST.Cores": {
+      "@id": "axway:ST.Cores",
+      "@type": "xsd:integer"
+    },
+    "ST.Instances": {
+      "@id": "axway:ST.Instances",
+      "@type": "xsd:integer"
+    },
+    "ST.Sessions": {
+      "@id": "axway:ST.Sessions",
+      "@type": "xsd:integer"
+    },
+    "ST.Transfers": {
+      "@id": "axway:ST.Transfers",
+      "@type": "xsd:integer"
+    },
+    "ST.TransfersIn": {
+      "@id": "axway:ST.TransfersIn",
+      "@type": "xsd:integer"
+    },
+    "ST.TransfersOut": {
+      "@id": "axway:ST.TransfersOut",
+      "@type": "xsd:integer"
+    },
+    "ST.Volume": {
+      "@id": "axway:ST.Volume",
+      "@type": "xsd:decimal"
+    },
+    "STL.Applications": {
+      "@id": "axway:STL.Applications",
+      "@type": "xsd:integer"
+    },
+    "STL.CPUs": {
+      "@id": "axway:STL.CPUs",
+      "@type": "xsd:integer"
+    },
+    "STL.Users": {
+      "@id": "axway:STL.Users",
+      "@type": "xsd:integer"
+    },
+    "Streams.Events": {
+      "@id": "axway:Streams.Events",
+      "@type": "xsd:integer"
+    },
+    "Streams.Volume": {
+      "@id": "axway:Streams.Volume",
+      "@type": "xsd:decimal"
+    },
+    "SV.Users": {
+      "@id": "axway:SV.Users",
+      "@type": "xsd:integer"
+    },
+    "TNT.Compliance": {
+      "@id": "axway:TNT.Compliance",
+      "@container": "@list"
+    },
+    "TNT.Lines": {
+      "@id": "axway:TNT.Lines",
+      "@type": "xsd:integer"
+    },
+    "TNT.Packs": {
+      "@id": "axway:TNT.Packs",
+      "@type": "xsd:integer"
+    },
+    "TNT.Routing": {
+      "@id": "axway:TNT.Routing",
+      "@type": "xsd:boolean"
+    },
+    "TNT.SerialNumbers": {
+      "@id": "axway:TNT.SerialNumbers",
+      "@type": "xsd:integer"
+    },
+    "Traceable.Discovery": {
+      "@id": "axway:Traceable.Discovery",
+      "@type": "xsd:integer"
+    },
+    "Traceable.SecurityTesting": {
+      "@id": "axway:Traceable.SecurityTesting",
+      "@type": "xsd:boolean"
+    },
+    "TSIM.Cores": {
+      "@id": "axway:TSIM.Cores",
+      "@type": "xsd:integer"
+    },
+    "TSIM.Messages": {
+      "@id": "axway:TSIM.Messages",
+      "@type": "xsd:integer"
+    },
+    "TSIM.Partners": {
+      "@id": "axway:TSIM.Partners",
+      "@type": "xsd:integer"
+    },
+    "TSIM.Users": {
+      "@id": "axway:TSIM.Users",
+      "@type": "xsd:integer"
+    },
+    "TSIM.Volume": {
+      "@id": "axway:TSIM.Volume",
+      "@type": "xsd:decimal"
+    },
+    "VA.Policies": {
+      "@id": "axway:VA.Policies",
+      "@type": "xsd:integer"
+    },
+    "VA.Repeaters": {
+      "@id": "axway:VA.Repeaters",
+      "@type": "xsd:integer"
+    },
+    "VA.Responsers": {
+      "@id": "axway:VA.Responsers",
+      "@type": "xsd:integer"
+    },
+    "VRS.Transactions": {
+      "@id": "axway:VRS.Transactions",
+      "@type": "xsd:integer"
+    },
+    "WebEDI.Users": {
+      "@id": "axway:WebEDI.Users",
+      "@type": "xsd:integer"
+    },
+    "WebEDI.Volume": {
+      "@id": "axway:WebEDI.Volume",
+      "@type": "xsd:decimal"
+    },
+    "APIConnect.Transactions": {
+      "@id": "axway:APIConnect.Transactions",
+      "@type": "xsd:integer"
+    },
+    "Apigee.Transactions": {
+      "@id": "axway:Apigee.Transactions",
+      "@type": "xsd:integer"
+    },
+    "APIMAgent.Transactions": {
+      "@id": "axway:APIMAgent.Transactions",
+      "@type": "xsd:integer"
+    },
+    "Kafka.Transactions": {
+      "@id": "axway:Kafka.Transactions",
+      "@type": "xsd:integer"
+    },
+    "SAPAPIPortal.Transactions": {
+      "@id": "axway:SAPAPIPortal.Transactions",
+      "@type": "xsd:integer"
+    },
+    "Sensedia.Transactions": {
+      "@id": "axway:Sensedia.Transactions",
+      "@type": "xsd:integer"
+    },
+    "Tokens": {
+      "@id": "axway:Tokens",
+      "@type": "xsd:integer"
+    },
+    "Volume": {
+      "@id": "axway:Volume",
+      "@type": "xsd:integer"
+    },
+    "WebMethods.Transactions": {
+      "@id": "axway:WebMethods.Transactions",
+      "@type": "xsd:integer"
+    },
+    "WSO2.Transactions": {
+      "@id": "axway:WSO2.Transactions",
+      "@type": "xsd:integer"
+    },
+    "AIIntegration": {
+      "@id": "axway:AIIntegration",
+      "@type": "xsd:boolean"
+    },
+    "APICompliance": {
+      "@id": "axway:APICompliance",
+      "@type": "xsd:boolean"
+    },
+    "APIMocking": {
+      "@id": "axway:APIMocking",
+      "@type": "xsd:boolean"
+    },
+    "catalog": {
+      "@id": "axway:catalog",
+      "@type": "xsd:boolean"
+    },
+    "daysDataRetained": {
+      "@id": "axway:daysDataRetained",
+      "@type": "xsd:integer"
+    },
+    "FIPS": {
+      "@id": "axway:FIPS",
+      "@type": "xsd:boolean"
+    },
+    "partners": {
+      "@id": "axway:partners",
+      "@container": "@list"
+    },
+    "public_provider": {
+      "@id": "axway:public_provider",
+      "@type": "xsd:boolean"
+    },
+    "retention": {
+      "@id": "axway:retention",
+      "@type": "xsd:integer"
+    },
+    "retentionTransactions": {
+      "@id": "axway:retentionTransactions",
+      "@type": "xsd:integer"
+    },
+    "Entitlement": "axway:Entitlement",
+    "title": {
+      "@id": "axway:title",
+      "@type": "xsd:string"
+    },
+    "DataExport": "axway:DataExport",
+    "completed": {
+      "@id": "axway:completed",
+      "@type": "xsd:dateTime"
+    },
+    "filename": {
+      "@id": "axway:filename",
+      "@type": "@id"
+    },
+    "items": {
+      "@id": "axway:items",
+      "@container": "@list"
+    },
+    "status": {
+      "@id": "axway:status",
+      "@type": "xsd:string"
+    },
+    "Consumer": "axway:Consumer",
+    "Event": "axway:Event",
+    "data": {
+      "@id": "axway:data"
+    },
+    "event": {
+      "@id": "axway:event",
+      "@type": "xsd:string"
+    },
+    "UsageEntry": "axway:UsageEntry",
+    "downloadable": {
+      "@id": "axway:downloadable",
+      "@type": "xsd:boolean"
+    },
+    "endDate": {
+      "@id": "axway:endDate",
+      "@type": "xsd:dateTime"
+    },
+    "fileId": {
+      "@id": "axway:fileId",
+      "@type": "xsd:string"
+    },
+    "organizationId": {
+      "@id": "axway:organizationId",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "axway:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "unrecognized": {
+      "@id": "axway:unrecognized",
+      "@container": "@list"
+    },
+    "uploadMethod": {
+      "@id": "axway:uploadMethod",
+      "@type": "xsd:string"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Axway API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Axway's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-04) from openapi/axway-aca-api-openapi.yml, openapi/axway-activity-api-openapi.yml, openapi/axway-analytics-api-openapi.yml.",
+  "dcterms:created": "2026-10-04",
+  "dcterms:source": [
+    "openapi/axway-aca-api-openapi.yml",
+    "openapi/axway-activity-api-openapi.yml",
+    "openapi/axway-analytics-api-openapi.yml",
+    "openapi/axway-app-api-openapi.yml",
+    "openapi/axway-auth-api-openapi.yml"
+  ]
+}

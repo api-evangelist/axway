@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/axway/main/json-schema/axway-usage-entry-list-schema.json",
+  "title": "UsageEntryList",
+  "description": "A list of UsageEntry objects.",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/axway-usage-api-openapi.yml#/components/schemas/UsageEntryList",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/UsageEntry"
+  },
+  "$defs": {
+    "UsageEntry": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time when report was created."
+        },
+        "created_by": {
+          "type": "object",
+          "description": "Details of the user that created the organization.",
+          "required": [
+            "guid",
+            "type"
+          ],
+          "properties": {
+            "client_id": {
+              "type": "string",
+              "description": "The client_id of the client that created the organization."
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Email address of the user that created the organization."
+            },
+            "guid": {
+              "type": "string",
+              "description": "`guid` of the creator."
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the user or client that created the organization."
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of the creator.",
+              "enum": [
+                "user",
+                "client"
+              ]
+            }
+          }
+        },
+        "downloadable": {
+          "type": "boolean",
+          "description": "Indicates if the report file is available for download."
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the reporting range."
+        },
+        "envId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "`guid` of the environment the report is for."
+        },
+        "fileId": {
+          "type": "string",
+          "description": "Identifier of report entry file."
+        },
+        "governance": {
+          "type": "string",
+          "description": "Governance of the environment this report is for.",
+          "enum": [
+            "Customer Managed",
+            "Axway Managed"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the report entry file."
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "`guid` of the organization the report is for."
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the reporting range."
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the report.",
+          "enum": [
+            "PROCESSED"
+          ]
+        },
+        "unrecognized": {
+          "type": "array",
+          "description": "List of unrecognized metrics for reports with status `INVALID_METRIC`.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uploadMethod": {
+          "type": "string",
+          "description": "Upload method.",
+          "enum": [
+            "automatic",
+            "manual"
+          ]
+        }
+      }
+    }
+  }
+}

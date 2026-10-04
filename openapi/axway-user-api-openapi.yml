@@ -1092,21 +1092,14 @@ components:
         username:
           type: string
           example: Example Name
-    Error:
+    Success:
       type: object
       allOf:
       - $ref: '#/components/schemas/Response'
       - type: object
         properties:
-          code:
-            type: number
-            description: HTTP status code.
-          description:
-            type: string
-            description: A message describing the error.
-          internalCode:
-            type: number
-            description: Internal code.
+          result:
+            description: The response data
     DefaultFields:
       type: object
       unevaluatedProperties: false
@@ -1140,6 +1133,21 @@ components:
           description: Date last updated.
           readOnly: true
           example: '2026-04-21T00:00:00Z'
+    Error:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Response'
+      - type: object
+        properties:
+          code:
+            type: number
+            description: HTTP status code.
+          description:
+            type: string
+            description: A message describing the error.
+          internalCode:
+            type: number
+            description: Internal code.
     Response:
       type: object
       properties:
@@ -1147,21 +1155,7 @@ components:
           type: boolean
           description: Whether the request was successful.
           example: true
-    Success:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/Response'
-      - type: object
-        properties:
-          result:
-            description: The response data
   examples:
-    IDP_REQUIRED:
-      value:
-        success: false
-        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
-        code: 401
-        internalCode: 235
     FORBIDDEN:
       value:
         success: false
@@ -1173,11 +1167,6 @@ components:
         description: '"%s" is a required parameter.'
         code: 400
         internalCode: 77
-    USER_NOT_ADMIN:
-      value:
-        success: false
-        description: You are not authorized to perform this action. Please contact your organization administrator.
-        code: 403
     PARAM_INVALID:
       value:
         success: false
@@ -1189,6 +1178,17 @@ components:
         success: false
         description: Resource Not Found
         code: 404
+    USER_NOT_ADMIN:
+      value:
+        success: false
+        description: You are not authorized to perform this action. Please contact your organization administrator.
+        code: 403
+    IDP_REQUIRED:
+      value:
+        success: false
+        description: You must sign in using the Identity Provider configured by your organization's administrators to access this organization.
+        code: 401
+        internalCode: 235
     LOGIN_REQUIRED:
       value:
         success: false
