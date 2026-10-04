@@ -40,6 +40,7 @@ tags:
   - Enterprise
   - Integration
   - Security
+  - API Gateway
 url: https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-05-30'
@@ -671,6 +672,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/json-ld/axway-amplify-platform-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/axway-capability-edges.yml
+    name: Axway Business Capability Map
   - type: Compliance
     url: https://www.axway.com/en/gdpr
   - type: PostmanWorkspace
