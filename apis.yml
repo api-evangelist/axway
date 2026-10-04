@@ -1,12 +1,9 @@
 aid: axway
-
 name: Axway
-
-description: Axway provides API management, integration, and security solutions enabling organizations to connect, secure, and manage APIs across
-  hybrid IT environments. Axway offers the Amplify platform for API management and a range of integration and security products for enterprises.
-
+description: Axway provides API management, integration, and security solutions enabling organizations
+  to connect, secure, and manage APIs across hybrid IT environments. Axway offers the Amplify platform
+  for API management and a range of integration and security products for enterprises.
 type: Index
-
 deliveryModel:
   model: saas
   license_evidence:
@@ -23,7 +20,6 @@ deliveryModel:
   - repository-not-product
   generated: '2026-09-25'
   method: derived
-
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -37,9 +33,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/axway.png
-
 tags:
 - API Management
 - Enterprise
@@ -50,19 +44,13 @@ tags:
 - Financial Accounting
 - Enterprise Integration
 - Regulated Industries - API Management - Enterprise - Integration - Security
-
 url: https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/apis.yml
-
 created: '2026-03-16'
-
 modified: '2026-05-30'
-
 specificationVersion: '0.23'
-
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-
 common:
 - type: FinOps
   url: finops/axway-finops.yml
@@ -162,7 +150,8 @@ common:
   - name: API Lifecycle Management
     description: Manage the full API lifecycle from design, development, publishing to retirement.
   - name: API Gateway
-    description: Enterprise-grade API gateway with over 200 prebuilt security policies, OAuth, and traffic management.
+    description: Enterprise-grade API gateway with over 200 prebuilt security policies, OAuth, and traffic
+      management.
   - name: Unified API Catalog
     description: Centralized catalog for discovering and consuming APIs from any gateway.
   - name: Event Streaming
@@ -176,7 +165,8 @@ common:
   - name: Hybrid Deployment
     description: Deploy across on-premises, cloud, and hybrid environments with a unified control plane.
   - name: AI Gateway
-    description: Secure and govern AI integration with LLM orchestration, prompt management, and MCP server support.
+    description: Secure and govern AI integration with LLM orchestration, prompt management, and MCP server
+      support.
   - name: API Marketplace
     description: Curate, package, and monetize APIs with automated discovery and multi-gateway support.
   - name: Federated Governance
@@ -198,7 +188,8 @@ common:
   - name: AI Integration
     description: Securely integrate LLMs and AI models into enterprise workflows with policy-based governance.
   - name: Managed File Transfer
-    description: Exchange mission-critical files across cloud and on-premises environments with compliance and audit trails.
+    description: Exchange mission-critical files across cloud and on-premises environments with compliance
+      and audit trails.
   - name: Supply Chain Integration
     description: Connect trading partners with EDI, eInvoicing, and track-and-trace capabilities.
 - type: Integrations
@@ -229,13 +220,22 @@ common:
     description: Secure file transfer and API management for government agencies and compliance.
 - type: Integrations
   url: https://www.axway.com/en/partners
-
+- type: CapabilityMap
+  url: capabilities/axway-capability-edges.yml
+  name: Axway Business Capability Map
+- type: CodeExamples
+  url: https://github.com/Axway/api-builder-examples
+  title: API Builder Examples
+- type: TermsOfService
+  url: https://www.axway.com/en/legal/terms
+- type: PrivacyPolicy
+  url: https://www.axway.com/en/legal/privacy-statement
 apis:
 - aid: axway:axway-amplify-central-api
   name: Axway Amplify Central API
-  description: Axway Amplify Central is the unified API management hub that enables discovery, consumption, and governance of APIs across the
-    enterprise. It provides a central catalog for registering APIs from any gateway and managing the full API lifecycle including publishing,
-    subscriptions, and access control.
+  description: Axway Amplify Central is the unified API management hub that enables discovery, consumption,
+    and governance of APIs across the enterprise. It provides a central catalog for registering APIs from
+    any gateway and managing the full API lifecycle including publishing, subscriptions, and access control.
   humanURL: https://docs.axway.com/bundle/amplify-central/
   baseURL: https://apicentral.axway.com
   tags:
@@ -254,9 +254,10 @@ apis:
     url: https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/cli_central/cli_install/index.html
 - aid: axway:axway-api-gateway
   name: Axway API Gateway
-  description: Axway API Gateway is an enterprise-grade API gateway providing security, mediation, and traffic management for APIs deployed on-premises
-    or in hybrid environments. It supports policy-based security with over 200 prebuilt security policies, OAuth, and integration with backend
-    services for high-performance API delivery.
+  description: Axway API Gateway is an enterprise-grade API gateway providing security, mediation, and
+    traffic management for APIs deployed on-premises or in hybrid environments. It supports policy-based
+    security with over 200 prebuilt security policies, OAuth, and integration with backend services for
+    high-performance API delivery.
   humanURL: https://docs.axway.com/bundle/axway-open-docs/
   baseURL: https://docs.axway.com
   tags:
@@ -273,9 +274,9 @@ apis:
     url: https://docs.axway.com/bundle/axway-open-docs/page/docs/apigw_releasenotes/index.html
 - aid: axway:axway-api-manager
   name: Axway API Manager
-  description: Axway API Manager is a web-based management interface layered on top of API Gateway that enables organizations to register, virtualize,
-    secure, and publish APIs to internal and external consumers. It provides lifecycle management, consumer self-service, and usage analytics
-    for the full API catalog.
+  description: Axway API Manager is a web-based management interface layered on top of API Gateway that
+    enables organizations to register, virtualize, secure, and publish APIs to internal and external consumers.
+    It provides lifecycle management, consumer self-service, and usage analytics for the full API catalog.
   humanURL: https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_administration/apimgr_admin/index.html
   baseURL: https://docs.axway.com
   tags:
@@ -290,9 +291,9 @@ apis:
     url: https://docs.axway.com/bundle/axway-open-docs/page/docs/apim_reference/index.html
 - aid: axway:axway-api-builder
   name: Axway API Builder
-  description: Axway API Builder is a low-code tool for building and deploying microservices and APIs from data sources and business logic. It
-    provides a visual flow editor to compose API endpoints, connect to databases, and integrate with third-party services as containerized Node.js
-    microservices.
+  description: Axway API Builder is a low-code tool for building and deploying microservices and APIs
+    from data sources and business logic. It provides a visual flow editor to compose API endpoints, connect
+    to databases, and integrate with third-party services as containerized Node.js microservices.
   humanURL: https://docs.axway.com/bundle/api-builder/
   baseURL: https://docs.axway.com
   tags:
@@ -311,9 +312,9 @@ apis:
     url: https://github.com/Axway/api-builder-standalone-tech-enablement
 - aid: axway:axway-amplify-streams
   name: Axway Amplify Streams
-  description: Axway Amplify Streams provides a real-time event streaming API platform enabling publishers to push data updates to subscribers
-    over Server-Sent Events (SSE) or WebSocket connections. It decouples producers from consumers for low-latency, event-driven API patterns across
-    enterprise applications.
+  description: Axway Amplify Streams provides a real-time event streaming API platform enabling publishers
+    to push data updates to subscribers over Server-Sent Events (SSE) or WebSocket connections. It decouples
+    producers from consumers for low-latency, event-driven API patterns across enterprise applications.
   humanURL: https://docs.axway.com/bundle/amplify-streams/
   baseURL: https://streams-open-docs.netlify.app
   tags:
@@ -328,9 +329,10 @@ apis:
     url: https://docs.axway.com/bundle/amplify-streams/page/docs/getting-started/index.html
 - aid: axway:axway-amplify-engage
   name: Axway Amplify Engage
-  description: Axway Amplify Engage is a centralized API marketplace solution that curates, packages, and monetizes APIs. It provides automated
-    API discovery and threat detection, multi-gateway support via agent-based integration, API curation with categorization and versioning, and
-    comprehensive observability dashboards tracking API adoption and usage.
+  description: Axway Amplify Engage is a centralized API marketplace solution that curates, packages,
+    and monetizes APIs. It provides automated API discovery and threat detection, multi-gateway support
+    via agent-based integration, API curation with categorization and versioning, and comprehensive observability
+    dashboards tracking API adoption and usage.
   humanURL: https://www.axway.com/en/products/amplify-engage
   tags:
   - API Marketplace
@@ -342,9 +344,10 @@ apis:
     url: https://docs.axway.com/
 - aid: axway:axway-amplify-ai-gateway
   name: Axway Amplify AI Gateway
-  description: Axway Amplify AI Gateway is a secure, enterprise-grade AI gateway that governs AI integration, orchestrates intelligence, and accelerates
-    innovation by integrating LLMs, vector databases, and chatbots into compliant workflows. It provides policy enforcement, role-based access
-    control, token usage monitoring, prompt management, and MCP server support.
+  description: Axway Amplify AI Gateway is a secure, enterprise-grade AI gateway that governs AI integration,
+    orchestrates intelligence, and accelerates innovation by integrating LLMs, vector databases, and chatbots
+    into compliant workflows. It provides policy enforcement, role-based access control, token usage monitoring,
+    prompt management, and MCP server support.
   humanURL: https://www.axway.com/en/products/amplify-ai-gateway
   tags:
   - Artificial Intelligence
@@ -363,9 +366,10 @@ apis:
     url: https://docs.axway.com/
 - aid: axway:axway-amplify-fusion
   name: Axway Amplify Fusion
-  description: Axway Amplify Fusion integrates applications, data, APIs, and AI systems into unified workflows across hybrid environments. It
-    unifies APIs, file transfers, and B2B integrations with no-code and low-code interfaces, event-driven automation, and visual orchestration
-    with out-of-the-box connectors and templates.
+  description: Axway Amplify Fusion integrates applications, data, APIs, and AI systems into unified workflows
+    across hybrid environments. It unifies APIs, file transfers, and B2B integrations with no-code and
+    low-code interfaces, event-driven automation, and visual orchestration with out-of-the-box connectors
+    and templates.
   humanURL: https://www.axway.com/en/products/amplify-fusion
   tags:
   - Automation
@@ -382,9 +386,10 @@ apis:
     url: https://docs.axway.com/
 - aid: axway:axway-flow-manager
   name: Axway Flow Manager
-  description: Axway Flow Manager is a managed file transfer and B2B integration orchestration solution that automates business flows involving
-    file exchange with trading partners. It provides visibility, governance, and SLA management for cross-enterprise data flows in industries
-    such as retail, finance, and logistics.
+  description: Axway Flow Manager is a managed file transfer and B2B integration orchestration solution
+    that automates business flows involving file exchange with trading partners. It provides visibility,
+    governance, and SLA management for cross-enterprise data flows in industries such as retail, finance,
+    and logistics.
   humanURL: https://docs.axway.com/bundle/FlowManager_20_allOS_en_HTML5/
   baseURL: https://docs.axway.com
   tags:
@@ -397,8 +402,9 @@ apis:
     url: https://docs.axway.com/bundle/FlowManager_20_allOS_en_HTML5/
 - aid: axway:axway-securetransport
   name: Axway SecureTransport
-  description: Axway SecureTransport is a managed file transfer gateway for receiving and exchanging business data securely. It supports high-volume,
-    mission-critical file transfers across cloud, on-premises, and hybrid environments with compliance and audit capabilities.
+  description: Axway SecureTransport is a managed file transfer gateway for receiving and exchanging business
+    data securely. It supports high-volume, mission-critical file transfers across cloud, on-premises,
+    and hybrid environments with compliance and audit capabilities.
   humanURL: https://www.axway.com/en/products/managed-file-transfer
   tags:
   - Compliance
@@ -413,8 +419,9 @@ apis:
     title: SecureTransport REST API Examples
 - aid: axway:axway-transfer-cft
   name: Axway Transfer CFT
-  description: Axway Transfer CFT enables decentralized file transfers across cloud, on-premises, and data pipelines. It provides reliable, automated
-    file exchange for enterprise integration scenarios requiring distributed transfer agents.
+  description: Axway Transfer CFT enables decentralized file transfers across cloud, on-premises, and
+    data pipelines. It provides reliable, automated file exchange for enterprise integration scenarios
+    requiring distributed transfer agents.
   humanURL: https://www.axway.com/en/products/managed-file-transfer
   tags:
   - Decentralized
@@ -426,8 +433,9 @@ apis:
     url: https://docs.axway.com/
 - aid: axway:axway-b2bi
   name: Axway B2Bi
-  description: Axway B2Bi is a B2B and EDI integration solution for automating partner data exchange. It supports EDI, AS2, and other B2B protocols
-    for trading partner onboarding, document transformation, and compliance with industry standards.
+  description: Axway B2Bi is a B2B and EDI integration solution for automating partner data exchange.
+    It supports EDI, AS2, and other B2B protocols for trading partner onboarding, document transformation,
+    and compliance with industry standards.
   humanURL: https://www.axway.com/en/products/b2b-integration
   tags:
   - B2B
@@ -439,8 +447,9 @@ apis:
     url: https://docs.axway.com/
 - aid: axway:axway-open-banking
   name: Axway Open Banking
-  description: Axway Open Banking provides prebuilt APIs for regulatory compliance and ecosystem engagement, supporting PSD2 and open banking
-    standards. It enables financial institutions to expose and manage banking APIs securely.
+  description: Axway Open Banking provides prebuilt APIs for regulatory compliance and ecosystem engagement,
+    supporting PSD2 and open banking standards. It enables financial institutions to expose and manage
+    banking APIs securely.
   humanURL: https://www.axway.com/en/products/amplify-open-banking
   tags:
   - Banking
@@ -941,7 +950,6 @@ apis:
     url: json-schema/axway-user-schema.json
   - type: JSONSchema
     url: json-schema/axway-response-schema.json
-
 integrations:
 - name: Axway
 - name: Visit our Instagram page
