@@ -1,0 +1,48 @@
+slug: axway
+provider: Axway
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Auth
+  spec_file: axway-auth-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /auth/login  auth_login  Axway Sign-in; POST /auth/mfa/verify  auth_mfaVerify  Axway
+    Verify an Authorization Code; GET /auth/password_policy  auth_findPasswordPolicy
+  reason: Operations implement sign-in, sign-out, MFA, password policy, forgot-password and org switching
+    — identity and access management. Mapped to Identity & Access Management; some chance a reviewer would
+    prefer a tenant identity federation reading, hence 0.8.
+- tag: Client
+  spec_file: axway-client-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.7
+  evidence: POST /client  client_create  Axway Add Service Account; GET /client/{client_id}/json  client_download  Axway
+    Get Service Account JSON Representation
+  reason: Lifecycle of service accounts (machine credentials) used to call Amplify platform APIs — closest
+    fit is Developer Identity & Credential Management. Could alternatively be read as general IAM, hence
+    moderate confidence.
+- tag: Domain
+  spec_file: axway-domain-api-openapi.yml
+  capability_id: BC-4230.50
+  capability_id_l1: BC-4230
+  capability_name: Tenant Identity Federation
+  confidence: 0.7
+  evidence: POST /org/{org_id}/domain/enable  org_domainEnable  Axway Enable IdP for a Domain; POST /org/{org_id}/domain/consolidate  org_domainConsolidate  Axway
+    Consolidate Domain Users
+  reason: Operations verify org domain ownership and associate/enable an identity provider for that domain's
+    users — this is tenant (organization) identity federation via SSO domain claiming. Alternative reading
+    is generic IAM federation, so 0.7.
