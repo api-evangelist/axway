@@ -6,31 +6,6 @@ checked:
 - https://openid.net/developers/certified-openid-connect-implementations/
 marketplace_apps: []
 edges:
-- partner_name: OpenID Foundation certification
-  partner: null
-  partner_match: domain
-  type: contract
-  channel: network-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://openid.net/developers/certified-openid-connect-implementations/
-  contract_reference:
-    register: OpenID Foundation certified implementations
-    spec_file: null
-    role: certified-op
-    registered_name: Axway
-    products:
-    - Axway Open Banking v1.0
-    matched_domain: axway.com
-    api_families:
-    - BR-OB Adv. OP DCR
-    - BR-OB Adv. OP w/ Private Key
-    - fapi1-op-brazil-open-banking
-    api_families_basis: conformance profiles / certification levels passed
-    detected_by: sweep-identity.py
-    detected: '2026-10-13'
-  detected_by: sweep-identity.py
-  detected: '2026-10-13'
 - partner_name: AWS Marketplace
   partner: amazon-web-services
   partner_match: aggregator
@@ -67,4 +42,29 @@ edges:
   - Axway B2B Integration (B2Bi)
   seller_name: 'AXWAY '
   detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
+- partner_name: OpenID Foundation certification
+  partner: null
+  partner_match: domain
+  type: contract
+  channel: network-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://openid.net/developers/certified-openid-connect-implementations/
+  contract_reference:
+    register: OpenID Foundation certified implementations
+    spec_file: null
+    role: certified-op
+    registered_name: Axway
+    products:
+    - Axway Open Banking v1.0
+    matched_domain: axway.com
+    api_families:
+    - BR-OB Adv. OP DCR
+    - BR-OB Adv. OP w/ Private Key
+    - fapi1-op-brazil-open-banking
+    api_families_basis: conformance profiles / certification levels passed
+    detected_by: sweep-identity.py
+    detected: '2026-10-13'
+  detected_by: sweep-identity.py
   detected: '2026-10-13'
