@@ -70,6 +70,30 @@ edges:
   seller_name: 'AXWAY '
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: other
+    member_type: MEMBER
+    registered_name: Axway Inc.
+    register_id: 157
+    registered_website: www.axway.com
+    country: United States
+    fdx_version: null
+    matched_by: domain:axway.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-14'
+  detected_by: sweep-fdx.py
+  first_seen: '2026-10-14'
 - partner_name: Okta (own)
   partner: okta
   partner_match: mirror
@@ -97,29 +121,5 @@ edges:
   - OIDC
   - SAML
   - UPDATE
-- partner_name: FDX (Financial Data Exchange)
-  partner: fdx
-  type: contract
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://registry.financialdataexchange.org/
-  contract_reference:
-    register: FDX Registry
-    standard: FDX API
-    spec_file: null
-    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
-    role: other
-    member_type: MEMBER
-    registered_name: Axway Inc.
-    register_id: 157
-    registered_website: www.axway.com
-    country: United States
-    fdx_version: null
-    matched_by: domain:axway.com
-    detected_by: sweep-fdx.py
-    detected: '2026-10-14'
-  detected_by: sweep-fdx.py
-  first_seen: '2026-10-14'
 source:
 - okta/integrations/okta-integration-edges.yml
