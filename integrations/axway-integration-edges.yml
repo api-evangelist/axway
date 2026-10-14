@@ -4,6 +4,7 @@ checked:
 - https://aws.amazon.com/marketplace/
 - https://azuremarketplace.microsoft.com/
 - https://openid.net/developers/certified-openid-connect-implementations/
+- okta/integrations/okta-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: OpenID Foundation certification
@@ -68,3 +69,32 @@ edges:
   seller_name: 'AXWAY '
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/axway_amplify/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Axway - AMPLIFY Platform
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Lifecycle Management
+  badges:
+  - UNVERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - ENTITLEMENT_MANAGEMENT
+  - GROUP_PUSH
+  - OIDC
+  - SAML
+  - UPDATE
+source:
+- okta/integrations/okta-integration-edges.yml
