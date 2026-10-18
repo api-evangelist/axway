@@ -43,6 +43,15 @@ tags:
 - B2B Integration
 - Financial Accounting
 - Enterprise Integration
+tags_raw:
+- API Management
+- Enterprise
+- Integration
+- Security
+- Managed File Transfer
+- B2B Integration
+- Financial Accounting
+- Enterprise Integration
 - Regulated Industries - API Management - Enterprise - Integration - Security
 url: https://raw.githubusercontent.com/api-evangelist/axway/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -706,9 +715,10 @@ apis:
   humanURL: https://platform.axway.com/api-docs.html
   baseURL: https://platform.axway.com/api/v1
   tags:
-  - IDP
+  - Intelligent Document Processing
   tags_raw:
   - idp
+  - IDP
   properties:
   - type: OpenAPI
     url: openapi/axway-idp-api-openapi.yml
