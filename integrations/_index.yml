@@ -52,32 +52,6 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
-- slug: axway-fdx-financial-data-exchange
-  label: FDX (Financial Data Exchange)
-  partner: fdx
-  partner_name: FDX (Financial Data Exchange)
-  type: contract
-  channel: standard-directory
-  evidence: https://registry.financialdataexchange.org/
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: FDX Registry
-    standard: FDX API
-    spec_file: null
-    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
-    role: other
-    member_type: MEMBER
-    registered_name: Axway Inc.
-    register_id: 157
-    registered_website: www.axway.com
-    country: United States
-    fdx_version: null
-    matched_by: domain:axway.com
-    detected_by: sweep-fdx.py
-    detected: '2026-10-14'
-  status: not-a-workflow
-  arazzo: null
 - slug: axway-okta-own
   label: Okta (own)
   partner: okta
@@ -120,7 +94,7 @@
     signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
       countries are context, never read
     detected_by: sweep-einvoicing-tax.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: axway-dgfip-plateformes-agreees-france-e-invoicing-reform
@@ -148,6 +122,60 @@
     signal_note: certified_products = the immatriculation (one per operator); an operator awaiting the interop tests
       is participation only
     detected_by: sweep-einvoicing-tax.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: axway-fdx-financial-data-exchange
+  label: FDX (Financial Data Exchange)
+  partner: fdx
+  partner_name: FDX (Financial Data Exchange)
+  type: contract
+  channel: standard-directory
+  evidence: https://registry.financialdataexchange.org/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: other
+    member_type: MEMBER
+    registered_name: Axway Inc.
+    register_id: 157
+    registered_website: www.axway.com
+    country: United States
+    fdx_version: null
+    matched_by: domain:axway.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: axway-cisa-secure-by-design-pledge
+  label: CISA Secure by Design Pledge
+  partner_name: CISA Secure by Design Pledge
+  category: secure-by-design software pledge
+  type: register
+  channel: standard-directory
+  evidence: https://www.cisa.gov/securebydesign/pledge/secure-design-pledge-signers
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CISA Secure by Design Pledge signers (cisa.gov/securebydesign/pledge)
+    standard: 'CISA Secure by Design Pledge (seven goals: MFA, default passwords, vulnerability classes, patches,
+      disclosure policy, CVEs, evidence of intrusions)'
+    spec_file: null
+    role: secure-by-design-pledge-signer
+    registered_name: Axway
+    matched_domain: null
+    matched_by: register-name
+    signal_note: 'participation only: a voluntary public pledge listed by CISA; not an audit or conformance result
+      (no certified_products, no tier)'
+    detected_by: sweep-cloud-security-star.py
+    detected: '2026-10-20'
+    register_name_note: register-name 'axway' = axway; no wikidata P856
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
   status: not-a-workflow
   arazzo: null
