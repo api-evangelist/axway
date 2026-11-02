@@ -1,0 +1,132 @@
+name: Axway API Plans
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Axway
+providerId: axway
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - API Management
+  - Enterprise
+  - Integration
+  - Security
+description: Axway does not publish public pricing for its enterprise software portfolio (Amplify, API
+  Management, B2B Integration, MFT, SecureTransport). Pricing is contact-sales / quote-based and varies
+  by deployment scale, feature selection, and licensing model (subscription vs perpetual). The plans
+  below capture the documented product surface; commercial terms must be obtained from Axway sales.
+notes: Pricing not publicly available. Axway pricing page (https://www.axway.com/en/axway-pricing) directs
+  prospects to contact sales. Plan structure is provisional pending RFQ.
+sources:
+  - https://www.axway.com/en/axway-pricing
+  - https://www.axway.com/en/products
+plans:
+  - id: axway-evaluation
+    name: Evaluation / Trial
+    type: freemium
+    description: Time-limited evaluation access to Axway Amplify Platform and select products. Sandbox
+      use only.
+    entries:
+      - label: Trial access
+        name: trial
+        type: quota
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Public Documentation
+      - name: Community Support
+      - name: Sandbox Access
+  - id: axway-subscription
+    name: Subscription (Quote-Based)
+    type: subscription
+    description: Production subscription license for Axway products. Pricing negotiated per deployment;
+      tiered by environment count, transaction volume, and feature scope.
+    entries:
+      - label: Subscription (negotiated)
+        name: subscription
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: Axway Amplify Platform
+      - name: Axway API Management (Gateway, Manager, Builder)
+      - name: Axway Amplify Streams
+      - name: Axway Amplify Engage
+      - name: Axway Amplify AI Gateway
+      - name: Axway B2Bi
+      - name: Axway SecureTransport / Transfer CFT (MFT)
+      - name: Axway Open Banking
+  - id: axway-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom-negotiated tier with dedicated capacity, contractual SLAs, security review, data
+      residency options, and named technical account management.
+    entries:
+      - label: Custom contract
+        name: custom
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: configurable
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Negotiated Volume
+      - name: 24/7 Dedicated Support
+      - name: Contractual SLA
+      - name: Security & Compliance Review
+      - name: Dedicated Account Manager
+      - name: Custom Data Residency
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units:
+  - negotiated
+  - period
+  plans:
+  - name: Evaluation / Trial
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: Subscription (Quote-Based)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - negotiated
+    periods:
+    - year
+  - name: Enterprise
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
