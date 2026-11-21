@@ -932,6 +932,9 @@ artifacts:
   heartbeat/2026-11-13.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-20.yml:
+    method: unknown
+    evidence: no authorship recorded
   hosts/axway-hosts.yml:
     method: derived
     evidence: declared in the artifact
@@ -2621,7 +2624,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-06T143934.yml:
+  kin/checks-2026-11-13T214628.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -2688,6 +2691,9 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-13T214628.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   llms/axway-llms.txt:
@@ -2857,9 +2863,6 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   skills/axway-delete-session.md:
-    method: generated
-    evidence: declared in the artifact
-  sla/axway-sla.yml:
     method: generated
     evidence: declared in the artifact
   vendors/axway-vendors.yml:
